@@ -11,7 +11,6 @@ import { ShapeIconHoverableDirective } from "./shapeIconHoverable.directive";
 
 @NgModule({
   imports: [
-    CommonModule,
     ClipboardModule
   ],
   exports: [
@@ -31,8 +30,7 @@ import { ShapeIconHoverableDirective } from "./shapeIconHoverable.directive";
     IframeEventPropagateDirective,
     ClipboardDirective,
     ShapeIconHoverableDirective
-  ],
-  providers: [],
+  ]
 })
 export class DCommonModule {
 }

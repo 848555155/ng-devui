@@ -1,16 +1,21 @@
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
   AfterContentChecked,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  computed,
   ElementRef,
-  EventEmitter,
   HostListener,
-  Input,
-  Output,
+  inject,
+  input,
+  output,
+  signal,
   TemplateRef,
-  ViewChild
+  viewChild,
 } from '@angular/core';
+import { DCommonModule } from 'ng-devui/common';
+import { LoadingModule } from 'ng-devui/loading';
 import { AnimationNumberDuration } from 'ng-devui/utils';
 export type IButtonType = 'button' | 'submit' | 'reset';
 /**
@@ -22,63 +27,77 @@ export type IButtonSize = 'lg' | 'md' | 'sm' | 'xs';
 
 @Component({
   selector: 'd-button',
+  standalone: true,
+  imports: [
+    LoadingModule,
+    DCommonModule
+  ],
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
 })
 export class ButtonComponent implements AfterContentChecked {
-  @Input() id: string;
-  @Input() type: IButtonType = 'button';
-  @Input() bsStyle: IButtonStyle = 'primary';
-  @Input() shape: 'circle';
-  @Input() bsSize: IButtonSize = 'md';
+  id = input<string>();
+  type = input<IButtonType>('button');
+  bsStyle = input<IButtonStyle>('primary');
+  shape = input<'circle'>();
+  bsSize = input<IButtonSize>('md');
   /**
    * @deprecated
    * 原左右按钮用按钮组实现
    */
-  @Input() bsPosition: IButtonPosition = 'default';
-  @Input() bordered: boolean;
-  @Input() icon: string;
-  @Input() disabled = false;
-  @Input() showLoading = false;
-  @Input() width?: string;
-  @Input() autofocus = false;
-  @Input() loadingTemplateRef: TemplateRef<any>;
-  @Output() btnClick = new EventEmitter<MouseEvent>();
-  @ViewChild('buttonContent', { static: true }) buttonContent: ElementRef;
+  bsPosition = input<IButtonPosition>('default');
+  bordered = input(false, {
+    transform: coerceBooleanProperty,
+  });
+  icon = input<string>();
+  disabled = input(false, {
+    transform: coerceBooleanProperty,
+  });
+  showLoading = input(false, {
+    transform: coerceBooleanProperty,
+  });
+  width = input<string>();
+  autofocus = input(false, {
+    transform: coerceBooleanProperty,
+  });
+
+  loadingTemplateRef = input<TemplateRef<any>>();
+  btnClick = output<MouseEvent>();
+
+  buttonContent = viewChild<ElementRef<HTMLSpanElement>>('buttonContent');
 
   @HostListener('click', ['$event'])
-  handleDisabled($event: Event) {
-    if (this.disabled) {
+  handleDisabled($event: MouseEvent) {
+    if (this.disabled()) {
       $event.preventDefault();
       $event.stopImmediatePropagation();
     }
   }
 
-  waveLeft = 0;
-  waveTop = 0;
-  showWave = false;
-  isMouseDown = false;
+  waveLeft = signal(0);
+  waveTop = signal(0);
+  showWave = signal(false);
+  isMouseDown = signal(false);
 
-  constructor(private cd: ChangeDetectorRef) {
-  }
+  private cd = inject(ChangeDetectorRef);
 
   // 新增click事件，解决直接在host上使用click，在disabled状态下还能触发事件
-  onClick(event) {
-    if (!this.showLoading) {
+  onClick(event: MouseEvent) {
+    if (!this.showLoading()) {
       this.btnClick.emit(event);
     }
     this.showClickWave(event);
   }
 
-  showClickWave(event) {
-    this.waveLeft = event.offsetX;
-    this.waveTop = event.offsetY;
-    this.showWave = true;
+  showClickWave(event: MouseEvent) {
+    this.waveLeft.set(event.offsetX);
+    this.waveTop.set(event.offsetY);
+    this.showWave.set(true);
 
     setTimeout(() => {
-      this.showWave = false;
+      this.showWave.set(false);
       this.cd.detectChanges();
     }, AnimationNumberDuration.SLOW);
   }
@@ -87,7 +106,7 @@ export class ButtonComponent implements AfterContentChecked {
     this.cd.detectChanges();
   }
 
-  hasContent() {
-    return !!this.buttonContent && this.buttonContent.nativeElement && this.buttonContent.nativeElement.innerHTML.trim();
-  }
+  hasContent = computed(
+    () => !!this.buttonContent() && this.buttonContent().nativeElement && this.buttonContent().nativeElement.innerHTML.trim()
+  );
 }

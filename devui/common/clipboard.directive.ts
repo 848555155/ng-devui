@@ -1,17 +1,17 @@
 import { Clipboard } from '@angular/cdk/clipboard';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { DOCUMENT } from '@angular/common';
 import {
   ComponentFactoryResolver,
   ComponentRef,
   Directive,
   ElementRef,
-  EventEmitter,
   HostListener,
-  Inject,
-  Input,
+  inject,
+  input,
   OnDestroy,
   OnInit,
-  Output,
+  output,
   TemplateRef
 } from '@angular/core';
 import { I18nInterface, I18nService } from 'ng-devui/i18n';
@@ -24,27 +24,27 @@ import { Subscription } from 'rxjs';
   selector: '[dClipboard]'
 })
 export class ClipboardDirective implements OnInit , OnDestroy {
-  @Input('dClipboard') devuiTargetElm: HTMLInputElement | HTMLTextAreaElement | undefined | '';
-  @Input() container: HTMLElement;
-  @Input() content: string | undefined;
-  @Input() position: PositionType = 'top';
-  @Input() sticky = false;
-  @Input() tipContent: string | HTMLElement | TemplateRef<any>;
-  @Output() copyResultEvent = new EventEmitter<any>();
+  devuiTargetElm = input<HTMLInputElement | HTMLTextAreaElement | undefined | ''>(undefined, {
+    alias: "dClipboard"
+  });
+  container = input<HTMLElement>();
+  content = input<string>();
+  position = input<PositionType>('top');
+  sticky = input(false, {
+    transform: coerceBooleanProperty
+  });
+  tipContent = input<string|HTMLElement| TemplateRef<any>>();
+  copyResultEvent = output<any>();
   popoverComponentRef: ComponentRef<PopoverComponent>;
   i18nCommonText: I18nInterface['common'];
   i18nSubscription: Subscription;
-  document: Document;
+  document = inject(DOCUMENT);
 
-  constructor(
-    private elm: ElementRef,
-    private clipboard: Clipboard,
-    private i18n: I18nService,
-    private overlayContainerRef: OverlayContainerRef,
-    private componentFactoryResolver: ComponentFactoryResolver,
-    @Inject(DOCUMENT) private doc: any) {
-    this.document = this.doc;
-  }
+  private elm = inject(ElementRef);
+  private clipboard = inject(Clipboard);
+  private i18n = inject(I18nService);
+  private overlayContainerRef = inject(OverlayContainerRef);
+  private componentFactoryResolver = inject(ComponentFactoryResolver);
 
   ngOnInit(): void {
     this.setI18nText();
@@ -61,18 +61,18 @@ export class ClipboardDirective implements OnInit , OnDestroy {
   onClickEvent() {
     let isSucceeded = false;
     const isSupported = !!this.document.queryCommandSupported && !!this.document.queryCommandSupported('copy') && !!window;
-    if (isSupported && this.content) {
-      isSucceeded = this.clipboard.copy(this.content);
+    if (isSupported && this.content()) {
+      isSucceeded = this.clipboard.copy(this.content());
       if (isSucceeded) {
-        this.tipContent = this.tipContent || this.i18nCommonText.copied;
-        this.createPopover();
+        const content = this.tipContent() || this.i18nCommonText.copied;
+        this.createPopover(content);
       }
       const result = { isSupported: isSupported, isSucceeded: isSucceeded, content: this.content };
       this.copyResultEvent.emit(result);
     }
   }
 
-  createPopover() {
+  createPopover(content: string | HTMLElement | TemplateRef<any>) {
     if (this.popoverComponentRef) {
       this.popoverComponentRef.destroy();
     }
@@ -80,16 +80,16 @@ export class ClipboardDirective implements OnInit , OnDestroy {
       this.componentFactoryResolver.resolveComponentFactory(PopoverComponent)
     );
     Object.assign(this.popoverComponentRef.instance, {
-      content: this.tipContent,
+      content: content,
       triggerElementRef: this.elm,
-      position: this.position,
+      position: this.position(),
       popType: 'default',
       popMaxWidth: 200,
       appendToBody: true,
       zIndex: 1060
     });
     this.document.addEventListener('click', this.onDocumentClick);
-    if (!this.sticky) {
+    if (!this.sticky()) {
       setTimeout(() => this.destroy(), 3000);
     }
   }
@@ -102,7 +102,7 @@ export class ClipboardDirective implements OnInit , OnDestroy {
     this.document.removeEventListener('click', this.onDocumentClick);
   }
 
-  onDocumentClick = (event) => {
+  onDocumentClick = (event: MouseEvent) => {
     event.stopPropagation();
     if (!this.elm.nativeElement.contains(event.target)) {
       this.destroy();

@@ -1,5 +1,5 @@
 import { HttpClient, HttpErrorResponse, HttpEvent, HttpEventType, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
-import { Directive, HostListener, Input } from '@angular/core';
+import { Directive, HostListener, input, Input } from '@angular/core';
 
 const enum Browser {
   IE = 'IE',
@@ -325,10 +325,10 @@ export class HelperUtils {
   selector: '[dSimulateATag]'
 })
 export class SimulateATagDirective {
-  @Input() href: string;
-  @Input() target: '_blank' | '_self' | '_parent' | '_top' | string   = '_blank';
-  constructor() {}
-  @HostListener('click') onClick() {
-    HelperUtils.jumpOuterUrl(this.href, this.target);
+  href = input<string>();
+  target = input<'_blank' | '_self' | '_parent' | '_top' | string>('_blank');
+  @HostListener('click')
+  onClick() {
+    HelperUtils.jumpOuterUrl(this.href(), this.target());
   }
 }

@@ -1,17 +1,18 @@
-import { AfterViewInit, Directive, ElementRef, Input } from '@angular/core';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { AfterViewInit, Directive, ElementRef, inject, input } from '@angular/core';
 
 @Directive({
   selector: '[dAutoFocus]',
 })
 export class AutoFocusDirective implements AfterViewInit {
-
-  @Input('dAutoFocus') autoFocus: boolean;
-
-  constructor(private  elementRef: ElementRef) {
-  }
+  autoFocus = input(false, {
+    transform: coerceBooleanProperty,
+    alias: 'dAutoFocus'
+  });
+  private elementRef = inject(ElementRef);
 
   ngAfterViewInit(): void {
-    if (this.autoFocus) {
+    if (this.autoFocus()) {
       setTimeout(() => {
         this.elementRef.nativeElement.focus();
       });
