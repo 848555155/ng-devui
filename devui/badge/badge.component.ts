@@ -1,69 +1,37 @@
-import {
-  AfterViewInit,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  Input,
-  ViewChild
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, ElementRef, input, viewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { BadgePositionType, BadgeStatusType } from './badge.types';
-
 
 @Component({
   selector: 'd-badge',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './badge.component.html',
-  styleUrls: ['./badge.component.scss']
+  styleUrls: ['./badge.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BadgeComponent implements AfterViewInit {
-  hasContent = true;
+export class BadgeComponent {
+  hasContent = computed(() => (this.contentProjection()?.nativeElement.childNodes.length ? true : false));
+  contentProjection = viewChild<ElementRef<HTMLSpanElement>>('contentProjection');
+  count = input<number | string>();
+  maxCount = input(99);
+  showDot = input(false, {
+    transform: coerceBooleanProperty,
+  });
+  status = input<BadgeStatusType>();
+  position = input<BadgePositionType>('top-right');
+  offset = input<[number, number]>();
+  bgColor = input<string>();
+  textColor = input<string>();
 
-  @ViewChild('contentProjection') contentProjection?: ElementRef;
-  @Input() count: number | string;
-  @Input() maxCount = 99;
-  @Input() showDot = false;
-  @Input() status: BadgeStatusType;
-  /**
-   * @deprecated
-   * 用position替代
-   */
-  @Input() set badgePos(value: BadgePositionType) {
-    this.position = value;
-  }
-  @Input() position: BadgePositionType = 'top-right';
-  /**
-   * @deprecated
-   * 用offset替代
-   */
-  @Input() set offsetXY(value: [number, number]) {
-    this.offset = value;
-  }
-  @Input() offset: [number, number];
-
-  @Input() bgColor: string;
-  @Input() textColor: string;
-
-  hasContentProjection() {
-    const nodes = this.contentProjection?.nativeElement;
-    const contents = nodes.childNodes;
-    this.hasContent = contents.length ? true : false;
-  }
-
-  parseCountToNumber() {
-    if(typeof(this.count) === 'number') {
-      return this.count;
+  parseCountToNumber = computed(() => {
+    const count = this.count();
+    if (typeof count === 'number') {
+      return count;
     } else {
-      const parseNumber = parseInt(this.count);
+      const parseNumber = parseInt(count);
       return isNaN(parseNumber) ? -1 : parseNumber;
     }
-  }
-
-  constructor(
-    private cdr: ChangeDetectorRef,
-  ) { }
-
-  ngAfterViewInit() {
-    this.hasContentProjection();
-    this.cdr.detectChanges();
-  }
-
+  });
 }
