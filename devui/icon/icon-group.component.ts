@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 @Component({
   selector: 'd-icon-group',
-  templateUrl: './icon-group.component.html',
+  standalone: true,
+  template: '<ng-content></ng-content>',
   styleUrls: ['./icon-group.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class IconGroupComponent {
 }
