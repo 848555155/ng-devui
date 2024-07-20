@@ -4,8 +4,7 @@ import { AlertCarouselItemComponent } from './alert-carousel-item.component';
 import { AlertComponent } from './alert.component';
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [AlertComponent, AlertCarouselItemComponent],
   exports: [AlertComponent, AlertCarouselItemComponent],
-  declarations: [AlertComponent, AlertCarouselItemComponent],
 })
 export class AlertModule {}

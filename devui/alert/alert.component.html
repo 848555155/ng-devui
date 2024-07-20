@@ -1,5 +1,8 @@
-<div class="devui-alert devui-alert-{{ type }} {{ cssClass }}" *ngIf="!hide" [style.alignItems]="carouselNum > 1 ? 'center' : 'flex-start'">
-  <span class="devui-alert-icon" *ngIf="showIcon !== false && type !== 'simple'">
+@if (!hide()){
+
+<div class="devui-alert devui-alert-{{ type() }} {{ cssClass() }}" [style.alignItems]="carouselNum() > 1 ? 'center' : 'flex-start'">
+  @if (showIcon() !== false && type() !== 'simple') {
+  <span class="devui-alert-icon">
     <svg
       width="16px"
       height="16px"
@@ -7,10 +10,10 @@
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
-      class="devui-icon"
-      [ngClass]="type === 'danger' ? 'devui-icon-error' : 'devui-icon-' + type"
+      class="devui-icon {{ type() === 'danger' ? 'devui-icon-error' : 'devui-icon-' + type() }}"
     >
-      <g *ngIf="type === 'success'" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      @if (type() === 'success') {
+      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <path fill-rule="nonzero" d="M8,0 C3.6,0 0,3.6 0,8 C0,12.4 3.6,16 8,16 C12.4,16 16,12.4 16,8 C16,3.6 12.4,0 8,0 Z"></path>
         <polygon
           stroke-width="0.3"
@@ -18,7 +21,8 @@
           points="6.82767602 11.5282799 3 7.24668779 3.89864233 6.37912367 6.82767602 9.04910002 12.2964408 4 13 4.64144383"
         ></polygon>
       </g>
-      <g *ngIf="type === 'warning'" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      } @if (type() === 'warning') {
+      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <path
           class="devui-icon-warning-outer"
           d="M8.96244623,0.57254229 L15.8714442,13.4101975 C16.1549662,13.9370117 15.9538562,14.5918482 15.4222523,14.8728158 C15.2642579,14.9563203 15.0879506,15 14.9088903,15 L1.09089441,15 C0.488410063,15 0,14.5159904 0,13.9189343 C0,13.7414873 0.0440768395,13.5667684 0.128340519,13.4101975 L7.03733844,0.57254229 C7.32086049,0.0457280838 7.98165058,-0.153569987 8.51325441,0.127397589 C8.70423071,0.228333932 8.8605922,0.383286648 8.96244623,0.57254229 Z"
@@ -30,7 +34,9 @@
           d="M8.87894737,13 L7.08947368,13 L7.08947368,11.2105263 L8.87894737,11.2105263 L8.87894737,13 Z M8.62102372,9.86842105 L7.32800539,9.86842105 L7,4.5 L8.96842105,4.5 L8.62102372,9.86842105 Z"
         ></path>
       </g>
-      <g *ngIf="type === 'info'" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+
+      } @if (type() === 'info') {
+      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g fill-rule="nonzero">
           <path
             class="devui-icon-info-outer"
@@ -43,7 +49,8 @@
           ></path>
         </g>
       </g>
-      <g *ngIf="type === 'danger'" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      } @if (type() === 'danger') {
+      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g fill-rule="nonzero">
           <path
             class="devui-icon-error-outer"
@@ -56,45 +63,52 @@
           ></path>
         </g>
       </g>
+      }
     </svg>
   </span>
-  <div class="devui-alert-carousel-container" [style.height]="carouselNum > 1 ? autoplayHeight : 'auto'">
+  }
+  <div class="devui-alert-carousel-container" [style.height]="carouselNum() > 1 ? autoplayHeight() : 'auto'">
     <div
-      #carouselContainer
+      [@devuiAlertCarouselBoxAutoPlayerTop]="{
+        value: autoplay(),
+        params: { size: (currentIndex() - 1) * 100, transitionSpeed: transitionSpeed(), height: autoplayHeight }
+      }"
       class="devui-alert-carousel-box"
-      (mouseenter)="clearScheduledTransition()"
-      (mouseleave)="autoScheduleTransition()"
+      (mouseenter)="pause$.next(true)"
+      (mouseleave)="pause$.next(false)"
     >
       <ng-content></ng-content>
     </div>
   </div>
   <div class="devui-alert-operation-container">
-    <ng-container *ngIf="carouselNum > 1">
-      <div class="devui-alert-carousel-num">
-        <span>{{ currentIndex }}/{{ carouselNum }}</span>
-      </div>
-      <span class="devui-alert-carousel-button">
-        <svg
-          (click)="next()"
-          width="12px"
-          devui-alert-operation-container
-          height="12px"
-          viewBox="0 0 16 16"
-          version="1.1"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-        >
-          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-            <path
-              d="M2.64644661,5.14644661 C2.82001296,4.97288026 3.08943736,4.95359511 3.2843055,5.08859116 L3.35355339,5.14644661 L7.999,9.793 L12.6464466,5.14644661 C12.820013,4.97288026 13.0894374,4.95359511 13.2843055,5.08859116 L13.3535534,5.14644661 C13.5271197,5.32001296 13.5464049,5.58943736 13.4114088,5.7843055 L13.3535534,5.85355339 L8.35355339,10.8535534 C8.17998704,11.0271197 7.91056264,11.0464049 7.7156945,10.9114088 L7.64644661,10.8535534 L2.64644661,5.85355339 C2.45118446,5.65829124 2.45118446,5.34170876 2.64644661,5.14644661 Z"
-              fill-rule="nonzero"
-            ></path>
-          </g>
-        </svg>
-      </span>
-    </ng-container>
-    <ng-template [ngTemplateOutlet]="operationTemplate" [ngTemplateOutletContext]="{ close: close }"> </ng-template>
-    <div class="devui-close" (click)="close()" *ngIf="closeable">
+    @if (carouselNum() > 1) {
+    <div class="devui-alert-carousel-num">
+      <span>{{ currentIndex() }}/{{ carouselNum() }}</span>
+    </div>
+    <span class="devui-alert-carousel-button">
+      <svg
+        (click)="next()"
+        width="12px"
+        devui-alert-operation-container
+        height="12px"
+        viewBox="0 0 16 16"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+      >
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+          <path
+            d="M2.64644661,5.14644661 C2.82001296,4.97288026 3.08943736,4.95359511 3.2843055,5.08859116 L3.35355339,5.14644661 L7.999,9.793 L12.6464466,5.14644661 C12.820013,4.97288026 13.0894374,4.95359511 13.2843055,5.08859116 L13.3535534,5.14644661 C13.5271197,5.32001296 13.5464049,5.58943736 13.4114088,5.7843055 L13.3535534,5.85355339 L8.35355339,10.8535534 C8.17998704,11.0271197 7.91056264,11.0464049 7.7156945,10.9114088 L7.64644661,10.8535534 L2.64644661,5.85355339 C2.45118446,5.65829124 2.45118446,5.34170876 2.64644661,5.14644661 Z"
+            fill-rule="nonzero"
+          ></path>
+        </g>
+      </svg>
+    </span>
+    }
+    <ng-container *ngTemplateOutlet="operationTemplate(); context: { close: close }"> </ng-container>
+    @if (closeable()) {
+
+    <div class="devui-close" (click)="close()">
       <svg
         width="10px"
         height="10px"
@@ -112,5 +126,8 @@
         </g>
       </svg>
     </div>
+    }
   </div>
 </div>
+
+}

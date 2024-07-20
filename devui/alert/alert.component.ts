@@ -1,123 +1,106 @@
-import {
-  AfterViewInit,
-  Component,
-  ContentChildren,
-  ElementRef,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnDestroy,
-  Output,
-  QueryList,
-  Renderer2,
-  SimpleChanges,
-  TemplateRef,
-  ViewChild,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, contentChildren, effect, input, output, signal, TemplateRef } from '@angular/core';
+import { toObservable } from '@angular/core/rxjs-interop';
+import { trigger, state, style } from '@angular/animations';
+import { CommonModule } from '@angular/common';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { BehaviorSubject, combineLatest, filter, interval, map, NEVER, switchMap } from 'rxjs';
 import { AlertCarouselItemComponent } from './alert-carousel-item.component';
 import { AlertType } from './alert.types';
 
 @Component({
   selector: 'd-alert',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './alert.component.html',
   styleUrls: ['./alert.component.scss'],
+  animations: [
+    trigger('devuiAlertCarouselBoxAutoPlayerTop', [
+      state(
+        'true',
+        style({
+          '--devui-alert-carousel-item-height': '{{height}}',
+          transition: 'top {{transitionSpeed}}ms ease',
+          top: '-{{size}}%',
+        }),
+        {
+          params: { size: 0, height: '24px', transitionSpeed: 500 },
+        }
+      ),
+    ]),
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
 })
-export class AlertComponent implements OnChanges, OnDestroy, AfterViewInit {
-  @Input() type: AlertType = 'info';
-  @Input() cssClass: string;
-  @Input() closeable = true;
-  @Input() showIcon = true;
-  @Input() autoplay = false;
-  @Input() autoplaySpeed = 3000;
-  @Input() transitionSpeed = 500;
-  @Input() operationTemplate: TemplateRef<any>;
-  @Input() set dismissTime(time: number) {
-    setTimeout(() => {
-      this.close();
-    }, time);
-  }
-  @Output() closeEvent = new EventEmitter<AlertComponent>();
-  @ViewChild('carouselContainer') box: ElementRef<any>;
-  @ContentChildren(AlertCarouselItemComponent) carouselItems: QueryList<AlertCarouselItemComponent>;
-  hide = false;
-  autoplayHeight: string;
-  carouselNum: number;
-  currentIndex = 1;
-  scheduledId: any;
+export class AlertComponent {
+  type = input<AlertType>('info');
+  cssClass = input<string>();
+  closeable = input(true, {
+    transform: coerceBooleanProperty,
+  });
+  showIcon = input(true, {
+    transform: coerceBooleanProperty,
+  });
+  autoplay = input(false, {
+    transform: coerceBooleanProperty,
+  });
+  autoplaySpeed = input(3000);
+  transitionSpeed = input(500);
+  operationTemplate = input<TemplateRef<{ close: () => void }>>();
+  dismissTime = input<number>();
+  closeEvent = output<AlertComponent>();
+  carouselItems = contentChildren(AlertCarouselItemComponent);
+
+  hide = signal(false);
+  autoplayHeight = signal('24px');
+  carouselNum = computed(() => this.carouselItems().length);
+  currentIndex = signal(1);
   SINGLE_LINE_HEIGHT = '24px';
 
-  constructor(private el: ElementRef, private renderer: Renderer2) {}
+  pause$ = new BehaviorSubject<boolean>(false);
+  autoPlayer$ = combineLatest([toObservable(this.autoplay), toObservable(this.autoplaySpeed), this.pause$.pipe(map((pause) => !pause))])
+    .pipe(
+      filter(([autoplay]) => autoplay),
+      switchMap(([_, value, pass]) => (pass ? interval(value) : NEVER))
+    )
+    .subscribe(() => this.next());
 
-  ngOnChanges(changes: SimpleChanges) {
-    const { autoplay, autoplaySpeed, transitionSpeed } = changes;
-    if ((autoplay || autoplaySpeed) && (!this.autoplay || !this.autoplaySpeed)) {
-      this.clearScheduledTransition();
-    } else {
-      this.autoScheduleTransition();
-    }
-    if (transitionSpeed && this.transitionSpeed) {
-      this.renderer.setStyle(this.box.nativeElement, 'transition', `top ${this.transitionSpeed}ms ease`);
-    }
+  constructor() {
+    effect(() => {
+      const time = this.dismissTime();
+      if (typeof time === 'undefined') {return;}
+      setTimeout(() => {
+        this.close();
+      }, time);
+    });
+    effect(() => {
+      const items = this.carouselItems();
+      this.renderCarouselItem(items);
+    });
   }
 
-  ngAfterViewInit(): void {
-    this.renderCarouselItem();
-    this.carouselItems.changes.subscribe(() => this.renderCarouselItem());
-  }
-
-  ngOnDestroy() {
-    this.clearScheduledTransition();
-  }
-
-  renderCarouselItem() {
-    this.carouselNum = this.carouselItems.length;
-    if (this.carouselNum > 1) {
-      if (!this.autoplayHeight) {
-        const itemHeights = this.carouselItems.map((item) => {
+  renderCarouselItem(items: readonly AlertCarouselItemComponent[]) {
+    if (this.carouselNum() > 1) {
+      if (!this.autoplayHeight()) {
+        const itemHeights = items.map((item) => {
           const rect = item?.el.nativeElement.getBoundingClientRect();
           return rect?.height || 0;
         });
         const maxHeight = Math.max(...itemHeights);
-        this.autoplayHeight = maxHeight ? `${maxHeight}px` : this.SINGLE_LINE_HEIGHT;
+        this.autoplayHeight.set(maxHeight ? `${maxHeight}px` : this.SINGLE_LINE_HEIGHT);
       }
-      this.el.nativeElement.style.setProperty('--devui-alert-carousel-item-height', this.autoplayHeight);
-      this.renderer.setStyle(this.box.nativeElement, 'transition', `top ${this.transitionSpeed}ms ease`);
-      this.autoScheduleTransition();
     }
   }
 
-  next = (): void => {
-    if (this.currentIndex < this.carouselNum) {
-      this.currentIndex++;
+  next() {
+    if (this.currentIndex() < this.carouselNum()) {
+      this.currentIndex.update((pre) => pre + 1);
     } else {
-      this.currentIndex = 1;
-    }
-    this.translatePosition(this.currentIndex - 1);
-    this.autoScheduleTransition();
-  };
-
-  autoScheduleTransition() {
-    this.clearScheduledTransition();
-    if (this.autoplay && this.autoplaySpeed) {
-      this.scheduledId = setTimeout(() => this.next(), this.autoplaySpeed);
+      this.currentIndex.set(1);
     }
   }
 
-  clearScheduledTransition() {
-    if (this.scheduledId) {
-      clearTimeout(this.scheduledId);
-      this.scheduledId = undefined;
-    }
-  }
-
-  translatePosition(size: number) {
-    this.renderer.setStyle(this.box.nativeElement, 'top', `${-size * 100}%`);
-  }
-
-  close = (): void => {
-    this.clearScheduledTransition();
+  close() {
     this.closeEvent.emit(this);
-    this.hide = true;
-  };
+    this.hide.set(true);
+  }
 }
