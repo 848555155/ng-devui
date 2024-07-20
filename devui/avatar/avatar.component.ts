@@ -1,134 +1,135 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  input,
+  signal,
+} from '@angular/core';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'd-avatar',
+  standalone: true,
+  imports: [CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './avatar.component.html',
   styleUrls: ['./avatar.component.scss'],
   preserveWhitespaces: false,
 })
-export class AvatarComponent implements OnChanges, OnInit {
-  isNobody = true;
-  isErrorImg = false;
+export class AvatarComponent {
+  isNobody = computed(() => {
+    const userName = this.customText() ?? this.name();
+    if (userName) {return false;}
+    else if (userName === '') {return false;}
+    else {return true;}
+  });
+  isErrorImg = signal(false);
   /**
    * 自定义头像显示文字
    */
-  @Input() gender: 'male' | 'female' | string;
+  gender = input<'male' | 'female' | string>();
   /**
    * avatar宽度
    */
-  @Input() width = 36;
+  width = input(36);
   /**
    * avatar高度
    */
-  @Input() height = 36;
+  height = input(36);
   /**
    * 是否是圆形n
    */
-  @Input() isRound = true;
+  isRound = input(true, {
+    transform: coerceBooleanProperty,
+  });
   /**
    * 是否是图片
    */
-  @Input() imgSrc: string;
+  imgSrc = input<string>();
   /**
    * 用户名称
    */
-  @Input() name: string;
+  name = input<string>();
   /**
    * 自定义头像显示文字
    */
-  @Input() customText: string;
+  customText = input<string>();
   /**
    * 头像中间文字最小尺寸
    */
   MINIMUM_FONT_SIZE = 12;
-  fontSize = 12;
-  code: number;
-  nameDisplay: string;
-
-  ngOnInit(): void {
-    this.calcValues(this.customText ? this.customText : this.name);
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    const { width, customText, gender, height, name } = changes;
-    const result = [width, customText, gender, height, name].map((item) => item && !item.isFirstChange());
-    if (result.includes(true)) {
-      this.calcValues(this.customText ? this.customText : this.name);
+  fontSize = computed(() => {
+    const minNum = Math.min(this.width(), this.height());
+    const size = minNum / 4 + 3;
+    return size < this.MINIMUM_FONT_SIZE ? this.MINIMUM_FONT_SIZE : size;
+  });
+  code = computed(() => {
+    const name = this.nameDisplay();
+    return this.getBackgroundColor(name.substring(0, 1));
+  });
+  nameDisplay = computed(() => {
+    const userName = this.customText() ?? this.name();
+    if (userName) {
+      const minNum = Math.min(this.width(), this.height());
+      return this.setDisplayName(userName, minNum);
+    } else if (userName === '') {
+      return '';
     }
-  }
+  });
 
   showErrAvatar() {
-    this.isErrorImg = true;
+    this.isErrorImg.set(true);
   }
 
-  calcValues(nameInput) {
-    const userName = nameInput;
-    const minNum = Math.min(this.width, this.height);
-    // 判断username是否存在与是否为空
-    if (userName) {
-      this.isNobody = false;
-      this.setDisplayName(userName, minNum);
-    } else if (userName === '') {
-      this.isNobody = false;
-      this.nameDisplay = '';
-    } else {
-      this.isNobody = true;
-    }
-    const size = minNum / 4 + 3;
-    this.fontSize = size < this.MINIMUM_FONT_SIZE ? this.MINIMUM_FONT_SIZE : size;
-  }
-
-  setDisplayName(name, width) {
-    if (this.customText) {
-      this.nameDisplay = this.customText;
-      this.getBackgroundColor(this.customText.substr(0, 1));
-      return;
+  setDisplayName(name: string, width: number) {
+    let result = "";
+    if (this.customText()) {
+      result = this.customText();
     }
     if (name.length < 2) {
-      this.nameDisplay = name;
+      result =  name;
     } else {
       // 以中文开头显示后两个字符
       if (/^[\u4e00-\u9fa5]/.test(name)) {
-        this.nameDisplay = name.substr(name.length - 2, 2);
+        result =  name.substr(name.length - 2, 2);
         // 以英文开头
       } else if (/^[A-Za-z]/.test(name)) {
         // 含有两个及以上，包含空格，下划线，中划线分隔符的英文名取前两个字母的首字母
         if (/[_ -]/.test(name)) {
           const str_before = name.split(/_|-|\s+/)[0];
           const str_after = name.split(/_|-|\s+/)[1];
-          this.nameDisplay = str_before.substr(0, 1).toUpperCase() + str_after.substr(0, 1).toUpperCase();
+          result =  str_before.substring(0, 1).toUpperCase() + str_after.substring(0, 1).toUpperCase();
         } else {
           // 一个英文名的情况显示前两个字母
-          this.nameDisplay = name.substr(0, 2).toUpperCase();
+          result =  name.substring(0, 2).toUpperCase();
         }
       } else {
         // 非中英文开头默认取前两个字符
-        this.nameDisplay = this.name.substr(0, 2);
+        result =  this.name().substring(0, 2);
       }
     }
     if (width < 30) {
       if (/^[\u4e00-\u9fa5]/.test(name)) {
-        this.nameDisplay = name.substr(name.length - 1, 1);
+        result =  name.substring(name.length - 1, name.length);
       } else {
-        this.nameDisplay = this.name.substr(0, 1).toUpperCase();
+        result =  this.name().substring(0, 1).toUpperCase();
       }
     }
-    this.getBackgroundColor(name.substr(0, 1));
+    return result;
   }
 
-  getBackgroundColor(char) {
-    if (this.gender) {
-      if (this.gender.toLowerCase() === 'male') {
-        this.code = 1;
-      } else if (this.gender.toLowerCase() === 'female') {
-        this.code = 0;
+  getBackgroundColor(char: string) {
+    if (this.gender()) {
+      if (this.gender().toLowerCase() === 'male') {
+        return 1;
+      } else if (this.gender().toLowerCase() === 'female') {
+        return 0;
       } else {
         throw new Error('gender must be "Male" or "Female"');
       }
-      return;
     }
-    const unicode = char.charCodeAt();
-    this.code = unicode % 2;
+    const unicode = char.charCodeAt(0);
+    return unicode % 2;
   }
 }
