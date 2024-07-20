@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, contentChildren, effect, input, output, signal, TemplateRef } from '@angular/core';
-import { toObservable } from '@angular/core/rxjs-interop';
+import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import { trigger, state, style } from '@angular/animations';
 import { CommonModule } from '@angular/common';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
@@ -60,7 +60,8 @@ export class AlertComponent {
   autoPlayer$ = combineLatest([toObservable(this.autoplay), toObservable(this.autoplaySpeed), this.pause$.pipe(map((pause) => !pause))])
     .pipe(
       filter(([autoplay]) => autoplay),
-      switchMap(([_, value, pass]) => (pass ? interval(value) : NEVER))
+      switchMap(([_, value, pass]) => (pass ? interval(value) : NEVER)),
+      takeUntilDestroyed()
     )
     .subscribe(() => this.next());
 

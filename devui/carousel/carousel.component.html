@@ -1,11 +1,12 @@
 <div
   class="devui-carousel-container"
-  [style.height]="height"
+  [style.height]="height()"
   (mouseenter)="arrowMouseEvent('enter')"
   (mouseleave)="arrowMouseEvent('leave')"
 >
   <!-- carousel arrow -->
-  <div class="devui-carousel-arrow" *ngIf="arrowTrigger !== 'never' && showArrow">
+  @if (arrowTrigger() === 'always' || (arrowTrigger() === 'hover' && showArrow()) ) {
+  <div class="devui-carousel-arrow">
     <button class="arrow-left" (click)="prev()">
       <svg width="18px" height="18px" viewBox="0 0 16 16" version="1.1">
         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -30,22 +31,27 @@
       </svg>
     </button>
   </div>
+  }
   <!-- carousel items -->
   <div class="devui-carousel-item-wrapper">
-    <div class="devui-carousel-item-container">
+    <div [style.left]="-100 * currentPosition()" #itemContainer class="devui-carousel-item-container">
       <ng-content select="d-carousel-item"></ng-content>
     </div>
   </div>
   <!-- carousel dots -->
-  <ul class="devui-carousel-dots {{ dotPosition }}" *ngIf="items?.length > 1 && showDots">
+  @if (items()?.length > 1 && showDots) {
+  <ul class="devui-carousel-dots {{ dotPosition() }}">
+    @for(item of items(); track item; let index = $index) {
+
     <li
       class="dot-item"
       (click)="switchStep(index, 'click')"
       (mouseenter)="switchStep(index, 'hover')"
-      [ngClass]="{ active: activeIndex === index }"
-      *ngFor="let item of items; let index = index"
+      [class.active]="activeIndex() === index"
     >
-      <span class="dot-item-active-progress" [ngStyle]="{ 'transition-duration': transitionSpeed + 'ms' }"></span>
+      <span class="dot-item-active-progress" [style.transition-duration.ms]="transitionSpeed()"></span>
     </li>
+    }
   </ul>
+  }
 </div>
