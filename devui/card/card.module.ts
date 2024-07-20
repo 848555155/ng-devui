@@ -1,18 +1,38 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import {
-  CardActionsDirective, CardAvatarDirective, CardComponent, CardContentDirective,
+  CardActionsDirective,
+  CardAvatarDirective,
+  CardComponent,
+  CardContentDirective,
   CardExtendComponent,
-  CardHeaderComponent, CardMetaDirective, CardSubtitleDirective, CardTitleDirective
+  CardHeaderComponent,
+  CardMetaDirective,
+  CardSubtitleDirective,
+  CardTitleDirective,
 } from './card.component';
 
 @NgModule({
-  declarations: [CardComponent, CardHeaderComponent, CardAvatarDirective, CardMetaDirective,
-    CardActionsDirective, CardSubtitleDirective, CardTitleDirective, CardContentDirective, CardExtendComponent],
   imports: [
-    CommonModule
+    CardComponent,
+    CardHeaderComponent,
+    CardAvatarDirective,
+    CardMetaDirective,
+    CardActionsDirective,
+    CardSubtitleDirective,
+    CardTitleDirective,
+    CardContentDirective,
+    CardExtendComponent,
   ],
-  exports: [CardComponent, CardHeaderComponent, CardAvatarDirective, CardMetaDirective,
-    CardActionsDirective, CardSubtitleDirective, CardTitleDirective, CardContentDirective, CardExtendComponent]
+  exports: [
+    CardComponent,
+    CardHeaderComponent,
+    CardAvatarDirective,
+    CardMetaDirective,
+    CardActionsDirective,
+    CardSubtitleDirective,
+    CardTitleDirective,
+    CardContentDirective,
+    CardExtendComponent,
+  ],
 })
-export class CardModule { }
+export class CardModule {}
