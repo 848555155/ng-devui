@@ -1,27 +1,13 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 @Component({
   selector: 'd-status',
+  standalone: true,
   templateUrl: './status.component.html',
   styleUrls: ['./status.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
 })
-
 export class StatusComponent {
-  private _type: string;
-  classMap = {};
-
-  @Input()
-  get type() {
-    return this._type;
-  }
-
-  set type(value: string) {
-    this._type = value;
-    this.setClassMap();
-  }
-
-  setClassMap() {
-    this.classMap = 'devui-status-bg-' + this.type;
-  }
+  type = input<string>();
 }
