@@ -1,26 +1,28 @@
-<div class="devui-panel devui-panel-{{ type }} {{ cssClass }}" [@noAnimation]>
+<div class="devui-panel devui-panel-{{ type() }} {{ cssClass() }}" [@noAnimation]>
   <div class="devui-panel-heading" (click)="toggleBody()" [style.cursor]="isCollapsed !== undefined ? 'pointer' : null">
     <ng-content select="d-panel-header"></ng-content>
   </div>
+  @if(isCollapsed === undefined || isCollapsed) {
   <div
     class="devui-panel-body"
-    [ngClass]="{ 'devui-panel-body-collapse': isCollapsed !== undefined, 'has-left-padding': hasLeftPadding }"
+    [class.devui-panel-body-collapse]="isCollapsed !== undefined"
+    [class.has-left-padding]="hasLeftPadding()"
     @collapseForDomDestroy
     [@.disabled]="!showAnimation"
-    *ngIf="isCollapsed === undefined || isCollapsed"
   >
-    <ng-container *ngIf="panelFooter || panelHeader || panelBody; else elseTemplate">
-      <ng-template [ngTemplateOutlet]="panelBodyTpl"></ng-template>
-    </ng-container>
-    <ng-template #elseTemplate>
-      <div class="d-panel-body">
-        <ng-content></ng-content>
-      </div>
-    </ng-template>
+    @if (panelFooter() || panelHeader() || panelBody()) {
+    <ng-container *ngTemplateOutlet="panelBodyTpl"></ng-container>
+    } @else {
+    <div class="d-panel-body">
+      <ng-content></ng-content>
+    </div>
+    }
   </div>
-  <div class="devui-panel-footer" *ngIf="panelFooter">
+  } @if (panelFooter()) {
+  <div class="devui-panel-footer">
     <ng-content select="d-panel-footer"></ng-content>
   </div>
+  }
 </div>
 
 <ng-template #panelBodyTpl>

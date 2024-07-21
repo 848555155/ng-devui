@@ -7,20 +7,17 @@ import {PanelHeaderComponent} from './panel-header.component';
 import {PanelComponent} from './panel.component';
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [
+    PanelComponent,
+    PanelHeaderComponent,
+    PanelBodyComponent,
+    PanelFooterComponent],
   exports: [
     PanelComponent,
     PanelHeaderComponent,
     PanelBodyComponent,
     PanelFooterComponent
-  ],
-  declarations: [
-    PanelComponent,
-    PanelHeaderComponent,
-    PanelBodyComponent,
-    PanelFooterComponent,
-  ],
-  providers: []
+  ]
 })
 export class PanelModule {
 }
