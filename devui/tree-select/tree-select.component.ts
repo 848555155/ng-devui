@@ -424,8 +424,8 @@ export class TreeSelectComponent implements ControlValueAccessor, OnInit, AfterV
   }
 
   private focusSearchInput() {
-    if (this.searchInput.filterInputElement.nativeElement) {
-      this.searchInput.filterInputElement.nativeElement.focus();
+    if (this.searchInput.filterInputElement().nativeElement) {
+      this.searchInput.filterInputElement().nativeElement.focus();
     }
   }
 

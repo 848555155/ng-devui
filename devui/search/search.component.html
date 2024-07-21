@@ -1,26 +1,26 @@
 <div class="devui-search" [class.devui-gray-style]="styleType === 'gray'">
   <input
     #filterInput
-    [dAutoFocus]="autoFocus"
-    [placeholder]="placeholder || i18nCommonText?.searchPlaceholder"
+    [dAutoFocus]="autoFocus()"
+    [placeholder]="placeholder() || i18nCommonsearchPlaceholderText()"
     (change)="inputChange(filterInput.value, $event)"
     (keyup)="inputChange(filterInput.value, $event)"
-    [attr.maxlength]="maxLength"
-    [disabled]="disabled"
+    [attr.maxlength]="maxLength()"
+    [disabled]="disabled()"
     (blur)="inputBlur()"
     type="text"
-    class="devui-input {{ cssClass }}"
-    [ngClass]="{
-      'devui-input-sm': size === 'sm',
-      'devui-input-lg': size === 'lg',
-      'devui-clear-exit': clearIconExit,
-      'devui-icon-left': iconPosition === 'left',
-      'devui-search-no-border': noBorder === true
-    }"
+    class="devui-input {{ cssClass() }}"
+    [class.devui-input-sm]="size() === 'sm'"
+    [class.devui-input-lg]="size() === 'lg'"
+    [class.devui-clear-exit]="clearIconExit()"
+    [class.devui-icon-left]="iconPosition() === 'left'"
+    [class.devui-search-no-border]="noBorder() === true"
   />
   <span
     class="devui-search-icon"
-    [ngClass]="{ 'devui-search-icon-sm': size === 'sm', 'devui-search-icon-lg': size === 'lg', 'devui-icon-left': iconPosition === 'left' }"
+    [class.devui-search-icon-sm]="size() === 'sm'"
+    [class.devui-search-icon-lg]="size() === 'lg'"
+    [class.devui-icon-left]="iconPosition() === 'left'"
     (click)="clickSearch(filterInput.value)"
   >
     <svg
@@ -40,24 +40,24 @@
       </g>
     </svg>
   </span>
+  @if (iconPosition() === 'right') {
   <span
     #line
-    *ngIf="iconPosition === 'right'"
     class="devui-search-line"
-    [ngClass]="{ 'devui-search-line-sm': size === 'sm', 'devui-search-line-lg': size === 'lg', 'devui-clear-exit': clearIconExit }"
+    [class.devui-search-line-sm]="size() === 'sm'"
+    [class.devui-search-line-lg]="size() === 'lg'"
+    [class.devui-clear-exit]="clearIconExit()"
   >
   </span>
+  } @if (!disabled()) {
   <span
-    *ngIf="!disabled"
     #clearIcon
     (click)="clearText()"
     class="devui-search-clear"
-    [ngClass]="{
-      'devui-search-clear-sm': size === 'sm',
-      'devui-search-clear-lg': size === 'lg',
-      'devui-clear-exit': clearIconExit,
-      'devui-icon-left': iconPosition === 'left'
-    }"
+    [class.devui-search-clear-sm]="size() === 'sm'"
+    [class.devui-search-clear-lg]="size() === 'lg'"
+    [class.devui-clear-exit]="clearIconExit()"
+    [class.devui-icon-left]="iconPosition() === 'left'"
   >
     <svg
       width="16px"
@@ -77,4 +77,5 @@
       </g>
     </svg>
   </span>
+  }
 </div>

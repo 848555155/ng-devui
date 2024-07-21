@@ -1,27 +1,35 @@
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   ElementRef,
-  EventEmitter,
   forwardRef,
   HostBinding,
+  inject,
+  Injector,
+  input,
   Input,
-  OnDestroy,
-  OnInit,
-  Output,
+  NgZone,
+  output,
   Renderer2,
-  ViewChild
+  runInInjectionContext,
+  signal,
+  viewChild,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { I18nInterface, I18nService } from 'ng-devui/i18n';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { DCommonModule } from 'ng-devui/common';
+import { I18nService } from 'ng-devui/i18n';
 import { DevConfigService, WithConfig } from 'ng-devui/utils';
-import { fromEvent, Subject, Subscription } from 'rxjs';
-import { debounceTime, filter, map, takeUntil } from 'rxjs/operators';
+import { debounceTime, filter, fromEvent, map } from 'rxjs';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'd-search',
+  standalone: true,
+  imports: [CommonModule, FormsModule, DCommonModule],
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
   exportAs: 'search',
@@ -35,51 +43,60 @@ import { debounceTime, filter, map, takeUntil } from 'rxjs/operators';
     },
   ],
 })
-export class SearchComponent implements ControlValueAccessor, OnInit, OnDestroy, AfterViewInit {
+export class SearchComponent implements ControlValueAccessor, AfterViewInit {
   /**
    * 【可选】下拉选框尺寸
    */
-  @Input() size: '' | 'sm' | 'lg';
+  size = input<'' | 'sm' | 'lg'>();
   /**
    * 【可选】下拉默认显示文字
    */
-  @Input() placeholder: string;
-  @Input() maxLength = Number.MAX_SAFE_INTEGER;
-  @Input() isKeyupSearch = false;
-  @Input() delay = 300;
-  @Input() disabled = false;
-  @Input() cssClass: string;
-  @Input() iconPosition = 'right';
-  @Input() noBorder = false;
-  @Input() autoFocus = false;
+  placeholder = input<string>();
+  maxLength = input(Number.MAX_SAFE_INTEGER);
+  isKeyupSearch = input(false, {
+    transform: coerceBooleanProperty,
+  });
+  delay = input(300);
+  disabled = input(false, {
+    transform: coerceBooleanProperty,
+  });
+  cssClass = input<string>();
+  iconPosition = input('right');
+  noBorder = input(false, {
+    transform: coerceBooleanProperty,
+  });
+  autoFocus = input(false, {
+    transform: coerceBooleanProperty,
+  });
   @Input() @WithConfig() styleType = 'default';
   @Input() @WithConfig() showGlowStyle = true;
-  @HostBinding('class.devui-glow-style') get hasGlowStyle () {
+  @HostBinding('class.devui-glow-style') get hasGlowStyle() {
     return this.showGlowStyle;
-  };
-  @Output() searchFn = new EventEmitter<string>();
-  @ViewChild('filterInput', { static: true }) filterInputElement: ElementRef;
-  @ViewChild('line') lineElement: ElementRef;
-  @ViewChild('clearIcon') clearIconElement: ElementRef;
-  i18nCommonText: I18nInterface['common'];
-  i18nSubscription: Subscription;
-  clearIconExit = false;
+  }
+  searchFn = output<string>();
+  filterInputElement = viewChild<ElementRef>('filterInput');
+  lineElement = viewChild('line');
+  clearIconElement = viewChild('clearIcon');
+  i18nCommonsearchPlaceholderText = toSignal(
+    inject(I18nService)
+      .langChange()
+      .pipe(
+        takeUntilDestroyed(),
+        map((i18n) => i18n.common.searchPlaceholder)
+      )
+  );
+
+  clearIconExit = signal(false);
+
   width: number;
-  destroy$ = new Subject();
   private onChange = (_: any) => null;
   private onTouch = () => null;
 
-  constructor(
-    private renderer: Renderer2,
-    private i18n: I18nService,
-    private cdr: ChangeDetectorRef,
-    private el: ElementRef,
-    private devConfigService: DevConfigService
-  ) {}
+  private renderer = inject(Renderer2);
+  private injector = inject(Injector);
+  private ngZone = inject(NgZone);
 
-  ngOnInit() {
-    this.setI18nText();
-  }
+  constructor(private el: ElementRef, private devConfigService: DevConfigService) {}
 
   registerOnChange(fn: any): void {
     this.onChange = fn;
@@ -90,28 +107,17 @@ export class SearchComponent implements ControlValueAccessor, OnInit, OnDestroy,
   }
 
   writeValue(value: any = ''): void {
-    this.renderer.setProperty(this.filterInputElement.nativeElement, 'value', value);
+    this.renderer.setProperty(this.filterInputElement().nativeElement, 'value', value);
     this.renderClearIcon();
   }
 
-  setI18nText() {
-    this.i18nCommonText = this.i18n.getI18nText().common;
-    this.i18nSubscription = this.i18n
-      .langChange()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((data) => {
-        this.i18nCommonText = data.common;
-        this.cdr.markForCheck();
-      });
-  }
-
   clearText() {
-    this.renderer.setProperty(this.filterInputElement.nativeElement, 'value', '');
+    this.renderer.setProperty(this.filterInputElement().nativeElement, 'value', '');
     if (this.onChange) {
       this.onChange('');
     }
     this.searchFn.emit('');
-    this.filterInputElement.nativeElement.focus();
+    this.filterInputElement().nativeElement.focus();
     this.renderClearIcon();
   }
 
@@ -124,35 +130,39 @@ export class SearchComponent implements ControlValueAccessor, OnInit, OnDestroy,
     this.onTouch();
   }
 
-  clickSearch(term) {
-    if (!this.disabled) {
+  clickSearch(term: string) {
+    if (!this.disabled()) {
       this.searchFn.emit(term);
     }
   }
 
   registerFilterChange() {
-    fromEvent(this.filterInputElement.nativeElement, 'input')
-      .pipe(
-        takeUntil(this.destroy$),
-        map((e: any) => e.target.value),
-        debounceTime(this.delay)
-      )
-      .subscribe((value) => {
-        this.onChange(value);
-        if (this.isKeyupSearch) {
-          this.searchFn.emit(value);
-        }
-      });
+    runInInjectionContext(this.injector, () => {
+      this.ngZone.runOutsideAngular(() => {
+        fromEvent(this.filterInputElement().nativeElement, 'input')
+          .pipe(
+            takeUntilDestroyed(),
+            map((e: any) => e.target.value),
+            debounceTime(this.delay())
+          )
+          .subscribe((value) => {
+            this.onChange(value);
+            if (this.isKeyupSearch()) {
+              this.searchFn.emit(value);
+            }
+          });
 
-    fromEvent(this.filterInputElement.nativeElement, 'keydown')
-      .pipe(
-        takeUntil(this.destroy$),
-        filter((keyEvent: KeyboardEvent) => keyEvent.key === 'Enter'),
-        debounceTime(this.delay)
-      )
-      .subscribe((keyEvent) => {
-        this.searchFn.emit(this.filterInputElement.nativeElement.value);
+        fromEvent(this.filterInputElement().nativeElement, 'keydown')
+          .pipe(
+            takeUntilDestroyed(),
+            filter((keyEvent: KeyboardEvent) => keyEvent.key === 'Enter'),
+            debounceTime(this.delay())
+          )
+          .subscribe((keyEvent) => {
+            this.searchFn.emit(this.filterInputElement().nativeElement.value);
+          });
       });
+    });
   }
 
   ngAfterViewInit() {
@@ -161,23 +171,18 @@ export class SearchComponent implements ControlValueAccessor, OnInit, OnDestroy,
   }
 
   renderClearIcon() {
-    if (this.iconPosition === 'right') {
-      if (this.filterInputElement.nativeElement.value && this.lineElement && this.clearIconElement) {
-        this.clearIconExit = true;
-      } else if (this.lineElement && this.clearIconElement) {
-        this.clearIconExit = false;
+    if (this.iconPosition() === 'right') {
+      if (this.filterInputElement().nativeElement.value && this.lineElement() && this.clearIconElement()) {
+        this.clearIconExit.set(true);
+      } else if (this.lineElement() && this.clearIconElement()) {
+        this.clearIconExit.set(false);
       }
     } else {
-      if (this.filterInputElement.nativeElement.value && this.clearIconElement) {
-        this.clearIconExit = true;
-      } else if (this.clearIconElement) {
-        this.clearIconExit = false;
+      if (this.filterInputElement().nativeElement.value && this.clearIconElement()) {
+        this.clearIconExit.set(true);
+      } else if (this.clearIconElement()) {
+        this.clearIconExit.set(false);
       }
     }
-    this.cdr.markForCheck();
-  }
-
-  ngOnDestroy() {
-    this.destroy$.next(true);
   }
 }
