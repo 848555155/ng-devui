@@ -4,6 +4,7 @@ import { DraggableDirective } from './draggable.directive';
 export type BatchDragStyle = 'badge' | 'stack' | string;
 @Directive({
   selector: '[dDraggable][batchDrag]',
+  standalone: true,
   exportAs: 'dBatchDraggable'
 })
 

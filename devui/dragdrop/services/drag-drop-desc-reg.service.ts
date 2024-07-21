@@ -2,7 +2,9 @@ import { Directive, Injectable, OnDestroy, OnInit, QueryList } from '@angular/co
 import { BehaviorSubject, Observable, Subject, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class DescendantRegisterService<T> {
   protected _result: Array<T> = [];
   protected changeSubject: Subject<Array<T>> = new BehaviorSubject<Array<T>>([]);

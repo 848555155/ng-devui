@@ -8,6 +8,7 @@ import { DropSortSyncDirective } from './drop-sort-sync.directive';
 
 @Directive({
   selector: '[dDragDropSyncBox]',
+  standalone: true,
   exportAs: 'dDragDropSyncBox',
   providers: [
     DragDropSyncService,

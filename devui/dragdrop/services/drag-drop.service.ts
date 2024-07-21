@@ -6,7 +6,9 @@ import { Utils } from '../shared/utils';
 import { DragDropTouch } from '../touch-support/dragdrop-touch';
 import { DraggableDirective } from './../directives/draggable.directive';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class DragDropService {
   dragData: any;
   draggedEl: any;

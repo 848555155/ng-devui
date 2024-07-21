@@ -1,10 +1,11 @@
-import { ComponentFactoryResolver, Directive, Input, TemplateRef } from '@angular/core';
+import { ComponentFactoryResolver, ComponentRef, Directive, Input, TemplateRef } from '@angular/core';
 import { OverlayContainerRef } from 'ng-devui/overlay-container';
 import { DragDropService } from '../services/drag-drop.service';
 import { DragPreviewComponent } from './drag-preview.component';
 
 @Directive({
   selector: '[dDraggable][dDragPreview]',
+  standalone: true,
   exportAs: 'dDragPreview'
 })
 
@@ -14,7 +15,7 @@ export class DragPreviewDirective {
   @Input() dragPreviewOptions = {
     skipBatchPreview: false
   };
-  public previewRef;
+  public previewRef: ComponentRef<DragPreviewComponent>;
   constructor(private componentFactoryResolver: ComponentFactoryResolver,
               private overlayContainerRef: OverlayContainerRef, private dragDropService: DragDropService) {
   }
@@ -31,14 +32,12 @@ export class DragPreviewDirective {
   }
 
   public updateData() {
-    Object.assign(this.previewRef.instance, {
-      templateRef: this.dragPreviewTemplate,
-      data: this.dragPreviewData,
-      draggedEl: this.dragDropService.draggedEl,
-      dragData: this.dragDropService.dragData,
-      batchDragData:  this.dragDropService.batchDragData && this.dragDropService.getBatchDragData(),
-      dragSyncDOMElements: this.dragDropService.dragSyncGroupDirectives && this.getDragSyncDOMElements()
-    });
+    this.previewRef.setInput("templateRef", this.dragPreviewTemplate);
+    this.previewRef.setInput("data", this.dragPreviewData);
+    this.previewRef.setInput("draggedEl", this.dragDropService.draggedEl);
+    this.previewRef.setInput("dragData", this.dragDropService.dragData);
+    this.previewRef.setInput("batchDragData", this.dragDropService.batchDragData && this.dragDropService.getBatchDragData());
+    this.previewRef.setInput("dragSyncDOMElements", this.dragDropService.dragSyncGroupDirectives && this.getDragSyncDOMElements());
     this.previewRef.instance.updateTemplate();
   }
 

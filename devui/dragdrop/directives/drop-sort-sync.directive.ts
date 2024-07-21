@@ -9,6 +9,7 @@ import { DragPlaceholderInsertionEvent, DragPlaceholderInsertionIndexEvent } fro
 
 @Directive({
   selector: '[dDropSortSync]',
+  standalone: true,
   exportAs: 'dDropSortSync'
 })
 

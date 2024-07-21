@@ -3,6 +3,7 @@ import { DragDropService } from '../services/drag-drop.service';
 
 @Component({
   selector: 'd-drag-preview-clone-dom-ref',
+  standalone: true,
   template: '',
   preserveWhitespaces: false,
 })

@@ -8,6 +8,7 @@ import { DraggableDirective } from './draggable.directive';
 
 @Directive({
   selector: '[dDragSync]',
+  standalone: true,
   exportAs: 'dDragSync'
 })
 export class DragSyncDirective extends DescendantChildren<DragSyncDirective> implements OnInit, OnDestroy {

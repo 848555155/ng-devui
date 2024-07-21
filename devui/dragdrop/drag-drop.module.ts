@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BatchDraggableDirective } from './directives/batch-draggable.directive';
 import { DragPreviewCloneDomRefComponent } from './directives/drag-preivew-clone-from-domRef.component';
@@ -12,11 +11,9 @@ import { DropScrollEnhancedDirective } from './directives/drop-scroll-enhance.di
 import { DropSortSyncDirective } from './directives/drop-sort-sync.directive';
 import { DroppableDirective } from './directives/droppable.directive';
 import { SortableDirective } from './directives/sortable.directive';
-import { DragDropService } from './services/drag-drop.service';
 
 @NgModule({
-  imports: [CommonModule],
-  declarations: [
+  imports: [
     DraggableDirective,
     DroppableDirective,
     SortableDirective,
@@ -28,7 +25,7 @@ import { DragDropService } from './services/drag-drop.service';
     DragDropSyncBoxDirective,
     DragPreviewDirective,
     DragPreviewComponent,
-    DragPreviewCloneDomRefComponent,
+    DragPreviewCloneDomRefComponent
   ],
   exports: [
     DraggableDirective,
@@ -44,10 +41,6 @@ import { DragDropService } from './services/drag-drop.service';
     DragPreviewComponent,
     DragPreviewCloneDomRefComponent,
   ],
-  providers: [
-    DragDropService
-  ],
-
 })
 export class DragDropModule {
 }

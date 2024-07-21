@@ -11,6 +11,7 @@ import {
 
 @Directive({
   selector: '[dDropScrollEnhanced]',
+  standalone: true,
   exportAs: 'dDropScrollEnhanced'
 })
 export class DropScrollEnhancedDirective implements AfterViewInit, OnDestroy {

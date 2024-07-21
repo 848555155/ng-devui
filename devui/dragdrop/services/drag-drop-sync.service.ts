@@ -2,7 +2,9 @@ import { Injectable, QueryList } from '@angular/core';
 import { DragSyncDirective } from '../directives/drag-sync.directive';
 import { DropSortSyncDirective } from '../directives/drop-sort-sync.directive';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class DragDropSyncService {
   dragSyncList: QueryList<DragSyncDirective>;
 
