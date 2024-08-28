@@ -1,4 +1,5 @@
-import { DOCUMENT } from '@angular/common';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { DOCUMENT, NgTemplateOutlet } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -7,11 +8,14 @@ import {
   ElementRef,
   EventEmitter,
   HostListener,
+  inject,
   Inject,
+  input,
   Input,
   OnChanges,
   OnDestroy,
   OnInit,
+  output,
   Output,
   SimpleChanges,
   TemplateRef
@@ -21,20 +25,24 @@ import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'd-back-top',
+  standalone: true,
+  imports: [NgTemplateOutlet],
   templateUrl: './back-top.component.html',
   styleUrls: ['./back-top.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
 })
 export class BackTopComponent implements OnChanges, OnInit, OnDestroy, AfterViewInit {
-  @Input() customTemplate: TemplateRef<any>;
-  @Input() visibleHeight = 300;
-  @Input() bottom = '50px';
-  @Input() right = '30px';
+  customTemplate = input<TemplateRef<any>>();
+  visibleHeight = input(300);
+  bottom = input('50px');
+  right = input('30px');
   @Input() scrollTarget: HTMLElement;
-  @Input() draggable = false;
-  @Output() backTopEvent = new EventEmitter<boolean>();
-  @Output() dragEvent = new EventEmitter<boolean>();
+  draggable = input(false, {
+    transform: coerceBooleanProperty
+  });
+  backTopEvent = output<boolean>();
+  dragEvent = output<boolean>();
 
   currScrollTop = 0;
   duration = 0;
@@ -45,15 +53,14 @@ export class BackTopComponent implements OnChanges, OnInit, OnDestroy, AfterView
   isVisible = false;
   target: HTMLElement | Window;
   subs: Subscription = new Subscription();
-  document: Document;
 
   SCROLL_REFRESH_INTERVAL = 100;
   MOUSEDOWN_DELAY = 180;
   RESIZE_DELAY = 300;
 
-  constructor(private cdr: ChangeDetectorRef, private el: ElementRef, @Inject(DOCUMENT) private doc: any) {
-    this.document = this.doc;
-  }
+  private cdr = inject(ChangeDetectorRef);
+  private el = inject(ElementRef);
+  document = inject(DOCUMENT);
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['scrollTarget']) {
@@ -71,7 +78,7 @@ export class BackTopComponent implements OnChanges, OnInit, OnDestroy, AfterView
   }
 
   ngAfterViewInit(): void {
-    if (this.draggable) {
+    if (this.draggable()) {
       // 窗口大小改变时，如缩放比例或组件超出显示范围重置到默认位置
       this.subs.add(
         fromEvent(window, 'resize')
@@ -126,13 +133,13 @@ export class BackTopComponent implements OnChanges, OnInit, OnDestroy, AfterView
       this.target === window
         ? window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop
         : this.scrollTarget.scrollTop;
-    if (this.isVisible !== this.currScrollTop >= this.visibleHeight) {
+    if (this.isVisible !== this.currScrollTop >= this.visibleHeight()) {
       this.isVisible = !this.isVisible;
     }
   }
 
   goTop() {
-    if (this.draggable && this.duration > this.MOUSEDOWN_DELAY) {
+    if (this.draggable() && this.duration > this.MOUSEDOWN_DELAY) {
       this.duration = 0;
       return;
     }
@@ -175,7 +182,7 @@ export class BackTopComponent implements OnChanges, OnInit, OnDestroy, AfterView
 
   // mousedown mouseup click 按顺序触发且前一个结束触发下一个
   mousedownEvent(event: MouseEvent) {
-    if (this.draggable) {
+    if (this.draggable()) {
       event.preventDefault();
       this.setDragBoundary();
       this.duration = new Date().getTime();
@@ -188,14 +195,14 @@ export class BackTopComponent implements OnChanges, OnInit, OnDestroy, AfterView
   }
 
   mouseleaveEvent() {
-    if (this.draggable && this.cursorTimer) {
+    if (this.draggable() && this.cursorTimer) {
       clearTimeout(this.cursorTimer);
     }
   }
 
   @HostListener('document:mouseup', [])
   onMouseUp() {
-    if (this.draggable) {
+    if (this.draggable()) {
       if (this.cursorTimer) {
         clearTimeout(this.cursorTimer);
       }
@@ -210,7 +217,7 @@ export class BackTopComponent implements OnChanges, OnInit, OnDestroy, AfterView
 
   @HostListener('document:mousemove', ['$event'])
   onMouseMove(event: MouseEvent) {
-    if (this.draggable && this.moveToggle && this.dragBoundary) {
+    if (this.draggable() && this.moveToggle && this.dragBoundary) {
       // 先判断再执行阻止默认事件，否则可能影响鼠标拖选功能
       event.preventDefault();
       this.moveCursor = true;
