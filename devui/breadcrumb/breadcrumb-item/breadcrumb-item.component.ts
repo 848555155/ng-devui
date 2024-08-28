@@ -1,13 +1,17 @@
 
-import { ChangeDetectionStrategy, Component, EventEmitter, Inject, Input, OnInit, Output, TemplateRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, inject, Inject, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { BreadCrumbService } from '../breadcrumb.service';
 import { BREADCRUMB } from '../breadcrumb.token';
 import { MenuConfig } from '../breadcrumb.type';
+import { CommonModule } from '@angular/common';
+import { SearchModule } from 'ng-devui/search';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'd-breadcrumb-item',
   exportAs: 'dBreadcrumbItem',
+  standalone: true,
+  imports: [CommonModule, SearchModule],
   templateUrl: './breadcrumb-item.component.html',
   styleUrls: ['./breadcrumb-item.component.scss'],
   preserveWhitespaces: false,
@@ -23,7 +27,9 @@ export class BreadCrumbItemComponent implements OnInit {
   menuListDisplay: Array<MenuConfig>;
   isOpen: boolean;
 
-  constructor(@Inject(BREADCRUMB) public breadCrumbComponent: any, private breadCrumbService: BreadCrumbService) { }
+  breadCrumbComponent = inject(BREADCRUMB);
+  private breadCrumbService = inject(BreadCrumbService);
+
   ngOnInit(): void {
     this.menuListDisplay = this.menuList;
   }
