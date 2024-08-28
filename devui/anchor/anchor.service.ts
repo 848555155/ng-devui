@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AnchorService {
   currentActiveAnchorSubject = new ReplaySubject(1);
   currentActiveAnchorObs = this.currentActiveAnchorSubject.asObservable();

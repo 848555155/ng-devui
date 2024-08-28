@@ -7,7 +7,8 @@ import { AnchorLinkDirective } from './anchor-link.directive';
 import { AnchorDirective } from './anchor.directive';
 
 @Directive({
-  selector: '[dAnchorBox][dAnchorHashSupport]'
+  selector: '[dAnchorBox][dAnchorHashSupport]',
+  standalone: true
 })
 export class AnchorBoxHashSupportDirective implements OnInit, AfterViewInit, OnDestroy {
   @Input() updateUrlWhenAnchorActive = true;
@@ -20,7 +21,7 @@ export class AnchorBoxHashSupportDirective implements OnInit, AfterViewInit, OnD
   ngOnInit(): void {
     this.sub.add(this.box.activeChange.pipe(
       debounceTime(300),
-      filter(anchor => this.updateUrlWhenAnchorActive)
+      filter(() => this.updateUrlWhenAnchorActive)
     ).subscribe(this.navigateToHash));
 
     this.sub.add(this.router.events.pipe(

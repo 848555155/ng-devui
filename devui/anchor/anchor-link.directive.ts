@@ -1,4 +1,4 @@
-import { Directive, forwardRef, HostBinding, HostListener, Inject, Input, OnDestroy, OnInit } from '@angular/core';
+import { Directive, forwardRef, HostBinding, HostListener, inject, Inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { scrollAnimate } from 'ng-devui/utils';
 import { AnchorBoxDirective } from './anchor-box.directive';
 import { AnchorDirective } from './anchor.directive';
@@ -6,12 +6,13 @@ import { AnchorActiveChangeSource } from './anchor.type';
 
 @Directive({
   selector: '[dAnchorLink]',
+  standalone: true
 })
 export class AnchorLinkDirective implements OnInit, OnDestroy {
   @HostBinding('class') get anchorActiveClass() {
     return this.anchorBlock && this.anchorBlock.isActive ? this.anchorActive || '' : '';
   }
-  private _anchorName;
+  private _anchorName: string;
   @Input('dAnchorLink')
   set anchorName(anchor: string) {
     this._anchorName = anchor;
@@ -27,6 +28,7 @@ export class AnchorLinkDirective implements OnInit, OnDestroy {
   anchorBlock: AnchorDirective;
   bindingAnchorTimer;
   subscription;
+
 
   constructor(@Inject(forwardRef(() => AnchorBoxDirective)) box: AnchorBoxDirective) {
     this.boxElement = box;

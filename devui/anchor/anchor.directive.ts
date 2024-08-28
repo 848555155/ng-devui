@@ -1,10 +1,11 @@
-import { AfterViewInit, Directive, ElementRef, HostListener, Input, OnDestroy } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, HostListener, inject, Input, OnDestroy } from '@angular/core';
 import { ReplaySubject, Subscription } from 'rxjs';
 import { AnchorService } from './anchor.service';
 import { AnchorActiveChangeSource, IAnchorBox } from './anchor.type';
 
 @Directive({
   selector: '[dAnchor]',
+  standalone: true
 })
 export class AnchorDirective implements AfterViewInit, OnDestroy {
   @Input('dAnchor') anchor: string;
@@ -27,7 +28,8 @@ export class AnchorDirective implements AfterViewInit, OnDestroy {
   activeChangeSubject = new ReplaySubject(1);
   lastActiveBy: string;
 
-  element: HTMLElement;
+  element = inject(ElementRef<HTMLElement>).nativeElement as HTMLElement;
+  private anchorService = inject(AnchorService);
   _boxElement: IAnchorBox;
   set boxElement(box: IAnchorBox) {
     this._boxElement = box;
@@ -44,10 +46,6 @@ export class AnchorDirective implements AfterViewInit, OnDestroy {
   private THROTTLE_TRIGGER = 600;
   private scrollPreStart;
   private scrollTimer;
-
-  constructor(private el: ElementRef, private anchorService: AnchorService) {
-    this.element = this.el.nativeElement;
-  }
 
   ngAfterViewInit() {
     this.activeChangeSubscription = this.activeChangeSubject.asObservable().subscribe((active) => {
