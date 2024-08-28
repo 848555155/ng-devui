@@ -1,7 +1,6 @@
-import { Component, HostBinding, HostListener, Inject, OnChanges, SimpleChanges, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, HostBinding, HostListener, inject, OnChanges, SimpleChanges, viewChild, ViewEncapsulation } from '@angular/core';
 import { Params, Router, RouterLinkActive, UrlTree } from '@angular/router';
 import { AccordionBaseLinkComponent } from './accordion-base-link-component.class';
-import { ACCORDION } from './accordion-token';
 
 @Component({
   selector: 'd-accordion-item-routerlink',
@@ -10,10 +9,10 @@ import { ACCORDION } from './accordion-token';
   preserveWhitespaces: false,
 })
 export class AccordionItemRouterlinkComponent extends AccordionBaseLinkComponent implements OnChanges {
-  @ViewChild(RouterLinkActive) routerLinkActiveDirective: RouterLinkActive;
+  routerLinkActiveDirective = viewChild(RouterLinkActive);
   @HostBinding('class.devui-router-active')
   get routerLinkActivated(): boolean {
-    return !!(this.routerLinkActiveDirective && this.routerLinkActiveDirective.isActive);
+    return !!this.routerLinkActiveDirective()?.isActive;
   }
 
   private set urlTree(urlTree: UrlTree) {
@@ -41,9 +40,7 @@ export class AccordionItemRouterlinkComponent extends AccordionBaseLinkComponent
   queryParams: Params;
   fragment: string;
 
-  constructor(@Inject(ACCORDION) protected accordion: any, private router: Router) {
-    super(accordion);
-  }
+  router = inject(Router);
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['item']) {

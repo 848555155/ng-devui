@@ -1,6 +1,5 @@
-import { Component, HostListener, Inject, ViewEncapsulation } from '@angular/core';
+import { Component, HostListener, ViewEncapsulation } from '@angular/core';
 import { AccordionBaseItemComponent } from './accordion-base-item-component.class';
-import { ACCORDION } from './accordion-token';
 import { AccordionBaseItem } from './accordion.type';
 
 @Component({
@@ -10,9 +9,6 @@ import { AccordionBaseItem } from './accordion.type';
   preserveWhitespaces: false,
 })
 export class AccordionItemComponent extends AccordionBaseItemComponent<AccordionBaseItem> {
-  constructor(@Inject(ACCORDION) protected accordion: any) {
-    super(accordion);
-  }
   @HostListener('click', ['$event'])
   onClick(event: MouseEvent) {
     if (!this.disabled) {

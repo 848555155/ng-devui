@@ -1,6 +1,5 @@
-import { Component, HostListener, Inject, ViewEncapsulation } from '@angular/core';
+import { Component, HostListener, ViewEncapsulation } from '@angular/core';
 import { AccordionBaseLinkComponent } from './accordion-base-link-component.class';
-import { ACCORDION } from './accordion-token';
 
 @Component({
   selector: 'd-accordion-item-hreflink',
@@ -9,9 +8,6 @@ import { ACCORDION } from './accordion-token';
   preserveWhitespaces: false,
 })
 export class AccordionItemHreflinkComponent extends AccordionBaseLinkComponent {
-  constructor(@Inject(ACCORDION) protected accordion: any) {
-    super(accordion);
-  }
   @HostListener('click', ['$event'])
   onClick(event: MouseEvent) {
     if (!this.disabled) {

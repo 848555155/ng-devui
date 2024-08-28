@@ -27,6 +27,5 @@ import { AccordionService } from './accordion.service';
     AccordionItemHreflinkComponent,
     AccordionItemRouterlinkComponent,
   ],
-  providers: [AccordionService],
 })
 export class AccordionModule {}

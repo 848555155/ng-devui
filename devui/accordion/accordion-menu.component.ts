@@ -1,7 +1,6 @@
-import { Component, HostBinding, Inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, HostBinding, inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AccordionBaseComponent } from './accordion-base-component.class';
-import { ACCORDION } from './accordion-token';
 import { AccordionService } from './accordion.service';
 import { AccordionBaseMenu, AccordionMenuItem } from './accordion.type';
 @Component({
@@ -32,11 +31,11 @@ export class AccordionMenuComponent extends AccordionBaseComponent<AccordionBase
   }
 
   get keyOpen() {
-    return this.item && this.item[this.accordion.openKey];
+    return this.item && this.item[this.accordion.openKey()];
   }
 
   get children() {
-    return this.item && this.item[this.accordion.childrenKey];
+    return this.item && this.item[this.accordion.childrenKey()];
   }
 
   get childActivated() {
@@ -44,12 +43,9 @@ export class AccordionMenuComponent extends AccordionBaseComponent<AccordionBase
   }
 
   get menuItemTemplate() {
-    return this.accordion.menuItemTemplate;
+    return this.accordion.menuItemTemplate();
   }
-
-  constructor(@Inject(ACCORDION) public accordion: any, private accordionService: AccordionService) {
-    super(accordion);
-  }
+  private accordionService = inject(AccordionService);
 
   ngOnInit(): void {
     this.childListSub = this.accordionService.getChildListInstance().subscribe(({ listInstance, parent }) => {

@@ -1,4 +1,4 @@
-import { Component, HostBinding, Inject, Input, OnDestroy, OnInit, QueryList, ViewChildren, ViewEncapsulation } from '@angular/core';
+import { Component, HostBinding, inject, Input, OnDestroy, OnInit, QueryList, ViewChildren, ViewEncapsulation } from '@angular/core';
 import { expandCollapse, expandCollapseForDomDestroy } from 'ng-devui/utils';
 import { AccordionItemRouterlinkComponent } from './accordion-item-routerlink.component';
 import { AccordionMenuComponent } from './accordion-menu.component';
@@ -24,7 +24,7 @@ export class AccordionListComponent implements OnInit, OnDestroy {
   }
 
   get loading() {
-    return this.parent && this.parent[this.accordion.loadingKey];
+    return this.parent && this.parent[this.accordion.loadingKey()];
   }
 
   get noContent() {
@@ -36,31 +36,31 @@ export class AccordionListComponent implements OnInit, OnDestroy {
   }
 
   get childrenKey() {
-    return this.accordion.childrenKey;
+    return this.accordion.childrenKey();
   }
 
   get activeKey() {
-    return this.accordion.activeKey;
+    return this.accordion.activeKey();
   }
 
   get itemTemplate() {
-    return this.accordion.itemTemplate;
+    return this.accordion.itemTemplate();
   }
 
   get menuItemTemplate() {
-    return this.accordion.menuItemTemplate;
+    return this.accordion.menuItemTemplate();
   }
 
   get innerListTemplate() {
-    return this.accordion.innerListTemplate;
+    return this.accordion.innerListTemplate();
   }
 
   get loadingTemplate() {
-    return this.accordion.loadingTemplate;
+    return this.accordion.loadingTemplate();
   }
 
   get noContentTemplate() {
-    return this.accordion.noContentTemplate;
+    return this.accordion.noContentTemplate();
   }
 
   get linkType() {
@@ -92,8 +92,8 @@ export class AccordionListComponent implements OnInit, OnDestroy {
       (!!this.data && !!this.data.length && this.data.some((item) => this.isItemData(item) && this.isItemDataActive(item)))
     );
   }
-
-  constructor(@Inject(ACCORDION) private accordion: any, private accordionService: AccordionService) {}
+  private accordion = inject(ACCORDION);
+  private accordionService = inject(AccordionService);
 
   ngOnInit(): void {
     if (this.parent) {
@@ -130,7 +130,7 @@ export class AccordionListComponent implements OnInit, OnDestroy {
   menuToggleItemFn = (item: any, event?: any) => {
     this.accordion.menuToggleFn({
       item: item,
-      open: !item[this.accordion.openKey],
+      open: !item[this.accordion.openKey()],
       parent: this.parent.parent,
       event: event,
     });
@@ -147,7 +147,7 @@ export class AccordionListComponent implements OnInit, OnDestroy {
   getOpenState(item, list) {
     let stateFlag = false;
     if (item && list) {
-      const open = item[this.accordion.openKey];
+      const open = item[this.accordion.openKey()];
       const childActivated = list.routerLinkActivated || list.hasActiveChildren;
       stateFlag = open === undefined && this.accordion.autoOpenActiveMenu ? childActivated : open;
     }
