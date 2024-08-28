@@ -322,7 +322,8 @@ export class HelperUtils {
 }
 
 @Directive({
-  selector: '[dSimulateATag]'
+  selector: '[dSimulateATag]',
+  standalone: true
 })
 export class SimulateATagDirective {
   href = input<string>();
