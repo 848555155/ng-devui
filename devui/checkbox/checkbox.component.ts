@@ -1,3 +1,5 @@
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { NgTemplateOutlet } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -7,9 +9,12 @@ import {
   EventEmitter,
   forwardRef,
   HostBinding,
+  inject,
+  input,
   Input,
+  output,
   Output,
-  TemplateRef
+  TemplateRef,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DevConfigService, WithConfig } from 'ng-devui/utils';
@@ -17,6 +22,8 @@ import { Observable } from 'rxjs';
 
 @Component({
   selector: 'd-checkbox',
+  standalone: true,
+  imports: [NgTemplateOutlet],
   templateUrl: './checkbox.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./checkbox.component.scss'],
@@ -31,31 +38,30 @@ import { Observable } from 'rxjs';
 })
 export class CheckBoxComponent implements ControlValueAccessor, AfterViewInit {
   static ID_SEED = 0;
-  @Input() name: string;
-  @Input() label: string;
-  @Input() cssClass: string;
-  @Input() color;
-  @Input() disabled = false;
-  @Input() isShowTitle = true;
-  @Input() title;
-  @Input() labelTemplate: TemplateRef<any>;
+  name = input<string>();
+  label = input<string>();
+  cssClass = input<string>();
+  color = input();
+  disabled = input(false, { transform: coerceBooleanProperty });
+  isShowTitle = input(true, { transform: coerceBooleanProperty });
+  title = input();
+  labelTemplate = input<TemplateRef<any>>();
   @Input() halfchecked = false;
   @Input() @WithConfig() showAnimation = true;
   @Input() @WithConfig() showGlowStyle = true;
   @Input() beforeChange: (value) => boolean | Promise<boolean> | Observable<boolean>;
-  @Output() change: EventEmitter<boolean> = new EventEmitter<boolean>();
+  change = output<boolean>();
   @HostBinding('class.devui-glow-style') get hasGlowStyle() {
     return this.showGlowStyle;
   }
 
-  public id: number;
+  public id = CheckBoxComponent.ID_SEED++;
   public checked: boolean;
   private onChange = (_: any) => null;
   private onTouch = () => null;
-
-  constructor(private changeDetectorRef: ChangeDetectorRef, private devConfigService: DevConfigService, private el: ElementRef) {
-    this.id = CheckBoxComponent.ID_SEED++;
-  }
+  private changeDetectorRef = inject(ChangeDetectorRef);
+  private devConfigService = inject(DevConfigService);
+  private el = inject(ElementRef);
 
   ngAfterViewInit(): void {
     if (this.showGlowStyle) {
@@ -85,12 +91,12 @@ export class CheckBoxComponent implements ControlValueAccessor, AfterViewInit {
 
   toggle($event) {
     this.canChange().then((val) => {
-      if (this.disabled || !val) {
+      if (this.disabled() || !val) {
         return;
       }
       this.checked = !this.checked;
       this.onChange(this.checked);
-      this.change.next(this.checked);
+      this.change.emit(this.checked);
       this.onTouch();
     });
   }
@@ -99,7 +105,7 @@ export class CheckBoxComponent implements ControlValueAccessor, AfterViewInit {
     let changeResult = Promise.resolve(true);
 
     if (this.beforeChange) {
-      const result: any = this.beforeChange(this.label);
+      const result: any = this.beforeChange(this.label());
       if (typeof result !== 'undefined') {
         if (result.then) {
           changeResult = result;

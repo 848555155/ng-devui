@@ -1,48 +1,44 @@
 <div
-  class="devui-checkbox {{ cssClass }}"
-  [ngClass]="{
-    active: checked,
-    halfchecked: halfchecked,
-    disabled: disabled,
-    unchecked: !checked
-  }"
+  class="devui-checkbox {{ cssClass() }}"
+  [class.active]="checked"
+  [class.halfchecked]="halfchecked"
+  [class.disabled]="disabled()"
+  [class.unchecked]="!checked"
 >
-  <div *ngIf="showGlowStyle" class="devui-checkbox-glow-box">
-    <span *ngIf="showAnimation" class="devui-checkbox-glow-bg"></span>
+  @if (showGlowStyle) {
+  <div class="devui-checkbox-glow-box">
+    @if (showAnimation) {
+    <span class="devui-checkbox-glow-bg"></span>
+    }
   </div>
-  <label title="{{ isShowTitle ? title || label : '' }}" (click)="toggle($event)">
+  }
+  <label [title]="isShowTitle() ? title() || label() : ''" (click)="toggle($event)">
     <input
-      [name]="name || 'checkbox-' + id"
+      [name]="name() || 'checkbox-' + id"
       class="devui-checkbox-input"
       type="checkbox"
       [checked]="checked"
-      [disabled]="disabled"
+      [disabled]="disabled()"
       [indeterminate]="halfchecked"
       (click)="$event.stopPropagation()"
       (change)="$event.stopPropagation()"
     />
     <span
       class="devui-checkbox-material"
-      [ngStyle]="{
-        'border-color': (checked || halfchecked) && color ? color : '',
-        'background-image': (color && halfchecked) || color ? 'linear-gradient(' + color + ', ' + color + ')' : '',
-        'background-color': color && halfchecked ? color : ''
-      }"
-      [ngClass]="{
-        'custom-color': color,
-        'devui-checkbox-no-label': !label && !labelTemplate,
-        'devui-no-animation': !showAnimation,
-        'devui-checkbox-default-background': !halfchecked
-      }"
+      [style.border-color]="(checked || halfchecked) && color() ? color() : ''"
+      [style.background-image]="(color() && halfchecked) || color() ? 'linear-gradient(' + color() + ', ' + color() + ')' : ''"
+      [style.background-color]="color() && halfchecked ? color() : ''"
+      [class.custom-color]="color()"
+      [class.devui-checkbox-no-label]="!label() && !labelTemplate()"
+      [class.devui-no-animation]="!showAnimation"
+      [class.devui-checkbox-default-background]="!halfchecked"
     >
       <span class="devui-checkbox-halfchecked-bg"></span>
       <svg viewBox="0 0 14 14" width="14" height="14" class="devui-checkbox-tick">
         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
           <path
             class="devui-tick"
-            [ngClass]="{
-              'devui-no-animation': !showAnimation
-            }"
+            [class.devui-no-animation]="!showAnimation"
             d="M 2.3 7.0 5.6 9.6 11.4 3.5"
             stroke="#fff"
             stroke-width="1.5"
@@ -51,12 +47,16 @@
         </g>
       </svg>
     </span>
-    <ng-template [ngIf]="!!label && !labelTemplate">{{ label }}</ng-template>
-    <ng-template
-      [ngIf]="!!labelTemplate"
-      [ngTemplateOutlet]="labelTemplate"
-      [ngTemplateOutletContext]="{ $implicit: this, checked: checked, halfchecked: halfchecked, disabled: disabled, label: label }"
+    @if (!!label&& !labelTemplate()) {
+    {{ label() }}
+    } @if (!!labelTemplate()) {
+    <ng-container
+      *ngTemplateOutlet="
+        labelTemplate();
+        context: { $implicit: this, checked: checked, halfchecked: halfchecked, disabled: disabled(), label: label }
+      "
     >
-    </ng-template>
+    </ng-container>
+    }
   </label>
 </div>
