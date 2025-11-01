@@ -8,7 +8,7 @@ import { LayoutModule } from 'ng-devui';
 
 在全局样式中，引入：
 ```css
-@import '~ng-devui/devui-layout.css';
+@import '../../../../../devui/devui-layout.css';
 ```
 
 在页面中使用：

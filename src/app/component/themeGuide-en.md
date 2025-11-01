@@ -60,7 +60,7 @@ ThemeServiceInit({
 ```
 3. Introduce extended styles globally.
 ```
-@import 'ng-devui/theme-collection/extend-theme.css';
+@import '../../../../../devui/theme-collection/extend-theme.css';
 ```
 
 ~~The switchover of the extended theme is complete.

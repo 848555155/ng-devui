@@ -130,7 +130,7 @@ export class DashboardLibraryWidgetDirective implements OnChanges, AfterViewInit
         el.setAttribute('gs-h', `${this.height}`);
       }
       this.setDragWidthHeight(el);
-      const domPortalOutlet = new DomPortalOutlet(el, this.cfr, this.appRef, this.injector);
+      const domPortalOutlet = new DomPortalOutlet(el, this.appRef, this.injector);
       domPortalOutlet.attachTemplatePortal(
         new TemplatePortal(this.dragTemplate, this.vcf, {
           $implicit: this.widgetData,

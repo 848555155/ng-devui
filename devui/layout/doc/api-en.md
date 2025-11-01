@@ -8,7 +8,7 @@ import {LayoutModule} from 'ng-devui';
 
 In Global Styles, introduce:
 ```css
-@import '~ng-devui/devui-layout.css';
+@import '../../../../../devui/devui-layout.css';
 ```
 
 Use in the page:

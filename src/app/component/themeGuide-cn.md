@@ -61,7 +61,7 @@ ThemeServiceInit({
 
 3. 全局引入扩展样式
 ```
-@import 'ng-devui/theme-collection/extend-theme.css';
+@import '../../../../../devui/theme-collection/extend-theme.css';
 ```
 
 ~~至此完成扩展主题的切换

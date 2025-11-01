@@ -1440,7 +1440,7 @@
       "ZIndexDemo": {
         "title": "Layer",
         "description1": "1. The component library provides hierarchical variables for users in different scenarios. The following table lists the names, values, and application scenarios of these variables.",
-        "description2": "2. Pass `@import '~ng-devui/styles-var/devui-var.scss'; `The level variables can be used after they are introduced.",
+        "description2": "2. Pass `@import '../../../../../devui/styles-var/devui-var.scss'; `The level variables can be used after they are introduced.",
         "description3": "3. If the stylesheet is a less file, `@import' ~ng-devui/styles-var/devui-var.less '; `, and change the variable prefix '$' to '@';",
         "description4": "4. If a mask exists, the mask is based on the corresponding z-index value -1.",
         "description5": "5. Content layer. Set zIndex as required. The value of zIndex must be smaller than that of the temporary layer.",

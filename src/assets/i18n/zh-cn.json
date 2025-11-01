@@ -1276,8 +1276,8 @@
       "colorDemo": {
         "title": "颜色",
         "description1": "1. DevUI整理了颜色规范，包括普通色值和暗黑模式色值，以及列出了这些颜色的使用场景，为了更好的精细化控制和显示，同时对颜色做了分类和语义化变量命名；",
-        "description2": "2. 通过`@import '~ng-devui/styles-var/devui-var.scss';`引入颜色变量后即可使用；",
-        "description3": "3. 若样式表为less文件，则`@import '~ng-devui/styles-var/devui-var.less';`,并将变量前缀'$'改为'@'。",
+        "description2": "2. 通过`@import '../../../../../devui/styles-var/devui-var.scss';`引入颜色变量后即可使用；",
+        "description3": "3. 若样式表为less文件，则`@import '../../../../../devui/styles-var/devui-var.less';`,并将变量前缀'$'改为'@'。",
         "instance": {
           "title": "实例",
           "description": "本实例采用颜色变量，色块会跟随主题化切换而随之变色",
@@ -1483,8 +1483,8 @@
       "shadowDemo": {
         "title": "阴影",
         "description1": "1. 组件库为用户们提供了阴影变量用于不同的场景，下表列出了这些变量的名称，对应的变量值以及使用场景；",
-        "description2": "2. 通过`@import '~ng-devui/styles-var/devui-var.scss';`引入阴影变量后即可使用；",
-        "description3": "3. 若样式表为less文件，则`@import '~ng-devui/styles-var/devui-var.less';`,并将变量前缀'$'改为'@'。",
+        "description2": "2. 通过`@import '../../../../../devui/styles-var/devui-var.scss';`引入阴影变量后即可使用；",
+        "description3": "3. 若样式表为less文件，则`@import '../../../../../devui/styles-var/devui-var.less';`,并将变量前缀'$'改为'@'。",
         "instance": {
           "title": "实例",
           "description": "阴影对照表",
@@ -1557,8 +1557,8 @@
       "fontDemo": {
         "title": "字体",
         "description1": "1. 组件库为用户们提供了字体相关变量用于不同的场景，下表列出了这些变量的名称，对应的变量值以及使用场景；",
-        "description2": "2. 通过`@import '~ng-devui/styles-var/devui-var.scss';`引入字体变量后即可使用；",
-        "description3": "3. 若样式表为less文件，则`@import '~ng-devui/styles-var/devui-var.less';`,并将变量前缀'$'改为'@'。",
+        "description2": "2. 通过`@import '../../../../../devui/styles-var/devui-var.scss';`引入字体变量后即可使用；",
+        "description3": "3. 若样式表为less文件，则`@import '../../../../../devui/styles-var/devui-var.less';`,并将变量前缀'$'改为'@'。",
         "instance": {
           "title": "实例",
           "description1": "我是页面或卡片一级标题",
@@ -1617,8 +1617,8 @@
       "cornerDemo": {
         "title": "圆角",
         "description1": "1. 组件库为用户们提供了圆角变量用于不同的场景，下表列出了这些变量的名称，对应的变量值以及使用场景；",
-        "description2": "2. 通过`@import '~ng-devui/styles-var/devui-var.scss';`引入圆角变量后即可使用；",
-        "description3": "3. 若样式表为less文件，则`@import '~ng-devui/styles-var/devui-var.less';`,并将变量前缀'$'改为'@'。",
+        "description2": "2. 通过`@import '../../../../../devui/styles-var/devui-var.scss';`引入圆角变量后即可使用；",
+        "description3": "3. 若样式表为less文件，则`@import '../../../../../devui/styles-var/devui-var.less';`,并将变量前缀'$'改为'@'。",
         "instance": {
           "title": "实例",
           "tableTitle": "圆角变量对照表",
@@ -1648,8 +1648,8 @@
       "AnimationDemo": {
         "title": "动效",
         "description1": "1. 组件库为用户们提供了圆角变量用于不同的场景，下表列出了这些变量的名称，对应的变量值以及使用场景；动效使用参考https://developer.mozilla.org/zh-CN/docs/Web/CSS/transition",
-        "description2": "2. 通过`@import '~ng-devui/styles-var/devui-var.scss';`引入圆角变量后即可使用；",
-        "description3": "3. 若样式表为less文件，则`@import '~ng-devui/styles-var/devui-var.less';`,并将变量前缀'$'改为'@'。",
+        "description2": "2. 通过`@import '../../../../../devui/styles-var/devui-var.scss';`引入圆角变量后即可使用；",
+        "description3": "3. 若样式表为less文件，则`@import '../../../../../devui/styles-var/devui-var.less';`,并将变量前缀'$'改为'@'。",
         "instance": {
           "title": "Instance",
           "tableTitle": "动效变量表",
@@ -1683,8 +1683,8 @@
       "ZIndexDemo": {
         "title": "层级",
         "description1": "1. 组件库为用户们提供了层级变量用于不同的场景，下表列出了这些变量的名称，对应的变量值以及使用场景；",
-        "description2": "2. 通过`@import '~ng-devui/styles-var/devui-var.scss';`引入层级变量后即可使用；",
-        "description3": "3. 若样式表为less文件，则`@import '~ng-devui/styles-var/devui-var.less';`,并将变量前缀'$'改为'@'；",
+        "description2": "2. 通过`@import '../../../../../devui/styles-var/devui-var.scss';`引入层级变量后即可使用；",
+        "description3": "3. 若样式表为less文件，则`@import '../../../../../devui/styles-var/devui-var.less';`,并将变量前缀'$'改为'@'；",
         "description4": "4. 若存在遮罩，则遮罩基于对应z-index值-1；",
         "description5": "5. 内容层，根据需要设置，zIndex需小于临时层；",
         "description6": "6. 背景层，根据需要设置，zIndex需小于内容层。",

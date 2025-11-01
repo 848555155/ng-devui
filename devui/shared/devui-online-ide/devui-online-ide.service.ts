@@ -102,10 +102,10 @@ export class DevuiOnlineIdeService {
       'src/environments/environment.ts': environmentTS,
       'src/styles.css': String.raw`/* Add application styles & imports to this file! */
 @font-face { font-family: "devui-icomoon";
-src: url('~@devui-design/icons/icomoon/fonts/devui-icomoon.eot?1622620995');
-src: url('~@devui-design/icons/icomoon/fonts/devui-icomoon.woff?1622620995') format('woff'),
-url('~@devui-design/icons/icomoon/fonts/devui-icomoon.ttf?1622620995') format('truetype'),
-url('~@devui-design/icons/icomoon/fonts/devui-icomoon.svg?1622620995#devui-icomoon') format('svg'); }
+src: url('@devui-design/icons/icomoon/fonts/devui-icomoon.eot?1622620995');
+src: url('@devui-design/icons/icomoon/fonts/devui-icomoon.woff?1622620995') format('woff'),
+url('@devui-design/icons/icomoon/fonts/devui-icomoon.ttf?1622620995') format('truetype'),
+url('@devui-design/icons/icomoon/fonts/devui-icomoon.svg?1622620995#devui-icomoon') format('svg'); }
 `,
     };
     if(ide === 'CodeSandbox') {
