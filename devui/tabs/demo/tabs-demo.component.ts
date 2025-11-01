@@ -3,9 +3,9 @@ import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 @Component({
-    selector: 'd-demo-tabs',
-    templateUrl: './tabs-demo.component.html',
-    standalone: false
+  selector: 'd-demo-tabs',
+  templateUrl: './tabs-demo.component.html',
+  standalone: false
 })
 export class TabsDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

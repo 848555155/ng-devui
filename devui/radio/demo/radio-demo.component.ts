@@ -4,9 +4,9 @@ import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 
 @Component({
-    selector: 'd-demo-radio',
-    templateUrl: './radio-demo.component.html',
-    standalone: false
+  selector: 'd-demo-radio',
+  templateUrl: './radio-demo.component.html',
+  standalone: false
 })
 export class RadioDemoComponent implements OnInit, OnDestroy {
   navItems = [];

@@ -1,8 +1,8 @@
 import { Directive, ElementRef, OnInit } from '@angular/core';
 
 @Directive({
-    selector: '[dTreeAutoFocus]',
-    standalone: false
+  selector: '[dTreeAutoFocus]',
+  standalone: false
 })
 export class AutofocusDirective implements OnInit {
 

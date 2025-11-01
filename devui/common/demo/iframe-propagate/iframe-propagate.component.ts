@@ -2,9 +2,9 @@
 import { AfterViewInit, Component, ElementRef, Inject, DOCUMENT } from '@angular/core';
 
 @Component({
-    selector: 'd-common-iframe-propagate',
-    templateUrl: './iframe-propagate.component.html',
-    standalone: false
+  selector: 'd-common-iframe-propagate',
+  templateUrl: './iframe-propagate.component.html',
+  standalone: false
 })
 export class IframPropagateDemoComponent implements AfterViewInit {
   document: Document;

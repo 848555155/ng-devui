@@ -2,10 +2,10 @@ import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, OnChang
 import { DragDropService } from '../services/drag-drop.service';
 
 @Component({
-    selector: 'd-drag-preview-clone-dom-ref',
-    template: '',
-    preserveWhitespaces: false,
-    standalone: false
+  selector: 'd-drag-preview-clone-dom-ref',
+  template: '',
+  preserveWhitespaces: false,
+  standalone: false
 })
 
 export class DragPreviewCloneDomRefComponent implements AfterViewInit, OnChanges, OnDestroy {

@@ -27,10 +27,10 @@ import { ComponentDataService } from './component.data.service';
 });
 
 @Component({
-    selector: 'd-demo-cell',
-    styleUrls: ['./example-panel.component.scss'],
-    templateUrl: './example-panel.component.html',
-    standalone: false
+  selector: 'd-demo-cell',
+  styleUrls: ['./example-panel.component.scss'],
+  templateUrl: './example-panel.component.html',
+  standalone: false
 })
 export class ExamplePanelComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() data: IExampleData;

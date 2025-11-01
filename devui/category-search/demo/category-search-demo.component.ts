@@ -3,9 +3,9 @@ import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 @Component({
-    selector: 'd-category-search-demo',
-    templateUrl: './category-search-demo.component.html',
-    standalone: false
+  selector: 'd-category-search-demo',
+  templateUrl: './category-search-demo.component.html',
+  standalone: false
 })
 export class CategorySearchDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [
@@ -70,8 +70,8 @@ export class CategorySearchDemoComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subs.add(
       this.translate.get('components.category-search.anchorLinkValues').subscribe((res) => {
-          this.setNavValues(res);
-        })
+        this.setNavValues(res);
+      })
     );
     this.subs.add(
       this.translate.onLangChange.subscribe((event: TranslationChangeEvent) => {

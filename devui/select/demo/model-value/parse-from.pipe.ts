@@ -1,8 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-    name: 'parseFrom',
-    standalone: false
+  name: 'parseFrom',
+  standalone: false
 })
 export class ParseFromPipe implements PipeTransform {
   transform(data, identifyKey, options): any {

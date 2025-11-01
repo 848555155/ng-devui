@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 @Component({
-    selector: 'd-object-filter',
-    templateUrl: './object-filter.component.html',
-    standalone: false
+  selector: 'd-object-filter',
+  templateUrl: './object-filter.component.html',
+  standalone: false
 })
 export class ObjectFilterComponent {
   options = [

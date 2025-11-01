@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'd-demo-transfer-virtual-scroll',
-    templateUrl: './transfer-virtual-scroll.component.html',
-    styleUrls: ['./transfer-virtual-scroll.component.scss'],
-    standalone: false
+  selector: 'd-demo-transfer-virtual-scroll',
+  templateUrl: './transfer-virtual-scroll.component.html',
+  styleUrls: ['./transfer-virtual-scroll.component.scss'],
+  standalone: false
 })
 export class TransferVirtualScrollComponent implements OnInit {
   disabled = false;

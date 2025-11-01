@@ -22,71 +22,71 @@ export type DashboardWidget = GridStackWidget & {
 };
 
 @Component({
-    selector: 'd-dashboard-widget',
-    templateUrl: './widget.component.html',
-    styleUrls: ['./widget.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    exportAs: 'dDashboardWidget',
-    preserveWhitespaces: false,
-    standalone: false
+  selector: 'd-dashboard-widget',
+  templateUrl: './widget.component.html',
+  styleUrls: ['./widget.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  exportAs: 'dDashboardWidget',
+  preserveWhitespaces: false,
+  standalone: false
 })
 export class DashboardWidgetComponent implements GridStackNode, OnChanges, AfterViewInit, OnDestroy {
   static autoNumberedId = 0;
   @HostBinding('attr.gs-x')
   @Input()
-  x: number;
+    x: number;
   @Output() xChange = new EventEmitter<number>();
 
   @HostBinding('attr.gs-y')
   @Input()
-  y: number;
+    y: number;
   @Output() yChange = new EventEmitter<number>();
 
   @HostBinding('attr.gs-w')
   @Input()
-  width: number;
+    width: number;
   @Output() widthChange = new EventEmitter<number>();
 
   @HostBinding('attr.gs-h')
   @Input()
-  height: number;
+    height: number;
   @Output() heightChange = new EventEmitter<number>();
 
   @HostBinding('attr.gs-id')
   @Input()
-  id: string;
+    id: string;
 
   @HostBinding('attr.gs-max-w')
   @Input()
-  maxWidth: number;
+    maxWidth: number;
 
   @HostBinding('attr.gs-max-h')
   @Input()
-  maxHeight: number;
+    maxHeight: number;
 
   @HostBinding('attr.gs-min-w')
   @Input()
-  minWidth: number;
+    minWidth: number;
 
   @HostBinding('attr.gs-min-h')
   @Input()
-  minHeight: number;
+    minHeight: number;
 
   @HostBinding('attr.gs-no-resize')
   @Input()
-  noResize: boolean;
+    noResize: boolean;
 
   @HostBinding('attr.gs-no-move')
   @Input()
-  noMove: boolean;
+    noMove: boolean;
 
   @HostBinding('attr.gs-auto-position')
   @Input()
-  autoPosition: boolean; // 仅初始化有效，默认为false
+    autoPosition: boolean; // 仅初始化有效，默认为false
 
   @HostBinding('attr.gs-locked')
   @Input()
-  locked: boolean;
+    locked: boolean;
 
   @Input() widgetData;
 
@@ -95,7 +95,7 @@ export class DashboardWidgetComponent implements GridStackNode, OnChanges, After
   @Output() widgetDestroy = new EventEmitter();
 
   @HostBinding('class.grid-stack-item')
-  hostBinding = true;
+    hostBinding = true;
 
   generatedId: string = (DashboardWidgetComponent.autoNumberedId++).toString();
 

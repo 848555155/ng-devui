@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MenuItemClickType, MenuItemType } from 'ng-devui/menu';
 
 @Component({
-    selector: 'd-loop-menu',
-    template: `
+  selector: 'd-loop-menu',
+  template: `
     <div dMenu [collapsed]="collapsed" (menuItemClick)="menuItemClick($event)">
       <ng-container *ngFor="let item of menus; trackBy: trackByMenu">
         <d-loop-sub-menu
@@ -24,8 +24,8 @@ import { MenuItemClickType, MenuItemType } from 'ng-devui/menu';
       </ng-container>
     </div>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class LoopMenuComponent {
   @Input() collapsed = false;

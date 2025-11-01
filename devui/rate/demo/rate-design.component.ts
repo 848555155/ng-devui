@@ -2,9 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { environment } from 'src/environments/environment';
 
 @Component({
-    selector: 'd-rate-design',
-    templateUrl: './rate-design.component.html',
-    standalone: false
+  selector: 'd-rate-design',
+  templateUrl: './rate-design.component.html',
+  standalone: false
 })
 
 export class RateDesignComponent implements OnInit {

@@ -4,9 +4,9 @@ import { of } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
 
 @Component({
-    selector: 'd-form-demo-user-register',
-    templateUrl: './user-register.component.html',
-    standalone: false
+  selector: 'd-form-demo-user-register',
+  templateUrl: './user-register.component.html',
+  standalone: false
 })
 export class UserRegisterComponent {
   layoutDirection: FormLayout = FormLayout.Vertical;

@@ -5,9 +5,9 @@ import { of } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
 
 @Component({
-    selector: 'd-form-demo-validate-cross-component',
-    templateUrl: './validate-cross-component.component.html',
-    standalone: false
+  selector: 'd-form-demo-validate-cross-component',
+  templateUrl: './validate-cross-component.component.html',
+  standalone: false
 })
 export class ValidateCrossComponentComponent implements OnInit {
   layoutDirection: FormLayout = FormLayout.Vertical;

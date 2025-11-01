@@ -4,10 +4,10 @@ import { LoadingType } from 'ng-devui/loading';
 import { SourceType, originSource } from '../mock-data';
 
 @Component({
-    selector: 'd-interaction-column',
-    templateUrl: './interaction-column.component.html',
-    styleUrls: ['./interaction-column.component.scss'],
-    standalone: false
+  selector: 'd-interaction-column',
+  templateUrl: './interaction-column.component.html',
+  styleUrls: ['./interaction-column.component.scss'],
+  standalone: false
 })
 export class InteractionColumnComponent implements OnInit {
 
@@ -58,7 +58,7 @@ export class InteractionColumnComponent implements OnInit {
   filterListMulti = JSON.parse(JSON.stringify(originSource.slice(0, 6)));
   sortedColumn: SortEventArg[] = [
     {
-    field: 'lastName',
+      field: 'lastName',
       direction: SortDirection.ASC,
     },
   ];

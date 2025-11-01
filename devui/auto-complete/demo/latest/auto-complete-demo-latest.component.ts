@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'd-auto-complete-demo-latest',
-    templateUrl: './auto-complete-demo-latest.component.html',
-    standalone: false
+  selector: 'd-auto-complete-demo-latest',
+  templateUrl: './auto-complete-demo-latest.component.html',
+  standalone: false
 })
 export class AutoDemoLatestComponent {
   selectItem0: any;

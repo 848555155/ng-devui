@@ -10,21 +10,21 @@ import * as hljs from 'highlight.js/lib/core';
 });
 
 @Component({
-    template: `
+  template: `
     <div dCodeCopy class="get-start">
       <div class="readme">
         <div [innerHTML]="readMe | safe: 'html'" #documentation></div>
       </div>
     </div>
   `,
-    styles: [
-        `
+  styles: [
+    `
       .readme {
         box-sizing: border-box;
       }
     `,
-    ],
-    standalone: false
+  ],
+  standalone: false
 })
 export class ThemeGuideComponent implements OnInit, AfterViewInit {
   _readMe: HTMLElement;

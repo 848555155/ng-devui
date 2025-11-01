@@ -2,9 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { environment } from 'src/environments/environment';
 
 @Component({
-    selector: 'd-datepicker-pro-design',
-    templateUrl: './datepicker-pro-design.component.html',
-    standalone: false
+  selector: 'd-datepicker-pro-design',
+  templateUrl: './datepicker-pro-design.component.html',
+  standalone: false
 })
 
 export class DatepickerProDesignComponent implements OnInit {

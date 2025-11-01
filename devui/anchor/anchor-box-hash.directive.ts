@@ -7,8 +7,8 @@ import { AnchorLinkDirective } from './anchor-link.directive';
 import { AnchorDirective } from './anchor.directive';
 
 @Directive({
-    selector: '[dAnchorBox][dAnchorHashSupport]',
-    standalone: false
+  selector: '[dAnchorBox][dAnchorHashSupport]',
+  standalone: false
 })
 export class AnchorBoxHashSupportDirective implements OnInit, AfterViewInit, OnDestroy {
   @Input() updateUrlWhenAnchorActive = true;

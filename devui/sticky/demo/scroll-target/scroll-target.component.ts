@@ -2,10 +2,10 @@
 import { Component, Inject, OnInit, DOCUMENT } from '@angular/core';
 
 @Component({
-    selector: 'd-scroll-target',
-    templateUrl: './scroll-target.component.html',
-    styleUrls: ['./scroll-target.component.scss'],
-    standalone: false
+  selector: 'd-scroll-target',
+  templateUrl: './scroll-target.component.html',
+  styleUrls: ['./scroll-target.component.scss'],
+  standalone: false
 })
 export class ScrollTargetComponent implements OnInit {
   stickyView = {

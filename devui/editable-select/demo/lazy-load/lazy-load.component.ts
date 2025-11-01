@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'd-lazy-load',
-    templateUrl: './lazy-load.component.html',
-    standalone: false
+  selector: 'd-lazy-load',
+  templateUrl: './lazy-load.component.html',
+  standalone: false
 })
 export class LazyLoadComponent {
   selectItem;

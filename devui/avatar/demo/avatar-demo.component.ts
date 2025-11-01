@@ -4,9 +4,9 @@ import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 
 @Component({
-    selector: 'd-avatar-demo',
-    templateUrl: './avatar-demo.component.html',
-    standalone: false
+  selector: 'd-avatar-demo',
+  templateUrl: './avatar-demo.component.html',
+  standalone: false
 })
 export class AvatarDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

@@ -3,9 +3,9 @@ import { TableWidthConfig } from 'ng-devui/data-table';
 import { originSource, SourceType } from '../mock-data';
 
 @Component({
-    selector: 'd-header-grouping',
-    templateUrl: './header-grouping.component.html',
-    standalone: false
+  selector: 'd-header-grouping',
+  templateUrl: './header-grouping.component.html',
+  standalone: false
 })
 export class HeaderGroupingComponent implements OnInit {
   basicDataSource: Array<SourceType> = JSON.parse(JSON.stringify(originSource.slice(0, 6)));

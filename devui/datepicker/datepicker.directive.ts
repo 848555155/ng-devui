@@ -39,16 +39,16 @@ import { DatePickerConfigService as DatePickerConfig } from './date-picker.confi
 import { DatepickerComponent } from './datepicker.component';
 
 @Directive({
-    selector: '[dDatepicker]:not([appendToBody])',
-    exportAs: 'datepicker',
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => DatepickerDirective),
-            multi: true,
-        },
-    ],
-    standalone: false
+  selector: '[dDatepicker]:not([appendToBody])',
+  exportAs: 'datepicker',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => DatepickerDirective),
+      multi: true,
+    },
+  ],
+  standalone: false
 })
 export class DatepickerDirective implements OnInit, OnDestroy, ControlValueAccessor {
   @Input() locale: string;

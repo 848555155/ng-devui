@@ -3,10 +3,10 @@ import { DataTableCellEditTmplComponent } from './data-table-cell-edit-tmpl.comp
 import { DataTableCellViewTmplComponent } from './data-table-cell-view-tmpl.component';
 
 @Component({
-    selector: 'd-cell-template',
-    template: '',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  selector: 'd-cell-template',
+  template: '',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class DataTableCellTmplComponent {
   @Input() type: string;

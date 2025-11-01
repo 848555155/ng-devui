@@ -2,9 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { environment } from 'src/environments/environment';
 
 @Component({
-    selector: 'd-steps-guide-design',
-    templateUrl: './steps-guide-design.component.html',
-    standalone: false
+  selector: 'd-steps-guide-design',
+  templateUrl: './steps-guide-design.component.html',
+  standalone: false
 })
 
 export class StepsGuideDesignComponent implements OnInit {

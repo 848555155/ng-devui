@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'd-multi-level',
-    templateUrl: './multi-level.component.html',
-    styleUrls: ['./multi-level.component.css'],
-    standalone: false
+  selector: 'd-multi-level',
+  templateUrl: './multi-level.component.html',
+  styleUrls: ['./multi-level.component.css'],
+  standalone: false
 })
 export class MultiLevelComponent {
   autoOpenActiveMenu = false;

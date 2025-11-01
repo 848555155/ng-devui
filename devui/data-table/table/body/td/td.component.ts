@@ -12,11 +12,11 @@ import { EditableTip } from '../../../data-table.model';
 import { TableTdService } from './td.service';
 
 @Component({
-    /* eslint-disable-next-line @angular-eslint/component-selector*/
-    selector: '[dTableCell]',
-    templateUrl: './td.component.html',
-    styleUrls: ['./td.component.scss'],
-    standalone: false
+  /* eslint-disable-next-line @angular-eslint/component-selector*/
+  selector: '[dTableCell]',
+  templateUrl: './td.component.html',
+  styleUrls: ['./td.component.scss'],
+  standalone: false
 })
 export class TableTdComponent implements OnChanges, OnDestroy {
   @HostBinding('class.devui-sticky-left-cell') stickyLeftClass: boolean;
@@ -116,16 +116,16 @@ export class TableTdComponent implements OnChanges, OnDestroy {
   bindEditClickEvent() {
     this.documentClickSubscription = fromEvent(document, 'click')
       .pipe(
-      tap((e: Event) => {
-        e.stopPropagation();
-      })
+        tap((e: Event) => {
+          e.stopPropagation();
+        })
       )
       .subscribe((clickEvent) => {
-      if (!this.elementRef.nativeElement.contains(clickEvent.target) && !this.clickInTd) {
-        this.finishCellEdit();
-      }
-      this.clickInTd = false;
-    });
+        if (!this.elementRef.nativeElement.contains(clickEvent.target) && !this.clickInTd) {
+          this.finishCellEdit();
+        }
+        this.clickInTd = false;
+      });
     this.tdMousedownSubscription = fromEvent(this.elementRef.nativeElement, 'mousedown').subscribe((event) => {
       this.clickInTd = true;
     });

@@ -6,11 +6,11 @@ import {
 } from '@angular/core';
 
 @Component({
-    selector: 'd-two-datepicker-basic',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    templateUrl: `./two-datepicker-basic.component.html`,
-    styleUrls: [`./two-datepicker-basic.component.scss`],
-    standalone: false
+  selector: 'd-two-datepicker-basic',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: `./two-datepicker-basic.component.html`,
+  styleUrls: [`./two-datepicker-basic.component.scss`],
+  standalone: false
 })
 export class TwoDatepickerBasicComponent implements OnInit {
   rangeStart;

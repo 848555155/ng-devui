@@ -3,10 +3,10 @@ import { Subscription } from 'rxjs';
 import { GanttService } from '../gantt.service';
 
 @Component({
-    selector: 'd-gantt-milestone',
-    templateUrl: './gantt-milestone.component.html',
-    styleUrls: ['./gantt-milestone.component.scss'],
-    standalone: false
+  selector: 'd-gantt-milestone',
+  templateUrl: './gantt-milestone.component.html',
+  styleUrls: ['./gantt-milestone.component.scss'],
+  standalone: false
 })
 export class GanttMilestoneComponent implements OnInit, OnChanges, OnDestroy {
   @Input() startDate: Date;

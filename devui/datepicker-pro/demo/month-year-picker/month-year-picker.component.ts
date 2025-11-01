@@ -3,9 +3,9 @@ import {
 } from '@angular/core';
 
 @Component({
-    selector: 'd-month-year-datepicker-pro',
-    templateUrl: './month-year-picker.component.html',
-    standalone: false
+  selector: 'd-month-year-datepicker-pro',
+  templateUrl: './month-year-picker.component.html',
+  standalone: false
 })
 export class MonthYearDatepickerProComponent {
   value1 = new Date();

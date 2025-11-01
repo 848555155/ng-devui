@@ -4,11 +4,11 @@ import {
 } from '@angular/core';
 
 @Component({
-    selector: 'd-datepicker-range-restricted-range',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    templateUrl: `./date-range-picker-restricted-range.component.html`,
-    styleUrls: [`./date-range-picker-restricted-range.component.scss`],
-    standalone: false
+  selector: 'd-datepicker-range-restricted-range',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: `./date-range-picker-restricted-range.component.html`,
+  styleUrls: [`./date-range-picker-restricted-range.component.scss`],
+  standalone: false
 })
 export class DateRangePickerRestrictedRangeComponent {
   dateRange1 = [null, null];

@@ -3,9 +3,9 @@ import { DialogService } from 'ng-devui/modal';
 import { ModalCasesComponent } from './modal-cases.component';
 
 @Component({
-    selector: 'd-cases',
-    templateUrl: './cases.component.html',
-    standalone: false
+  selector: 'd-cases',
+  templateUrl: './cases.component.html',
+  standalone: false
 })
 export class CasesComponent {
 

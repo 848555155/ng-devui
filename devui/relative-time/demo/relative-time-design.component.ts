@@ -2,9 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { environment } from 'src/environments/environment';
 
 @Component({
-    selector: 'd-relative-time-design',
-    templateUrl: './relative-time-design.component.html',
-    standalone: false
+  selector: 'd-relative-time-design',
+  templateUrl: './relative-time-design.component.html',
+  standalone: false
 })
 
 export class RelativeTimeDesignComponent implements OnInit {

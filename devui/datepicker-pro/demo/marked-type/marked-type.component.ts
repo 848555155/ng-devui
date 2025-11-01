@@ -3,9 +3,9 @@ import {
 } from '@angular/core';
 
 @Component({
-    selector: 'd-marked-type-demo',
-    templateUrl: './marked-type.component.html',
-    standalone: false
+  selector: 'd-marked-type-demo',
+  templateUrl: './marked-type.component.html',
+  standalone: false
 })
 export class MarkedTypeDemoComponent {
   value = new Date('2021/11/01');

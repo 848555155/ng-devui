@@ -6,10 +6,10 @@ import { LoadingType } from 'ng-devui/loading';
 import { timer } from 'rxjs';
 
 @Component({
-    selector: 'd-custom',
-    templateUrl: './custom.component.html',
-    styleUrls: ['./custom.component.scss'],
-    standalone: false
+  selector: 'd-custom',
+  templateUrl: './custom.component.html',
+  styleUrls: ['./custom.component.scss'],
+  standalone: false
 })
 export class CustomComponent implements OnInit {
   loading1: LoadingType;

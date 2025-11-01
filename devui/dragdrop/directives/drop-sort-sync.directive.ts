@@ -8,9 +8,9 @@ import { DroppableDirective } from './droppable.directive';
 import { DragPlaceholderInsertionEvent, DragPlaceholderInsertionIndexEvent } from './placeholder-insertion-event.type';
 
 @Directive({
-    selector: '[dDropSortSync]',
-    exportAs: 'dDropSortSync',
-    standalone: false
+  selector: '[dDropSortSync]',
+  exportAs: 'dDropSortSync',
+  standalone: false
 })
 
 export class DropSortSyncDirective extends DescendantChildren<DropSortSyncDirective> implements OnInit, OnDestroy {

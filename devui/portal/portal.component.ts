@@ -11,13 +11,13 @@ import {
 import { forEach } from 'lodash-es';
 
 @Component({
-    selector: 'd-portal',
-    template: `
+  selector: 'd-portal',
+  template: `
                    <ng-template #templateRef>
                         <ng-content></ng-content>
                     </ng-template>`,
-    preserveWhitespaces: false,
-    standalone: false
+  preserveWhitespaces: false,
+  standalone: false
 })
 export class PortalComponent {
   viewRef: EmbeddedViewRef<any>;

@@ -2,9 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { environment } from 'src/environments/environment';
 
 @Component({
-    selector: 'd-text-design',
-    templateUrl: './text-design.component.html',
-    standalone: false
+  selector: 'd-text-design',
+  templateUrl: './text-design.component.html',
+  standalone: false
 })
 
 export class TextDesignComponent implements OnInit {

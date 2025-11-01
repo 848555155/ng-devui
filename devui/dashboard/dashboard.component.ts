@@ -35,13 +35,13 @@ export type DashboardWidgetEvent = Array<{
 }>;
 
 @Component({
-    selector: 'd-dashboard',
-    templateUrl: './dashboard.component.html',
-    styleUrls: ['./dashboard.component.scss'],
-    providers: [GridStackService],
-    exportAs: 'dDashboard',
-    preserveWhitespaces: false,
-    standalone: false
+  selector: 'd-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss'],
+  providers: [GridStackService],
+  exportAs: 'dDashboard',
+  preserveWhitespaces: false,
+  standalone: false
 })
 export class DashboardComponent implements OnChanges, AfterViewInit, OnDestroy {
   public get gridStack() {
@@ -59,16 +59,16 @@ export class DashboardComponent implements OnChanges, AfterViewInit, OnDestroy {
 
   @HostBinding('class.d-dashboard-show-grid-block')
   @Input()
-  showGridBlock = false;
+    showGridBlock = false;
 
   /* layout setting */
   @Input() column: number;
   @HostBinding('attr.gs-min-row')
   @Input()
-  minRow: number;
+    minRow: number;
   @HostBinding('attr.gs-max-row')
   @Input()
-  maxRow: number;
+    maxRow: number;
   @Input() cellHeight: number | string;
   @Input() margin: number | string;
 
@@ -204,60 +204,60 @@ export class DashboardComponent implements OnChanges, AfterViewInit, OnDestroy {
 
   @HostListener('added', ['$event', '$event.detail'])
   public addedHandler = (event, items: GridStackNode[]) => {
-    setTimeout(() => {
-      const all = items.map((item) => ({
-        node: this.addGridStackNodeCompatible(item),
-        widget: this.widgetComponents.toArray().find((widget) => item.el === widget.elem.nativeElement),
-      }));
-
-      // 处理ContentChildren数据推送进来的
-      all
-        .filter((wd) => wd.widget)
-        .forEach(({ node, widget }) => {
-          widget.handleChange(node);
-        });
-    });
-  };
-
-  @HostListener('change', ['$event', '$event.detail'])
-  public changeHandler = (event, items: GridStackNode[]) => {
-    if (!this.gridStack) {
-      return;
-    }
-    if (!(this.gridStack as any)._oneColumnMode) {
       setTimeout(() => {
         const all = items.map((item) => ({
           node: this.addGridStackNodeCompatible(item),
-          widget: this.renderedWidgets.find((widget) => item.el === widget.elem.nativeElement),
+          widget: this.widgetComponents.toArray().find((widget) => item.el === widget.elem.nativeElement),
         }));
-        // 处理UI操作调整大小/调整位置
+
+        // 处理ContentChildren数据推送进来的
         all
-          .filter((w) => w.widget)
+          .filter((wd) => wd.widget)
           .forEach(({ node, widget }) => {
             widget.handleChange(node);
           });
-        if (isDevMode() && all.some((w) => !w.widget)) {
-          console.warn('remove: something wrong, not handled by dashboard');
-        }
-        this.widgetChanged.emit(all.filter((w) => w.widget));
       });
-    }
-    if (this.showGridBlock) {
-      this.gridStackService.setBackgroundGridBlockIfColumnChange();
-    }
-  };
+    };
+
+  @HostListener('change', ['$event', '$event.detail'])
+  public changeHandler = (event, items: GridStackNode[]) => {
+      if (!this.gridStack) {
+        return;
+      }
+      if (!(this.gridStack as any)._oneColumnMode) {
+        setTimeout(() => {
+          const all = items.map((item) => ({
+            node: this.addGridStackNodeCompatible(item),
+            widget: this.renderedWidgets.find((widget) => item.el === widget.elem.nativeElement),
+          }));
+          // 处理UI操作调整大小/调整位置
+          all
+            .filter((w) => w.widget)
+            .forEach(({ node, widget }) => {
+              widget.handleChange(node);
+            });
+          if (isDevMode() && all.some((w) => !w.widget)) {
+            console.warn('remove: something wrong, not handled by dashboard');
+          }
+          this.widgetChanged.emit(all.filter((w) => w.widget));
+        });
+      }
+      if (this.showGridBlock) {
+        this.gridStackService.setBackgroundGridBlockIfColumnChange();
+      }
+    };
 
   @HostListener('removed', ['$event', '$event.detail'])
   public removedHandler = (event, items: GridStackNode[]) => {
-    const all = items.map((item) => ({
-      node: this.addGridStackNodeCompatible(item),
-      widget: this.renderedWidgets.find((widget) => item.el === widget.elem.nativeElement),
-    }));
-    // 不做处理仅提醒部分组件的移除不能被dashboard所理解
-    if (isDevMode() && all.some((wd) => !wd.widget)) {
-      console.warn('remove: something wrong, not handled by dashboard');
-    }
-  };
+      const all = items.map((item) => ({
+        node: this.addGridStackNodeCompatible(item),
+        widget: this.renderedWidgets.find((widget) => item.el === widget.elem.nativeElement),
+      }));
+      // 不做处理仅提醒部分组件的移除不能被dashboard所理解
+      if (isDevMode() && all.some((wd) => !wd.widget)) {
+        console.warn('remove: something wrong, not handled by dashboard');
+      }
+    };
 
   handleDragInNode(node: GridStackNode, origNode: GridStackNode, widget: DashboardLibraryWidgetDirective) {
     this.widgetAdded.emit([

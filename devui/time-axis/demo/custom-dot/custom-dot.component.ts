@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { TimeAxisData } from 'ng-devui/time-axis';
 
 @Component({
-    selector: 'd-demo-time-axis-custom-dot',
-    templateUrl: './custom-dot.component.html',
-    standalone: false
+  selector: 'd-demo-time-axis-custom-dot',
+  templateUrl: './custom-dot.component.html',
+  standalone: false
 })
 export class CustomDotComponent implements OnInit {
   timeAxisHtml: TimeAxisData;

@@ -5,8 +5,8 @@ import { DBreakpoints, DResponseParameter } from './layout.types';
 import { DScreenMediaQueryService } from './screen-media-query.service';
 
 @Directive({
-    selector: `[dGutter]`,
-    standalone: false
+  selector: `[dGutter]`,
+  standalone: false
 })
 export class DGutterDirective implements OnDestroy, AfterViewInit {
   private destroy$ = new Subject<void>();

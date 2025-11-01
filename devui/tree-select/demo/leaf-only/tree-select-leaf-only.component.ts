@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'd-tree-select-leaf-only',
-    templateUrl: './tree-select-leaf-only.component.html',
-    standalone: false
+  selector: 'd-tree-select-leaf-only',
+  templateUrl: './tree-select-leaf-only.component.html',
+  standalone: false
 })
 export class TreeSelectLeafOnlyComponent {
 

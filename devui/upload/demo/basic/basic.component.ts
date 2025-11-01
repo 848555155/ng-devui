@@ -6,9 +6,9 @@ import { IFileOptions, IUploadOptions, SingleUploadComponent } from 'ng-devui/up
 import { Observable } from 'rxjs';
 
 @Component({
-    selector: 'd-basic',
-    templateUrl: './basic.component.html',
-    standalone: false
+  selector: 'd-basic',
+  templateUrl: './basic.component.html',
+  standalone: false
 })
 export class BasicComponent implements OnInit {
   @ViewChild('singleUploadDrag', { static: true }) singleUploadDrag: SingleUploadComponent;

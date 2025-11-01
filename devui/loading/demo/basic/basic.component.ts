@@ -34,10 +34,10 @@ const mockFetchNames = (url: string) => new Promise((resolve) => {
 });
 
 @Component({
-    selector: 'd-basic',
-    templateUrl: './basic.component.html',
-    styleUrls: ['./basic.component.scss'],
-    standalone: false
+  selector: 'd-basic',
+  templateUrl: './basic.component.html',
+  styleUrls: ['./basic.component.scss'],
+  standalone: false
 })
 export class BasicComponent implements OnInit {
   loading: LoadingType;

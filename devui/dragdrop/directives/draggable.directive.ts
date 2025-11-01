@@ -11,8 +11,8 @@ import { PreserveNextEventEmitter } from './../shared/preserve-next-event-emitte
 import { DragPreviewDirective } from './drag-preview.directive';
 
 @Directive({
-    selector: '[dDraggable]',
-    standalone: false
+  selector: '[dDraggable]',
+  standalone: false
 })
 /**
  * Makes an element draggable by adding the draggable html attribute

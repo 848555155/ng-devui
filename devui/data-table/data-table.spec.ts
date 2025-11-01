@@ -44,7 +44,7 @@ import {
 
 // basic
 @Component({
-    template: `
+  template: `
     <d-data-table
       #tableComp
       [dataSource]="basicDataSource"
@@ -71,7 +71,7 @@ import {
       </tbody>
     </d-data-table>
   `,
-    standalone: false
+  standalone: false
 })
 class TestDataTableBasicComponent {
   @ViewChild('tableComp') tableComp;
@@ -118,7 +118,7 @@ class TestDataTableBasicComponent {
 
 // data-table: checkable, sortable, filterable
 @Component({
-    template: `
+  template: `
     <d-data-table [dataSource]="sortableDataSource" [scrollable]="true" [tableWidthConfig]="tableWidthConfig" [onlyOneColumnSort]="true">
       <thead dTableHead [checkable]="true" [checkOptions]="checkOptions">
         <tr dTableRow>
@@ -195,7 +195,7 @@ class TestDataTableBasicComponent {
       </tbody>
     </d-data-table>
   `,
-    standalone: false
+  standalone: false
 })
 class TestDataTableAdvancedComponent {
   @ViewChild(DataTableComponent) datatable: DataTableComponent;
@@ -278,7 +278,7 @@ class TestDataTableAdvancedComponent {
 
 // data-table: edit
 @Component({
-    template: `
+  template: `
     <d-data-table #dataTable [dataSource]="basicDataSource" (cellEditEnd)="thisCellEditEnd($event)" [scrollable]="true">
       <thead dTableHead>
         <tr dTableRow>
@@ -358,7 +358,7 @@ class TestDataTableAdvancedComponent {
       </tbody>
     </d-data-table>
   `,
-    standalone: false
+  standalone: false
 })
 class TestDataTableEditComponent {
   genderSource = genderSource;
@@ -383,7 +383,7 @@ class TestDataTableEditComponent {
 
 // data-table: has children
 @Component({
-    template: `
+  template: `
     <d-data-table
       #comp
       [dataSource]="basicDataSource"
@@ -433,7 +433,7 @@ class TestDataTableEditComponent {
       </tbody>
     </d-data-table>
   `,
-    standalone: false
+  standalone: false
 })
 class TestDataTableWithChildrenComponent {
   tableWidthConfig: TableWidthConfig[] = [
@@ -486,7 +486,7 @@ class TestDataTableWithChildrenComponent {
 
 // data-table: multi header
 @Component({
-    template: `
+  template: `
     <d-data-table [type]="'striped'" [scrollable]="true" [tableWidthConfig]="tableWidthConfig" [dataSource]="basicDataSource">
       <thead dTableHead>
         <tr dTableRow>
@@ -513,7 +513,7 @@ class TestDataTableWithChildrenComponent {
       </tbody>
     </d-data-table>
   `,
-    standalone: false
+  standalone: false
 })
 class TestDataTableMultiHeaderComponent {
   basicDataSource: Array<SourceType> = JSON.parse(JSON.stringify(originSource.slice(0, 6)));
@@ -521,7 +521,7 @@ class TestDataTableMultiHeaderComponent {
 
 // data-table: fixed column
 @Component({
-    template: `
+  template: `
     <d-data-table [dataSource]="basicDataSource" [scrollable]="true" [tableWidthConfig]="tableWidthConfig">
   <thead dTableHead [checkable]="true">
     <tr dTableRow>
@@ -551,7 +551,7 @@ class TestDataTableMultiHeaderComponent {
   </tbody>
 </d-data-table>
   `,
-    standalone: false
+  standalone: false
 })
 class TestDataFixedColumnComponent {
   basicDataSource: Array<SourceType> = JSON.parse(JSON.stringify(originSource.slice(0, 6)));

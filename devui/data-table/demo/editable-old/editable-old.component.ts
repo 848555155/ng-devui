@@ -11,9 +11,9 @@ import {
 } from '../mock-data';
 
 @Component({
-    selector: 'd-editable-old',
-    templateUrl: './editable-old.component.html',
-    standalone: false
+  selector: 'd-editable-old',
+  templateUrl: './editable-old.component.html',
+  standalone: false
 })
 export class EditableOldComponent implements OnInit {
   @ViewChild(DataTableComponent, { static: true }) dataTable: DataTableComponent;

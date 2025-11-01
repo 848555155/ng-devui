@@ -2,10 +2,10 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges, TemplateRef } from 
 import { IAxisConfigs, IQuadrantConfigs, IViewConfigs } from '../quadrant-diagram.type';
 
 @Component({
-    selector: 'd-quadrant-region',
-    templateUrl: './quadrant-region.component.html',
-    styleUrls: ['./quadrant-region.component.scss'],
-    standalone: false
+  selector: 'd-quadrant-region',
+  templateUrl: './quadrant-region.component.html',
+  styleUrls: ['./quadrant-region.component.scss'],
+  standalone: false
 })
 export class QuadrantRegionComponent implements OnInit, OnChanges {
   @Input() quadrantConfigs: Array<IQuadrantConfigs>;

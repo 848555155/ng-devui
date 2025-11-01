@@ -49,19 +49,19 @@ import { DataTableColumnTmplComponent } from './tmpl/data-table-column-tmpl.comp
 const SCROLL_BAR_WIDTH = 8;
 
 @Component({
-    selector: 'd-data-table',
-    templateUrl: './data-table.component.html',
-    styleUrls: ['./data-table.component.scss', './data-table.component.color.scss'],
-    // changeDetection: ChangeDetectionStrategy.OnPush,
-    exportAs: 'dataTable',
-    preserveWhitespaces: false,
-    providers: [
-        {
-            provide: DATA_TABLE,
-            useExisting: forwardRef(() => DataTableComponent),
-        },
-    ],
-    standalone: false
+  selector: 'd-data-table',
+  templateUrl: './data-table.component.html',
+  styleUrls: ['./data-table.component.scss', './data-table.component.color.scss'],
+  // changeDetection: ChangeDetectionStrategy.OnPush,
+  exportAs: 'dataTable',
+  preserveWhitespaces: false,
+  providers: [
+    {
+      provide: DATA_TABLE,
+      useExisting: forwardRef(() => DataTableComponent),
+    },
+  ],
+  standalone: false
 })
 export class DataTableComponent implements OnDestroy, OnInit, OnChanges, AfterContentInit, AfterViewInit {
   /**
@@ -474,7 +474,7 @@ export class DataTableComponent implements OnDestroy, OnInit, OnChanges, AfterCo
   private getColumns() {
     const cols = this.columns.filter((column) => {
       return !this.hideColumn.some((field) => column.field === field);
-      });
+    });
     cols.sort((first, second) => first.order - second.order);
     return cols;
   }
@@ -604,7 +604,7 @@ export class DataTableComponent implements OnDestroy, OnInit, OnChanges, AfterCo
       .pipe(takeUntil(this.thList.changes))
       .subscribe((sortEvent: SortEventArg) => {
         this.thList.filter((th) => th !== sortEvent.th).forEach((th) => th.clearSortOrder());
-    });
+      });
 
     this.thList.changes.pipe(switchMap(() => merge(...this.thList.map((th) => th.sortChange)))).subscribe((sortEvent: SortEventArg) => {
       this.thList.filter((th) => th !== sortEvent.th).forEach((th) => th.clearSortOrder());

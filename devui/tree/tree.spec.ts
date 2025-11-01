@@ -8,7 +8,7 @@ import { TreeComponent } from './tree.component';
 import { TreeModule } from './tree.module';
 
 @Component({
-    template: `
+  template: `
     <d-tree
       #basicTree
       [tree]="treeItems"
@@ -20,7 +20,7 @@ import { TreeModule } from './tree.module';
     >
     </d-tree>
   `,
-    standalone: false
+  standalone: false
 })
 class TestTreeComponent {
   @ViewChild('basicTree') basicTree: TreeComponent;

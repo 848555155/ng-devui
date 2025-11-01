@@ -30,10 +30,10 @@ const DEFAULT_OPTIONS = {
 };
 
 @Component({
-    selector: 'd-nav-sprite',
-    templateUrl: './nav-sprite.component.html',
-    styleUrls: ['./nav-sprite.component.scss'],
-    standalone: false
+  selector: 'd-nav-sprite',
+  templateUrl: './nav-sprite.component.html',
+  styleUrls: ['./nav-sprite.component.scss'],
+  standalone: false
 })
 export class NavSpriteComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() target: HTMLElement; // 爬取目录的容器
@@ -72,7 +72,7 @@ export class NavSpriteComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('defaultNavItemTemplate', { static: true }) defaultNavItemTemplate: TemplateRef<any>; // 单条导航目录的默认模板
 
   @ViewChildren('items', { read: ElementRef })
-  items!: QueryList<ElementRef>;
+    items!: QueryList<ElementRef>;
 
   @Output() afterNavInit = new EventEmitter(); // 组件初始化后返回组件实例
 

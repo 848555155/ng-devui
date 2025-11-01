@@ -5,11 +5,11 @@ import {
 import { IButtonStyle } from 'ng-devui/button';
 
 @Component({
-    selector: 'd-modal-footer',
-    templateUrl: './modal-footer.component.html',
-    styleUrls: ['./modal-footer.component.scss'],
-    preserveWhitespaces: false,
-    standalone: false
+  selector: 'd-modal-footer',
+  templateUrl: './modal-footer.component.html',
+  styleUrls: ['./modal-footer.component.scss'],
+  preserveWhitespaces: false,
+  standalone: false
 })
 export class ModalFooterComponent {
   @Input() buttons: Array<{

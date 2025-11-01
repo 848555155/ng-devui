@@ -4,10 +4,10 @@ import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 
 @Component({
-    selector: 'd-shadow',
-    templateUrl: './shadow.component.html',
-    styleUrls: ['./shadow.component.scss'],
-    standalone: false
+  selector: 'd-shadow',
+  templateUrl: './shadow.component.html',
+  styleUrls: ['./shadow.component.scss'],
+  standalone: false
 })
 export class ShadowComponent implements OnInit, OnDestroy {
   themeService: ThemeService;

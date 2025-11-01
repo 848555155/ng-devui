@@ -21,11 +21,11 @@ export interface TableStyleData {
 }
 
 @Component({
-    selector: 'd-table-option-toggle',
-    templateUrl: './table-option-toggle.component.html',
-    styleUrls: ['./table-option-toggle.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  selector: 'd-table-option-toggle',
+  templateUrl: './table-option-toggle.component.html',
+  styleUrls: ['./table-option-toggle.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class TableOptionToggleComponent implements OnInit, OnDestroy {
   @Input() set columnsData(value: Array<ColData>) {

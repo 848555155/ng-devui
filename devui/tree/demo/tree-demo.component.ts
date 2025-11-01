@@ -4,9 +4,9 @@ import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 
 @Component({
-    selector: 'd-tree-demo',
-    templateUrl: './tree-demo.component.html',
-    standalone: false
+  selector: 'd-tree-demo',
+  templateUrl: './tree-demo.component.html',
+  standalone: false
 })
 export class TreeDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

@@ -4,9 +4,9 @@ import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 
 @Component({
-    selector: 'd-upload-demo',
-    templateUrl: './upload-demo.component.html',
-    standalone: false
+  selector: 'd-upload-demo',
+  templateUrl: './upload-demo.component.html',
+  standalone: false
 })
 export class UploadDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'd-mention-target',
-    templateUrl: './target.component.html',
-    standalone: false
+  selector: 'd-mention-target',
+  templateUrl: './target.component.html',
+  standalone: false
 })
 export class TargetComponent {
   mentionValue = '';

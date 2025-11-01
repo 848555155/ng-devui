@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 
 @Component({
-    selector: 'd-tree-select-keys',
-    templateUrl: './tree-select-keys.component.html',
-    standalone: false
+  selector: 'd-tree-select-keys',
+  templateUrl: './tree-select-keys.component.html',
+  standalone: false
 })
 export class TreeSelectKeysComponent {
 

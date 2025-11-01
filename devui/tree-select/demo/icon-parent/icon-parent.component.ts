@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 
 @Component({
-    selector: 'd-tree-select-icon-parent',
-    templateUrl: './icon-parent.component.html',
-    standalone: false
+  selector: 'd-tree-select-icon-parent',
+  templateUrl: './icon-parent.component.html',
+  standalone: false
 })
 export class TreeSelectIconParentComponent {
 

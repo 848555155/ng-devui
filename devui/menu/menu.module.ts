@@ -10,14 +10,14 @@ import { StrTplOutletModule } from 'ng-devui/utils';
 @NgModule({
   imports: [CommonModule, IconModule, OverlayModule, StrTplOutletModule,],
   exports: [
-  MenuComponent,
-  MenuItemDirective,
-  SubMenuComponent,
+    MenuComponent,
+    MenuItemDirective,
+    SubMenuComponent,
   ],
   declarations: [
-  MenuComponent,
-  MenuItemDirective,
-  SubMenuComponent,
+    MenuComponent,
+    MenuItemDirective,
+    SubMenuComponent,
   ],
-  })
+})
 export class MenuModule { }

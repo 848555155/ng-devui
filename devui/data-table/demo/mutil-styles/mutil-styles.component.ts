@@ -3,10 +3,10 @@ import { TableWidthConfig } from 'ng-devui/data-table';
 import { originSource, SourceType } from '../mock-data';
 
 @Component({
-    selector: 'd-mutil-styles',
-    templateUrl: './mutil-styles.component.html',
-    styleUrls: ['./mutil-styles.component.scss'],
-    standalone: false
+  selector: 'd-mutil-styles',
+  templateUrl: './mutil-styles.component.html',
+  styleUrls: ['./mutil-styles.component.scss'],
+  standalone: false
 })
 export class MutilStylesComponent implements OnInit {
   headerBk = false;

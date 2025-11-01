@@ -3,8 +3,8 @@ import { DashboardComponent } from '../dashboard.component';
 import { GridStackService } from '../grid-stack.service';
 
 @Directive({
-    selector: '[dDashboardLibraryTrash]',
-    standalone: false
+  selector: '[dDashboardLibraryTrash]',
+  standalone: false
 })
 export class DashboardLibraryTrashDirective implements OnChanges, OnDestroy, AfterViewInit {
   @Input() targetDashboard: DashboardComponent;
@@ -12,7 +12,7 @@ export class DashboardLibraryTrashDirective implements OnChanges, OnDestroy, Aft
   @Input() dropDisabled = false;
 
   @HostBinding('class.grid-stack-library-trash')
-  hostBinding = true;
+    hostBinding = true;
 
   isSetup = false;
 

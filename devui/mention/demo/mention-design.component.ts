@@ -2,9 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { environment } from 'src/environments/environment';
 
 @Component({
-    selector: 'd-mention-design',
-    templateUrl: './mention-design.component.html',
-    standalone: false
+  selector: 'd-mention-design',
+  templateUrl: './mention-design.component.html',
+  standalone: false
 })
 
 export class MentionDesignComponent implements OnInit {

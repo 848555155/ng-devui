@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'd-select-basic',
-    templateUrl: './select-basic.component.html',
-    standalone: false
+  selector: 'd-select-basic',
+  templateUrl: './select-basic.component.html',
+  standalone: false
 })
 export class SelectBasicComponent {
   options = [

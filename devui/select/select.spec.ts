@@ -8,7 +8,7 @@ import { animationFrameScheduler, of } from 'rxjs';
 import { CheckBoxComponent } from './../checkbox/checkbox.component';
 import { SelectComponent } from './select.component';
 @Component({
-    template: `
+  template: `
     <div
       [ngClass]="{
         'absolute-top': absolutePosition === 'top',
@@ -39,8 +39,8 @@ import { SelectComponent } from './select.component';
       <ng-template #noDataTemplate>没有自定义数据</ng-template>
     </div>
   `,
-    styles: [
-        `
+  styles: [
+    `
       .absolute-top,
       .absolute-bottom {
         position: fixed;
@@ -54,8 +54,8 @@ import { SelectComponent } from './select.component';
         left: 0;
       }
     `,
-    ],
-    standalone: false
+  ],
+  standalone: false
 })
 class TestSelectComponent {
   option;
@@ -89,7 +89,7 @@ class TestSelectComponent {
   };
 }
 @Component({
-    template: `
+  template: `
     <d-select
       [options]="options"
       [(ngModel)]="option"
@@ -98,7 +98,7 @@ class TestSelectComponent {
       [width]="width"
     ></d-select>
   `,
-    standalone: false
+  standalone: false
 })
 class TestSelectAppendToBodyComponent {
   option;
@@ -120,7 +120,7 @@ class TestSelectAppendToBodyComponent {
   width = undefined;
 }
 @Component({
-    template: `
+  template: `
     <d-select
       [options]="options"
       [(ngModel)]="option"
@@ -130,7 +130,7 @@ class TestSelectAppendToBodyComponent {
     >
     </d-select>
   `,
-    standalone: false
+  standalone: false
 })
 class TestSelectLazyLoadVirtualScrollComponent {
   @ViewChild(SelectComponent) selectComponent: SelectComponent;
@@ -164,29 +164,29 @@ class TestSelectLazyLoadVirtualScrollComponent {
 }
 
 @Component({
-    template: `
+  template: `
     <d-select [options]="options" [(ngModel)]="option" [virtualScroll]="virtualScroll" [templateItemSize]="templateItemSize">
       <ng-template let-option="option"
         ><div class="my-option">{{ option }}</div></ng-template
       >
     </d-select>
   `,
-    styles: [
-        `
+  styles: [
+    `
       .my-option {
         height: 30px; /* 上下各有padding 8px */
       }
     `,
-    ],
-    standalone: false
+  ],
+  standalone: false
 })
 class TestSelectVirtualScrollItemSizeComponent extends TestSelectLazyLoadVirtualScrollComponent {}
 
 @Component({
-    template: `
+  template: `
     <d-select *ngIf="init" [options]="options" [(ngModel)]="option" [autoFocus]="autoFocus" [toggleOnFocus]="toggleOnFocus"></d-select>
   `,
-    standalone: false
+  standalone: false
 })
 class TestSelecAutoFocusNToggleOnFocusComponent {
   init = false;
@@ -196,7 +196,7 @@ class TestSelecAutoFocusNToggleOnFocusComponent {
   toggleOnFocus: boolean;
 }
 @Component({
-    template: `
+  template: `
     <d-select
       [options]="options"
       [(ngModel)]="option"
@@ -217,8 +217,8 @@ class TestSelecAutoFocusNToggleOnFocusComponent {
       </div>
     </ng-template>
   `,
-    styles: [
-        `
+  styles: [
+    `
       .custom-wrapper {
         padding: 5px;
       }
@@ -245,8 +245,8 @@ class TestSelecAutoFocusNToggleOnFocusComponent {
         background: #7693f5;
       }
     `,
-    ],
-    standalone: false
+  ],
+  standalone: false
 })
 class TestSelectCustomAreaComponent {
   option;
@@ -258,7 +258,7 @@ class TestSelectCustomAreaComponent {
   }
 }
 @Component({
-    template: `
+  template: `
     <d-select
       [options]="options"
       [(ngModel)]="option"
@@ -322,7 +322,7 @@ class TestSelectCustomAreaComponent {
       </ng-container>
     </ng-template>
   `,
-    standalone: false
+  standalone: false
 })
 class TestSelectTemplateComponent {
   option;

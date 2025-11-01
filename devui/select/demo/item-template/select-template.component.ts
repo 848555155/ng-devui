@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 @Component({
-    selector: 'd-select-template',
-    templateUrl: './select-template.component.html',
-    standalone: false
+  selector: 'd-select-template',
+  templateUrl: './select-template.component.html',
+  standalone: false
 })
 export class SelectTemplateComponent {
   singleOptions = [

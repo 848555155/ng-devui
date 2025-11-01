@@ -1,9 +1,9 @@
 
 import { Component, Inject, DOCUMENT } from '@angular/core';
 @Component({
-    selector: 'd-scroll-element',
-    templateUrl: './scroll-element.component.html',
-    standalone: false
+  selector: 'd-scroll-element',
+  templateUrl: './scroll-element.component.html',
+  standalone: false
 })
 export class ScrollElementComponent {
   scrollElement: Element = this.doc.querySelector('.doc-viewer-container');

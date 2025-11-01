@@ -5,8 +5,8 @@ import { DBreakpoints, DResponseParameter } from './layout.types';
 import { DScreenMediaQueryService } from './screen-media-query.service';
 
 @Directive({
-    selector: `[dSpace]`,
-    standalone: false
+  selector: `[dSpace]`,
+  standalone: false
 })
 export class DSpaceDirective implements OnDestroy, AfterViewInit {
   private destroy$ = new Subject<void>();

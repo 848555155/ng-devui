@@ -2,9 +2,9 @@ import { Component, ViewChild } from '@angular/core';
 import { TreeComponent, TreeNode } from 'ng-devui/tree';
 
 @Component({
-    selector: 'd-basic',
-    templateUrl: './basic.component.html',
-    standalone: false
+  selector: 'd-basic',
+  templateUrl: './basic.component.html',
+  standalone: false
 })
 export class BasicComponent {
   @ViewChild('basicTree', { static: true }) basicTree: TreeComponent;

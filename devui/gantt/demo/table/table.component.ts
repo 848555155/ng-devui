@@ -20,11 +20,11 @@ const DEFAULT_WIDTH_CONFIG = [
 ];
 
 @Component({
-    selector: 'd-table-gantt',
-    templateUrl: './table.component.html',
-    styleUrls: ['./table.component.scss'],
-    providers: [GanttService],
-    standalone: false
+  selector: 'd-table-gantt',
+  templateUrl: './table.component.html',
+  styleUrls: ['./table.component.scss'],
+  providers: [GanttService],
+  standalone: false
 })
 export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
   curYear = curYear;

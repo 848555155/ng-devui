@@ -5,8 +5,8 @@ import { AnchorDirective } from './anchor.directive';
 import { AnchorActiveChangeSource } from './anchor.type';
 
 @Directive({
-    selector: '[dAnchorLink]',
-    standalone: false
+  selector: '[dAnchorLink]',
+  standalone: false
 })
 export class AnchorLinkDirective implements OnInit, OnDestroy {
   @HostBinding('class') get anchorActiveClass() {

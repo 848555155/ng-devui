@@ -24,11 +24,11 @@ export interface Message {
 }
 
 @Component({
-    selector: 'd-toast',
-    templateUrl: './toast.component.html',
-    styleUrls: ['./toast.component.scss'],
-    preserveWhitespaces: false,
-    standalone: false
+  selector: 'd-toast',
+  templateUrl: './toast.component.html',
+  styleUrls: ['./toast.component.scss'],
+  preserveWhitespaces: false,
+  standalone: false
 })
 export class ToastComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('container', { static: true }) containerViewChild: ElementRef;

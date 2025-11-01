@@ -7,9 +7,9 @@ import { LoadingType } from 'ng-devui/loading';
 import { delay } from 'rxjs/operators';
 
 @Component({
-    selector: 'd-subscription',
-    templateUrl: './subscription.component.html',
-    standalone: false
+  selector: 'd-subscription',
+  templateUrl: './subscription.component.html',
+  standalone: false
 })
 export class SubscriptionComponent {
   loading: LoadingType;

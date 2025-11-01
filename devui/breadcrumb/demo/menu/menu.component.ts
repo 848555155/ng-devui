@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 @Component({
-    selector: 'd-menu',
-    templateUrl: './menu.component.html',
-    standalone: false
+  selector: 'd-menu',
+  templateUrl: './menu.component.html',
+  standalone: false
 })
 export class MenuComponent implements OnInit {
 

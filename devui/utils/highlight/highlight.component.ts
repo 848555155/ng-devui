@@ -3,11 +3,11 @@ import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, Inject, In
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-    selector: 'd-highlight',
-    template: ``,
-    styleUrls: ['./highlight.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  selector: 'd-highlight',
+  template: ``,
+  styleUrls: ['./highlight.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class HighlightComponent implements OnChanges {
   @HostBinding('style.display') display = 'inline';

@@ -44,20 +44,20 @@ interface TimeObj {
 }
 
 @Component({
-    /* eslint-disable-next-line @angular-eslint/component-selector*/
-    selector: '[dTimePicker]',
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => TimePickerComponent),
-            multi: true,
-        },
-    ],
-    exportAs: 'timePicker',
-    templateUrl: 'time-picker.component.html',
-    animations: [fadeInOut],
-    styleUrls: ['./time-picker.component.scss'],
-    standalone: false
+  /* eslint-disable-next-line @angular-eslint/component-selector*/
+  selector: '[dTimePicker]',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => TimePickerComponent),
+      multi: true,
+    },
+  ],
+  exportAs: 'timePicker',
+  templateUrl: 'time-picker.component.html',
+  animations: [fadeInOut],
+  styleUrls: ['./time-picker.component.scss'],
+  standalone: false
 })
 export class TimePickerComponent implements OnChanges, OnInit, OnDestroy, ControlValueAccessor {
   @Input() appendToBodyDirections: Array<AppendToBodyDirection | ConnectedPosition> = ['rightDown', 'leftDown', 'rightUp', 'leftUp'];
@@ -363,7 +363,7 @@ export class TimePickerComponent implements OnChanges, OnInit, OnDestroy, Contro
 
     if (
       timeArr.some((t, i) => {
-          return Number(t) > Number(this.maxTime.split(':')[i]) || Number(t) < Number(this.minTime.split(':')[i]);
+        return Number(t) > Number(this.maxTime.split(':')[i]) || Number(t) < Number(this.minTime.split(':')[i]);
       })
     ) {
       return false;
@@ -453,11 +453,11 @@ export class TimePickerComponent implements OnChanges, OnInit, OnDestroy, Contro
     if (this.appendToBodyDirections && this.appendToBodyDirections.length > 0) {
       this.pickerPositions = this.appendToBodyDirections
         .map((position) => {
-        if (typeof position === 'string') {
-          return AppendToBodyDirectionsConfig[position];
-        } else {
-          return position;
-        }
+          if (typeof position === 'string') {
+            return AppendToBodyDirectionsConfig[position];
+          } else {
+            return position;
+          }
         })
         .filter((position) => position !== undefined);
     } else {
@@ -514,24 +514,24 @@ export class TimePickerComponent implements OnChanges, OnInit, OnDestroy, Contro
     if (!this[`${whichList}List`] || !this[`${whichList}List`].length) {
       this[`${whichList}List`] = new Array(len).fill(0).map((item, i) => {
         const time = unshiftString(String(i), 2, '0');
-          const disabled = this.disabled || !this.validateTime(time, type);
-          return {
-            time,
-            active: selectedTimeArr[arr.indexOf(type)] === time,
-            type: index,
+        const disabled = this.disabled || !this.validateTime(time, type);
+        return {
+          time,
+          active: selectedTimeArr[arr.indexOf(type)] === time,
+          type: index,
           disabled,
-          };
+        };
       });
     } else {
       this[`${whichList}List`].forEach((item, i) => {
-          if (!justScroll) {
+        if (!justScroll) {
           const time = unshiftString(String(i), 2, '0');
-            const disabled = this.disabled || !this.validateTime(time, type);
-            item.active = selectedTimeArr[arr.indexOf(type)] === time;
-            item.disabled = disabled;
-          }
-          if (item.active && this.isOpen) {
-            this.setScroll(whichList, i, justScroll);
+          const disabled = this.disabled || !this.validateTime(time, type);
+          item.active = selectedTimeArr[arr.indexOf(type)] === time;
+          item.disabled = disabled;
+        }
+        if (item.active && this.isOpen) {
+          this.setScroll(whichList, i, justScroll);
         }
       });
     }

@@ -4,9 +4,9 @@ import { DocumentRef } from 'ng-devui/window-ref';
 import { ModalTestComponent } from '../modal-test.component';
 
 @Component({
-    selector: 'd-fixed-wrapper',
-    templateUrl: './fixed-wrapper.component.html',
-    standalone: false
+  selector: 'd-fixed-wrapper',
+  templateUrl: './fixed-wrapper.component.html',
+  standalone: false
 })
 export class FixedWrapperComponent {
   scrollTop: number;

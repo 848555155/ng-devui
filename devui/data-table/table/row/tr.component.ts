@@ -5,11 +5,11 @@ import { RowCheckChangeEventArg, TableCheckOptions } from '../../data-table.mode
 import { TableThComponent } from '../head/th/th.component';
 
 @Component({
-    /* eslint-disable-next-line @angular-eslint/component-selector*/
-    selector: '[dTableRow]',
-    templateUrl: './tr.component.html',
-    styleUrls: ['./tr.component.scss'],
-    standalone: false
+  /* eslint-disable-next-line @angular-eslint/component-selector*/
+  selector: '[dTableRow]',
+  templateUrl: './tr.component.html',
+  styleUrls: ['./tr.component.scss'],
+  standalone: false
 })
 export class TableTrComponent implements OnInit, AfterViewInit {
   @ContentChildren(TableThComponent) thList: QueryList<TableThComponent>;

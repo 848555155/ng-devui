@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'd-editable-select-custom-area',
-    templateUrl: './custom-area.component.html',
-    styleUrls: ['./custom-area.component.scss'],
-    standalone: false
+  selector: 'd-editable-select-custom-area',
+  templateUrl: './custom-area.component.html',
+  styleUrls: ['./custom-area.component.scss'],
+  standalone: false
 })
 export class CustomAreaComponent implements OnInit {
   selectItem: any;

@@ -6,13 +6,13 @@ import { IconComponent } from './icon.component';
 import { IconModule } from './icon.module';
 
 @Component({
-    template: ` <d-icon-group>
+  template: ` <d-icon-group>
       <d-icon [icon]="icon" [operable]="operable" [disabled]="disabled" [rotate]="rotate" [color]="color"></d-icon>
     </d-icon-group>
     <ng-template #iconTemplate>
       <svg></svg>
     </ng-template>`,
-    imports: [IconModule]
+  imports: [IconModule]
 })
 class TestIconComponent {
   icon: string | TemplateRef<any> = '';

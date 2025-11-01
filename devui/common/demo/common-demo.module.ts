@@ -29,46 +29,46 @@ import { ShapeIconHoverableDemoComponent } from "./shapeIconHoverable/shapeIconH
 import { PopoverModule } from "ng-devui";
 
 @NgModule({ exports: [CommonDemoComponent],
-    declarations: [
-        DatePipeDemoComponent,
-        SafeNullPipeComponent,
-        CommonDemoComponent,
-        CommonDesignComponent,
-        HelperBrowserComponent,
-        HelperJumpDemoComponent,
-        HelperDownloadDemoComponent,
-        IframPropagateDemoComponent,
-        LazyLoadComponent,
-        ClipboardDemoComponent,
-        ShapeIconHoverableDemoComponent
-    ], imports: [TranslateModule,
-        CommonModule,
-        FormsModule,
-        ButtonModule,
-        DevUICodeboxModule,
-        DevUIApiModule,
-        DCommonModule,
-        DDemoNavModule,
-        LazyLoadModule,
-        LoadingModule,
-        I18nModule,
-        DataTableModule,
-        TextInputModule,
-        PopoverModule,
-        RouterModule.forChild([
-            { path: '', redirectTo: 'demo', pathMatch: 'full' },
-            {
-                path: 'design',
-                component: CommonDesignComponent,
-            },
-            { path: 'demo', component: CommonDemoComponent },
-            {
-                path: 'api',
-                component: DevUIApiComponent,
-                data: {
-                    'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-                    'en-us': require('!html-loader!markdown-loader!../doc/api-en.md'),
-                },
-            },
-        ])], providers: [provideHttpClient(withInterceptorsFromDi())] })
+  declarations: [
+    DatePipeDemoComponent,
+    SafeNullPipeComponent,
+    CommonDemoComponent,
+    CommonDesignComponent,
+    HelperBrowserComponent,
+    HelperJumpDemoComponent,
+    HelperDownloadDemoComponent,
+    IframPropagateDemoComponent,
+    LazyLoadComponent,
+    ClipboardDemoComponent,
+    ShapeIconHoverableDemoComponent
+  ], imports: [TranslateModule,
+    CommonModule,
+    FormsModule,
+    ButtonModule,
+    DevUICodeboxModule,
+    DevUIApiModule,
+    DCommonModule,
+    DDemoNavModule,
+    LazyLoadModule,
+    LoadingModule,
+    I18nModule,
+    DataTableModule,
+    TextInputModule,
+    PopoverModule,
+    RouterModule.forChild([
+      { path: '', redirectTo: 'demo', pathMatch: 'full' },
+      {
+        path: 'design',
+        component: CommonDesignComponent,
+      },
+      { path: 'demo', component: CommonDemoComponent },
+      {
+        path: 'api',
+        component: DevUIApiComponent,
+        data: {
+          'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
+          'en-us': require('!html-loader!markdown-loader!../doc/api-en.md'),
+        },
+      },
+    ])], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class CommonDemoModule {}

@@ -18,14 +18,14 @@ import { filter, throttleTime } from 'rxjs/operators';
 export type StickyStatus = 'normal' | 'follow' | 'stay' | 'remain';
 
 @Component({
-    selector: 'd-sticky',
-    template: `
+  selector: 'd-sticky',
+  template: `
     <div #stickyWrapper [style.zIndex]="zIndex">
       <ng-content></ng-content>
     </div>
   `,
-    preserveWhitespaces: false,
-    standalone: false
+  preserveWhitespaces: false,
+  standalone: false
 })
 export class StickyComponent implements OnInit, AfterViewInit, OnDestroy {
   @HostBinding('style.position') hostPosition = 'relative';
@@ -139,27 +139,27 @@ export class StickyComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   @HostListener('window:resize')
-  throttle = () => {
-    const fn = this.scrollAndResizeHock;
-    const time = Date.now();
-    if (this.scrollTimer) {
-      clearTimeout(this.scrollTimer);
-    }
-    if (!this.scrollPreStart) {
-      this.scrollPreStart = time;
-    }
-    if (time - this.scrollPreStart > this.THROTTLE_TRIGGER) {
-      fn();
-      this.scrollPreStart = null;
-      this.scrollTimer = null;
-    } else {
-      this.scrollTimer = setTimeout(() => {
+    throttle = () => {
+      const fn = this.scrollAndResizeHock;
+      const time = Date.now();
+      if (this.scrollTimer) {
+        clearTimeout(this.scrollTimer);
+      }
+      if (!this.scrollPreStart) {
+        this.scrollPreStart = time;
+      }
+      if (time - this.scrollPreStart > this.THROTTLE_TRIGGER) {
         fn();
         this.scrollPreStart = null;
         this.scrollTimer = null;
-      }, this.THROTTLE_DELAY);
-    }
-  };
+      } else {
+        this.scrollTimer = setTimeout(() => {
+          fn();
+          this.scrollPreStart = null;
+          this.scrollTimer = null;
+        }, this.THROTTLE_DELAY);
+      }
+    };
   scrollAndResizeHock = () => {
     if (this.container.getBoundingClientRect().left - (this.containerLeft || 0) !== 0) {
       this.status = 'stay';

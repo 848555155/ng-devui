@@ -2,8 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { I18nFormat } from './i18n.format';
 
 @Pipe({
-    name: 'i18nDate',
-    standalone: false
+  name: 'i18nDate',
+  standalone: false
 })
 export class I18nDatePipe implements PipeTransform {
   /**

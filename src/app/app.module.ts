@@ -17,41 +17,41 @@ export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, `${environment.deployPrefix}assets/i18n/`, '.json');
 }
 @NgModule({ declarations: [
-        AppComponent
-    ],
-    bootstrap: [AppComponent], imports: [BrowserModule,
-        BrowserAnimationsModule,
-        DevUIModule.forRoot(),
-        FormsModule,
-        DevuiCommonsModule,
-        RouterModule.forRoot([
-            {
-                path: '',
-                redirectTo: 'components/zh-cn',
-                pathMatch: 'full'
-            },
-            {
-                path: 'components/:lang',
-                loadChildren: () => import('./component/app-content.module').then(m => m.AppContentModule)
-            },
-            {
-                path: '**',
-                redirectTo: 'components/zh-cn'
-            }
-        ], {}),
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: HttpLoaderFactory,
-                deps: [HttpClient]
-            }
-        })], providers: [
-        { provide: APP_BASE_HREF, useValue: '/' },
-        {
-            provide: DEVUI_LANG,
-            useValue: ZH_CN
-        },
-        I18nService,
-        provideHttpClient(withInterceptorsFromDi())
-    ] })
+  AppComponent
+],
+bootstrap: [AppComponent], imports: [BrowserModule,
+  BrowserAnimationsModule,
+  DevUIModule.forRoot(),
+  FormsModule,
+  DevuiCommonsModule,
+  RouterModule.forRoot([
+    {
+      path: '',
+      redirectTo: 'components/zh-cn',
+      pathMatch: 'full'
+    },
+    {
+      path: 'components/:lang',
+      loadChildren: () => import('./component/app-content.module').then(m => m.AppContentModule)
+    },
+    {
+      path: '**',
+      redirectTo: 'components/zh-cn'
+    }
+  ], {}),
+  TranslateModule.forRoot({
+    loader: {
+      provide: TranslateLoader,
+      useFactory: HttpLoaderFactory,
+      deps: [HttpClient]
+    }
+  })], providers: [
+  { provide: APP_BASE_HREF, useValue: '/' },
+  {
+    provide: DEVUI_LANG,
+    useValue: ZH_CN
+  },
+  I18nService,
+  provideHttpClient(withInterceptorsFromDi())
+] })
 export class AppModule { }

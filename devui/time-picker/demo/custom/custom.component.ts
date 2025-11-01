@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { unshiftString } from 'ng-devui/utils';
 
 @Component({
-    selector: 'd-custom-demo',
-    styleUrls: ['./custom.component.scss'],
-    templateUrl: './custom.component.html',
-    standalone: false
+  selector: 'd-custom-demo',
+  styleUrls: ['./custom.component.scss'],
+  templateUrl: './custom.component.html',
+  standalone: false
 })
 export class CustomComponent {
   selectedTime1;

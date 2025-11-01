@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'd-demo-search-cascader',
-    templateUrl: './search-cascader.component.html',
-    standalone: false
+  selector: 'd-demo-search-cascader',
+  templateUrl: './search-cascader.component.html',
+  standalone: false
 })
 export class SearchCascaderComponent {
   options = [

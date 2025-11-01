@@ -7,7 +7,7 @@ import { StickyComponent } from './sticky.component';
 import { StickyModule } from './sticky.module';
 
 @Component({
-    template: `
+  template: `
     <div class="container" #scrollTarget>
       <div class="section-block">
         <d-sticky
@@ -48,8 +48,8 @@ import { StickyModule } from './sticky.module';
       </div>
     </div>
   `,
-    styleUrls: ['./demo/scroll-target/scroll-target.component.scss'],
-    standalone: false
+  styleUrls: ['./demo/scroll-target/scroll-target.component.scss'],
+  standalone: false
 })
 class TestStickyComponent {
   zIndex = 1000;
@@ -65,7 +65,7 @@ class TestStickyComponent {
 }
 
 @Component({
-    template: `
+  template: `
     <div class="container">
       <div class="section-block">
         <d-sticky [view]="stickyView" [zIndex]="1000">
@@ -100,8 +100,8 @@ class TestStickyComponent {
       </div>
     </div>
   `,
-    styleUrls: ['./demo/basic/basic.component.scss'],
-    standalone: false
+  styleUrls: ['./demo/basic/basic.component.scss'],
+  standalone: false
 })
 class TestStickyWindowComponent {
   stickyView = {

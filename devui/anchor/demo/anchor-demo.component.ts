@@ -4,9 +4,9 @@ import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 
 @Component({
-    selector: 'd-anchor-demo',
-    templateUrl: './anchor-demo.component.html',
-    standalone: false
+  selector: 'd-anchor-demo',
+  templateUrl: './anchor-demo.component.html',
+  standalone: false
 })
 export class AnchorDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

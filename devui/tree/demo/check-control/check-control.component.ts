@@ -105,9 +105,9 @@ export const source = [
 ];
 
 @Component({
-    selector: 'd-check-control',
-    templateUrl: './check-control.component.html',
-    standalone: false
+  selector: 'd-check-control',
+  templateUrl: './check-control.component.html',
+  standalone: false
 })
 export class CheckControlComponent {
   data1 = [...source];

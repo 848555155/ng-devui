@@ -2,16 +2,16 @@ import { Component } from '@angular/core';
 import { Observable, of, timer } from 'rxjs';
 
 @Component({
-    selector: 'd-async-data-with-function',
-    templateUrl: './async-data-with-function.component.html',
-    styles: [
-        `
+  selector: 'd-async-data-with-function',
+  templateUrl: './async-data-with-function.component.html',
+  styles: [
+    `
       d-editable-select {
         margin: 12px 0;
       }
     `,
-    ],
-    standalone: false
+  ],
+  standalone: false
 })
 export class AsyncDataWithFunctionComponent {
   selectItem: any;

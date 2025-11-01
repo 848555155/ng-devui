@@ -3,10 +3,10 @@ import { TableWidthConfig } from 'ng-devui/data-table';
 import { SourceType, originSource } from '../mock-data';
 
 @Component({
-    selector: 'd-drag-row',
-    templateUrl: './drag-row.component.html',
-    styleUrls: ['./drag-row.component.scss'],
-    standalone: false
+  selector: 'd-drag-row',
+  templateUrl: './drag-row.component.html',
+  styleUrls: ['./drag-row.component.scss'],
+  standalone: false
 })
 export class DragRowComponent {
   basicDataSource: Array<SourceType> = JSON.parse(JSON.stringify(originSource.slice(0, 6)));

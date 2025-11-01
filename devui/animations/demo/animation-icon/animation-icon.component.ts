@@ -1,10 +1,10 @@
 import { Component, Renderer2 } from '@angular/core';
 
 @Component({
-    selector: 'd-animation-icon',
-    templateUrl: './animation-icon.component.html',
-    styleUrls: ['./animation-icon.component.scss'],
-    standalone: false
+  selector: 'd-animation-icon',
+  templateUrl: './animation-icon.component.html',
+  styleUrls: ['./animation-icon.component.scss'],
+  standalone: false
 })
 export class AnimationIconComponent {
 

@@ -4,9 +4,9 @@ import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 
 @Component({
-    selector: 'd-common-demo',
-    templateUrl: './common-demo.component.html',
-    standalone: false
+  selector: 'd-common-demo',
+  templateUrl: './common-demo.component.html',
+  standalone: false
 })
 export class CommonDemoComponent implements OnInit, OnDestroy {
   datePipeSource: Array<DevuiSourceData> = [

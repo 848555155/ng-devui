@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'd-demo-template-cascader',
-    templateUrl: './template-cascader.component.html',
-    standalone: false
+  selector: 'd-demo-template-cascader',
+  templateUrl: './template-cascader.component.html',
+  standalone: false
 })
 export class TemplateCascaderComponent {
   options = [

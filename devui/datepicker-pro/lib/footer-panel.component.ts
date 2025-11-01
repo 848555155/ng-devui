@@ -6,11 +6,11 @@ import { Subscription } from 'rxjs';
 import { DatepickerProService } from '../datepicker-pro.service';
 
 @Component({
-    selector: 'd-datepicker-footer-panel',
-    templateUrl: './footer-panel.component.html',
-    styleUrls: ['./footer-panel.component.scss'],
-    preserveWhitespaces: false,
-    standalone: false
+  selector: 'd-datepicker-footer-panel',
+  templateUrl: './footer-panel.component.html',
+  styleUrls: ['./footer-panel.component.scss'],
+  preserveWhitespaces: false,
+  standalone: false
 })
 export class FooterPanelComponent implements OnDestroy {
   @Input() footerTemplate: TemplateRef<any>;

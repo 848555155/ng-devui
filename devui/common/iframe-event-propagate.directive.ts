@@ -1,8 +1,8 @@
 
 import { AfterViewInit, Directive, ElementRef, Inject, Input, DOCUMENT } from '@angular/core';
 @Directive({
-    selector: '[dIframeEventPropagate]',
-    standalone: false
+  selector: '[dIframeEventPropagate]',
+  standalone: false
 })
 export class IframeEventPropagateDirective implements AfterViewInit {
   @Input() event = 'click';

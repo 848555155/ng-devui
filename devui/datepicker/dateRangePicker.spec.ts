@@ -8,7 +8,7 @@ import * as EventHelper from '../utils/testing/event-helper';
 import { DatepickerModule } from './datepicker.module';
 
 @Component({
-    template: `
+  template: `
     <div class="devui-input-group devui-dropdown-origin">
       <input
         class="devui-input devui-form-control"
@@ -41,7 +41,7 @@ import { DatepickerModule } from './datepicker.module';
       </ng-template>
     </div>
   `,
-    standalone: false
+  standalone: false
 })
 class TestDateRangePickerComponent {
   dateRange = [null, null];
@@ -74,7 +74,7 @@ class TestDateRangePickerComponent {
 }
 
 @Component({
-    template: `
+  template: `
     <div [style.height]="placeHolderHeight ? '900px' : '0'">this is place holder</div>
     <input
       class="devui-input devui-form-control"
@@ -85,7 +85,7 @@ class TestDateRangePickerComponent {
       #inputEle
     />
   `,
-    standalone: false
+  standalone: false
 })
 class TestDateRangePickerOriginComponent {
   @ViewChild('inputEle', { read: ElementRef }) inputEle: ElementRef;
@@ -96,7 +96,7 @@ class TestDateRangePickerOriginComponent {
 }
 
 @Component({
-    template: `
+  template: `
     <d-date-range-picker
       [dateConfig]="dateConfig"
       [selectedRange]="selectedRange"
@@ -107,7 +107,7 @@ class TestDateRangePickerOriginComponent {
       <div class="test-template clear" (click)="clearAll(reason)">clear</div>
     </ng-template>
   `,
-    standalone: false
+  standalone: false
 })
 class TestDateRangePickerCmpComponent {
   dateConfig;

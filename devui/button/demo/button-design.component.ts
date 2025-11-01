@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Component({
-    selector: 'd-button-design',
-    templateUrl: './button-design.component.html',
-    styleUrls: ['./button-design.component.scss'],
-    standalone: false
+  selector: 'd-button-design',
+  templateUrl: './button-design.component.html',
+  styleUrls: ['./button-design.component.scss'],
+  standalone: false
 })
 
-export class ButtonDesignComponent implements OnInit {
+export class ButtonDesignComponent implements OnInit, OnDestroy {
   structureImgSrc;
   useImgSrc;
   sizeList = [];

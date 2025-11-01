@@ -16,9 +16,9 @@ import { MenuComponent } from './menu.component';
 import { SubMenuService } from './submenu.service';
 
 @Directive({
-    selector: '[dMenuItem]',
-    exportAs: 'dMenuItem',
-    standalone: false
+  selector: '[dMenuItem]',
+  exportAs: 'dMenuItem',
+  standalone: false
 })
 export class MenuItemDirective implements OnInit, OnChanges {
   @Input() subMenuHost = false;

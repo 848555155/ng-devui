@@ -57,10 +57,10 @@ const MENUS: MenuItemType[] = [
 
 
 @Component({
-    selector: 'd-open-close',
-    templateUrl: './open-close.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  selector: 'd-open-close',
+  templateUrl: './open-close.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class OpenCloseComponent {
   menus = MENUS;

@@ -4,8 +4,8 @@ import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 
 @Component({
-    templateUrl: './toggle-demo.component.html',
-    standalone: false
+  templateUrl: './toggle-demo.component.html',
+  standalone: false
 })
 export class ToggleDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

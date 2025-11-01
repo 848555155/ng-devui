@@ -17,10 +17,10 @@ import { takeUntil } from 'rxjs/operators';
 import { FormDirective } from './form.directive';
 
 @Component({
-    selector: 'd-form-operation',
-    template: '<ng-content></ng-content>',
-    styles: [
-        `
+  selector: 'd-form-operation',
+  template: '<ng-content></ng-content>',
+  styles: [
+    `
       .devui-form-horizontal :host.devui-form-operation {
         display: block;
         margin-left: 96px;
@@ -33,10 +33,10 @@ import { FormDirective } from './form.directive';
         padding: 8px 0;
       }
     `,
-    ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    preserveWhitespaces: false,
-    standalone: false
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
+  standalone: false
 })
 export class FormOperationComponent implements OnInit {
   constructor(elementRef: ElementRef, renderer: Renderer2) {
@@ -47,8 +47,8 @@ export class FormOperationComponent implements OnInit {
 }
 
 @Directive({
-    selector: '[dFormSubmit]',
-    standalone: false
+  selector: '[dFormSubmit]',
+  standalone: false
 })
 export class DFormSubmitDirective implements AfterViewInit, OnDestroy {
   @HostBinding('class.devui-form-submit') default = true;
@@ -92,8 +92,8 @@ export class DFormSubmitDirective implements AfterViewInit, OnDestroy {
 }
 
 @Directive({
-    selector: '[dFormReset]',
-    standalone: false
+  selector: '[dFormReset]',
+  standalone: false
 })
 export class DFormResetDirective implements AfterViewInit, OnDestroy {
   @HostBinding('class.devui-form-reset') default = true;

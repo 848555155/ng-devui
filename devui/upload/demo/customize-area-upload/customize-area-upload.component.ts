@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { FileUploader, IFileOptions, IUploadOptions } from 'ng-devui/upload';
 
 @Component({
-    selector: 'd-customize-area-upload',
-    templateUrl: './customize-area-upload.component.html',
-    styleUrls: ['./customize-area-upload.component.scss'],
-    standalone: false
+  selector: 'd-customize-area-upload',
+  templateUrl: './customize-area-upload.component.html',
+  styleUrls: ['./customize-area-upload.component.scss'],
+  standalone: false
 })
 
 export class CustomizeAreaUploadComponent {

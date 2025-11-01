@@ -8,17 +8,17 @@ import { GridStackService } from '../grid-stack.service';
 import { DashboardLibraryPanelDirective } from '../widget-library/library-panel.directive';
 
 @Directive({
-    selector: '[dDashboardLibraryWidget]',
-    standalone: false
+  selector: '[dDashboardLibraryWidget]',
+  standalone: false
 })
 export class DashboardLibraryWidgetDirective implements OnChanges, AfterViewInit, OnDestroy {
   @HostBinding('attr.gs-w')
   @Input()
-  width: number;
+    width: number;
 
   @HostBinding('attr.gs-h')
   @Input()
-  height: number;
+    height: number;
 
   @Input() widgetData;
 
@@ -28,13 +28,13 @@ export class DashboardLibraryWidgetDirective implements OnChanges, AfterViewInit
   @Input() dragCopyStyle = false;
 
   @HostBinding('class.grid-stack-new-item')
-  hostBinding = true;
+    hostBinding = true;
 
   @HostBinding('class.grid-stack-item-content')
-  hostBindingHandler = true;
+    hostBindingHandler = true;
 
   @HostBinding('attr.gs-instance')
-  gridStackId;
+    gridStackId;
 
   @Input() targetDashboard: DashboardComponent;
   isSetup = false;

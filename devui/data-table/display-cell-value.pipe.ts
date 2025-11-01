@@ -4,8 +4,8 @@ import { formatDate } from 'ng-devui/utils';
 import type { DataTableColumnTmplComponent } from './tmpl/data-table-column-tmpl.component';
 
 @Pipe({
-    name: 'disPlayCellValuePipe',
-    standalone: false
+  name: 'disPlayCellValuePipe',
+  standalone: false
 })
 export class DisPlayCellValuePipe implements PipeTransform {
   datePicker = {

@@ -1,8 +1,8 @@
 import { Directive, EventEmitter, Output } from '@angular/core';
 
 @Directive({
-    selector: '[dDashboardLibraryPanel]',
-    standalone: false
+  selector: '[dDashboardLibraryPanel]',
+  standalone: false
 })
 export class DashboardLibraryPanelDirective {
   @Output() widgetDragStart = new EventEmitter();

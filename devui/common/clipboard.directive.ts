@@ -22,8 +22,8 @@ import { PositionType } from 'ng-devui/tooltip';
 import { Subscription } from 'rxjs';
 
 @Directive({
-    selector: '[dClipboard]',
-    standalone: false
+  selector: '[dClipboard]',
+  standalone: false
 })
 export class ClipboardDirective implements OnInit , OnDestroy {
   @Input('dClipboard') devuiTargetElm: HTMLInputElement | HTMLTextAreaElement | undefined | '';

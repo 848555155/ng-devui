@@ -17,11 +17,11 @@ import { PanelHeaderComponent } from './panel-header.component';
 import { PanelType } from './panel.types';
 
 @Component({
-    selector: 'd-panel',
-    templateUrl: './panel.component.html',
-    styleUrls: ['./panel.component.scss'],
-    animations: [trigger('noAnimation', [transition(':enter', [])]), expandCollapseForDomDestroy],
-    standalone: false
+  selector: 'd-panel',
+  templateUrl: './panel.component.html',
+  styleUrls: ['./panel.component.scss'],
+  animations: [trigger('noAnimation', [transition(':enter', [])]), expandCollapseForDomDestroy],
+  standalone: false
 })
 export class PanelComponent {
   @Input() type: PanelType = 'default';

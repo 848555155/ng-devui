@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 @Component({
-    selector: 'd-tree-select-custom-template',
-    templateUrl: './custom-template.component.html',
-    styleUrls: ['./custom-template.component.scss'],
-    standalone: false
+  selector: 'd-tree-select-custom-template',
+  templateUrl: './custom-template.component.html',
+  styleUrls: ['./custom-template.component.scss'],
+  standalone: false
 })
 export class TreeSelectCustomTemplateComponent {
   data = [

@@ -2,9 +2,9 @@ import { Directive, ElementRef, HostBinding, Input } from '@angular/core';
 import { DevConfigService, WithConfig } from 'ng-devui/utils';
 
 @Directive({
-    selector: '[dTextInput]',
-    exportAs: 'dTextInput',
-    standalone: false
+  selector: '[dTextInput]',
+  exportAs: 'dTextInput',
+  standalone: false
 })
 export class TextDirective {
   @Input() @HostBinding('class.error') error: boolean;

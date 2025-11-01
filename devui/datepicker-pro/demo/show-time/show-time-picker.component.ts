@@ -3,9 +3,9 @@ import {
 } from '@angular/core';
 
 @Component({
-    selector: 'd-show-time-datepicker-pro',
-    templateUrl: './show-time-picker.component.html',
-    standalone: false
+  selector: 'd-show-time-datepicker-pro',
+  templateUrl: './show-time-picker.component.html',
+  standalone: false
 })
 export class ShowTimeDatepickerProComponent {
   value = new Date();

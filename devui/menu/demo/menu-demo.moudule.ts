@@ -23,40 +23,40 @@ import { AutoExpandComponent } from './auto-expand/auto-expand.component';
 
 @NgModule({
   imports: [
-  DDemoNavModule,
-  CommonModule,
-  TranslateModule,
-  IconModule,
-  ToggleModule,
-  DevUICodeboxModule,
-  ButtonModule,
-  TooltipModule,
-  DevUIApiModule,
-  MenuModule,
-  RouterModule.forChild([
-    { path: '', redirectTo: 'demo', pathMatch: 'full' },
-    { path: 'demo', component: MenuDemoComponent },
-    {
-    path: 'api',
-    component: DevUIApiComponent,
-    data: {
-    'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-    'en-us': require('!html-loader!markdown-loader!../doc/api-en.md'),
-    },
-    },
+    DDemoNavModule,
+    CommonModule,
+    TranslateModule,
+    IconModule,
+    ToggleModule,
+    DevUICodeboxModule,
+    ButtonModule,
+    TooltipModule,
+    DevUIApiModule,
+    MenuModule,
+    RouterModule.forChild([
+      { path: '', redirectTo: 'demo', pathMatch: 'full' },
+      { path: 'demo', component: MenuDemoComponent },
+      {
+        path: 'api',
+        component: DevUIApiComponent,
+        data: {
+          'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
+          'en-us': require('!html-loader!markdown-loader!../doc/api-en.md'),
+        },
+      },
     ]),
   ],
   exports: [],
   declarations: [
-  MenuDemoComponent,
-  BasicComponent,
-  OpenCloseComponent,
-  OpenOneComponent,
-  CustomNodeComponent,
-  AutoExpandComponent,
-  LoopComponent,
-  LoopMenuComponent,
-  LoopSubMenuComponent,
+    MenuDemoComponent,
+    BasicComponent,
+    OpenCloseComponent,
+    OpenOneComponent,
+    CustomNodeComponent,
+    AutoExpandComponent,
+    LoopComponent,
+    LoopMenuComponent,
+    LoopSubMenuComponent,
   ]
-  })
+})
 export class MenuDemoModule { }

@@ -2,9 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { environment } from 'src/environments/environment';
 
 @Component({
-    selector: 'd-breadcrumb-design',
-    templateUrl: './breadcrumb-design.component.html',
-    standalone: false
+  selector: 'd-breadcrumb-design',
+  templateUrl: './breadcrumb-design.component.html',
+  standalone: false
 })
 
 export class BreadcrumbDesignComponent implements OnInit {

@@ -6,11 +6,11 @@ import {
 } from '@angular/core';
 
 @Component({
-    selector: 'd-datepicker-range',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    templateUrl: './datepicker-range.component.html',
-    styleUrls: ['./datepicker-range.component.scss'],
-    standalone: false
+  selector: 'd-datepicker-range',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: './datepicker-range.component.html',
+  styleUrls: ['./datepicker-range.component.scss'],
+  standalone: false
 })
 export class DatepickerRangeComponent implements OnInit {
   datePicker1: any;

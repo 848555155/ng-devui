@@ -3,8 +3,8 @@ import { Subscription, fromEvent } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Directive({
-    selector: '[dLazyLoad]',
-    standalone: false
+  selector: '[dLazyLoad]',
+  standalone: false
 })
 export class LazyLoadDirective implements OnDestroy, OnChanges, AfterViewInit {
   // 启用懒加载，默认不启用

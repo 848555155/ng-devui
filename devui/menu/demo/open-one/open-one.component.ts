@@ -57,10 +57,10 @@ const MENUS: MenuItemType[] = [
 
 
 @Component({
-    selector: 'd-open-one',
-    templateUrl: './open-one.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  selector: 'd-open-one',
+  templateUrl: './open-one.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class OpenOneComponent {
   menus = MENUS;

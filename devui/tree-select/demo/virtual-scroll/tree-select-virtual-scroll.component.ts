@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'd-demo-tree-select-virtual-scroll',
-    templateUrl: './tree-select-virtual-scroll.component.html',
-    styleUrls: ['./tree-select-virtual-scroll.component.scss'],
-    standalone: false
+  selector: 'd-demo-tree-select-virtual-scroll',
+  templateUrl: './tree-select-virtual-scroll.component.html',
+  styleUrls: ['./tree-select-virtual-scroll.component.scss'],
+  standalone: false
 })
 export class TreeSelectVirtualScrollComponent implements OnInit {
   data: Array<any> = [{

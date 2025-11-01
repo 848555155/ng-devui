@@ -3,9 +3,9 @@ import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 
 @Component({
-    selector: 'd-design-color-demo',
-    templateUrl: './design-color-demo.component.html',
-    standalone: false
+  selector: 'd-design-color-demo',
+  templateUrl: './design-color-demo.component.html',
+  standalone: false
 })
 export class DesignColorDemoComponent implements OnInit, OnDestroy {
   navItems = [];

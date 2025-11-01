@@ -2,9 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { environment } from 'src/environments/environment';
 
 @Component({
-    selector: 'd-icon-design',
-    templateUrl: './icon-design.component.html',
-    standalone: false
+  selector: 'd-icon-design',
+  templateUrl: './icon-design.component.html',
+  standalone: false
 })
 
 export class IconDesignComponent implements OnInit {

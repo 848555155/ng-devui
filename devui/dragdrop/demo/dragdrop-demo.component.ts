@@ -4,9 +4,9 @@ import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 
 @Component({
-    selector: 'd-demo-dragdrop',
-    templateUrl: './dragdrop-demo.component.html',
-    standalone: false
+  selector: 'd-demo-dragdrop',
+  templateUrl: './dragdrop-demo.component.html',
+  standalone: false
 })
 export class DragDropDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

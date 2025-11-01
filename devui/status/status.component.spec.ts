@@ -6,10 +6,10 @@ import { StatusComponent } from './status.component';
 import { StatusModule } from './status.module';
 
 @Component({
-    template: `
+  template: `
   <d-status [type]="type"></d-status>
   `,
-    standalone: false
+  standalone: false
 })
 class TestStatusComponent {
   type = 'success';

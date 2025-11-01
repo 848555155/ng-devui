@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 @Component({
-    selector: 'd-circle',
-    styleUrls: ['./circle.component.scss'],
-    templateUrl: './circle.component.html',
-    standalone: false
+  selector: 'd-circle',
+  styleUrls: ['./circle.component.scss'],
+  templateUrl: './circle.component.html',
+  standalone: false
 })
 export class CircleComponent implements OnInit {
   count = 0;

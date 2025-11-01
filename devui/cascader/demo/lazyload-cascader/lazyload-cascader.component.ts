@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { CascaderItem } from 'ng-devui/cascader';
 
 @Component({
-    selector: 'd-demo-lazyload-cascader',
-    templateUrl: './lazyload-cascader.component.html',
-    standalone: false
+  selector: 'd-demo-lazyload-cascader',
+  templateUrl: './lazyload-cascader.component.html',
+  standalone: false
 })
 export class LazyloadCascaderComponent {
   options = [

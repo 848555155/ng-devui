@@ -9,10 +9,10 @@ import { StepsGuideService } from 'ng-devui/steps-guide';
 import { customData } from '../fakeData';
 
 @Component({
-    selector: 'd-custom',
-    templateUrl: './custom.component.html',
-    styles: [`d-button { margin-right: 4px }`],
-    standalone: false
+  selector: 'd-custom',
+  templateUrl: './custom.component.html',
+  styles: [`d-button { margin-right: 4px }`],
+  standalone: false
 })
 export class CustomComponent implements OnInit {
   observerDom: any;

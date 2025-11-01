@@ -1,7 +1,7 @@
 import { Directive, Input, TemplateRef } from '@angular/core';
 
 @Directive({
-    /* eslint-disable */
+  /* eslint-disable */
     selector: 'ng-template[position], ng-template[dPosition]',
     standalone: false
 })

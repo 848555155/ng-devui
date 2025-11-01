@@ -3,10 +3,10 @@ import {
 } from '@angular/core';
 
 @Component({
-    selector: 'd-additional',
-    templateUrl: './additional.component.html',
-    styleUrls: ['./additional.component.css'],
-    standalone: false
+  selector: 'd-additional',
+  templateUrl: './additional.component.html',
+  styleUrls: ['./additional.component.css'],
+  standalone: false
 })
 export class AdditionalComponent {
   pager1 = {

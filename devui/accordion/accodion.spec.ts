@@ -8,7 +8,7 @@ import { AccordionComponent } from './accordion.component';
 import { AccordionModule } from './accordion.module';
 
 @Component({
-    template: `
+  template: `
     <d-accordion
       [data]="menu"
       class="menu"
@@ -19,7 +19,7 @@ import { AccordionModule } from './accordion.module';
       [accordionType]="accordionTypeEmbed ? 'embed' : 'normal'"
     ></d-accordion>
   `,
-    standalone: false
+  standalone: false
 })
 class TestAccordionComponent {
   restrictOneOpen = false;
@@ -71,7 +71,7 @@ class TestAccordionComponent {
 }
 
 @Component({
-    template: `
+  template: `
     <d-accordion
       [data]="menu"
       class="menu"
@@ -95,7 +95,7 @@ class TestAccordionComponent {
       </ng-template>
     </ng-template>
   `,
-    standalone: false
+  standalone: false
 })
 class TestAccordionTemplateComponent {
   restrictOneOpen = false;
@@ -141,8 +141,8 @@ class TestAccordionTemplateComponent {
 }
 
 @Component({
-    template: ` <d-accordion [data]="menu" class="menu" [linkType]="'routerLink'"></d-accordion> `,
-    standalone: false
+  template: ` <d-accordion [data]="menu" class="menu" [linkType]="'routerLink'"></d-accordion> `,
+  standalone: false
 })
 class TestAccordionLinkComponent {
   constructor(private router: Router) {}
@@ -158,8 +158,8 @@ class TestAccordionLinkComponent {
 }
 
 @Component({
-    template: ` <d-accordion [data]="menu" class="menu" [linkType]="'hrefLink'" [linkDefaultTarget]="'self'"></d-accordion> `,
-    standalone: false
+  template: ` <d-accordion [data]="menu" class="menu" [linkType]="'hrefLink'" [linkDefaultTarget]="'self'"></d-accordion> `,
+  standalone: false
 })
 class TestAccordionHrefLinkComponent {
   menu = [

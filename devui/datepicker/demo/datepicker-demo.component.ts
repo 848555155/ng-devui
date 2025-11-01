@@ -4,9 +4,9 @@ import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 
 @Component({
-    selector: 'd-datepicker-demo',
-    templateUrl: './datepicker-demo.component.html',
-    standalone: false
+  selector: 'd-datepicker-demo',
+  templateUrl: './datepicker-demo.component.html',
+  standalone: false
 })
 export class DatepickerDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

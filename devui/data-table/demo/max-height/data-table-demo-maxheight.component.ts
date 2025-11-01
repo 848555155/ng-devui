@@ -6,10 +6,10 @@ import {
 import { originSource, SourceType } from '../mock-data';
 
 @Component({
-    selector: 'd-datatable-demo-maxheight',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    templateUrl: './data-table-demo-maxheight.component.html',
-    standalone: false
+  selector: 'd-datatable-demo-maxheight',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: './data-table-demo-maxheight.component.html',
+  standalone: false
 })
 export class DatatableDemoMaxheightComponent implements OnInit {
 

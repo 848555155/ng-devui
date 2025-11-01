@@ -7,11 +7,11 @@ import { VERSION } from '../../devui/version';
 import { LinkMap } from '../../devui-commons/src/constant';
 
 @Component({
-    selector: 'd-app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
-    encapsulation: ViewEncapsulation.None,
-    standalone: false
+  selector: 'd-app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  standalone: false
 })
 export class AppComponent implements OnInit, OnDestroy {
   version;
@@ -41,7 +41,7 @@ export class AppComponent implements OnInit, OnDestroy {
     translate.setDefaultLang(this.appLang ? this.appLang : ZH_CN);
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationError) {
-           // 加载失败的时候刷新重试一次
+        // 加载失败的时候刷新重试一次
         if (event.error.stack && event.error.stack.indexOf('Error: Loading chunk') >= 0) {
           if (localStorage.getItem('lastChunkError') !== event.error.stack) {
             localStorage.setItem('lastChunkError', event.error.stack);
@@ -51,7 +51,7 @@ export class AppComponent implements OnInit, OnDestroy {
           }
         }
       }
-    })
+    });
   }
   ngOnInit(): void {
     this.currentLang = localStorage.getItem('lang') || this.appLang;

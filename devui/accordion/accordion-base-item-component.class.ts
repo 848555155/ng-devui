@@ -13,7 +13,7 @@ export abstract class AccordionBaseItemComponent<T extends AccordionBaseItem> ex
   }
   @HostBinding('class.devui-accordion-item-title')
   @HostBinding('class.devui-over-flow-ellipsis')
-  defaultClasses = true;
+    defaultClasses = true;
   constructor(protected accordion: AccordionOptions) {
     super(accordion);
   }

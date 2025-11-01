@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 @Component({
-    selector: 'd-checkbox-group-basic',
-    templateUrl: './checkbox-group-basic.component.html',
-    standalone: false
+  selector: 'd-checkbox-group-basic',
+  templateUrl: './checkbox-group-basic.component.html',
+  standalone: false
 })
 export class CheckboxGroupBasicComponent {
   public checked = false;

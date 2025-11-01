@@ -13,10 +13,10 @@ import { UserGuideCoreService } from './user-guide-core.service';
 import { UserGuideUIComponent } from './user-guide-ui.component';
 
 @Component({
-    selector: 'd-user-guide',
-    templateUrl: './user-guide.component.html',
-    styleUrls: ['./user-guide.component.scss'],
-    standalone: false
+  selector: 'd-user-guide',
+  templateUrl: './user-guide.component.html',
+  styleUrls: ['./user-guide.component.scss'],
+  standalone: false
 })
 export class UserGuideComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() steps;

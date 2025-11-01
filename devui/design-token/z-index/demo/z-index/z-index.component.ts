@@ -4,9 +4,9 @@ import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 
 @Component({
-    selector: 'd-z-index',
-    templateUrl: './z-index.component.html',
-    standalone: false
+  selector: 'd-z-index',
+  templateUrl: './z-index.component.html',
+  standalone: false
 })
 export class ZIndexComponent implements OnInit, OnDestroy {
   themeService: ThemeService;
@@ -21,10 +21,10 @@ export class ZIndexComponent implements OnInit, OnDestroy {
   ngOnInit() {
     if (typeof window !== undefined) {
       this.themeService = (window as any).devuiThemeService;
-        this.changeValueInTable();
-        if (this.themeService.eventBus) {
-          this.themeService.eventBus.add('themeChanged', this.changeValueInTable);
-        }
+      this.changeValueInTable();
+      if (this.themeService.eventBus) {
+        this.themeService.eventBus.add('themeChanged', this.changeValueInTable);
+      }
     }
   }
 
