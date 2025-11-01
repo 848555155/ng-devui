@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { AlertComponent } from 'ng-devui/alert';
 
 @Component({
   selector: 'd-alert-basic',
+  imports: [AlertComponent],
   templateUrl: './basic.component.html',
   styles: [
     `
@@ -10,6 +12,6 @@ import { Component } from '@angular/core';
       }
     `,
   ],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicComponent {}

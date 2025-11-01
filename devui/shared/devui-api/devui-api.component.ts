@@ -6,12 +6,17 @@ import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import * as hljs from 'highlight.js/lib/core';
 import { marked } from 'marked';
 import { Subscription } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { NavSpriteModule } from 'ng-devui/nav-sprite';
+import { SafePipeModule } from 'ng-devui/utils';
+import { CodeCopyModule } from '../../../devui-commons/src/codecopy/codecopy.module';
+
 @Component({
   selector: 'd-api',
+  imports: [CommonModule, SafePipeModule, NavSpriteModule, CodeCopyModule],
   templateUrl: './devui-api.component.html',
   styleUrls: ['./devui-api.component.scss'],
   preserveWhitespaces: false,
-  standalone: false
 })
 export class DevUIApiComponent implements OnInit, AfterViewInit, OnDestroy {
   subs: Subscription = new Subscription();

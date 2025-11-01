@@ -1,124 +1,123 @@
 import {
-  AfterViewInit,
+  booleanAttribute,
+  ChangeDetectionStrategy,
   Component,
-  ContentChildren,
+  computed,
+  contentChildren,
+  effect,
   ElementRef,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnDestroy,
-  Output,
-  QueryList,
+  inject,
+  input,
+  output,
   Renderer2,
-  SimpleChanges,
+  signal,
   TemplateRef,
-  ViewChild,
+  viewChild,
 } from '@angular/core';
 import { AlertCarouselItemComponent } from './alert-carousel-item.component';
 import { AlertType } from './alert.types';
+import { NgTemplateOutlet } from '@angular/common';
+import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
+import { BehaviorSubject, combineLatest, filter, first, switchMap, takeUntil, timer } from 'rxjs';
 
 @Component({
   selector: 'd-alert',
+  imports: [NgTemplateOutlet],
   templateUrl: './alert.component.html',
   styleUrls: ['./alert.component.scss'],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AlertComponent implements OnChanges, OnDestroy, AfterViewInit {
-  @Input() type: AlertType = 'info';
-  @Input() cssClass: string;
-  @Input() closeable = true;
-  @Input() showIcon = true;
-  @Input() autoplay = false;
-  @Input() autoplaySpeed = 3000;
-  @Input() transitionSpeed = 500;
-  @Input() operationTemplate: TemplateRef<any>;
-  @Input() set dismissTime(time: number) {
-    setTimeout(() => {
-      this.close();
-    }, time);
-  }
-  @Output() closeEvent = new EventEmitter<AlertComponent>();
-  @ViewChild('carouselContainer') box: ElementRef<any>;
-  @ContentChildren(AlertCarouselItemComponent) carouselItems: QueryList<AlertCarouselItemComponent>;
-  hide = false;
-  autoplayHeight: string;
-  carouselNum: number;
-  currentIndex = 1;
-  scheduledId: any;
+export class AlertComponent {
+  type = input<AlertType>('info');
+  cssClass = input<string>();
+  closeable = input(true, { transform: booleanAttribute });
+  showIcon = input(true, { transform: booleanAttribute });
+  autoplay = input(false, { transform: booleanAttribute });
+  autoplaySpeed = input(3000);
+  transitionSpeed = input(500);
+  operationTemplate = input<TemplateRef<{ close: () => void }>>();
+  dismissTime = input<number>();
+  closeEvent = output<AlertComponent>();
+  box = viewChild<ElementRef>('carouselContainer');
+  carouselItems = contentChildren(AlertCarouselItemComponent);
+  hide = signal(false);
+  autoplayHeight = signal('');
+  carouselNum = computed(() => this.carouselItems().length);
+  currentIndex = signal(1);
   SINGLE_LINE_HEIGHT = '24px';
 
-  constructor(private el: ElementRef, private renderer: Renderer2) {}
+  private el = inject(ElementRef);
+  private renderer = inject(Renderer2);
+  stopTransition$ = new BehaviorSubject(false);
+  timer$ = combineLatest({
+    autoplay: toObservable(this.autoplay),
+    speed: toObservable(this.autoplaySpeed),
+    stopTransition: this.stopTransition$,
+    hide: toObservable(this.hide),
+  })
+    .pipe(
+      takeUntilDestroyed(),
+      filter(({ autoplay, stopTransition, hide }) => autoplay && !stopTransition && !hide),
+      switchMap(({ speed }) => timer(0, speed).pipe(takeUntil(this.stopTransition$.pipe(filter((stop) => stop)))))
+    )
+    .subscribe(() => {
+      this.next();
+    });
 
-  ngOnChanges(changes: SimpleChanges) {
-    const { autoplay, autoplaySpeed, transitionSpeed } = changes;
-    if ((autoplay || autoplaySpeed) && (!this.autoplay || !this.autoplaySpeed)) {
-      this.clearScheduledTransition();
-    } else {
-      this.autoScheduleTransition();
-    }
-    if (transitionSpeed && this.transitionSpeed) {
-      this.renderer.setStyle(this.box.nativeElement, 'transition', `top ${this.transitionSpeed}ms ease`);
-    }
-  }
-
-  ngAfterViewInit(): void {
-    this.renderCarouselItem();
-    this.carouselItems.changes.subscribe(() => this.renderCarouselItem());
-  }
-
-  ngOnDestroy() {
-    this.clearScheduledTransition();
+  constructor() {
+    effect(() => {
+      this.renderCarouselItem();
+    });
+    effect(() => {
+      if (this.transitionSpeed() && this.box()) {
+        this.renderer.setStyle(this.box().nativeElement, 'transition', `top ${this.transitionSpeed()}ms ease`);
+      }
+    });
+    effect(() => {
+      if (!this.box()) {
+        return;
+      }
+      const size = this.currentIndex() - 1;
+      this.renderer.setStyle(this.box().nativeElement, 'top', `${-size * 100}%`);
+    });
+    effect(() => {
+      const dismissTime = this.dismissTime() || 0;
+      if (dismissTime) {
+        timer(0, dismissTime)
+          .pipe(first())
+          .subscribe(() => {
+            this.close();
+          });
+      }
+    });
   }
 
   renderCarouselItem() {
-    this.carouselNum = this.carouselItems.length;
-    if (this.carouselNum > 1) {
-      if (!this.autoplayHeight) {
-        const itemHeights = this.carouselItems.map((item) => {
+    if (this.carouselNum() > 1) {
+      if (!this.autoplayHeight()) {
+        const itemHeights = this.carouselItems().map((item) => {
           const rect = item?.el.nativeElement.getBoundingClientRect();
           return rect?.height || 0;
         });
         const maxHeight = Math.max(...itemHeights);
-        this.autoplayHeight = maxHeight ? `${maxHeight}px` : this.SINGLE_LINE_HEIGHT;
+        this.autoplayHeight.set(maxHeight ? `${maxHeight}px` : this.SINGLE_LINE_HEIGHT);
       }
-      this.el.nativeElement.style.setProperty('--devui-alert-carousel-item-height', this.autoplayHeight);
-      this.renderer.setStyle(this.box.nativeElement, 'transition', `top ${this.transitionSpeed}ms ease`);
-      this.autoScheduleTransition();
+      this.el.nativeElement.style.setProperty('--devui-alert-carousel-item-height', this.autoplayHeight());
     }
   }
 
-  next = (): void => {
-    if (this.currentIndex < this.carouselNum) {
-      this.currentIndex++;
+  next() {
+    if (this.currentIndex() < this.carouselNum()) {
+      this.currentIndex.update((value) => value + 1);
     } else {
-      this.currentIndex = 1;
-    }
-    this.translatePosition(this.currentIndex - 1);
-    this.autoScheduleTransition();
-  };
-
-  autoScheduleTransition() {
-    this.clearScheduledTransition();
-    if (this.autoplay && this.autoplaySpeed) {
-      this.scheduledId = setTimeout(() => this.next(), this.autoplaySpeed);
+      this.currentIndex.set(1);
     }
   }
 
-  clearScheduledTransition() {
-    if (this.scheduledId) {
-      clearTimeout(this.scheduledId);
-      this.scheduledId = undefined;
-    }
-  }
-
-  translatePosition(size: number) {
-    this.renderer.setStyle(this.box.nativeElement, 'top', `${-size * 100}%`);
-  }
-
-  close = (): void => {
-    this.clearScheduledTransition();
+  close = () => {
+    this.stopTransition$.next(true);
     this.closeEvent.emit(this);
-    this.hide = true;
+    this.hide.set(true);
   };
 }

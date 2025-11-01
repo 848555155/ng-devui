@@ -1,34 +1,36 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
-import { Subscription } from 'rxjs';
+import { map, Subscription } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { AlertModule } from 'ng-devui/alert';
+import { DevUIApiModule } from 'ng-devui/shared/devui-api/devui-api.module';
+import { DevUICodeboxModule } from 'ng-devui/shared/devui-codebox/devui-codebox.module';
+import { TranslateModule } from '@ngx-translate/core';
+import { DDemoNavModule } from 'devui-commons/src/demo-nav/d-demo-nav.module';
+import { ActivatedRoute } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { DevuiDemosData } from 'ng-devui/shared/devui-codebox';
+
 @Component({
   selector: 'd-alert-demo',
+  imports: [
+    CommonModule,
+    FormsModule,
+    TranslateModule,
+    AlertModule,
+    DevUICodeboxModule,
+    DevUIApiModule,
+    DDemoNavModule,
+  ],
   templateUrl: './alert-demo.component.html',
-  standalone: false
 })
 export class AlertDemoComponent implements OnInit, OnDestroy {
-  basicSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./basic/basic.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./basic/basic.component.ts?raw') },
-  ];
-  closeSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./close/close.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./close/close.component.ts?raw') },
-    { title: 'SCSS', language: 'css', code: require('./close/close.component.css?raw') },
-  ];
-  withoutIconSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./withoutIcon/withoutIcon.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./withoutIcon/withoutIcon.component.ts?raw') },
-  ];
-  carouselSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./carousel/carousel.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./carousel/carousel.component.ts?raw') },
-  ];
   navItems = [];
   subs: Subscription = new Subscription();
 
-  constructor(private translate: TranslateService) {}
+  private translate = inject(TranslateService);
+  demos = toSignal(inject(ActivatedRoute).data.pipe(map(data => data.demos as DevuiDemosData)));
 
   ngOnInit() {
     this.subs.add(

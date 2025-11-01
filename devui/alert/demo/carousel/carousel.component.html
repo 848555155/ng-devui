@@ -1,5 +1,7 @@
 <d-alert [type]="'info'" [autoplay]="true" [operationTemplate]="operationTemplate">
-  <d-alert-carousel-item *ngFor="let item of data">{{ item.content }}</d-alert-carousel-item>
+  @for (item of data; track item.id) {
+  <d-alert-carousel-item>{{ item.content }}</d-alert-carousel-item>
+  }
 </d-alert>
 
 <ng-template #operationTemplate let-close="close">

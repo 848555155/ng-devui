@@ -169,7 +169,7 @@ export const routesConfig: Routes = [
   {
     path: 'alert',
     component: ExamplePanelComponent,
-    loadChildren: () => import('../../../devui/alert/demo/alert-demo.module').then((m) => m.AlertDemoModule),
+    loadChildren: () => import('../../../devui/alert/demo/alert-demo.routes'),
     data: {
       type: '反馈',
       enType: 'Feedback',
