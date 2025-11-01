@@ -1,4 +1,4 @@
-import { DOCUMENT } from '@angular/common';
+
 import {
   ChangeDetectorRef,
   Component,
@@ -15,7 +15,8 @@ import {
   Output,
   Renderer2,
   SimpleChanges,
-  TemplateRef
+  TemplateRef,
+  DOCUMENT
 } from '@angular/core';
 import { fromEvent, Observable, Subscription } from 'rxjs';
 import { FilterConfig, SortDirection, SortEventArg } from '../../../data-table.model';

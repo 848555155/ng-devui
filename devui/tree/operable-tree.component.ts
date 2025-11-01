@@ -1,4 +1,4 @@
-import { DOCUMENT } from '@angular/common';
+
 import {
   AfterViewInit,
   Component,
@@ -15,6 +15,7 @@ import {
   TemplateRef,
   ViewChild,
   ViewChildren,
+  DOCUMENT
 } from '@angular/core';
 import { I18nInterface, I18nService } from 'ng-devui/i18n';
 import { DevConfigService, WithConfig, expandCollapseForDomDestroy } from 'ng-devui/utils';

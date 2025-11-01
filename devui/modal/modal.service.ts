@@ -1,9 +1,10 @@
-import { DOCUMENT } from '@angular/common';
+
 import {
   ComponentFactoryResolver,
   Inject,
   Injectable,
-  Renderer2, RendererFactory2
+  Renderer2, RendererFactory2,
+  DOCUMENT
 } from '@angular/core';
 import { OverlayContainerRef } from 'ng-devui/overlay-container';
 import { DevConfigService } from 'ng-devui/utils';

@@ -1,4 +1,4 @@
-import { DOCUMENT } from '@angular/common';
+
 import {
   AfterViewInit,
   ChangeDetectorRef,
@@ -14,6 +14,7 @@ import {
   Renderer2,
   SimpleChanges,
   TemplateRef,
+  DOCUMENT
 } from '@angular/core';
 import { PositionService } from 'ng-devui/position';
 import { directionFadeInOut } from 'ng-devui/utils';

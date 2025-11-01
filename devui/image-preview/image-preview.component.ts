@@ -1,5 +1,5 @@
-import { DOCUMENT } from '@angular/common';
-import { ChangeDetectionStrategy, Component, ElementRef, HostListener, Inject, Input, OnDestroy, OnInit } from '@angular/core';
+
+import { ChangeDetectionStrategy, Component, ElementRef, HostListener, Inject, Input, OnDestroy, OnInit, DOCUMENT } from '@angular/core';
 import { I18nInterface, I18nService } from 'ng-devui/i18n';
 import { merge } from 'lodash-es';
 import { Subscription } from 'rxjs';

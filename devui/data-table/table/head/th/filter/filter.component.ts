@@ -1,4 +1,4 @@
-import { DOCUMENT } from '@angular/common';
+
 import {
   ChangeDetectorRef,
   Component,
@@ -13,6 +13,7 @@ import {
   SimpleChanges,
   TemplateRef,
   ViewChild,
+  DOCUMENT
 } from '@angular/core';
 import { DropDownDirective } from 'ng-devui/dropdown';
 import { I18nInterface, I18nService } from 'ng-devui/i18n';

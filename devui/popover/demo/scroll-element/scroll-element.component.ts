@@ -1,5 +1,5 @@
-import { DOCUMENT } from '@angular/common';
-import { Component, Inject } from '@angular/core';
+
+import { Component, Inject, DOCUMENT } from '@angular/core';
 @Component({
     selector: 'd-scroll-element',
     templateUrl: './scroll-element.component.html',

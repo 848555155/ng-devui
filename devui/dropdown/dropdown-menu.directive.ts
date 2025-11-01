@@ -1,6 +1,6 @@
 import { animate, AnimationBuilder, AnimationMetadata, AnimationPlayer, style } from '@angular/animations';
-import { DOCUMENT } from '@angular/common';
-import { Directive, ElementRef, Host, HostBinding, HostListener, Inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+
+import { Directive, ElementRef, Host, HostBinding, HostListener, Inject, OnDestroy, OnInit, Renderer2, DOCUMENT } from '@angular/core';
 import { AnimationCurves, AnimationDuration } from 'ng-devui/utils';
 import { WindowRef } from 'ng-devui/window-ref';
 import { fromEvent, Subscription } from 'rxjs';

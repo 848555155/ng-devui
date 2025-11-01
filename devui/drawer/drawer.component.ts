@@ -1,5 +1,5 @@
 import { AnimationEvent } from '@angular/animations';
-import { DOCUMENT } from '@angular/common';
+
 import {
   ChangeDetectorRef,
   Component,
@@ -14,6 +14,7 @@ import {
   TemplateRef,
   ViewChild,
   ViewContainerRef,
+  DOCUMENT
 } from '@angular/core';
 import { ResizeDirective } from 'ng-devui/splitter';
 import { backdropFadeInOut, flyInOut } from 'ng-devui/utils';

@@ -1,5 +1,5 @@
-import { DOCUMENT } from '@angular/common';
-import { AfterViewInit, Directive, ElementRef, Inject, Input } from '@angular/core';
+
+import { AfterViewInit, Directive, ElementRef, Inject, Input, DOCUMENT } from '@angular/core';
 @Directive({
     selector: '[dIframeEventPropagate]',
     standalone: false

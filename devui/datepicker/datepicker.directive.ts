@@ -1,5 +1,5 @@
 import { animate, AnimationBuilder, AnimationMetadata, AnimationPlayer, style } from '@angular/animations';
-import { DOCUMENT } from '@angular/common';
+
 import {
   ChangeDetectorRef,
   ComponentFactoryResolver,
@@ -18,6 +18,7 @@ import {
   Renderer2,
   TemplateRef,
   ViewContainerRef,
+  DOCUMENT
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { I18nInterface, I18nService } from 'ng-devui/i18n';

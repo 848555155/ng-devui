@@ -1,4 +1,4 @@
-import { DOCUMENT } from '@angular/common';
+
 import {
   ComponentFactoryResolver,
   ComponentRef,
@@ -9,7 +9,8 @@ import {
   Input,
   OnDestroy,
   OnInit,
-  Output
+  Output,
+  DOCUMENT
 } from '@angular/core';
 import { OverlayContainerRef } from 'ng-devui/overlay-container';
 import { throttle } from 'lodash-es';

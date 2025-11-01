@@ -1,7 +1,7 @@
-import { Component, ElementRef, Inject, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, Inject, Input, OnInit, ViewEncapsulation, DOCUMENT } from '@angular/core';
 import { DevuiOnlineIdeService } from '../devui-online-ide/devui-online-ide.service';
 import { DevuiSourceData } from './devui-source-data';
-import { DOCUMENT } from '@angular/common';
+
 
 @Component({
     selector: 'd-codebox',

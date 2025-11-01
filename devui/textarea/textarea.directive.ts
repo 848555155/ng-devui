@@ -1,5 +1,5 @@
-import { DOCUMENT } from '@angular/common';
-import { AfterViewInit, Directive, ElementRef, HostBinding, Inject, Input, OnDestroy, Optional, Renderer2, Self } from '@angular/core';
+
+import { AfterViewInit, Directive, ElementRef, HostBinding, Inject, Input, OnDestroy, Optional, Renderer2, Self, DOCUMENT } from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { DevConfigService, WithConfig } from 'ng-devui/utils';
 

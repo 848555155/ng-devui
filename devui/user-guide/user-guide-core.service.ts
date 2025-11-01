@@ -1,5 +1,5 @@
-import { DOCUMENT } from '@angular/common';
-import { Inject, Injectable, OnDestroy, Renderer2, RendererFactory2 } from '@angular/core';
+
+import { Inject, Injectable, OnDestroy, Renderer2, RendererFactory2, DOCUMENT } from '@angular/core';
 import { BehaviorSubject, fromEvent, fromEventPattern, Observable, Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 import { PanelPostion } from './utils/calculate-panel-position';

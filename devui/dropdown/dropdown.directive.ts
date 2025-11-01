@@ -1,5 +1,5 @@
 import { CdkOverlayOrigin } from '@angular/cdk/overlay';
-import { DOCUMENT } from '@angular/common';
+
 import {
   AfterContentInit,
   ChangeDetectorRef,
@@ -18,6 +18,7 @@ import {
   QueryList,
   SimpleChanges,
   SkipSelf,
+  DOCUMENT
 } from '@angular/core';
 import { addClassToOrigin, DevConfigService, formWithDropDown, removeClassFromOrigin, WithConfig } from 'ng-devui/utils';
 import { fromEvent, merge, Observable, ReplaySubject, Subscription } from 'rxjs';

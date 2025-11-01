@@ -1,5 +1,5 @@
-import { DOCUMENT } from '@angular/common';
-import { Component, EventEmitter, Input, OnInit, Output, Inject, ChangeDetectorRef } from '@angular/core';
+
+import { Component, EventEmitter, Input, OnInit, Output, Inject, ChangeDetectorRef, DOCUMENT } from '@angular/core';
 import { DevuiCommonsService } from '../../devui-commons.service';
 import { I18nUtil } from '../../i18n/i18n.util';
 import { componentSvg, designSvg, ecologySvg, logoSvg, vueDevUISvg } from './icon';

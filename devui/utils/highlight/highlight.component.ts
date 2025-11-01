@@ -1,5 +1,5 @@
-import { DOCUMENT } from '@angular/common';
-import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, Inject, Input, OnChanges, SimpleChanges } from '@angular/core';
+
+import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, Inject, Input, OnChanges, SimpleChanges, DOCUMENT } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({

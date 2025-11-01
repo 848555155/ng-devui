@@ -1,5 +1,5 @@
-import { DOCUMENT } from '@angular/common';
-import { Component, ContentChildren, HostListener, Inject, Input, isDevMode, OnInit, QueryList, ChangeDetectorRef } from '@angular/core';
+
+import { Component, ContentChildren, HostListener, Inject, Input, isDevMode, OnInit, QueryList, ChangeDetectorRef, DOCUMENT } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { DevuiCommonsService } from '../devui-commons.service';
 import { I18nUtil } from '../i18n/i18n.util';

@@ -1,5 +1,5 @@
-import { DOCUMENT } from '@angular/common';
-import { AfterViewInit, Directive, ElementRef, Inject, Input, NgZone, OnDestroy } from '@angular/core';
+
+import { AfterViewInit, Directive, ElementRef, Inject, Input, NgZone, OnDestroy, DOCUMENT } from '@angular/core';
 import { fromEvent, merge as mergeStatic, Subscription } from 'rxjs';
 import { tap, throttleTime } from 'rxjs/operators';
 import { DragDropService } from '../services/drag-drop.service';

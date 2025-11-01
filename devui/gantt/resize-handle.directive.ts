@@ -1,5 +1,5 @@
-import { DOCUMENT } from '@angular/common';
-import { Directive, ElementRef, EventEmitter, HostListener, Inject, Input, NgZone, Output, Renderer2 } from '@angular/core';
+
+import { Directive, ElementRef, EventEmitter, HostListener, Inject, Input, NgZone, Output, Renderer2, DOCUMENT } from '@angular/core';
 import { Subscription, fromEvent } from 'rxjs';
 
 @Directive({

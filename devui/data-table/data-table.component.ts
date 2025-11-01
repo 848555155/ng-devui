@@ -1,5 +1,5 @@
 ﻿import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
-import { DOCUMENT } from '@angular/common';
+
 import {
   AfterContentInit,
   AfterViewInit,
@@ -23,6 +23,7 @@ import {
   SimpleChanges,
   TemplateRef,
   ViewChild,
+  DOCUMENT
 } from '@angular/core';
 import { merge, Subscription } from 'rxjs';
 import { switchMap, takeUntil } from 'rxjs/operators';

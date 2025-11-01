@@ -1,11 +1,12 @@
-import { DOCUMENT } from '@angular/common';
+
 import {
   ApplicationRef,
   Component,
   EmbeddedViewRef,
   Inject,
   TemplateRef,
-  ViewChild
+  ViewChild,
+  DOCUMENT
 } from '@angular/core';
 import { forEach } from 'lodash-es';
 

@@ -1,4 +1,4 @@
-import { DOCUMENT } from '@angular/common';
+
 import {
   AfterViewInit,
   ChangeDetectorRef,
@@ -18,6 +18,7 @@ import {
   QueryList,
   SimpleChanges,
   ViewChildren,
+  DOCUMENT
 } from '@angular/core';
 import { I18nInterface, I18nService } from 'ng-devui/i18n';
 import { Subscription } from 'rxjs';

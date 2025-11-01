@@ -1,4 +1,4 @@
-import { DOCUMENT } from '@angular/common';
+
 import {
   AfterContentInit,
   AfterViewInit,
@@ -17,6 +17,7 @@ import {
   TemplateRef,
   ViewChild,
   ViewChildren,
+  DOCUMENT
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DatepickerProCalendarComponent } from 'ng-devui/datepicker-pro';

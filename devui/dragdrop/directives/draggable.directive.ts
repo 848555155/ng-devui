@@ -1,7 +1,8 @@
-import { DOCUMENT } from '@angular/common';
+
 import {
   AfterViewInit, Directive, ElementRef, EventEmitter,
-  HostBinding, Inject, Input, NgZone, OnDestroy, OnInit, Optional, Output, Renderer2, Self
+  HostBinding, Inject, Input, NgZone, OnDestroy, OnInit, Optional, Output, Renderer2, Self,
+  DOCUMENT
 } from '@angular/core';
 import { fromEvent, Subject, Subscription } from 'rxjs';
 import { DragDropService } from '../services/drag-drop.service';

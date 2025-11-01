@@ -1,5 +1,5 @@
-import { DOCUMENT } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, Inject, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
+
+import { AfterViewInit, Component, ElementRef, Inject, Input, OnInit, QueryList, ViewChildren, DOCUMENT } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import * as hljs from 'highlight.js/lib/core';

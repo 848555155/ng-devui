@@ -1,4 +1,4 @@
-import { DOCUMENT } from '@angular/common';
+
 import {
   AfterViewInit,
   ChangeDetectorRef,
@@ -11,7 +11,8 @@ import {
   OnDestroy,
   Output,
   Renderer2,
-  ViewChild
+  ViewChild,
+  DOCUMENT
 } from '@angular/core';
 import { createPopper } from '@popperjs/core';
 import { Observable, Subject } from 'rxjs';

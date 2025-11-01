@@ -1,5 +1,5 @@
-import { DOCUMENT } from '@angular/common';
-import { Inject, Injectable, OnDestroy, TemplateRef } from '@angular/core';
+
+import { Inject, Injectable, OnDestroy, TemplateRef, DOCUMENT } from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Injectable()

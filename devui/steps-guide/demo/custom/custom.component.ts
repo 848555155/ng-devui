@@ -1,8 +1,9 @@
-import { DOCUMENT } from '@angular/common';
+
 import {
   Component,
   Inject,
-  OnInit
+  OnInit,
+  DOCUMENT
 } from '@angular/core';
 import { StepsGuideService } from 'ng-devui/steps-guide';
 import { customData } from '../fakeData';

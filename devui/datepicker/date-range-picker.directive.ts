@@ -1,5 +1,5 @@
 import { CdkOverlayOrigin, ConnectedOverlayPositionChange, VerticalConnectionPos } from '@angular/cdk/overlay';
-import { DOCUMENT } from '@angular/common';
+
 import {
   ChangeDetectorRef,
   Component,
@@ -16,6 +16,7 @@ import {
   TemplateRef,
   ViewChild,
   forwardRef,
+  DOCUMENT
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { I18nInterface, I18nService } from 'ng-devui/i18n';

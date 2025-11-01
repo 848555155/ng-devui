@@ -1,5 +1,5 @@
-import { DOCUMENT } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, Inject } from '@angular/core';
+
+import { AfterViewInit, Component, ElementRef, Inject, DOCUMENT } from '@angular/core';
 
 @Component({
     selector: 'd-common-iframe-propagate',

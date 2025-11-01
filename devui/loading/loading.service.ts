@@ -1,5 +1,5 @@
-import { DOCUMENT } from '@angular/common';
-import { ComponentFactoryResolver, ComponentRef, EmbeddedViewRef, Inject, Injectable, Renderer2, RendererFactory2 } from '@angular/core';
+
+import { ComponentFactoryResolver, ComponentRef, EmbeddedViewRef, Inject, Injectable, Renderer2, RendererFactory2, DOCUMENT } from '@angular/core';
 import { OverlayContainerRef } from 'ng-devui/overlay-container';
 import { LoadingBackdropComponent } from './loading-backdrop.component';
 import { LoadingComponent } from './loading.component';

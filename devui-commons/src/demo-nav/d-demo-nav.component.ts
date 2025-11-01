@@ -1,5 +1,5 @@
-import { DOCUMENT } from '@angular/common';
-import { Component, Inject, Input, OnInit } from '@angular/core';
+
+import { Component, Inject, Input, OnInit, DOCUMENT } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { DevuiCommonsService } from '../../src/devui-commons.service';
 import { I18nUtil } from '../i18n/i18n.util';

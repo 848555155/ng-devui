@@ -1,5 +1,5 @@
 import { CdkOverlayOrigin, ConnectedOverlayPositionChange, VerticalConnectionPos } from '@angular/cdk/overlay';
-import { DOCUMENT } from '@angular/common';
+
 import {
   ChangeDetectorRef,
   Component,
@@ -12,6 +12,7 @@ import {
   Output,
   TemplateRef,
   ViewChild,
+  DOCUMENT
 } from '@angular/core';
 import { I18nInterface, I18nService } from 'ng-devui/i18n';
 import { DateConverter, DefaultDateConverter, DevConfigService, WithConfig, fadeInOut } from 'ng-devui/utils';

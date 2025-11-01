@@ -7,7 +7,7 @@ import {
   ScrollStrategyOptions,
   VerticalConnectionPos,
 } from '@angular/cdk/overlay';
-import { DOCUMENT } from '@angular/common';
+
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -25,6 +25,7 @@ import {
   Renderer2,
   SimpleChanges,
   ViewChild,
+  DOCUMENT
 } from '@angular/core';
 import {
   AppendToBodyDirection,
