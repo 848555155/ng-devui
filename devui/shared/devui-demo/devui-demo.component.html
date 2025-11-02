@@ -1,5 +1,5 @@
 <div class="devui-demo-container" dAnchorBox dAnchorHashSupport [view]="{ top: 180, bottom: 0 }">
-  <d-demo-nav [navItems]="navItems">></d-demo-nav>
+  <d-demo-nav [navItems]="navItems()">></d-demo-nav>
 
   @for (demo of demos(); track demo.title) {
   <div class="devui-demo-example" [dAnchor]="demo.anchor">

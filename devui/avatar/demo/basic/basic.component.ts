@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { AvatarComponent } from 'ng-devui/avatar';
 
 @Component({
   selector: 'd-basic',
+  imports: [AvatarComponent],
   styleUrls: ['./basic.component.css'],
   templateUrl: './basic.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BasicComponent implements OnInit {
-  ngOnInit() { }
-}
+export class BasicComponent {}

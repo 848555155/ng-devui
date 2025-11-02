@@ -1,17 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-avatar-design',
   templateUrl: './avatar-design.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
-export class AvatarDesignComponent implements OnInit {
-  imgSrc;
-  constructor() { }
-
-  ngOnInit(): void {
-    this.imgSrc = environment.deployPrefix + 'assets/no-data.png';
-  }
+export class AvatarDesignComponent {
+  imgSrc = environment.deployPrefix + 'assets/no-data.png';
 }

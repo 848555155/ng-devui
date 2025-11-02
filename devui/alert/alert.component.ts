@@ -8,6 +8,7 @@ import {
   ElementRef,
   inject,
   input,
+  numberAttribute,
   output,
   Renderer2,
   signal,
@@ -34,8 +35,8 @@ export class AlertComponent {
   closeable = input(true, { transform: booleanAttribute });
   showIcon = input(true, { transform: booleanAttribute });
   autoplay = input(false, { transform: booleanAttribute });
-  autoplaySpeed = input(3000);
-  transitionSpeed = input(500);
+  autoplaySpeed = input(3000, { transform: numberAttribute });
+  transitionSpeed = input(500, { transform: numberAttribute });
   operationTemplate = input<TemplateRef<{ close: () => void }>>();
   dismissTime = input<number>();
   closeEvent = output<AlertComponent>();

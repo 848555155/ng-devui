@@ -1,12 +1,12 @@
 import { Routes } from '@angular/router';
 import { AlertDesignComponent } from './alert-design.component';
 import { DevUIApiComponent } from 'ng-devui/shared/devui-api/devui-api.component';
-import { AlertDemoComponent } from './alert-demo.component';
 
 import { BasicComponent } from './basic/basic.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { CloseComponent } from './close/close.component';
 import { WithoutIconComponent } from './withoutIcon/withoutIcon.component';
+import { DevuiDemoComponent } from 'ng-devui/shared/devui-demo/devui-demo.component';
 
 export default [
   { path: '', redirectTo: 'demo', pathMatch: 'full' },
@@ -16,13 +16,13 @@ export default [
   },
   {
     path: 'demo',
-    component: AlertDemoComponent,
+    component: DevuiDemoComponent,
     data: {
       demos: [
         {
           anchor: 'basic-usage',
-          title: 'alert.demo.basic.title',
-          description: 'alert.demo.basic.description',
+          title: 'components.alert.basicDemo.title',
+          description: 'components.alert.basicDemo.description',
           component: BasicComponent,
           source: [
             { title: 'HTML', language: 'xml', code: require('./basic/basic.component.html?raw') },
@@ -31,8 +31,8 @@ export default [
         },
         {
           anchor: 'tips-to-close',
-          title: 'alert.demo.close.title',
-          description: 'alert.demo.close.description',
+          title: 'components.alert.closeDemo.title',
+          description: 'components.alert.closeDemo.description',
           component: CloseComponent,
           source: [
             { title: 'HTML', language: 'xml', code: require('./close/close.component.html?raw') },
@@ -42,8 +42,8 @@ export default [
         },
         {
           anchor: 'without-icon',
-          title: 'alert.demo.withoutIcon.title',
-          description: 'alert.demo.withoutIcon.description',
+          title: 'components.alert.withoutIconDemo.title',
+          description: 'components.alert.withoutIconDemo.description',
           component: WithoutIconComponent,
           source: [
             { title: 'HTML', language: 'xml', code: require('./withoutIcon/withoutIcon.component.html?raw') },
@@ -52,8 +52,8 @@ export default [
         },
         {
           anchor: 'carousel',
-          title: 'alert.demo.carousel.title',
-          description: 'alert.demo.carousel.description',
+          title: 'components.alert.carouselDemo.title',
+          description: 'components.alert.carouselDemo.description',
           component: CarouselComponent,
           source: [
             { title: 'HTML', language: 'xml', code: require('./carousel/carousel.component.html?raw') },
@@ -61,6 +61,12 @@ export default [
           ],
         },
       ],
+      navItems: [
+        { dAnchorLink: 'basic-usage', value: 'components.alert.anchorLinkValues.basic-usage' },
+        { dAnchorLink: 'tips-to-close', value: 'components.alert.anchorLinkValues.tips-to-close' },
+        { dAnchorLink: 'without-icon', value: 'components.alert.anchorLinkValues.without-icon' },
+        { dAnchorLink: 'carousel', value: 'components.alert.anchorLinkValues.carousel' },
+      ]
     },
   },
   {

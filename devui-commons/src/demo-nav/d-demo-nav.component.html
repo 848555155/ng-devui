@@ -4,7 +4,7 @@
       <!-- <div class="devui-fast-forward">{{ goToText }}</div> -->
       <ul class="devui-step-nav">
         <li *ngFor="let navitem of navItems" dAnchorLink="{{ navitem.dAnchorLink }}" anchorActive="active">
-          {{ navitem.value }}
+          {{ navitem.value | translate}}
         </li>
       </ul>
     </div>

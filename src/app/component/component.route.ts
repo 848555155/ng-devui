@@ -218,7 +218,7 @@ export const routesConfig: Routes = [
   {
     path: 'avatar',
     component: ExamplePanelComponent,
-    loadChildren: () => import('../../../devui/avatar/demo/avatar-demo.module').then((m) => m.AvatarDemoModule),
+    loadChildren: () => import('../../../devui/avatar/demo/avatar-demo.routes'),
     data: {
       type: '数据展示',
       enType: 'Data Display',
