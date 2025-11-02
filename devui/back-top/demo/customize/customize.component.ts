@@ -1,28 +1,30 @@
-import { Component, ViewChild } from '@angular/core';
-import { TooltipDirective } from 'ng-devui/tooltip';
+import { ChangeDetectionStrategy, Component, viewChild } from '@angular/core';
+import { BackTopComponent } from 'ng-devui/back-top';
+import { TooltipDirective, TooltipModule } from 'ng-devui/tooltip';
 
 @Component({
   selector: 'd-back-top-customize',
+  imports: [BackTopComponent, TooltipModule],
   templateUrl: './customize.component.html',
   styleUrls: ['./customize.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CustomizeComponent {
-  @ViewChild('tooltipItem', { read: TooltipDirective }) tooltipItem: TooltipDirective;
+  tooltipItem = viewChild(TooltipDirective);
   content = 'Back to the top';
 
-  toggleTooltip(toggle) {
-    if (this.tooltipItem) {
+  toggleTooltip(toggle: boolean) {
+    if (this.tooltipItem()) {
       if (toggle) {
-        this.tooltipItem.content = '';
-        this.tooltipItem.hide();
+        this.tooltipItem().content = '';
+        this.tooltipItem().hide();
       } else {
-        this.tooltipItem.content = this.content;
+        this.tooltipItem().content = this.content;
       }
     }
   }
 
-  backTop(event) {
+  backTop(event: boolean) {
     console.log(event);
   }
 }

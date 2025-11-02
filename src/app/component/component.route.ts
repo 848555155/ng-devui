@@ -255,7 +255,7 @@ export const routesConfig: Routes = [
   {
     path: 'back-top',
     component: ExamplePanelComponent,
-    loadChildren: () => import('../../../devui/back-top/demo/back-top-demo.module').then((m) => m.BackTopDemoModule),
+    loadChildren: () => import('../../../devui/back-top/demo/back-top-demo.routes'),
     data: {
       type: '导航',
       enType: 'Navigation',

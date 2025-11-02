@@ -1,15 +1,19 @@
 <div
   class="devui-backtop"
-  [ngStyle]="{
-    display: isVisible ? 'block' : 'none',
-    bottom: bottom,
-    right: right,
-    cursor: moveCursor && draggable ? 'move' : 'pointer'
-  }"
+  [style.display]="isVisible() ? 'block' : 'none'"
+  [style.bottom]="bottom()"
+  [style.right]="right()"
+  [style.cursor]="moveCursor() && draggable() ? 'move' : 'pointer'"
   (click)="goTop()"
+  cdkDrag
+  [cdkDragDisabled]="!draggable()"
+  [cdkDragConstrainPosition]="constrainPosition"
+  (cdkDragStarted)="dragStarted()"
+  (cdkDragReleased)="dragReleased()"
+  #backTop
 >
-  <div class="devui-backtop-drag-handle" (mousedown)="mousedownEvent($event)" (mouseleave)="mouseleaveEvent()">
-    <ng-template [ngTemplateOutlet]="customTemplate ? customTemplate : default"></ng-template>
+  <div class="devui-backtop-drag-handle" cdkDragHandle>
+    <ng-container *ngTemplateOutlet="customTemplate() ? customTemplate() : default"></ng-container>
     <ng-template #default>
       <div class="devui-backtop-content">
         <svg

@@ -1,16 +1,15 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { BackTopComponent } from 'ng-devui/back-top';
 
 @Component({
   selector: 'd-back-top-basic',
+  imports: [BackTopComponent],
   templateUrl: './basic.component.html',
   styleUrls: ['./basic.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
-export class  BasicComponent {
-  constructor() {}
-
-  backTop(event) {
+export class BasicComponent {
+  backTop(event: boolean) {
     console.log(event);
   }
 }

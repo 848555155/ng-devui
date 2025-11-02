@@ -1,12 +1,14 @@
 <div class="devui-scroll-container">
-  <ul class="devui-scroll-content devui-scrollbar">
-    <li class="item" *ngFor="let item of list; let index = index">
+  <ul #scrollContent class="devui-scroll-content devui-scrollbar">
+    @for (item of list; track item;let index = $index) {
+    <li class="item">
       {{ index + 1 + '. ' + item }}
     </li>
+    }
   </ul>
   <d-back-top
     [draggable]="true"
-    [scrollTarget]="scrollElement"
+    [scrollTarget]="scrollElement().nativeElement"
     [right]="'60px'"
     [bottom]="'30px'"
     (backTopEvent)="backTop($event)"

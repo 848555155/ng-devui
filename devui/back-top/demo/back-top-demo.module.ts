@@ -28,27 +28,26 @@ import { ScrollContainerComponent } from './scroll-container/scroll-container.co
     ToggleModule,
     BackTopModule,
     RouterModule.forChild([
-      { path: '',  redirectTo: 'demo', pathMatch: 'full' },
+      { path: '', redirectTo: 'demo', pathMatch: 'full' },
       {
         path: 'design',
         component: BackTopDesignComponent,
       },
-      { path: 'demo', component: BackTopDemoComponent},
-      { path: 'api', component: DevUIApiComponent, data: {
-        'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-        'en-us': require('!html-loader!markdown-loader!../doc/api-en.md')
-      }}
-    ])
-  ],
-  exports: [BackTopDemoComponent],
-  declarations: [
-    BackTopDemoComponent,
-    BackTopDesignComponent,
+      { path: 'demo', component: BackTopDemoComponent },
+      {
+        path: 'api',
+        component: DevUIApiComponent,
+        data: {
+          'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
+          'en-us': require('!html-loader!markdown-loader!../doc/api-en.md'),
+        },
+      },
+    ]),
     BasicComponent,
     CustomizeComponent,
-    ScrollContainerComponent
-  ]
+    ScrollContainerComponent,
+  ],
+  exports: [BackTopDemoComponent],
+  declarations: [BackTopDemoComponent],
 })
-
-export class BackTopDemoModule {
-}
+export class BackTopDemoModule {}

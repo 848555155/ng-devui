@@ -1,27 +1,19 @@
-
-import { Component, Inject, OnInit, DOCUMENT } from '@angular/core';
+import { Component, ChangeDetectionStrategy, viewChild, ElementRef } from '@angular/core';
+import { BackTopComponent } from 'ng-devui/back-top';
 
 @Component({
   selector: 'd-back-top-scroll-container',
+  imports: [BackTopComponent],
   templateUrl: './scroll-container.component.html',
   styleUrls: ['./scroll-container.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
-export class ScrollContainerComponent implements OnInit {
-  scrollElement;
-  list = [];
+export class ScrollContainerComponent {
+  scrollElement = viewChild<ElementRef<HTMLUListElement>>('scrollContent');
   sentence = 'You know some birds are not meant to be caged, their feathers are just too bright.';
-  constructor(@Inject(DOCUMENT) private doc: any) {}
+  list = new Array(20).fill(this.sentence);
 
-  ngOnInit() {
-    for (let i = 0; i < 20; i++) {
-      this.list.push(this.sentence);
-    }
-    this.scrollElement = this.doc.querySelector('.devui-scroll-content');
-  }
-
-  backTop(event) {
+  backTop(event: boolean) {
     console.log(event);
   }
 }
