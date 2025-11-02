@@ -277,7 +277,7 @@ export const routesConfig: Routes = [
   {
     path: 'badge',
     component: ExamplePanelComponent,
-    loadChildren: () => import('../../../devui/badge/demo/badge-demo.module').then((m) => m.BadgeDemoModule),
+    loadChildren: () => import('../../../devui/badge/demo/badge-demo.routes'),
     data: {
       type: '数据展示',
       enType: 'Data Display',

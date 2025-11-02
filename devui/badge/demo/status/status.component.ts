@@ -1,15 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { BadgeComponent } from 'ng-devui/badge';
 
 @Component({
   selector: 'd-badge-status',
+  imports: [BadgeComponent],
   templateUrl: './status.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class StatusComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
+export class StatusComponent {}

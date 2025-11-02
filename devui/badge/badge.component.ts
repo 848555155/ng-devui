@@ -1,70 +1,43 @@
 import {
-  AfterViewInit,
-  ChangeDetectorRef,
+  booleanAttribute,
+  ChangeDetectionStrategy,
   Component,
+  computed,
   ElementRef,
-  Input,
-  ViewChild
+  input,
+  numberAttribute,
+  viewChild,
 } from '@angular/core';
 import { BadgePositionType, BadgeStatusType } from './badge.types';
-
 
 @Component({
   selector: 'd-badge',
   templateUrl: './badge.component.html',
   styleUrls: ['./badge.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BadgeComponent implements AfterViewInit {
-  hasContent = true;
-
-  @ViewChild('contentProjection') contentProjection?: ElementRef;
-  @Input() count: number | string;
-  @Input() maxCount = 99;
-  @Input() showDot = false;
-  @Input() status: BadgeStatusType;
-  /**
-   * @deprecated
-   * 用position替代
-   */
-  @Input() set badgePos(value: BadgePositionType) {
-    this.position = value;
-  }
-  @Input() position: BadgePositionType = 'top-right';
-  /**
-   * @deprecated
-   * 用offset替代
-   */
-  @Input() set offsetXY(value: [number, number]) {
-    this.offset = value;
-  }
-  @Input() offset: [number, number];
-
-  @Input() bgColor: string;
-  @Input() textColor: string;
-
-  hasContentProjection() {
-    const nodes = this.contentProjection?.nativeElement;
+export class BadgeComponent {
+  contentProjection = viewChild<ElementRef<HTMLSpanElement>>('contentProjection');
+  hasContent = computed(() => {
+    const nodes = this.contentProjection()?.nativeElement;
     const contents = nodes.childNodes;
-    this.hasContent = contents.length ? true : false;
-  }
-
-  parseCountToNumber() {
-    if(typeof(this.count) === 'number') {
-      return this.count;
+    return !!contents.length;
+  });
+  count = input<number | string>();
+  maxCount = input(99, { transform: numberAttribute });
+  showDot = input(false, { transform: booleanAttribute });
+  status = input<BadgeStatusType>();
+  position = input<BadgePositionType>('top-right');
+  offset = input<[number, number]>();
+  bgColor = input<string>();
+  textColor = input<string>();
+  computedCountToNumber = computed(() => {
+    const count = this.count();
+    if (typeof count === 'number') {
+      return count;
     } else {
-      const parseNumber = parseInt(this.count);
+      const parseNumber = parseInt(count);
       return isNaN(parseNumber) ? -1 : parseNumber;
     }
-  }
-
-  constructor(
-    private cdr: ChangeDetectorRef,
-  ) { }
-
-  ngAfterViewInit() {
-    this.hasContentProjection();
-    this.cdr.detectChanges();
-  }
-
+  });
 }
