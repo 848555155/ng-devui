@@ -1,19 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { AvatarComponent } from 'ng-devui/avatar';
+import { CardModule } from 'ng-devui/card';
 
 @Component({
   selector: 'd-custom',
+  imports: [AvatarComponent, CardModule],
   templateUrl: './custom.component.html',
   styleUrls: ['./custom.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CustomComponent implements OnInit {
-  imgSrc: string;
-  constructor() { }
-
-  ngOnInit(): void {
-    this.imgSrc = environment.deployPrefix + 'assets/logo.svg';
-
-  }
-
+export class CustomComponent {
+  imgSrc = environment.deployPrefix + 'assets/logo.svg';
 }

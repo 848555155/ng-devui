@@ -1,97 +1,103 @@
-import { ChangeDetectionStrategy, Component, Directive, HostBinding, Input, ViewEncapsulation } from '@angular/core';
+import {
+  booleanAttribute,
+  ChangeDetectionStrategy,
+  Component,
+  Directive,
+  HostBinding,
+  input,
+  Input,
+  ViewEncapsulation,
+} from '@angular/core';
 
 @Directive({
   selector: 'd-card-content, [dCardContent]',
-  standalone: false
+  host: {
+    class: 'devui-card-content',
+  },
 })
-export class CardContentDirective {
-  @HostBinding('class.devui-card-content') default = true;
-}
+export class CardContentDirective {}
 
 @Directive({
   selector: `d-card-title, [dCardTitle]`,
-  standalone: false
+  host: {
+    class: 'devui-card-title',
+  },
 })
-export class CardTitleDirective {
-  @HostBinding('class.devui-card-title') default = true;
-}
+export class CardTitleDirective {}
 
 @Directive({
   selector: `d-card-subtitle, [dCardSubtitle]`,
-  standalone: false
+  host: {
+    class: 'devui-card-subtitle',
+  },
 })
-export class CardSubtitleDirective {
-  @HostBinding('class.devui-card-subtitle') default = true;
-}
+export class CardSubtitleDirective {}
 
 @Directive({
   selector: 'd-card-actions,[dCardActions]',
   exportAs: 'dCardActions',
-  standalone: false
+  host: {
+    class: 'devui-card-actions',
+    '[class.devui-card-actions-align-end]': 'align() === "end"',
+    '[class.devui-card-actions-align-space-between]': 'align() === "spaceBetween"',
+  },
 })
 export class CardActionsDirective {
-  @Input() align: 'start' | 'end' | 'spaceBetween' = 'start';
-  @HostBinding('class.devui-card-actions') default = true;
-  @HostBinding('class.devui-card-actions-align-end')
-  get alignEnd() {
-    return this.align === 'end';
-  }
-  @HostBinding('class.devui-card-actions-align-space-between')
-  get alignSpaceBetween() {
-    return this.align === 'spaceBetween';
-  }
+  align = input<'start' | 'end' | 'spaceBetween'>('start');
 }
 
 @Directive({
   selector: '[dCardMeta]',
   exportAs: 'dCardMeta',
-  standalone: false
+  host: {
+    class: 'devui-card-meta',
+  },
 })
-export class CardMetaDirective {
-  @HostBinding('class.devui-card-meta') default = true;
-}
+export class CardMetaDirective {}
 
 @Directive({
   selector: '[dCardAvatar]',
-  standalone: false
+  host: {
+    class: 'devui-card-avatar',
+  },
 })
-export class CardAvatarDirective {
-  @HostBinding('class.devui-card-avatar') default = true;
-}
+export class CardAvatarDirective {}
 
 @Component({
   selector: 'd-card',
   exportAs: 'dCard',
+  host: {
+    class: 'devui-card',
+    '[class.devui-card-interactive]': 'interactive()',
+  },
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false
 })
 export class CardComponent {
-  @HostBinding('class.devui-card') default = true;
-  @Input() @HostBinding('class.devui-card-interactive') interactive: boolean;
+  interactive = input(false, { transform: booleanAttribute });
 }
 
 @Component({
   selector: 'd-card-header',
+  host: {
+    class: 'devui-card-header',
+  },
   templateUrl: './card-header.component.html',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false
 })
-export class CardHeaderComponent {
-  @HostBinding('class.devui-card-header') default = true;
-}
+export class CardHeaderComponent {}
 
 // waiting for design
 @Component({
   selector: 'd-card-extend',
+  host: {
+    class: 'devui-card-extend',
+  },
   templateUrl: './card-extend.component.html',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false
 })
-export class CardExtendComponent {
-  @HostBinding('class.devui-card-extend') default = true;
-}
+export class CardExtendComponent {}

@@ -9,7 +9,8 @@ export interface DevuiSourceData {
 export interface DevuiDemoData {
   anchor: string;
   title: string;
-  description: string;
+  noDescription?: boolean;
+  description?: string;
   component: Type<any>;
   source: DevuiSourceData[];
 }

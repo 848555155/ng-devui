@@ -1,4 +1,4 @@
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 import { ExamplePanelComponent } from './example-panel.component';
 import { GetStartedComponent } from './get-started.component';
 import { GlobalConfigComponent } from './global-config.component';
@@ -9,15 +9,14 @@ export const routesConfig: Routes = [
   {
     path: 'design-color',
     component: ExamplePanelComponent,
-    loadChildren: () => import('../../../devui/design-token/color/demo/design-color-demo.module')
-      .then((m) => m.DesignColorDemoModule),
+    loadChildren: () => import('../../../devui/design-token/color/demo/design-color-demo.module').then((m) => m.DesignColorDemoModule),
     data: {
       type: 'Design Tokens',
       enType: 'Design Tokens',
       name: 'Color',
       cnName: '颜色',
       nodisplay: true,
-      bannerName: "19",
+      bannerName: '19',
     },
   },
   {
@@ -31,77 +30,73 @@ export const routesConfig: Routes = [
       name: 'Animation',
       cnName: '动效',
       nodisplay: true,
-      bannerName: "4",
+      bannerName: '4',
     },
   },
   {
     path: 'design-link',
     component: ExamplePanelComponent,
-    loadChildren: () => import('../../../devui/design-token/link/demo/design-link-demo.module')
-      .then((m) => m.DesignLinkDemoModule),
+    loadChildren: () => import('../../../devui/design-token/link/demo/design-link-demo.module').then((m) => m.DesignLinkDemoModule),
     data: {
       type: 'Design Tokens',
       enType: 'Design Tokens',
       name: 'Link',
       cnName: '链接',
       nodisplay: true,
-      bannerName: "15",
+      bannerName: '15',
     },
   },
   {
     path: 'design-shadow',
     component: ExamplePanelComponent,
-    loadChildren: () => import('../../../devui/design-token/shadow/demo/design-shadow-demo.module')
-      .then((m) => m.DesignShadowDemoModule),
+    loadChildren: () => import('../../../devui/design-token/shadow/demo/design-shadow-demo.module').then((m) => m.DesignShadowDemoModule),
     data: {
       type: 'Design Tokens',
       enType: 'Design Tokens',
       name: 'Shadow',
       cnName: '阴影',
       nodisplay: true,
-      bannerName: "5",
+      bannerName: '5',
     },
   },
   {
     path: 'design-font',
     component: ExamplePanelComponent,
-    loadChildren: () => import('../../../devui/design-token/font/demo/design-font-demo.module')
-      .then((m) => m.DesignFontDemoModule),
+    loadChildren: () => import('../../../devui/design-token/font/demo/design-font-demo.module').then((m) => m.DesignFontDemoModule),
     data: {
       type: 'Design Tokens',
       enType: 'Design Tokens',
       name: 'Font',
       cnName: '字体',
       nodisplay: true,
-      bannerName: "2",
+      bannerName: '2',
     },
   },
   {
     path: 'design-border-radius',
     component: ExamplePanelComponent,
-    loadChildren: () => import('../../../devui/design-token/border-radius/demo/design-border-radius-demo.module')
-      .then((m) => m.DesignBorderRadiusDemoModule),
+    loadChildren: () =>
+      import('../../../devui/design-token/border-radius/demo/design-border-radius-demo.module').then((m) => m.DesignBorderRadiusDemoModule),
     data: {
       type: 'Design Tokens',
       enType: 'Design Tokens',
       name: 'BorderRadius',
       cnName: '圆角',
       nodisplay: true,
-      bannerName: "1",
+      bannerName: '1',
     },
   },
   {
     path: 'design-z-index',
     component: ExamplePanelComponent,
-    loadChildren: () => import('../../../devui/design-token/z-index/demo/design-z-index-demo.module')
-      .then((m) => m.DesignZIndexDemoModule),
+    loadChildren: () => import('../../../devui/design-token/z-index/demo/design-z-index-demo.module').then((m) => m.DesignZIndexDemoModule),
     data: {
       type: 'Design Tokens',
       enType: 'Design Tokens',
       name: 'ZIndex',
       cnName: '层级',
       nodisplay: true,
-      bannerName: "3",
+      bannerName: '3',
     },
   },
   {
@@ -139,7 +134,7 @@ export const routesConfig: Routes = [
       enType: 'Navigation',
       name: 'Accordion',
       cnName: '手风琴',
-      bannerName: "17",
+      bannerName: '17',
     },
   },
   {
@@ -151,7 +146,7 @@ export const routesConfig: Routes = [
       enType: 'Navigation',
       name: 'Menu',
       cnName: '菜单',
-      bannerName: "17",
+      bannerName: '17',
     },
   },
   {
@@ -163,7 +158,7 @@ export const routesConfig: Routes = [
       enType: 'Data Entry',
       name: 'InputGroup',
       cnName: '输入框组合',
-      bannerName: "3",
+      bannerName: '3',
     },
   },
   {
@@ -175,7 +170,7 @@ export const routesConfig: Routes = [
       enType: 'Feedback',
       name: 'Alert',
       cnName: '警告',
-      bannerName: "19",
+      bannerName: '19',
     },
   },
   {
@@ -187,7 +182,7 @@ export const routesConfig: Routes = [
       enType: 'Navigation',
       name: 'Anchor',
       cnName: '锚点',
-      bannerName: "3",
+      bannerName: '3',
     },
   },
   {
@@ -199,20 +194,19 @@ export const routesConfig: Routes = [
       enType: 'Extended Service',
       name: 'Animations',
       cnName: '动效',
-      bannerName: "4",
+      bannerName: '4',
     },
   },
   {
     path: 'auto-complete',
     component: ExamplePanelComponent,
-    loadChildren: () =>
-      import('../../../devui/auto-complete/demo/auto-complete-demo.module').then((m) => m.AutoCompleteDemoModule),
+    loadChildren: () => import('../../../devui/auto-complete/demo/auto-complete-demo.module').then((m) => m.AutoCompleteDemoModule),
     data: {
       type: '数据录入',
       enType: 'Data Entry',
       name: 'AutoComplete',
       cnName: '自动补全',
-      bannerName: "14",
+      bannerName: '14',
     },
   },
   {
@@ -224,20 +218,19 @@ export const routesConfig: Routes = [
       enType: 'Data Display',
       name: 'Avatar',
       cnName: '头像',
-      bannerName: "9",
+      bannerName: '9',
     },
   },
   {
     path: 'ImagePreview',
     component: ExamplePanelComponent,
-    loadChildren: () =>
-      import('../../../devui/image-preview/demo/image-preview-demo.module').then((m) => m.ImagePreviewDemoModule),
+    loadChildren: () => import('../../../devui/image-preview/demo/image-preview-demo.module').then((m) => m.ImagePreviewDemoModule),
     data: {
       type: '数据展示',
       enType: 'Data Display',
       name: 'ImagePreview',
       cnName: '图片预览',
-      bannerName: "19",
+      bannerName: '19',
     },
   },
   {
@@ -249,7 +242,7 @@ export const routesConfig: Routes = [
       enType: 'Navigation',
       name: 'Breadcrumb',
       cnName: '面包屑',
-      bannerName: "12",
+      bannerName: '12',
     },
   },
   {
@@ -261,7 +254,7 @@ export const routesConfig: Routes = [
       enType: 'Navigation',
       name: 'BackTop',
       cnName: '回到顶部',
-      bannerName: "8",
+      bannerName: '8',
     },
   },
   {
@@ -271,7 +264,7 @@ export const routesConfig: Routes = [
     data: {
       name: 'Button',
       cnName: '按钮',
-      bannerName: "6",
+      bannerName: '6',
     },
   },
   {
@@ -283,19 +276,19 @@ export const routesConfig: Routes = [
       enType: 'Data Display',
       name: 'Badge',
       cnName: '徽标',
-      bannerName: "10",
+      bannerName: '10',
     },
   },
   {
     path: 'card',
     component: ExamplePanelComponent,
-    loadChildren: () => import('../../../devui/card/demo/card-demo.module').then((m) => m.CardDemoModule),
+    loadChildren: () => import('../../../devui/card/demo/card-demo.routes'),
     data: {
       type: '数据展示',
       enType: 'Data Display',
       name: 'Card',
       cnName: '卡片',
-      bannerName: "12",
+      bannerName: '12',
     },
   },
   {
@@ -307,7 +300,7 @@ export const routesConfig: Routes = [
       enType: 'Data Display',
       name: 'Carousel',
       cnName: '走马灯',
-      bannerName: "4",
+      bannerName: '4',
     },
   },
   {
@@ -319,7 +312,7 @@ export const routesConfig: Routes = [
       enType: 'Data Entry',
       name: 'CheckBox',
       cnName: '复选框',
-      bannerName: "3",
+      bannerName: '3',
     },
   },
   {
@@ -329,33 +322,31 @@ export const routesConfig: Routes = [
     data: {
       name: 'Common',
       cnName: '公共方法',
-      bannerName: "7",
+      bannerName: '7',
     },
   },
   {
     path: 'datepickerPro',
     component: ExamplePanelComponent,
-    loadChildren: () =>
-      import('../../../devui/datepicker-pro/demo/datepicker-pro-demo.module').then((m) => m.DatepickerProDemoModule),
+    loadChildren: () => import('../../../devui/datepicker-pro/demo/datepicker-pro-demo.module').then((m) => m.DatepickerProDemoModule),
     data: {
       type: '数据录入',
       enType: 'Data Entry',
       name: 'DatepickerPro',
       cnName: '日期选择器',
-      bannerName: "18",
+      bannerName: '18',
     },
   },
   {
     path: 'dashboard',
     component: ExamplePanelComponent,
-    loadChildren: () =>
-      import('../../../devui/dashboard/demo/dashboard-demo.module').then((m) => m.DashboardDemoModule),
+    loadChildren: () => import('../../../devui/dashboard/demo/dashboard-demo.module').then((m) => m.DashboardDemoModule),
     data: {
       type: '数据展示',
       enType: 'Data Entry',
       name: 'Dashboard',
       cnName: '仪表盘',
-      bannerName: "6",
+      bannerName: '6',
     },
   },
   {
@@ -367,7 +358,7 @@ export const routesConfig: Routes = [
       enType: 'Data Display',
       name: 'DataTable',
       cnName: '表格',
-      bannerName: "2",
+      bannerName: '2',
     },
   },
   {
@@ -379,7 +370,7 @@ export const routesConfig: Routes = [
       enType: 'Data Entry',
       name: 'DatePicker',
       cnName: '日期选择器',
-      bannerName: "2",
+      bannerName: '2',
     },
   },
   {
@@ -392,7 +383,7 @@ export const routesConfig: Routes = [
       enType: 'Data Entry',
       name: 'MultiAutoComplete',
       cnName: '多项自动补全',
-      bannerName: "16",
+      bannerName: '16',
     },
   },
   {
@@ -404,7 +395,7 @@ export const routesConfig: Routes = [
       enType: 'Data Entry',
       name: 'Form',
       cnName: '表单',
-      bannerName: "7",
+      bannerName: '7',
     },
   },
   {
@@ -414,7 +405,7 @@ export const routesConfig: Routes = [
     data: {
       name: 'Fullscreen',
       cnName: '全屏',
-      bannerName: "13",
+      bannerName: '13',
     },
   },
   {
@@ -426,7 +417,7 @@ export const routesConfig: Routes = [
       enType: 'Data Entry',
       name: 'Transfer',
       cnName: '穿梭框',
-      bannerName: "16",
+      bannerName: '16',
     },
   },
   {
@@ -436,7 +427,7 @@ export const routesConfig: Routes = [
     data: {
       name: 'DragDrop',
       cnName: '拖拽',
-      bannerName: "11",
+      bannerName: '11',
     },
   },
   {
@@ -448,7 +439,7 @@ export const routesConfig: Routes = [
       enType: 'Feedback',
       name: 'Drawer',
       cnName: '抽屉板',
-      bannerName: "1",
+      bannerName: '1',
     },
   },
   {
@@ -460,20 +451,19 @@ export const routesConfig: Routes = [
       enType: 'Navigation',
       name: 'DropDown',
       cnName: '下拉菜单',
-      bannerName: "20",
+      bannerName: '20',
     },
   },
   {
     path: 'editable-select',
     component: ExamplePanelComponent,
-    loadChildren: () =>
-      import('../../../devui/editable-select/demo/editable-select-demo.module').then((m) => m.EditableSelectDemoModule),
+    loadChildren: () => import('../../../devui/editable-select/demo/editable-select-demo.module').then((m) => m.EditableSelectDemoModule),
     data: {
       type: '数据录入',
       enType: 'Data Entry',
       name: 'EditableSelect',
       cnName: '可输入下拉选择框',
-      bannerName: "12",
+      bannerName: '12',
     },
   },
   {
@@ -485,7 +475,7 @@ export const routesConfig: Routes = [
       enType: 'General',
       name: 'Icon',
       cnName: '图标',
-      bannerName: "2",
+      bannerName: '2',
     },
   },
   {
@@ -497,7 +487,7 @@ export const routesConfig: Routes = [
       enType: 'Feedback',
       name: 'Loading',
       cnName: '加载提示',
-      bannerName: "20",
+      bannerName: '20',
     },
   },
   {
@@ -509,7 +499,7 @@ export const routesConfig: Routes = [
       enType: 'Feedback',
       name: 'Modal',
       cnName: '模态弹窗',
-      bannerName: "15",
+      bannerName: '15',
     },
   },
   {
@@ -521,7 +511,7 @@ export const routesConfig: Routes = [
       enType: 'Navigation',
       name: 'Pagination',
       cnName: '分页',
-      bannerName: "7",
+      bannerName: '7',
     },
   },
   {
@@ -531,7 +521,7 @@ export const routesConfig: Routes = [
     data: {
       name: 'Panel',
       cnName: '面板',
-      bannerName: "10",
+      bannerName: '10',
     },
   },
   {
@@ -543,7 +533,7 @@ export const routesConfig: Routes = [
       enType: 'Feedback',
       name: 'Popover',
       cnName: '悬浮提示',
-      bannerName: "6",
+      bannerName: '6',
     },
   },
   {
@@ -555,7 +545,7 @@ export const routesConfig: Routes = [
       enType: 'Data Display',
       name: 'Progress',
       cnName: '进度条',
-      bannerName: "17",
+      bannerName: '17',
     },
   },
   {
@@ -568,7 +558,7 @@ export const routesConfig: Routes = [
       enType: 'Data Display',
       name: 'Quadrant Diagram',
       cnName: '象限图',
-      bannerName: "13",
+      bannerName: '13',
     },
   },
   {
@@ -580,7 +570,7 @@ export const routesConfig: Routes = [
       enType: 'Data Entry',
       name: 'Radio',
       cnName: '单选框',
-      bannerName: "15",
+      bannerName: '15',
     },
   },
   {
@@ -592,7 +582,7 @@ export const routesConfig: Routes = [
       enType: 'Data Display',
       name: 'Rate',
       cnName: '等级评估',
-      bannerName: "3",
+      bannerName: '3',
     },
   },
   {
@@ -602,7 +592,7 @@ export const routesConfig: Routes = [
     data: {
       name: 'Search',
       cnName: '搜索框',
-      bannerName: "9",
+      bannerName: '9',
     },
   },
   {
@@ -614,7 +604,7 @@ export const routesConfig: Routes = [
       enType: 'Data Entry',
       name: 'Select',
       cnName: '下拉选择框',
-      bannerName: "14",
+      bannerName: '14',
     },
   },
   {
@@ -626,7 +616,7 @@ export const routesConfig: Routes = [
       enType: 'Data Entry',
       name: 'Cascader',
       cnName: '级联菜单',
-      bannerName: "7",
+      bannerName: '7',
     },
   },
   {
@@ -636,7 +626,7 @@ export const routesConfig: Routes = [
     data: {
       name: 'Status',
       cnName: '状态',
-      bannerName: "18",
+      bannerName: '18',
     },
   },
   {
@@ -646,7 +636,7 @@ export const routesConfig: Routes = [
     data: {
       name: 'Sticky',
       cnName: '便贴',
-      bannerName: "14",
+      bannerName: '14',
     },
   },
   {
@@ -658,7 +648,7 @@ export const routesConfig: Routes = [
       enType: 'Navigation',
       name: 'Tabs',
       cnName: '页签',
-      bannerName: "16",
+      bannerName: '16',
     },
   },
   {
@@ -670,7 +660,7 @@ export const routesConfig: Routes = [
       enType: 'Navigation',
       name: 'NavSprite',
       cnName: '导航精灵',
-      bannerName: "2",
+      bannerName: '2',
     },
   },
   {
@@ -682,7 +672,7 @@ export const routesConfig: Routes = [
       enType: 'Data Display',
       name: 'Tags',
       cnName: '标签',
-      bannerName: "18",
+      bannerName: '18',
     },
   },
   {
@@ -694,7 +684,7 @@ export const routesConfig: Routes = [
       enType: 'Data Entry',
       name: 'TagsInput',
       cnName: '标签输入',
-      bannerName: "7",
+      bannerName: '7',
     },
   },
   {
@@ -706,7 +696,7 @@ export const routesConfig: Routes = [
       enType: 'Data Display',
       name: 'TimeAxis',
       cnName: '时间轴',
-      bannerName: "15",
+      bannerName: '15',
     },
   },
   {
@@ -718,7 +708,7 @@ export const routesConfig: Routes = [
       enType: 'Feedback',
       name: 'Toast',
       cnName: '全局通知',
-      bannerName: "8",
+      bannerName: '8',
     },
   },
   {
@@ -730,7 +720,7 @@ export const routesConfig: Routes = [
       enType: 'Feedback',
       name: 'Tooltip',
       cnName: '提示',
-      bannerName: "4",
+      bannerName: '4',
     },
   },
   {
@@ -744,7 +734,7 @@ export const routesConfig: Routes = [
       cnName: '阅读提示',
       description: '阅读提示组件。',
       tmw: `当html文档中需要对特定内容进行提示时使用。`,
-      bannerName: "7",
+      bannerName: '7',
     },
   },
   {
@@ -758,7 +748,7 @@ export const routesConfig: Routes = [
       cnName: '提及',
       description: '提及组件。',
       tmw: `用于在输入中提及某人或某事，常用于发布、聊天或评论功能。`,
-      bannerName: "10",
+      bannerName: '10',
     },
   },
   {
@@ -770,7 +760,7 @@ export const routesConfig: Routes = [
       enType: 'Data Entry',
       name: 'Toggle',
       cnName: '开关',
-      bannerName: "15",
+      bannerName: '15',
     },
   },
   {
@@ -782,7 +772,7 @@ export const routesConfig: Routes = [
       enType: 'Data Display',
       name: 'Tree',
       cnName: '树',
-      bannerName: "7",
+      bannerName: '7',
     },
   },
   {
@@ -794,7 +784,7 @@ export const routesConfig: Routes = [
       enType: 'Data Entry',
       name: 'Upload',
       cnName: '上传',
-      bannerName: "20",
+      bannerName: '20',
     },
   },
   {
@@ -806,7 +796,7 @@ export const routesConfig: Routes = [
       enType: 'Navigation',
       name: 'UserGuide',
       cnName: '用户指引',
-      bannerName: "8",
+      bannerName: '8',
     },
   },
   {
@@ -818,7 +808,7 @@ export const routesConfig: Routes = [
       enType: 'Data Entry',
       name: 'InputNumber',
       cnName: '数字输入框',
-      bannerName: "1",
+      bannerName: '1',
     },
   },
   {
@@ -830,7 +820,7 @@ export const routesConfig: Routes = [
       enType: 'Data Entry',
       name: 'TreeSelect',
       cnName: '树形选择框',
-      bannerName: "4",
+      bannerName: '4',
     },
   },
   {
@@ -842,7 +832,7 @@ export const routesConfig: Routes = [
       enType: 'Data Entry',
       name: 'Slider',
       cnName: '滑动输入条',
-      bannerName: "6",
+      bannerName: '6',
     },
   },
   {
@@ -854,7 +844,7 @@ export const routesConfig: Routes = [
       enType: 'Layout',
       name: 'Splitter',
       cnName: '分割器',
-      bannerName: "3",
+      bannerName: '3',
     },
   },
   {
@@ -866,7 +856,7 @@ export const routesConfig: Routes = [
       enType: 'Layout',
       name: 'Layout',
       cnName: '布局',
-      bannerName: "1",
+      bannerName: '1',
     },
   },
   {
@@ -878,7 +868,7 @@ export const routesConfig: Routes = [
       enType: 'Data Display',
       name: 'Gantt',
       cnName: '甘特图',
-      bannerName: "1",
+      bannerName: '1',
     },
   },
   {
@@ -890,7 +880,7 @@ export const routesConfig: Routes = [
       enType: 'Data Entry',
       name: 'TextInput',
       cnName: '文本框',
-      bannerName: "5",
+      bannerName: '5',
     },
   },
   {
@@ -902,7 +892,7 @@ export const routesConfig: Routes = [
       enType: 'Data Entry',
       name: 'Textarea',
       cnName: '多行文本框',
-      bannerName: "2",
+      bannerName: '2',
     },
   },
   {
@@ -914,7 +904,7 @@ export const routesConfig: Routes = [
       enType: 'Navigation',
       name: 'StepsGuide',
       cnName: '操作指引',
-      bannerName: "18",
+      bannerName: '18',
     },
   },
   {
@@ -926,7 +916,7 @@ export const routesConfig: Routes = [
       enType: 'Data Entry',
       name: 'TimePicker',
       cnName: '时间选择器',
-      bannerName: "18",
+      bannerName: '18',
     },
   },
   {
@@ -938,7 +928,7 @@ export const routesConfig: Routes = [
       enType: 'Data Display',
       name: 'RelativeTime',
       cnName: '人性化时间转换',
-      bannerName: "11",
+      bannerName: '11',
     },
   },
   {
@@ -950,20 +940,19 @@ export const routesConfig: Routes = [
       enType: 'Data Display',
       name: 'number translator',
       cnName: '数字转换器',
-      bannerName: "8",
+      bannerName: '8',
     },
   },
   {
     path: 'category-search',
     component: ExamplePanelComponent,
-    loadChildren: () =>
-      import('../../../devui/category-search/demo/category-search-demo.module').then((m) => m.CategorySearchDemoModule),
+    loadChildren: () => import('../../../devui/category-search/demo/category-search-demo.module').then((m) => m.CategorySearchDemoModule),
     data: {
       type: '数据录入',
       enType: 'Data Entry',
       name: 'CategorySearch',
       cnName: '分类搜索',
-      bannerName: "13",
+      bannerName: '13',
     },
   },
 ];
