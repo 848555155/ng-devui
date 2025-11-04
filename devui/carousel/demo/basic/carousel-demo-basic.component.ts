@@ -1,17 +1,19 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { CarouselComponent, CarouselItemComponent } from 'ng-devui/carousel';
 
 @Component({
   selector: 'd-carousel-demo-basic',
+  imports: [CarouselComponent, CarouselItemComponent],
   templateUrl: './carousel-demo-basic.component.html',
   styleUrls: ['../demo-common.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CarouselDemoBasicComponent {
   array = [1, 2, 3, 4];
   height = '200px';
   activeIndex = 0;
 
-  getIndex(index) {
+  getIndex(index: number) {
     console.log(this.activeIndex);
     console.log(index);
   }

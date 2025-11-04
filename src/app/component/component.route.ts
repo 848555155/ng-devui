@@ -294,7 +294,7 @@ export const routesConfig: Routes = [
   {
     path: 'carousel',
     component: ExamplePanelComponent,
-    loadChildren: () => import('../../../devui/carousel/demo/carousel-demo.module').then((m) => m.CarouselDemoModule),
+    loadChildren: () => import('../../../devui/carousel/demo/carousel-demo.routes'),
     data: {
       type: '数据展示',
       enType: 'Data Display',

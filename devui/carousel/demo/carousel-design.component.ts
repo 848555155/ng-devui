@@ -1,17 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-carousel-design',
   templateUrl: './carousel-design.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
-export class CarouselDesignComponent implements OnInit {
-  imgSrc;
-  constructor() { }
-
-  ngOnInit(): void {
-    this.imgSrc = environment.deployPrefix + 'assets/no-data.png';
-  }
+export class CarouselDesignComponent {
+  imgSrc = environment.deployPrefix + 'assets/no-data.png';
 }
