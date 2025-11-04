@@ -1,17 +1,12 @@
 
-import { AfterViewInit, Directive, ElementRef, Inject, Input, DOCUMENT } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, DOCUMENT, inject, input } from '@angular/core';
 @Directive({
   selector: '[dIframeEventPropagate]',
-  standalone: false
 })
 export class IframeEventPropagateDirective implements AfterViewInit {
-  @Input() event = 'click';
-  element: HTMLSelectElement;
-  document: Document;
-  constructor(el: ElementRef, @Inject(DOCUMENT) private doc: any) {
-    this.element = el.nativeElement;
-    this.document = this.doc;
-  }
+  event = input('click');
+  element = inject(ElementRef<HTMLSelectElement>).nativeElement;
+  document = inject(DOCUMENT);
 
   ngAfterViewInit() {
     this.element.addEventListener('DOMSubtreeModified', this.AddIframeContentDocumentClickListener);
@@ -21,13 +16,12 @@ export class IframeEventPropagateDirective implements AfterViewInit {
   }
   AddIframeContentDocumentClickListener = () => {
     const iframe = this.element.querySelector('iframe');
-
     if (iframe !== null) {
       if (iframe.contentDocument !== null) {
-        iframe.contentDocument.addEventListener(this.event, this.dispatchClickEvent);
+        iframe.contentDocument.addEventListener(this.event(), this.dispatchClickEvent);
       } else {
         const loadHandler = () => {
-          iframe.contentDocument.addEventListener(this.event, this.dispatchClickEvent);
+          iframe.contentDocument.addEventListener(this.event(), this.dispatchClickEvent);
           iframe.removeEventListener('load', loadHandler);
         };
         iframe.addEventListener('load', loadHandler);
@@ -37,10 +31,11 @@ export class IframeEventPropagateDirective implements AfterViewInit {
     }
   };
 
-  dispatchClickEvent = ($event) => {
-    const event: any = this.document.createEvent('MouseEvents');
-    event.initEvent(this.event, true, true);
-    event.originEvent = $event;
+  dispatchClickEvent = () => {
+    const event = new Event(this.event(), {
+      bubbles: true,
+      cancelable: true
+    });
     this.element.dispatchEvent(event);
   };
 }

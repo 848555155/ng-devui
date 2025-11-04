@@ -7,32 +7,26 @@ import { DatePipe } from './date-pipe';
 import { SafeNullPipe } from './safe-null.pipe';
 import { SimulateATagDirective } from './helper-utils';
 import { IframeEventPropagateDirective } from './iframe-event-propagate.directive';
-import { ShapeIconHoverableDirective } from "./shapeIconHoverable.directive";
+import { ShapeIconHoverableDirective } from './shapeIconHoverable.directive';
 
 @NgModule({
   imports: [
-    CommonModule,
-    ClipboardModule
-  ],
-  exports: [
-    SafeNullPipe,
     AutoFocusDirective,
+    SafeNullPipe,
     DatePipe,
     SimulateATagDirective,
     IframeEventPropagateDirective,
     ClipboardDirective,
     ShapeIconHoverableDirective,
   ],
-  declarations: [
-    SafeNullPipe,
+  exports: [
     AutoFocusDirective,
+    SafeNullPipe,
     DatePipe,
     SimulateATagDirective,
     IframeEventPropagateDirective,
     ClipboardDirective,
-    ShapeIconHoverableDirective
+    ShapeIconHoverableDirective,
   ],
-  providers: [],
 })
-export class DCommonModule {
-}
+export class DCommonModule {}

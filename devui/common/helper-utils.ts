@@ -1,5 +1,5 @@
 import { HttpClient, HttpErrorResponse, HttpEvent, HttpEventType, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
-import { Directive, HostListener, Input } from '@angular/core';
+import { Directive, HostListener, input } from '@angular/core';
 
 const enum Browser {
   IE = 'IE',
@@ -47,15 +47,17 @@ export class HelperUtils {
     }
   }
 
-  static jumpOuterUrl(url, target = '_blank') {
+  static jumpOuterUrl(url: string, target = '_blank') {
     if (url !== undefined && typeof document !== 'undefined') {
       const tempLink = document.createElement('a');
       tempLink.style.display = 'none'; // for IE 11
       tempLink.target = target;
       tempLink.href = url;
       document.body.appendChild(tempLink); // for IE 11, IE11需要append到document.body里面的a链接才会生效
-      const event = document.createEvent('MouseEvents');
-      event.initEvent('click', false, true);
+      const event = new Event('click', {
+        bubbles: false,
+        cancelable: true
+      });
       tempLink.dispatchEvent(event);
       document.body.removeChild(tempLink); // for IE 11
     }
@@ -328,13 +330,11 @@ export class HelperUtils {
 
 @Directive({
   selector: '[dSimulateATag]',
-  standalone: false
 })
 export class SimulateATagDirective {
-  @Input() href: string;
-  @Input() target: '_blank' | '_self' | '_parent' | '_top' | string = '_blank';
-  constructor() {}
+  href = input<string>();
+  target = input<'_blank' | '_self' | '_parent' | '_top' | string>('_blank');
   @HostListener('click') onClick() {
-    HelperUtils.jumpOuterUrl(this.href, this.target);
+    HelperUtils.jumpOuterUrl(this.href(), this.target());
   }
 }

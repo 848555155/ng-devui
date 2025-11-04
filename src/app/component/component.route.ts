@@ -318,7 +318,7 @@ export const routesConfig: Routes = [
   {
     path: 'common',
     component: ExamplePanelComponent,
-    loadChildren: () => import('../../../devui/common/demo/common-demo.module').then((m) => m.CommonDemoModule),
+    loadChildren: () => import('../../../devui/common/demo/common-demo.routes'),
     data: {
       name: 'Common',
       cnName: '公共方法',

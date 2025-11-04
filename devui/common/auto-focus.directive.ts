@@ -1,21 +1,18 @@
-import { AfterViewInit, Directive, ElementRef, Input } from '@angular/core';
+import { afterRenderEffect, booleanAttribute, Directive, ElementRef, inject, input } from '@angular/core';
 
 @Directive({
   selector: '[dAutoFocus]',
-  standalone: false
 })
-export class AutoFocusDirective implements AfterViewInit {
-
-  @Input('dAutoFocus') autoFocus: boolean;
-
-  constructor(private  elementRef: ElementRef) {
-  }
-
-  ngAfterViewInit(): void {
-    if (this.autoFocus) {
-      setTimeout(() => {
-        this.elementRef.nativeElement.focus();
-      });
-    }
+export class AutoFocusDirective {
+  autoFocus = input(false, { transform: booleanAttribute, alias: 'dAutoFocus' });
+  private elementRef = inject(ElementRef);
+  constructor() {
+    afterRenderEffect(() => {
+      if (this.autoFocus()) {
+        setTimeout(() => {
+          this.elementRef.nativeElement.focus();
+        });
+      }
+    });
   }
 }

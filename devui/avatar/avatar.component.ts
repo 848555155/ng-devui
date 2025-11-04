@@ -112,7 +112,7 @@ export class AvatarComponent {
         }
       } else {
         // 非中英文开头默认取前两个字符
-        return this.name().substr(0, 2);
+        return this.name().substring(0, 2);
       }
     }
   }

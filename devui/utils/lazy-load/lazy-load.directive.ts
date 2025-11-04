@@ -1,39 +1,39 @@
-import { AfterViewInit, Directive, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, Output, SimpleChanges } from '@angular/core';
-import { Subscription, fromEvent } from 'rxjs';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { afterRenderEffect, booleanAttribute, Directive, effect, ElementRef, inject, input, OnDestroy, output } from '@angular/core';
+import { Subscription, debounceTime, distinctUntilChanged, fromEvent } from 'rxjs';
 
 @Directive({
   selector: '[dLazyLoad]',
-  standalone: false
 })
-export class LazyLoadDirective implements OnDestroy, OnChanges, AfterViewInit {
+export class LazyLoadDirective implements OnDestroy {
   // 启用懒加载，默认不启用
-  @Input() enableLazyLoad = false;
+  enableLazyLoad = input(false, { transform: booleanAttribute });
   // 懒加载模式，默认列表模式
-  @Input() contentMode: 'img' | 'list' = 'list';
+  contentMode = input<'img' | 'list'>('list');
   // 滚动监听的目标，默认是宿主，
-  @Input() target: HTMLElement | Window;
+  target = input<HTMLElement | Window>();
   // 图片懒加载模式的图片地址
-  @Input() imgLoadSrc: string;
+  imgLoadSrc = input<string>();
   // 懒加载滚动方向
-  @Input() direction: 'vertical' | 'horizontal' = 'vertical';
+  direction = input<'vertical' | 'horizontal'>('vertical');
   // 加载更多
-  @Output() loadMore = new EventEmitter<any>();
+  loadMore = output<any>();
 
   scrollSubscription: Subscription;
 
   // 触发懒加载的距离
   loadFactor = 5;
 
-  constructor(private el: ElementRef) {}
+  private el = inject(ElementRef<HTMLElement>);
 
-  ngOnChanges(changes: SimpleChanges): void {
-    const element = this.target ? this.target : this.el.nativeElement;
-    if (changes?.enableLazyLoad) {
-      if (changes.enableLazyLoad.currentValue) {
+  constructor() {
+    effect(() => {
+      const target = this.target();
+      const element = target ? target : this.el.nativeElement;
+      const enableLazyLoad = this.enableLazyLoad();
+      if (enableLazyLoad) {
         const scrollEvent = fromEvent(element, 'scroll');
         let scrollEventFormat = scrollEvent;
-        if (this.contentMode === 'list') {
+        if (this.contentMode() === 'list') {
           scrollEventFormat = scrollEvent.pipe(debounceTime(300), distinctUntilChanged());
         }
         this.scrollSubscription = scrollEventFormat.subscribe((event) => this.scrollList(event));
@@ -42,17 +42,16 @@ export class LazyLoadDirective implements OnDestroy, OnChanges, AfterViewInit {
       } else {
         return;
       }
-    }
-  }
-
-  ngAfterViewInit() {
-    if (this.contentMode === 'img') {
-      setTimeout(() => {
-        const target = this.target ? this.target : this.el.nativeElement;
-        const mockEvent = { target };
-        this.scrollList(mockEvent);
-      });
-    }
+    });
+    afterRenderEffect(() => {
+      if (this.contentMode() === 'img') {
+        setTimeout(() => {
+          const target = this.target() ? this.target() : this.el.nativeElement;
+          const mockEvent = { target };
+          this.scrollList(mockEvent);
+        });
+      }
+    });
   }
 
   ngOnDestroy() {
@@ -64,22 +63,22 @@ export class LazyLoadDirective implements OnDestroy, OnChanges, AfterViewInit {
   scrollList(event) {
     const targetEl = event.target.scrollingElement ? event.target.scrollingElement : event.target;
     const { clientWidth, clientHeight, scrollLeft, scrollTop, scrollWidth, scrollHeight } = targetEl;
-    if (this.contentMode === 'img') {
+    if (this.contentMode() === 'img') {
       const rect = this.el.nativeElement.getBoundingClientRect();
       const imgCondition =
-        this.direction === 'vertical'
+        this.direction() === 'vertical'
           ? rect.top >= 0 && clientHeight >= rect.top + this.loadFactor
           : rect.left >= 0 && clientWidth >= rect.left + this.loadFactor;
       if (imgCondition) {
-        if (this.imgLoadSrc) {
-          this.el.nativeElement.src = this.imgLoadSrc;
+        if (this.imgLoadSrc()) {
+          this.el.nativeElement.src = this.imgLoadSrc();
         }
         this.loadMore.emit(event);
         this.scrollSubscription.unsubscribe();
       }
     } else {
       const etcCondition =
-        this.direction === 'vertical'
+        this.direction() === 'vertical'
           ? scrollTop !== 0 && scrollTop + clientHeight + this.loadFactor >= scrollHeight
           : scrollLeft !== 0 && scrollLeft + clientWidth + this.loadFactor >= scrollWidth;
       if (etcCondition) {

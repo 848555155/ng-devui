@@ -1,17 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-common-design',
   templateUrl: './common-design.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
-export class CommonDesignComponent implements OnInit {
-  imgSrc;
-  constructor() { }
-
-  ngOnInit(): void {
-    this.imgSrc = environment.deployPrefix + 'assets/no-data.png';
-  }
+export class CommonDesignComponent {
+  imgSrc = environment.deployPrefix + 'assets/no-data.png';
 }

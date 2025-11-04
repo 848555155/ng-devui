@@ -1,17 +1,19 @@
 import { HttpClient, HttpProgressEvent } from '@angular/common/http';
-import { Component } from '@angular/core';
-import { HelperUtils } from 'ng-devui';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { HelperUtils } from 'ng-devui/common';
+import { ButtonModule } from 'ng-devui/button';
 import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'd-common-helper-download',
+  imports: [ButtonModule],
   templateUrl: './helper-download.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HelperDownloadDemoComponent {
   downError: string;
   sub: Subscription;
-  constructor(private httpClient: HttpClient) {}
+  private httpClient = inject(HttpClient);
 
   download() {
     HelperUtils.downloadFile(

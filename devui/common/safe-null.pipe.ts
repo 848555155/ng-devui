@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'dSafeNullPipe',
-  standalone: false
+  pure: true
 })
 export class SafeNullPipe implements PipeTransform {
   transform(value: unknown, replace = '--'): unknown {

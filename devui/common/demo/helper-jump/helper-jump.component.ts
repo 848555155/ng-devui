@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
-import { HelperUtils } from 'ng-devui/common';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ButtonModule } from 'ng-devui/button';
+import { HelperUtils, SimulateATagDirective } from 'ng-devui/common';
 
 @Component({
   selector: 'd-common-helper-jump',
+  imports: [ButtonModule, SimulateATagDirective],
   templateUrl: './helper-jump.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HelperJumpDemoComponent {
-  downError: string;
-
   goto() {
     HelperUtils.jumpOuterUrl('//angular.io');
   }

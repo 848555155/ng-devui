@@ -1,63 +1,59 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
+import { LoadingModule } from 'ng-devui/loading';
+import { LazyLoadDirective } from 'ng-devui/utils';
 
 @Component({
   selector: 'd-lazy-load',
+  imports: [LazyLoadDirective, TranslateModule, LoadingModule],
   templateUrl: './lazy-load.component.html',
   styleUrls: ['./lazy-load.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LazyLoadComponent implements OnInit {
-  list = [];
+export class LazyLoadComponent {
   sentence = 'all work and no play make jack a dull boy';
+  list = signal(new Array<string>(10).fill(this.sentence));
   total = 40;
   next = 1;
   complete = false;
-  showLoading = false;
+  showLoading = signal(false);
 
   next1 = 1;
-  showLoading1 = false;
-  list1 = [];
+  showLoading1 = signal(false);
+  list1 = signal(new Array(10).fill(this.sentence));
   target = window;
-  constructor() { }
 
-  ngOnInit() {
-    for (let i = 0; i < 10; i++) {
-      this.list.push(this.sentence);
-      this.list1.push(this.sentence);
-    }
-  }
-
-  onLoadMore(event) {
+  onLoadMore() {
     if (this.next > this.total) {
       return;
     }
-    this.showLoading = true;
+    this.showLoading.set(true);
     const end = this.next + 20;
-    const tmpList = [];
+    const tmpList: string[] = [];
     for (; this.next < end; this.next++) {
       tmpList.push(this.sentence);
     }
     setTimeout(() => {
-      this.list = this.list.concat(tmpList);
-      this.showLoading = false;
+      this.list.update(l => l.concat(tmpList));
+      this.showLoading.set(false);
     }, 300);
 
     this.complete = this.next > this.total;
     console.log(`load more`, this.next, this.complete);
   }
-  onLoadMore1(event) {
+  onLoadMore1() {
     if (this.next1 > this.total) {
       return;
     }
-    this.showLoading1 = true;
+    this.showLoading1.set(true);
     const end = this.next1 + 20;
-    const tmpList = [];
+    const tmpList: string[] = [];
     for (; this.next1 < end; this.next1++) {
       tmpList.push(this.sentence);
     }
     setTimeout(() => {
-      this.list1 = this.list1.concat(tmpList);
-      this.showLoading1 = false;
+      this.list1.update(l => l.concat(tmpList));
+      this.showLoading1.set(false);
     }, 300);
 
     this.complete = this.next1 > this.total;

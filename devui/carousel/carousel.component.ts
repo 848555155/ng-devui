@@ -1,10 +1,10 @@
 import {
+  afterRenderEffect,
   booleanAttribute,
   ChangeDetectionStrategy,
   Component,
   computed,
   contentChildren,
-  effect,
   ElementRef,
   inject,
   input,
@@ -82,7 +82,7 @@ export class CarouselComponent {
       .subscribe(() => {
         this.next();
       });
-    effect(() => {
+    afterRenderEffect(() => {
       const items = this.items();
       if (items.length !== this.itemCount()) {
         this.activeIndex.set(0);

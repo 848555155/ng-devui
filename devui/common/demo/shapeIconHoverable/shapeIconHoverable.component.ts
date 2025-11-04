@@ -1,12 +1,10 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PopoverModule, ShapeIconHoverableDirective } from 'ng-devui/devui.module';
 
 @Component({
   selector: 'd-shape-icon-hover',
+  imports: [ShapeIconHoverableDirective, PopoverModule],
   templateUrl: './shapeIconHoverable.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ShapeIconHoverableDemoComponent {
-  constructor() {}
-
-}
-
+export class ShapeIconHoverableDemoComponent {}

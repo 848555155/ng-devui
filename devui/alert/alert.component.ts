@@ -1,4 +1,5 @@
 import {
+  afterRenderEffect,
   booleanAttribute,
   ChangeDetectionStrategy,
   Component,
@@ -67,15 +68,15 @@ export class AlertComponent {
     });
 
   constructor() {
-    effect(() => {
+    afterRenderEffect(() => {
       this.renderCarouselItem();
     });
-    effect(() => {
+    afterRenderEffect(() => {
       if (this.transitionSpeed() && this.box()) {
         this.renderer.setStyle(this.box().nativeElement, 'transition', `top ${this.transitionSpeed()}ms ease`);
       }
     });
-    effect(() => {
+    afterRenderEffect(() => {
       if (!this.box()) {
         return;
       }

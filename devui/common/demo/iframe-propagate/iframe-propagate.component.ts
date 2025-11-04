@@ -1,16 +1,15 @@
-
-import { AfterViewInit, Component, ElementRef, Inject, DOCUMENT } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Inject, DOCUMENT, ChangeDetectionStrategy, inject } from '@angular/core';
+import { IframeEventPropagateDirective } from 'ng-devui/common';
 
 @Component({
   selector: 'd-common-iframe-propagate',
+  imports: [IframeEventPropagateDirective],
   templateUrl: './iframe-propagate.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IframPropagateDemoComponent implements AfterViewInit {
-  document: Document;
-  constructor(private el: ElementRef, @Inject(DOCUMENT) private doc: any) {
-    this.document = this.doc;
-  }
+  private el = inject(ElementRef);
+  document = inject(DOCUMENT);
 
   ngAfterViewInit() {
     const divElement = this.document.createElement('div');
@@ -21,7 +20,7 @@ export class IframPropagateDemoComponent implements AfterViewInit {
     this.el.nativeElement.querySelector('iframe.content-box').contentDocument.body.appendChild(divElement);
   }
 
-  hostClick(event) {
-    event.target.style.background = '#56c3f6';
+  hostClick(event: MouseEvent) {
+    (event.target as HTMLElement).style.background = '#56c3f6';
   }
 }

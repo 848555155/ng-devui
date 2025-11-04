@@ -1,75 +1,60 @@
 import { Clipboard } from '@angular/cdk/clipboard';
-
 import {
   ComponentFactoryResolver,
   ComponentRef,
   Directive,
   ElementRef,
-  EventEmitter,
   HostListener,
-  Inject,
-  Input,
   OnDestroy,
-  OnInit,
-  Output,
   TemplateRef,
-  DOCUMENT
+  DOCUMENT,
+  inject,
+  output,
+  input,
+  booleanAttribute,
+  model,
 } from '@angular/core';
 import { I18nInterface, I18nService } from 'ng-devui/i18n';
 import { OverlayContainerRef } from 'ng-devui/overlay-container';
 import { PopoverComponent } from 'ng-devui/popover';
 import { PositionType } from 'ng-devui/tooltip';
-import { Subscription } from 'rxjs';
+import { fromEvent, Subject, Subscription, takeUntil } from 'rxjs';
 
 @Directive({
   selector: '[dClipboard]',
-  standalone: false
 })
-export class ClipboardDirective implements OnInit , OnDestroy {
-  @Input('dClipboard') devuiTargetElm: HTMLInputElement | HTMLTextAreaElement | undefined | '';
-  @Input() container: HTMLElement;
-  @Input() content: string | undefined;
-  @Input() position: PositionType = 'top';
-  @Input() sticky = false;
-  @Input() tipContent: string | HTMLElement | TemplateRef<any>;
-  @Output() copyResultEvent = new EventEmitter<any>();
+export class ClipboardDirective implements OnDestroy {
+  devuiTargetElm = input.required<HTMLInputElement | HTMLTextAreaElement | undefined | ''>({ alias: 'dClipboard' });
+  content = input<string>();
+  position = input<PositionType>('top');
+  sticky = input(false, { transform: booleanAttribute });
+  tipContent = model<string | HTMLElement | TemplateRef<any>>();
+  copyResultEvent = output<any>();
   popoverComponentRef: ComponentRef<PopoverComponent>;
-  i18nCommonText: I18nInterface['common'];
-  i18nSubscription: Subscription;
-  document: Document;
 
-  constructor(
-    private elm: ElementRef,
-    private clipboard: Clipboard,
-    private i18n: I18nService,
-    private overlayContainerRef: OverlayContainerRef,
-    private componentFactoryResolver: ComponentFactoryResolver,
-    @Inject(DOCUMENT) private doc: any) {
-    this.document = this.doc;
-  }
-
-  ngOnInit(): void {
-    this.setI18nText();
-  }
-
-  setI18nText() {
-    this.i18nCommonText = this.i18n.getI18nText().common;
-    this.i18nSubscription = this.i18n.langChange().subscribe((data) => {
-      this.i18nCommonText = data.common;
-    });
-  }
+  private elm = inject(ElementRef);
+  private clipboard = inject(Clipboard);
+  private i18n = inject(I18nService);
+  private overlayContainerRef = inject(OverlayContainerRef);
+  private componentFactoryResolver = inject(ComponentFactoryResolver);
+  document = inject(DOCUMENT);
+  i18nCommonText: I18nInterface['common'] = this.i18n.getI18nText().common;
+  i18nSubscription = this.i18n.langChange().subscribe((data) => {
+    this.i18nCommonText = data.common;
+  });
+  destoryPopver = new Subject<void>();
 
   @HostListener('click')
   onClickEvent() {
     let isSucceeded = false;
-    const isSupported = !!this.document.queryCommandSupported && !!this.document.queryCommandSupported('copy') && !!window;
-    if (isSupported && this.content) {
-      isSucceeded = this.clipboard.copy(this.content);
+    const content = this.content();
+    if (content) {
+      isSucceeded = this.clipboard.copy(content);
       if (isSucceeded) {
-        this.tipContent = this.tipContent || this.i18nCommonText.copied;
+        this.tipContent.set(this.tipContent() || this.i18nCommonText.copied);
         this.createPopover();
       }
-      const result = { isSupported: isSupported, isSucceeded: isSucceeded, content: this.content };
+      const result = { isSupported: true, isSucceeded, content };
       this.copyResultEvent.emit(result);
     }
   }
@@ -81,39 +66,39 @@ export class ClipboardDirective implements OnInit , OnDestroy {
     this.popoverComponentRef = this.overlayContainerRef.createComponent(
       this.componentFactoryResolver.resolveComponentFactory(PopoverComponent)
     );
-    Object.assign(this.popoverComponentRef.instance, {
-      content: this.tipContent,
-      triggerElementRef: this.elm,
-      position: this.position,
-      popType: 'default',
-      popMaxWidth: 200,
-      appendToBody: true,
-      zIndex: 1060
-    });
-    this.document.addEventListener('click', this.onDocumentClick);
-    if (!this.sticky) {
-      setTimeout(() => this.destroy(), 3000);
+    this.popoverComponentRef.setInput('content', this.tipContent());
+    this.popoverComponentRef.setInput('triggerElementRef', this.elm);
+    this.popoverComponentRef.setInput('position', this.position());
+    this.popoverComponentRef.setInput('popType', 'default');
+    this.popoverComponentRef.setInput('popMaxWidth', 200);
+    this.popoverComponentRef.setInput('appendToBody', true);
+    this.popoverComponentRef.setInput('zIndex', 1060);
+    fromEvent(this.document, 'click')
+      .pipe(takeUntil(this.destoryPopver))
+      .subscribe({
+        next: (event) => {
+          this.onDocumentClick(event);
+        },
+        complete: () => {
+          if (this.popoverComponentRef) {
+            this.popoverComponentRef.destroy();
+            this.popoverComponentRef = null;
+          }
+        },
+      });
+    if (!this.sticky()) {
+      setTimeout(() => this.destoryPopver.next(), 3000);
     }
   }
 
-  destroy() {
-    if (this.popoverComponentRef) {
-      this.popoverComponentRef.destroy();
-      this.popoverComponentRef = null;
-    }
-    this.document.removeEventListener('click', this.onDocumentClick);
-  }
-
-  onDocumentClick = (event) => {
+  onDocumentClick = (event: Event) => {
     event.stopPropagation();
     if (!this.elm.nativeElement.contains(event.target)) {
-      this.destroy();
+      this.destoryPopver.next();
     }
   };
 
   ngOnDestroy() {
-    if (this.i18nSubscription) {
-      this.i18nSubscription.unsubscribe();
-    }
+    this.destoryPopver.next();
   }
 }

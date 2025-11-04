@@ -1,19 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { HelperUtils } from 'ng-devui';
 
 @Component({
   selector: 'd-common-helper-browser',
   templateUrl: './helper-browser.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HelperBrowserComponent implements OnInit {
-  browserName: string;
-  browserVersion: number;
-
-  constructor() {}
-
-  ngOnInit() {
-    this.browserName = HelperUtils.getBrowserName();
-    this.browserVersion = HelperUtils.getBrowserVersion();
-  }
+export class HelperBrowserComponent {
+  browserName = HelperUtils.getBrowserName();
+  browserVersion = HelperUtils.getBrowserVersion();
 }

@@ -7,18 +7,14 @@ import {
   Injectable,
   Injector,
   TemplateRef,
-  ViewRef
+  ViewRef,
 } from '@angular/core';
 
 import { DocumentRef } from 'ng-devui/window-ref';
 
 @Injectable()
 export class OverlayContainerRef {
-
-  constructor(private _appRef: ApplicationRef,
-              private documentRef: DocumentRef,
-              private _injector: Injector) {
-  }
+  constructor(private _appRef: ApplicationRef, private documentRef: DocumentRef, private _injector: Injector) {}
 
   insert(viewRef: ViewRef): ViewRef {
     this._appRef.attachView(viewRef);
@@ -35,9 +31,7 @@ export class OverlayContainerRef {
     return this.insert(viewRef);
   }
 
-  createComponent<C>(componentFactory: ComponentFactory<C>,
-                     injector?: Injector,
-                     projectableNodes?: any[][]) {
+  createComponent<C>(componentFactory: ComponentFactory<C>, injector?: Injector, projectableNodes?: any[][]) {
     const componentRef = componentFactory.create(injector || this._injector, projectableNodes) as ComponentRef<C>;
     this.insert(componentRef.hostView);
     return componentRef;
