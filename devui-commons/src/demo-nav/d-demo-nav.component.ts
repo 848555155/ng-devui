@@ -13,6 +13,7 @@ import { I18nUtil } from '../i18n/i18n.util';
 export class DDemoNavComponent implements OnInit {
   @Input() navItems: any;
   demoDocViewerMain;
+  @Input() categoryName: string;
   goToText = 'Go To';
   subs: Subscription = new Subscription();
 

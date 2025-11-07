@@ -18,11 +18,11 @@ export default [
     path: 'demo',
     component: DevuiDemoComponent,
     data: {
+      categoryName: 'alert',
       demos: [
         {
           anchor: 'basic-usage',
-          title: 'components.alert.basicDemo.title',
-          description: 'components.alert.basicDemo.description',
+          name: 'basicDemo',
           component: BasicComponent,
           source: [
             { title: 'HTML', language: 'xml', code: require('./basic/basic.component.html?raw') },
@@ -31,8 +31,7 @@ export default [
         },
         {
           anchor: 'tips-to-close',
-          title: 'components.alert.closeDemo.title',
-          description: 'components.alert.closeDemo.description',
+          name: 'closeDemo',
           component: CloseComponent,
           source: [
             { title: 'HTML', language: 'xml', code: require('./close/close.component.html?raw') },
@@ -42,8 +41,7 @@ export default [
         },
         {
           anchor: 'without-icon',
-          title: 'components.alert.withoutIconDemo.title',
-          description: 'components.alert.withoutIconDemo.description',
+          name: 'withoutIconDemo',
           component: WithoutIconComponent,
           source: [
             { title: 'HTML', language: 'xml', code: require('./withoutIcon/withoutIcon.component.html?raw') },
@@ -52,8 +50,7 @@ export default [
         },
         {
           anchor: 'carousel',
-          title: 'components.alert.carouselDemo.title',
-          description: 'components.alert.carouselDemo.description',
+          name: 'carouselDemo',
           component: CarouselComponent,
           source: [
             { title: 'HTML', language: 'xml', code: require('./carousel/carousel.component.html?raw') },
@@ -61,12 +58,6 @@ export default [
           ],
         },
       ],
-      navItems: [
-        { dAnchorLink: 'basic-usage', value: 'components.alert.anchorLinkValues.basic-usage' },
-        { dAnchorLink: 'tips-to-close', value: 'components.alert.anchorLinkValues.tips-to-close' },
-        { dAnchorLink: 'without-icon', value: 'components.alert.anchorLinkValues.without-icon' },
-        { dAnchorLink: 'carousel', value: 'components.alert.anchorLinkValues.carousel' },
-      ]
     },
   },
   {

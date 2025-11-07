@@ -18,10 +18,11 @@ export default [
     path: 'demo',
     component: DevuiDemoComponent,
     data: {
+      categoryName: 'carousel',
       demos: [
         {
           anchor: 'basic-usage',
-          title: 'components.carousel.basicDemo.title',
+          name: 'basicDemo',
           noDescription: true,
           component: CarouselDemoBasicComponent,
           source: [
@@ -32,8 +33,7 @@ export default [
         },
         {
           anchor: 'trigger-usage',
-          title: 'components.carousel.triggerDemo.title',
-          description: 'components.carousel.triggerDemo.description',
+          name: 'triggerDemo',
           component: CarouselDemoTriggerComponent,
           source: [
             { title: 'HTML', language: 'html', code: require('./trigger/carousel-demo-trigger.component.html?raw') },
@@ -43,7 +43,7 @@ export default [
         },
         {
           anchor: 'autoplay-usage',
-          title: 'components.carousel.autoplayDemo.title',
+          name: 'autoplayDemo',
           noDescription: true,
           component: CarouselDemoAutoPlayComponent,
           source: [
@@ -53,7 +53,7 @@ export default [
         },
         {
           anchor: 'custom-usage',
-          title: 'components.carousel.customDemo.title',
+          name: 'customDemo',
           noDescription: true,
           component: CarouselDemoCustomComponent,
           source: [
@@ -64,7 +64,7 @@ export default [
         },
         {
           anchor: 'with-transition-progress-usage',
-          title: 'components.carousel.withTransitionProgressDemo.title',
+          name: 'withTransitionProgressDemo',
           noDescription: true,
           component: WithTransitionProgressComponent,
           source: [
@@ -72,13 +72,6 @@ export default [
             { title: 'TS', language: 'typescript', code: require('./with-transition-progress/with-transition-progress.component.ts?raw') },
           ],
         },
-      ],
-      navItems: [
-        { dAnchorLink: 'basic-usage', value: 'components.carousel.anchorLinkValues.basic-usage' },
-        { dAnchorLink: 'trigger-usage', value: 'components.carousel.anchorLinkValues.trigger-usage' },
-        { dAnchorLink: 'autoplay-usage', value: 'components.carousel.anchorLinkValues.autoplay-usage' },
-        { dAnchorLink: 'custom-usage', value: 'components.carousel.anchorLinkValues.custom-usage' },
-        { dAnchorLink: 'with-transition-progress-usage', value: 'components.carousel.anchorLinkValues.with-transition-progress-usage' },
       ],
     },
   },

@@ -17,10 +17,11 @@ export default [
     path: 'demo',
     component: DevuiDemoComponent,
     data: {
+      categoryName: 'card',
       demos: [
         {
           anchor: 'card-basic',
-          title: 'components.card.basicDemo.title',
+          name: 'basicDemo',
           noDescription: true,
           component: BasicComponent,
           source: [
@@ -31,7 +32,7 @@ export default [
         },
         {
           anchor: 'card-interactive-usage',
-          title: 'components.card.cardInteractiveDemo.title',
+          name: 'cardInteractiveDemo',
           noDescription: true,
           component: CardInteractiveComponent,
           source: [
@@ -42,8 +43,7 @@ export default [
         },
         {
           anchor: 'card-with-media',
-          title: 'components.card.mediaDemo.title',
-          description: 'components.card.mediaDemo.description',
+          name: 'mediaDemo',
           component: WithMediaComponent,
           source: [
             { title: 'HTML', language: 'xml', code: require('./with-media/with-media.component.html?raw') },
@@ -52,8 +52,8 @@ export default [
           ],
         },
         {
-          anchor: 'card-custom',
-          title: 'components.card.customDemo.title',
+          anchor: 'custom',
+          name: 'customDemo',
           noDescription: true,
           component: CustomComponent,
           source: [
@@ -62,12 +62,6 @@ export default [
             { title: 'SCSS', language: 'css', code: require('./custom/custom.component.scss?raw') },
           ],
         },
-      ],
-      navItems: [
-        { dAnchorLink: 'card-basic', value: 'components.card.anchorLinkValues.card-basic' },
-        { dAnchorLink: 'card-interactive-usage', value: 'components.card.anchorLinkValues.card-interactive-usage' },
-        { dAnchorLink: 'card-with-media', value: 'components.card.anchorLinkValues.card-with-media' },
-        { dAnchorLink: 'card-custom', value: 'components.card.anchorLinkValues.card-custom' },
       ],
     },
   },

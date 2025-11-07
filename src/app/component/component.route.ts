@@ -401,7 +401,7 @@ export const routesConfig: Routes = [
   {
     path: 'fullscreen',
     component: ExamplePanelComponent,
-    loadChildren: () => import('../../../devui/fullscreen/demo/fullscreen-demo.module').then((m) => m.FullscreenDemoModule),
+    loadChildren: () => import('../../../devui/fullscreen/demo/fullscreen-demo.routes'),
     data: {
       name: 'Fullscreen',
       cnName: '全屏',

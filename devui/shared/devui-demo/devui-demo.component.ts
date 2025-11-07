@@ -16,5 +16,5 @@ import { AnchorModule } from 'ng-devui/anchor';
 })
 export class DevuiDemoComponent {
   demos = toSignal(inject(ActivatedRoute).data.pipe(map((data) => data.demos as DevuiDemosData)));
-  navItems = toSignal(inject(ActivatedRoute).data.pipe(map((data) => data.navItems as any[])));
+  categoryName = toSignal(inject(ActivatedRoute).data.pipe(map((data) => data.categoryName as string)));
 }

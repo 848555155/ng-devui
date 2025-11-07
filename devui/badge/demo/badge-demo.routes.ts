@@ -19,11 +19,11 @@ export default [
     path: 'demo',
     component: DevuiDemoComponent,
     data: {
+      categoryName: 'badge',
       demos: [
         {
           anchor: 'badge-basic',
-          title: 'components.badge.basicDemo.title',
-          description: 'components.badge.basicDemo.description',
+          name: 'basicDemo',
           component: BasicComponent,
           source: [
             { title: 'HTML', language: 'xml', code: require('./basic/basic.component.html?raw') },
@@ -33,8 +33,7 @@ export default [
         },
         {
           anchor: 'badge-count',
-          title: 'components.badge.countDemo.title',
-          description: 'components.badge.countDemo.description',
+          name: 'countDemo',
           component: CountComponent,
           source: [
             { title: 'HTML', language: 'xml', code: require('./count/count.component.html?raw') },
@@ -44,8 +43,7 @@ export default [
         },
         {
           anchor: 'badge-dot',
-          title: 'components.badge.dotDemo.title',
-          description: 'components.badge.dotDemo.description',
+          name: 'dotDemo',
           component: DotComponent,
           source: [
             { title: 'HTML', language: 'xml', code: require('./dot/dot.component.html?raw') },
@@ -55,8 +53,7 @@ export default [
         },
         {
           anchor: 'badge-status',
-          title: 'components.badge.statusDemo.title',
-          description: 'components.badge.statusDemo.description',
+          name: 'statusDemo',
           component: StatusComponent,
           source: [
             { title: 'HTML', language: 'xml', code: require('./status/status.component.html?raw') },
@@ -65,8 +62,7 @@ export default [
         },
         {
           anchor: 'position',
-          title: 'components.badge.positionDemo.title',
-          description: 'components.badge.positionDemo.description',
+          name: 'positionDemo',
           component: PositionComponent,
           source: [
             { title: 'HTML', language: 'xml', code: require('./position/position.component.html?raw') },
@@ -76,8 +72,7 @@ export default [
         },
         {
           anchor: 'custom',
-          title: 'components.badge.customDemo.title',
-          description: 'components.badge.customDemo.description',
+          name: 'customDemo',
           component: CustomComponent,
           source: [
             { title: 'HTML', language: 'xml', code: require('./custom/custom.component.html?raw') },
@@ -85,14 +80,6 @@ export default [
             { title: 'SCSS', language: 'css', code: require('./custom/custom.component.scss?raw') },
           ],
         },
-      ],
-      navItems: [
-        { dAnchorLink: 'badge-basic', value: 'components.badge.anchorLinkValues.badge-basic' },
-        { dAnchorLink: 'badge-count', value: 'components.badge.anchorLinkValues.badge-count' },
-        { dAnchorLink: 'badge-dot', value: 'components.badge.anchorLinkValues.badge-dot' },
-        { dAnchorLink: 'badge-status', value: 'components.badge.anchorLinkValues.badge-status' },
-        { dAnchorLink: 'position', value: 'components.badge.anchorLinkValues.position' },
-        { dAnchorLink: 'custom', value: 'components.badge.anchorLinkValues.custom' },
       ],
     },
   },

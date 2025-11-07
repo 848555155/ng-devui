@@ -22,10 +22,11 @@ export default [
     path: 'demo',
     component: DevuiDemoComponent,
     data: {
+      categoryName: 'common',
       demos: [
         {
           anchor: 'date-pipe',
-          title: 'components.common.pipeDemo.dDatePipe.title',
+          name:  'pipeDemo.dDatePipe',
           noDescription: true,
           component: DatePipeDemoComponent,
           source: [
@@ -35,8 +36,7 @@ export default [
         },
         {
           anchor: 'safe-null-pipe',
-          title: 'components.common.pipeDemo.dSafeNullPipe.title',
-          description: 'components.common.pipeDemo.dSafeNullPipe.description',
+          name:  'pipeDemo.dSafeNullPipe',
           component: SafeNullPipeComponent,
           source: [
             { title: 'HTML', language: 'html', code: require('./pipe/safe-null-pipe/safe-null-pipe.component.html?raw') },
@@ -45,7 +45,7 @@ export default [
         },
         {
           anchor: 'browser-version',
-          title: 'components.common.browserDemo.title',
+          name:  'browserDemo',
           noDescription: true,
           component: HelperBrowserComponent,
           source: [
@@ -55,7 +55,7 @@ export default [
         },
         {
           anchor: 'open-url',
-          title: 'components.common.openURLDemo.title',
+          name:  'openURLDemo',
           noDescription: true,
           component: HelperJumpDemoComponent,
           source: [
@@ -65,7 +65,7 @@ export default [
         },
         {
           anchor: 'download-file',
-          title: 'components.common.helperDownloadDemo.title',
+          name:  'helperDownloadDemo',
           noDescription: true,
           component: HelperDownloadDemoComponent,
           source: [
@@ -75,8 +75,7 @@ export default [
         },
         {
           anchor: 'iframe-propagate',
-          title: 'components.common.iframePropagateDemo.title',
-          description: 'components.common.iframePropagateDemo.description',
+          name:  'iframePropagateDemo',
           component: IframPropagateDemoComponent,
           source: [
             { title: 'HTML', language: 'html', code: require('./iframe-propagate/iframe-propagate.component.html?raw') },
@@ -85,7 +84,7 @@ export default [
         },
         {
           anchor: 'clipboard',
-          title: 'components.common.clipboardDemo.title',
+          name:  'clipboardDemo',
           noDescription: true,
           component: ClipboardDemoComponent,
           source: [
@@ -96,7 +95,7 @@ export default [
         },
         {
           anchor: 'shapeIconHoverable',
-          title: 'components.common.shapeIconHoverableDemo.title',
+          name:  'shapeIconHoverableDemo',
           noDescription: true,
           component: ShapeIconHoverableDemoComponent,
           source: [
@@ -106,8 +105,7 @@ export default [
         },
         {
           anchor: 'lazy-load',
-          title: 'components.common.lazyLoadDemo.title',
-          description: 'components.common.lazyLoadDemo.description',
+          name:  'lazyLoadDemo',
           component: LazyLoadComponent,
           source: [
             { title: 'HTML', language: 'html', code: require('./lazy-load/lazy-load.component.html?raw') },
@@ -115,18 +113,7 @@ export default [
             { title: 'SCSS', language: 'css', code: require('./lazy-load/lazy-load.component.scss?raw') },
           ],
         },
-      ],
-      navItems: [
-        { dAnchorLink: 'date-pipe', value: 'components.common.anchorLinkValues.date-pipe' },
-        { dAnchorLink: 'safe-null-pipe', value: 'components.common.anchorLinkValues.safe-null-pipe' },
-        { dAnchorLink: 'browser-version', value: 'components.common.anchorLinkValues.browser-version' },
-        { dAnchorLink: 'open-url', value: 'components.common.anchorLinkValues.open-url' },
-        { dAnchorLink: 'download-file', value: 'components.common.anchorLinkValues.download-file' },
-        { dAnchorLink: 'iframe-propagate', value: 'components.common.anchorLinkValues.iframe-propagate' },
-        { dAnchorLink: 'clipboard', value: 'components.common.anchorLinkValues.clipboard' },
-        { dAnchorLink: 'shapeIconHoverable', value: 'components.common.anchorLinkValues.shapeIconHoverable' },
-        { dAnchorLink: 'lazy-load', value: 'components.common.anchorLinkValues.lazy-load' },
-      ],
+      ]
     },
   },
   {

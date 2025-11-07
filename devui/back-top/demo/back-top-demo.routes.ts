@@ -16,11 +16,11 @@ export default [
     path: 'demo',
     component: DevuiDemoComponent,
     data: {
+      categoryName: 'back-top',
       demos: [
         {
           anchor: 'back-top-basic',
-          title: 'components.back-top.basicDemo.title',
-          description: 'components.back-top.basicDemo.description',
+          name: 'basicDemo',
           component: BasicComponent,
           source: [
             { title: 'HTML', language: 'xml', code: require('./basic/basic.component.html?raw') },
@@ -30,8 +30,7 @@ export default [
         },
         {
           anchor: 'back-top-customize',
-          title: 'components.back-top.customizeDemo.title',
-          description: 'components.back-top.customizeDemo.description',
+          name: 'customizeDemo',
           component: CustomizeComponent,
           source: [
             { title: 'HTML', language: 'xml', code: require('./customize/customize.component.html?raw') },
@@ -41,8 +40,7 @@ export default [
         },
         {
           anchor: 'back-top-scroll-container',
-          title: 'components.back-top.scrollDemo.title',
-          description: 'components.back-top.scrollDemo.description',
+          name: 'scrollDemo',
           component: ScrollContainerComponent,
           source: [
             { title: 'HTML', language: 'xml', code: require('./scroll-container/scroll-container.component.html?raw') },
@@ -50,11 +48,6 @@ export default [
             { title: 'SCSS', language: 'css', code: require('./scroll-container/scroll-container.component.scss?raw') },
           ],
         },
-      ],
-      navItems: [
-        { dAnchorLink: 'back-top-basic', value: 'components.back-top.anchorLinkValues.back-top-basic' },
-        { dAnchorLink: 'back-top-customize', value: 'components.back-top.anchorLinkValues.back-top-customize' },
-        { dAnchorLink: 'back-top-scroll-container', value: 'components.back-top.anchorLinkValues.back-top-scroll-container' },
       ],
     },
   },

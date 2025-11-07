@@ -16,11 +16,11 @@ export default [
     path: 'demo',
     component: DevuiDemoComponent,
     data: {
+      categoryName: 'avatar',
       demos: [
         {
           anchor: 'basic-rules',
-          title: 'components.avatar.basicDemo.title',
-          description: 'components.avatar.basicDemo.description',
+          name: 'basicDemo',
           component: BasicComponent,
           source: [
             { title: 'HTML', language: 'xml', code: require('./basic/basic.component.html?raw') },
@@ -30,8 +30,7 @@ export default [
         },
         {
           anchor: 'basic-configuration',
-          title: 'components.avatar.configDemo.title',
-          description: 'components.avatar.configDemo.description',
+          name: 'configDemo',
           component: ConfigComponent,
           source: [
             { title: 'HTML', language: 'xml', code: require('./special/special.component.html?raw') },
@@ -41,8 +40,7 @@ export default [
         },
         {
           anchor: 'special-display',
-          title: 'components.avatar.specialDemo.title',
-          description: 'components.avatar.specialDemo.description',
+          name: 'specialDemo',
           component: SpecialComponent,
           source: [
             { title: 'HTML', language: 'xml', code: require('./config/config.component.html?raw') },
@@ -50,11 +48,6 @@ export default [
             { title: 'SCSS', language: 'css', code: require('./config/config.component.css?raw') },
           ],
         },
-      ],
-      navItems: [
-        { dAnchorLink: 'basic-rules', value: 'components.avatar.anchorLinkValues.basic-rules' },
-        { dAnchorLink: 'basic-configuration', value: 'components.avatar.anchorLinkValues.basic-configuration' },
-        { dAnchorLink: 'special-display', value: 'components.avatar.anchorLinkValues.special-display' },
       ],
     },
   },

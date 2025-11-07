@@ -3,8 +3,12 @@
     <div>
       <!-- <div class="devui-fast-forward">{{ goToText }}</div> -->
       <ul class="devui-step-nav">
-        <li *ngFor="let navitem of navItems" dAnchorLink="{{ navitem.dAnchorLink }}" anchorActive="active">
+        <li *ngFor="let navitem of navItems" dAnchorLink="{{ navitem.anchor }}" anchorActive="active">
+          @if (categoryName) {
+          {{ 'components.' + categoryName + '.' + navitem.name + '.title' | translate }}
+          } @else {
           {{ navitem.value | translate}}
+          }
         </li>
       </ul>
     </div>

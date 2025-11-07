@@ -8,6 +8,7 @@ export interface DevuiSourceData {
 
 export interface DevuiDemoData {
   anchor: string;
+  name: string;
   title: string;
   noDescription?: boolean;
   description?: string;
