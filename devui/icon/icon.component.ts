@@ -1,57 +1,63 @@
-import { Component, Directive, ElementRef, HostBinding, Input, NgZone, OnDestroy, OnInit, TemplateRef } from '@angular/core';
-import { fromEvent, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { NgTemplateOutlet } from '@angular/common';
+import {
+  afterNextRender,
+  booleanAttribute,
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  Directive,
+  ElementRef,
+  inject,
+  input,
+  TemplateRef,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { fromEvent } from 'rxjs';
+
 @Component({
   selector: 'd-icon',
+  imports: [NgTemplateOutlet],
   templateUrl: './icon.component.html',
   styleUrls: ['./icon.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class IconComponent implements OnInit, OnDestroy {
+export class IconComponent {
+  icon = input<string | TemplateRef<any>>();
+  operable = input(false, { transform: booleanAttribute });
+  disabled = input(false, { transform: booleanAttribute });
+  rotate = input<number | 'infinite'>();
+  color = input<string>();
 
-  @Input() icon: string | TemplateRef<any>;
-  @Input() operable = false;
-  @Input() disabled = false;
-  @Input() rotate: number | 'infinite';
-  @Input() color: string;
-  private destroy$ = new Subject<void>();
-  get template() {
-    return this.icon instanceof TemplateRef ? this.icon : null;
-  }
+  template = computed(() => {
+    const icon = this.icon();
+    return icon instanceof TemplateRef ? icon : null;
+  });
+  private elementRef = inject(ElementRef);
 
-  constructor(private ngZone: NgZone, private elementRef: ElementRef) { }
-  ngOnInit(): void {
-    this.ngZone.runOutsideAngular(() => {
-      fromEvent<MouseEvent>(this.elementRef.nativeElement, 'click', { capture: true })
-        .pipe(takeUntil(this.destroy$))
-        .subscribe(event => {
-          if (this.disabled) {
-            event.preventDefault();
-            event.stopImmediatePropagation();
-          }
-        });
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
+  constructor() {
+    fromEvent<MouseEvent>(this.elementRef.nativeElement, 'click', { capture: true })
+      .pipe(takeUntilDestroyed())
+      .subscribe((event) => {
+        if (this.disabled()) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+        }
+      });
   }
 }
 
 @Directive({
   selector: `d-icon-link, [dIconLink]`,
-  standalone: false
+  host: {
+    class: 'devui-icon-link',
+  },
 })
-export class IconLinkDirective {
-  @HostBinding('class.devui-icon-link') default = true;
-}
-
+export class IconLinkDirective {}
 
 @Directive({
   selector: `d-icon-hover, [dIconHover]`,
-  standalone: false
+  host: {
+    class: 'devui-icon-hover',
+  },
 })
-export class IconHoverDirective {
-  @HostBinding('class.devui-icon-hover') default = true;
-}
+export class IconHoverDirective {}

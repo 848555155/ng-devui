@@ -20,7 +20,7 @@ export default [
         {
           anchor: 'immersive-full-screen',
           name: 'immersiveDemo',
-          component: FullscreenDemoImmersiveComponent,
+          componnt: FullscreenDemoImmersiveComponent,
           source: [
             {
               title: 'HTML',

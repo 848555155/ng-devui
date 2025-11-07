@@ -469,7 +469,7 @@ export const routesConfig: Routes = [
   {
     path: 'icon',
     component: ExamplePanelComponent,
-    loadChildren: () => import('../../../devui/icon/demo/icon-demo.module').then((m) => m.IconDemoModule),
+    loadChildren: () => import('../../../devui/icon/demo/icon-demo.routes'),
     data: {
       type: '通用',
       enType: 'General',

@@ -30,11 +30,11 @@
   <d-icon-group>
     <d-icon
       class="pipeline-watch"
-      [color]="watched ? 'var(--devui-warning)' : ''"
-      [icon]="watched ? 'icon-star' : 'icon-star-o'"
+      [color]="watched() ? 'var(--devui-warning)' : ''"
+      [icon]="watched() ? 'icon-star' : 'icon-star-o'"
       [operable]="true"
-      [title]="watched ? '取消收藏' : '收藏'"
-      (click)="watched = !watched"
+      [title]="watched() ? '取消收藏' : '收藏'"
+      (click)="watched.set(!watched())"
     >
     </d-icon>
     <d-icon dDropDownToggle icon="icon-more-operate" [operable]="true" title="更多"> </d-icon>

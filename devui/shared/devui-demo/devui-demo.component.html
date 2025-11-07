@@ -1,7 +1,7 @@
 <div class="devui-demo-container" dAnchorBox dAnchorHashSupport [view]="{ top: 180, bottom: 0 }">
   <d-demo-nav [navItems]="demos()" [categoryName]="categoryName()">></d-demo-nav>
 
-  @for (demo of demos(); track demo.title) {
+  @for (demo of demos(); track demo.anchor) {
   <div class="devui-demo-example" [dAnchor]="demo.anchor">
     <div class="devui-demo-title">{{ `components.${categoryName()}.${demo.name}.title` | translate }}</div>
     @if (!demo.noDescription) {

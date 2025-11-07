@@ -34,13 +34,17 @@ import { IconGroupDemoComponent } from './icon-group/icon-group.component';
       },
       { path: 'demo', component: IconDemoComponent },
       {
-        path: 'api', component: DevUIApiComponent, data: {
+        path: 'api',
+        component: DevUIApiComponent,
+        data: {
           'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-          'en-us': require('!html-loader!markdown-loader!../doc/api-en.md')
-        }
+          'en-us': require('!html-loader!markdown-loader!../doc/api-en.md'),
+        },
       },
     ]),
+    BasicComponent,
+    IconGroupDemoComponent,
   ],
-  declarations: [BasicComponent, IconDemoComponent, IconGroupDemoComponent],
+  declarations: [IconDemoComponent],
 })
-export class IconDemoModule { }
+export class IconDemoModule {}
