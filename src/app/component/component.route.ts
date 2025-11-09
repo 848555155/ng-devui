@@ -517,7 +517,7 @@ export const routesConfig: Routes = [
   {
     path: 'panel',
     component: ExamplePanelComponent,
-    loadChildren: () => import('../../../devui/panel/demo/panel-demo.module').then((m) => m.PanelDemoModule),
+    loadChildren: () => import('../../../devui/panel/demo/panel-demo.routes'),
     data: {
       name: 'Panel',
       cnName: '面板',

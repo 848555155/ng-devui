@@ -1,68 +1,62 @@
-import {
-  transition,
-  trigger
-} from '@angular/animations';
-import {
-  Component,
-  ContentChild,
-  EventEmitter,
-  Input,
-  Output
-} from '@angular/core';
+import { transition, trigger } from '@angular/animations';
+import { booleanAttribute, ChangeDetectionStrategy, Component, contentChild, inject, input, Input, model, output } from '@angular/core';
 import { DevConfigService, expandCollapseForDomDestroy, WithConfig } from 'ng-devui/utils';
-import { Observable } from 'rxjs';
+import { firstValueFrom, isObservable, Observable } from 'rxjs';
 import { PanelBodyComponent } from './panel-body.component';
 import { PanelFooterComponent } from './panel-footer.component';
 import { PanelHeaderComponent } from './panel-header.component';
 import { PanelType } from './panel.types';
+import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
   selector: 'd-panel',
+  imports: [NgTemplateOutlet],
   templateUrl: './panel.component.html',
   styleUrls: ['./panel.component.scss'],
   animations: [trigger('noAnimation', [transition(':enter', [])]), expandCollapseForDomDestroy],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PanelComponent {
-  @Input() type: PanelType = 'default';
-  @Input() cssClass: string;
-  @Input() isCollapsed: boolean;
-  @Input() hasLeftPadding = true;
+  type = input<PanelType>('default');
+  cssClass = input<string>();
+  isCollapsed = model<boolean>();
+  hasLeftPadding = input(true, { transform: booleanAttribute });
   @Input() @WithConfig() showAnimation = true;
-  @Input() beforeToggle: (value) => boolean | Promise<boolean> | Observable<boolean>;
-  @Output() toggle: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @ContentChild(PanelHeaderComponent) panelHeader;
-  @ContentChild(PanelFooterComponent) panelFooter;
-  @ContentChild(PanelBodyComponent) panelBody;
-  constructor(private devConfigService: DevConfigService) {  }
+  beforeToggle = input(() => Promise.resolve(true), {
+    transform: (fuc: (collapse: boolean) => boolean | Promise<boolean> | Observable<boolean>) => {
+      if (!fuc){
+        return () => Promise.resolve(true);
+      }
+      return async (collapse: boolean) => {
+        const result = fuc(collapse);
+        if (Promise.resolve(result) === result) {
+          return await result;
+        }
+        if (isObservable(result)) {
+          return await firstValueFrom(result);
+        }
+        return Promise.resolve(result);
+      };
+    },
+  });
+  toggle = output<boolean>();
+  panelHeader = contentChild(PanelHeaderComponent);
+  panelFooter = contentChild(PanelFooterComponent);
+  panelBody = contentChild(PanelBodyComponent);
+  private devConfigService = inject(DevConfigService);
   toggleBody() {
     this.canToggle().then((val) => {
       if (!val) {
         return;
       }
-      if (this.isCollapsed !== undefined) {
-        this.isCollapsed = !this.isCollapsed;
-        this.toggle.emit(this.isCollapsed);
+      if (this.isCollapsed() !== undefined) {
+        this.isCollapsed.set(!this.isCollapsed());
+        this.toggle.emit(this.isCollapsed());
       }
     });
   }
 
   canToggle() {
-    let changeResult = Promise.resolve(true);
-
-    if (this.beforeToggle) {
-      const result: any = this.beforeToggle(this.isCollapsed);
-      if (typeof result !== 'undefined') {
-        if (result.then) {
-          changeResult = result;
-        } else if (result.subscribe) {
-          changeResult = (result as Observable<boolean>).toPromise();
-        } else {
-          changeResult = Promise.resolve(result);
-        }
-      }
-    }
-
-    return changeResult;
+    return this.beforeToggle()(this.isCollapsed());
   }
 }

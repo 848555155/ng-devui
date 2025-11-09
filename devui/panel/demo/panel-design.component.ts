@@ -1,17 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-panel-design',
   templateUrl: './panel-design.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
-export class PanelDesignComponent implements OnInit {
-  imgSrc;
-  constructor() { }
-
-  ngOnInit(): void {
-    this.imgSrc = environment.deployPrefix + 'assets/no-data.png';
-  }
+export class PanelDesignComponent {
+  imgSrc = environment.deployPrefix + 'assets/no-data.png';
 }
