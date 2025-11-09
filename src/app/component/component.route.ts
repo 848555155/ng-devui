@@ -922,7 +922,7 @@ export const routesConfig: Routes = [
   {
     path: 'relative-time',
     component: ExamplePanelComponent,
-    loadChildren: () => import('../../../devui/relative-time/demo/demo.module').then((m) => m.DemoModule),
+    loadChildren: () => import('../../../devui/relative-time/demo/demo.routes'),
     data: {
       type: '数据展示',
       enType: 'Data Display',

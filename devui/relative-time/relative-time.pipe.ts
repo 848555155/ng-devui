@@ -1,12 +1,10 @@
 import { OnDestroy, Pipe, PipeTransform } from '@angular/core';
 import { I18nService } from 'ng-devui/i18n';
 import * as datefns from 'date-fns';
-import { Observable, Subject, of } from 'rxjs';
-import { map, takeUntil } from 'rxjs/operators';
+import { Observable, Subject, map, of, takeUntil } from 'rxjs';
 
 @Pipe({
   name: 'dRelativeTime',
-  standalone: false
 })
 export class RelativeTimePipe implements PipeTransform, OnDestroy {
   private _destroyed$ = new Subject<void>();

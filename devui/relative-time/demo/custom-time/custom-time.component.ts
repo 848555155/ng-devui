@@ -1,29 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { DataTableModule } from 'ng-devui/data-table';
 import { I18nFormat } from 'ng-devui/i18n';
+import { RelativeTimePipe } from 'ng-devui/relative-time';
 
 @Component({
   selector: 'd-custom-time',
+  imports: [DataTableModule, RelativeTimePipe, AsyncPipe],
   templateUrl: './custom-time.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CustomTimeComponent implements OnInit {
+export class CustomTimeComponent {
   limit = 3 * 12 * 30 * 24 * 60 * 60; // three years
-  dates = [];
+  dates = [
+    new Date('2014/5/20 12:00:00'),
+    new Date('2015/6/20 12:00:00'),
+    new Date('2015/5/19 12:00:00'),
+    new Date('2015/5/20 12:18:00'),
+    new Date('2015/5/20 12:00:30'),
+    new Date('2011/5/20 12:00:00'),
+  ];
   compareTime = '2015/5/20 12:00:00';
-  constructor() { }
 
-  ngOnInit() {
-    const year_relation = new Date('2014/5/20 12:00:00');
-    const month_relation =  new Date('2015/6/20 12:00:00');
-    const day_relation =  new Date('2015/5/19 12:00:00');
-    const minute_relation =  new Date('2015/5/20 12:18:00');
-    const just =  new Date('2015/5/20 12:00:30');
-    const over_limit = new Date('2011/5/20 12:00:00');
-    this.dates = [year_relation, month_relation, just, minute_relation, day_relation, over_limit];
-  }
-
-  getStringName(time): string {
+  getStringName(time: string | number | Date): string {
     return I18nFormat.formatDateTime(time);
   }
-
 }
