@@ -1,37 +1,33 @@
-
 import {
   ApplicationRef,
   Component,
   EmbeddedViewRef,
-  Inject,
   TemplateRef,
-  ViewChild,
-  DOCUMENT
+  DOCUMENT,
+  ChangeDetectionStrategy,
+  viewChild,
+  inject,
 } from '@angular/core';
 import { forEach } from 'lodash-es';
 
 @Component({
   selector: 'd-portal',
-  template: `
-                   <ng-template #templateRef>
-                        <ng-content></ng-content>
-                    </ng-template>`,
+  template: ` <ng-template #templateRef>
+    <ng-content></ng-content>
+  </ng-template>`,
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PortalComponent {
   viewRef: EmbeddedViewRef<any>;
   portalContainer: HTMLElement;
-  @ViewChild('templateRef', { static: true }) templateRef: TemplateRef<any>;
-  document: Document;
-
-  constructor(private appRef: ApplicationRef, @Inject(DOCUMENT) private doc: any) {
-    this.document = this.doc;
-  }
+  templateRef = viewChild.required('templateRef', { read: TemplateRef });
+  document = inject(DOCUMENT);
+  private appRef: ApplicationRef;
 
   addContent() {
     this.portalContainer = this.document.createElement('div');
-    this.viewRef = this.templateRef.createEmbeddedView(this);
+    this.viewRef = this.templateRef().createEmbeddedView(this);
     forEach(this.viewRef.rootNodes, (node) => {
       this.portalContainer.appendChild(node);
     });
