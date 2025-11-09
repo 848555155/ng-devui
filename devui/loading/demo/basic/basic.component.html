@@ -1,6 +1,6 @@
 <section>
   <d-button bsStyle="primary" (click)="fetchTableData()">click me!</d-button>
-  <table dLoading [view]="view" [loading]="loading" [backdrop]="true" [loadingStyle]="'infinity'" class="table table-hover">
+  <table dLoading [view]="view" [loading]="loading()" [backdrop]="true" [loadingStyle]="'infinity'" class="table table-hover">
     <thead>
       <tr>
         <th>FirstName</th>
@@ -9,11 +9,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let names of tableNames">
-        <td *ngFor="let name of names">
-          {{ name }}
-        </td>
+      @for (names of tableNames();track names) {
+      <tr>
+        @for (name of names;track name) {
+        <td>{{ name }}</td>
+        }
       </tr>
+      }
     </tbody>
   </table>
 </section>

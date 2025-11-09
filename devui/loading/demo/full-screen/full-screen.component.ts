@@ -1,16 +1,22 @@
+import { Component, ChangeDetectionStrategy, inject, viewChild, ElementRef, signal } from '@angular/core';
+import { ButtonModule } from 'ng-devui/button';
+import { LoadingBackdropComponent, LoadingComponent, LoadingModule, LoadingService } from 'ng-devui/loading';
 
-import { Component, Inject, DOCUMENT } from '@angular/core';
-import { LoadingService } from 'ng-devui/loading';
 @Component({
   selector: 'd-full-screen',
+  imports: [ButtonModule, LoadingModule],
   templateUrl: './full-screen.component.html',
   styleUrls: ['./full-screen.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FullScreenComponent {
-  resultTarget: any;
-  isShow: boolean;
-  constructor(private loadingService: LoadingService, @Inject(DOCUMENT) private doc: any) {}
+  resultTarget: {
+    loadingInstance: LoadingComponent;
+    backdropInstance: LoadingBackdropComponent;
+  };
+  isShow = signal(false);
+  private loadingService = inject(LoadingService);
+  dm = viewChild<ElementRef<HTMLDivElement>>('me');
 
   openFullScreen() {
     /*
@@ -18,14 +24,13 @@ export class FullScreenComponent {
     */
     const results = this.loadingService.open();
     console.log('results', results);
-
     setTimeout(() => {
       results.loadingInstance.close();
     }, 2000);
   }
 
   openTargetLoading() {
-    const dm = this.doc.querySelector('#me');
+    const dm = this.dm().nativeElement;
     this.resultTarget = this.loadingService.open({
       target: dm,
       message: 'One moment please...',
@@ -33,10 +38,11 @@ export class FullScreenComponent {
       zIndex: 1,
     });
     console.log('resultTarget', this.resultTarget);
-    this.isShow = true;
+    this.isShow.set(true);
   }
+
   closeTargetLoading() {
     this.resultTarget.loadingInstance.close();
-    this.isShow = false;
+    this.isShow.set(false);
   }
 }

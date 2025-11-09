@@ -1,26 +1,23 @@
-import {
-  Component
-} from '@angular/core';
-import { of } from 'rxjs';
-
-import { LoadingType } from 'ng-devui/loading';
-import { delay } from 'rxjs/operators';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { delay, of } from 'rxjs';
+import { ButtonModule } from 'ng-devui/button';
+import { LoadingModule, LoadingType } from 'ng-devui/loading';
 
 @Component({
   selector: 'd-subscription',
+  imports: [ButtonModule, LoadingModule],
   templateUrl: './subscription.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SubscriptionComponent {
-  loading: LoadingType;
+  loading = signal<LoadingType>(undefined);
   source = of(1, 2, 3, 4, 5);
-  constructor() {
-    this.loading = undefined;
-  }
 
   startLoading() {
-    this.loading = this.source.pipe(delay(2000)).subscribe(value => {
-      console.log(value);
-    });
+    this.loading.set(
+      this.source.pipe(delay(2000)).subscribe((value) => {
+        console.log(value);
+      })
+    );
   }
 }

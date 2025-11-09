@@ -1,31 +1,19 @@
-import {
-  Component,
-  OnInit
-} from '@angular/core';
-import {LoadingType} from 'ng-devui/loading';
-import { timer } from 'rxjs';
+import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/core';
+import { ButtonModule } from 'ng-devui/button';
+import { LoadingModule, LoadingType } from 'ng-devui/loading';
+import { firstValueFrom, timer } from 'rxjs';
 
 @Component({
   selector: 'd-promise',
+  imports: [ButtonModule, LoadingModule],
   templateUrl: './promise.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PromiseComponent implements OnInit {
-  loading3: LoadingType;
+export class PromiseComponent {
+  loading3 = signal<LoadingType>(undefined);
   showLoading = false;
   tableNames: string[][] = [[]];
-  constructor() {
-    this.loading3 = undefined;
-  }
-
-  ngOnInit() {
-  }
-
   fetchMultiplePromise() {
-    this.loading3 = [
-      timer(3500).toPromise(),
-      timer(3000).toPromise(),
-    ];
+    this.loading3.set([firstValueFrom(timer(3500)), firstValueFrom(timer(3000))]);
   }
-
 }

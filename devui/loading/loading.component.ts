@@ -1,25 +1,33 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges, TemplateRef } from '@angular/core';
+import { booleanAttribute, ChangeDetectionStrategy, Component, computed, input, numberAttribute, TemplateRef } from '@angular/core';
 import { LoadingStyle } from './loading.types';
+import { NgTemplateOutlet } from '@angular/common';
 @Component({
   selector: 'd-loading',
-  template: `<div class="devui-loading-wrapper" [ngClass]="{ 'devui-loading-full': targetName === 'BODY' }" [style.zIndex]="zIndex">
-    <ng-container *ngTemplateOutlet="loadingTemplateRef ? loadingTemplateRef : default"> </ng-container>
+  imports: [NgTemplateOutlet],
+  template: `<div class="devui-loading-wrapper" [class.devui-loading-full]="targetName() === 'BODY'" [style.zIndex]="zIndex()">
+    <ng-container *ngTemplateOutlet="loadingTemplateRef() ?? default"> </ng-container>
     <ng-template #default>
       <div
         class="devui-spinner-wrapper"
-        [ngClass]="{ 'devui-fix-loading-position': !customPosition, 'devui-message-wrapper': !!message }"
-        [ngStyle]="{ top: top, left: left }"
+        [class.devui-fix-loading-position]="!customPosition()"
+        [class.devui-message-wrapper]="!!message()"
+        [style.top]="top()"
+        [style.left]="left()"
       >
         <div class="devui-busy-default-sign">
-          <div *ngIf="loadingStyle === 'default'" class="devui-busy-default-spinner">
+          @if (loadingStyle() === 'default') {
+          <div class="devui-busy-default-spinner">
             <svg viewBox="25 25 50 50">
               <circle cx="50" cy="50" r="20" fill="none"></circle>
             </svg>
             <div class="devui-loading-dots">
-              <span *ngFor="let spinner of spinners"><i></i></span>
+              @for(spinner of spinners; track spinner) {
+              <span><i></i></span>
+              }
             </div>
           </div>
-          <div *ngIf="loadingStyle === 'infinity'" class="devui-infinity-loading-wrapper">
+          } @if (loadingStyle() === 'infinity') {
+          <div class="devui-infinity-loading-wrapper">
             <svg
               width="68px"
               height="34px"
@@ -69,39 +77,28 @@ import { LoadingStyle } from './loading.types';
               </g>
             </svg>
           </div>
-          <div class="devui-busy-default-text" *ngIf="!!message">{{ message }}</div>
+          } @if (!!message()) {
+          <div class="devui-busy-default-text">{{ message() }}</div>
+          }
         </div>
       </div>
     </ng-template>
   </div>`,
   styleUrls: ['./loading.component.scss'],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoadingComponent implements OnInit, OnChanges {
-  @Input() loadingTemplateRef: TemplateRef<any>;
-  @Input() message: string;
-  @Input() top: string;
-  @Input() left: string;
-  @Input() customPosition: boolean;
-  @Input() target: Element;
-  @Input() zIndex: number;
-  @Input() loadingStyle: LoadingStyle = 'default';
+export class LoadingComponent {
+  loadingTemplateRef = input<TemplateRef<any>>();
+  message = input<string>();
+  top = input<string>();
+  left = input<string>();
+  customPosition = input(false, { transform: booleanAttribute });
+  target = input<Element>();
+  zIndex = input(undefined, { transform: numberAttribute });
+  loadingStyle = input<LoadingStyle>('default');
   spinners = new Array(12);
-  targetName: string;
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.target && this.target) {
-      this.targetName = this.target.nodeName;
-    }
-  }
-
-  ngOnInit(): void {
-    if (this.target) {
-      this.targetName = this.target.nodeName;
-    }
-  }
-
+  targetName = computed(() => this.target()?.nodeName);
   // Will overwrite this method in modal service
   close() {}
 }

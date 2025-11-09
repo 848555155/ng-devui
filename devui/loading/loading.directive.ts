@@ -1,14 +1,15 @@
 import {
-  ComponentFactoryResolver,
+  booleanAttribute,
   ComponentRef,
   Directive,
+  effect,
   ElementRef,
   EmbeddedViewRef,
-  HostBinding,
+  inject,
   Injector,
-  Input,
-  OnChanges,
-  SimpleChanges,
+  input,
+  numberAttribute,
+  signal,
   TemplateRef,
   ViewContainerRef,
   ViewRef,
@@ -18,49 +19,53 @@ import { catchError } from 'rxjs/operators';
 import { LoadingBackdropComponent } from './loading-backdrop.component';
 import { LoadingComponent } from './loading.component';
 import { ILoadingViewPosition, LoadingStyle, LoadingType } from './loading.types';
+import { rxResource } from '@angular/core/rxjs-interop';
 @Directive({
   selector: '[dLoading]',
   exportAs: 'dLoading',
-  standalone: false
+  host: {
+    '[style.position]': 'position()',
+  },
 })
-export class LoadingDirective implements OnChanges {
-  @Input() backdrop: boolean;
-  @Input() message: string;
-  @Input() positionType: string;
-  @Input() showLoading: boolean;
-  @Input() view: ILoadingViewPosition;
-  @Input() zIndex: number;
-  @Input() loading: LoadingType | boolean;
-  @Input() loadingStyle: LoadingStyle = 'default';
-  @Input() loadingTemplateRef: TemplateRef<any>;
-  @HostBinding('style.position') position: string;
-  active = true;
-  backdropRef: ComponentRef<any>;
-  loadingRef: ComponentRef<any>;
+export class LoadingDirective {
+  backdrop = input(false, { transform: booleanAttribute });
+  message = input<string>();
+  positionType = input<string>();
+  showLoading = input<boolean>();
+  view = input<ILoadingViewPosition>();
+  zIndex = input(undefined, { transform: numberAttribute });
+  loading = input<LoadingType | boolean>();
+  loadingStyle = input<LoadingStyle>('default');
+  loadingTemplateRef = input<TemplateRef<any>>();
+  backdropRef: ComponentRef<LoadingBackdropComponent>;
+  loadingRef: ComponentRef<LoadingComponent>;
+  position = signal('');
 
-  constructor(
-    private componentFactoryResolver: ComponentFactoryResolver,
-    private elementRef: ElementRef,
-    private injector: Injector,
-    private triggerElementRef: ElementRef,
-    private viewContainerRef: ViewContainerRef
-  ) {}
+  private elementRef = inject(ElementRef);
+  private injector = inject(Injector);
+  private viewContainerRef = inject(ViewContainerRef);
 
-  ngOnChanges(changes: SimpleChanges): void {
-    const { backdrop, loading, loadingTemplateRef, message, positionType, showLoading, view, zIndex } = changes;
-    const changeArr = [backdrop, loading, loadingTemplateRef, message, positionType, showLoading, view, zIndex];
-    if (changeArr.find((item) => item !== undefined)) {
-      // loading 兼容showLoading, 赋值类型为 boolean 时触发显示
-      const isBoolean = typeof this.loading === 'boolean';
-      const flag = isBoolean ? this.loading : undefined;
-      const isLoading = this.showLoading !== undefined ? this.showLoading : flag;
+  constructor() {
+    effect(() => {
+      const backdrop = this.backdrop();
+      const loading = this.loading();
+      const loadingTemplateRef = this.loadingTemplateRef();
+      const message = this.message();
+      const positionType = this.positionType();
+      const showLoading = this.showLoading();
+      const view = this.view();
+      const zIndex = this.zIndex();
+      const changeArr = [backdrop, loading, loadingTemplateRef, message, positionType, showLoading, view, zIndex];
+      const isBoolean = typeof loading === 'boolean';
+      const flag = isBoolean ? loading : undefined;
+      const isLoading = showLoading !== undefined ? showLoading : flag;
       if (isLoading !== undefined) {
-        this.showLoadingChangeEvent(isLoading as boolean);
+        this.showLoadingChangeEvent(isLoading);
       }
-      if (!isBoolean && this.loading) {
-        this.loadingChangeEvent(this.loading as LoadingType);
+      if (!isBoolean && loading) {
+        this.loadingChangeEvent(loading);
       }
-    }
+    });
   }
 
   loadingChangeEvent(loading: LoadingType): void {
@@ -73,9 +78,8 @@ export class LoadingDirective implements OnChanges {
     if (loadingArr.length > 0) {
       this.startLoading();
       forkJoin(loadingArr)
-        .pipe(catchError((error) => throwError(error)))
+        .pipe(catchError((error) => throwError(() => error)))
         .subscribe({
-          next: null,
           error: () => this.endLoading(),
           complete: () => this.endLoading(),
         });
@@ -91,32 +95,28 @@ export class LoadingDirective implements OnChanges {
   }
 
   private startLoading(): void {
-    this.position = this.positionType || 'relative';
+    this.position.set(this.positionType() || 'relative');
 
-    if (this.backdrop && !this.backdropRef) {
+    if (this.backdrop() && !this.backdropRef) {
       this.createLoadingBackdrop();
     }
 
-    if (!this.backdrop && this.backdropRef) {
+    if (!this.backdrop() && this.backdropRef) {
       this.backdropRef.destroy();
       this.backdropRef = null;
     }
 
     if (!this.loadingRef) {
       this.loadingRef = this.viewContainerRef.createComponent(LoadingComponent, { index: null, injector: this.injector });
-
       this.insert(this.loadingRef.hostView);
     }
-
-    Object.assign(this.loadingRef.instance, {
-      message: this.message,
-      loadingTemplateRef: this.loadingTemplateRef,
-      top: this.view ? this.view.top : '50%',
-      left: this.view ? this.view.left : '50%',
-      isCustomPosition: !!this.view,
-      zIndex: this.zIndex ? this.zIndex : '',
-      loadingStyle: this.loadingStyle,
-    });
+    this.loadingRef.setInput('message', this.message());
+    this.loadingRef.setInput('loadingTemplateRef', this.loadingTemplateRef());
+    this.loadingRef.setInput('top', this.view() ? this.view().top : '50%');
+    this.loadingRef.setInput('left', this.view() ? this.view().left : '50%');
+    this.loadingRef.setInput('customPosition', !!this.view());
+    this.loadingRef.setInput('zIndex', this.zIndex() ? this.zIndex() : '');
+    this.loadingRef.setInput('loadingStyle', this.loadingStyle());
   }
 
   private endLoading(): void {
@@ -130,7 +130,7 @@ export class LoadingDirective implements OnChanges {
       this.backdropRef = null;
     }
 
-    this.position = '';
+    this.position.set('');
   }
 
   private createLoadingBackdrop(): void {
@@ -138,12 +138,8 @@ export class LoadingDirective implements OnChanges {
       !this.backdropRef && this.viewContainerRef.createComponent(LoadingBackdropComponent, { index: null, injector: this.injector });
 
     this.insert(this.backdropRef.hostView);
-
-    Object.assign(this.backdropRef.instance, {
-      triggerElementRef: this.triggerElementRef,
-      backdrop: this.backdrop,
-      zIndex: this.zIndex ? this.zIndex : '',
-    });
+    this.backdropRef.setInput('backdrop', this.backdrop());
+    this.backdropRef.setInput('zIndex', this.zIndex() ? this.zIndex() : '');
   }
 
   private insert(viewRef: ViewRef): ViewRef {

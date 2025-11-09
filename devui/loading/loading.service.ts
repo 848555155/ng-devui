@@ -1,5 +1,12 @@
-
-import { ComponentFactoryResolver, ComponentRef, EmbeddedViewRef, Inject, Injectable, Renderer2, RendererFactory2, DOCUMENT } from '@angular/core';
+import {
+  ComponentFactoryResolver,
+  ComponentRef,
+  EmbeddedViewRef,
+  Injectable,
+  RendererFactory2,
+  DOCUMENT,
+  inject,
+} from '@angular/core';
 import { OverlayContainerRef } from 'ng-devui/overlay-container';
 import { LoadingBackdropComponent } from './loading-backdrop.component';
 import { LoadingComponent } from './loading.component';
@@ -8,18 +15,11 @@ import { ILoadingOptions } from './loading.types';
   providedIn: 'root',
 })
 export class LoadingService {
-  private renderer: Renderer2;
-  document: Document;
+  private renderer = inject(RendererFactory2).createRenderer(null, null);
+  document = inject(DOCUMENT);
+  private overlayContainerRef = inject(OverlayContainerRef);
+  private componentFactoryResolver = inject(ComponentFactoryResolver);
 
-  constructor(
-    private overlayContainerRef: OverlayContainerRef,
-    private componentFactoryResolver: ComponentFactoryResolver,
-    private rendererFactory: RendererFactory2,
-    @Inject(DOCUMENT) private doc: any
-  ) {
-    this.renderer = this.rendererFactory.createRenderer(null, null);
-    this.document = this.doc;
-  }
   // loading 服务内的函数，外部就可以传入ILoadingOptions类型的参数调用它
   open({
     target = this.document.body,
@@ -35,20 +35,18 @@ export class LoadingService {
     const finalComponentFactoryResolver = this.componentFactoryResolver;
 
     let positionTypeOld = '';
-    positionTypeOld = (target as any).style.position || '';
+    positionTypeOld = target.style.position || '';
     let backdropRef: ComponentRef<LoadingBackdropComponent>;
     if (backdrop) {
       backdropRef = this.overlayContainerRef.createComponent(
         finalComponentFactoryResolver.resolveComponentFactory(LoadingBackdropComponent),
         injector
       );
-      Object.assign(backdropRef.instance, {
-        backdrop: backdrop,
-        zIndex: zIndex,
-        target: target ? target : this.document.body,
-      });
-      const viewRef = backdropRef.hostView;
-      (viewRef as EmbeddedViewRef<any>).rootNodes.forEach((node) => target.appendChild(node));
+      backdropRef.setInput('backdrop', backdrop);
+      backdropRef.setInput('zIndex', zIndex);
+      backdropRef.setInput('target', target ? target : this.document.body);
+      const viewRef = backdropRef.hostView as EmbeddedViewRef<any>;
+      viewRef.rootNodes.forEach((node) => target.appendChild(node));
     }
 
     const loadingRef = this.overlayContainerRef.createComponent(
@@ -56,21 +54,18 @@ export class LoadingService {
       injector
     );
 
-    Object.assign(loadingRef.instance, {
-      message: message,
-      zIndex: zIndex,
-      loadingTemplateRef: loadingTemplateRef,
-      top: view ? view.top : '50%',
-      left: view ? view.left : '50%',
-      isCustomPosition: !!view,
-      target: target ? target : this.document.body,
-      loadingStyle: loadingStyle,
-    });
+    loadingRef.setInput('message', message);
+    loadingRef.setInput('zIndex', zIndex);
+    loadingRef.setInput('loadingTemplateRef', loadingTemplateRef);
+    loadingRef.setInput('top', view ? view.top : '50%');
+    loadingRef.setInput('left', view ? view.left : '50%');
+    loadingRef.setInput('target', target ? target : this.document.body);
+    loadingRef.setInput('loadingStyle', loadingStyle);
 
     this.renderer.setStyle(target, 'position', positionType);
 
-    const viewRef1 = loadingRef.hostView;
-    (viewRef1 as EmbeddedViewRef<any>).rootNodes.forEach((node) => target.appendChild(node));
+    const viewRef1 = loadingRef.hostView as EmbeddedViewRef<any>;
+    viewRef1.rootNodes.forEach((node) => target.appendChild(node));
 
     loadingRef.instance.close = () => {
       if (loadingRef) {

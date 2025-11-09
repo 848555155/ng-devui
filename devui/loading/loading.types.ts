@@ -8,7 +8,7 @@ export interface ILoadingViewPosition {
   left?: string;
 }
 export interface ILoadingOptions {
-  target?: Element;
+  target?: HTMLElement;
   zIndex?: number;
   message?: string;
   backdrop?: boolean;

@@ -1,27 +1,26 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ButtonModule } from 'ng-devui/button';
+import { LoadingModule } from 'ng-devui/loading';
 
 @Component({
   selector: 'd-show-loading',
+  imports: [ButtonModule, LoadingModule],
   templateUrl: './show-loading.component.html',
   styleUrls: ['./show-loading.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ShowLoadingComponent {
-  showLoading = false;
+  showLoading = signal(false);
   tableNames: string[][] = [[]];
   view = {
     top: '50px',
-    left: '50%'
+    left: '50%',
   };
-  constructor() {
-
-  }
 
   controlLoading() {
-    this.showLoading = true;
+    this.showLoading.set(true);
     setTimeout(() => {
-      this.showLoading = false;
+      this.showLoading.set(false);
     }, 1000);
   }
-
 }

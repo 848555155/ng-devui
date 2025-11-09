@@ -1,34 +1,24 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import {
+  booleanAttribute,
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  input,
+  numberAttribute,
+} from '@angular/core';
 
 @Component({
   selector: 'd-loading-backdrop',
-  template: `<div
-    class="devui-loading-backdrop"
-    [ngStyle]="{ 'z-index': zIndex }"
-    [ngClass]="{ 'devui-loading-full': targetName === 'BODY' }"
-    *ngIf="backdrop"
-  ></div>`,
+  template: `@if (backdrop()) {
+    <div class="devui-loading-backdrop" [style.z-index]="zIndex()" [class.devui-loading-full]="targetName() === 'BODY'"></div>
+    }`,
   styleUrls: ['./loading-backdrop.component.scss'],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoadingBackdropComponent implements OnInit, OnChanges {
-  @Input() backdrop = true;
-  @Input() target: Element;
-  @Input() zIndex: number;
-  targetName: string;
-
-  ngOnInit() {
-    if (this.target) {
-      this.targetName = this.target.nodeName;
-    }
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.target) {
-      if (this.target) {
-        this.targetName = this.target.nodeName;
-      }
-    }
-  }
+export class LoadingBackdropComponent {
+  backdrop = input(true, { transform: booleanAttribute });
+  target = input<Element>();
+  zIndex = input(undefined, { transform: numberAttribute });
+  targetName = computed(() => this.target()?.nodeName);
 }

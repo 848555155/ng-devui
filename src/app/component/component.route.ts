@@ -481,7 +481,7 @@ export const routesConfig: Routes = [
   {
     path: 'loading',
     component: ExamplePanelComponent,
-    loadChildren: () => import('../../../devui/loading/demo/loading-demo.module').then((m) => m.LoadingDemoModule),
+    loadChildren: () => import('../../../devui/loading/demo/loading-demo.routes'),
     data: {
       type: '反馈',
       enType: 'Feedback',

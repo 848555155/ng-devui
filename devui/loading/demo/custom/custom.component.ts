@@ -1,38 +1,29 @@
-import {
-  Component,
-  OnInit
-} from '@angular/core';
-import { LoadingType } from 'ng-devui/loading';
-import { timer } from 'rxjs';
+import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/core';
+import { ButtonModule } from 'ng-devui/button';
+import { LoadingModule, LoadingType } from 'ng-devui/loading';
+import { firstValueFrom, timer } from 'rxjs';
 
 @Component({
   selector: 'd-custom',
+  imports: [ButtonModule, LoadingModule],
   templateUrl: './custom.component.html',
   styleUrls: ['./custom.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CustomComponent implements OnInit {
-  loading1: LoadingType;
-  loading2: LoadingType;
+export class CustomComponent {
+  loading1 = signal<LoadingType>(undefined);
+  loading2 = signal<LoadingType>(undefined);
   showLoading = true;
   tableNames: string[][] = [[]];
   view = {
     top: '50px',
-    left: '50%'
+    left: '50%',
   };
-  constructor() {
-    this.loading1 = undefined;
-    this.loading2 = undefined;
-  }
-
-  ngOnInit() {
-  }
 
   fetchCustomLoading1() {
-    this.loading1 = timer(3500).toPromise();
+    this.loading1.set(firstValueFrom(timer(3500)));
   }
   fetchCustomLoading2() {
-    this.loading2 = timer(3500).toPromise();
+    this.loading2.set(firstValueFrom(timer(3500)));
   }
-
 }
