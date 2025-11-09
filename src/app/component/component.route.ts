@@ -622,7 +622,7 @@ export const routesConfig: Routes = [
   {
     path: 'status',
     component: ExamplePanelComponent,
-    loadChildren: () => import('../../../devui/status/demo/status-demo.module').then((m) => m.StatusDemoModule),
+    loadChildren: () => import('../../../devui/status/demo/status-demo.routes'),
     data: {
       name: 'Status',
       cnName: '状态',
