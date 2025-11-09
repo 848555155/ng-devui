@@ -2,11 +2,7 @@ import { NgModule } from '@angular/core';
 import { NumberTransPipe } from './number-translation.pipe';
 
 @NgModule({
-  declarations: [
-    NumberTransPipe
-  ],
-  exports: [
-    NumberTransPipe
-  ]
+  imports: [NumberTransPipe],
+  exports: [NumberTransPipe],
 })
-export class NumberTransModule { }
+export class NumberTransModule {}

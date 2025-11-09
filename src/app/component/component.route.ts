@@ -934,7 +934,7 @@ export const routesConfig: Routes = [
   {
     path: 'number-trans',
     component: ExamplePanelComponent,
-    loadChildren: () => import('../../../devui/number-translation/demo/demo.module').then((m) => m.DemoModule),
+    loadChildren: () => import('../../../devui/number-translation/demo/demo.routes'),
     data: {
       type: '数据展示',
       enType: 'Data Display',

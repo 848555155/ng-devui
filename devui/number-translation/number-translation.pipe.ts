@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'dNumberTrans',
-  standalone: false
+  pure: true,
 })
 export class NumberTransPipe implements PipeTransform {
   getFlowStr(value: number, fixedNum: number) {

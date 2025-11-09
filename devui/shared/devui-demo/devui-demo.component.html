@@ -1,7 +1,7 @@
 <div class="devui-demo-container" dAnchorBox dAnchorHashSupport [view]="{ top: 180, bottom: 0 }">
   <d-demo-nav [navItems]="demos()" [categoryName]="categoryName()">></d-demo-nav>
 
-  @for (demo of demos(); track demo.anchor) {
+  @for (demo of demos(); track demo.name) { @if (!demo.noAnchor) {
   <div class="devui-demo-example" [dAnchor]="demo.anchor">
     <div class="devui-demo-title">{{ `components.${categoryName()}.${demo.name}.title` | translate }}</div>
     @if (!demo.noDescription) {
@@ -11,5 +11,15 @@
       <ng-container *ngComponentOutlet="demo.component"></ng-container>
     </d-codebox>
   </div>
-  }
+  } @else {
+  <div class="devui-demo-example">
+    <div class="devui-demo-title">{{ `components.${categoryName()}.${demo.name}.title` | translate }}</div>
+    @if (!demo.noDescription) {
+    <div class="devui-demo-text">{{ `components.${categoryName()}.${demo.name}.description` | translate }}</div>
+    }
+    <d-codebox [sourceData]="demo.source">
+      <ng-container *ngComponentOutlet="demo.component"></ng-container>
+    </d-codebox>
+  </div>
+  } }
 </div>

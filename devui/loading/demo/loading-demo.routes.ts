@@ -24,7 +24,7 @@ export default [
         {
           anchor: 'basic-usage',
           name: 'basicDemo',
-          componnt: BasicComponent,
+          component: BasicComponent,
           source: [
             { title: 'HTML', language: 'xml', code: require('./basic/basic.component.html?raw') },
             { title: 'TS', language: 'typescript', code: require('./basic/basic.component.ts?raw') },
