@@ -1,9 +1,8 @@
 import {NgModule} from '@angular/core';
-import {WindowRefModule} from 'ng-devui/window-ref';
 import {PositionService} from './positioning.service';
 
 @NgModule({
-  imports: [WindowRefModule],
+  imports: [],
   providers: [PositionService]
 })
 

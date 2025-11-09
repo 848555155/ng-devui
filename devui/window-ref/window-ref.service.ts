@@ -1,17 +1,15 @@
-import { ElementRef, Injectable } from '@angular/core';
+import { ElementRef, inject, Injectable } from '@angular/core';
 import { DocumentRef } from './document-ref.service';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class WindowRef {
+  private documentRef = inject(DocumentRef);
 
-  constructor(private documentRef: DocumentRef) {
-  }
-
-  get window(): Window | null {
+  get window() {
     return this.document.defaultView;
   }
 
-  get document(): any {
+  get document() {
     return this.documentRef.document;
   }
 
@@ -31,12 +29,11 @@ export class WindowRef {
     return this.window.innerWidth;
   }
 
-  getComputedStyle(element) {
+  getComputedStyle(element: Element) {
     return this.window.getComputedStyle(element);
   }
 
   getBoundingClientRect(elementRef: ElementRef) {
     return elementRef.nativeElement && elementRef.nativeElement.getBoundingClientRect();
   }
-
 }

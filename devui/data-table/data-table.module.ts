@@ -18,7 +18,6 @@ import { ToggleModule } from 'ng-devui/toggle';
 import { TooltipModule } from 'ng-devui/tooltip';
 import { TreeSelectModule } from 'ng-devui/tree-select';
 import { LazyLoadModule, SafePipeModule } from 'ng-devui/utils';
-import { WindowRefModule } from 'ng-devui/window-ref';
 import { DataTableBodyComponent } from './data-table-body.component';
 import { DataTableCellComponent } from './data-table-cell.component';
 import { DataTableHeadComponent } from './data-table-head.component';
@@ -47,7 +46,6 @@ import { DataTableHeadCellTmplComponent } from './tmpl/data-table-head-cell-tmpl
   imports: [
     CommonModule,
     FormsModule,
-    WindowRefModule,
     ScrollingModule,
     PaginationModule,
     DCommonModule,

@@ -64,7 +64,6 @@ import { TreeModule } from 'ng-devui/tree';
 import { TreeSelectModule } from 'ng-devui/tree-select';
 import { UploadModule } from 'ng-devui/upload';
 import { UserGuideModule } from 'ng-devui/user-guide';
-import { WindowRefModule } from 'ng-devui/window-ref';
 export * from 'ng-devui/accordion';
 export * from 'ng-devui/alert';
 export * from 'ng-devui/anchor';
@@ -190,7 +189,6 @@ export * from './version';
     TransferModule,
     TextInputModule,
     TextareaModule,
-    WindowRefModule,
     StepsGuideModule,
     GanttModule,
     QuadrantDiagramModule,

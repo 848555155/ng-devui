@@ -1,21 +1,18 @@
+import { Injectable, DOCUMENT, inject } from '@angular/core';
 
-import { Inject, Injectable, DOCUMENT } from '@angular/core';
-
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class DocumentRef {
+  private doc = inject(DOCUMENT);
 
-  constructor(@Inject(DOCUMENT) private doc: any) {
-  }
-
-  get document(): any {
+  get document() {
     return this.doc;
   }
 
-  get body(): any {
+  get body() {
     return this.document.body;
   }
 
-  get documentElement(): any {
+  get documentElement() {
     return this.document.documentElement;
   }
 }

@@ -7,7 +7,6 @@ import { CheckBoxModule } from 'ng-devui/checkbox';
 import { LoadingModule } from 'ng-devui/loading';
 import { TagsModule } from 'ng-devui/tags';
 import { HighlightModule, LazyLoadModule } from 'ng-devui/utils';
-import { WindowRefModule } from 'ng-devui/window-ref';
 import { ToggleMenuContainerComponent } from './toggle-menu-container.component';
 import { ToggleMenuInputComponent } from './toggle-menu-input.component';
 import { ToggleMenuLabelComponent } from './toggle-menu-label.component';
@@ -27,7 +26,6 @@ import { ToggleMenuSearchComponent } from './toggle-menu-search.component';
     LoadingModule,
     OverlayModule,
     ScrollingModule,
-    WindowRefModule,
     TagsModule,
   ],
   declarations: [
