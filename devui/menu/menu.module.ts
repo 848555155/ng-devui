@@ -8,7 +8,7 @@ import { SubMenuComponent } from './sub-menu.component';
 import { StrTplOutletModule } from 'ng-devui/utils';
 
 @NgModule({
-  imports: [CommonModule, IconModule, OverlayModule, StrTplOutletModule,],
+  imports: [CommonModule, IconModule, OverlayModule, StrTplOutletModule],
   exports: [
     MenuComponent,
     MenuItemDirective,

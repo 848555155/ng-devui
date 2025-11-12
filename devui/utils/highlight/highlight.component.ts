@@ -1,30 +1,37 @@
-
-import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, Inject, Input, OnChanges, SimpleChanges, DOCUMENT } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  DOCUMENT,
+  inject,
+  effect,
+  input,
+} from '@angular/core';
 
 @Component({
   selector: 'd-highlight',
+  host: {
+    'style.display': 'inline',
+  },
   template: ``,
   styleUrls: ['./highlight.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false
 })
-export class HighlightComponent implements OnChanges {
-  @HostBinding('style.display') display = 'inline';
-  @Input() value: string;
-  @Input() term: string;
-  /**
-   * @deprecated
-   */
-  @Input() highlightClass = 'devui-match-highlight';
-  document: Document;
+export class HighlightComponent {
+  value = input<string>();
+  term = input<string>();
+  document = inject(DOCUMENT);
 
-  constructor(private translateHtml: DomSanitizer, private eleRef: ElementRef, @Inject(DOCUMENT) private doc: any) {
-    this.document = this.doc;
+  private eleRef = inject<ElementRef<HTMLElement>>(ElementRef);
+
+  constructor() {
+    effect(() => {
+      const value = this.value();
+      const term = this.term();
+      this.addDom(value, term);
+    });
   }
-  ngOnChanges(changes: SimpleChanges): void {
-    this.addDom(this.value, this.term);
-  }
+
   addDom(value: string, term: string): any {
     if (value && term) {
       this.highlight(value, term);
@@ -34,7 +41,7 @@ export class HighlightComponent implements OnChanges {
       container.textContent = value;
     }
   }
-  emptyChildren(container) {
+  emptyChildren(container: HTMLElement) {
     while (container.hasChildNodes()) {
       container.removeChild(container.firstChild);
     }
@@ -43,10 +50,10 @@ export class HighlightComponent implements OnChanges {
   highlight(value: string, term: string) {
     const container = this.eleRef.nativeElement;
     this.emptyChildren(container);
-    const reg = (str) => str.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+    const reg = (str: string) => str.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
     const regExp = new RegExp('(' + reg(term) + ')', 'gi');
     const temp = value.split(regExp);
-    const createHighLight = (text) => {
+    const createHighLight = (text: string) => {
       const spanDOM = this.document.createElement('span');
       spanDOM.classList.add('devui-match-highlight');
       spanDOM.textContent = text;

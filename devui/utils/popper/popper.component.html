@@ -4,9 +4,9 @@
   </div>
 
   <div
-    class="popper-container devui-popover-container-{{ poppoverAppendDirection }}"
+    class="popper-container devui-popover-container-{{ poppoverAppendDirection() }}"
     #popperContainer
-    [ngClass]="{ fluid: fluidPopper && !appendTo }"
+    [class.fluid]="fluidPopper() && !appendTo()"
   >
     <div class="devui-dropdown-menu-wrap">
       <ng-content select="[popper-prepend]"></ng-content>

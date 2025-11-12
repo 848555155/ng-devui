@@ -1,24 +1,26 @@
-import { Directive, EmbeddedViewRef, Input, OnChanges, SimpleChanges, TemplateRef, ViewContainerRef } from '@angular/core';
+import { Directive, EmbeddedViewRef, inject, input, TemplateRef, ViewContainerRef } from '@angular/core';
 import { isEqual } from 'lodash-es';
 
 @Directive({
   selector: '[dStrTplOutlet]',
-  standalone: false
 })
-export class StrTplOutletDirective<T = Record<string, any>> implements OnChanges {
+export class StrTplOutletDirective<T = Record<string, any>> {
   private embeddedViewRef: EmbeddedViewRef<T> | null = null;
-  @Input() dStrTplOutlet: TemplateRef<T> | string;
-  @Input() dStrTplOutletContext: T;
-  constructor(private viewContainer: ViewContainerRef, private templateRef: TemplateRef<T>) { }
-  ngOnChanges(changes: SimpleChanges): void {
-    const { dStrTplOutlet, dStrTplOutletContext } = changes;
+  dStrTplOutlet = input<TemplateRef<T> | string>();
+  dStrTplOutletContext = input<T>();
+  private viewContainer = inject(ViewContainerRef);
+  private templateRef = inject(TemplateRef<T>);
+
+  constructor() {
+    const dStrTplOutlet = this.dStrTplOutlet();
+    const dStrTplOutletContext = this.dStrTplOutletContext();
     if (dStrTplOutlet) {
       this.viewContainer.clear();
-      const template = (this.dStrTplOutlet instanceof TemplateRef) ? this.dStrTplOutlet : this.templateRef;
+      const template = this.dStrTplOutlet instanceof TemplateRef ? this.dStrTplOutlet : this.templateRef;
       this.embeddedViewRef = this.viewContainer.createEmbeddedView(template, this.dStrTplOutletContext);
     }
 
-    if (dStrTplOutletContext && !dStrTplOutletContext.firstChange && this.embeddedViewRef) {
+    if (dStrTplOutletContext && this.embeddedViewRef) {
       const isTemplateRef = this.dStrTplOutlet instanceof TemplateRef;
       const newCtx = isTemplateRef ? this.dStrTplOutletContext : {};
       const oldCtx = this.embeddedViewRef.context;
