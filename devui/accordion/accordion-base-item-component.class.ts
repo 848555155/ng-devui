@@ -1,20 +1,18 @@
-import { Directive, HostBinding } from '@angular/core';
+import { Directive } from '@angular/core';
 import { AccordionBaseComponent } from './accordion-base-component.class';
-import { AccordionBaseItem, AccordionOptions } from './accordion.type';
+import { AccordionBaseItem } from './accordion.type';
 
-@Directive()
+@Directive({
+  host: {
+    class: 'devui-accordion-item-title devui-over-flow-ellipsis',
+    '[class.active]': 'active()',
+  },
+})
 export abstract class AccordionBaseItemComponent<T extends AccordionBaseItem> extends AccordionBaseComponent<T> {
-  get itemTemplate() {
-    return this.accordion.itemTemplate;
+  active() {
+    return this.item() && this.item()[this.accordion.activeKey()];
   }
-  @HostBinding('class.active')
-  get active() {
-    return this.item && this.item[this.accordion.activeKey];
-  }
-  @HostBinding('class.devui-accordion-item-title')
-  @HostBinding('class.devui-over-flow-ellipsis')
-    defaultClasses = true;
-  constructor(protected accordion: AccordionOptions) {
-    super(accordion);
+  itemTemplate() {
+    return this.accordion.itemTemplate();
   }
 }

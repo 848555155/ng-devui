@@ -128,7 +128,7 @@ export const routesConfig: Routes = [
   {
     path: 'accordion',
     component: ExamplePanelComponent,
-    loadChildren: () => import('../../../devui/accordion/demo/accordion-demo.moudule').then((m) => m.AccordionDemoModule),
+    loadChildren: () => import('../../../devui/accordion/demo/accordion-demo.routes'),
     data: {
       type: '导航',
       enType: 'Navigation',

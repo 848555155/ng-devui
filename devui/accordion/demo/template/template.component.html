@@ -12,11 +12,11 @@
 <ng-template #menutemplate let-item="item">
   <div class="title-container">
     <span class="title-content">{{ item.title }}</span>
-    <span class="operation-clear" *ngIf="item.needLoadChildren === false" (click)="clearChildrenData($event, item)"
-      >reset
-      <!--重置--></span
-    >
-    <span class="badge" *ngIf="item.children?.length">{{ item.children.length }}</span>
+    @if (item.needLoadChildren === false) {
+    <span class="operation-clear" (click)="clearChildrenData($event, item)">reset<!--重置--></span>
+    } @if (item.children?.length) {
+    <span class="badge">{{ item.children.length }}</span>
+    }
   </div>
 </ng-template>
 <ng-template #itemtemplate let-item="item">

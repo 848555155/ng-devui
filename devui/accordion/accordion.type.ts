@@ -1,4 +1,4 @@
-import { TemplateRef } from '@angular/core';
+import { InputSignal, TemplateRef } from '@angular/core';
 
 /* 基础数据类型 */
 type AccordionMenuItemLinkType = 'routerLink' | 'hrefLink' | string;
@@ -60,20 +60,20 @@ export interface AccordionItemClickEvent {
 
 /* 通用公共配置数据类型 */
 interface AccordionMenuKeyGroup {
-  titleKey?: string;
-  activeKey?: string;
-  disabledKey?: string;
-  openKey?: string;
-  loadingKey?: string;
-  childrenKey?: string;
-  linkKey?: string;
-  linkTargetKey?: string;
-  linkTypeKey?: string;
+  titleKey?: InputSignal<string>;
+  activeKey?: InputSignal<string>;
+  disabledKey?: InputSignal<string>;
+  openKey?: InputSignal<string>;
+  loadingKey?: InputSignal<string>;
+  childrenKey?: InputSignal<string>;
+  linkKey?: InputSignal<string>;
+  linkTargetKey?: InputSignal<string>;
+  linkTypeKey?: InputSignal<string>;
 }
 
 type AccordionTemplateRefArray = 'itemTemplate' | 'menuItemTemplate' | 'noContentTemplate' | 'loadingTemplate' | 'innerListTemplate';
 type AccordionTemplateRefGroup = {
-  [p in AccordionTemplateRefArray]: TemplateRef<any>
+  [p in AccordionTemplateRefArray]: InputSignal<TemplateRef<any>>
 };
 interface AccordionConfigOptions {
   restrictOneOpen?: boolean;

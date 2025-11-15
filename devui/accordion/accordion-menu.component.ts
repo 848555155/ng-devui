@@ -1,80 +1,68 @@
-import { Component, HostBinding, Inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, linkedSignal, ViewEncapsulation } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AccordionBaseComponent } from './accordion-base-component.class';
-import { ACCORDION } from './accordion-token';
 import { AccordionService } from './accordion.service';
 import { AccordionBaseMenu, AccordionMenuItem } from './accordion.type';
+import { NgTemplateOutlet } from '@angular/common';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { AccordionListComponent } from './accordion-list.component';
+
 @Component({
   selector: 'd-accordion-menu',
+  imports: [NgTemplateOutlet],
+  host: {
+    class: 'devui-accordion-menu-item',
+    '[class.open]': 'open()',
+    '[class.devui-router-active]': 'routerLinkActivated()',
+    '[class.devui-has-active-item]': 'hasActiveChildren()',
+  },
   templateUrl: './accordion-menu.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
-  standalone: false
 })
-export class AccordionMenuComponent extends AccordionBaseComponent<AccordionBaseMenu<AccordionMenuItem>> implements OnInit, OnDestroy {
+export class AccordionMenuComponent extends AccordionBaseComponent<AccordionBaseMenu<AccordionMenuItem>> {
   childListSub: Subscription;
-  accordionListFromView: any; // AccordionListComponent
+  accordionListFromView: AccordionListComponent; // AccordionListComponent
 
-  @HostBinding('class.devui-accordion-menu-item') defaultClasses = true;
-
-  @HostBinding('class.open')
-  get open() {
-    return this.keyOpen === undefined && this.accordion.autoOpenActiveMenu ? this.childActivated : this.keyOpen;
+  open() {
+    return this.keyOpen() === undefined && this.accordion.autoOpenActiveMenu ? this.childActivated() : this.keyOpen();
   }
-
-  @HostBinding('class.devui-router-active')
-  get routerLinkActivated() {
-    return this.accordionListFromView && this.accordionListFromView.routerLinkActivated;
+  routerLinkActivated() {
+    return this.accordionListFromView && this.accordionListFromView.routerLinkActivated();
   }
-
-  @HostBinding('class.devui-has-active-item')
-  get hasActiveChildren() {
-    return this.accordionListFromView && this.accordionListFromView.hasActiveChildren;
+  hasActiveChildren() {
+    return this.accordionListFromView && this.accordionListFromView.hasActiveChildren();
   }
-
-  get keyOpen() {
-    return this.item && this.item[this.accordion.openKey];
+  keyOpen() {
+    return this.item() && this.item()[this.accordion.openKey()];
   }
-
-  get children() {
-    return this.item && this.item[this.accordion.childrenKey];
+  children() {
+    return this.item() && this.item()[this.accordion.childrenKey()];
   }
-
-  get childActivated() {
-    return this.routerLinkActivated || this.hasActiveChildren;
+  childActivated() {
+    return this.routerLinkActivated() || this.hasActiveChildren();
   }
+  menuItemTemplate = computed(() => this.accordion.menuItemTemplate());
 
-  get menuItemTemplate() {
-    return this.accordion.menuItemTemplate;
-  }
-
-  constructor(@Inject(ACCORDION) public accordion: any, private accordionService: AccordionService) {
-    super(accordion);
-  }
-
-  ngOnInit(): void {
-    this.childListSub = this.accordionService.getChildListInstance().subscribe(({ listInstance, parent }) => {
+  subs = inject(AccordionService)
+    .getChildListInstance()
+    .pipe(takeUntilDestroyed())
+    .subscribe(({ listInstance, parent }) => {
       // list的parent与menu的item为同一数据，通过该属性匹配父子关系，避免互相嵌套导致循环依赖
-      if (parent === this.item) {
+      if (parent === this.item()) {
         // 延时赋值规避脏检查后值改变报错
         setTimeout(() => {
           this.accordionListFromView = listInstance;
         });
       }
     });
-  }
 
-  ngOnDestroy(): void {
-    if (this.childListSub) {
-      this.childListSub.unsubscribe();
-    }
-  }
-
-  toggle(event) {
+  toggle(event: MouseEvent) {
     this.accordion.menuToggleFn({
-      item: this.item,
-      open: !this.open,
-      parent: this.parent,
+      item: this.item(),
+      open: !this.open(),
+      parent: this.parent(),
       event: event,
     });
   }

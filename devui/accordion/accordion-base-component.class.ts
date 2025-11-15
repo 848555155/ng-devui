@@ -1,24 +1,28 @@
-import { Directive, HostBinding, Input } from '@angular/core';
-import { AccordionBase, AccordionOptions } from './accordion.type';
+import { ChangeDetectorRef, computed, Directive, effect, inject, input, linkedSignal, numberAttribute } from '@angular/core';
+import { AccordionBase } from './accordion.type';
+import { ACCORDION } from './accordion-token';
 
-@Directive()
+@Directive({
+  host: {
+    '[class.disabled]': 'disabled()',
+    '[attr.title]': 'title()',
+    '[style.textIndent.px]': 'deepth() * 20',
+  },
+})
 export abstract class AccordionBaseComponent<T extends AccordionBase> {
-  @Input() item: any | T;
-  @Input() deepth = 0;
-  @Input() parent: any | T;
+  item = input<any | T>();
+  deepth = input(0, { transform: numberAttribute });
+  parent = input<any | T>();
 
-  @HostBinding('class.disabled')
-  get disabled() {
-    return this.item && this.item[this.accordion.disabledKey];
-  }
-  @HostBinding('attr.title')
-  public get title() {
-    return this.item && this.item[this.accordion.titleKey];
-  }
-  @HostBinding('style.textIndent')
-  get textIndent() {
-    return this.deepth * 20 + 'px';
-  }
+  disabled = computed(() => this.item() && this.item()[this.accordion.disabledKey()]);
+  title = computed(() => this.item() && this.item()[this.accordion.titleKey()]);
 
-  constructor(protected accordion: AccordionOptions) { }
+  protected accordion = inject(ACCORDION);
+  cdr = inject(ChangeDetectorRef);
+  constructor() {
+    effect(() => {
+      const item = this.item();
+      item['$c'] = this;
+    });
+  }
 }

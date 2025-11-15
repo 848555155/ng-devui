@@ -1,155 +1,154 @@
-import { Component, HostBinding, Inject, Input, OnDestroy, OnInit, QueryList, ViewChildren, ViewEncapsulation } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  input,
+  linkedSignal,
+  numberAttribute,
+  OnDestroy,
+  OnInit,
+  viewChildren,
+  ViewEncapsulation,
+} from '@angular/core';
 import { expandCollapse, expandCollapseForDomDestroy } from 'ng-devui/utils';
 import { AccordionItemRouterlinkComponent } from './accordion-item-routerlink.component';
 import { AccordionMenuComponent } from './accordion-menu.component';
 import { ACCORDION } from './accordion-token';
 import { AccordionService } from './accordion.service';
 import { AccordionMenuItem } from './accordion.type';
+import { AccordionItemHreflinkComponent } from './accordion-item-hreflink.component';
+import { AccordionItemComponent } from './accordion-item.component';
+import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
   selector: 'd-accordion-list',
+  imports: [
+    AccordionMenuComponent,
+    AccordionItemRouterlinkComponent,
+    AccordionItemHreflinkComponent,
+    AccordionItemComponent,
+    NgTemplateOutlet,
+  ],
+  host: {
+    '[class.devui-accordion-show-animate]': 'animateState()',
+  },
   templateUrl: './accordion-list.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   animations: [expandCollapse, expandCollapseForDomDestroy],
   preserveWhitespaces: false,
-  standalone: false
 })
 export class AccordionListComponent implements OnInit, OnDestroy {
-  @Input() data: Array<AccordionMenuItem>;
-  @Input() deepth = 0;
-  @Input() parent: AccordionMenuItem;
-  @ViewChildren(AccordionMenuComponent) accordionMenuQueryList: QueryList<any>;
-  @ViewChildren(AccordionItemRouterlinkComponent) accordionItemRouterlinkQueryList: QueryList<AccordionItemRouterlinkComponent>;
-  @HostBinding('class.devui-accordion-show-animate') get animateState() {
+  data = input<Array<AccordionMenuItem>>();
+  deepth = input(0, { transform: numberAttribute });
+  parent = input<AccordionMenuItem>();
+  accordionMenuQueryList = viewChildren(AccordionMenuComponent);
+  accordionItemRouterlinkQueryList = viewChildren(AccordionItemRouterlinkComponent);
+
+  animateState() {
     return this.accordion.showAnimation;
   }
-
-  get loading() {
-    return this.parent && this.parent[this.accordion.loadingKey];
+  loading() {
+    return this.parent() && this.parent()[this.accordion.loadingKey()];
   }
-
-  get noContent() {
-    return this.data === undefined || this.data === null || this.data.length === 0;
+  noContent() {
+    return this.data() === undefined || this.data() === null || this.data().length === 0;
   }
-
-  get linkTypeKey() {
-    return this.accordion.linkTypeKey;
+  linkTypeKey() {
+    return this.accordion.linkTypeKey();
   }
-
-  get childrenKey() {
-    return this.accordion.childrenKey;
+  childrenKey() {
+    return this.accordion.childrenKey();
   }
-
-  get activeKey() {
-    return this.accordion.activeKey;
+  activeKey() {
+    return this.accordion.activeKey();
   }
-
-  get itemTemplate() {
-    return this.accordion.itemTemplate;
+  innerListTemplate() {
+    return this.accordion.innerListTemplate();
   }
-
-  get menuItemTemplate() {
-    return this.accordion.menuItemTemplate;
+  loadingTemplate() {
+    return this.accordion.loadingTemplate();
   }
-
-  get innerListTemplate() {
-    return this.accordion.innerListTemplate;
+  noContentTemplate() {
+    return this.accordion.noContentTemplate();
   }
-
-  get loadingTemplate() {
-    return this.accordion.loadingTemplate;
-  }
-
-  get noContentTemplate() {
-    return this.accordion.noContentTemplate;
-  }
-
-  get linkType() {
+  linkType() {
     return this.accordion.linkType;
   }
-
-  get i18nCommonText() {
+  i18nCommonText() {
     return this.accordion.i18nCommonText;
   }
-
-  get showNoContent() {
+  showNoContent() {
     return this.accordion.showNoContent;
   }
-
-  get linkDefaultTarget() {
-    return this.accordion.linkDefaultTarget;
+  routerLinkActivated() {
+    return (!!this.accordionItemRouterlinkQueryList() &&
+      this.accordionItemRouterlinkQueryList().some((airlc) => this.isLinkRouterActive(airlc))) ||
+      (!!this.accordionMenuQueryList() && this.accordionMenuQueryList().some((amc) => this.isMenuRouterActive(amc)));
+  }
+  hasActiveChildren() {
+    return (!!this.accordionMenuQueryList() && this.accordionMenuQueryList().some((amc) => this.isMenuDataActive(amc))) ||
+      (!!this.data() && !!this.data().length && this.data().some((item) => this.isItemData(item) && this.isItemDataActive(item)));
   }
 
-  get routerLinkActivated(): boolean {
-    return (
-      (!!this.accordionItemRouterlinkQueryList && this.accordionItemRouterlinkQueryList.some((airlc) => this.isLinkRouterActive(airlc))) ||
-      (!!this.accordionMenuQueryList && this.accordionMenuQueryList.some((amc) => this.isMenuRouterActive(amc)))
-    );
+  private isLinkRouterActive(airlc: AccordionItemRouterlinkComponent) {
+    return airlc.routerLinkActivated();
   }
 
-  get hasActiveChildren(): boolean {
-    return (
-      (!!this.accordionMenuQueryList && this.accordionMenuQueryList.some((amc) => this.isMenuDataActive(amc))) ||
-      (!!this.data && !!this.data.length && this.data.some((item) => this.isItemData(item) && this.isItemDataActive(item)))
-    );
+  private isMenuRouterActive(amc: AccordionMenuComponent) {
+    return amc.routerLinkActivated();
   }
 
-  constructor(@Inject(ACCORDION) private accordion: any, private accordionService: AccordionService) {}
+  private isMenuDataActive(amc: AccordionMenuComponent) {
+    return amc.hasActiveChildren();
+  }
+
+  private isItemDataActive(item: AccordionMenuItem) {
+    return !!item[this.activeKey()];
+  }
+
+  private isItemData(item: AccordionMenuItem) {
+    return item[this.childrenKey()] === undefined;
+  }
+
+  private accordion = inject(ACCORDION);
+  private accordionService = inject(AccordionService);
 
   ngOnInit(): void {
-    if (this.parent) {
-      this.accordionService.setChildListInstance(this, this.parent);
+    if (this.parent()) {
+      this.accordionService.setChildListInstance(this, this.parent());
     }
   }
 
   ngOnDestroy(): void {
-    if (this.parent) {
-      this.accordionService.setChildListInstance(undefined, this.parent);
+    if (this.parent()) {
+      this.accordionService.setChildListInstance(undefined, this.parent());
     }
   }
 
-  private isLinkRouterActive(airlc: AccordionItemRouterlinkComponent): boolean {
-    return airlc.routerLinkActivated;
-  }
-
-  private isMenuRouterActive(amc: any): boolean {
-    return amc.routerLinkActivated;
-  }
-
-  private isMenuDataActive(amc: any): boolean {
-    return amc.hasActiveChildren;
-  }
-
-  private isItemDataActive(item: AccordionMenuItem): boolean {
-    return !!item[this.activeKey];
-  }
-
-  private isItemData(item: AccordionMenuItem): boolean {
-    return item[this.childrenKey] === undefined;
-  }
-
-  menuToggleItemFn = (item: any, event?: any) => {
+  menuToggleItemFn = (item: any, event?: MouseEvent) => {
     this.accordion.menuToggleFn({
       item: item,
-      open: !item[this.accordion.openKey],
-      parent: this.parent.parent,
+      open: !item[this.accordion.openKey()],
+      parent: this.parent().parent(),
       event: event,
     });
   };
 
-  itemClickItemFn = (item: any, event?: any) => {
+  itemClickItemFn = (item: any, event?: MouseEvent) => {
     this.accordion.itemClickFn({
       item: item,
-      parent: this.parent,
+      parent: this.parent(),
       event: event,
     });
   };
 
-  getOpenState(item, list) {
+  getOpenState(item: AccordionMenuItem, list: AccordionListComponent) {
     let stateFlag = false;
     if (item && list) {
-      const open = item[this.accordion.openKey];
-      const childActivated = list.routerLinkActivated || list.hasActiveChildren;
+      const open = item[this.accordion.openKey()];
+      const childActivated = list.routerLinkActivated() || list.hasActiveChildren();
       stateFlag = open === undefined && this.accordion.autoOpenActiveMenu ? childActivated : open;
     }
     return stateFlag ? 'expanded' : 'collapsed';

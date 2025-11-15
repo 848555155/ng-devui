@@ -1,24 +1,22 @@
-import { Component, HostListener, Inject, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, ViewEncapsulation } from '@angular/core';
 import { AccordionBaseLinkComponent } from './accordion-base-link-component.class';
-import { ACCORDION } from './accordion-token';
+import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
   selector: 'd-accordion-item-hreflink',
+  imports: [NgTemplateOutlet],
   templateUrl: './accordion-item-hreflink.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
-  standalone: false
 })
 export class AccordionItemHreflinkComponent extends AccordionBaseLinkComponent {
-  constructor(@Inject(ACCORDION) protected accordion: any) {
-    super(accordion);
-  }
   @HostListener('click', ['$event'])
   onClick(event: MouseEvent) {
-    if (!this.disabled) {
+    if (!this.disabled()) {
       this.accordion.linkItemClickFn({
-        item: this.item,
-        parent: this.parent,
+        item: this.item(),
+        parent: this.parent(),
         event: event
       });
     }
