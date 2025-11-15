@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AnchorService {
   currentActiveAnchorSubject = new ReplaySubject(1);
-  currentActiveAnchorObs = this.currentActiveAnchorSubject.asObservable();
   currentActiveAnchor: string;
   anchorList: string[] = [];
 
@@ -15,9 +14,5 @@ export class AnchorService {
     } else if (!anchor) {
       this.currentActiveAnchor = '';
     }
-  }
-
-  getCurrentActive() {
-    return this.currentActiveAnchorObs;
   }
 }

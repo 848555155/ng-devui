@@ -1,6 +1,6 @@
 <div>
-  <d-button bsStyle="common" (click)="loadMenu = !loadMenu" style="margin-right: 4px">Async load menu</d-button>
-  <d-button bsStyle="common" (click)="loadContent = !loadContent">Async load content</d-button>
+  <d-button bsStyle="common" (click)="loadMenu.set(!loadMenu())" style="margin-right: 4px">Async load menu</d-button>
+  <d-button bsStyle="common" (click)="loadContent.set(!loadContent())">Async load content</d-button>
   <div
     dAnchorBox
     [view]="{ top: 180, bottom: 0 }"
@@ -8,7 +8,8 @@
     class="mymain"
     style="position: relative; min-height: 220px"
   >
-    <div class="mysidebar" *ngIf="loadMenu">
+    @if (loadMenu()) {
+    <div class="mysidebar">
       <d-sticky [view]="{ top: 180, bottom: 0 }">
         <ul class="step-nav">
           <li [dAnchorLink]="'base-info'" anchorActive="active">Basic Infomation</li>
@@ -18,7 +19,8 @@
         </ul>
       </d-sticky>
     </div>
-    <div class="mycontent" *ngIf="loadContent">
+    } @if (loadContent()) {
+    <div class="mycontent">
       <div [dAnchor]="'base-info'" class="section-block">
         <h3 class="devui-h3-title">Basic Infomation</h3>
         Show basic infomation here.
@@ -36,5 +38,6 @@
         Show quality assessment here.
       </div>
     </div>
+    }
   </div>
 </div>

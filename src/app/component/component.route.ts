@@ -176,7 +176,7 @@ export const routesConfig: Routes = [
   {
     path: 'anchor',
     component: ExamplePanelComponent,
-    loadChildren: () => import('../../../devui/anchor/demo/anchor-demo.module').then((m) => m.AnchorDemoModule),
+    loadChildren: () => import('../../../devui/anchor/demo/anchor-demo.routes'),
     data: {
       type: '导航',
       enType: 'Navigation',

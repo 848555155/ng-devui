@@ -1,11 +1,13 @@
+import { InputSignal } from "@angular/core";
+
 export interface IAnchorBox {
   isScrollingToTarget: boolean;
-  scrollTarget: Element | Window;
-  defaultAnchor: string;
+  scrollTarget: InputSignal<Element | Window>;
+  defaultAnchor: InputSignal<string>;
   forceActiveAnchor: Function;
-  view: {
+  view: InputSignal<{
     top?: number;
     bottom?: number;
-  };
+  }>;
 }
 export type AnchorActiveChangeSource = 'anchor-link' | 'scroll' | 'click-inside' | 'initial' | 'fragment';

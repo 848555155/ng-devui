@@ -6,7 +6,6 @@ import { AnchorActiveChangeSource } from './anchor.type';
 
 @Directive({
   selector: '[dAnchorLink]',
-  standalone: false
 })
 export class AnchorLinkDirective implements OnInit, OnDestroy {
   @HostBinding('class') get anchorActiveClass() {
@@ -89,15 +88,12 @@ export class AnchorLinkDirective implements OnInit, OnDestroy {
       scrollAnimate(
         container,
         containerScrollTop,
-        containerScrollTop +
-          anchor.getBoundingClientRect().top -
-          containerOffsetTop -
-          ((this.boxElement.view && this.boxElement.view.top) || 0),
+        containerScrollTop + anchor.getBoundingClientRect().top - containerOffsetTop - (this.boxElement.view()?.top || 0),
         undefined,
         undefined,
         callback
       );
-    })(this.boxElement.scrollTarget || document.documentElement, this.anchorBlock.element);
+    })(this.boxElement.scrollTarget() || document.documentElement, this.anchorBlock.element);
     this.boxElement.isScrollingToTarget = true;
   }
 }

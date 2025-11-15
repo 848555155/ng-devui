@@ -1,24 +1,24 @@
-import { AfterViewInit, Directive, ElementRef, HostListener, Input, OnDestroy } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Directive, ElementRef, HostListener, inject, input, Input, OnDestroy } from '@angular/core';
 import { ReplaySubject, Subscription } from 'rxjs';
 import { AnchorService } from './anchor.service';
 import { AnchorActiveChangeSource, IAnchorBox } from './anchor.type';
 
 @Directive({
   selector: '[dAnchor]',
-  standalone: false
 })
 export class AnchorDirective implements AfterViewInit, OnDestroy {
-  @Input('dAnchor') anchor: string;
-  @Input() anchorActive = 'active';
+  anchor = input<string>(undefined, { alias: 'dAnchor' });
+  anchorActive = input('active');
   _isActive: boolean;
   set isActive(active: boolean) {
     this._isActive = active;
     this.activeChangeSubject.next(active);
     if (active) {
-      this.anchorService.setCurrentActive(this.anchor);
-    } else if (this.anchorService.currentActiveAnchor === this.anchor) {
+      this.anchorService.setCurrentActive(this.anchor());
+    } else if (this.anchorService.currentActiveAnchor === this.anchor()) {
       this.anchorService.setCurrentActive('');
     }
+    this.cdr.markForCheck();
   }
   get isActive() {
     return this._isActive;
@@ -46,6 +46,8 @@ export class AnchorDirective implements AfterViewInit, OnDestroy {
   private scrollPreStart;
   private scrollTimer;
 
+  private cdr = inject(ChangeDetectorRef);
+
   constructor(private el: ElementRef, private anchorService: AnchorService) {
     this.element = this.el.nativeElement;
   }
@@ -56,13 +58,13 @@ export class AnchorDirective implements AfterViewInit, OnDestroy {
         this.element.classList.remove(this.lastActiveBy);
       }
       if (active) {
-        this.element.classList.add(this.anchorActive);
+        this.element.classList.add(this.anchorActive());
         this.lastActiveBy = 'anchor-active-by-' + this.activeChangeBy;
         setTimeout(() => {
           this.element.classList.add(this.lastActiveBy);
         }, 0);
       } else {
-        this.element.classList.remove(this.anchorActive);
+        this.element.classList.remove(this.anchorActive());
       }
     });
   }
@@ -106,13 +108,16 @@ export class AnchorDirective implements AfterViewInit, OnDestroy {
     if (this.boxElement.isScrollingToTarget) {
       return;
     }
-    const dom = this.boxElement.scrollTarget;
+    const dom = this.boxElement.scrollTarget();
     const fix = dom && dom instanceof Element ? dom.getBoundingClientRect().top : 0;
-    const top = this.element.getBoundingClientRect().top - fix - ((this.boxElement.view && this.boxElement.view.top) || 0);
-    const bottom = this.element.getBoundingClientRect().bottom - fix - ((this.boxElement.view && this.boxElement.view.top) || 0);
+    const top = this.element.getBoundingClientRect().top - fix - (this.boxElement.view()?.top || 0);
+    const bottom = this.element.getBoundingClientRect().bottom - fix - (this.boxElement.view()?.top || 0);
     const currentActiveAnchor = this.anchorService.currentActiveAnchor;
 
-    if (this.anchor === this.boxElement.defaultAnchor && (!currentActiveAnchor || currentActiveAnchor === this.boxElement.defaultAnchor)) {
+    if (
+      this.anchor() === this.boxElement.defaultAnchor() &&
+      (!currentActiveAnchor || currentActiveAnchor === this.boxElement.defaultAnchor())
+    ) {
       this.activeChangeBy = activeChangeBy || 'scroll';
       this.isActive = bottom > this.REACH_TOP_VISION_OFFSET;
       return;
@@ -127,7 +132,7 @@ export class AnchorDirective implements AfterViewInit, OnDestroy {
       return;
     }
     if (this.boxElement && typeof window !== 'undefined') {
-      this.scrollListenTarget = this.boxElement.scrollTarget || window; // window有scroll事件，document.documentElement没有scroll事件
+      this.scrollListenTarget = this.boxElement.scrollTarget() || window; // window有scroll事件，document.documentElement没有scroll事件
     }
     this.scrollListenTarget.addEventListener('scroll', this.throttle, { passive: true });
   }

@@ -1,34 +1,38 @@
-import { AfterViewInit, Directive, Input, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { AfterViewInit, booleanAttribute, Directive, inject, input } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { Subscription} from 'rxjs';
 import { debounceTime, filter } from 'rxjs/operators';
 import { AnchorBoxDirective } from './anchor-box.directive';
 import { AnchorLinkDirective } from './anchor-link.directive';
 import { AnchorDirective } from './anchor.directive';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Directive({
   selector: '[dAnchorBox][dAnchorHashSupport]',
-  standalone: false
 })
-export class AnchorBoxHashSupportDirective implements OnInit, AfterViewInit, OnDestroy {
-  @Input() updateUrlWhenAnchorActive = true;
-  @Input() scrollToAnchorByHashOnlyInit = false;
-  sub: Subscription = new Subscription();
+export class AnchorBoxHashSupportDirective implements AfterViewInit {
+  updateUrlWhenAnchorActive = input(true, { transform: booleanAttribute });
+  scrollToAnchorByHashOnlyInit = input(false, { transform: booleanAttribute });
   manual = false;
 
-  constructor(private box: AnchorBoxDirective, private router: Router, private route: ActivatedRoute) {}
+  private box = inject(AnchorBoxDirective);
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
 
-  ngOnInit(): void {
-    this.sub.add(this.box.activeChange.pipe(
-      debounceTime(300),
-      filter(anchor => this.updateUrlWhenAnchorActive)
-    ).subscribe(this.navigateToHash));
+  constructor() {
+    this.box.activeChange
+      .pipe(
+        takeUntilDestroyed(),
+        debounceTime(300),
+        filter((anchor) => this.updateUrlWhenAnchorActive())
+      )
+      .subscribe(this.navigateToHash);
 
-    this.sub.add(this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe(
-      this.navigateToAnchor
-    ));
+    this.router.events
+      .pipe(
+        takeUntilDestroyed(),
+        filter((event) => event instanceof NavigationEnd)
+      )
+      .subscribe(this.navigateToAnchor);
   }
 
   ngAfterViewInit(): void {
@@ -38,15 +42,11 @@ export class AnchorBoxHashSupportDirective implements OnInit, AfterViewInit, OnD
     }, 120);
   }
 
-  ngOnDestroy(): void {
-    if (this.sub) {
-      this.sub.unsubscribe();
-    }
-  }
-
   navigateToHash = (targetAnchor: AnchorDirective) => {
-    if (targetAnchor.activeChangeBy === 'initial') { return; }
-    this.router.navigate([], { fragment: targetAnchor.anchor, replaceUrl: true });
+    if (targetAnchor.activeChangeBy === 'initial') {
+      return;
+    }
+    this.router.navigate([], { fragment: targetAnchor.anchor(), replaceUrl: true });
     this.manual = true;
   };
 
@@ -55,13 +55,17 @@ export class AnchorBoxHashSupportDirective implements OnInit, AfterViewInit, OnD
       this.manual = false;
       return;
     }
-    if (this.scrollToAnchorByHashOnlyInit) { return; }
+    if (this.scrollToAnchorByHashOnlyInit()) {
+      return;
+    }
     const frag = this.router.parseUrl(event.url).fragment;
     this.scrollToFragment(frag);
   };
 
   scrollToFragment = (frag: string) => {
-    if (!frag) { return; }
+    if (!frag) {
+      return;
+    }
     if (this.box.anchorMap[frag]) {
       const tempAnchor = new AnchorLinkDirective(this.box);
       tempAnchor.anchorName = frag;

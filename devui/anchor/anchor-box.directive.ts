@@ -1,4 +1,4 @@
-import { ContentChildren, Directive, Input, OnChanges, OnDestroy, QueryList, SimpleChanges } from '@angular/core';
+import { ContentChildren, Directive, effect, input, Input, OnChanges, OnDestroy, QueryList, SimpleChanges } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { AnchorDirective } from './anchor.directive';
@@ -7,9 +7,8 @@ import { AnchorActiveChangeSource, IAnchorBox } from './anchor.type';
 
 @Directive({
   selector: '[dAnchorBox]',
-  standalone: false
 })
-export class AnchorBoxDirective implements IAnchorBox, OnChanges, OnDestroy {
+export class AnchorBoxDirective implements IAnchorBox, OnDestroy {
   public isScrollingToTarget = false;
   private activeChangeSubject = new Subject();
   public activeChange = this.activeChangeSubject.asObservable();
@@ -18,12 +17,12 @@ export class AnchorBoxDirective implements IAnchorBox, OnChanges, OnDestroy {
   anchorMap: { [anchor: string]: AnchorDirective };
   _anchorList: QueryList<AnchorDirective>;
   sub: Subscription;
-  @Input() view: {
+  view = input<{
     top?: number;
     bottom?: number;
-  };
-  @Input() defaultAnchor: string;
-  @Input() scrollTarget: HTMLElement;
+  }>();
+  defaultAnchor = input<string>();
+  scrollTarget = input<HTMLElement>();
   @ContentChildren(AnchorDirective, { descendants: true })
   set anchorList(list: QueryList<AnchorDirective>) {
     if (this.sub) {
@@ -32,9 +31,9 @@ export class AnchorBoxDirective implements IAnchorBox, OnChanges, OnDestroy {
     this.sub = new Subscription();
     this.anchorMap = {};
     this._anchorList = list;
-    this.anchorService.anchorList = this._anchorList.map((item) => item.anchor);
+    this.anchorService.anchorList = this._anchorList.map((item) => item.anchor());
     this._anchorList.toArray().forEach((targetAnchor) => {
-      this.anchorMap[targetAnchor.anchor] = targetAnchor;
+      this.anchorMap[targetAnchor.anchor()] = targetAnchor;
       targetAnchor.boxElement = this;
       this.sub.add(
         targetAnchor.activeChangeSubject.pipe(filter((bool) => !!bool)).subscribe(() => {
@@ -49,12 +48,13 @@ export class AnchorBoxDirective implements IAnchorBox, OnChanges, OnDestroy {
     return this._anchorList;
   }
 
-  constructor(private anchorService: AnchorService) {}
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.defaultAnchor?.currentValue) {
-      this.forceActiveAnchor(this.defaultAnchor, 'initial');
-    }
+  constructor(private anchorService: AnchorService) {
+    effect(() => {
+      const anchor = this.defaultAnchor();
+      if (anchor) {
+        this.forceActiveAnchor(anchor, 'initial');
+      }
+    });
   }
 
   ngOnDestroy(): void {
