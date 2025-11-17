@@ -1,31 +1,25 @@
-import { Component, Renderer2 } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Renderer2, signal } from '@angular/core';
+import { ButtonModule } from 'ng-devui/button';
 
 @Component({
   selector: 'd-animation-icon',
+  imports: [ButtonModule],
   templateUrl: './animation-icon.component.html',
   styleUrls: ['./animation-icon.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AnimationIconComponent {
+  angle = signal(0);
+  startDiffusion = signal(false);
 
-  angle = 0;
-  startDiffusion = false;
-
-  constructor(
-    private render: Renderer2
-  ) {
-  }
-
-  rotate(ele) {
-    this.angle += 90;
-    this.render.setStyle(ele, 'transform', `rotate(${this.angle}deg)`);
+  rotate() {
+    this.angle.update((angle) => angle + 90);
   }
 
   diffusion() {
-    this.startDiffusion = true;
-
+    this.startDiffusion.set(true);
     setTimeout(() => {
-      this.startDiffusion = false;
+      this.startDiffusion.set(false);
     }, 400);
   }
 }

@@ -1,19 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/core';
 import { expandCollapseForDomDestroy } from 'ng-devui/utils';
+import { SkeletonComponent } from '../skeleton/skeleton.component';
 
 @Component({
   selector: 'd-collapse',
+  imports: [SkeletonComponent],
   templateUrl: './collapse.component.html',
   styleUrls: ['./collapse.component.scss'],
   animations: [expandCollapseForDomDestroy],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CollapseComponent implements OnInit {
-  open = false;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class CollapseComponent {
+  open = signal(false);
 }

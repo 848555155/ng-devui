@@ -188,7 +188,7 @@ export const routesConfig: Routes = [
   {
     path: 'animations',
     component: ExamplePanelComponent,
-    loadChildren: () => import('../../../devui/animations/demo/animations-demo.module').then((m) => m.AnimationsDemoModule),
+    loadChildren: () => import('../../../devui/animations/demo/animations-demo.routes'),
     data: {
       type: '扩展服务',
       enType: 'Extended Service',
