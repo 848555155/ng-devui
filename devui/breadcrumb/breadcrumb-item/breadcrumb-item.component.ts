@@ -1,43 +1,54 @@
-
-import { ChangeDetectionStrategy, Component, EventEmitter, Inject, Input, OnInit, Output, TemplateRef } from '@angular/core';
+import {
+  booleanAttribute,
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  inject,
+  input,
+  linkedSignal,
+  output,
+  Output,
+  TemplateRef,
+} from '@angular/core';
 import { BreadCrumbService } from '../breadcrumb.service';
 import { BREADCRUMB } from '../breadcrumb.token';
 import { MenuConfig } from '../breadcrumb.type';
+import { DropDownModule } from 'ng-devui/dropdown';
+import { NgTemplateOutlet } from '@angular/common';
+import { SearchModule } from 'ng-devui/search';
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'd-breadcrumb-item',
   exportAs: 'dBreadcrumbItem',
+  imports: [DropDownModule, SearchModule, NgTemplateOutlet],
   templateUrl: './breadcrumb-item.component.html',
   styleUrls: ['./breadcrumb-item.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
-  standalone: false
 })
-export class BreadCrumbItemComponent implements OnInit {
+export class BreadCrumbItemComponent {
+  showMenu = input(false, { transform: booleanAttribute });
+  customMenuTemplate = input<TemplateRef<any>>();
+  menuList = input<Array<MenuConfig>>();
+  isSearch = input(false, { transform: booleanAttribute });
+  toggleEvent = output<boolean>();
 
-  @Input() showMenu = false;
-  @Input() customMenuTemplate: TemplateRef<any>;
-  @Input() menuList: Array<MenuConfig>;
-  @Input() isSearch = false;
-  @Output() toggleEvent = new EventEmitter<boolean>();
-
-  menuListDisplay: Array<MenuConfig>;
+  menuListDisplay = linkedSignal(() => this.menuList());
   isOpen: boolean;
 
-  constructor(@Inject(BREADCRUMB) public breadCrumbComponent: any, private breadCrumbService: BreadCrumbService) { }
-  ngOnInit(): void {
-    this.menuListDisplay = this.menuList;
-  }
-  onToggle($event) {
+  breadCrumbComponent = inject(BREADCRUMB);
+  private breadCrumbService = inject(BreadCrumbService);
+
+  onToggle($event: boolean) {
     this.isOpen = $event;
     this.toggleEvent.emit($event);
   }
-  searchEvent($event) {
-    if (this.menuList) {
-      this.menuListDisplay = this.menuList.filter(item => item.name.toLowerCase().includes($event.toLowerCase()));
+  searchEvent($event: string) {
+    if (this.menuList()) {
+      this.menuListDisplay.set(this.menuList().filter((item) => item.name.toLowerCase().includes($event.toLowerCase())));
     }
   }
-  navigateTo($event, item) {
+  navigateTo($event: MouseEvent, item) {
     this.breadCrumbService.navigateTo($event, item);
   }
 }

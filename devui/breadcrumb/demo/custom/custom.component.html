@@ -25,21 +25,24 @@
 
 <h4>Use Custom Dropdown Behavior</h4>
 <d-breadcrumb>
-  <ng-container *ngFor="let item of breadData">
-    <d-breadcrumb-item dDropDown #dropdownInstance="d-dropdown" [disabled]="!item.showMenu">
-      <a [href]="item.link" dDropDownToggle>
-        <span>{{ item.label }}</span>
-        <i
-          *ngIf="item.showMenu"
-          class="icon icon-chevron-down-2 devui-icon-rotate"
-          [style.transform]="dropdownInstance?.isOpen ? 'rotate(180deg)' : 'rotate(0deg)'"
-        ></i>
-      </a>
-      <ul dDropDownMenu>
-        <li *ngFor="let option of item.menuList">
-          <a [href]="option.link">{{ option.name }}</a>
-        </li>
-      </ul>
-    </d-breadcrumb-item>
-  </ng-container>
+  @for (item of breadData; track item) {
+  <d-breadcrumb-item dDropDown #dropdownInstance="d-dropdown" [disabled]="!item.showMenu">
+    <a [href]="item.link" dDropDownToggle>
+      <span>{{ item.label }}</span>
+      @if (item.showMenu) {
+      <i
+        class="icon icon-chevron-down-2 devui-icon-rotate"
+        [style.transform]="dropdownInstance?.isOpen ? 'rotate(180deg)' : 'rotate(0deg)'"
+      ></i>
+      }
+    </a>
+    <ul dDropDownMenu>
+      @for (option of item.menuList; track option) {
+      <li>
+        <a [href]="option.link">{{ option.name }}</a>
+      </li>
+      }
+    </ul>
+  </d-breadcrumb-item>
+  }
 </d-breadcrumb>

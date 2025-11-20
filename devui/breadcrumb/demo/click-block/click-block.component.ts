@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
-import { BreadCrumbService, MenuConfig } from 'ng-devui/breadcrumb';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { BreadcrumbModule, BreadCrumbService, MenuConfig } from 'ng-devui/breadcrumb';
 import { HelperUtils } from 'ng-devui/common';
 import { DialogService } from 'ng-devui/modal';
 
 @Component({
   selector: 'd-click-block',
+  imports: [BreadcrumbModule],
   templateUrl: './click-block.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ClickBlockComponent {
   breadItem: Array<MenuConfig> = [
@@ -27,7 +28,8 @@ export class ClickBlockComponent {
     },
   ];
 
-  constructor(private breadCrumbService: BreadCrumbService, private dialogService: DialogService) {}
+  private breadCrumbService = inject(BreadCrumbService);
+  private dialogService = inject(DialogService);
 
   navigate($event, item) {
     this.canNavigate(item).then((can) => {

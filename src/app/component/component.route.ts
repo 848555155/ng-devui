@@ -236,7 +236,7 @@ export const routesConfig: Routes = [
   {
     path: 'breadcrumb',
     component: ExamplePanelComponent,
-    loadChildren: () => import('../../../devui/breadcrumb/demo/breadcrumb-demo.module').then((m) => m.BreadCrumbDemoModule),
+    loadChildren: () => import('../../../devui/breadcrumb/demo/breadcrumb-demo.routes'),
     data: {
       type: '导航',
       enType: 'Navigation',

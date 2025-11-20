@@ -1,19 +1,25 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { BreadcrumbModule } from 'ng-devui/breadcrumb';
+import { DropDownModule } from 'ng-devui/dropdown';
+
 @Component({
   selector: 'd-custom',
+  imports: [BreadcrumbModule, DropDownModule],
   templateUrl: './custom.component.html',
   styleUrls: ['./custom.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomComponent {
-  breadData = [{ label: 'DevUI', showMenu: false, link: '/components/zh-cn/get-start' },
+  breadData = [
+    { label: 'DevUI', showMenu: false, link: '/components/zh-cn/get-start' },
     {
-      label: 'Breadcrumb', showMenu: true, isSearch: true,
+      label: 'Breadcrumb',
+      showMenu: true,
+      isSearch: true,
       menuList: [
         { name: 'Anchor', link: '/components/zh-cn/anchor/demo' },
-        { name: 'Button', link: '/components/zh-cn/button/demo' }
-      ]
-    }];
-  constructor() {
-  }
+        { name: 'Button', link: '/components/zh-cn/button/demo' },
+      ],
+    },
+  ];
 }

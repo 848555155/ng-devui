@@ -1,11 +1,13 @@
-import { Component, forwardRef, Input, TemplateRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, inject, input, Input, TemplateRef } from '@angular/core';
 import { BreadCrumbService } from './breadcrumb.service';
 import { BREADCRUMB } from './breadcrumb.token';
 import { SourceConfig } from './breadcrumb.type';
+import { BreadCrumbItemComponent } from './breadcrumb-item/breadcrumb-item.component';
 
 @Component({
   selector: 'd-breadcrumb',
   exportAs: 'dBreadcrumb',
+  imports: [BreadCrumbItemComponent],
   templateUrl: './breadcrumb.component.html',
   styleUrls: ['./breadcrumb.component.scss'],
   preserveWhitespaces: false,
@@ -13,13 +15,13 @@ import { SourceConfig } from './breadcrumb.type';
     provide: BREADCRUMB,
     useExisting: forwardRef(() => BreadCrumbComponent)
   }],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BreadCrumbComponent {
-  @Input() separatorIcon: TemplateRef<any>;
-  @Input() source: Array<SourceConfig> = [];
-  constructor(private breadCrumbService: BreadCrumbService) { }
-  navigateTo($event, item) {
+  separatorIcon = input<TemplateRef<any>>();
+  source = input<Array<SourceConfig>>([]);
+  private breadCrumbService = inject(BreadCrumbService);
+  navigateTo($event: MouseEvent, item: SourceConfig) {
     this.breadCrumbService.navigateTo($event, item);
   }
 }

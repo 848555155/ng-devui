@@ -1,24 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { BreadcrumbModule } from 'ng-devui/breadcrumb';
 @Component({
   selector: 'd-menu',
+  imports: [BreadcrumbModule],
   templateUrl: './menu.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MenuComponent implements OnInit {
-
-  breadData = [{ label: 'DevUI', showMenu: false, link: '/components/zh-cn/get-start' },
+export class MenuComponent {
+  breadData = [
+    { label: 'DevUI', showMenu: false, link: '/components/zh-cn/get-start' },
     {
-      label: 'Breadcrumb', showMenu: true, isSearch: true,
+      label: 'Breadcrumb',
+      showMenu: true,
+      isSearch: true,
       menuList: [
         { name: 'Anchor', link: '/components/zh-cn/anchor/demo' },
-        { name: 'Button', link: '/components/zh-cn/button/demo' }
-      ]
-    }];
-  constructor() {
-  }
-  ngOnInit(): void {
-
-  }
+        { name: 'Button', link: '/components/zh-cn/button/demo' },
+      ],
+    },
+  ];
 
   toggleEvent(event) {
     console.log(event);
