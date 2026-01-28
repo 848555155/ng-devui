@@ -11,5 +11,7 @@
   backDropZIndex: {{ backDropZIndex }}
 </div>
 <div dImagePreview [zIndex]="zIndex" [backDropZIndex]="backDropZIndex">
-  <img *ngFor="let item of images" [attr.src]="item | safe: 'url'" style="max-width: 800px" />
+  @for (item of images; track item) {
+    <img [attr.src]="item | safe: 'url'" style="max-width: 800px" />
+  }
 </div>

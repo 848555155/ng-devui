@@ -47,7 +47,7 @@
           [tags]="addedLabelList"
           [placeholder]="'Tags'"
           [suggestionList]="labelList"
-        >
+          >
         </d-tags-input>
       </d-form-control>
     </d-form-item>
@@ -55,9 +55,11 @@
       <d-form-label>Radio</d-form-label>
       <d-form-control>
         <d-radio-group name="schedule" [direction]="'row'" [(ngModel)]="formData.radioValue">
-          <d-radio *ngFor="let option of radioOptions" [name]="'schedule'" [value]="option.id">
-            {{ option.label }}
-          </d-radio>
+          @for (option of radioOptions; track option) {
+            <d-radio [name]="'schedule'" [value]="option.id">
+              {{ option.label }}
+            </d-radio>
+          }
         </d-radio-group>
       </d-form-control>
     </d-form-item>

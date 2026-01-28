@@ -1,10 +1,12 @@
 <section>
   <d-tabs [(activeTab)]="tabActiveId">
-    <d-tab *ngFor="let item of tabsDisplay" [id]="item.id">
-      <ng-template dTabTitle>
-        <span class="tab-configurable">{{ item.name }}</span>
-      </ng-template>
-    </d-tab>
+    @for (item of tabsDisplay; track item) {
+      <d-tab [id]="item.id">
+        <ng-template dTabTitle>
+          <span class="tab-configurable">{{ item.name }}</span>
+        </ng-template>
+      </d-tab>
+    }
   </d-tabs>
   <span class="more-tabs" dDropDown dDropDownToggle appendToBody [trigger]="'click'" [style.left.px]="leftOffset">
     <span>more</span>
@@ -15,15 +17,17 @@
         [ngTemplateOutletContext]="{
           $implicit: this
         }"
-      >
+        >
       </ng-template>
     </div>
   </span>
   <ng-template #dropDownMenuTpl>
     <div class="tabs-menu-container">
-      <li *ngFor="let tab of tabsHidden" [class.menu-tab-active]="tab.id === tabActiveId" (click)="selectForConfigTab(tab.id)">
-        {{ tab.name }}
-      </li>
+      @for (tab of tabsHidden; track tab) {
+        <li [class.menu-tab-active]="tab.id === tabActiveId" (click)="selectForConfigTab(tab.id)">
+          {{ tab.name }}
+        </li>
+      }
       <div class="line"></div>
       <li (click)="openTransferDialog('standard')" class="setting-container">
         <span class="icon-setup"> </span>

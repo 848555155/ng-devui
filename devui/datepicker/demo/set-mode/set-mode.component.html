@@ -16,10 +16,12 @@
           dDatepicker
           #datePicker1="datepicker"
           (selectedDateChange)="getValue($event)"
-        />
-        <div *ngIf="selectedDate1" class="devui-input-group-addon icon-close-wrapper" (click)="datePicker1.clearAll()">
-          <i class="icon icon-close"></i>
-        </div>
+          />
+        @if (selectedDate1) {
+          <div class="devui-input-group-addon icon-close-wrapper" (click)="datePicker1.clearAll()">
+            <i class="icon icon-close"></i>
+          </div>
+        }
         <div class="devui-input-group-addon" (click)="datePicker1.toggle()">
           <i class="icon icon-calendar"></i>
         </div>
@@ -45,10 +47,12 @@
           #datePicker2="datepicker"
           (selectedDateChange)="getValue($event)"
           [cssClass]="'custom-css-class'"
-        />
-        <div *ngIf="selectedDate2" class="devui-input-group-addon icon-close-wrapper" (click)="datePicker2.clearAll()">
-          <i class="icon icon-close"></i>
-        </div>
+          />
+        @if (selectedDate2) {
+          <div class="devui-input-group-addon icon-close-wrapper" (click)="datePicker2.clearAll()">
+            <i class="icon icon-close"></i>
+          </div>
+        }
         <div class="devui-input-group-addon" (click)="datePicker2.toggle()">
           <i class="icon icon-calendar"></i>
         </div>

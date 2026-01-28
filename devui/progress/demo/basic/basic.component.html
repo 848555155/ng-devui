@@ -12,7 +12,9 @@
   <d-progress [percentage]="percentage" [strokeColor]="'#029931'" [strokeWidth]="16" [showContent]="true">
     <ng-template [dPosition]="'outer'" let-percentage="percentage">
       <div class="success-box">
-        <span *ngIf="showSuccess" class="icon-position icon-right"></span>
+        @if (showSuccess) {
+          <span class="icon-position icon-right"></span>
+        }
       </div>
     </ng-template>
   </d-progress>

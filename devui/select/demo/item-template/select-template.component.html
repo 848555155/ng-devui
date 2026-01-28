@@ -16,7 +16,7 @@
         [(ngModel)]="currentOption4"
         [placeholder]="'Search'"
         [extraConfig]="{ selectedItemWithTemplate: { enable: true } }"
-      >
+        >
         <ng-template let-option="option" let-filterKey="filterKey">
           <span title="Do you agree? {{ option[filterKey] }}"> Do you agree? {{ option[filterKey] }} </span>
         </ng-template>
@@ -29,14 +29,14 @@
         [(ngModel)]="currentOption4"
         [placeholder]="'Search'"
         [extraConfig]="{ selectedItemWithTemplate: { enable: true } }"
-      >
+        >
         <ng-template let-option="option" let-filterKey="filterKey" let-position="position">
-          <ng-container *ngIf="position === 'list'">
+          @if (position === 'list') {
             <span title="Do you agree? {{ option[filterKey] }}"> Do you agree? {{ option[filterKey] }} </span>
-          </ng-container>
-          <ng-container *ngIf="position === 'result'">
+          }
+          @if (position === 'result') {
             <span title="option['specialContent']"> {{ option['specialContent'] }}</span>
-          </ng-container>
+          }
         </ng-template>
       </d-select>
     </div>
@@ -55,8 +55,12 @@
       <h5>Use templates only for lists<!--只在列表使用模板--></h5>
       <d-select [options]="multipleOptions" [filterKey]="'name'" [(ngModel)]="currentOption5" [placeholder]="'Search'" [multiple]="true">
         <ng-template let-option="option" let-filterKey="filterKey" let-checked="checked">
-          <ng-container *ngIf="!checked">[ ]</ng-container>
-          <ng-container *ngIf="checked">[x]</ng-container>
+          @if (!checked) {
+            [ ]
+          }
+          @if (checked) {
+            [x]
+          }
           Do you agree {{ option[filterKey] }} ?
         </ng-template>
       </d-select>
@@ -69,63 +73,75 @@
         [placeholder]="'Search'"
         [multiple]="true"
         [extraConfig]="{ selectedItemWithTemplate: { enable: true } }"
-      >
+        >
         <ng-template let-option="option" let-filterKey="filterKey" let-position="position" let-checked="checked">
-          <ng-container *ngIf="position === 'result'">
-            <ng-container *ngIf="option?.length === multipleOptions.length"> Agree With All</ng-container>
-            <ng-container *ngIf="option?.length !== multipleOptions.length">
+          @if (position === 'result') {
+            @if (option?.length === multipleOptions.length) {
+              Agree With All
+            }
+            @if (option?.length !== multipleOptions.length) {
               Agree with
-              <ng-container *ngFor="let op of option; let index = index">
-                <ng-container *ngIf="index !== 0">, </ng-container>{{ op[filterKey] }} </ng-container
-              >.
-              <!--TODO-->
-            </ng-container>
-          </ng-container>
-          <ng-container *ngIf="position === 'list'">
-            <ng-container *ngIf="!checked">[ ]</ng-container>
-            <ng-container *ngIf="checked">[x]</ng-container>
-            Do you agree with {{ option[filterKey] }} ?
-          </ng-container>
-        </ng-template>
-      </d-select>
-      <h5>
-        Use different templates for lists and selected items, and in some cases use built-in templates.<!--在列表和选中项使用不同模板， 某些情况下使用内置模板-->
-      </h5>
-      <d-select
-        [options]="multipleOptions"
-        [filterKey]="'name'"
-        [(ngModel)]="currentOption5"
-        [placeholder]="'Search'"
-        [multiple]="true"
-        [extraConfig]="{ selectedItemWithTemplate: { enable: true } }"
-      >
-        <ng-template let-option="option" let-filterKey="filterKey" let-position="position" let-checked="checked" let-template="template">
-          <ng-container *ngIf="position === 'result'">
-            <ng-container *ngIf="option?.length === multipleOptions.length">Agree With All</ng-container>
-            <ng-container *ngIf="option?.length !== multipleOptions.length">
-              Agree with
-              <ng-container *ngFor="let op of option; let index = index">
-                <ng-container *ngIf="index !== 0">, </ng-container>{{ op[filterKey] }}</ng-container
-              >.
-            </ng-container>
-          </ng-container>
-          <ng-container *ngIf="position === 'list'">
-            <ng-template
-              [ngTemplateOutlet]="template"
+              @for (op of option; track op; let index = $index) {
+                @if (index !== 0) {
+                  ,
+                  }{{ op[filterKey] }}
+                  }.
+                  <!--TODO-->
+                }
+              }
+              @if (position === 'list') {
+                @if (!checked) {
+                  [ ]
+                }
+                @if (checked) {
+                  [x]
+                }
+                Do you agree with {{ option[filterKey] }} ?
+              }
+            </ng-template>
+          </d-select>
+          <h5>
+            Use different templates for lists and selected items, and in some cases use built-in templates.<!--在列表和选中项使用不同模板， 某些情况下使用内置模板-->
+          </h5>
+          <d-select
+            [options]="multipleOptions"
+            [filterKey]="'name'"
+            [(ngModel)]="currentOption5"
+            [placeholder]="'Search'"
+            [multiple]="true"
+            [extraConfig]="{ selectedItemWithTemplate: { enable: true } }"
+            >
+            <ng-template let-option="option" let-filterKey="filterKey" let-position="position" let-checked="checked" let-template="template">
+              @if (position === 'result') {
+                @if (option?.length === multipleOptions.length) {
+                  Agree With All
+                }
+                @if (option?.length !== multipleOptions.length) {
+                  Agree with
+                  @for (op of option; track op; let index = $index) {
+                    @if (index !== 0) {
+                      ,
+                      }{{ op[filterKey] }}
+                      }.
+                    }
+                  }
+                  @if (position === 'list') {
+                    <ng-template
+                      [ngTemplateOutlet]="template"
               [ngTemplateOutletContext]="{
                 option: option,
                 checked: checked,
                 filterKey: filterKey
               }"
-            ></ng-template>
-          </ng-container>
-        </ng-template>
-      </d-select>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-5">
-      <pre>Current Select: {{ currentOption5 | json }}</pre>
-    </div>
-  </div>
-</section>
+                    ></ng-template>
+                  }
+                </ng-template>
+              </d-select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-5">
+              <pre>Current Select: {{ currentOption5 | json }}</pre>
+            </div>
+          </div>
+        </section>

@@ -6,7 +6,7 @@
   [showOperationArea]="false"
   [onlyOneColumnSort]="true"
   [tableOverflowType]="'overlay'"
->
+  >
   <thead dTableHead [checkable]="true">
     <tr dTableRow>
       <th dHeadCell>#</th>
@@ -21,7 +21,7 @@
         [extraFilterTemplate]="extraFilterTemplate"
         [resizeEnabled]="true"
         (resizeEndEvent)="onResize($event, 'firstName')"
-      >
+        >
         First Name
       </th>
       <th
@@ -37,7 +37,7 @@
         [customFilterTemplate]="customFilterTemplate"
         [resizeEnabled]="true"
         (resizeEndEvent)="onResize($event, 'lastName')"
-      >
+        >
         Last Name
       </th>
       <th
@@ -50,7 +50,7 @@
         [filterList]="filterListRadio"
         [filterBoxWidth]="'200px'"
         (filterChange)="filterChangeRadio($event)"
-      >
+        >
         Gender
       </th>
       <th dHeadCell>Date of birth</th>
@@ -70,13 +70,17 @@
             dTooltip
             [content]="rowItem.$checkBoxTips"
             [position]="['top', 'right', 'bottom', 'left']"
-          >
+            >
           </d-checkbox>
         </td>
         <td dTableCell>{{ rowItem?.id }}</td>
         <td dTableCell>
-          <span *ngIf="!rowItem.firstNameEdit">{{ rowItem?.firstName }}</span>
-          <input *ngIf="rowItem.firstNameEdit" [(ngModel)]="rowItem.firstName" type="text" />
+          @if (!rowItem.firstNameEdit) {
+            <span>{{ rowItem?.firstName }}</span>
+          }
+          @if (rowItem.firstNameEdit) {
+            <input [(ngModel)]="rowItem.firstName" type="text" />
+          }
         </td>
         <td dTableCell>{{ rowItem?.lastName }}</td>
         <td dTableCell>{{ rowItem?.gender }}</td>
@@ -92,21 +96,23 @@
 <ng-template #customFilterTemplate let-filterList="filterListDisplay" let-dropdown="dropdown">
   <div class="custom-filter-content">
     <div class="filter-options">
-      <div *ngFor="let item of checkboxList" class="checkbox-group">
-        <d-checkbox
-          [label]="item.lastName"
-          [(ngModel)]="item.chosen"
-          [labelTemplate]="myCheckbox"
-          (change)="onCheckboxChange($event, item.lastName)"
-        >
-          <ng-template #myCheckbox let-label="label">
-            <span style="margin-left: 15px">
-              <d-avatar [name]="label" [width]="16" [height]="16"></d-avatar>
-            </span>
-            <span class="label-style">{{ label }}</span>
-          </ng-template>
-        </d-checkbox>
-      </div>
+      @for (item of checkboxList; track item) {
+        <div class="checkbox-group">
+          <d-checkbox
+            [label]="item.lastName"
+            [(ngModel)]="item.chosen"
+            [labelTemplate]="myCheckbox"
+            (change)="onCheckboxChange($event, item.lastName)"
+            >
+            <ng-template #myCheckbox let-label="label">
+              <span style="margin-left: 15px">
+                <d-avatar [name]="label" [width]="16" [height]="16"></d-avatar>
+              </span>
+              <span class="label-style">{{ label }}</span>
+            </ng-template>
+          </d-checkbox>
+        </div>
+      }
     </div>
     <div class="line"></div>
     <div>

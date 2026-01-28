@@ -4,7 +4,7 @@
     [trigger]="'hover'"
     dDropDown
     appendToBody
-  >
+    >
     <span dDropDownToggle class="drop-down-span"
       >{{curLanguage === 'zh-cn' ? '生态' : 'Ecology'}}
       <span class="devui-header-open-icon">
@@ -19,9 +19,11 @@
       </span>
     </span>
     <ul dDropDownMenu class="dropdown-menu devui-dropdown-menu devui-scrollbar" role="menu">
-      <li role="menuitem" class="menuitem" *ngFor="let nav of navs">
-        <a id="{{ nav.id }}" routerLinkActive="active" href="{{ nav.href }}">{{curLanguage === 'zh-cn' ? nav.name : nav.enName }}</a>
-      </li>
+      @for (nav of navs; track nav) {
+        <li role="menuitem" class="menuitem">
+          <a id="{{ nav.id }}" routerLinkActive="active" href="{{ nav.href }}">{{curLanguage === 'zh-cn' ? nav.name : nav.enName }}</a>
+        </li>
+      }
     </ul>
   </div>
 </div>

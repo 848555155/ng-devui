@@ -6,7 +6,7 @@
         [extraInfo]="
           'Enter a short name that meets reading habits, up to 30 characters, cannot be a system field, and cannot be the same as an existing field.'
         "
-      >
+        >
         <input dTextInput name="userName" />
       </d-form-control>
     </d-form-item>
@@ -54,7 +54,7 @@
           [tags]="addedLabelList"
           [placeholder]="'Tags'"
           [suggestionList]="labelList"
-        >
+          >
         </d-tags-input>
       </d-form-control>
     </d-form-item>
@@ -62,9 +62,11 @@
       <d-form-label class="single-radio">Radio</d-form-label>
       <d-form-control>
         <d-radio-group name="schedule" [direction]="'row'" [(ngModel)]="formData.radioValue">
-          <d-radio *ngFor="let option of radioOptions" [name]="'schedule'" [value]="option.id">
-            {{ option.label }}
-          </d-radio>
+          @for (option of radioOptions; track option) {
+            <d-radio [name]="'schedule'" [value]="option.id">
+              {{ option.label }}
+            </d-radio>
+          }
         </d-radio-group>
       </d-form-control>
     </d-form-item>

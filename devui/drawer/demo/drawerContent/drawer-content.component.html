@@ -7,14 +7,16 @@
       (click)="toggleFullScreen()"
       class="icon"
       [ngClass]="{ 'icon-maxmize': !isFullScreen, 'icon-minimize': isFullScreen }"
-    >
+      >
     </span>
     <span (click)="close($event)" title="Close" class="icon icon-close"> </span>
   </div>
   <ul class="list-group" [style.margin-top.px]="20">
-    <li class="list-group-item" *ngFor="let item of items; let i = index">
-      {{ item }}
-    </li>
+    @for (item of items; track item; let i = $index) {
+      <li class="list-group-item">
+        {{ item }}
+      </li>
+    }
   </ul>
   <div class="operation-area">
     <input #widthInput placeholder="Please input a number" dTextInput type="text" />

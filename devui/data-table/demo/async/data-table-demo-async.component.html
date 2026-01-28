@@ -9,20 +9,24 @@
   [backdrop]="true"
   [scrollable]="true"
   [showLoading]="showLoading"
->
+  >
   <thead dTableHead>
     <tr dTableRow>
-      <th dHeadCell *ngFor="let colOption of colDataOptions">
-        {{ colOption.header }}
-      </th>
+      @for (colOption of colDataOptions; track colOption) {
+        <th dHeadCell>
+          {{ colOption.header }}
+        </th>
+      }
     </tr>
   </thead>
   <tbody dTableBody>
     <ng-template let-rowItem="rowItem">
       <tr dTableRow>
-        <td dTableCell *ngFor="let colOption of colDataOptions">
-          {{ colOption.fieldType === 'date' ? (rowItem[colOption.field] | i18nDate: 'short':false) : rowItem[colOption.field] }}
-        </td>
+        @for (colOption of colDataOptions; track colOption) {
+          <td dTableCell>
+            {{ colOption.fieldType === 'date' ? (rowItem[colOption.field] | i18nDate: 'short':false) : rowItem[colOption.field] }}
+          </td>
+        }
       </tr>
     </ng-template>
   </tbody>

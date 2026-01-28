@@ -5,25 +5,28 @@ import { MenuItemClickType, MenuItemType } from 'ng-devui/menu';
   selector: 'd-loop-menu',
   template: `
     <div dMenu [collapsed]="collapsed" (menuItemClick)="menuItemClick($event)">
-      <ng-container *ngFor="let item of menus; trackBy: trackByMenu">
-        <d-loop-sub-menu
-          [menu]="item"
-          [activeKey]="activeKey"
-          (itemClick)="itemClick($event)"
-          *ngIf="item.children?.length; else leafTpl" />
-        <ng-template #leafTpl>
+      @for (item of menus; track trackByMenu($index, item)) {
+        @if (item.children?.length) {
+          <d-loop-sub-menu
+            [menu]="item"
+            [activeKey]="activeKey"
+            (itemClick)="itemClick($event)"
+            />
+        } @else {
           <div
             dMenuItem
             [active]="activeKey === item.key"
             (itemClick)="itemClick(item.key)"
             dTooltip [content]="collapsed ? item.name : ''" position="right">
-            <d-icon class="devui-menu-item-icon" *ngIf="item.icon" [icon]="item.icon" />
+            @if (item.icon) {
+              <d-icon class="devui-menu-item-icon" [icon]="item.icon" />
+            }
             <span class="devui-menu-item-name over-flow-ellipsis">{{ item.name }}</span>
           </div>
-        </ng-template>
-      </ng-container>
+        }
+      }
     </div>
-  `,
+    `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false
 })

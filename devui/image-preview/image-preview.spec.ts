@@ -8,9 +8,11 @@ import { ImagePreviewModule } from './image-preview.module';
 @Component({
   template: `
     <div dImagePreview>
-      <img *ngFor="let imgUrl of imgUrls" src="{{ imgUrl }}" />
+      @for (imgUrl of imgUrls; track imgUrl) {
+        <img src="{{ imgUrl }}" />
+      }
     </div>
-  `,
+    `,
   standalone: false
 })
 class TestImagePreviewComponent {

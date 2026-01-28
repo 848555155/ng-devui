@@ -29,10 +29,12 @@ import { DatepickerModule } from './datepicker.module';
         [customViewTemplate]="customViewTemplate"
         [hideOnRangeSelected]="hideOnRangeSelected"
         #inputEle
-      />
-      <div *ngIf="everyRange(dateRange)" class="devui-input-group-addon close-icon-wrapper" (click)="dateRangePicker.clearAll()">
-        <i class="icon icon-close"></i>
-      </div>
+        />
+      @if (everyRange(dateRange)) {
+        <div class="devui-input-group-addon close-icon-wrapper" (click)="dateRangePicker.clearAll()">
+          <i class="icon icon-close"></i>
+        </div>
+      }
       <div class="devui-input-group-addon" (click)="$event.stopPropagation(); dateRangePicker.toggle(toggle); toggle = !toggle" #icon>
         <i class="icon icon-calendar"></i>
       </div>
@@ -40,7 +42,7 @@ import { DatepickerModule } from './datepicker.module';
         <div class="test-template" (click)="chooseToday(chooseDate)">test template</div>
       </ng-template>
     </div>
-  `,
+    `,
   standalone: false
 })
 class TestDateRangePickerComponent {

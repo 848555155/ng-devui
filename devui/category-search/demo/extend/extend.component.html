@@ -9,17 +9,23 @@
     [showSearchCategory]="showSearchCategory"
     (searchEvent)="searchEvent($event)"
     (selectedTagsChange)="selectedTagsChange($event)"
-  >
+    >
   </d-category-search>
-  <div *ngIf="finalSearchItems && finalSearchItems.length">
-    <p>The categories of the current search:</p>
-    <div *ngFor="let item of finalSearchItems">
-      <div>{{ item?.label }}: {{ (item?.value)[item.filterKey] || item?.value?.label }}</div>
+  @if (finalSearchItems && finalSearchItems.length) {
+    <div>
+      <p>The categories of the current search:</p>
+      @for (item of finalSearchItems; track item) {
+        <div>
+          <div>{{ item?.label }}: {{ (item?.value)[item.filterKey] || item?.value?.label }}</div>
+        </div>
+      }
     </div>
-  </div>
-  <div *ngIf="finalSearchKey && finalSearchKey.length">
-    <p>The current search keyword: {{ finalSearchKey }}</p>
-  </div>
+  }
+  @if (finalSearchKey && finalSearchKey.length) {
+    <div>
+      <p>The current search keyword: {{ finalSearchKey }}</p>
+    </div>
+  }
 </section>
 
 <ng-template #extendTemplate>
@@ -31,7 +37,7 @@
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
-    >
+      >
       <title>reset status</title>
       <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <path

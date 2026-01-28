@@ -59,19 +59,20 @@ const dataTableOptions = {
       [type]="'striped'"
       [checkOptions]="checkOptions"
       [generalRowHoveredData]="true"
-    >
-      <d-column field="$index" header="#" [width]="'50px'"></d-column>
-      <d-column
-        *ngFor="let colOption of dataTableOptions.columns"
-        [field]="colOption.field"
-        [header]="colOption.header"
-        [fieldType]="colOption.fieldType"
-        [order]="colOption.order"
-        [width]="'150px'"
       >
-      </d-column>
+      <d-column field="$index" header="#" [width]="'50px'"></d-column>
+      @for (colOption of dataTableOptions.columns; track colOption) {
+        <d-column
+          [field]="colOption.field"
+          [header]="colOption.header"
+          [fieldType]="colOption.fieldType"
+          [order]="colOption.order"
+          [width]="'150px'"
+          >
+        </d-column>
+      }
     </d-data-table>
-  `,
+    `,
   standalone: false
 })
 class TestDataTableColumnBasicComponent {
@@ -112,7 +113,7 @@ class TestDataTableColumnBasicComponent {
       (cellDBClick)="cellDBClick($event)"
       (rowDBClick)="rowDBClick($event)"
       (rowClick)="rowClick($event)"
-    >
+      >
       <d-column field="$index" header="#" [width]="'50px'"></d-column>
       <d-column
         field="firstName"
@@ -149,30 +150,32 @@ class TestDataTableColumnBasicComponent {
     <ng-template #customFilterTemplate let-filterList="filterListDisplay" let-dropdown="dropdown" let-column="column">
       <div class="custom-filter-content">
         <div class="filter-options">
-          <div *ngFor="let item of checkboxList" class="checkbox-group">
-            <d-checkbox
-              [label]="item.lastName"
-              [(ngModel)]="item.chosen"
-              [labelTemplate]="myCheckbox"
-              (change)="onCheckboxChange($event, item.lastName)"
-            >
-              <ng-template #myCheckbox let-label="label">
-                <d-avatar [name]="label" [width]="16" [height]="16"></d-avatar>
-                <span class="label-style">{{ label }}</span>
-              </ng-template>
-            </d-checkbox>
-          </div>
+          @for (item of checkboxList; track item) {
+            <div class="checkbox-group">
+              <d-checkbox
+                [label]="item.lastName"
+                [(ngModel)]="item.chosen"
+                [labelTemplate]="myCheckbox"
+                (change)="onCheckboxChange($event, item.lastName)"
+                >
+                <ng-template #myCheckbox let-label="label">
+                  <d-avatar [name]="label" [width]="16" [height]="16"></d-avatar>
+                  <span class="label-style">{{ label }}</span>
+                </ng-template>
+              </d-checkbox>
+            </div>
+          }
         </div>
         <div class="line"></div>
         <div>
           <span class="button-style" style="border-right: 1px solid #e8f0fd; margin-left: 10px;" (click)="filterSource(dropdown)"
             >CONFIRM</span
-          >
-          <span class="button-style" (click)="cancelFilter(dropdown)">CANCEL</span>
+            >
+            <span class="button-style" (click)="cancelFilter(dropdown)">CANCEL</span>
+          </div>
         </div>
-      </div>
-    </ng-template>
-  `,
+      </ng-template>
+    `,
   standalone: false
 })
 class TestDataTableAdvancedColumnComponent implements OnInit {
@@ -509,19 +512,20 @@ class TestDataTableColumnMultiHeaderComponent {
       maxHeight="400px"
       [scrollable]="true"
       [resizeable]="resizable"
-    >
-      <d-column field="$index" header="#" [width]="'100px'"></d-column>
-      <d-column
-        *ngFor="let colOption of dataTableOptions.columns"
-        [field]="colOption.field"
-        [header]="colOption.header"
-        [sortable]="colOption.sortable"
-        [fieldType]="colOption.fieldType"
-        [width]="'150px'"
       >
-      </d-column>
+      <d-column field="$index" header="#" [width]="'100px'"></d-column>
+      @for (colOption of dataTableOptions.columns; track colOption) {
+        <d-column
+          [field]="colOption.field"
+          [header]="colOption.header"
+          [sortable]="colOption.sortable"
+          [fieldType]="colOption.fieldType"
+          [width]="'150px'"
+          >
+        </d-column>
+      }
     </d-data-table>
-  `,
+    `,
   standalone: false
 })
 class TestDataTableColumnFixHeaderComponent {
@@ -540,18 +544,19 @@ class TestDataTableColumnFixHeaderComponent {
       colDraggable="true"
       maxHeight="400px"
       [scrollable]="true"
-    >
-      <d-column field="$index" header="#" [width]="'50px'"></d-column>
-      <d-column
-        *ngFor="let colOption of dataTableOptions.columns"
-        [field]="colOption.field"
-        [header]="colOption.header"
-        [fieldType]="colOption.fieldType"
-        [width]="'150px'"
       >
-      </d-column>
+      <d-column field="$index" header="#" [width]="'50px'"></d-column>
+      @for (colOption of dataTableOptions.columns; track colOption) {
+        <d-column
+          [field]="colOption.field"
+          [header]="colOption.header"
+          [fieldType]="colOption.fieldType"
+          [width]="'150px'"
+          >
+        </d-column>
+      }
     </d-data-table>
-  `,
+    `,
   standalone: false
 })
 class TestDataTableColumnDragComponent {

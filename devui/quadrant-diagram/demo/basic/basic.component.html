@@ -5,9 +5,11 @@
         <div class="card-header">Draggable items</div>
         <div class="card-block">
           <ul class="list-group">
-            <li dDraggable *ngFor="let item of list" [dragData]="{ item: item, parent: list }" class="list-group-item over-flow-ellipsis">
-              {{ item.title }}
-            </li>
+            @for (item of list; track item) {
+              <li dDraggable [dragData]="{ item: item, parent: list }" class="list-group-item over-flow-ellipsis">
+                {{ item.title }}
+              </li>
+            }
           </ul>
         </div>
       </div>

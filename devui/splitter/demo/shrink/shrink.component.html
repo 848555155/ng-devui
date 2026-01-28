@@ -11,8 +11,10 @@
       (sizeChange)="sizeChange($event)"
       (collapsedChange)="collapsedChange($event)"
       (shrinkStatusChange)="paneShrinkStatus($event)"
-    >
-      <d-accordion *ngIf="!isPaneShrink" [data]="menu" [itemTemplate]="itemtemplate" [menuItemTemplate]="menutemplate"></d-accordion>
+      >
+      @if (!isPaneShrink) {
+        <d-accordion [data]="menu" [itemTemplate]="itemtemplate" [menuItemTemplate]="menutemplate"></d-accordion>
+      }
       <ng-template #menutemplate let-item="item">
         <i class="title-icon {{ item.icon }}"></i><span class="title">{{ item.title }}</span>
       </ng-template>
@@ -20,17 +22,20 @@
         <i class="title-icon {{ item.icon }}"></i><span class="title">{{ item.title }}</span>
       </ng-template>
 
-      <ul style="padding: 8px 0" *ngIf="isPaneShrink">
-        <li
-          dTooltip
-          [content]="hoverCard[index]"
-          [position]="'right'"
-          *ngFor="let item of menu; let index = index"
-          class="title-icon {{ item.icon ? item.icon : 'icon-dot-status' }}"
-          [ngClass]="{ active: item.active || isChildrenActive(item) }"
-          (click)="selectItem(item)"
-        ></li>
-      </ul>
+      @if (isPaneShrink) {
+        <ul style="padding: 8px 0">
+          @for (item of menu; track item; let index = $index) {
+            <li
+              dTooltip
+              [content]="hoverCard[index]"
+              [position]="'right'"
+              class="title-icon {{ item.icon ? item.icon : 'icon-dot-status' }}"
+              [ngClass]="{ active: item.active || isChildrenActive(item) }"
+              (click)="selectItem(item)"
+            ></li>
+          }
+        </ul>
+      }
     </d-splitter-pane>
 
     <d-splitter-pane minSize="15%">

@@ -4,11 +4,13 @@
     [tableOverflowType]="'overlay'"
     [tableWidthConfig]="tableWidthConfig"
     (checkAllChange)="checkAllChange($event)"
-  >
+    >
     <thead dTableHead [checkable]="true" [checkOptions]="checkOptions" [selectOptionOnCheckbox]="true">
       <tr dTableRow>
         <th dHeadCell>#</th>
-        <th dHeadCell *ngFor="let colOption of dataTableOptions.columns">{{ colOption.header }}</th>
+        @for (colOption of dataTableOptions.columns; track colOption) {
+          <th dHeadCell>{{ colOption.header }}</th>
+        }
       </tr>
     </thead>
     <tbody dTableBody>
@@ -24,13 +26,15 @@
               dTooltip
               [content]="rowItem.$checkBoxTips"
               [position]="['top', 'right', 'bottom', 'left']"
-            >
+              >
             </d-checkbox>
           </td>
           <td dTableCell>{{ rowIndex + 1 }}</td>
-          <td dTableCell *ngFor="let colOption of dataTableOptions.columns">
-            {{ colOption.fieldType === 'date' ? (rowItem[colOption.field] | i18nDate : 'short' : false) : rowItem[colOption.field] }}
-          </td>
+          @for (colOption of dataTableOptions.columns; track colOption) {
+            <td dTableCell>
+              {{ colOption.fieldType === 'date' ? (rowItem[colOption.field] | i18nDate : 'short' : false) : rowItem[colOption.field] }}
+            </td>
+          }
         </tr>
       </ng-template>
     </tbody>
@@ -46,6 +50,6 @@
     [canViewTotal]="true"
     [lite]="true"
     (pageIndexChange)="onPageIndexChange($event)"
-  >
+    >
   </d-pagination>
 </div>

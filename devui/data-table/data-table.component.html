@@ -6,42 +6,47 @@
       'has-height-scroll': hasHeightScroll
     }"
     #tableView
-  >
-    <div
-      *ngIf="fixHeader"
-      #fixHeaderContainerRef
-      class="table-wrap devui-fix-header"
+    >
+    @if (fixHeader) {
+      <div
+        #fixHeaderContainerRef
+        class="table-wrap devui-fix-header"
       [ngClass]="{
         'shadow-fix-header': headerBg
       }"
-      [style.overflow-x]="dataSource?.length ? 'hidden' : 'auto'"
-      [style.overflow-y]="dataSource?.length ? 'scroll' : 'hidden'"
-      [style.max-height]="maxHeight ? maxHeight : null"
-      [style.max-width]="maxWidth ? maxWidth : null"
-      [style.width]="!maxWidth ? tableWidth : null"
-    >
-      <table
+        [style.overflow-x]="dataSource?.length ? 'hidden' : 'auto'"
+        [style.overflow-y]="dataSource?.length ? 'scroll' : 'hidden'"
+        [style.max-height]="maxHeight ? maxHeight : null"
+        [style.max-width]="maxWidth ? maxWidth : null"
+        [style.width]="!maxWidth ? tableWidth : null"
+        >
+        <table
         class="devui-table devui-table-{{ size }} {{ borderType ? 'table-' + borderType : '' }} {{ fixHeader ? 'table-fix-header' : '' }} {{
           headerBg ? 'header-bg' : ''
         }} {{ striped ? 'table-striped' : '' }}"
-        [ngClass]="{ 'area-active': showOperationArea }"
-        [style.table-layout]="tableLayout"
-      >
-        <colgroup>
-          <col *ngFor="let config of tableWidthConfig" [style.width]="config.width" />
+          [ngClass]="{ 'area-active': showOperationArea }"
+          [style.table-layout]="tableLayout"
+          >
+          <colgroup>
+          @for (config of tableWidthConfig; track config) {
+            <col [style.width]="config.width" />
+          }
         </colgroup>
         <ng-container *ngTemplateOutlet="HeaderContent"></ng-container>
-        <ng-template *ngIf="!innerHeader" [ngTemplateOutlet]="headerTpl"></ng-template>
+        @if (!innerHeader) {
+          <ng-template [ngTemplateOutlet]="headerTpl"></ng-template>
+        }
       </table>
     </div>
+  }
 
+  @if (!virtualScroll) {
     <div
       #normalScroll
       cdkScrollable
       dLazyLoad
       [enableLazyLoad]="lazy"
       (loadMore)="onLoadMore($event)"
-      *ngIf="!virtualScroll; else scrollViewTpl"
       class="devui-scrollbar"
       [style.overflow-x]="dataSource?.length || !fixHeader ? 'auto' : 'hidden'"
       [ngClass]="{
@@ -54,7 +59,7 @@
       [style.max-width]="maxWidth ? maxWidth : null"
       [style.width]="!maxWidth ? tableWidth : null"
       (scroll)="onBodyScroll($event)"
-    >
+      >
       <table
         #tableBody
         class="devui-table devui-table-{{ size }} {{ borderType ? 'table-' + borderType : '' }} {{
@@ -64,26 +69,31 @@
         [style.table-layout]="tableLayout"
         [style.height]="minHeight ? minHeight : null"
         [style.position]="tableOverflowType === 'overlay' ? null : 'relative'"
-      >
+        >
         <colgroup>
-          <col *ngFor="let config of tableWidthConfig" [style.width]="config.width" />
-        </colgroup>
-        <ng-container *ngIf="!fixHeader">
-          <ng-container *ngTemplateOutlet="HeaderContent"></ng-container>
-          <ng-template *ngIf="!innerHeader" [ngTemplateOutlet]="headerTpl"></ng-template>
-        </ng-container>
+        @for (config of tableWidthConfig; track config) {
+          <col [style.width]="config.width" />
+        }
+      </colgroup>
+      @if (!fixHeader) {
+        <ng-container *ngTemplateOutlet="HeaderContent"></ng-container>
+        @if (!innerHeader) {
+          <ng-template [ngTemplateOutlet]="headerTpl"></ng-template>
+        }
+      }
+      @if (innerBody) {
         <tbody
           dTableBody
           dSortable
-          *ngIf="innerBody"
           [dataSource]="dataSource"
           [tableWidthConfig]="tableWidthConfig"
           [rowTemplete]="innerBody.rowTempleteForSelect"
           [minHeight]="minHeight"
           [minHeightStretchRow]="innerBody.minHeightStretchRow"
         ></tbody>
+      }
+      @if (!innerBody) {
         <tbody
-          *ngIf="!innerBody"
           dDataTableBody
           #devuiNormalScrollBody
           [dataSource]="dataSource"
@@ -104,20 +114,10 @@
           [headerExpandConfig]="headerExpandConfig"
           [generalRowHoveredData]="generalRowHoveredData"
         ></tbody>
-      </table>
-    </div>
+      }
+    </table>
   </div>
-</div>
-
-<div
-  class="devui-no-result-wrapper"
-  [ngClass]="{ 'overlay-table-no-result': tableOverflowType === 'overlay' || !scrollable }"
-  *ngIf="!dataSource?.length && noResultTemplate != null"
->
-  <ng-template [ngTemplateOutlet]="noResultTemplate" [ngTemplateOutletContext]="{ $implicit: this }"></ng-template>
-</div>
-
-<ng-template #scrollViewTpl>
+} @else {
   <cdk-virtual-scroll-viewport
     #cdkVirtualScrollViewport
     dLazyLoad
@@ -137,7 +137,7 @@
     [style.max-width]="maxWidth ? maxWidth : null"
     [style.width]="!maxWidth ? tableWidth : null"
     (scroll)="onBodyScroll($event)"
-  >
+    >
     <table
       #tableBody
       class="devui-table devui-table-{{ size }} {{ borderType ? 'table-' + borderType : '' }} {{
@@ -146,18 +146,22 @@
       [ngClass]="{ 'area-active': showOperationArea }"
       [style.table-layout]="tableLayout"
       [style.height]="minHeight ? minHeight : null"
-    >
+      >
       <colgroup>
-        <col *ngFor="let config of tableWidthConfig" [style.width]="config.width" />
-      </colgroup>
-      <ng-container *ngIf="!fixHeader">
-        <ng-container *ngTemplateOutlet="HeaderContent"></ng-container>
-        <ng-template *ngIf="!innerHeader" [ngTemplateOutlet]="headerTpl"></ng-template>
-      </ng-container>
+      @for (config of tableWidthConfig; track config) {
+        <col [style.width]="config.width" />
+      }
+    </colgroup>
+    @if (!fixHeader) {
+      <ng-container *ngTemplateOutlet="HeaderContent"></ng-container>
+      @if (!innerHeader) {
+        <ng-template [ngTemplateOutlet]="headerTpl"></ng-template>
+      }
+    }
+    @if (innerBody) {
       <tbody
         dTableBody
         dSortable
-        *ngIf="innerBody"
         [dataSource]="dataSource"
         [tableWidthConfig]="tableWidthConfig"
         [virtualScroll]="virtualScroll"
@@ -165,8 +169,9 @@
         [minHeight]="minHeight"
         [minHeightStretchRow]="innerBody.minHeightStretchRow"
       ></tbody>
+    }
+    @if (!innerBody) {
       <tbody
-        *ngIf="!innerBody"
         dDataTableBody
         [dataSource]="dataSource"
         [resizeable]="resizeable"
@@ -187,9 +192,22 @@
         [headerExpandConfig]="headerExpandConfig"
         [generalRowHoveredData]="generalRowHoveredData"
       ></tbody>
-    </table>
-  </cdk-virtual-scroll-viewport>
-</ng-template>
+    }
+  </table>
+</cdk-virtual-scroll-viewport>
+}
+</div>
+</div>
+
+@if (!dataSource?.length && noResultTemplate != null) {
+  <div
+    class="devui-no-result-wrapper"
+    [ngClass]="{ 'overlay-table-no-result': tableOverflowType === 'overlay' || !scrollable }"
+    >
+    <ng-template [ngTemplateOutlet]="noResultTemplate" [ngTemplateOutletContext]="{ $implicit: this }"></ng-template>
+  </div>
+}
+
 
 <ng-template #headerTpl>
   <thead

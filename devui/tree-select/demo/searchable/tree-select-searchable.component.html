@@ -9,7 +9,7 @@
       [(ngModel)]="value1"
       (ngModelChange)="showSelected($event)"
       style="width: 280px"
-    >
+      >
     </d-tree-select>
   </div>
 </div>
@@ -34,10 +34,14 @@
   </div>
 </div>
 <ng-template #noDataTemplate let-isSearchResult>
-  <div class="devui-no-data-tip" *ngIf="isSearchResult">
-    <span>No result.</span>
-  </div>
-  <div class="devui-no-data-tip" *ngIf="!isSearchResult">
-    <span>No data.</span>
-  </div>
+  @if (isSearchResult) {
+    <div class="devui-no-data-tip">
+      <span>No result.</span>
+    </div>
+  }
+  @if (!isSearchResult) {
+    <div class="devui-no-data-tip">
+      <span>No data.</span>
+    </div>
+  }
 </ng-template>

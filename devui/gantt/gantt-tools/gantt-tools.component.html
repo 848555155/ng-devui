@@ -4,9 +4,11 @@
     <span dDropDown [trigger]="'click'" appendToBody class="switch-view">
       <span dDropDownToggle class="devui-dropdown-origin">{{ currentUnitLabel }} <span class="icon-chevron-down"></span></span>
       <ul dDropDownMenu class="devui-dropdown-menu devui-scrollbar" role="menu">
-        <li role="menuItem" *ngFor="let menu of views" (click)="selectView(menu)">
-          <a class="devui-dropdown-item">{{ menu.label }}</a>
-        </li>
+        @for (menu of views; track menu) {
+          <li role="menuItem" (click)="selectView(menu)">
+            <a class="devui-dropdown-item">{{ menu.label }}</a>
+          </li>
+        }
       </ul>
     </span>
   </div>
@@ -16,7 +18,7 @@
     class="tool"
     [ngClass]="{ disabled: unitRole[this.currentUnit] === unitRole.day }"
     [disabled]="unitRole[this.currentUnit] === unitRole.day"
-  >
+    >
     <i class="icon icon-minus"></i>
   </d-button>
   <d-button
@@ -25,7 +27,7 @@
     class="tool"
     [ngClass]="{ disabled: unitRole[this.currentUnit] === unitRole.month }"
     [disabled]="unitRole[this.currentUnit] === unitRole.month"
-  >
+    >
     <i class="icon icon-add"></i>
   </d-button>
   <ng-content></ng-content>

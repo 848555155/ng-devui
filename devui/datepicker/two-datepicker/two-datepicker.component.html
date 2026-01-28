@@ -5,7 +5,7 @@
   [cdkConnectedOverlayOpen]="isOpen"
   (backdropClick)="isOpen = false"
   (positionChange)="onPositionChange($event)"
->
+  >
   <div [@fadeInOut]="startAnimation ? datePosition : 'void'" [@.disabled]="!showAnimation" class="devui-two-date-wrapper">
     <div class="devui-two-date-picker">
       <d-two-datepicker-single
@@ -27,7 +27,7 @@
         (syncPickerPair)="syncPickerPair($event, 'left')"
         [whichOpen]="whichOpen"
         #leftPicker
-      >
+        >
       </d-two-datepicker-single>
       <d-two-datepicker-single
         class="devui-date-picker"
@@ -49,18 +49,20 @@
         [isAuxiliary]="true"
         [whichOpen]="whichOpen"
         #rightPicker
-      >
+        >
       </d-two-datepicker-single>
     </div>
-    <div *ngIf="!customViewTemplate" class="devui-two-date-footer devui-two-date-custom">
-      <a
+    @if (!customViewTemplate) {
+      <div class="devui-two-date-footer devui-two-date-custom">
+        <a
         [ngClass]="{
           disabled: disableToday
         }"
-        (click)="chooseToday($event)"
-        >{{ i18nText.today }}</a
-      >
-      <d-button bsStyle="common" (btnClick)="clearBtn($event)" bsSize="sm">{{ i18nText.clear }}</d-button>
+          (click)="chooseToday($event)"
+          >{{ i18nText.today }}</a
+          >
+          <d-button bsStyle="common" (btnClick)="clearBtn($event)" bsSize="sm">{{ i18nText.clear }}</d-button>
+        </div>
+      }
     </div>
-  </div>
-</ng-template>
+  </ng-template>

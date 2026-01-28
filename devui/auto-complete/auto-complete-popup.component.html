@@ -1,4 +1,4 @@
-<ng-container *ngIf="appendToBody">
+@if (appendToBody) {
   <ng-template
     cdk-connected-overlay
     [cdkConnectedOverlayOrigin]="origin"
@@ -9,14 +9,14 @@
     [cdkConnectedOverlayScrollStrategy]="scrollStrategy"
     (positionChange)="onPositionChange($event)"
     (detach)="isOpen && hidePopup()"
-  >
+    >
     <ng-template [ngTemplateOutlet]="popTpl"> </ng-template>
   </ng-template>
-</ng-container>
+}
 
-<ng-container *ngIf="!appendToBody">
+@if (!appendToBody) {
   <ng-template [ngTemplateOutlet]="popTpl"> </ng-template>
-</ng-container>
+}
 
 <ng-template #popTpl>
   <div
@@ -37,7 +37,7 @@
     dLoading
     [showLoading]="showLoading"
     [backdrop]="true"
-  >
+    >
     <ul
       class="devui-list-unstyled devui-scrollbar scroll-height devui-dropdown-menu-wrap devui-auto-complete-list"
       [style.maxHeight]="maxHeight + 'px'"
@@ -45,25 +45,27 @@
       [enableLazyLoad]="enableLazyLoad"
       (loadMore)="loadMoreEvent($event)"
       #dropdownUl
-    >
-      <ng-container *ngIf="!isSearching || !searchingTemplate">
-        <li *ngIf="popTipsText && popTipsText.length > 0" class="devui-popup-tips">
-          {{ popTipsText }}
-        </li>
-        <li
-          *ngFor="let item of source; let $index = index; trackBy: trackByFn"
-          class="devui-dropdown-item"
-          [title]="formatter(item)"
+      >
+      @if (!isSearching || !searchingTemplate) {
+        @if (popTipsText && popTipsText.length > 0) {
+          <li class="devui-popup-tips">
+            {{ popTipsText }}
+          </li>
+        }
+        @for (item of source; track trackByFn($index, item)) {
+          <li
+            class="devui-dropdown-item"
+            [title]="formatter(item)"
           [ngClass]="{
             selected: $index == activeIndex,
             'devui-dropdown-bg': $index == hoverIndex,
             disabled: disabledKey && item[disabledKey]
           }"
-          (click)="onSelect($event, item)"
-          (mouseover)="onMouseOver($event, item)"
-        >
-          <ng-template
-            [ngTemplateOutlet]="itemTemplate || defaultItemTemplate"
+            (click)="onSelect($event, item)"
+            (mouseover)="onMouseOver($event, item)"
+            >
+            <ng-template
+              [ngTemplateOutlet]="itemTemplate || defaultItemTemplate"
             [ngTemplateOutletContext]="{
               formatter: formatter,
               term: term,
@@ -71,22 +73,27 @@
               item: item,
               $index: $index
             }"
-          >
-          </ng-template>
-        </li>
-        <div class="devui-no-data-tip" *ngIf="!source?.length && noResultItemTemplate">
-          <ng-template [ngTemplateOutlet]="noResultItemTemplate" [ngTemplateOutletContext]="{ term: term, source: source }"> </ng-template>
+              >
+            </ng-template>
+          </li>
+        }
+        @if (!source?.length && noResultItemTemplate) {
+          <div class="devui-no-data-tip">
+            <ng-template [ngTemplateOutlet]="noResultItemTemplate" [ngTemplateOutletContext]="{ term: term, source: source }"> </ng-template>
+          </div>
+        }
+      }
+      @if (isSearching && searchingTemplate) {
+        <div class="devui-no-data-tip">
+          <ng-template [ngTemplateOutlet]="searchingTemplate" [ngTemplateOutletContext]="{ term: term }"> </ng-template>
         </div>
-      </ng-container>
-      <div class="devui-no-data-tip" *ngIf="isSearching && searchingTemplate">
-        <ng-template [ngTemplateOutlet]="searchingTemplate" [ngTemplateOutletContext]="{ term: term }"> </ng-template>
-      </div>
+      }
     </ul>
-    <ng-container *ngIf="customViewTemplate">
+    @if (customViewTemplate) {
       <div class="devui-select-custom-area">
         <ng-template [ngTemplateOutlet]="customViewTemplate" [ngTemplateOutletContext]="{ $implicit: this }"></ng-template>
       </div>
-    </ng-container>
+    }
   </div>
 </ng-template>
 

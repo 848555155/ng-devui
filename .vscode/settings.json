@@ -1,0 +1,7 @@
+{
+    "i18n-ally.localesPaths": [
+        "devui/i18n",
+        "devui-commons/src/i18n",
+        "src/assets/i18n"
+    ]
+}

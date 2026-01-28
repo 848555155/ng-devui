@@ -8,7 +8,7 @@
   [(ngModel)]="value"
   (ngModelChange)="showSelected($event)"
   style="width: 280px"
->
+  >
 </d-tree-select>
 <ng-template #myTemplate1 let-selectComponent>
   <div class="total">
@@ -27,18 +27,20 @@
     [(ngModel)]="value"
     (ngModelChange)="showSelected($event)"
     style="width: 280px"
-  >
+    >
   </d-tree-select>
 </section>
 <ng-template #myTemplate2>
   <div class="custom-wrapper">
     <div class="custom-title">Recently Selected</div>
     <ul class="custom-box">
-      <li class="custom-list" *ngFor="let recent of recently; let i = index">
-        <div class="custom-single" (click)="chooseRecent($event, i)">
-          {{ recent.title }}
-        </div>
-      </li>
+      @for (recent of recently; track recent; let i = $index) {
+        <li class="custom-list">
+          <div class="custom-single" (click)="chooseRecent($event, i)">
+            {{ recent.title }}
+          </div>
+        </li>
+      }
     </ul>
   </div>
 </ng-template>

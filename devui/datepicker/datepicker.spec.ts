@@ -36,7 +36,7 @@ class CommonFunctions {
         [(ngModel)]="selectedDate1"
         #datePicker1="datepicker"
         (selectedDateChange)="getValue($event)"
-
+    
         [cssClass]="cssClass"
         [showTime]="showTime"
         [disabled]="disabled"
@@ -47,10 +47,12 @@ class CommonFunctions {
         [maxDate]="maxDate"
         [autoOpen]="autoOpen"
         [customViewTemplate]="customViewTemplate"
-      />
-      <div *ngIf="selectedDate1" class="devui-input-group-addon close-icon-wrapper" (click)="datePicker1.clearAll()">
-        <i class="icon icon-close"></i>
-      </div>
+        />
+      @if (selectedDate1) {
+        <div class="devui-input-group-addon close-icon-wrapper" (click)="datePicker1.clearAll()">
+          <i class="icon icon-close"></i>
+        </div>
+      }
       <div class="devui-input-group-addon" (click)="datePicker1.toggle(toggle); toggle = !toggle" #icon>
         <i class="icon icon-calendar"></i>
       </div>
@@ -58,7 +60,7 @@ class CommonFunctions {
     <ng-template #myCustomView>
       <div class="test-template">test template</div>
     </ng-template>
-  `,
+    `,
   standalone: false
 })
 class TestDatePickerDirectiveComponent {
@@ -98,7 +100,7 @@ class TestDatePickerDirectiveComponent {
         #datePicker1="datepicker"
         (selectedDateChange)="getValue($event)"
         appendToBody
-
+    
         [cssClass]="cssClass"
         [showTime]="showTime"
         [disabled]="disabled"
@@ -108,10 +110,12 @@ class TestDatePickerDirectiveComponent {
         [maxDate]="maxDate"
         [autoOpen]="autoOpen"
         [customViewTemplate]="customViewTemplate"
-      />
-      <div *ngIf="selectedDate1" class="devui-input-group-addon close-icon-wrapper" (click)="datePicker1.clearAll()">
-        <i class="icon icon-close"></i>
-      </div>
+        />
+      @if (selectedDate1) {
+        <div class="devui-input-group-addon close-icon-wrapper" (click)="datePicker1.clearAll()">
+          <i class="icon icon-close"></i>
+        </div>
+      }
       <div class="devui-input-group-addon" (click)="datePicker1.toggle(toggle); toggle = !toggle" #icon>
         <i class="icon icon-calendar"></i>
       </div>
@@ -119,7 +123,7 @@ class TestDatePickerDirectiveComponent {
     <ng-template #myCustomView>
       <div class="test-template">test template</div>
     </ng-template>
-  `,
+    `,
   standalone: false
 })
 class TestDatePickerAppendToBodyComponent {

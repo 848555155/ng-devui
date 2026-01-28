@@ -15,10 +15,12 @@
       #dateRangePicker1="dateRangePicker"
       (selectedRangeChange)="getValue($event)"
       [dateFormat]="dateFormat"
-    />
-    <div *ngIf="everyRange(dateRange1)" class="devui-input-group-addon close-icon-wrapper" (click)="dateRangePicker1.clearAll()">
-      <i class="icon icon-close"></i>
-    </div>
+      />
+    @if (everyRange(dateRange1)) {
+      <div class="devui-input-group-addon close-icon-wrapper" (click)="dateRangePicker1.clearAll()">
+        <i class="icon icon-close"></i>
+      </div>
+    }
     <div class="devui-input-group-addon" (click)="dateRangePicker1.toggle()">
       <i class="icon icon-calendar"></i>
     </div>
@@ -40,10 +42,12 @@
       (selectedRangeChange)="getValue($event)"
       [dateConfig]="dateConfig"
       [splitter]="splitter"
-    />
-    <div *ngIf="everyRange(dateRange2)" class="devui-input-group-addon close-icon-wrapper" (click)="dateRangePicker2.clearAll()">
-      <i class="icon icon-close"></i>
-    </div>
+      />
+    @if (everyRange(dateRange2)) {
+      <div class="devui-input-group-addon close-icon-wrapper" (click)="dateRangePicker2.clearAll()">
+        <i class="icon icon-close"></i>
+      </div>
+    }
     <div class="devui-input-group-addon" (click)="dateRangePicker2.toggle()">
       <i class="icon icon-calendar"></i>
     </div>

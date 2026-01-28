@@ -61,13 +61,15 @@ class TestTabsComponent {
 
 @Component({
   template: `<d-tabs #pills [(activeTab)]="tabActiveId" [type]="type">
-    <d-tab *ngFor="let item of tabItems" [id]="item.id">
-      <ng-template dTabTitle>
-        {{ item.title }}
-      </ng-template>
-      {{ item.content }}
-    </d-tab>
-  </d-tabs>`,
+      @for (item of tabItems; track item) {
+        <d-tab [id]="item.id">
+          <ng-template dTabTitle>
+            {{ item.title }}
+          </ng-template>
+          {{ item.content }}
+        </d-tab>
+      }
+    </d-tabs>`,
   standalone: false
 })
 

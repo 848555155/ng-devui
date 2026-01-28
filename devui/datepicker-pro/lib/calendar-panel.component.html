@@ -4,12 +4,18 @@
       class="devui-canlender-panel-year-list-item"
       [ngClass]="{ 'title-active': item.active }"
       *cdkVirtualFor="let item of yearAndMonthList; let index = index"
-    >
-      <p class="devui-year-title" *ngIf="!item.isMonth && !isListCollopse" (click)="toggleListCollopse()">{{ item.year }}</p>
-      <p class="devui-year-title" *ngIf="!item.isMonth && isListCollopse" (click)="selectMonth(item.year, 0)">{{ item.year }}</p>
-      <p class="devui-month-title" *ngIf="item.isMonth" (click)="selectMonth(item.year, item.month)">
-        {{ i18nText.monthsOfYear[item.month] }}
-      </p>
+      >
+      @if (!item.isMonth && !isListCollopse) {
+        <p class="devui-year-title" (click)="toggleListCollopse()">{{ item.year }}</p>
+      }
+      @if (!item.isMonth && isListCollopse) {
+        <p class="devui-year-title" (click)="selectMonth(item.year, 0)">{{ item.year }}</p>
+      }
+      @if (item.isMonth) {
+        <p class="devui-month-title" (click)="selectMonth(item.year, item.month)">
+          {{ i18nText.monthsOfYear[item.month] }}
+        </p>
+      }
     </div>
   </cdk-virtual-scroll-viewport>
 
@@ -17,7 +23,9 @@
     <table class="devui-table">
       <thead>
         <tr class="small text-center devui-week-header">
-          <td *ngFor="let item of i18nText?.daysOfWeek">{{ item }}</td>
+          @for (item of i18nText?.daysOfWeek; track item) {
+            <td>{{ item }}</td>
+          }
         </tr>
       </thead>
       <tbody>
@@ -29,7 +37,7 @@
               class="devui-tbody-wrapper"
               minBufferPx="400"
               maxBufferPx="600"
-            >
+              >
               <div *cdkVirtualFor="let month of allMonthList; let index = index">
                 <p class="devui-table-month-title">{{ i18nText?.getYearMonthStr(month.year, month.month + 1) }}</p>
                 <table
@@ -38,10 +46,12 @@
                     'devui-single-date': isSingleDate()
                   }"
                   (mouseleave)="curHoverDate = null; curWeekHoverDate = null"
-                >
+                  >
                   <tbody>
-                    <tr class="small text-center devui-week-header" *ngFor="let week of month.displayWeeks">
-                      <td
+                    @for (week of month.displayWeeks; track week) {
+                      <tr class="small text-center devui-week-header">
+                        @for (day of week; track day) {
+                          <td
                         [ngClass]="{
                           'devui-table-date': day.inMonth,
                           'devui-table-date-selected': isDateActive(day.date),
@@ -56,19 +66,20 @@
                           'devui-table-date-suggested': isDateSuggest(day.date),
                           'devui-table-date-marked': isDateMarked(day.date)
                         }"
-                        *ngFor="let day of week"
-                        dPopover
-                        [content]="markDate"
-                        [visible]="isDateMarked(day.date) && curHoverDate === day.date && !!markDateTemplate"
-                        (click)="selectDate(day)"
-                        (mouseenter)="setHoverTarget(day.date, day.inMonth)"
-                      >
-                        <span>{{ day.inMonth ? day.day : '' }}</span>
-                        <ng-template #markDate>
-                          <ng-template [ngTemplateOutlet]="markDateTemplate" [ngTemplateOutletContext]="{ date: day.date }"></ng-template>
-                        </ng-template>
-                      </td>
-                    </tr>
+                            dPopover
+                            [content]="markDate"
+                            [visible]="isDateMarked(day.date) && curHoverDate === day.date && !!markDateTemplate"
+                            (click)="selectDate(day)"
+                            (mouseenter)="setHoverTarget(day.date, day.inMonth)"
+                            >
+                            <span>{{ day.inMonth ? day.day : '' }}</span>
+                            <ng-template #markDate>
+                              <ng-template [ngTemplateOutlet]="markDateTemplate" [ngTemplateOutletContext]="{ date: day.date }"></ng-template>
+                            </ng-template>
+                          </td>
+                        }
+                      </tr>
+                    }
                   </tbody>
                 </table>
               </div>

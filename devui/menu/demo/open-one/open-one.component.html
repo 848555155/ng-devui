@@ -1,30 +1,31 @@
 <div class="demo-menu" style="width: 256px">
   <div dMenu>
-    <ng-container *ngFor="let m of menus; trackBy: trackByMenu">
-      <div
-        dSubMenu
-        [icon]="m.icon"
-        [title]="m.name"
-        [open]="openKey === m.key"
-        (openChange)="openChange($event, m.key)"
-        *ngIf="m.children?.length; else leafTpl"
-      >
+    @for (m of menus; track trackByMenu($index, m)) {
+      @if (m.children?.length) {
         <div
-          dMenuItem
-          (itemClick)="itemClick(item.key)"
-          [active]="item.key === activeKey"
-          *ngFor="let item of m.children; trackBy: trackByMenu"
-        >
-          <d-icon class="devui-menu-item-icon" icon="icon-op-list" />
-          <span class="devui-menu-item-name over-flow-ellipsis">{{ item.name }}</span>
+          dSubMenu
+          [icon]="m.icon"
+          [title]="m.name"
+          [open]="openKey === m.key"
+          (openChange)="openChange($event, m.key)"
+          >
+          @for (item of m.children; track trackByMenu($index, item)) {
+            <div
+              dMenuItem
+              (itemClick)="itemClick(item.key)"
+              [active]="item.key === activeKey"
+              >
+              <d-icon class="devui-menu-item-icon" icon="icon-op-list" />
+              <span class="devui-menu-item-name over-flow-ellipsis">{{ item.name }}</span>
+            </div>
+          }
         </div>
-      </div>
-      <ng-template #leafTpl>
+      } @else {
         <div dMenuItem (itemClick)="itemClick(m.key)" [active]="m.key === activeKey">
           <d-icon class="devui-menu-item-icon" icon="icon-op-list" />
           <span class="devui-menu-item-name over-flow-ellipsis">{{ m.name }}</span>
         </div>
-      </ng-template>
-    </ng-container>
+      }
+    }
   </div>
 </div>

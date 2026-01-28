@@ -16,13 +16,19 @@
   (selectedTagsChange)="selectedTagsChange($event)"
   (clearAllEvent)="clearAllEvent($event)"
 ></d-category-search>
-<section *ngIf="finalSearchItems && finalSearchItems.length">
-  <p>The categories of the current search:</p>
-  <div *ngFor="let item of finalSearchItems">
-    <div>{{ item?.label }}: {{ (item?.value)[item.filterKey] || item?.value?.label }}</div>
-  </div>
-</section>
-<section *ngIf="finalSearchKey && finalSearchKey.length">The current search keyword: {{ finalSearchKey }}</section>
+@if (finalSearchItems && finalSearchItems.length) {
+  <section>
+    <p>The categories of the current search:</p>
+    @for (item of finalSearchItems; track item) {
+      <div>
+        <div>{{ item?.label }}: {{ (item?.value)[item.filterKey] || item?.value?.label }}</div>
+      </div>
+    }
+  </section>
+}
+@if (finalSearchKey && finalSearchKey.length) {
+  <section>The current search keyword: {{ finalSearchKey }}</section>
+}
 
 <ng-template #groupTpl let-item="tag">
   <i class="icon icon-folder"></i>

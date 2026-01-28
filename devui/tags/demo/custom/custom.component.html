@@ -22,15 +22,16 @@
 <d-tag [tag]="tagName" (tagDelete)="getTagValue($event); deleteTag($event)" [labelStyle]="'purple-w98'" [customViewTemplate]="customTag">
 </d-tag>
 <h4>Can be selected</h4>
-<d-tag
-  *ngFor="let tag of tagList; let i = index"
-  [mode]="'checkable'"
-  [(checked)]="tag.checked"
-  [tag]="tag.name"
-  [labelStyle]="tag.type"
-  [customColor]="tag.custumColor"
-  (checkedChange)="changeChecked($event)"
-></d-tag>
+@for (tag of tagList; track tag; let i = $index) {
+  <d-tag
+    [mode]="'checkable'"
+    [(checked)]="tag.checked"
+    [tag]="tag.name"
+    [labelStyle]="tag.type"
+    [customColor]="tag.custumColor"
+    (checkedChange)="changeChecked($event)"
+  ></d-tag>
+}
 <ng-template #customTag let-tag="tag">
   <span class="icon-bug" style="vertical-align: text-bottom; padding-right: 4px"></span>
   <span title="{{ tag }}">{{ tag }}</span>

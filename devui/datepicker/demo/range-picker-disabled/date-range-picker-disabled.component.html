@@ -15,17 +15,19 @@
       [ngClass]="{
         'devui-disabled': disabled
       }"
-    />
-    <div *ngIf="everyRange(dateRange) && !disabled" class="devui-input-group-addon close-icon-wrapper" (click)="dateRangePicker.clearAll()">
-      <i class="icon icon-close"></i>
-    </div>
+      />
+    @if (everyRange(dateRange) && !disabled) {
+      <div class="devui-input-group-addon close-icon-wrapper" (click)="dateRangePicker.clearAll()">
+        <i class="icon icon-close"></i>
+      </div>
+    }
     <div
       class="devui-input-group-addon"
       [ngClass]="{
         'devui-disabled': disabled
       }"
       (click)="toggleDatePicker(dateRangePicker)"
-    >
+      >
       <i class="icon icon-calendar"></i>
     </div>
   </div>

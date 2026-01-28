@@ -4,26 +4,32 @@
   </p>
   <p class="devui-design-desc devui-design-mb-16">{{ 'components.auto-complete.design.structure.desc' | translate }}</p>
   <img [src]="getImgSrc(designObj.structure.image)" alt="" class="devui-design-image-1" />
-  <div *ngFor="let desc of designObj.structure.descList" class="devui-design-mt-16">
-    <span class="devui-design-h4-title">{{ desc.title }}</span>
-    <span>{{ desc.content }}</span>
-  </div>
+  @for (desc of designObj.structure.descList; track desc) {
+    <div class="devui-design-mt-16">
+      <span class="devui-design-h4-title">{{ desc.title }}</span>
+      <span>{{ desc.content }}</span>
+    </div>
+  }
 </div>
 
 <div class="devui-design-mb-40">
   <p class="devui-design-h2-title devui-design-mt-64">{{ 'components.auto-complete.design.how-to-use.name' | translate }}</p>
   <p class="devui-design-h3-title devui-design-mt-24">{{ 'components.auto-complete.design.how-to-use.sub-name' | translate }}</p>
   <div class="devui-design-mt-8">
-    <p *ngFor="let desc of designObj['how-to-use'].descList" class="devui-design-desc">{{ desc }}</p>
+    @for (desc of designObj['how-to-use'].descList; track desc) {
+      <p class="devui-design-desc">{{ desc }}</p>
+    }
   </div>
 
   <div class="devui-design-mt-24">
     <p class="devui-design-h3-title devui-design-mt-24">{{ 'components.auto-complete.design.scene.name' | translate }}</p>
-    <div *ngFor="let item of designObj.scene.sceneList" class="devui-design-mt-12">
-      <p class="devui-design-h4-title">{{ item.name }}</p>
-      <p class="devui-design-desc devui-design-mt-8 devui-design-mb-16">{{ item.desc }}</p>
-      <img [src]="getImgSrc(item.img)" alt="" class="devui-design-image-1" />
-    </div>
+    @for (item of designObj.scene.sceneList; track item) {
+      <div class="devui-design-mt-12">
+        <p class="devui-design-h4-title">{{ item.name }}</p>
+        <p class="devui-design-desc devui-design-mt-8 devui-design-mb-16">{{ item.desc }}</p>
+        <img [src]="getImgSrc(item.img)" alt="" class="devui-design-image-1" />
+      </div>
+    }
   </div>
 
   <div class="devui-design-mt-64">

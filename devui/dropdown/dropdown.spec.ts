@@ -9,7 +9,9 @@ import { DropDownDirective } from './dropdown.directive';
 import { DropDownModule } from './dropdown.module';
 @Component({
   template: `
-    <div class="height-expand" *ngIf="expand"></div>
+    @if (expand) {
+      <div class="height-expand"></div>
+    }
     <div
       dDropDown
       [trigger]="trigger"
@@ -19,7 +21,7 @@ import { DropDownModule } from './dropdown.module';
       [closeScope]="closeScope"
       [closeOnMouseLeaveMenu]="closeOnMouseLeaveMenu"
       #dropdown="d-dropdown"
-    >
+      >
       <a dDropDownToggle class="devui-dropdown-default devui-dropdown-origin">
         更多操作
         <span class="icon icon-chevron-down"></span>
@@ -52,7 +54,7 @@ import { DropDownModule } from './dropdown.module';
       </ul>
     </div>
     <div class="toggle" (click)="dropdown.toggle()">打开/关闭</div>
-  `,
+    `,
   styles: [
     `
       .height-expand {
@@ -129,29 +131,31 @@ class TestDropdownAppendToBodyComponent {
 
 @Component({
   template: `
-    <div class="area" *ngIf="init">
-      <div dDropDown>
-        <a dDropDownToggle class="devui-dropdown-default devui-dropdown-origin" [autoFocus]="autoFocus" [toggleOnFocus]="toggleOnFocus">
-          更多操作
-          <span class="icon icon-chevron-down"></span>
-        </a>
-        <ul dDropDownMenu>
-          <li role="menuitem">
-            <a dDropDownMenuItem>菜单一</a>
-          </li>
-          <li class="disabled" role="menuitem">
-            <a dDropDownMenuItem class="disabled">菜单二(禁用)</a>
-          </li>
-          <li role="menuitem">
-            <a dDropDownMenuItem>菜单三</a>
-          </li>
-          <li role="menuitem">
-            <a dDropDownMenuItem>菜单四</a>
-          </li>
-        </ul>
+    @if (init) {
+      <div class="area">
+        <div dDropDown>
+          <a dDropDownToggle class="devui-dropdown-default devui-dropdown-origin" [autoFocus]="autoFocus" [toggleOnFocus]="toggleOnFocus">
+            更多操作
+            <span class="icon icon-chevron-down"></span>
+          </a>
+          <ul dDropDownMenu>
+            <li role="menuitem">
+              <a dDropDownMenuItem>菜单一</a>
+            </li>
+            <li class="disabled" role="menuitem">
+              <a dDropDownMenuItem class="disabled">菜单二(禁用)</a>
+            </li>
+            <li role="menuitem">
+              <a dDropDownMenuItem>菜单三</a>
+            </li>
+            <li role="menuitem">
+              <a dDropDownMenuItem>菜单四</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  `,
+    }
+    `,
   standalone: false
 })
 class TestDropdownToggleComponent {

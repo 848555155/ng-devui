@@ -37,7 +37,9 @@ class TestRadioGroupComponent {
 @Component({
   template: `
   <d-radio-group [direction]="'row'" [(ngModel)]="choose2" (change)="mockChange($event)">
-    <d-radio [name]="'customized-city'" *ngFor="let value of values2" [value]="value"> The Radio value is: {{ value }} </d-radio>
+    @for (value of values2; track value) {
+      <d-radio [name]="'customized-city'" [value]="value"> The Radio value is: {{ value }} </d-radio>
+    }
   </d-radio-group>
   `,
   standalone: false

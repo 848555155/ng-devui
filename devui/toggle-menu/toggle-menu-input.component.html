@@ -1,4 +1,4 @@
-<ng-container *ngIf="!isDisabledCustomTemplate; else defaultInputTemplate">
+@if (!isDisabledCustomTemplate) {
   <div class="devui-toggle-menu-input-template-container">
     <ng-template
       [ngTemplateOutlet]="customTemplate"
@@ -10,9 +10,7 @@
       }"
     ></ng-template>
   </div>
-</ng-container>
-
-<ng-template #defaultInputTemplate>
+} @else {
   <input
     type="text"
     class="devui-form-control devui-select-input devui-input"
@@ -22,5 +20,6 @@
     [tabindex]="-1"
     [readonly]="readonly"
     [value]="inputValue || ''"
-  />
-</ng-template>
+    />
+}
+

@@ -10,10 +10,12 @@
         #startPicker="twoDatePickerStart"
         (selectStart)="selectStart($event)"
         (click)="startPicker.toggle()"
-      />
-      <div *ngIf="rangeStart" class="devui-input-group-addon close-icon-wrapper" (click)="startPicker.clear()">
-        <i class="icon icon-close"></i>
-      </div>
+        />
+      @if (rangeStart) {
+        <div class="devui-input-group-addon close-icon-wrapper" (click)="startPicker.clear()">
+          <i class="icon icon-close"></i>
+        </div>
+      }
       <div class="devui-input-group-addon" (click)="startPicker.toggle()">
         <i class="icon icon-calendar"></i>
       </div>
@@ -27,10 +29,12 @@
         #endPicker="twoDatePickerEnd"
         (selectEnd)="selectEnd($event)"
         (click)="endPicker.toggle()"
-      />
-      <div *ngIf="rangeEnd" class="devui-input-group-addon close-icon-wrapper" (click)="endPicker.clear()">
-        <i class="icon icon-close"></i>
-      </div>
+        />
+      @if (rangeEnd) {
+        <div class="devui-input-group-addon close-icon-wrapper" (click)="endPicker.clear()">
+          <i class="icon icon-close"></i>
+        </div>
+      }
       <div class="devui-input-group-addon" (click)="endPicker.toggle()">
         <i class="icon icon-calendar"></i>
       </div>
@@ -43,7 +47,7 @@
     [hideOnRangeSelected]="false"
     [cssClass]="'custom-css-class'"
     (selectedRangeChange)="selectRange($event)"
-  >
+    >
     <div class="devui-input-group devui-dropdown-origin" dActiveFormControl>
       <input
         class="devui-input devui-form-control"
@@ -53,10 +57,12 @@
         #startPicker2="twoDatePickerStart"
         (selectStart)="selectStart($event)"
         (click)="startPicker2.toggle()"
-      />
-      <div *ngIf="rangeStart2" class="devui-input-group-addon close-icon-wrapper" (click)="startPicker2.clear()">
-        <i class="icon icon-close"></i>
-      </div>
+        />
+      @if (rangeStart2) {
+        <div class="devui-input-group-addon close-icon-wrapper" (click)="startPicker2.clear()">
+          <i class="icon icon-close"></i>
+        </div>
+      }
       <div class="devui-input-group-addon" (click)="startPicker2.toggle()">
         <i class="icon icon-calendar"></i>
       </div>
@@ -70,10 +76,12 @@
         #endPicker2="twoDatePickerEnd"
         (selectEnd)="selectEnd($event)"
         (click)="endPicker2.toggle()"
-      />
-      <div *ngIf="rangeEnd2" class="devui-input-group-addon close-icon-wrapper" (click)="endPicker2.clear()">
-        <i class="icon icon-close"></i>
-      </div>
+        />
+      @if (rangeEnd2) {
+        <div class="devui-input-group-addon close-icon-wrapper" (click)="endPicker2.clear()">
+          <i class="icon icon-close"></i>
+        </div>
+      }
       <div class="devui-input-group-addon" (click)="endPicker2.toggle()">
         <i class="icon icon-calendar"></i>
       </div>
@@ -90,10 +98,12 @@
         #startPicker3="twoDatePickerStart"
         (selectStart)="selectStart($event)"
         (click)="startPicker3.toggle()"
-      />
-      <div *ngIf="rangeStart3" class="devui-input-group-addon close-icon-wrapper" (click)="startPicker3.clear()">
-        <i class="icon icon-close"></i>
-      </div>
+        />
+      @if (rangeStart3) {
+        <div class="devui-input-group-addon close-icon-wrapper" (click)="startPicker3.clear()">
+          <i class="icon icon-close"></i>
+        </div>
+      }
       <div class="devui-input-group-addon" (click)="startPicker3.toggle()">
         <i class="icon icon-calendar"></i>
       </div>
@@ -107,10 +117,12 @@
         #endPicker3="twoDatePickerEnd"
         (selectEnd)="selectEnd($event)"
         (click)="endPicker3.toggle()"
-      />
-      <div *ngIf="rangeEnd3" class="devui-input-group-addon close-icon-wrapper" (click)="endPicker3.clear()">
-        <i class="icon icon-close"></i>
-      </div>
+        />
+      @if (rangeEnd3) {
+        <div class="devui-input-group-addon close-icon-wrapper" (click)="endPicker3.clear()">
+          <i class="icon icon-close"></i>
+        </div>
+      }
       <div class="devui-input-group-addon" (click)="endPicker3.toggle()">
         <i class="icon icon-calendar"></i>
       </div>

@@ -8,19 +8,20 @@ import { RadioModule } from './radio.module';
 @Component({
   template: `
     <section>
-      <d-radio
-        [name]="'independent-city'"
-        [(ngModel)]="choose"
-        *ngFor="let value of values"
-        [value]="value"
-        [disabled]="isDisabled"
-        [beforeChange]="beforeChange"
-        (ngModelChange)="valueChange($event)"
-      >
-        {{ value }}
-      </d-radio>
+      @for (value of values; track value) {
+        <d-radio
+          [name]="'independent-city'"
+          [(ngModel)]="choose"
+          [value]="value"
+          [disabled]="isDisabled"
+          [beforeChange]="beforeChange"
+          (ngModelChange)="valueChange($event)"
+          >
+          {{ value }}
+        </d-radio>
+      }
     </section>
-  `,
+    `,
   standalone: false
 })
 class TestRadioComponent {

@@ -8,15 +8,18 @@ import { MenuItemType } from 'ng-devui/menu';
       dSubMenu
       [title]="menu.name"
       [icon]="menu.icon">
-      <ng-container *ngFor="let item of menu.children; trackBy: trackByMenu">
-        <d-loop-sub-menu [menu]="item" [activeKey]="activeKey" (itemClick)="onClick($event)" *ngIf="item.children?.length; else leafTpl" />
-        <ng-template #leafTpl>
+      @for (item of menu.children; track trackByMenu($index, item)) {
+        @if (item.children?.length) {
+          <d-loop-sub-menu [menu]="item" [activeKey]="activeKey" (itemClick)="onClick($event)" />
+        } @else {
           <div dMenuItem [active]="activeKey === item.key" (itemClick)="onClick(item.key)">
-            <d-icon class="devui-menu-item-icon" *ngIf="item.icon" [icon]="item.icon" />
+            @if (item.icon) {
+              <d-icon class="devui-menu-item-icon" [icon]="item.icon" />
+            }
             <span class="devui-menu-item-name over-flow-ellipsis">{{ item.name }}</span>
           </div>
-        </ng-template>
-      </ng-container>
+        }
+      }
     </div>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false

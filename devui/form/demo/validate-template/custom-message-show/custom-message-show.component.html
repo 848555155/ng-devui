@@ -18,8 +18,10 @@
         ]
       }"
       (dRulesStatusChange)="inputErrorChange($event)"
-    />
-    <p *ngIf="inputValidate.showError && inputValidate.errorMessage" class="error-message">{{ inputValidate.errorMessage }}</p>
+      />
+    @if (inputValidate.showError && inputValidate.errorMessage) {
+      <p class="error-message">{{ inputValidate.errorMessage }}</p>
+    }
   </div>
   <br />
   <div>
@@ -42,6 +44,6 @@
       [dValidatePopConfig]="{
         zIndex: 1000
       }"
-    />
+      />
   </div>
 </section>

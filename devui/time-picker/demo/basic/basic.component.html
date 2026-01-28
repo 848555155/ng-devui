@@ -14,10 +14,12 @@
           (selectedTimeChange)="timeChange($event)"
           (ngModelChange)="modelChange($event)"
           [timePickerWidth]="250"
-        />
-        <div *ngIf="selectedTime1" class="devui-input-group-addon close-icon-wrapper" (click)="timePicker1.clearAll()">
-          <i class="icon icon-close"></i>
-        </div>
+          />
+        @if (selectedTime1) {
+          <div class="devui-input-group-addon close-icon-wrapper" (click)="timePicker1.clearAll()">
+            <i class="icon icon-close"></i>
+          </div>
+        }
         <div class="devui-input-group-addon" (click)="timePicker1.toggle()">
           <i class="icon icon-time"></i>
         </div>
@@ -39,10 +41,12 @@
           (selectedTimeChange)="timeChange($event)"
           (ngModelChange)="modelChange($event)"
           [autoOpen]="true"
-        />
-        <div *ngIf="selectedTime2" class="devui-input-group-addon close-icon-wrapper" (click)="timePicker2.clearAll()">
-          <i class="icon icon-close"></i>
-        </div>
+          />
+        @if (selectedTime2) {
+          <div class="devui-input-group-addon close-icon-wrapper" (click)="timePicker2.clearAll()">
+            <i class="icon icon-close"></i>
+          </div>
+        }
         <div class="devui-input-group-addon" (click)="timePicker2.toggle()">
           <i class="icon icon-time"></i>
         </div>
@@ -65,10 +69,12 @@
           (ngModelChange)="modelChange($event)"
           [attr.disabled]="true"
           [disabled]="true"
-        />
-        <div *ngIf="selectedTime3" class="devui-input-group-addon close-icon-wrapper" (click)="timePicker3.clearAll()">
-          <i class="icon icon-close"></i>
-        </div>
+          />
+        @if (selectedTime3) {
+          <div class="devui-input-group-addon close-icon-wrapper" (click)="timePicker3.clearAll()">
+            <i class="icon icon-close"></i>
+          </div>
+        }
         <div class="devui-input-group-addon" (click)="timePicker3.toggle()">
           <i class="icon icon-time"></i>
         </div>

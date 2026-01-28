@@ -36,8 +36,10 @@ class TestButtonComponent {
 }
 @Component({
   template: `
-    <d-button [autofocus]="true" *ngIf="show">{{text}}</d-button>
-  `,
+    @if (show) {
+      <d-button [autofocus]="true">{{text}}</d-button>
+    }
+    `,
   standalone: false
 })
 class TestButtonAutoFocusComponent {

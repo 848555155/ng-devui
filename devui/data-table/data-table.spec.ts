@@ -52,25 +52,29 @@ import {
       [checkable]="checkable"
       [type]="'striped'"
       [tableWidthConfig]="tableWidthConfig"
-    >
+      >
       <thead dTableHead>
         <tr dTableRow>
           <th dHeadCell>#</th>
-          <th dHeadCell *ngFor="let colOption of dataTableOptions.columns">{{ colOption.header }}</th>
+          @for (colOption of dataTableOptions.columns; track colOption) {
+            <th dHeadCell>{{ colOption.header }}</th>
+          }
         </tr>
       </thead>
       <tbody dTableBody>
         <ng-template let-rowItem="rowItem" let-rowIndex="rowIndex">
           <tr dTableRow>
             <td dTableCell>{{ rowIndex + 1 }}</td>
-            <td dTableCell *ngFor="let colOption of dataTableOptions.columns">
-              {{ colOption.fieldType === 'date' ? (rowItem[colOption.field] | i18nDate: 'short':false) : rowItem[colOption.field] }}
-            </td>
+            @for (colOption of dataTableOptions.columns; track colOption) {
+              <td dTableCell>
+                {{ colOption.fieldType === 'date' ? (rowItem[colOption.field] | i18nDate: 'short':false) : rowItem[colOption.field] }}
+              </td>
+            }
           </tr>
         </ng-template>
       </tbody>
     </d-data-table>
-  `,
+    `,
   standalone: false
 })
 class TestDataTableBasicComponent {
@@ -131,7 +135,7 @@ class TestDataTableBasicComponent {
             (filterChange)="onFirstFilterChange($event)"
             [resizeEnabled]="true"
             (resizeEndEvent)="onResize($event, 'firstName')"
-          >
+            >
             First Name
           </th>
           <th
@@ -147,7 +151,7 @@ class TestDataTableBasicComponent {
             [customFilterTemplate]="customFilterTemplate"
             [resizeEnabled]="true"
             (resizeEndEvent)="onResize($event, 'lastName')"
-          >
+            >
             Last Name
           </th>
           <th
@@ -159,7 +163,7 @@ class TestDataTableBasicComponent {
             [filterMultiple]="false"
             [filterList]="filterListRadio"
             (filterChange)="filterChangeRadio($event)"
-          >
+            >
             Gender
           </th>
           <th dHeadCell>Date of birth</th>
@@ -179,13 +183,17 @@ class TestDataTableBasicComponent {
                 [content]="rowItem.$checkBoxTips"
                 [position]="['top', 'right', 'bottom', 'left']"
                 [showAnimation]="false"
-              >
+                >
               </d-checkbox>
             </td>
             <td dTableCell>{{ rowItem?.id }}</td>
             <td dTableCell>
-              <span *ngIf="!rowItem.firstNameEdit">{{ rowItem?.firstName }}</span>
-              <input *ngIf="rowItem.firstNameEdit" [(ngModel)]="rowItem.firstName" type="text" />
+              @if (!rowItem.firstNameEdit) {
+                <span>{{ rowItem?.firstName }}</span>
+              }
+              @if (rowItem.firstNameEdit) {
+                <input [(ngModel)]="rowItem.firstName" type="text" />
+              }
             </td>
             <td dTableCell>{{ rowItem?.lastName }}</td>
             <td dTableCell>{{ rowItem?.gender }}</td>
@@ -194,7 +202,7 @@ class TestDataTableBasicComponent {
         </ng-template>
       </tbody>
     </d-data-table>
-  `,
+    `,
   standalone: false
 })
 class TestDataTableAdvancedComponent {
@@ -292,72 +300,88 @@ class TestDataTableAdvancedComponent {
         <ng-template let-rowItem="rowItem" let-rowIndex="rowIndex">
           <tr dTableRow>
             <td dTableCell [editable]="true" [editableTip]="editableTip" [beforeEditStart]="beforeEditStart"
-            [beforeEditEnd]="beforeEditEnd" (editStatusEvent)="onEditing($event, rowItem, 'nameEdit')">
-              <span *ngIf="!rowItem['nameEdit']">{{ rowItem?.lastName }}</span>
-              <form *ngIf="rowItem['nameEdit']" class="form-inline edit-padding-fix">
-                <div class="devui-form-group">
-                  <div class="devui-input-group">
-                    <input
-                      class="devui-form-control"
-                      name="lastname"
-                      [(ngModel)]="rowItem.lastName"
-                      [attr.maxlength]="100"
-                      [attr.minlength]="3"
-                    />
-                  </div>
-                </div>
-              </form>
-            </td>
-            <td dTableCell [editable]="true" (editStatusEvent)="onEditing($event, rowItem, 'dateEdit')">
-              <span *ngIf="!rowItem['dateEdit']">{{ rowItem?.dob | i18nDate: 'short':false }}</span>
-              <form *ngIf="rowItem['dateEdit']" class="form-inline edit-padding-fix">
-                <div class="devui-form-group">
-                  <div class="devui-input-group devui-dropdown-origin">
-                    <input
-                      class="devui-form-control search"
-                      name="date"
-                      [(ngModel)]="rowItem.dob"
-                      dDatepicker
-                      appendToBody
-                      #datePicker="datepicker"
-                      [autoOpen]="true"
-                      (ngModelChange)="dateEditEnd(rowItem)"
-                    />
-                    <div class="devui-input-group-addon" (click)="datePicker.toggle($event, true)">
-                      <i class="icon icon-calendar"></i>
+              [beforeEditEnd]="beforeEditEnd" (editStatusEvent)="onEditing($event, rowItem, 'nameEdit')">
+              @if (!rowItem['nameEdit']) {
+                <span>{{ rowItem?.lastName }}</span>
+              }
+              @if (rowItem['nameEdit']) {
+                <form class="form-inline edit-padding-fix">
+                  <div class="devui-form-group">
+                    <div class="devui-input-group">
+                      <input
+                        class="devui-form-control"
+                        name="lastname"
+                        [(ngModel)]="rowItem.lastName"
+                        [attr.maxlength]="100"
+                        [attr.minlength]="3"
+                        />
                     </div>
                   </div>
-                </div>
-              </form>
+                </form>
+              }
+            </td>
+            <td dTableCell [editable]="true" (editStatusEvent)="onEditing($event, rowItem, 'dateEdit')">
+              @if (!rowItem['dateEdit']) {
+                <span>{{ rowItem?.dob | i18nDate: 'short':false }}</span>
+              }
+              @if (rowItem['dateEdit']) {
+                <form class="form-inline edit-padding-fix">
+                  <div class="devui-form-group">
+                    <div class="devui-input-group devui-dropdown-origin">
+                      <input
+                        class="devui-form-control search"
+                        name="date"
+                        [(ngModel)]="rowItem.dob"
+                        dDatepicker
+                        appendToBody
+                        #datePicker="datepicker"
+                        [autoOpen]="true"
+                        (ngModelChange)="dateEditEnd(rowItem)"
+                        />
+                      <div class="devui-input-group-addon" (click)="datePicker.toggle($event, true)">
+                        <i class="icon icon-calendar"></i>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              }
             </td>
             <td dTableCell [editable]="true" (editStatusEvent)="onEditing($event, rowItem, 'ageEdit')">
-              <span class="input-number" *ngIf="!rowItem['ageEdit']">{{ rowItem?.age }}</span>
-              <div *ngIf="rowItem['ageEdit']" class="edit-padding-fix">
-                <d-input-number [(ngModel)]="rowItem.age"></d-input-number>
-              </div>
+              @if (!rowItem['ageEdit']) {
+                <span class="input-number">{{ rowItem?.age }}</span>
+              }
+              @if (rowItem['ageEdit']) {
+                <div class="edit-padding-fix">
+                  <d-input-number [(ngModel)]="rowItem.age"></d-input-number>
+                </div>
+              }
             </td>
             <td dTableCell [editable]="true" (editStatusEvent)="onEditing($event, rowItem, 'genderEdit')">
-              <span *ngIf="!rowItem['genderEdit']">{{ rowItem?.gender?.label }}</span>
-              <div *ngIf="rowItem['genderEdit']" class="customized-editor edit-padding-fix">
-                <d-select
-                  [options]="genderSource"
-                  isSearch="true"
-                  [filterKey]="'label'"
-                  autoFocus="true"
-                  toggleOnFocus="true"
-                  [appendToBody]="true"
-                  [(ngModel)]="rowItem.gender"
-                  (ngModelChange)="genderEditEnd(rowItem)"
-                >
-                  <ng-template let-option="option" let-filterKey="filterKey"> gender:{{ option[filterKey] }} </ng-template>
-                </d-select>
-              </div>
+              @if (!rowItem['genderEdit']) {
+                <span>{{ rowItem?.gender?.label }}</span>
+              }
+              @if (rowItem['genderEdit']) {
+                <div class="customized-editor edit-padding-fix">
+                  <d-select
+                    [options]="genderSource"
+                    isSearch="true"
+                    [filterKey]="'label'"
+                    autoFocus="true"
+                    toggleOnFocus="true"
+                    [appendToBody]="true"
+                    [(ngModel)]="rowItem.gender"
+                    (ngModelChange)="genderEditEnd(rowItem)"
+                    >
+                    <ng-template let-option="option" let-filterKey="filterKey"> gender:{{ option[filterKey] }} </ng-template>
+                  </d-select>
+                </div>
+              }
             </td>
           </tr>
         </ng-template>
       </tbody>
     </d-data-table>
-  `,
+    `,
   standalone: false
 })
 class TestDataTableEditComponent {
@@ -523,34 +547,36 @@ class TestDataTableMultiHeaderComponent {
 @Component({
   template: `
     <d-data-table [dataSource]="basicDataSource" [scrollable]="true" [tableWidthConfig]="tableWidthConfig">
-  <thead dTableHead [checkable]="true">
-    <tr dTableRow>
-      <th
-        dHeadCell
-        *ngFor="let colOption of dataTableOptions.columns"
-        [fixedLeft]="colOption.fixedLeft"
-        [fixedRight]="colOption.fixedRight"
-      >
-        {{ colOption.header }}
-      </th>
-    </tr>
-  </thead>
-  <tbody dTableBody>
-    <ng-template let-rowItem="rowItem" let-rowIndex="rowIndex">
-      <tr dTableRow>
-        <td
-          dTableCell
-          *ngFor="let colOption of dataTableOptions.columns"
-          [fixedLeft]="colOption.fixedLeft"
-          [fixedRight]="colOption.fixedRight"
-        >
-          {{ colOption.fieldType === 'date' ? (rowItem[colOption.field] | i18nDate: 'short':false) : rowItem[colOption.field] }}
-        </td>
-      </tr>
-    </ng-template>
-  </tbody>
-</d-data-table>
-  `,
+      <thead dTableHead [checkable]="true">
+        <tr dTableRow>
+          @for (colOption of dataTableOptions.columns; track colOption) {
+            <th
+              dHeadCell
+              [fixedLeft]="colOption.fixedLeft"
+              [fixedRight]="colOption.fixedRight"
+              >
+              {{ colOption.header }}
+            </th>
+          }
+        </tr>
+      </thead>
+      <tbody dTableBody>
+        <ng-template let-rowItem="rowItem" let-rowIndex="rowIndex">
+          <tr dTableRow>
+            @for (colOption of dataTableOptions.columns; track colOption) {
+              <td
+                dTableCell
+                [fixedLeft]="colOption.fixedLeft"
+                [fixedRight]="colOption.fixedRight"
+                >
+                {{ colOption.fieldType === 'date' ? (rowItem[colOption.field] | i18nDate: 'short':false) : rowItem[colOption.field] }}
+              </td>
+            }
+          </tr>
+        </ng-template>
+      </tbody>
+    </d-data-table>
+    `,
   standalone: false
 })
 class TestDataFixedColumnComponent {

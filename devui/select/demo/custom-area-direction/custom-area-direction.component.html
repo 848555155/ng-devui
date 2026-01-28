@@ -49,11 +49,13 @@
   <div class="custom-wrapper">
     <div class="custom-title">Custom View Position: Top<!--自定义区域方向: top--></div>
     <ul class="custom-box">
-      <li class="custom-list" *ngFor="let recent of recently; let i = index">
-        <div class="custom-single" (click)="chooseRecent($event, i, choose)">
-          {{ recent }}
-        </div>
-      </li>
+      @for (recent of recently; track recent; let i = $index) {
+        <li class="custom-list">
+          <div class="custom-single" (click)="chooseRecent($event, i, choose)">
+            {{ recent }}
+          </div>
+        </li>
+      }
     </ul>
   </div>
 </ng-template>

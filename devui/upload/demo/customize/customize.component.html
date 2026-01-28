@@ -13,7 +13,7 @@
       [uploadedFilesRef]="uploadedFilesTemp"
       [preloadFilesRef]="preloadFilesTemp"
       [withoutBtn]="true"
-    >
+      >
     </d-multiple-upload>
   </div>
   <div class="upload-btn">
@@ -23,48 +23,65 @@
   </div>
 </div>
 <ng-template #uploadedFilesTemp let-uploadedFiles="uploadedFiles" let-deleteFile="deleteFile" let-filePath="filePath">
-  <table class="table" *ngIf="uploadedFiles.length > 0" [style.margin-bottom.px]="0">
-    <tbody>
-      <tr *ngFor="let uploadedFile of uploadedFiles; let index = index">
-        <td width="50%">
-          <span>{{ uploadedFile.name }}</span>
-        </td>
-        <td width="25%">
-          <span>{{ UPLOADED }}</span>
-        </td>
-        <td>
-          <d-button icon="trash" bsStyle="primary" bsSize="xs" (click)="deleteFile(uploadedFile[filePath])">
-            {{ DELETE }}
-          </d-button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  @if (uploadedFiles.length > 0) {
+    <table class="table" [style.margin-bottom.px]="0">
+      <tbody>
+        @for (uploadedFile of uploadedFiles; track uploadedFile; let index = $index) {
+          <tr>
+            <td width="50%">
+              <span>{{ uploadedFile.name }}</span>
+            </td>
+            <td width="25%">
+              <span>{{ UPLOADED }}</span>
+            </td>
+            <td>
+              <d-button icon="trash" bsStyle="primary" bsSize="xs" (click)="deleteFile(uploadedFile[filePath])">
+                {{ DELETE }}
+              </d-button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
 </ng-template>
 <ng-template #preloadFilesTemp let-fileUploaders="fileUploaders" let-deleteFile="deleteFile" let-UploadStatus="UploadStatus">
-  <table class="table" *ngIf="fileUploaders.length > 0">
-    <tr *ngFor="let fileUploader of fileUploaders; let index = index">
-      <td width="50%">
-        <span>{{ fileUploader.file.name }}</span>
-      </td>
-      <td width="25%">
-        <span *ngIf="fileUploader.status === UploadStatus.preLoad">{{ PRELOAD }}</span>
-        <span *ngIf="fileUploader.status === UploadStatus.uploading">{{ UPLOADING }}</span>
-        <span *ngIf="fileUploader.status === UploadStatus.uploaded">{{ UPLOADED }}</span>
-        <span *ngIf="fileUploader.status === UploadStatus.failed">{{ FAILED }}</span>
-      </td>
-      <td>
-        <d-button
-          icon="trash"
-          bsStyle="primary"
-          bsSize="xs"
-          *ngIf="fileUploader.status !== UploadStatus.uploaded"
-          [disabled]="fileUploader.status === UploadStatus.uploading"
-          (click)="deleteFile(fileUploader.file)"
-        >
-          {{ DELETE }}
-        </d-button>
-      </td>
-    </tr>
-  </table>
+  @if (fileUploaders.length > 0) {
+    <table class="table">
+      @for (fileUploader of fileUploaders; track fileUploader; let index = $index) {
+        <tr>
+          <td width="50%">
+            <span>{{ fileUploader.file.name }}</span>
+          </td>
+          <td width="25%">
+            @if (fileUploader.status === UploadStatus.preLoad) {
+              <span>{{ PRELOAD }}</span>
+            }
+            @if (fileUploader.status === UploadStatus.uploading) {
+              <span>{{ UPLOADING }}</span>
+            }
+            @if (fileUploader.status === UploadStatus.uploaded) {
+              <span>{{ UPLOADED }}</span>
+            }
+            @if (fileUploader.status === UploadStatus.failed) {
+              <span>{{ FAILED }}</span>
+            }
+          </td>
+          <td>
+            @if (fileUploader.status !== UploadStatus.uploaded) {
+              <d-button
+                icon="trash"
+                bsStyle="primary"
+                bsSize="xs"
+                [disabled]="fileUploader.status === UploadStatus.uploading"
+                (click)="deleteFile(fileUploader.file)"
+                >
+                {{ DELETE }}
+              </d-button>
+            }
+          </td>
+        </tr>
+      }
+    </table>
+  }
 </ng-template>

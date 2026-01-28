@@ -12,39 +12,41 @@ import { DomHelper } from '../utils/testing/dom-helper';
 @Component({
   template: `
     <div #ganttContainer class="gantt-container">
-    <div class="header" [style.width]="ganttScaleWidth">
-    <d-gantt-scale [ganttBarContainerElement]="ganttBody"></d-gantt-scale>
-    </div>
-    <div #ganttBody class="body" [style.width]="ganttScaleWidth">
-    <div class="item" *ngFor="let item of list">
-        <d-gantt-bar
-        [startDate]="item?.startDate"
-        [endDate]="item?.endDate"
-        [tipTemplateRef]="tipTemplate"
-        [id]="item?.id"
-        [scrollElement]="ganttContainer"
-        [progressRate]="item?.progressRate"
-        (barMoveStartEvent)="onGanttBarMoveStart($event)"
-        (barMovingEvent)="onGanttBarMoving($event)"
-        (barResizeStartEvent)="onGanttBarResizeStart($event)"
-        (barResizingEvent)="onGanttBarResizing($event)"
-        (barMoveEndEvent)="onGanttBarMove($event)"
-        (barResizeEndEvent)="onGanttBarResize($event)"
-        (barProgressEvent)="onBarProgressEvent($event)"
-        ></d-gantt-bar>
-    </div>
-    </div>
+      <div class="header" [style.width]="ganttScaleWidth">
+        <d-gantt-scale [ganttBarContainerElement]="ganttBody"></d-gantt-scale>
+      </div>
+      <div #ganttBody class="body" [style.width]="ganttScaleWidth">
+        @for (item of list; track item) {
+          <div class="item">
+            <d-gantt-bar
+              [startDate]="item?.startDate"
+              [endDate]="item?.endDate"
+              [tipTemplateRef]="tipTemplate"
+              [id]="item?.id"
+              [scrollElement]="ganttContainer"
+              [progressRate]="item?.progressRate"
+              (barMoveStartEvent)="onGanttBarMoveStart($event)"
+              (barMovingEvent)="onGanttBarMoving($event)"
+              (barResizeStartEvent)="onGanttBarResizeStart($event)"
+              (barResizingEvent)="onGanttBarResizing($event)"
+              (barMoveEndEvent)="onGanttBarMove($event)"
+              (barResizeEndEvent)="onGanttBarResize($event)"
+              (barProgressEvent)="onBarProgressEvent($event)"
+            ></d-gantt-bar>
+          </div>
+        }
+      </div>
     </div>
     <ng-template #tipTemplate let-ganttInstance="ganttInstance" let-data="data">
-    <div class="title">{{ data?.title }}</div>
-    <div class="content">
-    <div>持续时间：{{ ganttInstance?.duration }}</div>
-    <div>当前进度：{{ (ganttInstance?.progressRate || 0) + '%' }}</div>
-    <div>开始时间：{{ ganttInstance?.startDate | i18nDate: 'short' }}</div>
-    <div>结束时间：{{ ganttInstance?.endDate | i18nDate: 'short' }}</div>
-    </div>
+      <div class="title">{{ data?.title }}</div>
+      <div class="content">
+        <div>持续时间：{{ ganttInstance?.duration }}</div>
+        <div>当前进度：{{ (ganttInstance?.progressRate || 0) + '%' }}</div>
+        <div>开始时间：{{ ganttInstance?.startDate | i18nDate: 'short' }}</div>
+        <div>结束时间：{{ ganttInstance?.endDate | i18nDate: 'short' }}</div>
+      </div>
     </ng-template>
-  `,
+    `,
   styles: [`.gantt-container {padding: 0 30px 0 30px; overflow: scroll;}
     .gantt-container .header {position: relative;border-bottom: 1px solid #adb0b8;}
     .gantt-container .body {position: relative;min-height: 400px;}.gantt-container .body .item {height: 40px;padding-top: 8px;}

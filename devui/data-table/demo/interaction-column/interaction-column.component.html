@@ -16,7 +16,7 @@
   (rowDBClick)="rowDBClick($event)"
   (rowClick)="rowClick($event)"
   [tableOverflowType]="'overlay'"
->
+  >
   <d-column field="$index" header="#" [width]="'10%'"></d-column>
   <d-column
     field="firstName"
@@ -68,19 +68,21 @@
 <ng-template #customFilterTemplate let-filterList="filterListDisplay" let-dropdown="dropdown" let-column="column">
   <div class="custom-filter-content">
     <div class="filter-options">
-      <div *ngFor="let item of checkboxList" class="checkbox-group">
-        <d-checkbox
-          [label]="item.lastName"
-          [(ngModel)]="item.chosen"
-          [labelTemplate]="myCheckbox"
-          (change)="onCheckboxChange($event, item.lastName)"
-        >
-          <ng-template #myCheckbox let-label="label">
-            <d-avatar [name]="label" [width]="16" [height]="16"></d-avatar>
-            <span class="label-style">{{ label }}</span>
-          </ng-template>
-        </d-checkbox>
-      </div>
+      @for (item of checkboxList; track item) {
+        <div class="checkbox-group">
+          <d-checkbox
+            [label]="item.lastName"
+            [(ngModel)]="item.chosen"
+            [labelTemplate]="myCheckbox"
+            (change)="onCheckboxChange($event, item.lastName)"
+            >
+            <ng-template #myCheckbox let-label="label">
+              <d-avatar [name]="label" [width]="16" [height]="16"></d-avatar>
+              <span class="label-style">{{ label }}</span>
+            </ng-template>
+          </d-checkbox>
+        </div>
+      }
     </div>
     <div class="line"></div>
     <div>

@@ -11,7 +11,7 @@
     (errorEvent)="onError2($event)"
     [showTip]="true"
     (fileSelect)="fileSelect($event)"
-  >
+    >
   </d-multiple-upload>
   <h4>Upload Directory</h4>
   <d-multiple-upload
@@ -23,7 +23,7 @@
     (successEvent)="onSuccess2($event)"
     (errorEvent)="onError2($event)"
     [showTip]="true"
-  >
+    >
   </d-multiple-upload>
   <h4>Dragdrop</h4>
   <d-multiple-upload
@@ -39,7 +39,7 @@
     (errorEvent)="onError2($event)"
     (fileDrop)="fileDrop($event)"
     (fileOver)="fileOver($event)"
-  >
+    >
   </d-multiple-upload>
   <h4>Customize</h4>
   <div>
@@ -53,35 +53,48 @@
       (deleteUploadedFileEvent)="deleteUploadedFile2($event)"
       (errorEvent)="onError2($event)"
       [preloadFilesRef]="default"
-    >
+      >
     </d-multiple-upload>
     <ng-template #default let-fileUploaders="fileUploaders" let-deleteFile="deleteFile" let-UploadStatus="UploadStatus">
-      <table class="devui-table" *ngIf="fileUploaders.length > 0">
-        <tr *ngFor="let fileUploader of fileUploaders; let index = index">
-          <td width="50%">
-            <span>{{ fileUploader.file.name }}</span>
-          </td>
-          <td width="25%">
-            <span *ngIf="fileUploader.status === UploadStatus.preLoad">{{ PRELOAD }}</span>
-            <span *ngIf="fileUploader.status === UploadStatus.uploading">{{ UPLOADING }}</span>
-            <span *ngIf="fileUploader.status === UploadStatus.uploaded">{{ UPLOADED }}</span>
-            <span *ngIf="fileUploader.status === UploadStatus.failed">{{ FAILED }}</span>
-          </td>
-          <td>
-            <d-button
-              [bordered]="true"
-              icon="trash"
-              bsStyle="danger"
-              bsSize="xs"
-              *ngIf="fileUploader.status !== UploadStatus.uploaded"
-              [disabled]="fileUploader.status === UploadStatus.uploading"
-              (btnClick)="deleteFile(fileUploader.file)"
-            >
-              {{ DELETE }}
-            </d-button>
-          </td>
-        </tr>
-      </table>
+      @if (fileUploaders.length > 0) {
+        <table class="devui-table">
+          @for (fileUploader of fileUploaders; track fileUploader; let index = $index) {
+            <tr>
+              <td width="50%">
+                <span>{{ fileUploader.file.name }}</span>
+              </td>
+              <td width="25%">
+                @if (fileUploader.status === UploadStatus.preLoad) {
+                  <span>{{ PRELOAD }}</span>
+                }
+                @if (fileUploader.status === UploadStatus.uploading) {
+                  <span>{{ UPLOADING }}</span>
+                }
+                @if (fileUploader.status === UploadStatus.uploaded) {
+                  <span>{{ UPLOADED }}</span>
+                }
+                @if (fileUploader.status === UploadStatus.failed) {
+                  <span>{{ FAILED }}</span>
+                }
+              </td>
+              <td>
+                @if (fileUploader.status !== UploadStatus.uploaded) {
+                  <d-button
+                    [bordered]="true"
+                    icon="trash"
+                    bsStyle="danger"
+                    bsSize="xs"
+                    [disabled]="fileUploader.status === UploadStatus.uploading"
+                    (btnClick)="deleteFile(fileUploader.file)"
+                    >
+                    {{ DELETE }}
+                  </d-button>
+                }
+              </td>
+            </tr>
+          }
+        </table>
+      }
     </ng-template>
   </div>
   <h4>Disabled</h4>
@@ -95,6 +108,6 @@
     (deleteUploadedFileEvent)="deleteUploadedFile2($event)"
     (errorEvent)="onError2($event)"
     [disabled]="true"
-  >
+    >
   </d-multiple-upload>
 </div>

@@ -6,7 +6,7 @@
     [columnsData]="allColumns"
     (colChanges)="onColsChanges($event)"
     (styleChanges)="onStyleChanges($event)"
-  >
+    >
     <d-icon [icon]="'icon-setting'" [operable]="true"></d-icon>
   </d-table-option-toggle>
 </p>
@@ -21,7 +21,7 @@
     [modalWidth]="'800px'"
     (colChanges)="onColsChanges($event)"
     (styleChanges)="onStyleChanges($event)"
-  >
+    >
     <d-button bsStyle="primary" [bordered]="true" [autofocus]="true">弹窗配置</d-button>
   </d-table-option-toggle>
 </p>
@@ -34,18 +34,22 @@
   [borderType]="styleSetting.borderType"
   [striped]="styleSetting.striped"
   [shadowType]="styleSetting.shadowType"
->
+  >
   <thead dTableHead>
     <tr dTableRow>
-      <th dHeadCell *ngFor="let colOption of dataTableOptions.columns">{{ colOption.header }}</th>
+      @for (colOption of dataTableOptions.columns; track colOption) {
+        <th dHeadCell>{{ colOption.header }}</th>
+      }
     </tr>
   </thead>
   <tbody dTableBody>
     <ng-template let-rowItem="rowItem" let-rowIndex="rowIndex">
       <tr dTableRow>
-        <td class="devui-operation-cell" dTableCell *ngFor="let colOption of dataTableOptions.columns">
-          {{ colOption.fieldType === 'date' ? (rowItem[colOption.field] | i18nDate: 'short':false) : rowItem[colOption.field] }}
-        </td>
+        @for (colOption of dataTableOptions.columns; track colOption) {
+          <td class="devui-operation-cell" dTableCell>
+            {{ colOption.fieldType === 'date' ? (rowItem[colOption.field] | i18nDate: 'short':false) : rowItem[colOption.field] }}
+          </td>
+        }
       </tr>
     </ng-template>
   </tbody>

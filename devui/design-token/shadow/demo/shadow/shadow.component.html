@@ -9,19 +9,19 @@
     field="name"
     header="{{ 'components.design-shadow.shadowDemo.instance.defaultTable.shadowName' | translate }}"
     [width]="'150px'"
-  >
+    >
   </d-column>
   <d-column
     field="value"
     header="{{ 'components.design-shadow.shadowDemo.instance.defaultTable.themeValue' | translate }}"
     [width]="'150px'"
-  >
+    >
   </d-column>
   <d-column
     field="description"
     header="{{ 'components.design-shadow.shadowDemo.instance.defaultTable.description' | translate }}"
     [width]="'200px'"
-  >
+    >
   </d-column>
 </d-data-table>
 
@@ -42,7 +42,9 @@
           <div class="color-name">
             {{ rowItem?.value }}
           </div>
-          <div *ngIf="rowItem?.value" class="color-cube" [ngStyle]="{ 'background-color': rowItem?.value }"></div>
+          @if (rowItem?.value) {
+            <div class="color-cube" [ngStyle]="{ 'background-color': rowItem?.value }"></div>
+          }
         </td>
         <td dTableCell>{{ rowItem?.description }}</td>
       </tr>

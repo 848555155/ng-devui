@@ -6,12 +6,14 @@ import { CarouselModule } from './carousel.module';
 @Component({
   template: `
     <section>
-    <d-carousel #carousel="dCarousel" [autoplay]="autoplay" [autoplaySpeed]="autoplaySpeed" [height]="height" [dotTrigger]="dotTrigger"
-     [activeIndex]="activeIndex" [arrowTrigger]="arrowTrigger">
-      <d-carousel-item *ngFor="let i of array">{{ 'page ' + i }}</d-carousel-item>
-    </d-carousel>
-  </section>
-  `,
+      <d-carousel #carousel="dCarousel" [autoplay]="autoplay" [autoplaySpeed]="autoplaySpeed" [height]="height" [dotTrigger]="dotTrigger"
+        [activeIndex]="activeIndex" [arrowTrigger]="arrowTrigger">
+        @for (i of array; track i) {
+          <d-carousel-item>{{ 'page ' + i }}</d-carousel-item>
+        }
+      </d-carousel>
+    </section>
+    `,
   styles: [
     `
     d-carousel-item {

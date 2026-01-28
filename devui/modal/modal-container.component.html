@@ -15,20 +15,26 @@
     }"
     [ngStyle]="{ maxHeight: maxHeight, 'overflow-y': 'auto' }"
     cdkScrollable
-  >
+    >
     <div
       [ngClass]="{
         'display-flex': dialogtype !== '' && dialogtype !== 'standard'
       }"
-    >
-      <div class="content" [style.max-height]="maxHeight" *ngIf="!!content && !html">{{ content }}</div>
-      <div class="content" [style.max-height]="maxHeight" *ngIf="!!content && html" [innerHTML]="content"></div>
-      <div class="content" *ngIf="contentTemplate">
-        <ng-template
-          [ngTemplateOutlet]="contentTemplate"
-          [ngTemplateOutletContext]="{ modalInstance: modalInstance, modalContentInstance: this }"
-        ></ng-template>
-      </div>
+      >
+      @if (!!content && !html) {
+        <div class="content" [style.max-height]="maxHeight">{{ content }}</div>
+      }
+      @if (!!content && html) {
+        <div class="content" [style.max-height]="maxHeight" [innerHTML]="content"></div>
+      }
+      @if (contentTemplate) {
+        <div class="content">
+          <ng-template
+            [ngTemplateOutlet]="contentTemplate"
+            [ngTemplateOutletContext]="{ modalInstance: modalInstance, modalContentInstance: this }"
+          ></ng-template>
+        </div>
+      }
       <ng-template dModalContentHost></ng-template>
     </div>
   </div>

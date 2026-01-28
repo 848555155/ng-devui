@@ -142,7 +142,7 @@ export class DrawerComponent implements OnInit, OnDestroy {
     }
   }
 
-  @HostListener('document:keydown.escape', ['$event']) keydownHandler(event: KeyboardEvent) {
+  @HostListener('document:keydown.escape', ['$event']) keydownHandler(event: Event) {
     event.stopPropagation();
     if (this.escKeyCloseable && !this.isHaveDialogOrUpload()) {
       this.hide();

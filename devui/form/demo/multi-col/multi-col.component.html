@@ -93,7 +93,7 @@
               [tags]="addedLabelList"
               [placeholder]="'Tags'"
               [suggestionList]="labelList"
-            >
+              >
             </d-tags-input>
           </d-form-control>
         </d-form-item>
@@ -102,9 +102,11 @@
         <d-form-item>
           <d-form-label>Execution day</d-form-label>
           <d-form-control class="form-control-width">
-            <div class="single-checkbox" *ngFor="let option of checkboxOptions">
-              <d-checkbox name="runDay" [label]="option.label" [isShowTitle]="false" [ngModel]="option.checked"></d-checkbox>
-            </div>
+            @for (option of checkboxOptions; track option) {
+              <div class="single-checkbox">
+                <d-checkbox name="runDay" [label]="option.label" [isShowTitle]="false" [ngModel]="option.checked"></d-checkbox>
+              </div>
+            }
           </d-form-control>
         </d-form-item>
       </div>
@@ -113,9 +115,11 @@
           <d-form-label>Radio</d-form-label>
           <d-form-control class="form-control-width">
             <d-radio-group name="schedule" [direction]="'column'" [(ngModel)]="formData.radioValue">
-              <d-radio *ngFor="let option of radioOptions" [name]="'schedule'" [value]="option.id">
-                {{ option.label }}
-              </d-radio>
+              @for (option of radioOptions; track option) {
+                <d-radio [name]="'schedule'" [value]="option.id">
+                  {{ option.label }}
+                </d-radio>
+              }
             </d-radio-group>
           </d-form-control>
         </d-form-item>

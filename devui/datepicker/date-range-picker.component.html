@@ -40,9 +40,10 @@
     #rightPicker
   ></d-datepicker-range-single>
 </div>
-<div class="devui-date-range-custom" *ngIf="customViewTemplate" #templateWrap>
-  <ng-template
-    [ngTemplateOutlet]="customViewTemplate"
+@if (customViewTemplate) {
+  <div class="devui-date-range-custom" #templateWrap>
+    <ng-template
+      [ngTemplateOutlet]="customViewTemplate"
     [ngTemplateOutletContext]="{
       $implicit: this,
       clearAll: clearAll,
@@ -50,5 +51,6 @@
       rangeStart: rangeStart,
       rangeEnd: rangeEnd
     }"
-  ></ng-template>
-</div>
+    ></ng-template>
+  </div>
+}

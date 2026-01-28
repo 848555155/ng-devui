@@ -5,7 +5,7 @@
   [class.disabled]="disabled || selectedItems?.length >= maxTags"
   tabindex="-1"
   (click)="host_click()"
->
+  >
   <d-toggle-menu-container
     [isOpen]="isOpen"
     [appendToBody]="appendToBody"
@@ -19,7 +19,7 @@
     [closeScope]="'blank'"
     (passEvent)="passEvent($event)"
     (toggleChange)="toggleChangeFn($event)"
-  >
+    >
     <d-toggle-menu-label
       [multiItems]="selectedItems"
       [valueParser]="valueParser"
@@ -30,18 +30,19 @@
       [customViewTemplate]="tagTemplate"
       (removeChange)="removeTag($event)"
     ></d-toggle-menu-label>
-    <d-toggle-menu-search
-      *ngIf="!disabled || selectedItems?.length === 0"
-      [inputValue]="newTag"
-      [maxLength]="maxLength"
-      [searchPlaceholder]="getPlaceHolder"
-      [searchFn]="searchFn"
-      [spellcheck]="spellcheck"
-      [isShowSearchIcon]="false"
-      [disabled]="disabled || selectedItems?.length >= maxTags"
-      [delay]="0"
-      (searchInputValueChange)="searchInputValueChange($event)"
-    ></d-toggle-menu-search>
+    @if (!disabled || selectedItems?.length === 0) {
+      <d-toggle-menu-search
+        [inputValue]="newTag"
+        [maxLength]="maxLength"
+        [searchPlaceholder]="getPlaceHolder"
+        [searchFn]="searchFn"
+        [spellcheck]="spellcheck"
+        [isShowSearchIcon]="false"
+        [disabled]="disabled || selectedItems?.length >= maxTags"
+        [delay]="0"
+        (searchInputValueChange)="searchInputValueChange($event)"
+      ></d-toggle-menu-search>
+    }
     <d-toggle-menu-list
       [eventHandle]="inputEvent"
       [options]="availableOptions"
@@ -54,7 +55,7 @@
       [closeScope]="'blank'"
       (toggleChange)="toggleChangeFn($event)"
       (valueChange)="setValue($event)"
-    >
+      >
       <ng-template #listItem let-item="item" let-index="index" let-selectIndex="selectIndex" let-choose="choose">
         <d-toggle-menu-list-item
           [item]="item"
@@ -64,10 +65,12 @@
           [customTemplate]="itemTemplate"
           [filterKey]="displayProperty"
           (chooseItem)="choose($event)"
-        >
-          <span itemSuffix *ngIf="index === 0 && item.option.isDevuiTagsInputCreated" class="devui-tags-create-item">
-            {{ i18nTagsInputText?.create }}
-          </span>
+          >
+          @if (index === 0 && item.option.isDevuiTagsInputCreated) {
+            <span itemSuffix class="devui-tags-create-item">
+              {{ i18nTagsInputText?.create }}
+            </span>
+          }
         </d-toggle-menu-list-item>
       </ng-template>
     </d-toggle-menu-list>

@@ -5,15 +5,16 @@
         <div class="card-header">Draggable items</div>
         <div class="card-block">
           <ul class="list-group">
-            <li
-              dDraggable
-              *ngFor="let item of list"
-              [dragScope]="'devui-quadrant-diagram'"
-              [dragData]="{ item: item, parent: list }"
-              class="list-group-item over-flow-ellipsis"
-            >
-              {{ item.title }}
-            </li>
+            @for (item of list; track item) {
+              <li
+                dDraggable
+                [dragScope]="'devui-quadrant-diagram'"
+                [dragData]="{ item: item, parent: list }"
+                class="list-group-item over-flow-ellipsis"
+                >
+                {{ item.title }}
+              </li>
+            }
           </ul>
         </div>
       </div>

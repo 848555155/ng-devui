@@ -5,18 +5,19 @@
       <div class="card-header">Draggable Items</div>
       <div class="card-block">
         <ul class="list-group">
-          <li
-            dDraggable
-            [enableDragFollow]="true"
-            [dragFollowOptions]="{ appendToBody: appendToBody }"
-            [dragOverClass]="'box-shadow'"
-            *ngFor="let item of list1"
-            [dragScope]="'default-css'"
-            [dragData]="item"
-            class="list-group-item over-flow-ellipsis"
-          >
-            {{ item.name }}
-          </li>
+          @for (item of list1; track item) {
+            <li
+              dDraggable
+              [enableDragFollow]="true"
+              [dragFollowOptions]="{ appendToBody: appendToBody }"
+              [dragOverClass]="'box-shadow'"
+              [dragScope]="'default-css'"
+              [dragData]="item"
+              class="list-group-item over-flow-ellipsis"
+              >
+              {{ item.name }}
+            </li>
+          }
         </ul>
       </div>
     </div>
@@ -26,19 +27,20 @@
       <div class="card-header">Drop Area with Sortable</div>
       <div class="card-block">
         <ul class="list-group d-drop-el" dSortable>
-          <li
-            dDraggable
-            [enableDragFollow]="true"
-            [dragFollowOptions]="{ appendToBody: appendToBody }"
-            [dragOverClass]="'box-shadow'"
-            *ngFor="let item of list2"
-            [dragScope]="'default-css'"
-            [dragHandleClass]="'drag-handle'"
-            [dragData]="item"
-            class="list-group-item over-flow-ellipsis"
-          >
-            {{ item.name }}
-          </li>
+          @for (item of list2; track item) {
+            <li
+              dDraggable
+              [enableDragFollow]="true"
+              [dragFollowOptions]="{ appendToBody: appendToBody }"
+              [dragOverClass]="'box-shadow'"
+              [dragScope]="'default-css'"
+              [dragHandleClass]="'drag-handle'"
+              [dragData]="item"
+              class="list-group-item over-flow-ellipsis"
+              >
+              {{ item.name }}
+            </li>
+          }
         </ul>
       </div>
     </div>

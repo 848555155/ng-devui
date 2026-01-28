@@ -14,9 +14,11 @@
       <em class="icon icon-chevron-down-2" [ngClass]="{ open: dropdownItem.isOpen }"></em>
     </span>
     <ul dDropDownMenu class="protocol-list">
-      <li *ngFor="let protocolItem of protocolOptions" (click)="selectItem(protocolItem, dropdownItem)">
-        <a dDropDownMenuItem [class.selected]="protocolItem === protocolValue">{{ protocolItem }}</a>
-      </li>
+      @for (protocolItem of protocolOptions; track protocolItem) {
+        <li (click)="selectItem(protocolItem, dropdownItem)">
+          <a dDropDownMenuItem [class.selected]="protocolItem === protocolValue">{{ protocolItem }}</a>
+        </li>
+      }
     </ul>
   </div>
 </ng-template>

@@ -1,5 +1,7 @@
 <d-tabs type="slider" [(activeTab)]="tabActiveId" (activeTabChange)="activeTabChange($event)">
-  <d-tab *ngFor="let item of tabItems" [id]="item.id" [title]="item.title"></d-tab>
+  @for (item of tabItems; track item) {
+    <d-tab [id]="item.id" [title]="item.title"></d-tab>
+  }
 </d-tabs>
 <div class="adaptive-box" [style.width]="width">
   <d-input-group [prefixContent]="'components.input-group.responsiveDemo.alarmRule' | translate">
@@ -11,7 +13,7 @@
       dTextInput
       [placeholder]="'components.input-group.responsiveDemo.indicatorNamePlaceholder' | translate"
       [(ngModel)]="indicatorName"
-    />
+      />
   </d-input-group>
   <d-input-group class="time-input-group" [prefixContent]="'time'" [spliceType]="'both'">
     <d-select [(ngModel)]="valueType" [options]="valueTypes"></d-select>
@@ -25,9 +27,11 @@
   <div dDropDown appendToBody class="comparison-symbol-box">
     <span dDropDownToggle>{{ comparisonSymbol }}</span>
     <ul dDropDownMenu class="comparison-symbol-list">
-      <li *ngFor="let symbol of symbols" (click)="comparisonSymbol = symbol">
-        <a dDropDownMenuItem>{{ symbol }}</a>
-      </li>
+      @for (symbol of symbols; track symbol) {
+        <li (click)="comparisonSymbol = symbol">
+          <a dDropDownMenuItem>{{ symbol }}</a>
+        </li>
+      }
     </ul>
   </div>
 </ng-template>

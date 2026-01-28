@@ -6,11 +6,13 @@
   [switchWhileCrossEdge]="true"
   [dropScope]="'mutiple-group'"
   (dropEvent)="onDrop($event)"
->
+  >
   <thead dTableHead>
     <tr dTableRow>
       <th dHeadCell></th>
-      <th dHeadCell *ngFor="let colOption of dataTableOptions.columns">{{ colOption.header }}</th>
+      @for (colOption of dataTableOptions.columns; track colOption) {
+        <th dHeadCell>{{ colOption.header }}</th>
+      }
     </tr>
   </thead>
   <tbody dTableBody dSortable>
@@ -29,13 +31,15 @@
         [batchDragActive]="rowItem.isSelected"
         (batchDragActiveEvent)="batchSelect(rowItem)"
         [ngClass]="{ selected: rowItem.isSelected }"
-      >
+        >
         <td dTableCell class="table-drag-row-handle">
           <div class="icon-drag-small"></div>
         </td>
-        <td dTableCell *ngFor="let colOption of dataTableOptions.columns">
-          {{ colOption.fieldType === 'date' ? (rowItem[colOption.field] | i18nDate: 'short':false) : rowItem[colOption.field] }}
-        </td>
+        @for (colOption of dataTableOptions.columns; track colOption) {
+          <td dTableCell>
+            {{ colOption.fieldType === 'date' ? (rowItem[colOption.field] | i18nDate: 'short':false) : rowItem[colOption.field] }}
+          </td>
+        }
       </tr>
     </ng-template>
   </tbody>

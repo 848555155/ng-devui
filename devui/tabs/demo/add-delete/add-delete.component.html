@@ -7,8 +7,10 @@
     [closeable]="true"
     [(activeTab)]="tabActiveId"
     (addOrDeleteTabChange)="handle($event, 'tab')"
-  >
-    <d-tab *ngFor="let item of tabItems" [id]="item.id" [title]="item.title"></d-tab>
+    >
+    @for (item of tabItems; track item) {
+      <d-tab [id]="item.id" [title]="item.title"></d-tab>
+    }
   </d-tabs>
   <br />
   <h3>Wrapped</h3>
@@ -20,7 +22,9 @@
     [closeableIds]="['tab2', 'tab3']"
     [(activeTab)]="wrappedActiveId"
     (addOrDeleteTabChange)="handle($event, 'wrapped')"
-  >
-    <d-tab *ngFor="let item of wrappedItems" [id]="item.id" [title]="item.title"></d-tab>
+    >
+    @for (item of wrappedItems; track item) {
+      <d-tab [id]="item.id" [title]="item.title"></d-tab>
+    }
   </d-tabs>
 </section>

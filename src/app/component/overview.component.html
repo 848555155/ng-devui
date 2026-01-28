@@ -10,129 +10,171 @@
     <d-search [size]="'lg'" [isKeyupSearch]="true" [placeholder]="overviewText.placeholder" (searchFn)="searchComponent($event)"></d-search>
     <div class="d-overview-filters">
       <div class="d-overview-filters-title">{{ overviewText.filter }}:</div>
-      <d-tag
-        *ngFor="let tag of tagList; let i = index"
-        class="d-overview-filters-item"
-        [mode]="'checkable'"
-        [checked]="tag.checked"
-        [tag]="tag.title"
-        [titleContent]="tag.title"
-        (checkedChange)="filter(tag.name)"
-      ></d-tag>
+      @for (tag of tagList; track tag; let i = $index) {
+        <d-tag
+          class="d-overview-filters-item"
+          [mode]="'checkable'"
+          [checked]="tag.checked"
+          [tag]="tag.title"
+          [titleContent]="tag.title"
+          (checkedChange)="filter(tag.name)"
+        ></d-tag>
+      }
     </div>
   </div>
-  <ul class="d-overview-components" *ngIf="componentsDataDisplay.length">
-    <ng-container *ngFor="let components of componentsDataDisplay">
-      <li class="d-overview-components-list" *ngIf="!components.nodisplay">
-        <div class="d-overview-component-title">
-          <h2>
-            {{ components.title }}
-          </h2>
-          <d-badge [count]="components.children.length" status="common" class="d-overview-total-components"></d-badge>
-        </div>
-        <div class="d-overview-component-wrapper">
-          <ng-container *ngFor="let component of components.children">
-            <d-card *ngIf="!component.nodisplay" (click)="jumpToComponent(component.link)">
-              <div class="d-overview-card-wrapper">
-                <d-tag *ngIf="component.newChange" [tag]="overviewText.newChange" [labelStyle]="'update-custom'"></d-tag>
-                <d-tag *ngIf="component.sunset" [tag]="overviewText.sunset" [labelStyle]="'sunset-custom'"></d-tag>
-                <div class="d-overview-card-icon">
-                  <img
-                    [alt]="component.name"
-                    (error)="imgError($event)"
-                    dLazyLoad
-                    [enableLazyLoad]="true"
-                    [contentMode]="'img'"
-                    [target]="doc"
-                    [imgLoadSrc]="imgPrefix + component.folderName + '/' + component.lowerName + '.png'"
-                  />
-                </div>
-                <p class="d-overview-card-title">
-                  {{ component.title }}
-                </p>
-                <p *ngIf="component.description" class="d-overview-card-description" [title]="component.description">
-                  {{ component.description }}
-                </p>
-              </div>
-            </d-card>
-          </ng-container>
-          <div class="d-component-place-holder" *ngFor="let placeHolder of flexPlaceHolders"></div>
-        </div>
-      </li>
-    </ng-container>
-  </ul>
-  <div class="d-overview-no-data" *ngIf="!componentsDataDisplay.length">
-    <img *ngIf="!nowFilter" class="d-overview-no-data-img" src="./{{ srcPrefix }}/no-data{{ darkMode }}.svg" alt="no-data" />
-    <div class="d-overview-no-data-wrap">
-      <div *ngIf="componentsLooking && componentsLooking.length">
-        <h2 class="d-overview-no-data-title">
-          {{ overviewText.lookingCmp }}
-        </h2>
-        <div class="d-overview-no-data-list d-overview-component-wrapper">
-          <d-card *ngFor="let component of componentsLooking" (click)="jumpToComponent(component.link)">
-            <div class="d-overview-card-wrapper">
-              <d-tag *ngIf="component.newChange" [tag]="overviewText.newChange" [labelStyle]="'orange-w98'"></d-tag>
-              <d-tag *ngIf="component.sunset" [tag]="overviewText.sunset" [labelStyle]="'yellow-w98'"></d-tag>
-              <div class="d-overview-card-icon">
-                <img
-                  [alt]="component.name"
-                  (error)="imgError($event)"
-                  dLazyLoad
-                  [enableLazyLoad]="true"
-                  [contentMode]="'img'"
-                  [target]="doc"
-                  [imgLoadSrc]="imgPrefix + component.folderName + '/' + component.lowerName + '.png'"
-                />
-              </div>
-              <p class="d-overview-card-title">
-                {{ component.title }}
-              </p>
-              <p *ngIf="component.description" class="d-overview-card-description" [title]="component.description">
-                {{ component.description }}
-              </p>
+  @if (componentsDataDisplay.length) {
+    <ul class="d-overview-components">
+      @for (components of componentsDataDisplay; track components) {
+        @if (!components.nodisplay) {
+          <li class="d-overview-components-list">
+            <div class="d-overview-component-title">
+              <h2>
+                {{ components.title }}
+              </h2>
+              <d-badge [count]="components.children.length" status="common" class="d-overview-total-components"></d-badge>
             </div>
-          </d-card>
-          <div class="d-component-place-holder" *ngFor="let placeHolder of flexPlaceHolders"></div>
-        </div>
-      </div>
-
-      <div *ngIf="componentsSuggest && componentsSuggest.length">
-        <h2 class="d-overview-no-data-title">
-          {{
-            nowFilter === 'newChangeCmps'
+            <div class="d-overview-component-wrapper">
+              @for (component of components.children; track component) {
+                @if (!component.nodisplay) {
+                  <d-card (click)="jumpToComponent(component.link)">
+                    <div class="d-overview-card-wrapper">
+                      @if (component.newChange) {
+                        <d-tag [tag]="overviewText.newChange" [labelStyle]="'update-custom'"></d-tag>
+                      }
+                      @if (component.sunset) {
+                        <d-tag [tag]="overviewText.sunset" [labelStyle]="'sunset-custom'"></d-tag>
+                      }
+                      <div class="d-overview-card-icon">
+                        <img
+                          [alt]="component.name"
+                          (error)="imgError($event)"
+                          dLazyLoad
+                          [enableLazyLoad]="true"
+                          [contentMode]="'img'"
+                          [target]="doc"
+                          [imgLoadSrc]="imgPrefix + component.folderName + '/' + component.lowerName + '.png'"
+                          />
+                      </div>
+                      <p class="d-overview-card-title">
+                        {{ component.title }}
+                      </p>
+                      @if (component.description) {
+                        <p class="d-overview-card-description" [title]="component.description">
+                          {{ component.description }}
+                        </p>
+                      }
+                    </div>
+                  </d-card>
+                }
+              }
+              @for (placeHolder of flexPlaceHolders; track placeHolder) {
+                <div class="d-component-place-holder"></div>
+              }
+            </div>
+          </li>
+        }
+      }
+    </ul>
+  }
+  @if (!componentsDataDisplay.length) {
+    <div class="d-overview-no-data">
+      @if (!nowFilter) {
+        <img class="d-overview-no-data-img" src="./{{ srcPrefix }}/no-data{{ darkMode }}.svg" alt="no-data" />
+      }
+      <div class="d-overview-no-data-wrap">
+        @if (componentsLooking && componentsLooking.length) {
+          <div>
+            <h2 class="d-overview-no-data-title">
+              {{ overviewText.lookingCmp }}
+            </h2>
+            <div class="d-overview-no-data-list d-overview-component-wrapper">
+              @for (component of componentsLooking; track component) {
+                <d-card (click)="jumpToComponent(component.link)">
+                  <div class="d-overview-card-wrapper">
+                    @if (component.newChange) {
+                      <d-tag [tag]="overviewText.newChange" [labelStyle]="'orange-w98'"></d-tag>
+                    }
+                    @if (component.sunset) {
+                      <d-tag [tag]="overviewText.sunset" [labelStyle]="'yellow-w98'"></d-tag>
+                    }
+                    <div class="d-overview-card-icon">
+                      <img
+                        [alt]="component.name"
+                        (error)="imgError($event)"
+                        dLazyLoad
+                        [enableLazyLoad]="true"
+                        [contentMode]="'img'"
+                        [target]="doc"
+                        [imgLoadSrc]="imgPrefix + component.folderName + '/' + component.lowerName + '.png'"
+                        />
+                    </div>
+                    <p class="d-overview-card-title">
+                      {{ component.title }}
+                    </p>
+                    @if (component.description) {
+                      <p class="d-overview-card-description" [title]="component.description">
+                        {{ component.description }}
+                      </p>
+                    }
+                  </div>
+                </d-card>
+              }
+              @for (placeHolder of flexPlaceHolders; track placeHolder) {
+                <div class="d-component-place-holder"></div>
+              }
+            </div>
+          </div>
+        }
+        @if (componentsSuggest && componentsSuggest.length) {
+          <div>
+            <h2 class="d-overview-no-data-title">
+              {{
+              nowFilter === 'newChangeCmps'
               ? overviewText.newChangeCmps
               : nowFilter === 'recentlySuggestCmps'
               ? overviewText.recentlySuggestCmps
               : overviewText.suggestCmp
-          }}
-        </h2>
-        <div class="d-overview-no-data-list d-overview-component-wrapper">
-          <d-card *ngFor="let component of componentsSuggest" (click)="jumpToComponent(component.link)">
-            <div class="d-overview-card-wrapper">
-              <d-tag *ngIf="component.newChange" [tag]="overviewText.newChange" [labelStyle]="'orange-w98'"></d-tag>
-              <d-tag *ngIf="component.sunset" [tag]="overviewText.sunset" [labelStyle]="'yellow-w98'"></d-tag>
-              <div class="d-overview-card-icon">
-                <img
-                  [alt]="component.name"
-                  (error)="imgError($event)"
-                  dLazyLoad
-                  [enableLazyLoad]="true"
-                  [contentMode]="'img'"
-                  [target]="doc"
-                  [imgLoadSrc]="imgPrefix + component.folderName + '/' + component.lowerName + '.png'"
-                />
-              </div>
-              <p class="d-overview-card-title">
-                {{ component.title }}
-              </p>
-              <p *ngIf="component.description" class="d-overview-card-description" [title]="component.description">
-                {{ component.description }}
-              </p>
+              }}
+            </h2>
+            <div class="d-overview-no-data-list d-overview-component-wrapper">
+              @for (component of componentsSuggest; track component) {
+                <d-card (click)="jumpToComponent(component.link)">
+                  <div class="d-overview-card-wrapper">
+                    @if (component.newChange) {
+                      <d-tag [tag]="overviewText.newChange" [labelStyle]="'orange-w98'"></d-tag>
+                    }
+                    @if (component.sunset) {
+                      <d-tag [tag]="overviewText.sunset" [labelStyle]="'yellow-w98'"></d-tag>
+                    }
+                    <div class="d-overview-card-icon">
+                      <img
+                        [alt]="component.name"
+                        (error)="imgError($event)"
+                        dLazyLoad
+                        [enableLazyLoad]="true"
+                        [contentMode]="'img'"
+                        [target]="doc"
+                        [imgLoadSrc]="imgPrefix + component.folderName + '/' + component.lowerName + '.png'"
+                        />
+                    </div>
+                    <p class="d-overview-card-title">
+                      {{ component.title }}
+                    </p>
+                    @if (component.description) {
+                      <p class="d-overview-card-description" [title]="component.description">
+                        {{ component.description }}
+                      </p>
+                    }
+                  </div>
+                </d-card>
+              }
+              @for (placeHolder of flexPlaceHolders; track placeHolder) {
+                <div class="d-component-place-holder"></div>
+              }
             </div>
-          </d-card>
-          <div class="d-component-place-holder" *ngFor="let placeHolder of flexPlaceHolders"></div>
-        </div>
+          </div>
+        }
       </div>
     </div>
-  </div>
+  }
 </div>

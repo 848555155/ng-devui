@@ -22,10 +22,6 @@
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
     "target": "ES2022",
-    "lib": [
-      "ES2022",
-      "dom"
-    ],
     "paths": {
       "ng-devui": [
         "devui/index.ts"

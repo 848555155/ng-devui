@@ -1,33 +1,35 @@
-<ng-container *ngIf="!virtualScroll; else scrollViewTpl">
-  <ng-container *ngFor="let rowItem of dataSource; trackBy: trackByFn; let rowIndex = index">
+@if (!virtualScroll) {
+  @for (rowItem of dataSource; track trackByFn(rowIndex); let rowIndex = $index) {
     <ng-template
       [ngTemplateOutlet]="trTable"
       [ngTemplateOutletContext]="{ rowItem: rowItem, rowIndex: rowIndex, nestedLayer: nestedLayer, nestedIndex: nestedIndex }"
-    >
+      >
     </ng-template>
-  </ng-container>
-</ng-container>
-
-<ng-template #scrollViewTpl>
+  }
+} @else {
   <ng-container *cdkVirtualFor="let rowItem of dataSource; trackBy: trackByFn; let rowIndex = index">
     <ng-template
       [ngTemplateOutlet]="trTable"
       [ngTemplateOutletContext]="{ rowItem: rowItem, rowIndex: rowIndex, nestedLayer: nestedLayer, nestedIndex: nestedIndex }"
-    >
+      >
     </ng-template>
   </ng-container>
-</ng-template>
+}
+
 
 <ng-template #trTable let-rowIndex="rowIndex" let-rowItem="rowItem" let-nestedLayer="nestedLayer" let-nestedIndex="nestedIndex">
   <ng-template
     [ngTemplateOutlet]="rowTemplete"
     [ngTemplateOutletContext]="{ rowItem: rowItem, rowIndex: rowIndex, nestedLayer: nestedLayer, nestedIndex: nestedIndex }"
   ></ng-template>
-  <tr class="child-table" *ngIf="rowItem['children'] && rowItem['$isChildTableOpen']" [style.height]="minHeight ? '40px' : null">
-    <td [attr.colspan]="tableWidthConfig.length">
-      <table class="devui-table" style="table-layout: fixed">
-        <colgroup>
-          <col [style.width]="config.width" *ngFor="let config of tableWidthConfig" />
+  @if (rowItem['children'] && rowItem['$isChildTableOpen']) {
+    <tr class="child-table" [style.height]="minHeight ? '40px' : null">
+      <td [attr.colspan]="tableWidthConfig.length">
+        <table class="devui-table" style="table-layout: fixed">
+          <colgroup>
+          @for (config of tableWidthConfig; track config) {
+            <col [style.width]="config.width" />
+          }
         </colgroup>
         <tbody
           dTableBody
@@ -40,6 +42,7 @@
       </table>
     </td>
   </tr>
+}
 </ng-template>
 
 <ng-template [ngTemplateOutlet]="minHeightStretchRow"></ng-template>

@@ -5,7 +5,7 @@
       [ngClass]="{ 'title-active': index === currentBodyIndex }"
       *cdkVirtualFor="let year of yearList; let index = index"
       (click)="selectYear(year.year)"
-    >
+      >
       <p class="devui-year-title">{{ year.year }}</p>
     </div>
   </cdk-virtual-scroll-viewport>
@@ -17,12 +17,13 @@
           class="devui-month-table"
           [ngClass]="{ 'devui-active-month': index === currentBodyIndex }"
           (mouseleave)="curHoverDate = null"
-        >
+          >
           <tbody>
-            <tr *ngFor="let season of monthList">
-              <td
-                *ngFor="let month of season"
-                class="devui-month-item"
+            @for (season of monthList; track season) {
+              <tr>
+                @for (month of season; track month) {
+                  <td
+                    class="devui-month-item"
                 [ngClass]="{
                   'devui-table-month-selected': isSelected(year.year, month),
                   'devui-table-this-month': isThisMonth(year.year, month),
@@ -33,16 +34,18 @@
                   'devui-table-date-in-selected-range': isDateInSelectRange(year.year, month),
                   'devui-table-date-active-type': isActiveTypeDate(year.year, month)
                 }"
-              >
-                <span
-                  (mouseenter)="setHoverTarget(year.year, month)"
-                  [ngClass]="{ 'devui-disabled': isDisable(year.year, month) }"
-                  (click)="selectMonth(year.year, month)"
-                >
-                  {{ i18nText.monthsOfYear[month - 1] }}
-                </span>
-              </td>
-            </tr>
+                    >
+                    <span
+                      (mouseenter)="setHoverTarget(year.year, month)"
+                      [ngClass]="{ 'devui-disabled': isDisable(year.year, month) }"
+                      (click)="selectMonth(year.year, month)"
+                      >
+                      {{ i18nText.monthsOfYear[month - 1] }}
+                    </span>
+                  </td>
+                }
+              </tr>
+            }
           </tbody>
         </table>
       </div>
