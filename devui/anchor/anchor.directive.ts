@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Directive, ElementRef, HostListener, inject, input, Input, OnDestroy } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Directive, ElementRef, HostListener, inject, input, OnDestroy, signal } from '@angular/core';
 import { ReplaySubject, Subscription } from 'rxjs';
 import { AnchorService } from './anchor.service';
 import { AnchorActiveChangeSource, IAnchorBox } from './anchor.type';
@@ -9,46 +9,29 @@ import { AnchorActiveChangeSource, IAnchorBox } from './anchor.type';
 export class AnchorDirective implements AfterViewInit, OnDestroy {
   anchor = input<string>(undefined, { alias: 'dAnchor' });
   anchorActive = input('active');
-  _isActive: boolean;
-  set isActive(active: boolean) {
-    this._isActive = active;
-    this.activeChangeSubject.next(active);
-    if (active) {
-      this.anchorService.setCurrentActive(this.anchor());
-    } else if (this.anchorService.currentActiveAnchor === this.anchor()) {
-      this.anchorService.setCurrentActive('');
-    }
-    this.cdr.markForCheck();
-  }
-  get isActive() {
-    return this._isActive;
-  }
+
+  isActive = signal(false);
   activeChangeBy: AnchorActiveChangeSource;
   activeChangeSubscription: Subscription;
-  activeChangeSubject = new ReplaySubject(1);
+  activeChangeSubject = new ReplaySubject<boolean>(1);
   lastActiveBy: string;
 
   element: HTMLElement;
-  _boxElement: IAnchorBox;
-  set boxElement(box: IAnchorBox) {
-    this._boxElement = box;
-    this.updateScrollListenTarget();
-  }
-  get boxElement() {
-    return this._boxElement;
-  }
+  boxElement: IAnchorBox | undefined;
 
   scrollListenTarget: Element | Window;
   REACH_TOP_VISION_OFFSET = 50;
 
   private THROTTLE_DELAY = 100;
   private THROTTLE_TRIGGER = 600;
-  private scrollPreStart;
-  private scrollTimer;
+  private scrollPreStart: number | null = null;
+  private scrollTimer: any;
 
   private cdr = inject(ChangeDetectorRef);
+  private el = inject(ElementRef);
+  private anchorService = inject(AnchorService);
 
-  constructor(private el: ElementRef, private anchorService: AnchorService) {
+  constructor() {
     this.element = this.el.nativeElement;
   }
 
@@ -70,16 +53,18 @@ export class AnchorDirective implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.scrollListenTarget.removeEventListener('scroll', this.throttle);
+    this.scrollListenTarget?.removeEventListener('scroll', this.throttle);
     if (this.activeChangeSubscription) {
       this.activeChangeSubscription.unsubscribe();
     }
   }
 
-  @HostListener('click') // 鼠标落入范围，激活anchor
+  @HostListener('click')
   beFocused() {
-    this.boxElement.forceActiveAnchor(this.anchor, 'click-inside');
-    this.boxElement.isScrollingToTarget = false;
+    if (this.boxElement) {
+      this.boxElement.forceActiveAnchor(this.anchor(), 'click-inside');
+      this.boxElement.isScrollingToTarget = false;
+    }
   }
 
   throttle = () => {
@@ -105,7 +90,7 @@ export class AnchorDirective implements AfterViewInit, OnDestroy {
   };
 
   checkActiveStatus = (activeChangeBy?: AnchorActiveChangeSource) => {
-    if (this.boxElement.isScrollingToTarget) {
+    if (!this.boxElement || this.boxElement.isScrollingToTarget) {
       return;
     }
     const dom = this.boxElement.scrollTarget();
@@ -119,21 +104,37 @@ export class AnchorDirective implements AfterViewInit, OnDestroy {
       (!currentActiveAnchor || currentActiveAnchor === this.boxElement.defaultAnchor())
     ) {
       this.activeChangeBy = activeChangeBy || 'scroll';
-      this.isActive = bottom > this.REACH_TOP_VISION_OFFSET;
+      this.setIsActive(bottom > this.REACH_TOP_VISION_OFFSET);
       return;
     }
 
     this.activeChangeBy = activeChangeBy || 'scroll';
-    this.isActive = bottom > this.REACH_TOP_VISION_OFFSET && top < this.REACH_TOP_VISION_OFFSET;
+    this.setIsActive(bottom > this.REACH_TOP_VISION_OFFSET && top < this.REACH_TOP_VISION_OFFSET);
   };
 
+  setIsActive(active: boolean) {
+    this.isActive.set(active);
+    this.activeChangeSubject.next(active);
+    if (active) {
+      this.anchorService.setCurrentActive(this.anchor());
+    } else if (this.anchorService.currentActiveAnchor === this.anchor()) {
+      this.anchorService.setCurrentActive('');
+    }
+    this.cdr.markForCheck();
+  }
+
+  setBoxElement(box: IAnchorBox) {
+    this.boxElement = box;
+    this.updateScrollListenTarget();
+  }
+
   updateScrollListenTarget() {
-    if (this.scrollListenTarget) {
+    if (this.scrollListenTarget || !this.boxElement) {
       return;
     }
-    if (this.boxElement && typeof window !== 'undefined') {
-      this.scrollListenTarget = this.boxElement.scrollTarget() || window; // window有scroll事件，document.documentElement没有scroll事件
+    if (typeof window !== 'undefined') {
+      this.scrollListenTarget = this.boxElement.scrollTarget() || window;
     }
-    this.scrollListenTarget.addEventListener('scroll', this.throttle, { passive: true });
+    this.scrollListenTarget?.addEventListener('scroll', this.throttle, { passive: true });
   }
 }

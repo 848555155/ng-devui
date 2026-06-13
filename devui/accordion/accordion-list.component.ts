@@ -74,22 +74,26 @@ export class AccordionListComponent implements OnInit, OnDestroy {
     return this.accordion.noContentTemplate();
   }
   linkType() {
-    return this.accordion.linkType;
+    return this.accordion.linkType();
   }
   i18nCommonText() {
     return this.accordion.i18nCommonText;
   }
   showNoContent() {
-    return this.accordion.showNoContent;
+    return this.accordion.showNoContent();
   }
   routerLinkActivated() {
-    return (!!this.accordionItemRouterlinkQueryList() &&
-      this.accordionItemRouterlinkQueryList().some((airlc) => this.isLinkRouterActive(airlc))) ||
-      (!!this.accordionMenuQueryList() && this.accordionMenuQueryList().some((amc) => this.isMenuRouterActive(amc)));
+    return (
+      (!!this.accordionItemRouterlinkQueryList() &&
+        this.accordionItemRouterlinkQueryList().some((airlc) => this.isLinkRouterActive(airlc))) ||
+      (!!this.accordionMenuQueryList() && this.accordionMenuQueryList().some((amc) => this.isMenuRouterActive(amc)))
+    );
   }
   hasActiveChildren() {
-    return (!!this.accordionMenuQueryList() && this.accordionMenuQueryList().some((amc) => this.isMenuDataActive(amc))) ||
-      (!!this.data() && !!this.data().length && this.data().some((item) => this.isItemData(item) && this.isItemDataActive(item)));
+    return (
+      (!!this.accordionMenuQueryList() && this.accordionMenuQueryList().some((amc) => this.isMenuDataActive(amc))) ||
+      (!!this.data() && !!this.data().length && this.data().some((item) => this.isItemData(item) && this.isItemDataActive(item)))
+    );
   }
 
   private isLinkRouterActive(airlc: AccordionItemRouterlinkComponent) {
@@ -149,7 +153,7 @@ export class AccordionListComponent implements OnInit, OnDestroy {
     if (item && list) {
       const open = item[this.accordion.openKey()];
       const childActivated = list.routerLinkActivated() || list.hasActiveChildren();
-      stateFlag = open === undefined && this.accordion.autoOpenActiveMenu ? childActivated : open;
+      stateFlag = open === undefined && this.accordion.autoOpenActiveMenu() ? childActivated : open;
     }
     return stateFlag ? 'expanded' : 'collapsed';
   }

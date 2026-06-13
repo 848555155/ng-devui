@@ -1,4 +1,4 @@
-import { ContentChildren, Directive, effect, input, Input, OnChanges, OnDestroy, QueryList, SimpleChanges } from '@angular/core';
+import { ContentChildren, Directive, effect, inject, input, OnDestroy, QueryList } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { AnchorDirective } from './anchor.directive';
@@ -10,7 +10,7 @@ import { AnchorActiveChangeSource, IAnchorBox } from './anchor.type';
 })
 export class AnchorBoxDirective implements IAnchorBox, OnDestroy {
   public isScrollingToTarget = false;
-  private activeChangeSubject = new Subject();
+  private activeChangeSubject = new Subject<AnchorDirective>();
   public activeChange = this.activeChangeSubject.asObservable();
   isInit = true;
   refreshAnchorMap: Subject<void> = new Subject<void>();
@@ -23,6 +23,8 @@ export class AnchorBoxDirective implements IAnchorBox, OnDestroy {
   }>();
   defaultAnchor = input<string>();
   scrollTarget = input<HTMLElement>();
+  private anchorService = inject(AnchorService);
+
   @ContentChildren(AnchorDirective, { descendants: true })
   set anchorList(list: QueryList<AnchorDirective>) {
     if (this.sub) {
@@ -34,7 +36,7 @@ export class AnchorBoxDirective implements IAnchorBox, OnDestroy {
     this.anchorService.anchorList = this._anchorList.map((item) => item.anchor());
     this._anchorList.toArray().forEach((targetAnchor) => {
       this.anchorMap[targetAnchor.anchor()] = targetAnchor;
-      targetAnchor.boxElement = this;
+      targetAnchor.setBoxElement(this);
       this.sub.add(
         targetAnchor.activeChangeSubject.pipe(filter((bool) => !!bool)).subscribe(() => {
           this.activeChangeSubject.next(targetAnchor);
@@ -48,7 +50,7 @@ export class AnchorBoxDirective implements IAnchorBox, OnDestroy {
     return this._anchorList;
   }
 
-  constructor(private anchorService: AnchorService) {
+  constructor() {
     effect(() => {
       const anchor = this.defaultAnchor();
       if (anchor) {
@@ -67,14 +69,14 @@ export class AnchorBoxDirective implements IAnchorBox, OnDestroy {
   forceActiveAnchor(anchorName: string, forceActiveSource: AnchorActiveChangeSource = 'scroll', deactivateOtherAnchor = true) {
     if (this.anchorMap && this.anchorService.anchorList.indexOf(anchorName) >= 0) {
       this.anchorMap[anchorName].activeChangeBy = forceActiveSource;
-      this.anchorMap[anchorName].isActive = true;
+      this.anchorMap[anchorName].setIsActive(true);
       if (deactivateOtherAnchor) {
         Object.keys(this.anchorMap)
           .filter((name) => name !== anchorName)
           .map((name) => this.anchorMap[name])
           .forEach((anchor) => {
             anchor.activeChangeBy = forceActiveSource;
-            anchor.isActive = false;
+            anchor.setIsActive(false);
           });
       }
     }

@@ -3,21 +3,19 @@ import {
   ChangeDetectorRef,
   Component,
   effect,
-  EventEmitter,
   forwardRef,
   inject,
   input,
-  Input,
   model,
   OnChanges,
   OnDestroy,
   OnInit,
   output,
-  Output,
+  signal,
   SimpleChanges,
   TemplateRef,
 } from '@angular/core';
-import { I18nInterface, I18nService } from 'ng-devui/i18n';
+import { I18nService } from 'ng-devui/i18n';
 import { DevConfigService, WithConfig } from 'ng-devui/utils';
 import { Subscription } from 'rxjs';
 import { ACCORDION } from './accordion-token';
@@ -39,56 +37,54 @@ import { AccordionListComponent } from './accordion-list.component';
 })
 export class AccordionComponent implements AccordionOptions, OnChanges, OnInit, OnDestroy {
   data = model<Array<any> | AccordionMenuType>();
-  /* Key值定义, 用于自定义数据结构 */
-  titleKey = input('title'); // 标题的key，item[titleKey]类型为string，为标题显示内容
-  loadingKey = input('loading'); // 子菜单动态加载item[loadingKey]类型为boolean
-  childrenKey = input('children'); // 子菜单Key
-  disabledKey = input('disabled'); // 是否禁用Key
-  activeKey = input('active'); // 菜单是否激活/选中
-  openKey = input('open'); // 菜单是否打开
+  titleKey = input('title');
+  loadingKey = input('loading');
+  childrenKey = input('children');
+  disabledKey = input('disabled');
+  activeKey = input('active');
+  openKey = input('open');
 
-  /* 菜单模板 */
-  menuItemTemplate = input<TemplateRef<any>>(); // 可展开菜单内容条模板
-  itemTemplate = input<TemplateRef<any>>(); // 可点击菜单内容条模板
+  menuItemTemplate = input<TemplateRef<any>>();
+  itemTemplate = input<TemplateRef<any>>();
 
-  menuToggle = output<AccordionMenuToggleEvent>(); // 可展开菜单展开事件
-  itemClick = output<AccordionItemClickEvent>(); // 可点击菜单点击事件
+  menuToggle = output<AccordionMenuToggleEvent>();
+  itemClick = output<AccordionItemClickEvent>();
   activeItemChange = output<any>();
 
-  /** 高级选项和模板 */
-  @Input() restrictOneOpen = false; // 限制一级菜单同时只能打开一个
-  @Input() autoOpenActiveMenu = false; // 自动展开活跃菜单
-  @Input() showNoContent = true; // 没有内容的时候是否显示没有数据
-  noContentTemplate = input<TemplateRef<any>>(); // 没有内容的时候使用自定义模板
-  loadingTemplate = input<TemplateRef<any>>(); // 加载中使用自定义模板
-  innerListTemplate = input<TemplateRef<any>>(); // 可折叠菜单内容完全自定义，用做折叠面板
+  restrictOneOpen = input(false);
+  autoOpenActiveMenu = input(false);
+  showNoContent = input(true);
+  noContentTemplate = input<TemplateRef<any>>();
+  loadingTemplate = input<TemplateRef<any>>();
+  innerListTemplate = input<TemplateRef<any>>();
 
-  /* 内置路由/链接/动态判断路由或链接类型 */
-  @Input() linkType: 'routerLink' | 'hrefLink' | 'dependOnLinkTypeKey' | '' | string = '';
-  linkTypeKey = input('linkType'); // linkType为'dependOnLinkTypeKey'时指定对象linkType定义区
-  linkKey = input('link'); // 链接内容的key
-  linkTargetKey = input('target'); // 链接目标窗口的key
-  @Input() linkDefaultTarget = '_self'; // 不设置target的时候target默认值
+  linkType = input<'routerLink' | 'hrefLink' | 'dependOnLinkTypeKey' | '' | string>('');
+  linkTypeKey = input('linkType');
+  linkKey = input('link');
+  linkTargetKey = input('target');
+  linkDefaultTarget = input('_self');
 
-  @Input() accordionType: 'normal' | 'embed' = 'normal';
-  @Input() @WithConfig() showAnimation = true;
+  accordionType = input<'normal' | 'embed'>('normal');
+  showAnimation: boolean = true;
 
-  activeItem; // 记录用户点击的激活菜单项
-  i18nCommonText: I18nInterface['common'];
-  i18nSubscription: Subscription;
+  activeItem: any;
+  i18nCommonText: any;
+  private i18nSubscription: Subscription | null = null;
 
   private cdr = inject(ChangeDetectorRef);
+  private i18n = inject(I18nService);
+  private devConfigService = inject(DevConfigService);
 
-  constructor(private i18n: I18nService, private devConfigService: DevConfigService) {
+  constructor() {
     effect(() => {
       this.initActiveItem();
     });
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    const { autoOpenActiveMenu } = changes;
+    const autoOpenActiveMenu = changes['autoOpenActiveMenu'];
     if (autoOpenActiveMenu) {
-      if (this.autoOpenActiveMenu && autoOpenActiveMenu.previousValue === false) {
+      if (this.autoOpenActiveMenu() && autoOpenActiveMenu.previousValue === false) {
         this.cleanOpenData();
       }
     }
@@ -177,7 +173,7 @@ export class AccordionComponent implements AccordionOptions, OnChanges, OnInit, 
 
   // 打开或关闭一级菜单，如果有限制只能展开一项则关闭其他一级菜单
   openMenuFn(item, open: boolean) {
-    if (open && this.restrictOneOpen) {
+    if (open && this.restrictOneOpen()) {
       this.data.update((c) => {
         c.forEach((itemtemp) => {
           itemtemp[this.openKey()] = false;
@@ -187,7 +183,6 @@ export class AccordionComponent implements AccordionOptions, OnChanges, OnInit, 
     }
     this.data.update((c) => {
       item[this.openKey()] = open;
-      console.log(c);
       return c;
     });
   }

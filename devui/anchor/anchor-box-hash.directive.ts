@@ -68,9 +68,7 @@ export class AnchorBoxHashSupportDirective implements AfterViewInit {
     }
     if (this.box.anchorMap[frag]) {
       const tempAnchor = new AnchorLinkDirective(this.box);
-      tempAnchor.anchorName = frag;
-      tempAnchor.anchorBlock = this.box.anchorMap[frag];
-      tempAnchor.scrollToAnchor('fragment');
+      tempAnchor.scrollToAnchorByName(frag, 'fragment');
     }
   };
 }

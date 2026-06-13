@@ -26,7 +26,7 @@ export class AccordionMenuComponent extends AccordionBaseComponent<AccordionBase
   accordionListFromView: AccordionListComponent; // AccordionListComponent
 
   open() {
-    return this.keyOpen() === undefined && this.accordion.autoOpenActiveMenu ? this.childActivated() : this.keyOpen();
+    return this.keyOpen() === undefined && this.accordion.autoOpenActiveMenu() ? this.childActivated() : this.keyOpen();
   }
   routerLinkActivated() {
     return this.accordionListFromView && this.accordionListFromView.routerLinkActivated();

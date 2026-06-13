@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, computed, Directive, effect, inject, input, linkedSignal, numberAttribute } from '@angular/core';
+import { ChangeDetectorRef, computed, Directive, effect, inject, input, numberAttribute } from '@angular/core';
 import { AccordionBase } from './accordion.type';
 import { ACCORDION } from './accordion-token';
 

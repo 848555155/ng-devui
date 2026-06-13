@@ -1,4 +1,4 @@
-import { Directive, forwardRef, HostBinding, HostListener, Inject, Input, OnDestroy, OnInit } from '@angular/core';
+import { Directive, forwardRef, HostBinding, HostListener, Inject, input, OnDestroy, OnInit, signal } from '@angular/core';
 import { scrollAnimate } from 'ng-devui/utils';
 import { AnchorBoxDirective } from './anchor-box.directive';
 import { AnchorDirective } from './anchor.directive';
@@ -9,24 +9,18 @@ import { AnchorActiveChangeSource } from './anchor.type';
 })
 export class AnchorLinkDirective implements OnInit, OnDestroy {
   @HostBinding('class') get anchorActiveClass() {
-    return this.anchorBlock && this.anchorBlock.isActive ? this.anchorActive || '' : '';
-  }
-  private _anchorName;
-  @Input('dAnchorLink')
-  set anchorName(anchor: string) {
-    this._anchorName = anchor;
-    this.bindAnchorAfterBoxReady();
-  }
-  get anchorName() {
-    return this._anchorName;
+    return this.anchorBlock && this.anchorBlock.isActive() ? this.anchorActive() || '' : '';
   }
 
-  @Input() anchorActive: string;
+  anchorName = input<string>('', { alias: 'dAnchorLink' });
+  anchorActive = input<string>('');
 
-  boxElement: AnchorBoxDirective;
-  anchorBlock: AnchorDirective;
-  bindingAnchorTimer;
-  subscription;
+  boxElement: AnchorBoxDirective | undefined;
+  anchorBlock: AnchorDirective | undefined;
+  bindingAnchorTimer: any;
+  subscription: any;
+
+  private _anchorNameValue: string = '';
 
   constructor(@Inject(forwardRef(() => AnchorBoxDirective)) box: AnchorBoxDirective) {
     this.boxElement = box;
@@ -40,60 +34,72 @@ export class AnchorLinkDirective implements OnInit, OnDestroy {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
-  }
-
-  subscribeAnchorMapChange() {
-    if (this.boxElement) {
-      this.subscription = this.boxElement.refreshAnchorMap.subscribe(() => {
-        if (this.bindingAnchorTimer) {
-          clearTimeout(this.bindingAnchorTimer);
-          this.bindingAnchorTimer = undefined;
-        }
-        this.bindAnchorAfterBoxReady();
-      });
+    if (this.bindingAnchorTimer) {
+      clearTimeout(this.bindingAnchorTimer);
     }
   }
 
+  subscribeAnchorMapChange() {
+    this.bindingAnchorTimer = setTimeout(() => {
+      this.bindAnchorAfterBoxReady();
+    }, 100);
+  }
+
   bindAnchorAfterBoxReady = () => {
-    if (this.boxElement.anchorMap) {
+    const name = this.anchorName();
+    if (!name) {
+      return;
+    }
+    if (this.boxElement && this.boxElement.anchorMap) {
       setTimeout(() => {
-        this.anchorBlock = this.boxElement.anchorMap[this.anchorName];
+        this.anchorBlock = this.boxElement?.anchorMap?.[name];
       }, 0);
     } else {
       this.bindingAnchorTimer = setTimeout(this.bindAnchorAfterBoxReady, 500);
     }
   };
 
-  @HostListener('click')
-  scrollToAnchor(activeChangeBy?: AnchorActiveChangeSource) {
+  scrollToAnchorByName(name: string, activeChangeBy?: AnchorActiveChangeSource) {
     if (typeof document === 'undefined') {
       return;
     }
+    if (!this.boxElement) {
+      return;
+    }
+    this.anchorBlock = this.boxElement.anchorMap?.[name];
     if (!this.anchorBlock) {
       return;
     }
+    const box = this.boxElement;
     const callback = () => {
       setTimeout(() => {
-        this.boxElement.forceActiveAnchor(this.anchorName, activeChangeBy || 'anchor-link');
-        this.boxElement.isScrollingToTarget = false;
+        box.forceActiveAnchor(name, activeChangeBy || 'anchor-link');
+        box.isScrollingToTarget = false;
       }, 120);
     };
+    const container = box.scrollTarget() || document.documentElement;
+    const anchorEl = this.anchorBlock.element;
     ((container: Element, anchor: Element) => {
       let containerScrollTop = container.scrollTop;
       let containerOffsetTop = container.getBoundingClientRect().top;
       if (container === document.documentElement) {
-        containerScrollTop += document.body.scrollTop; // scrollTop兼容性问题
-        containerOffsetTop = 0; // offsettop抵消
+        containerScrollTop += document.body.scrollTop;
+        containerOffsetTop = 0;
       }
       scrollAnimate(
         container,
         containerScrollTop,
-        containerScrollTop + anchor.getBoundingClientRect().top - containerOffsetTop - (this.boxElement.view()?.top || 0),
+        containerScrollTop + anchor.getBoundingClientRect().top - containerOffsetTop - (box.view()?.top || 0),
         undefined,
         undefined,
         callback
       );
-    })(this.boxElement.scrollTarget() || document.documentElement, this.anchorBlock.element);
-    this.boxElement.isScrollingToTarget = true;
+    })(container, anchorEl);
+    box.isScrollingToTarget = true;
+  }
+
+  @HostListener('click')
+  scrollToAnchor(activeChangeBy?: AnchorActiveChangeSource) {
+    this.scrollToAnchorByName(this.anchorName(), activeChangeBy);
   }
 }

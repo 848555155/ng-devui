@@ -21,26 +21,11 @@ interface IAccordionLinkable {
   target?: boolean;
   linkType?: AccordionMenuItemLinkType;
 }
-export interface AccordionBaseItem
-  extends AccordionBase,
-  IAccordionActiveable {
-}
-export interface AccordionBaseMenu<T>
-  extends AccordionBase,
-  IAccordionFoldable<T> {
-}
+export interface AccordionBaseItem extends AccordionBase, IAccordionActiveable {}
+export interface AccordionBaseMenu<T> extends AccordionBase, IAccordionFoldable<T> {}
 
-export interface AccordionLinkableItem
-  extends AccordionBase,
-  IAccordionActiveable,
-  IAccordionLinkable {
-}
-export interface AccordionMenuItem
-  extends AccordionBase,
-  IAccordionActiveable,
-  IAccordionFoldable<AccordionMenuItem>,
-  IAccordionLinkable {
-}
+export interface AccordionLinkableItem extends AccordionBase, IAccordionActiveable, IAccordionLinkable {}
+export interface AccordionMenuItem extends AccordionBase, IAccordionActiveable, IAccordionFoldable<AccordionMenuItem>, IAccordionLinkable {}
 
 export type AccordionMenuType = Array<AccordionMenuItem>;
 
@@ -73,22 +58,18 @@ interface AccordionMenuKeyGroup {
 
 type AccordionTemplateRefArray = 'itemTemplate' | 'menuItemTemplate' | 'noContentTemplate' | 'loadingTemplate' | 'innerListTemplate';
 type AccordionTemplateRefGroup = {
-  [p in AccordionTemplateRefArray]: InputSignal<TemplateRef<any>>
+  [p in AccordionTemplateRefArray]: InputSignal<TemplateRef<any>>;
 };
 interface AccordionConfigOptions {
-  restrictOneOpen?: boolean;
-  autoOpenActiveMenu?: boolean;
-  showNoContent?: boolean;
-  linkDefaultTarget?: string;
+  restrictOneOpen?: InputSignal<boolean>;
+  autoOpenActiveMenu?: InputSignal<boolean>;
+  showNoContent?: InputSignal<boolean>;
+  linkDefaultTarget?: InputSignal<string>;
   i18nCommonText?: any;
   i18nText?: any;
-  linkType: 'routerLink' | 'hrefLink' | 'dependOnLinkTypeKey' | '' | string;
+  linkType: InputSignal<'routerLink' | 'hrefLink' | 'dependOnLinkTypeKey' | '' | string>;
 }
-export interface AccordionOptions
-  extends AccordionConfigOptions,
-  AccordionMenuKeyGroup,
-  AccordionTemplateRefGroup {
-}
+export interface AccordionOptions extends AccordionConfigOptions, AccordionMenuKeyGroup, AccordionTemplateRefGroup {}
 
 /* 废弃接口 */
 /** @deprecated  merge into `AccordionMenuItem`*/
@@ -117,7 +98,7 @@ export interface AccordionSubMenuItemRouterLink {
   [prop: string]: any;
 }
 /** @deprecated  use `AccordionLinkableItem` instead*/
-export interface AccordionSubMenuItemDynamicLink  {
+export interface AccordionSubMenuItemDynamicLink {
   title: string;
   link: string;
   linkType: 'routerLink' | 'hrefLink' | string;
