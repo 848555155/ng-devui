@@ -1,10 +1,13 @@
-import { AfterViewInit, ChangeDetectorRef, Directive, ElementRef, HostListener, inject, input, OnDestroy, signal } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, inject, input, OnDestroy, signal } from '@angular/core';
 import { ReplaySubject, Subscription } from 'rxjs';
 import { AnchorService } from './anchor.service';
 import { AnchorActiveChangeSource, IAnchorBox } from './anchor.type';
 
 @Directive({
   selector: '[dAnchor]',
+  host: {
+    '(click)': 'beFocused()',
+  },
 })
 export class AnchorDirective implements AfterViewInit, OnDestroy {
   anchor = input<string>(undefined, { alias: 'dAnchor' });
@@ -27,7 +30,6 @@ export class AnchorDirective implements AfterViewInit, OnDestroy {
   private scrollPreStart: number | null = null;
   private scrollTimer: any;
 
-  private cdr = inject(ChangeDetectorRef);
   private el = inject(ElementRef);
   private anchorService = inject(AnchorService);
 
@@ -59,7 +61,6 @@ export class AnchorDirective implements AfterViewInit, OnDestroy {
     }
   }
 
-  @HostListener('click')
   beFocused() {
     if (this.boxElement) {
       this.boxElement.forceActiveAnchor(this.anchor(), 'click-inside');
@@ -120,7 +121,6 @@ export class AnchorDirective implements AfterViewInit, OnDestroy {
     } else if (this.anchorService.currentActiveAnchor === this.anchor()) {
       this.anchorService.setCurrentActive('');
     }
-    this.cdr.markForCheck();
   }
 
   setBoxElement(box: IAnchorBox) {

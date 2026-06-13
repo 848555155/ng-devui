@@ -1,4 +1,4 @@
-import { Directive, forwardRef, HostBinding, HostListener, Inject, input, OnDestroy, OnInit, signal } from '@angular/core';
+import { Directive, forwardRef, HostBinding, Inject, input, OnDestroy, OnInit } from '@angular/core';
 import { scrollAnimate } from 'ng-devui/utils';
 import { AnchorBoxDirective } from './anchor-box.directive';
 import { AnchorDirective } from './anchor.directive';
@@ -6,6 +6,9 @@ import { AnchorActiveChangeSource } from './anchor.type';
 
 @Directive({
   selector: '[dAnchorLink]',
+  host: {
+    '(click)': 'scrollToAnchor()',
+  },
 })
 export class AnchorLinkDirective implements OnInit, OnDestroy {
   @HostBinding('class') get anchorActiveClass() {
@@ -19,8 +22,6 @@ export class AnchorLinkDirective implements OnInit, OnDestroy {
   anchorBlock: AnchorDirective | undefined;
   bindingAnchorTimer: any;
   subscription: any;
-
-  private _anchorNameValue: string = '';
 
   constructor(@Inject(forwardRef(() => AnchorBoxDirective)) box: AnchorBoxDirective) {
     this.boxElement = box;
@@ -98,7 +99,6 @@ export class AnchorLinkDirective implements OnInit, OnDestroy {
     box.isScrollingToTarget = true;
   }
 
-  @HostListener('click')
   scrollToAnchor(activeChangeBy?: AnchorActiveChangeSource) {
     this.scrollToAnchorByName(this.anchorName(), activeChangeBy);
   }
