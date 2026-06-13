@@ -45,7 +45,7 @@ export class AppComponent implements OnInit, OnDestroy {
     @Inject(DEVUI_LANG) private appLang
   ) {
     translate.addLangs([ZH_CN, EN_US]);
-    translate.setDefaultLang(this.appLang ? this.appLang : ZH_CN);
+    translate.use(this.appLang ? this.appLang : ZH_CN);
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationError) {
         // 加载失败的时候刷新重试一次

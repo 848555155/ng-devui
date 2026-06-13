@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { AnchorModule } from 'ng-devui/anchor';
 import { DevUICodeboxModule, DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { DDemoNavModule } from 'devui-commons/src/demo-nav/d-demo-nav.module';
@@ -41,7 +41,7 @@ import groupsScss from './groups/groups.component.scss?raw';
 @Component({
   selector: 'd-demo-button',
   imports: [
-    TranslateModule,
+    TranslatePipe,
     AnchorModule,
     DevUICodeboxModule,
     DDemoNavModule,

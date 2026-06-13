@@ -12,7 +12,7 @@ import { DevUIApiModule } from 'ng-devui/shared/devui-api/devui-api.module';
 import { DevUICodeboxModule } from 'ng-devui/shared/devui-codebox/devui-codebox.module';
 import { TabsModule } from 'ng-devui/tabs';
 import { TextInputModule } from 'ng-devui/text-input';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { DDemoNavModule } from 'devui-commons/src/demo-nav/d-demo-nav.module';
 import { BasicComponent } from './basic/basic.component';
 import { EmbedComponent } from './embed/embed.component';
@@ -34,7 +34,7 @@ import apiEn from '../doc/api-en.md?raw';
     SelectModule,
     TabsModule,
     TextInputModule,
-    TranslateModule,
+    TranslatePipe,
     DevUICodeboxModule,
     DevUIApiModule,
     DDemoNavModule,

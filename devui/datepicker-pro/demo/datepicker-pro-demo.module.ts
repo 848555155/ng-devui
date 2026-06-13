@@ -13,7 +13,7 @@ import { DevUIApiComponent } from 'ng-devui/shared/devui-api/devui-api.component
 import { DevUIApiModule } from 'ng-devui/shared/devui-api/devui-api.module';
 import { DevUICodeboxModule } from 'ng-devui/shared/devui-codebox/devui-codebox.module';
 import { TabsModule } from 'ng-devui/tabs';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { DDemoNavModule } from 'devui-commons/src/demo-nav/d-demo-nav.module';
 import { BasicDatepickerProComponent } from './basic/basic-datepicker-pro.component';
 import { DatepickerProDemoComponent } from './datepicker-pro-demo.component';
@@ -34,7 +34,7 @@ import apiEn from '../doc/api-en.md?raw';
 
 @NgModule({
   imports: [
-    TranslateModule,
+    TranslatePipe,
     CommonModule,
     FormsModule,
     AutoCompleteModule,

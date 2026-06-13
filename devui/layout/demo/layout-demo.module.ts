@@ -7,7 +7,7 @@ import { LayoutModule } from 'ng-devui/layout';
 import { DevUIApiComponent } from 'ng-devui/shared/devui-api/devui-api.component';
 import { DevUIApiModule } from 'ng-devui/shared/devui-api/devui-api.module';
 import { DevUICodeboxModule } from 'ng-devui/shared/devui-codebox';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { DDemoNavModule } from 'devui-commons/src/demo-nav/d-demo-nav.module';
 import { LayoutBasicComponent } from './basic/layout-basic.component';
 import { AloneFlexComponent } from './grid/alone-flex/alone-flex.component';
@@ -41,7 +41,7 @@ import apiEn from '../doc/api-en.md?raw';
     LayoutModule,
     BreadcrumbModule,
     AccordionModule,
-    TranslateModule,
+    TranslatePipe,
     DDemoNavModule,
     RouterModule.forChild([
       { path: '', redirectTo: 'demo', pathMatch: 'full' },

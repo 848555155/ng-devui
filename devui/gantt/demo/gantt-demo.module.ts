@@ -9,7 +9,7 @@ import { I18nModule } from 'ng-devui/i18n';
 import { DevUIApiComponent } from 'ng-devui/shared/devui-api/devui-api.component';
 import { DevUIApiModule } from 'ng-devui/shared/devui-api/devui-api.module';
 import { DevUICodeboxModule } from 'ng-devui/shared/devui-codebox';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { DDemoNavModule } from 'devui-commons/src/demo-nav/d-demo-nav.module';
 import { BasicComponent } from './basic/basic.component';
 import { GanttDemoComponent } from './gantt-demo.component';
@@ -30,7 +30,7 @@ import apiEn from '../doc/api-en.md?raw';
     DevUICodeboxModule,
     I18nModule,
     DDemoNavModule,
-    TranslateModule,
+    TranslatePipe,
     FullscreenModule,
     RouterModule.forChild([
       { path: '',  redirectTo: 'demo', pathMatch: 'full' },

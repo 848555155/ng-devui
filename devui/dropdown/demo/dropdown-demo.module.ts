@@ -9,7 +9,7 @@ import { DevUIApiComponent } from 'ng-devui/shared/devui-api/devui-api.component
 import { DevUIApiModule } from 'ng-devui/shared/devui-api/devui-api.module';
 import { DevUICodeboxModule } from 'ng-devui/shared/devui-codebox/devui-codebox.module';
 import { ToggleModule } from 'ng-devui/toggle';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { DDemoNavModule } from 'devui-commons/src/demo-nav/d-demo-nav.module';
 import { DropDownDemoAddIconComponent } from './add-icon/add-icon.component';
 import { DropDownDemoAppendToBodyComponent } from './append-to-body/append-to-body.component';
@@ -28,7 +28,7 @@ import apiEn from '../doc/api-en.md?raw';
 
 @NgModule({
   imports: [
-    TranslateModule,
+    TranslatePipe,
     CommonModule,
     FormsModule,
     DropDownModule,

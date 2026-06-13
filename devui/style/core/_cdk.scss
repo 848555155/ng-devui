@@ -1,5 +1,7 @@
 @use '../theme/z-index' as *;
+
 @forward '../theme/z-index';
+
 @use '@angular/cdk/overlay-prebuilt';
 
 .cdk-overlay-container {

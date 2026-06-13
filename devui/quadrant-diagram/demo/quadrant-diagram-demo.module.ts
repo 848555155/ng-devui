@@ -7,7 +7,7 @@ import { QuadrantDiagramModule } from 'ng-devui/quadrant-diagram';
 import { DevUIApiComponent } from 'ng-devui/shared/devui-api/devui-api.component';
 import { DevUIApiModule } from 'ng-devui/shared/devui-api/devui-api.module';
 import { DevUICodeboxModule } from 'ng-devui/shared/devui-codebox/devui-codebox.module';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { DDemoNavModule } from 'devui-commons/src/demo-nav/d-demo-nav.module';
 import { BasicComponent } from './basic/basic.component';
 import { ConfigComponent } from './config/config.component';
@@ -25,7 +25,7 @@ import apiEn from '../doc/api-en.md?raw';
     DragDropModule,
     QuadrantDiagramModule,
     DDemoNavModule,
-    TranslateModule,
+    TranslatePipe,
     RouterModule.forChild([
       { path: '', redirectTo: 'demo', pathMatch: 'full' },
       {

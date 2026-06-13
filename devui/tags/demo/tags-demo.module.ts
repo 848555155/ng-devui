@@ -5,7 +5,7 @@ import { DevUIApiComponent } from 'ng-devui/shared/devui-api/devui-api.component
 import { DevUIApiModule } from 'ng-devui/shared/devui-api/devui-api.module';
 import { DevUICodeboxModule } from 'ng-devui/shared/devui-codebox/devui-codebox.module';
 import { TagsModule } from 'ng-devui/tags';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { DDemoNavModule } from 'devui-commons/src/demo-nav/d-demo-nav.module';
 import { BasicComponent } from './basic/basic.component';
 import { CustomComponent } from './custom/custom.component';
@@ -19,7 +19,7 @@ import apiEn from '../doc/api-en.md?raw';
 @NgModule({
   imports: [
     TagsModule,
-    TranslateModule,
+    TranslatePipe,
     CommonModule,
     DevUICodeboxModule,
     DevUIApiModule,

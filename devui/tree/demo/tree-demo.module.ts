@@ -15,7 +15,7 @@ import { DevUICodeboxModule } from 'ng-devui/shared/devui-codebox';
 import { TooltipModule } from 'ng-devui/tooltip';
 import { TreeModule } from 'ng-devui/tree';
 import { SafePipeModule } from 'ng-devui/utils';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { DDemoNavModule } from 'devui-commons/src/demo-nav/d-demo-nav.module';
 import { BasicComponent } from './basic/basic.component';
 import { CheckControlComponent } from './check-control/check-control.component';
@@ -36,7 +36,7 @@ import apiEn from '../doc/api-en.md?raw';
 
 @NgModule({
   imports: [
-    TranslateModule,
+    TranslatePipe,
     CommonModule,
     TreeModule,
     ButtonModule,

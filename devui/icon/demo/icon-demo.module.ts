@@ -8,7 +8,7 @@ import { I18nModule } from 'ng-devui/i18n';
 import { IconModule } from 'ng-devui/icon';
 import { DevUIApiComponent } from 'ng-devui/shared/devui-api/devui-api.component';
 import { DevUICodeboxModule } from 'ng-devui/shared/devui-codebox';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { DDemoNavModule } from 'devui-commons/src/demo-nav/d-demo-nav.module';
 import { BasicComponent } from './basic/basic.component';
 import { IconDemoComponent } from './icon-demo.component';
@@ -20,7 +20,7 @@ import apiEn from '../doc/api-en.md?raw';
 
 @NgModule({
   imports: [
-    TranslateModule,
+    TranslatePipe,
     CommonModule,
     DDemoNavModule,
     DevUICodeboxModule,

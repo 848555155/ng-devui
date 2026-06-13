@@ -14,7 +14,7 @@ import { DevUIApiModule } from 'ng-devui/shared/devui-api/devui-api.module';
 import { DevUICodeboxModule } from 'ng-devui/shared/devui-codebox';
 import { SplitterModule } from 'ng-devui/splitter';
 import { TooltipModule } from 'ng-devui/tooltip';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { DDemoNavModule } from 'devui-commons/src/demo-nav/d-demo-nav.module';
 import { DatatableDemoAsyncComponent } from './async/data-table-demo-async.component';
 import { BasicOldComponent } from './basic-old/basic-old.component';
@@ -52,7 +52,7 @@ import apiCn from '../doc/api-cn.md?raw';
 import apiEn from '../doc/api-en.md?raw';
 @NgModule({
   imports: [
-    TranslateModule,
+    TranslatePipe,
     CommonModule,
     ScrollingModule,
     DevUIModule,

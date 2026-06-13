@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { TranslateModule, TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { merge } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-button-design',
-  imports: [TranslateModule],
+  imports: [TranslatePipe],
   templateUrl: './button-design.component.html',
   styleUrls: ['./button-design.component.scss'],
 })

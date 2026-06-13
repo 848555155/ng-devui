@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/core';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { LoadingModule } from 'ng-devui/loading';
 import { LazyLoadDirective } from 'ng-devui/utils';
 
 @Component({
   selector: 'd-lazy-load',
-  imports: [LazyLoadDirective, TranslateModule, LoadingModule],
+  imports: [LazyLoadDirective, TranslatePipe, LoadingModule],
   templateUrl: './lazy-load.component.html',
   styleUrls: ['./lazy-load.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

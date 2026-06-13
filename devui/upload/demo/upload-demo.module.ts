@@ -11,7 +11,7 @@ import { DevUIApiModule } from 'ng-devui/shared/devui-api/devui-api.module';
 import { DevUICodeboxModule } from 'ng-devui/shared/devui-codebox';
 import { ToastModule } from 'ng-devui/toast';
 import { UploadModule } from 'ng-devui/upload';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { DDemoNavModule } from 'devui-commons/src/demo-nav/d-demo-nav.module';
 import { UploadAutoComponent } from './auto/auto.component';
 import { BasicComponent } from './basic/basic.component';
@@ -40,7 +40,7 @@ import apiEn from '../doc/api-en.md?raw';
     UploadSliceComponent,
   ],
   imports: [
-    TranslateModule,
+    TranslatePipe,
     CommonModule,
     UploadModule,
     DevUIModule,

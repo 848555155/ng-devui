@@ -3,14 +3,14 @@ import { NgModule } from '@angular/core';
 import { AnchorModule } from 'ng-devui/anchor';
 import { StickyModule } from 'ng-devui/sticky';
 import { DDemoNavComponent } from './d-demo-nav.component';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     StickyModule,
     AnchorModule,
-    TranslateModule
+    TranslatePipe
   ],
   declarations: [
     DDemoNavComponent

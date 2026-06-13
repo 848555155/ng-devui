@@ -12,7 +12,7 @@ import {
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
-import * as hljs from 'highlight.js/lib/core';
+import hljs from 'highlight.js';
 import bash from 'highlight.js/lib/languages/bash';
 import typescript from 'highlight.js/lib/languages/typescript';
 import json from 'highlight.js/lib/languages/json';

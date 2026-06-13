@@ -28,7 +28,7 @@ import { TextInputModule } from 'ng-devui/text-input';
 import { TextareaModule } from 'ng-devui/textarea';
 import { ToastModule } from 'ng-devui/toast';
 import { ToggleModule } from 'ng-devui/toggle';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { DDemoNavModule } from 'devui-commons/src/demo-nav/d-demo-nav.module';
 import { BasicComponent } from './basic/basic.component';
 import { CustomStatusComponent } from './custom-status/custom-status.component';
@@ -59,7 +59,7 @@ import apiEn from '../doc/api-en.md?raw';
 
 @NgModule({
   imports: [
-    TranslateModule,
+    TranslatePipe,
     CommonModule,
     FormModule,
     StickyModule,

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, inject, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { DevUICodeboxModule, DevuiDemosData } from '../devui-codebox';
 import { DDemoNavModule } from 'devui-commons/src/demo-nav/d-demo-nav.module';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -11,7 +11,7 @@ import { AnchorModule } from 'ng-devui/anchor';
 
 @Component({
   selector: 'd-demo',
-  imports: [CommonModule, FormsModule, TranslateModule, AnchorModule, DevUICodeboxModule, DDemoNavModule],
+  imports: [CommonModule, FormsModule, TranslatePipe, AnchorModule, DevUICodeboxModule, DDemoNavModule],
   changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './devui-demo.component.html',
 })

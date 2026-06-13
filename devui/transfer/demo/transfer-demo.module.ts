@@ -7,7 +7,7 @@ import { DevUIApiModule } from 'ng-devui/shared/devui-api/devui-api.module';
 import { DevUICodeboxModule } from 'ng-devui/shared/devui-codebox';
 import { ToggleModule } from 'ng-devui/toggle';
 import { TransferModule } from 'ng-devui/transfer';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { DDemoNavModule } from 'devui-commons/src/demo-nav/d-demo-nav.module';
 import { TransferDemoBaseComponent } from './basic/transfer-demo-base.component';
 import { TransferDemoCustomComponent } from './custom/transfer-demo-custom.component';
@@ -22,7 +22,7 @@ import apiEn from '../doc/api-en.md?raw';
 
 @NgModule({
   imports: [
-    TranslateModule,
+    TranslatePipe,
     CommonModule,
     TransferModule,
     DataTableModule,

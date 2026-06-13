@@ -14,7 +14,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { IExampleData } from 'ng-devui/shared/helpers';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
-import * as hljs from 'highlight.js/lib/core';
+import hljs from 'highlight.js';
 import { Subscription, fromEvent } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ComponentDataService } from './component.data.service';
@@ -85,7 +85,7 @@ export class ExamplePanelComponent implements OnInit, AfterViewInit, OnDestroy {
       })
     );
     this.showDesignTab = this.showTabComponents.includes(this.componentPath);
-    this.getData(this.translate.translations[this.translate.currentLang]);
+    this.getData(this.translate.getTranslations(this.translate.currentLang()));
     this.translate.onLangChange.subscribe((event: TranslationChangeEvent) => {
       this.getData(event.translations);
     });

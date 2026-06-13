@@ -10,7 +10,7 @@ import { DashboardModule } from 'ng-devui/dashboard';
 import { DevUIApiComponent } from 'ng-devui/shared/devui-api/devui-api.component';
 import { DevUIApiModule } from 'ng-devui/shared/devui-api/devui-api.module';
 import { DevUICodeboxModule } from 'ng-devui/shared/devui-codebox';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { DDemoNavModule } from 'devui-commons/src/demo-nav/d-demo-nav.module';
 import { BasicComponent } from './basic/basic.component';
 import { DashboardDemoComponent } from './dashboard-demo.component';
@@ -35,7 +35,7 @@ import apiEn from '../doc/api-en.md?raw';
     ButtonModule,
     AnchorModule,
     ToggleModule,
-    TranslateModule,
+    TranslatePipe,
     DropDownModule,
     DDemoNavModule,
     DashboardModule,

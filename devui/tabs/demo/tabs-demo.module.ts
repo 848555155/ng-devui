@@ -10,7 +10,7 @@ import { DevUIApiModule } from 'ng-devui/shared/devui-api/devui-api.module';
 import { DevUICodeboxModule } from 'ng-devui/shared/devui-codebox/devui-codebox.module';
 import { TabsModule } from 'ng-devui/tabs';
 import { TransferModule } from 'ng-devui/transfer';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { DDemoNavModule } from 'devui-commons/src/demo-nav/d-demo-nav.module';
 import { AddDeleteComponent } from './add-delete/add-delete.component';
 import { BasicComponent } from './basic/basic.component';
@@ -43,7 +43,7 @@ import apiEn from '../doc/api-en.md?raw';
     ModalModule,
     TabsModule,
     TransferModule,
-    TranslateModule,
+    TranslatePipe,
     RouterModule.forChild([
       { path: '', redirectTo: 'demo', pathMatch: 'full' },
       {

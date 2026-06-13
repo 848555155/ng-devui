@@ -13,7 +13,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { I18nService } from 'ng-devui/i18n';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
-import * as hljs from 'highlight.js/lib/core';
+import hljs from 'highlight.js';
 import { marked } from 'marked';
 import { Subscription } from 'rxjs';
 

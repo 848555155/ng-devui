@@ -14,7 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { DevUIModule } from "ng-devui";
 import { I18nModule } from 'ng-devui/i18n';
 import { IconModule } from 'ng-devui/icon';
@@ -39,7 +39,7 @@ ${importStr}
     IconModule,
     LazyLoadModule,
     NumberTransModule,
-    TranslateModule.forRoot()
+    TranslatePipe.forRoot()
   ],
   declarations: [ ${componentName}, ${componentsStr} ],
   bootstrap: [ ${componentName} ],

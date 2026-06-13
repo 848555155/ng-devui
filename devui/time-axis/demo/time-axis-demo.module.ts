@@ -6,7 +6,7 @@ import { DevUIApiModule } from 'ng-devui/shared/devui-api/devui-api.module';
 import { DevUICodeboxModule } from 'ng-devui/shared/devui-codebox/devui-codebox.module';
 import { TagsModule } from 'ng-devui/tags';
 import { TimeAxisModule } from 'ng-devui/time-axis';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { DDemoNavModule } from 'devui-commons/src/demo-nav/d-demo-nav.module';
 import { TimeAxisAllStatesComponent } from './all-states/time-axis-all-states.component';
 import { AlternativeModeComponent } from './alternative-mode/alternative-mode.component';
@@ -24,7 +24,7 @@ import apiEn from '../doc/api-en.md?raw';
 
 @NgModule({
   imports: [
-    TranslateModule,
+    TranslatePipe,
     CommonModule,
     TimeAxisModule,
     TagsModule,
