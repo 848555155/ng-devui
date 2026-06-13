@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { MapToPipe } from './map-to.pipe';
 
 @Component({
   selector: 'd-model-value',
   templateUrl: './model-value.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class ModelValueComponent {
   options = [

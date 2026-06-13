@@ -1,4 +1,4 @@
-import { Component, ElementRef, QueryList, TemplateRef, ViewChildren } from '@angular/core';
+import { Component, ElementRef, QueryList, TemplateRef, ViewChildren, ChangeDetectionStrategy } from '@angular/core';
 import { MentionDirective } from './mention.directive';
 import { MentionPositionType } from './mention.types';
 
@@ -6,7 +6,8 @@ import { MentionPositionType } from './mention.types';
   selector: 'd-mention',
   templateUrl: './mention.component.html',
   styleUrls: ['./mention.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class MentionComponent {
   @ViewChildren('items', { read: ElementRef }) items!: QueryList<ElementRef>;

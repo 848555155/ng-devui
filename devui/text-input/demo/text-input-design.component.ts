@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
 @Component({
   selector: 'd-text-input-design',
   templateUrl: './text-input-design.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
-
 export class TextInputDesignComponent implements OnInit {
   designObj;
   subs: Subscription = new Subscription();

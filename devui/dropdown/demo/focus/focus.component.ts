@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-dropdown-demo-focus',
   templateUrl: './focus.component.html',
   styleUrls: ['./focus.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class DropDownDemoFocusComponent {
   showExample = false;

@@ -1,7 +1,6 @@
-import { Component, ElementRef, Inject, Input, OnInit, ViewEncapsulation, DOCUMENT } from '@angular/core';
+import { Component, ElementRef, Inject, Input, OnInit, ViewEncapsulation, DOCUMENT, ChangeDetectionStrategy } from '@angular/core';
 import { DevuiOnlineIdeService } from '../devui-online-ide/devui-online-ide.service';
 import { DevuiSourceData } from './devui-source-data';
-
 
 @Component({
   selector: 'd-codebox',
@@ -9,7 +8,8 @@ import { DevuiSourceData } from './devui-source-data';
   styleUrls: ['./devui-codebox.component.scss'],
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class DevuiCodeboxComponent implements OnInit {
   _copied = false;
@@ -31,29 +31,26 @@ export class DevuiCodeboxComponent implements OnInit {
   }
 
   copy(value: string): Promise<string> {
-
-    const promise = new Promise<string>(
-      (resolve, reject): void => {
-        let copyTextArea = null as HTMLTextAreaElement;
-        try {
-          copyTextArea = this.document.createElement('textarea');
-          copyTextArea.style.height = '0px';
-          copyTextArea.style.opacity = '0';
-          copyTextArea.style.width = '0px';
-          this.document.body.appendChild(copyTextArea);
-          copyTextArea.value = value;
-          copyTextArea.select();
-          this.document.execCommand('copy');
-          resolve(value);
-        } finally {
-          if (copyTextArea && copyTextArea.parentNode) {
-            copyTextArea.parentNode.removeChild(copyTextArea);
-          }
+    const promise = new Promise<string>((resolve, reject): void => {
+      let copyTextArea = null as HTMLTextAreaElement;
+      try {
+        copyTextArea = this.document.createElement('textarea');
+        copyTextArea.style.height = '0px';
+        copyTextArea.style.opacity = '0';
+        copyTextArea.style.width = '0px';
+        this.document.body.appendChild(copyTextArea);
+        copyTextArea.value = value;
+        copyTextArea.select();
+        this.document.execCommand('copy');
+        resolve(value);
+      } finally {
+        if (copyTextArea && copyTextArea.parentNode) {
+          copyTextArea.parentNode.removeChild(copyTextArea);
         }
       }
-    );
+    });
 
-    return (promise);
+    return promise;
   }
 
   toggleCode() {

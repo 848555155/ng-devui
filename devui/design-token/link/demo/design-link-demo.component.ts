@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -8,12 +8,13 @@ import linkTs from './link/link.component.ts.txt?raw';
 @Component({
   selector: 'd-design-link-demo',
   templateUrl: './design-link-demo.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class DesignLinkDemoComponent implements OnInit, OnDestroy {
   LinkSource: Array<DevuiSourceData> = [
     { title: 'HTML', language: 'xml', code: linkHtml },
-    { title: 'TS', language: 'typescript', code: linkTs }
+    { title: 'TS', language: 'typescript', code: linkTs },
   ];
 
   navItems = [];
@@ -36,9 +37,7 @@ export class DesignLinkDemoComponent implements OnInit, OnDestroy {
   }
 
   setNavValues(values) {
-    this.navItems = [
-      { dAnchorLink: 'href-a', value: values['href-a'] }
-    ];
+    this.navItems = [{ dAnchorLink: 'href-a', value: values['href-a'] }];
   }
 
   ngOnDestroy() {
@@ -46,5 +45,4 @@ export class DesignLinkDemoComponent implements OnInit, OnDestroy {
       this.subs.unsubscribe();
     }
   }
-
 }

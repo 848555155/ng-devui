@@ -11,7 +11,11 @@
       style="width: 280px"
     >
       <ng-template #iconTemplate let-node="node">
-        <span style="padding-left: 10px" [ngClass]="{ 'my-icon': node?.data?.type }" class="{{ node?.data?.type }}"></span>
+        <span
+          style="padding-left: 10px"
+          [ngClass]="{ 'my-icon': $safeNavigationMigration(node?.data?.type) }"
+          class="{{ node?.data?.type }}"
+        ></span>
       </ng-template>
     </d-tree-select>
   </div>
@@ -33,5 +37,5 @@
   </div>
 </div>
 <ng-template #itemTemplate let-item="item">
-  <span [ngClass]="{ 'my-icon': item?.data?.type }" class="{{ item?.data?.type }}">{{ item.title }}</span>
+  <span [ngClass]="{ 'my-icon': $safeNavigationMigration(item?.data?.type) }" class="{{ item?.data?.type }}">{{ item.title }}</span>
 </ng-template>

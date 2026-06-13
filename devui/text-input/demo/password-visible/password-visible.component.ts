@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-password-visible',
   templateUrl: './password-visible.component.html',
   styleUrls: ['./password-visible.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class PasswordVisibleComponent implements OnInit {
   constructor() {}

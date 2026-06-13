@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { originSource, SourceType } from '../mock-data';
 
 @Component({
   selector: 'd-virtual-scroll',
   templateUrl: './virtual-scroll.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class VirtualScrollComponent implements OnInit {
-
   dataTableOptions = {
     columns: [
       {
@@ -33,8 +33,8 @@ export class VirtualScrollComponent implements OnInit {
         header: 'Date of birth',
         fieldType: 'date',
         sortable: true,
-      }
-    ]
+      },
+    ],
   };
 
   dataSource: Array<SourceType> = JSON.parse(JSON.stringify(originSource.slice()));

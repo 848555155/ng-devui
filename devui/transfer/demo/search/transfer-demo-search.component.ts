@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { TransferDirection } from 'ng-devui';
 
 @Component({
   selector: 'd-transfer-demo-search',
   templateUrl: './transfer-demo-search.component.html',
   styleUrls: ['./transfer-demo-search.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TransferDemoSearchComponent {
   disabled = false;
@@ -54,7 +55,7 @@ export class TransferDemoSearchComponent {
   targetOption2 = [
     { name: 'Option20', value: 3, id: 20, checked: false },
     { name: 'Option21', value: 3, id: 21, checked: false },
-    { name: 'Option22', value: 3, id: 22, checked: false }
+    { name: 'Option22', value: 3, id: 22, checked: false },
   ];
   sourceOptionCopy2 = [...this.sourceOption2];
   targetOptionCopy2 = [...this.targetOption2];
@@ -70,24 +71,30 @@ export class TransferDemoSearchComponent {
 
   search(event) {
     if (!event.keyword) {
-      this[`${TransferDirection[event.direction].toLocaleLowerCase()}Option2`] =
-        [...this[`${TransferDirection[event.direction].toLocaleLowerCase()}OptionCopy2`]];
+      this[`${TransferDirection[event.direction].toLocaleLowerCase()}Option2`] = [
+        ...this[`${TransferDirection[event.direction].toLocaleLowerCase()}OptionCopy2`],
+      ];
     } else {
-      this[`${TransferDirection[event.direction].toLocaleLowerCase()}Option2`] =
-        this[`${TransferDirection[event.direction].toLocaleLowerCase()}OptionCopy2`].filter(item => {
-          return item.name.match(event.keyword) !== null;
-        });
+      this[`${TransferDirection[event.direction].toLocaleLowerCase()}Option2`] = this[
+        `${TransferDirection[event.direction].toLocaleLowerCase()}OptionCopy2`
+      ].filter((item) => {
+        return item.name.match(event.keyword) !== null;
+      });
     }
   }
 
   transfer(event) {
-    const currentCheck = this[`${TransferDirection[1 - event].toLocaleLowerCase()}Option2`].filter(item => item.checked);
-    this[`${TransferDirection[1 - event].toLocaleLowerCase()}Option2`] =
-      this[`${TransferDirection[1 - event].toLocaleLowerCase()}Option2`].filter(item => !currentCheck.some(cur => cur.id === item.id));
-    this[`${TransferDirection[1 - event].toLocaleLowerCase()}OptionCopy2`] =
-      this[`${TransferDirection[1 - event].toLocaleLowerCase()}OptionCopy2`].filter(item => !currentCheck.some(cur => cur.id === item.id));
+    const currentCheck = this[`${TransferDirection[1 - event].toLocaleLowerCase()}Option2`].filter((item) => item.checked);
+    this[`${TransferDirection[1 - event].toLocaleLowerCase()}Option2`] = this[
+      `${TransferDirection[1 - event].toLocaleLowerCase()}Option2`
+    ].filter((item) => !currentCheck.some((cur) => cur.id === item.id));
+    this[`${TransferDirection[1 - event].toLocaleLowerCase()}OptionCopy2`] = this[
+      `${TransferDirection[1 - event].toLocaleLowerCase()}OptionCopy2`
+    ].filter((item) => !currentCheck.some((cur) => cur.id === item.id));
 
-    currentCheck.forEach(item => {item.checked = false;});
+    currentCheck.forEach((item) => {
+      item.checked = false;
+    });
     this[`${TransferDirection[event].toLocaleLowerCase()}Option2`] =
       this[`${TransferDirection[event].toLocaleLowerCase()}Option2`].concat(currentCheck);
     this[`${TransferDirection[event].toLocaleLowerCase()}OptionCopy2`] =

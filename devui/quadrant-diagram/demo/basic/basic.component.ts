@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ILabelDataConfigs } from 'ng-devui/quadrant-diagram';
 
 @Component({
   selector: 'd-basic',
   templateUrl: './basic.component.html',
   styleUrls: ['./basic.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class BasicComponent {
   labelData: Array<ILabelDataConfigs> = [];

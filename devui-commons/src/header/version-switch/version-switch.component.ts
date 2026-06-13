@@ -1,17 +1,18 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-    selector: 'd-header-version-switch',
-    templateUrl: './version-switch.component.html',
-    styleUrls: ['./version-switch.component.scss'],
-    standalone: false
+  selector: 'd-header-version-switch',
+  templateUrl: './version-switch.component.html',
+  styleUrls: ['./version-switch.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class VersionSwitchComponent implements OnInit {
   @Input() versionOptions = [];
 
   currentOption;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     this.currentOption = this.versionOptions[0];
@@ -20,5 +21,4 @@ export class VersionSwitchComponent implements OnInit {
   jumpTo($event): void {
     window.open($event.link, $event.target);
   }
-
 }

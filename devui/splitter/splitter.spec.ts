@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { mouseMoveTrigger } from '../utils/testing/event-helper';
@@ -37,7 +37,8 @@ import { SplitterService } from './splitter.service';
       </d-splitter>
     </section>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestSplitterComponent {
   // splitter input
@@ -80,7 +81,8 @@ class TestSplitterComponent {
       </d-splitter>
     </section>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestVerticalSplitterComponent {
   // splitter input

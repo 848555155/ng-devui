@@ -1,4 +1,4 @@
-import { Component, DebugElement, TemplateRef, ViewChild } from '@angular/core';
+import { Component, DebugElement, TemplateRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { IconGroupComponent } from './icon-group.component';
@@ -12,7 +12,8 @@ import { IconModule } from './icon.module';
     <ng-template #iconTemplate>
       <svg></svg>
     </ng-template>`,
-  imports: [IconModule]
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [IconModule],
 })
 class TestIconComponent {
   icon: string | TemplateRef<any> = '';

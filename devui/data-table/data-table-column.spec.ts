@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, DebugElement, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, DebugElement, ElementRef, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed, fakeAsync, flush, tick } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -59,21 +59,22 @@ const dataTableOptions = {
       [type]="'striped'"
       [checkOptions]="checkOptions"
       [generalRowHoveredData]="true"
-      >
+    >
       <d-column field="$index" header="#" [width]="'50px'"></d-column>
       @for (colOption of dataTableOptions.columns; track colOption) {
-        <d-column
-          [field]="colOption.field"
-          [header]="colOption.header"
-          [fieldType]="colOption.fieldType"
-          [order]="colOption.order"
-          [width]="'150px'"
-          >
-        </d-column>
+      <d-column
+        [field]="colOption.field"
+        [header]="colOption.header"
+        [fieldType]="colOption.fieldType"
+        [order]="colOption.order"
+        [width]="'150px'"
+      >
+      </d-column>
       }
     </d-data-table>
-    `,
-  standalone: false
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestDataTableColumnBasicComponent {
   @ViewChild('datatable') datatable;
@@ -113,7 +114,7 @@ class TestDataTableColumnBasicComponent {
       (cellDBClick)="cellDBClick($event)"
       (rowDBClick)="rowDBClick($event)"
       (rowClick)="rowClick($event)"
-      >
+    >
       <d-column field="$index" header="#" [width]="'50px'"></d-column>
       <d-column
         field="firstName"
@@ -151,32 +152,33 @@ class TestDataTableColumnBasicComponent {
       <div class="custom-filter-content">
         <div class="filter-options">
           @for (item of checkboxList; track item) {
-            <div class="checkbox-group">
-              <d-checkbox
-                [label]="item.lastName"
-                [(ngModel)]="item.chosen"
-                [labelTemplate]="myCheckbox"
-                (change)="onCheckboxChange($event, item.lastName)"
-                >
-                <ng-template #myCheckbox let-label="label">
-                  <d-avatar [name]="label" [width]="16" [height]="16"></d-avatar>
-                  <span class="label-style">{{ label }}</span>
-                </ng-template>
-              </d-checkbox>
-            </div>
+          <div class="checkbox-group">
+            <d-checkbox
+              [label]="item.lastName"
+              [(ngModel)]="item.chosen"
+              [labelTemplate]="myCheckbox"
+              (change)="onCheckboxChange($event, item.lastName)"
+            >
+              <ng-template #myCheckbox let-label="label">
+                <d-avatar [name]="label" [width]="16" [height]="16"></d-avatar>
+                <span class="label-style">{{ label }}</span>
+              </ng-template>
+            </d-checkbox>
+          </div>
           }
         </div>
         <div class="line"></div>
         <div>
           <span class="button-style" style="border-right: 1px solid #e8f0fd; margin-left: 10px;" (click)="filterSource(dropdown)"
             >CONFIRM</span
-            >
-            <span class="button-style" (click)="cancelFilter(dropdown)">CANCEL</span>
-          </div>
+          >
+          <span class="button-style" (click)="cancelFilter(dropdown)">CANCEL</span>
         </div>
-      </ng-template>
-    `,
-  standalone: false
+      </div>
+    </ng-template>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestDataTableAdvancedColumnComponent implements OnInit {
   constructor(private ref: ChangeDetectorRef) {}
@@ -404,7 +406,8 @@ class TestDataTableAdvancedColumnComponent implements OnInit {
       </d-column>
     </d-data-table>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestDataTableColumnEditComponent {
   @ViewChild(DataTableComponent) dataTable: DataTableComponent;
@@ -443,7 +446,8 @@ class TestDataTableColumnEditComponent {
       ></d-column>
     </d-data-table>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestDataTableColumnWithChildrenComponent {
   basicDataSource: Array<SourceType> = JSON.parse(JSON.stringify(treeDataSource.slice(0, 6)));
@@ -494,7 +498,8 @@ class TestDataTableColumnWithChildrenComponent {
       ></d-column>
     </d-data-table>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestDataTableColumnMultiHeaderComponent {
   basicDataSource: Array<SourceType> = JSON.parse(JSON.stringify(originSource.slice(0, 6)));
@@ -512,21 +517,22 @@ class TestDataTableColumnMultiHeaderComponent {
       maxHeight="400px"
       [scrollable]="true"
       [resizeable]="resizable"
-      >
+    >
       <d-column field="$index" header="#" [width]="'100px'"></d-column>
       @for (colOption of dataTableOptions.columns; track colOption) {
-        <d-column
-          [field]="colOption.field"
-          [header]="colOption.header"
-          [sortable]="colOption.sortable"
-          [fieldType]="colOption.fieldType"
-          [width]="'150px'"
-          >
-        </d-column>
+      <d-column
+        [field]="colOption.field"
+        [header]="colOption.header"
+        [sortable]="colOption.sortable"
+        [fieldType]="colOption.fieldType"
+        [width]="'150px'"
+      >
+      </d-column>
       }
     </d-data-table>
-    `,
-  standalone: false
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestDataTableColumnFixHeaderComponent {
   resizable = false;
@@ -544,20 +550,15 @@ class TestDataTableColumnFixHeaderComponent {
       colDraggable="true"
       maxHeight="400px"
       [scrollable]="true"
-      >
+    >
       <d-column field="$index" header="#" [width]="'50px'"></d-column>
       @for (colOption of dataTableOptions.columns; track colOption) {
-        <d-column
-          [field]="colOption.field"
-          [header]="colOption.header"
-          [fieldType]="colOption.fieldType"
-          [width]="'150px'"
-          >
-        </d-column>
+      <d-column [field]="colOption.field" [header]="colOption.header" [fieldType]="colOption.fieldType" [width]="'150px'"> </d-column>
       }
     </d-data-table>
-    `,
-  standalone: false
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestDataTableColumnDragComponent {
   isHeaderFixed = false;
@@ -592,7 +593,8 @@ class TestDataTableColumnDragComponent {
       </div>
     </ng-template>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestDataTableExpandComponent implements OnInit {
   @ViewChild('addSubRowContent', { static: true }) addSubRowContent: ElementRef;

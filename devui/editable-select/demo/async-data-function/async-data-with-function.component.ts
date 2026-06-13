@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Observable, of, timer } from 'rxjs';
 
 @Component({
@@ -11,7 +11,8 @@ import { Observable, of, timer } from 'rxjs';
       }
     `,
   ],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class AsyncDataWithFunctionComponent {
   selectItem: any;

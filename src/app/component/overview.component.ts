@@ -1,5 +1,4 @@
-
-import { Component, Inject, OnDestroy, OnInit, DOCUMENT } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, DOCUMENT, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { I18nService } from 'ng-devui/i18n';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
@@ -15,7 +14,8 @@ import { suggestScopeList } from './scope-list';
   selector: 'd-components-overview',
   templateUrl: './overview.component.html',
   styleUrls: ['./overview.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class ComponentsOverviewComponent implements OnInit, OnDestroy {
   srcPrefix = environment.deployPrefix + 'assets';

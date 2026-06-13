@@ -1,18 +1,21 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { DataTableComponent, TableCheckOptions, TableWidthConfig } from 'ng-devui/data-table';
 import { originSource, SourceType } from '../mock-data';
 
 @Component({
   selector: 'd-check-options',
   templateUrl: './check-options.component.html',
-  styles: [`
-  .page-nation {
-    position: absolute;
-    right: 12px;
-    margin-top: 4px;
-  }
-  `],
-  standalone: false
+  styles: [
+    `
+      .page-nation {
+        position: absolute;
+        right: 12px;
+        margin-top: 4px;
+      }
+    `,
+  ],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class CheckOptionsComponent implements OnInit {
   @ViewChild(DataTableComponent, { static: true }) datatable: DataTableComponent;
@@ -25,82 +28,80 @@ export class CheckOptionsComponent implements OnInit {
       {
         field: 'firstName',
         header: 'First Name',
-        fieldType: 'text'
+        fieldType: 'text',
       },
       {
         field: 'lastName',
         header: 'Last Name',
-        fieldType: 'text'
+        fieldType: 'text',
       },
       {
         field: 'gender',
         header: 'Gender',
-        fieldType: 'text'
+        fieldType: 'text',
       },
       {
         field: 'dob',
         header: 'Date of birth',
-        fieldType: 'date'
-      }
-    ]
+        fieldType: 'date',
+      },
+    ],
   };
 
   tableWidthConfig: TableWidthConfig[] = [
     {
       field: 'checkbox',
-      width: '41px'
+      width: '41px',
     },
     {
       field: '#',
-      width: '10%'
+      width: '10%',
     },
     {
       field: 'firstName',
-      width: '30%'
+      width: '30%',
     },
     {
       field: 'lastName',
-      width: '30%'
+      width: '30%',
     },
     {
       field: 'gender',
-      width: '30%'
+      width: '30%',
     },
     {
       field: 'dob',
-      width: '30%'
-    }
+      width: '30%',
+    },
   ];
 
   checkOptions: TableCheckOptions[] = [
     {
       label: '全选所有数据',
-      onChecked: this.checkTotalData.bind(this)
+      onChecked: this.checkTotalData.bind(this),
     },
     {
       label: '全选当前页数据',
-      onChecked: this.checkPageData.bind(this)
-    }
+      onChecked: this.checkPageData.bind(this),
+    },
   ];
 
   pager = {
     total: 12,
     pageIndex: 1,
-    pageSize: 6
+    pageSize: 6,
   };
 
   totalDataChecked = false;
   allCheckedStatus = false;
 
   checkTotalData() {
-    this.datatable.setTableCheckStatus(
-      {
-        pageAllChecked: true
-      }
-    );
+    this.datatable.setTableCheckStatus({
+      pageAllChecked: true,
+    });
     this.totalDataChecked = true;
     this.allCheckedStatus = true;
-    this.bufferSource = this.bufferSource.map(item => ({ $checked: true, ...item }));
+    this.bufferSource = this.bufferSource.map((item) => ({ $checked: true, ...item }));
   }
 
   checkAllChange(checked: boolean) {
@@ -110,11 +111,9 @@ export class CheckOptionsComponent implements OnInit {
   }
 
   checkPageData() {
-    this.datatable.setTableCheckStatus(
-      {
-        pageAllChecked: true
-      }
-    );
+    this.datatable.setTableCheckStatus({
+      pageAllChecked: true,
+    });
     this.totalDataChecked = false;
     this.allCheckedStatus = true;
 
@@ -128,23 +127,22 @@ export class CheckOptionsComponent implements OnInit {
       rowIndex: rowIndex,
       nestedIndex: nestedIndex,
       rowItem: rowItem,
-      checked: checked
+      checked: checked,
     });
 
-    const dataItem = this.bufferSource.find(item => item.id === rowItem.id);
+    const dataItem = this.bufferSource.find((item) => item.id === rowItem.id);
     dataItem.$checked = checked;
 
     if (checked) {
-      this.totalDataChecked = this.basicDataSource.every(item => item.$checked);
-      this.allCheckedStatus = this.bufferSource.every(item => item.$checked);
+      this.totalDataChecked = this.basicDataSource.every((item) => item.$checked);
+      this.allCheckedStatus = this.bufferSource.every((item) => item.$checked);
     } else {
       this.totalDataChecked = false;
       this.allCheckedStatus = false;
     }
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onPageIndexChange(pageIndex) {
     const startIndex = (pageIndex - 1) * this.pager.pageSize;

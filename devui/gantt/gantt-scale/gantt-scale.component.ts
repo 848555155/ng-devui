@@ -1,11 +1,13 @@
 import {
-  Component, EventEmitter,
+  Component,
+  EventEmitter,
   Input,
   OnChanges,
   OnDestroy,
   OnInit,
   Output,
-  SimpleChanges
+  SimpleChanges,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { I18nInterface, I18nService } from 'ng-devui/i18n';
 import { fromEvent, Subscription } from 'rxjs';
@@ -15,7 +17,8 @@ import { GanttService } from '../gantt.service';
   selector: 'd-gantt-scale',
   templateUrl: './gantt-scale.component.html',
   styleUrls: ['./gantt-scale.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class GanttScaleComponent implements OnInit, OnChanges, OnDestroy {
   scaleData: GanttScaleDateInfo[];
@@ -52,7 +55,7 @@ export class GanttScaleComponent implements OnInit, OnChanges, OnDestroy {
   i18nLocale: I18nInterface['locale'];
   i18nCommonText: I18nInterface['common'];
   i18nSubscription: Subscription;
-  constructor(private ganttService: GanttService, private i18n: I18nService) { }
+  constructor(private ganttService: GanttService, private i18n: I18nService) {}
 
   ngOnInit() {
     this.i18nText = this.i18n.getI18nText().gantt;
@@ -79,13 +82,13 @@ export class GanttScaleComponent implements OnInit, OnChanges, OnDestroy {
         this.getViewScaleData();
       }
       if (config.unit) {
-        if(this.unit === GanttScaleUnit.day && (config.unit === GanttScaleUnit.month || config.unit === GanttScaleUnit.week)) {
+        if (this.unit === GanttScaleUnit.day && (config.unit === GanttScaleUnit.month || config.unit === GanttScaleUnit.week)) {
           this.clearDaySplitLine();
         }
         this.unit = config.unit;
         this.getViewScaleData();
       }
-      if (config.viewChange){
+      if (config.viewChange) {
         this.getViewScaleData();
       }
     });
@@ -97,9 +100,9 @@ export class GanttScaleComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 
-  registerScrollEvent () {
+  registerScrollEvent() {
     if (!this.scrollHandler && this.scrollElement) {
-      this.scrollHandler = fromEvent(this.scrollElement, 'scroll').subscribe(e => {
+      this.scrollHandler = fromEvent(this.scrollElement, 'scroll').subscribe((e) => {
         this.getViewScaleData();
       });
     }
@@ -151,7 +154,7 @@ export class GanttScaleComponent implements OnInit, OnChanges, OnDestroy {
       milestone: '',
       highlightStart: false,
       scaleStartVisable: true,
-      index
+      index,
     };
 
     const dayOfMonth = date.getDate();
@@ -204,7 +207,7 @@ export class GanttScaleComponent implements OnInit, OnChanges, OnDestroy {
         }
         dateInfo.highlightStart = false;
       });
-      const highlightBarStartIndex =  this.scaleData.findIndex((data) => {
+      const highlightBarStartIndex = this.scaleData.findIndex((data) => {
         return data.highlight;
       });
       if (highlightBarStartIndex > -1) {
@@ -255,9 +258,9 @@ export class GanttScaleComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   clearDaySplitLine() {
-    if(this.showDaySplitLine && this.ganttBarContainerElement) {
+    if (this.showDaySplitLine && this.ganttBarContainerElement) {
       const dayLines = this.ganttBarContainerElement.querySelectorAll('.devui-day-split-line');
-      dayLines.forEach(item => {
+      dayLines.forEach((item) => {
         const parent = item.parentElement;
         parent.removeChild(item);
       });

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, forwardRef, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, forwardRef, Input, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DevConfigService, WithConfig } from 'ng-devui/utils';
 import { TextareaDirective } from './textarea.directive';
@@ -15,7 +15,8 @@ import { TextareaDirective } from './textarea.directive';
     },
   ],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TextareaMaxLengthComponent implements ControlValueAccessor, AfterViewInit {
   @ViewChild(TextareaDirective) textareaInstance: TextareaDirective;

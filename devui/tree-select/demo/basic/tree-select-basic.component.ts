@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-tree-select-basic',
   templateUrl: './tree-select-basic.component.html',
   styles: ['h5 { margin-bottom:20px } d-tree-select { width: 280px }'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TreeSelectBasicComponent {
   data1 = [

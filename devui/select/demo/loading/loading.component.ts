@@ -1,11 +1,12 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { SelectComponent } from 'ng-devui/select';
 import { of, timer } from 'rxjs';
 
 @Component({
   selector: 'd-loading',
   templateUrl: './loading.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class LoadingComponent {
   @ViewChild('select', { static: true }) selectComponent: SelectComponent;

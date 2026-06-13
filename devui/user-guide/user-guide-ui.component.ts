@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit, TemplateRef } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { IButtonStyle } from 'ng-devui/button';
 import { I18nInterface, I18nService } from 'ng-devui/i18n';
 import { Subscription } from 'rxjs';
@@ -9,7 +9,8 @@ import { IUserGuideExtraConfig } from './user-guide.types';
   selector: 'd-user-guide-ui',
   templateUrl: './user-guide-ui.component.html',
   styleUrls: ['./user-guide-ui.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class UserGuideUIComponent implements OnInit, OnDestroy {
   i18nCommonText: I18nInterface['userGuide'];
@@ -51,19 +52,37 @@ export class UserGuideUIComponent implements OnInit, OnDestroy {
   get nextButtonType(): IButtonStyle {
     return (this.extraConfig?.nextButtonType || 'primary') as IButtonStyle;
   }
-  constructor(private userGuideCoreService: UserGuideCoreService, private i18n: I18nService) { }
+  constructor(private userGuideCoreService: UserGuideCoreService, private i18n: I18nService) {}
 
   ngOnInit() {
-    this.userGuideCoreService.curContent.subscribe(item => {this.title = item;});
-    this.userGuideCoreService.curSubContent.subscribe(item => {this.content = item;});
-    this.userGuideCoreService.canNext.subscribe(item => {this.canNext = item;});
-    this.userGuideCoreService.canPrev.subscribe(item => {this.canPrev = item;});
-    this.userGuideCoreService.canFinish.subscribe(item => {this.canFinish = item;});
-    this.userGuideCoreService.curStep.subscribe(item => {this.currentStep = item;});
-    this.userGuideCoreService.curStepType.subscribe(item => {this.curStepType = item;});
-    this.userGuideCoreService.showButtons.subscribe(item => {this.showButtons = item;});
-    this.userGuideCoreService.showOperateZone.subscribe(item => {this.showOperateZone = item;});
-    this.userGuideCoreService.showOverlayState.subscribe(item => {
+    this.userGuideCoreService.curContent.subscribe((item) => {
+      this.title = item;
+    });
+    this.userGuideCoreService.curSubContent.subscribe((item) => {
+      this.content = item;
+    });
+    this.userGuideCoreService.canNext.subscribe((item) => {
+      this.canNext = item;
+    });
+    this.userGuideCoreService.canPrev.subscribe((item) => {
+      this.canPrev = item;
+    });
+    this.userGuideCoreService.canFinish.subscribe((item) => {
+      this.canFinish = item;
+    });
+    this.userGuideCoreService.curStep.subscribe((item) => {
+      this.currentStep = item;
+    });
+    this.userGuideCoreService.curStepType.subscribe((item) => {
+      this.curStepType = item;
+    });
+    this.userGuideCoreService.showButtons.subscribe((item) => {
+      this.showButtons = item;
+    });
+    this.userGuideCoreService.showOperateZone.subscribe((item) => {
+      this.showOperateZone = item;
+    });
+    this.userGuideCoreService.showOverlayState.subscribe((item) => {
       this.showMaskLayer = item.showMaskLayer;
 
       this.showNormalOverlay = item.showNormalOverlay;
@@ -75,7 +94,9 @@ export class UserGuideUIComponent implements OnInit, OnDestroy {
 
       this.showBorder = item.showBorder;
     });
-    this.userGuideCoreService.showPrevButton.subscribe(item => {this.showPrevButton = item;});
+    this.userGuideCoreService.showPrevButton.subscribe((item) => {
+      this.showPrevButton = item;
+    });
 
     this.stepsLength = this.userGuideCoreService.getStepLength();
 
@@ -101,9 +122,7 @@ export class UserGuideUIComponent implements OnInit, OnDestroy {
     this.close();
   }
 
-  close() {
-
-  }
+  close() {}
 
   switchStep(index) {
     this.userGuideCoreService.goStep(index);

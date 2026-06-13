@@ -10,7 +10,8 @@ import {
   OnInit,
   Output,
   TemplateRef,
-  ViewChild
+  ViewChild,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { I18nFormat, I18nInterface, I18nService } from 'ng-devui/i18n';
@@ -28,11 +29,12 @@ import { DatepickerProService } from './datepicker-pro.service';
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => DatepickerProCalendarComponent),
-      multi: true
-    }
+      multi: true,
+    },
   ],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class DatepickerProCalendarComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() set activeRangeType(type: 'start' | 'end') {
@@ -101,7 +103,7 @@ export class DatepickerProCalendarComponent implements OnInit, AfterViewInit, On
 
   @Input() set markedRangeDateList(value: Date[][]) {
     this.pickerSrv.markedRangeDateList = value;
-  };
+  }
   @Input() set markedDateList(value: Date[]) {
     this.pickerSrv.markedDateList = value;
   }
@@ -113,7 +115,7 @@ export class DatepickerProCalendarComponent implements OnInit, AfterViewInit, On
   @ContentChild('footerTemplate') footerTemplate: TemplateRef<any>;
   @ContentChild('markDateInfoTemplate') set markDateInfoTemplate(tmp: TemplateRef<any>) {
     this.pickerSrv.markDateInfoTemplate = tmp;
-  };
+  }
 
   @ViewChild('dateInputStart') datepickerInputStart: ElementRef;
   @ViewChild('dateInputEnd') datepickerInputEnd: ElementRef;
@@ -167,13 +169,13 @@ export class DatepickerProCalendarComponent implements OnInit, AfterViewInit, On
     }
     this.pickerSrv.updateDateValue.next({
       type: this.isRangeType ? 'range' : 'single',
-      value: this.isRangeType ? [] : null
+      value: this.isRangeType ? [] : null,
     });
 
     this.pickerSrv.updateTimeChange.next({
       hour: null,
       min: null,
-      seconds: null
+      seconds: null,
     });
     if (this.isRangeType) {
       this.dateValue = [];
@@ -204,23 +206,18 @@ export class DatepickerProCalendarComponent implements OnInit, AfterViewInit, On
   }
 
   private initObservable() {
-    this.pickerSrv.selectedDateChange.pipe(
-      takeUntil(this.unsubscribe$)
-    ).subscribe(change => {
+    this.pickerSrv.selectedDateChange.pipe(takeUntil(this.unsubscribe$)).subscribe((change) => {
       if (this.isRangeType) {
         this.pickerSrv.curRangeDate = change.value as Date[];
-        this.dateValue = (change.value as Date[]).map(d => this.formatDateToString(d));
+        this.dateValue = (change.value as Date[]).map((d) => this.formatDateToString(d));
         this.onChange(this.pickerSrv.curRangeDate);
       } else {
         this.pickerSrv.curDate = change.value as Date;
         this.onChange(change.value);
       }
-
     });
 
-    this.pickerSrv.selectedTimeChange.pipe(
-      takeUntil(this.unsubscribe$)
-    ).subscribe(time => {
+    this.pickerSrv.selectedTimeChange.pipe(takeUntil(this.unsubscribe$)).subscribe((time) => {
       if (this.isRangeType) {
         const curTime = new Date(this.curActiveDate.getTime()).setHours(time.hour, time.min, time.seconds);
         const curDate = new Date(curTime);
@@ -245,12 +242,9 @@ export class DatepickerProCalendarComponent implements OnInit, AfterViewInit, On
         this.pickerSrv.curDate = curDate;
         this.onChange(curDate);
       }
-
     });
 
-    this.pickerSrv.closeDropdownEvent.pipe(
-      takeUntil(this.unsubscribe$)
-    ).subscribe(isConfirm => {
+    this.pickerSrv.closeDropdownEvent.pipe(takeUntil(this.unsubscribe$)).subscribe((isConfirm) => {
       if (isConfirm) {
         this.confirmEvent.emit(this.pickerSrv.curDate || this.pickerSrv.curRangeDate);
       } else {
@@ -298,14 +292,14 @@ export class DatepickerProCalendarComponent implements OnInit, AfterViewInit, On
       return;
     }
 
-    this.dateValue = value.map(d => {
+    this.dateValue = value.map((d) => {
       return d ? this.datepickerConvert.format(d, this.curFormat) : '';
     });
 
     this.pickerSrv.curRangeDate = value;
     this.pickerSrv.updateDateValue.next({
       type: 'range',
-      value
+      value,
     });
   }
 
@@ -317,14 +311,14 @@ export class DatepickerProCalendarComponent implements OnInit, AfterViewInit, On
     this.pickerSrv.curDate = value;
     this.pickerSrv.updateDateValue.next({
       type: 'single',
-      value
+      value,
     });
 
     if (this.showTime) {
       this.pickerSrv.updateTimeChange.next({
         hour: value.getHours(),
         min: value.getMinutes(),
-        seconds: value.getSeconds()
+        seconds: value.getSeconds(),
       });
     }
   }

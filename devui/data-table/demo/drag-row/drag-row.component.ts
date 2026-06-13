@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { TableWidthConfig } from 'ng-devui/data-table';
 import { SourceType, originSource } from '../mock-data';
 
@@ -6,7 +6,8 @@ import { SourceType, originSource } from '../mock-data';
   selector: 'd-drag-row',
   templateUrl: './drag-row.component.html',
   styleUrls: ['./drag-row.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class DragRowComponent {
   basicDataSource: Array<SourceType> = JSON.parse(JSON.stringify(originSource.slice(0, 6)));

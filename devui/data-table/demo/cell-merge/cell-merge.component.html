@@ -12,13 +12,11 @@
       <tr dTableRow>
         <td dTableCell [attr.colspan]="rowIndex === 5 ? 4 : 1">{{ rowItem?.firstName }}</td>
         @if (rowIndex < 5) {
-          <td dTableCell>{{ rowItem?.lastName }}</td>
-        }
-        @if (rowIndex === 0) {
-          <td dTableCell rowspan="5">{{ rowItem?.gender }}</td>
-        }
-        @if (rowIndex < 5) {
-          <td dTableCell>{{ rowItem?.dob | i18nDate: 'short':false }}</td>
+        <td dTableCell>{{ rowItem?.lastName }}</td>
+        } @if (rowIndex === 0) {
+        <td dTableCell rowspan="5">{{ rowItem?.gender }}</td>
+        } @if (rowIndex < 5) {
+        <td dTableCell>{{ $safeNavigationMigration(rowItem?.dob) | i18nDate : 'short' : false }}</td>
         }
       </tr>
     </ng-template>

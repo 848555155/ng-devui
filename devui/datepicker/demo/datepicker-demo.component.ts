@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -60,7 +60,8 @@ import twoDatepickerFormatScss from './two-datepicker-format/two-datepicker-form
 @Component({
   selector: 'd-datepicker-demo',
   templateUrl: './datepicker-demo.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class DatepickerDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [
@@ -69,9 +70,9 @@ export class DatepickerDemoComponent implements OnInit, OnDestroy {
     { title: 'SCSS', language: 'css', code: basicScss },
   ];
   setModeSource: Array<DevuiSourceData> = [
-    {title: 'HTML', language: 'html', code: setModeHtml},
-    {title: 'TS', language: 'typescript', code: setModeTs},
-    {title: 'SCSS', language: 'css', code: setModeScss},
+    { title: 'HTML', language: 'html', code: setModeHtml },
+    { title: 'TS', language: 'typescript', code: setModeTs },
+    { title: 'SCSS', language: 'css', code: setModeScss },
   ];
   minMaxSource: Array<DevuiSourceData> = [
     { title: 'HTML', language: 'html', code: minMaxHtml },

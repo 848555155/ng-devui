@@ -1,10 +1,11 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-draggable',
   templateUrl: './draggable.component.html',
   styleUrls: ['./draggable.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class DraggableComponent {
   transferData: string;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox/devui-source-data';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -19,7 +19,8 @@ import autoExpandTs from './auto-expand/auto-expand.component.ts.txt?raw';
 @Component({
   selector: 'd-menu-demo',
   templateUrl: './menu-demo.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class MenuDemoComponent implements OnInit {
   DemoBasic: Array<DevuiSourceData> = [

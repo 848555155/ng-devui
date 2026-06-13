@@ -1,4 +1,4 @@
-import { Component, DebugElement } from '@angular/core';
+import { Component, DebugElement, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -9,20 +9,21 @@ import { RadioModule } from './radio.module';
   template: `
     <section>
       @for (value of values; track value) {
-        <d-radio
-          [name]="'independent-city'"
-          [(ngModel)]="choose"
-          [value]="value"
-          [disabled]="isDisabled"
-          [beforeChange]="beforeChange"
-          (ngModelChange)="valueChange($event)"
-          >
-          {{ value }}
-        </d-radio>
+      <d-radio
+        [name]="'independent-city'"
+        [(ngModel)]="choose"
+        [value]="value"
+        [disabled]="isDisabled"
+        [beforeChange]="beforeChange"
+        (ngModelChange)="valueChange($event)"
+      >
+        {{ value }}
+      </d-radio>
       }
     </section>
-    `,
-  standalone: false
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestRadioComponent {
   values = ['Item1', 'Item2', 'Item3'];
@@ -32,7 +33,6 @@ class TestRadioComponent {
   constructor() {}
 
   valueChange = jasmine.createSpy('value change');
-
 }
 
 describe('radio', () => {
@@ -45,7 +45,7 @@ describe('radio', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [RadioModule, FormsModule],
-      declarations: [TestRadioComponent]
+      declarations: [TestRadioComponent],
     }).compileComponents();
   }));
 
@@ -122,10 +122,10 @@ describe('radio', () => {
   });
 
   describe('beforechange', () => {
-    beforeEach((() => {
+    beforeEach(() => {
       fixture = TestBed.createComponent(TestRadioComponent);
       testComponent = fixture.debugElement.componentInstance;
-    }));
+    });
 
     it('select third should be avoid by beforechange', fakeAsync(() => {
       testComponent.beforeChange = (value) => {
@@ -152,7 +152,7 @@ describe('radio', () => {
 
     it('promise type should work', fakeAsync(() => {
       testComponent.beforeChange = (value) => {
-        return  Promise.resolve(value !== 'Item3');
+        return Promise.resolve(value !== 'Item3');
       };
       fixture.detectChanges();
       flush();

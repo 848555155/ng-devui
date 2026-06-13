@@ -1,13 +1,23 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Input,
+  OnChanges,
+  OnDestroy,
+  SimpleChanges,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { DragDropService } from '../services/drag-drop.service';
 
 @Component({
   selector: 'd-drag-preview-clone-dom-ref',
   template: '',
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
-
 export class DragPreviewCloneDomRefComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() domRef: HTMLElement;
   @Input() copyStyle = true;
@@ -36,7 +46,6 @@ export class DragPreviewCloneDomRefComponent implements AfterViewInit, OnChanges
     if (this.cloneNode) {
       this.destroyView();
     }
-
   }
 
   createView() {
@@ -59,5 +68,4 @@ export class DragPreviewCloneDomRefComponent implements AfterViewInit, OnChanges
   public updateTemplate() {
     this.cdr.detectChanges();
   }
-
 }

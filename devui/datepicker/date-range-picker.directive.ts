@@ -16,7 +16,8 @@ import {
   TemplateRef,
   ViewChild,
   forwardRef,
-  DOCUMENT
+  DOCUMENT,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { I18nInterface, I18nService } from 'ng-devui/i18n';
@@ -51,7 +52,8 @@ import { DateRangePickerComponent } from './date-range-picker.component';
   styleUrls: ['./date-range-picker.component.scss'],
   animations: [fadeInOut],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 // tslint:disable-next-line: component-class-suffix
 export class DateRangePickerDirective implements OnInit, ControlValueAccessor, OnDestroy {
@@ -324,14 +326,14 @@ export class DateRangePickerDirective implements OnInit, ControlValueAccessor, O
 
   onPositionChange(position: ConnectedOverlayPositionChange) {
     switch (position.connectionPair.overlayY) {
-    case 'top':
-    case 'center':
-      this.datepickerPosition = 'bottom';
-      break;
-    case 'bottom':
-      this.datepickerPosition = 'top';
-      break;
-    default:
+      case 'top':
+      case 'center':
+        this.datepickerPosition = 'bottom';
+        break;
+      case 'bottom':
+        this.datepickerPosition = 'top';
+        break;
+      default:
     }
   }
 
@@ -444,5 +446,4 @@ export class DateRangePickerDirective implements OnInit, ControlValueAccessor, O
     const currentReason = typeof reason === 'number' ? reason : SelectDateRangeChangeReason.custom;
     this.chooseDate([null, null], currentReason, hide);
   };
-
 }

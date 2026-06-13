@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DialogService } from 'ng-devui/modal';
 import { ModalOneComponent } from '../modal-one/modal-one.component';
 
@@ -7,16 +7,13 @@ import { ModalOneComponent } from '../modal-one/modal-one.component';
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.css'],
   providers: [DialogService],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class ModalComponent implements OnInit {
+  constructor(private dialogService: DialogService) {}
 
-  constructor(private dialogService: DialogService) {
-  }
-
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   openstandardDialog(dialogtype?: string) {
     const results = this.dialogService.open({
@@ -37,7 +34,6 @@ export class ModalComponent implements OnInit {
           handler: ($event: Event) => {
             results.modalInstance.hide();
           },
-
         },
         {
           id: 'btn-cancel',
@@ -46,15 +42,13 @@ export class ModalComponent implements OnInit {
           handler: ($event: Event) => {
             results.modalInstance.hide();
           },
-
         },
       ],
       data: {
         name: 'Tom',
         age: 10,
-        address: 'Chengdu'
+        address: 'Chengdu',
       },
     });
   }
-
 }

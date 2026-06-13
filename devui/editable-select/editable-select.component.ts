@@ -15,6 +15,7 @@ import {
   SimpleChanges,
   TemplateRef,
   ViewChild,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AutoCompleteDirective } from 'ng-devui/auto-complete';
@@ -35,7 +36,8 @@ import { Observable, Subscription } from 'rxjs';
     },
   ],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class EditableSelectComponent implements ControlValueAccessor, OnInit, OnChanges, OnDestroy {
   @Input() appendToBody = false;

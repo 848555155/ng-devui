@@ -4,9 +4,9 @@ import {
   ConnectedOverlayPositionChange,
   ConnectedPosition,
   ScrollStrategy,
-  VerticalConnectionPos
+  VerticalConnectionPos,
 } from '@angular/cdk/overlay';
-import { Component, ElementRef, EventEmitter, Input, Output, TemplateRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, TemplateRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
 import { fadeInOut } from 'ng-devui/utils';
 import { AutoCompleteConfig } from './auto-complete-config';
@@ -17,7 +17,8 @@ import { AutoCompleteConfig } from './auto-complete-config';
   styleUrls: ['auto-complete-popup.component.scss'],
   animations: [fadeInOut],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class AutoCompletePopupComponent implements ControlValueAccessor {
   @Input() width: number;

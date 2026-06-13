@@ -1,20 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-ngmodel',
   templateUrl: './ngmodel.component.html',
   styleUrls: ['./ngmodel.component.css'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class NgmodelComponent implements OnInit {
   searchText = 'devui';
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onSearch(term) {
     console.log(term);
   }
-
 }

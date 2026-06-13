@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -6,10 +6,9 @@ import { StatusComponent } from './status.component';
 import { StatusModule } from './status.module';
 
 @Component({
-  template: `
-  <d-status [type]="type"></d-status>
-  `,
-  standalone: false
+  template: ` <d-status [type]="type"></d-status> `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestStatusComponent {
   type = 'success';
@@ -24,7 +23,7 @@ describe('status', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [StatusModule],
-        declarations: [TestStatusComponent]
+        declarations: [TestStatusComponent],
       }).compileComponents();
     });
 

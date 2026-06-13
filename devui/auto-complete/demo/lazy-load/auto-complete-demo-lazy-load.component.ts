@@ -1,13 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-auto-complete-demo-lazy-load',
   templateUrl: './auto-complete-demo-lazy-load.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class AutoDemoLazyLoadComponent {
-  languages = ['C#', 'C', 'C++', 'CPython', 'Java', 'JavaScript', 'Go', 'Python', 'Ruby', 'F#', 'TypeScript', 'SQL',
-    'LiveScript', 'CoffeeScript'];
+  languages = [
+    'C#',
+    'C',
+    'C++',
+    'CPython',
+    'Java',
+    'JavaScript',
+    'Go',
+    'Python',
+    'Ruby',
+    'F#',
+    'TypeScript',
+    'SQL',
+    'LiveScript',
+    'CoffeeScript',
+  ];
 
   loadMore($event) {
     this.languages = [...this.languages, 'c', 'c++'];

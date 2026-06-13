@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { originSource, SourceType } from '../mock-data';
 
 @Component({
   selector: 'd-drag-column',
   templateUrl: 'drag-column.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class DragColumnComponent {
   basicDataSource: Array<SourceType> = JSON.parse(JSON.stringify(originSource.slice(0, 6)));
@@ -13,24 +14,24 @@ export class DragColumnComponent {
       {
         field: 'firstName',
         header: 'First Name',
-        fieldType: 'text'
+        fieldType: 'text',
       },
       {
         field: 'lastName',
         header: 'Last Name',
-        fieldType: 'text'
+        fieldType: 'text',
       },
       {
         field: 'gender',
         header: 'gender',
-        fieldType: 'text'
+        fieldType: 'text',
       },
       {
         field: 'dob',
         header: 'Date of birth',
-        fieldType: 'date'
-      }
-    ]
+        fieldType: 'date',
+      },
+    ],
   };
 
   onDragEnd(dragData) {

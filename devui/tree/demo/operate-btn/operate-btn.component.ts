@@ -1,10 +1,11 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ITreeItem, OperableTreeComponent, TreeNode } from 'ng-devui/tree';
 
 @Component({
   selector: 'd-operate-btn',
   templateUrl: './operate-btn.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class OperateBtnComponent {
   currentSelectedNode;

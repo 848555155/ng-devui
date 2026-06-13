@@ -1,4 +1,4 @@
-import { Component, DebugElement } from '@angular/core';
+import { Component, DebugElement, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { TagsModule } from './tags.module';
@@ -10,7 +10,8 @@ import { TagsModule } from './tags.module';
       </d-tags>
     </section>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestTagsComponent {
   tagList: any = [
@@ -32,7 +33,7 @@ describe('tag', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [TagsModule],
-      declarations: [TestTagsComponent]
+      declarations: [TestTagsComponent],
     }).compileComponents();
   }));
 

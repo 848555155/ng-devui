@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -32,7 +32,8 @@ import virtualScrollCss from './virtual-scroll/virtual-scroll.component.css?raw'
 @Component({
   selector: 'd-tree-demo',
   templateUrl: './tree-demo.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TreeDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

@@ -1,4 +1,4 @@
-import { Component, Inject, NgZone, OnDestroy, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, NgZone, OnDestroy, OnInit, Renderer2, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { NavigationEnd, Router, Event, NavigationError } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { DEVUI_LANG, EN_US, I18nService, ZH_CN } from 'ng-devui/i18n';
@@ -11,7 +11,8 @@ import { LinkMap } from '../../devui-commons/src/constant';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class AppComponent implements OnInit, OnDestroy {
   version;
@@ -21,22 +22,28 @@ export class AppComponent implements OnInit, OnDestroy {
     {
       name: '设计规范',
       enName: 'DevUI Design',
-      href: '/design-cn/start'
+      href: '/design-cn/start',
     },
     {
       name: '组件',
       enName: 'Components',
       href: '/components/overview',
-      target: '_self'
+      target: '_self',
     },
     {
       name: '版本历程',
       enName: 'Changelog',
-      href: LinkMap.versionRelease
+      href: LinkMap.versionRelease,
     },
   ];
-  constructor(private renderer2: Renderer2, private ngZone: NgZone, private router: Router, private translate: TranslateService,
-              private i18n: I18nService, @Inject(DEVUI_LANG) private appLang) {
+  constructor(
+    private renderer2: Renderer2,
+    private ngZone: NgZone,
+    private router: Router,
+    private translate: TranslateService,
+    private i18n: I18nService,
+    @Inject(DEVUI_LANG) private appLang
+  ) {
     translate.addLangs([ZH_CN, EN_US]);
     translate.setDefaultLang(this.appLang ? this.appLang : ZH_CN);
     this.router.events.subscribe((event: Event) => {
@@ -55,8 +62,8 @@ export class AppComponent implements OnInit, OnDestroy {
   }
   ngOnInit(): void {
     this.currentLang = localStorage.getItem('lang') || this.appLang;
-    this.innerMenuList.find(menu => menu.href === '/components/overview').href = `/components/${this.currentLang}/overview`;
-    this.router.events.subscribe(event => {
+    this.innerMenuList.find((menu) => menu.href === '/components/overview').href = `/components/${this.currentLang}/overview`;
+    this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         const pathArray = this.router.url.split('/');
         const langParam = pathArray[2];

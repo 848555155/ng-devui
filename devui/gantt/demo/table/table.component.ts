@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ColumnAdjustStrategy, ColumnResizeEventArg } from 'ng-devui/data-table';
 import { GanttMilestone, GanttScaleUnit, GanttService, GanttTaskInfo } from 'ng-devui/gantt';
 import { Subscription } from 'rxjs';
@@ -24,7 +24,8 @@ const DEFAULT_WIDTH_CONFIG = [
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
   providers: [GanttService],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
   curYear = curYear;

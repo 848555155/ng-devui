@@ -1,4 +1,4 @@
-import { Component, DebugElement } from '@angular/core';
+import { Component, DebugElement, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { FormDirective } from './form.directive';
@@ -20,7 +20,8 @@ import { FormModule } from './form.module';
       </d-form-item>
     </form>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestFormComponent {
   layout = 'horizontal';
@@ -33,7 +34,7 @@ describe('dForm', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [FormModule],
-      declarations: [TestFormComponent]
+      declarations: [TestFormComponent],
     }).compileComponents();
   }));
 
@@ -75,14 +76,13 @@ describe('dForm', () => {
 
         expect(formInsideNativeElement.classList).toContain('devui-form-columns');
       });
-
     });
 
     describe('form item default class', () => {
       it('class should correct', () => {
         const formItems = formInsideNativeElement.querySelectorAll('d-form-item');
 
-        formItems.forEach(item => expect(item.classList).toContain('devui-form-item'));
+        formItems.forEach((item) => expect(item.classList).toContain('devui-form-item'));
       });
     });
 
@@ -90,7 +90,7 @@ describe('dForm', () => {
       it('class should correct', () => {
         const formItems = formInsideNativeElement.querySelectorAll('d-form-control');
 
-        formItems.forEach(item => expect(item.classList).toContain('devui-form-controls'));
+        formItems.forEach((item) => expect(item.classList).toContain('devui-form-controls'));
       });
     });
 
@@ -98,7 +98,7 @@ describe('dForm', () => {
       it('class should correct', () => {
         const formLabels = formInsideNativeElement.querySelectorAll('d-form-label');
 
-        formLabels.forEach(item => expect(item.classList).toContain('devui-form-label'));
+        formLabels.forEach((item) => expect(item.classList).toContain('devui-form-label'));
       });
 
       it('Form label should required work', () => {
@@ -125,8 +125,6 @@ describe('dForm', () => {
         formLabelHelpIcon = formLabel.query(By.css('.devui-helping'));
         expect(formLabelHelpIcon).toBeNull();
       });
-
     });
   });
-
 });

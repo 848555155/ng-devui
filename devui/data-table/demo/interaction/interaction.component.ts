@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { DataTableComponent, SortDirection, SortEventArg, TableWidthConfig, tableResizeFunc } from 'ng-devui/data-table';
 import { SourceType, originSource } from '../mock-data';
 
@@ -6,7 +6,8 @@ import { SourceType, originSource } from '../mock-data';
   selector: 'd-interaction',
   templateUrl: './interaction.component.html',
   styleUrls: ['./interaction.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class InteractionComponent implements OnInit {
   @ViewChild(DataTableComponent, { static: true }) datatable: DataTableComponent;
@@ -51,7 +52,6 @@ export class InteractionComponent implements OnInit {
       name: 'john',
       value: 'john',
     },
-
   ];
 
   filterListMulti = JSON.parse(JSON.stringify(originSource.slice(0, 6)));

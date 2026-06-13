@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-demo-time-axis-single',
   templateUrl: './single.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TimeAxisSingleComponent {
   dataBottom = {
@@ -16,21 +17,21 @@ export class TimeAxisSingleComponent {
       },
       {
         text: 'Check',
-        dotColor: 'var(--devui-success)'
+        dotColor: 'var(--devui-success)',
       },
       {
         text: 'Build',
-        dotColor: 'var(--devui-danger)'
+        dotColor: 'var(--devui-danger)',
       },
       {
         text: 'Patch',
-        dotColor: 'var(--devui-warning)'
+        dotColor: 'var(--devui-warning)',
       },
       {
         text: 'End',
-        dotColor: 'var(--devui-waiting)'
-      }
-    ]
+        dotColor: 'var(--devui-waiting)',
+      },
+    ],
   };
 
   dataRight = {
@@ -42,23 +43,22 @@ export class TimeAxisSingleComponent {
       },
       {
         text: 'Check',
-        dotColor: 'var(--devui-success)'
+        dotColor: 'var(--devui-success)',
       },
       {
         text: 'Build',
-        dotColor: 'var(--devui-danger)'
+        dotColor: 'var(--devui-danger)',
       },
       {
         text: 'Depoy',
-        dotColor: 'var(--devui-warning)'
+        dotColor: 'var(--devui-warning)',
       },
       {
         text: 'End',
-        dotColor: 'var(--devui-waiting)'
-      }
-    ]
+        dotColor: 'var(--devui-waiting)',
+      },
+    ],
   };
 
-  constructor() { }
-
+  constructor() {}
 }

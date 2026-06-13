@@ -1,14 +1,15 @@
 /* 注意需要在使用的NgModule中 import { HttpClientModule  } from '@angular/common/http'; */
 
 import { HttpClient } from '@angular/common/http';
-import { Component, Inject, OnInit, ViewChild, DOCUMENT } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild, DOCUMENT, ChangeDetectionStrategy } from '@angular/core';
 import { IFileOptions, IUploadOptions, SingleUploadComponent } from 'ng-devui/upload';
 import { Observable } from 'rxjs';
 
 @Component({
   selector: 'd-basic',
   templateUrl: './basic.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class BasicComponent implements OnInit {
   @ViewChild('singleUploadDrag', { static: true }) singleUploadDrag: SingleUploadComponent;

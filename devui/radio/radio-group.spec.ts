@@ -1,4 +1,4 @@
-import { Component, DebugElement } from '@angular/core';
+import { Component, DebugElement, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -21,7 +21,8 @@ import { RadioModule } from './radio.module';
     >
     </d-radio-group>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestRadioGroupComponent {
   values = ['Spring', 'Summer', 'Autumn', 'Winter'];
@@ -36,13 +37,14 @@ class TestRadioGroupComponent {
 
 @Component({
   template: `
-  <d-radio-group [direction]="'row'" [(ngModel)]="choose2" (change)="mockChange($event)">
-    @for (value of values2; track value) {
+    <d-radio-group [direction]="'row'" [(ngModel)]="choose2" (change)="mockChange($event)">
+      @for (value of values2; track value) {
       <d-radio [name]="'customized-city'" [value]="value"> The Radio value is: {{ value }} </d-radio>
-    }
-  </d-radio-group>
+      }
+    </d-radio-group>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestRadioItemGroupComponent {
   values2 = ['Item1', 'Item2', 'Item3'];
@@ -178,10 +180,10 @@ describe('radio-group', () => {
   });
 
   describe('beforechange', () => {
-    beforeEach((() => {
+    beforeEach(() => {
       fixture = TestBed.createComponent(TestRadioGroupComponent);
       testComponent = fixture.debugElement.componentInstance;
-    }));
+    });
 
     it('select should be avoid by beforechange', () => {
       testComponent.beforeChange = (values) => false;

@@ -1,4 +1,4 @@
-import { Component, Inject, Input, OnChanges, SimpleChanges, TemplateRef } from '@angular/core';
+import { Component, Inject, Input, OnChanges, SimpleChanges, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { TableExpandConfig, TableWidthConfig } from './data-table.model';
 import { DATA_TABLE } from './data-table.token';
 import { DataTableColumnTmplComponent } from './tmpl/data-table-column-tmpl.component';
@@ -8,7 +8,8 @@ import { DataTableColumnTmplComponent } from './tmpl/data-table-column-tmpl.comp
   templateUrl: './data-table-body.component.html',
   styleUrls: ['./data-table-body.component.scss'],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class DataTableBodyComponent implements OnChanges {
   @Input() checkable: boolean;

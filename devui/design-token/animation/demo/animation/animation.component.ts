@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ThemeService } from 'ng-devui/theme';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -6,7 +6,8 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'd-animation',
   templateUrl: './animation.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class AnimationComponent implements OnInit, OnDestroy {
   themeService: ThemeService;

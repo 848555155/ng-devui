@@ -1,4 +1,4 @@
-import { Component, DebugElement, ViewChild } from '@angular/core';
+import { Component, DebugElement, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -21,7 +21,8 @@ import { InputNumberModule } from './input-number.module';
       (whileValueChanging)="valueChanging($event)"
     ></d-input-number>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestInputNumberComponent {
   disabled = false;
@@ -41,7 +42,8 @@ class TestInputNumberComponent {
 
 @Component({
   template: ` <d-input-number [disabled]="disabled" [(ngModel)]="value"></d-input-number> `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestInputNumberDisabledComponent {
   value = 2;
@@ -57,7 +59,7 @@ describe('input-number', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [FormsModule, InputNumberModule],
-        declarations: [TestInputNumberComponent]
+        declarations: [TestInputNumberComponent],
       });
     });
 
@@ -437,7 +439,7 @@ describe('input-number', () => {
         const pasteData = new DataTransfer();
         pasteData.setData('text', '2.5');
         const clipBoardEvent = new ClipboardEvent('paste', {
-          clipboardData: pasteData
+          clipboardData: pasteData,
         } as any);
 
         inputEl.focus();

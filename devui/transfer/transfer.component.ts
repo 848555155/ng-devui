@@ -10,7 +10,8 @@ import {
   Output,
   SimpleChanges,
   TemplateRef,
-  ViewChild
+  ViewChild,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { I18nInterface, I18nService } from 'ng-devui/i18n';
 import { Observable, Subscription } from 'rxjs';
@@ -21,7 +22,8 @@ import { TransferDataFormat, TransferDirection } from './transfer.types';
   templateUrl: './transfer.component.html',
   styleUrls: ['./transfer.component.scss'],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TransferComponent implements OnInit, OnChanges, OnDestroy {
   static ID_SEED = 0;
@@ -136,17 +138,21 @@ export class TransferComponent implements OnInit, OnChanges, OnDestroy {
 
   checkboxChange(direction: TransferDirection, event: any) {
     if (direction === TransferDirection.SOURCE) {
-      this.sourceDisplayOption.filter(item => item.checked).length > 0 ? this.targetCanTransfer = true : this.targetCanTransfer = false;
+      this.sourceDisplayOption.filter((item) => item.checked).length > 0
+        ? (this.targetCanTransfer = true)
+        : (this.targetCanTransfer = false);
       this.listTotalCheck(direction);
     } else if (direction === TransferDirection.TARGET) {
-      this.targetDisplayOption.filter(item => item.checked).length > 0 ? this.sourceCanTransfer = true : this.sourceCanTransfer = false;
+      this.targetDisplayOption.filter((item) => item.checked).length > 0
+        ? (this.sourceCanTransfer = true)
+        : (this.sourceCanTransfer = false);
       this.listTotalCheck(direction);
     }
   }
 
   listTotalCheck(direction?: TransferDirection) {
     if (direction === TransferDirection.SOURCE || !direction) {
-      const sourceLen = this.sourceDisplayOption.filter(item => item.checked).length;
+      const sourceLen = this.sourceDisplayOption.filter((item) => item.checked).length;
       this.sourceCheckedLen = sourceLen;
       if (sourceLen === 0) {
         this.sourceAllChecked = false;
@@ -162,7 +168,7 @@ export class TransferComponent implements OnInit, OnChanges, OnDestroy {
       }
     }
     if (direction === TransferDirection.TARGET || !direction) {
-      const rightLen = this.targetDisplayOption.filter(item => item.checked).length;
+      const rightLen = this.targetDisplayOption.filter((item) => item.checked).length;
       this.targetCheckedLen = rightLen;
       if (rightLen === 0) {
         this.targetAllChecked = false;
@@ -182,7 +188,7 @@ export class TransferComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   transferTo(direction: TransferDirection) {
-    this.canChange().then(val => {
+    this.canChange().then((val) => {
       if (!val) {
         return;
       }
@@ -196,20 +202,24 @@ export class TransferComponent implements OnInit, OnChanges, OnDestroy {
         const changeData = [];
         if (direction === TransferDirection.TARGET) {
           // 对源数据更改
-          this.sourceDisplayOption.filter(item => item.checked === true).forEach(item => {
-            const tmp = { name: item.name, value: item.value, id: item.id, checked: false };
-            this.targetOption.push(tmp);
-            changeData.push(tmp);
-            this.sourceOption.splice(this.sourceOption.indexOf(item), 1);
-          });
+          this.sourceDisplayOption
+            .filter((item) => item.checked === true)
+            .forEach((item) => {
+              const tmp = { name: item.name, value: item.value, id: item.id, checked: false };
+              this.targetOption.push(tmp);
+              changeData.push(tmp);
+              this.sourceOption.splice(this.sourceOption.indexOf(item), 1);
+            });
         } else if (direction === TransferDirection.SOURCE) {
-          this.targetDisplayOption.filter(item => item.checked === true).forEach(item => {
-            const tmp = { name: item.name, value: item.value, id: item.id, checked: false };
-            this.sourceOption.push(tmp);
-            changeData.push(tmp);
-            this.targetOption.splice(this.targetOption.indexOf(item), 1);
-          });
-          this.targetOption = this.targetOption.filter(item => item.checked !== true);
+          this.targetDisplayOption
+            .filter((item) => item.checked === true)
+            .forEach((item) => {
+              const tmp = { name: item.name, value: item.value, id: item.id, checked: false };
+              this.sourceOption.push(tmp);
+              changeData.push(tmp);
+              this.targetOption.splice(this.targetOption.indexOf(item), 1);
+            });
+          this.targetOption = this.targetOption.filter((item) => item.checked !== true);
         }
 
         this.transferHandle(direction, changeData);
@@ -257,12 +267,12 @@ export class TransferComponent implements OnInit, OnChanges, OnDestroy {
     if (direction === TransferDirection.SOURCE) {
       if (event) {
         this.sourceHalfChecked = false;
-        this.sourceCheckedLen = this.sourceDisplayOption.filter(item => item.disabled !== true).length;
+        this.sourceCheckedLen = this.sourceDisplayOption.filter((item) => item.disabled !== true).length;
       } else {
         this.sourceCheckedLen = 0;
       }
       this.targetCanTransfer = event;
-      this.sourceDisplayOption.forEach(item => {
+      this.sourceDisplayOption.forEach((item) => {
         if (item.checked !== event && item.disabled !== true) {
           item.checked = event;
         }
@@ -270,12 +280,12 @@ export class TransferComponent implements OnInit, OnChanges, OnDestroy {
     } else if (direction === TransferDirection.TARGET) {
       if (event) {
         this.targetHalfChecked = false;
-        this.targetCheckedLen = this.targetDisplayOption.filter(item => item.disabled !== true).length;
+        this.targetCheckedLen = this.targetDisplayOption.filter((item) => item.disabled !== true).length;
       } else {
         this.targetCheckedLen = 0;
       }
       this.sourceCanTransfer = event;
-      this.targetDisplayOption.forEach(item => {
+      this.targetDisplayOption.forEach((item) => {
         if (item.checked !== event && item.disabled !== true) {
           item.checked = event;
         }
@@ -285,13 +295,13 @@ export class TransferComponent implements OnInit, OnChanges, OnDestroy {
 
   search(direction: TransferDirection, keyword: any) {
     if (this.searching.observers.length) {
-      this.searching.emit({direction, keyword});
+      this.searching.emit({ direction, keyword });
     } else {
       if (keyword !== '') {
         if (direction === TransferDirection.SOURCE) {
-          this.sourceDisplayOption = this.sourceOption.filter(item => item.name.includes(keyword));
+          this.sourceDisplayOption = this.sourceOption.filter((item) => item.name.includes(keyword));
         } else if (direction === TransferDirection.TARGET) {
-          this.targetDisplayOption = this.targetOption.filter(item => item.name.includes(keyword));
+          this.targetDisplayOption = this.targetOption.filter((item) => item.name.includes(keyword));
         }
       } else {
         if (direction === TransferDirection.SOURCE) {

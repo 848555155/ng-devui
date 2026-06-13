@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { GanttScaleUnit, GanttService, GanttTaskInfo } from 'ng-devui/gantt';
 import { Subscription } from 'rxjs';
 import { basicData, curYear } from './../mock-data';
@@ -8,7 +8,8 @@ import { basicData, curYear } from './../mock-data';
   templateUrl: './basic.component.html',
   styleUrls: ['./basic.component.scss'],
   providers: [GanttService],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class BasicComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('ganttContainer', { static: true }) ganttContainer: ElementRef;
@@ -51,20 +52,20 @@ export class BasicComponent implements OnInit, AfterViewInit, OnDestroy {
         this.ganttScaleWidth = this.ganttService.getDurationWidth(this.ganttStartDate, this.ganttEndDate) + 'px';
       }
     });
-    this.list.forEach(item => this.updateBarData(item));
+    this.list.forEach((item) => this.updateBarData(item));
   }
 
   updateBarData(item) {
     item.overdueTime = this.getOverdueTime(item.endDate, new Date());
     if (item.overdueTime > 0 && item.status !== 'done') {
       item.status = 'overdue';
-    } else if(item.overdueTime <= 0 && item.status !== 'done') {
+    } else if (item.overdueTime <= 0 && item.status !== 'done') {
       item.status = 'normal';
     }
   }
 
   updateBarItemStatus(item) {
-    const barData = this.list.find(data => data.id === item.id);
+    const barData = this.list.find((data) => data.id === item.id);
     if (barData) {
       this.updateBarData(barData);
     }
@@ -122,7 +123,7 @@ export class BasicComponent implements OnInit, AfterViewInit, OnDestroy {
 
   launchFullscreen({ isFullscreen }) {
     this.isFullScreen = isFullscreen;
-    this.ganttService.setScaleConfig({viewChange: true});
+    this.ganttService.setScaleConfig({ viewChange: true });
   }
 
   ngAfterViewInit() {
@@ -134,7 +135,7 @@ export class BasicComponent implements OnInit, AfterViewInit, OnDestroy {
     this.goToday();
   }
 
-  onGanttBarMoveEnd (info: GanttTaskInfo) {
+  onGanttBarMoveEnd(info: GanttTaskInfo) {
     this.updateData(info);
     this.updateBarItemStatus(info);
   }

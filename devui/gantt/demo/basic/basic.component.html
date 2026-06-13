@@ -10,35 +10,35 @@
       (increaseUnit)="onIncreaseUnit()"
       (reduceUnit)="onReduceUnit()"
       (switchView)="onSwitchView($event)"
-      >
+    >
       <d-button bsStyle="text" fullscreen-launch class="tool">
         <i class="icon" [ngClass]="{ 'icon-frame-contract': isFullScreen, 'icon-frame-expand': !isFullScreen }"></i>
       </d-button>
     </d-gantt-tools>
     <div #ganttBody class="body" [style.width]="ganttScaleWidth">
       @for (item of list; track item) {
-        <div class="item">
-          <d-gantt-bar
-            [startDate]="item?.startDate"
-            [endDate]="item?.endDate"
-            [tipTemplateRef]="tipTemplate"
-            [titleTemplateRef]="titleTemplate"
-            [id]="item?.id"
-            [title]="item?.title"
-            [progressRate]="item?.progressRate"
-            [scrollElement]="ganttContainer"
-            [status]="item?.status"
-            [data]="item"
-            [showTitle]="true"
-            (barMoveStartEvent)="onGanttBarMoveStart()"
-            (barMovingEvent)="onGanttBarMoving($event)"
-            (barResizeStartEvent)="onGanttBarResizeStart()"
-            (barResizingEvent)="onGanttBarResizing($event)"
-            (barMoveEndEvent)="onGanttBarMoveEnd($event)"
-            (barResizeEndEvent)="onGanttBarResize($event)"
-            (barProgressEvent)="onBarProgressEvent($event)"
-          ></d-gantt-bar>
-        </div>
+      <div class="item">
+        <d-gantt-bar
+          [startDate]="$safeNavigationMigration(item?.startDate)"
+          [endDate]="$safeNavigationMigration(item?.endDate)"
+          [tipTemplateRef]="tipTemplate"
+          [titleTemplateRef]="titleTemplate"
+          [id]="$safeNavigationMigration(item?.id)"
+          [title]="$safeNavigationMigration(item?.title)"
+          [progressRate]="$safeNavigationMigration(item?.progressRate)"
+          [scrollElement]="ganttContainer"
+          [status]="$safeNavigationMigration(item?.status)"
+          [data]="item"
+          [showTitle]="true"
+          (barMoveStartEvent)="onGanttBarMoveStart()"
+          (barMovingEvent)="onGanttBarMoving($event)"
+          (barResizeStartEvent)="onGanttBarResizeStart()"
+          (barResizingEvent)="onGanttBarResizing($event)"
+          (barMoveEndEvent)="onGanttBarMoveEnd($event)"
+          (barResizeEndEvent)="onGanttBarResize($event)"
+          (barProgressEvent)="onBarProgressEvent($event)"
+        ></d-gantt-bar>
+      </div>
       }
     </div>
   </div>
@@ -47,18 +47,13 @@
     <div class="content">
       <div>Duration: {{ ganttInstance?.duration }}</div>
       <div>ProgressRate: {{ (ganttInstance?.progressRate || 0) + '%' }}</div>
-      <div>startDate: {{ ganttInstance?.startDate | i18nDate: 'short' }}</div>
-      <div>endDate: {{ ganttInstance?.endDate | i18nDate: 'short' }}</div>
+      <div>startDate: {{ $safeNavigationMigration(ganttInstance?.startDate) | i18nDate : 'short' }}</div>
+      <div>endDate: {{ $safeNavigationMigration(ganttInstance?.endDate) | i18nDate : 'short' }}</div>
     </div>
   </ng-template>
   <ng-template #titleTemplate let-data="data">
     @if (data?.overdueTime > 0 && data?.status !== 'done') {
-      <d-tag
-        class="delay-tag"
-        [tag]="'overdue ' + data?.overdueTime + ' days'"
-        [labelStyle]="'pink-w98'"
-        >
-      </d-tag>
+    <d-tag class="delay-tag" [tag]="'overdue ' + $safeNavigationMigration(data?.overdueTime) + ' days'" [labelStyle]="'pink-w98'"> </d-tag>
     }
   </ng-template>
 </d-fullscreen>

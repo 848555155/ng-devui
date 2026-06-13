@@ -1,12 +1,12 @@
-
-import { Component, Inject, DOCUMENT } from '@angular/core';
+import { Component, Inject, DOCUMENT, ChangeDetectionStrategy } from '@angular/core';
 import { DrawerService, IDrawerOpenResult } from 'ng-devui/drawer';
 import { DrawerContentComponent } from '../drawerContent/drawer-content.component';
 
 @Component({
   selector: 'd-undestroyable',
   templateUrl: './undestroyable.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class UndestroyableComponent {
   results: IDrawerOpenResult;
@@ -37,13 +37,7 @@ export class UndestroyableComponent {
         data: {
           text: 'hello',
           name: 'tom1',
-          items: [
-            'This is item 1',
-            'This is item 2',
-            'This is item 3',
-            'This is item 4',
-            'This is item 5',
-          ],
+          items: ['This is item 1', 'This is item 2', 'This is item 3', 'This is item 4', 'This is item 5'],
           close: (event) => {
             this.results.drawerInstance.hide();
           },
@@ -52,10 +46,9 @@ export class UndestroyableComponent {
           },
           changeWidth: (event) => {
             this.results.drawerInstance.setWidth(event + 'px');
-          }
-        }
+          },
+        },
       });
     }
   }
-
 }

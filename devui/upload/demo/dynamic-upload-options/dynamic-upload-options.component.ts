@@ -1,21 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { IFileOptions, IUploadOptions } from 'ng-devui/upload';
 @Component({
   selector: 'd-dynamic-upload-options',
   templateUrl: './dynamic-upload-options.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class DynamicUploadOptionsComponent implements OnInit {
   additionalParameter = {
     name: 'tom',
-    age: 11
+    age: 11,
   };
   uploadOptions: IUploadOptions = {
     uri: '/upload',
     method: 'post',
     additionalParameter: this.additionalParameter,
     maximumSize: 20,
-    checkSameName: true
+    checkSameName: true,
   };
   fileOptions: IFileOptions = {
     multiple: true,
@@ -23,10 +24,9 @@ export class DynamicUploadOptionsComponent implements OnInit {
   };
   uploadedFiles: Array<Object> = [];
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onSuccess2(result) {
     console.log(result);

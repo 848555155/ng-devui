@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { StepsGuideService } from 'ng-devui/steps-guide';
 import { customData, positionData } from '../fakeData';
 
@@ -6,7 +6,8 @@ import { customData, positionData } from '../fakeData';
   selector: 'd-position',
   templateUrl: './position.component.html',
   styleUrls: ['./position.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class PositionComponent {
   currentStep: any;

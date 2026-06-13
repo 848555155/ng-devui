@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { DropDownDirective } from 'ng-devui/dropdown';
 import { InputGroupComponent } from 'ng-devui/input-group';
 
@@ -6,7 +6,8 @@ import { InputGroupComponent } from 'ng-devui/input-group';
   selector: 'd-input-group-embed',
   templateUrl: './embed.component.html',
   styleUrls: ['./embed.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class EmbedComponent {
   @ViewChild('protocolItem') protocolItem: InputGroupComponent;

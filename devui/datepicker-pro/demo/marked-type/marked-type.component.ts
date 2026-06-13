@@ -1,11 +1,10 @@
-import {
-  Component
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-marked-type-demo',
   templateUrl: './marked-type.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class MarkedTypeDemoComponent {
   value = new Date('2021/11/01');
@@ -19,5 +18,4 @@ export class MarkedTypeDemoComponent {
   isStart(date: Date) {
     return date.toDateString() === new Date('2021/11/01').toDateString();
   }
-
 }

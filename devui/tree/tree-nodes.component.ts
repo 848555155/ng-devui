@@ -1,19 +1,13 @@
-import {
-  Component,
-  Input,
-  TemplateRef
-} from '@angular/core';
-import {
-  TreeFactory,
-  TreeNode
-} from './tree-factory.class';
+import { Component, Input, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
+import { TreeFactory, TreeNode } from './tree-factory.class';
 
 @Component({
   selector: 'd-tree-nodes',
   templateUrl: './tree-nodes.component.html',
   styleUrls: ['./tree-nodes.component.scss'],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TreeNodesComponent {
   @Input() treeList: Array<TreeNode>;

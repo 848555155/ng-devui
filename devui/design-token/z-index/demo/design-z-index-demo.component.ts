@@ -1,16 +1,19 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'd-design-z-index-demo',
   templateUrl: './design-z-index-demo.component.html',
-  styles: [`
-    .devui-demo-title {
-      margin-top: 20px
-    }
-  `],
-  standalone: false
+  styles: [
+    `
+      .devui-demo-title {
+        margin-top: 20px;
+      }
+    `,
+  ],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class DesignZIndexDemoComponent implements OnInit, OnDestroy {
   navItems = [];
@@ -33,9 +36,7 @@ export class DesignZIndexDemoComponent implements OnInit, OnDestroy {
   }
 
   setNavValues(values) {
-    this.navItems = [
-      { dAnchorLink: 'z-index', value: values['z-index'] }
-    ];
+    this.navItems = [{ dAnchorLink: 'z-index', value: values['z-index'] }];
   }
 
   ngOnDestroy() {
@@ -43,5 +44,4 @@ export class DesignZIndexDemoComponent implements OnInit, OnDestroy {
       this.subs.unsubscribe();
     }
   }
-
 }

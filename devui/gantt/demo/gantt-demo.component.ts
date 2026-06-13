@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -16,26 +16,24 @@ import mockDataTs from './mock-data.ts.txt?raw';
 @Component({
   selector: 'd-gantt-demo',
   templateUrl: './gantt-demo.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class GanttDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [
-    {title: 'HTML', language: 'xml', code:  basicHtml},
-    {title: 'TS', language: 'typescript', code:  basicTs},
-    {title: 'SCSS', language: 'css', code:  basicScss},
-    {title: 'data', language: 'typescript', code:  mockDataTs}
+    { title: 'HTML', language: 'xml', code: basicHtml },
+    { title: 'TS', language: 'typescript', code: basicTs },
+    { title: 'SCSS', language: 'css', code: basicScss },
+    { title: 'data', language: 'typescript', code: mockDataTs },
   ];
   inTableSource: Array<DevuiSourceData> = [
-    {title: 'HTML', language: 'xml', code:  tableHtml},
-    {title: 'TS', language: 'typescript', code:  tableTs},
-    {title: 'SCSS', language: 'css', code:  tableScss},
-    {title: 'reset-position-HTML', language: 'typescript',
-      code: resetPositionHtml},
-    {title: 'reset-position-TS', language: 'xml',
-      code: resetPositionTs},
-    {title: 'reset-position-CSS', language: 'typescript',
-      code: resetPositionScss},
-    {title: 'data', language: 'typescript', code:  mockDataTs}
+    { title: 'HTML', language: 'xml', code: tableHtml },
+    { title: 'TS', language: 'typescript', code: tableTs },
+    { title: 'SCSS', language: 'css', code: tableScss },
+    { title: 'reset-position-HTML', language: 'typescript', code: resetPositionHtml },
+    { title: 'reset-position-TS', language: 'xml', code: resetPositionTs },
+    { title: 'reset-position-CSS', language: 'typescript', code: resetPositionScss },
+    { title: 'data', language: 'typescript', code: mockDataTs },
   ];
 
   navItems = [];

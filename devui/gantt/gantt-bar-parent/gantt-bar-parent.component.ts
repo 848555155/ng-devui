@@ -9,6 +9,7 @@ import {
   OnInit,
   SimpleChanges,
   ViewChild,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { GanttService } from '../gantt.service';
@@ -17,7 +18,8 @@ import { GanttService } from '../gantt.service';
   selector: 'd-gantt-bar-parent',
   templateUrl: './gantt-bar-parent.component.html',
   styleUrls: ['./gantt-bar-parent.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class GanttBarParentComponent implements OnInit, OnDestroy, OnChanges, AfterViewInit {
   @ViewChild('ganttBarProgress') ganttBarProgress: ElementRef;

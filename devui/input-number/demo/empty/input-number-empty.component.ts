@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-input-number-empty',
   templateUrl: './input-number-empty.component.html',
   styleUrls: ['./input-number-empty.component.css'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class InputNumberEmptyComponent {
   min = -100;
@@ -12,8 +13,7 @@ export class InputNumberEmptyComponent {
   step = 1;
   value = null;
 
-  constructor() {
-  }
+  constructor() {}
 
   showValue($event, text = null) {
     console.log(text ? text + ' ' + $event : $event);

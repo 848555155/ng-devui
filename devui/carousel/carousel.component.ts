@@ -14,6 +14,7 @@ import {
   Renderer2,
   signal,
   viewChild,
+  linkedSignal,
 } from '@angular/core';
 import { CarouselItemComponent } from './carousel-item.component';
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
@@ -48,7 +49,8 @@ export class CarouselComponent {
   // 指示器触发滚动方式
   dotTrigger = input<DotTrigger>('click');
   // 当前激活面板索引，默认从0开始
-  activeIndex = model(0);
+  activeIndexInput = input(0, { alias: 'activeIndex' });
+  activeIndex = linkedSignal(this.activeIndexInput);
   // 卡片切换时，返回当前卡片索引，索引从0开始
   activeIndexChange = output<number>();
   // @ContentChildren(CarouselItemComponent) items: QueryList<CarouselItemComponent>;

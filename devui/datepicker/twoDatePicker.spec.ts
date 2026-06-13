@@ -1,4 +1,4 @@
-import { Component, DebugElement, ElementRef, ViewChild } from '@angular/core';
+import { Component, DebugElement, ElementRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -12,7 +12,7 @@ import { DatepickerModule } from './datepicker.module';
 class CommonFunctions {
   static i18nConfig = {
     'zh-cn': zhCN,
-    'en-us': enUS
+    'en-us': enUS,
   };
 
   static i18nText() {
@@ -65,7 +65,7 @@ class CommonFunctions {
   }
 
   static padZero(value) {
-    return (String(value)).padStart(2, '0');
+    return String(value).padStart(2, '0');
   }
 }
 
@@ -83,49 +83,49 @@ class TestFunctions {
       },
       monthShow: (ele) => {
         return CommonFunctions.resolveMonth(ele.textContent.trim());
-      }
+      },
     };
     const yearMonthEles = {
       left: {
         year: commonEles.yearMonthEles[0],
-        month: commonEles.yearMonthEles[1]
+        month: commonEles.yearMonthEles[1],
       },
       right: {
         year: commonEles.yearMonthEles[2],
-        month: commonEles.yearMonthEles[3]
-      }
+        month: commonEles.yearMonthEles[3],
+      },
     };
     const currentShowStr = {
       left: {
         year: commonEles.yearShow(yearMonthEles.left.year),
-        month: commonEles.monthShow(yearMonthEles.left.month)
+        month: commonEles.monthShow(yearMonthEles.left.month),
       },
       right: {
         year: commonEles.yearShow(yearMonthEles.right.year),
-        month: commonEles.monthShow(yearMonthEles.right.month)
-      }
+        month: commonEles.monthShow(yearMonthEles.right.month),
+      },
     };
     const btnEles = {
       left: {
         year: {
           last: commonEles.btnEles(0, 0),
-          next: commonEles.btnEles(0, 3)
+          next: commonEles.btnEles(0, 3),
         },
         month: {
           last: commonEles.btnEles(0, 1),
-          next: commonEles.btnEles(0, 2)
-        }
+          next: commonEles.btnEles(0, 2),
+        },
       },
       right: {
         year: {
           next: commonEles.btnEles(1, 3),
-          last: commonEles.btnEles(1, 0)
+          last: commonEles.btnEles(1, 0),
         },
         month: {
           next: commonEles.btnEles(1, 2),
-          last: commonEles.btnEles(1, 1)
-        }
-      }
+          last: commonEles.btnEles(1, 1),
+        },
+      },
     };
 
     for (const side in btnEles) {
@@ -135,7 +135,7 @@ class TestFunctions {
             let current = 0;
             for (const type in btnEles[side][time]) {
               if (type) {
-                current = type === 'next' ? (current + 1) : (current - 1);
+                current = type === 'next' ? current + 1 : current - 1;
                 btnEles[side][time][type].dispatchEvent(new Event('click'));
                 fixture.detectChanges();
                 let currentMonth = Number(currentShowStr[side][time]) + current;
@@ -329,10 +329,12 @@ class TestFunctions {
     CommonFunctions.tickEvent(leftCurrentDayInListEle, new Event('click'), fixture);
     CommonFunctions.tickEvent(rightCurrentDayInListEle, new Event('click'), fixture);
     expect(component.getValue).toHaveBeenCalled();
-    expect(component.leftInputEle.nativeElement.value)
-      .toBe(`${CommonFunctions.strDateOrFromNow([0, 0, 0], undefined, ['mm', 'dd', 'yy'], '.')}`);
-    expect(component.rightInputEle.nativeElement.value)
-      .toBe(`${CommonFunctions.strDateOrFromNow([0, 1, 0], undefined, ['mm', 'dd', 'yy'], '.')}`);
+    expect(component.leftInputEle.nativeElement.value).toBe(
+      `${CommonFunctions.strDateOrFromNow([0, 0, 0], undefined, ['mm', 'dd', 'yy'], '.')}`
+    );
+    expect(component.rightInputEle.nativeElement.value).toBe(
+      `${CommonFunctions.strDateOrFromNow([0, 1, 0], undefined, ['mm', 'dd', 'yy'], '.')}`
+    );
     CommonFunctions.closeDatePicker(fixture);
 
     // 今天不在minDate、maxDate之中
@@ -345,11 +347,13 @@ class TestFunctions {
     const footer = document.querySelector('.devui-two-date-footer');
     const todayBtn = footer.querySelector('a');
     CommonFunctions.tickEvent(todayBtn, new Event('click'), fixture);
-    expect(component.leftInputEle.nativeElement.value)
-      .toBe(`${CommonFunctions.strDateOrFromNow([0, 0, 0], undefined, ['mm', 'dd', 'yy'], '.')}`);
+    expect(component.leftInputEle.nativeElement.value).toBe(
+      `${CommonFunctions.strDateOrFromNow([0, 0, 0], undefined, ['mm', 'dd', 'yy'], '.')}`
+    );
     CommonFunctions.tickEvent(todayBtn, new Event('click'), fixture);
-    expect(component.rightInputEle.nativeElement.value)
-      .toBe(`${CommonFunctions.strDateOrFromNow([0, 1, 0], undefined, ['mm', 'dd', 'yy'], '.')}`);
+    expect(component.rightInputEle.nativeElement.value).toBe(
+      `${CommonFunctions.strDateOrFromNow([0, 1, 0], undefined, ['mm', 'dd', 'yy'], '.')}`
+    );
 
     CommonFunctions.closeDatePicker(fixture);
   }
@@ -370,15 +374,19 @@ class TestFunctions {
     CommonFunctions.tickEvent(rightCurrentDayInListEle, new Event('click'), fixture);
     expect(component.getValue).toHaveBeenCalled();
     if (shouldWorks) {
-      expect(component.leftInputEle.nativeElement.value)
-        .toBe(`${CommonFunctions.strDateOrFromNow(minDate, undefined, ['mm', 'dd', 'yy'], '.')}`);
-      expect(component.rightInputEle.nativeElement.value)
-        .toBe(`${CommonFunctions.strDateOrFromNow(maxDate, undefined, ['mm', 'dd', 'yy'], '.')}`);
+      expect(component.leftInputEle.nativeElement.value).toBe(
+        `${CommonFunctions.strDateOrFromNow(minDate, undefined, ['mm', 'dd', 'yy'], '.')}`
+      );
+      expect(component.rightInputEle.nativeElement.value).toBe(
+        `${CommonFunctions.strDateOrFromNow(maxDate, undefined, ['mm', 'dd', 'yy'], '.')}`
+      );
     } else {
-      expect(component.leftInputEle.nativeElement.value)
-        .not.toBe(`${CommonFunctions.strDateOrFromNow(minDate, undefined, ['mm', 'dd', 'yy'], '.')}`);
-      expect(component.rightInputEle.nativeElement.value)
-        .not.toBe(`${CommonFunctions.strDateOrFromNow(maxDate, undefined, ['mm', 'dd', 'yy'], '.')}`);
+      expect(component.leftInputEle.nativeElement.value).not.toBe(
+        `${CommonFunctions.strDateOrFromNow(minDate, undefined, ['mm', 'dd', 'yy'], '.')}`
+      );
+      expect(component.rightInputEle.nativeElement.value).not.toBe(
+        `${CommonFunctions.strDateOrFromNow(maxDate, undefined, ['mm', 'dd', 'yy'], '.')}`
+      );
     }
     CommonFunctions.closeDatePicker(fixture);
   }
@@ -390,9 +398,9 @@ class TestFunctions {
     let rightCurrentDayInListEle;
     for (const dayEl of leftDayListEle.querySelectorAll('.devui-in-month-day')) {
       const dayNumber = Number(dayEl.querySelector('.devui-calendar-date').textContent.trim());
-      if (dayNumber === (minDate.getDate() - 1)) {
+      if (dayNumber === minDate.getDate() - 1) {
         expect(dayEl.classList).toContain('disabled');
-      } else if (dayNumber === (minDate.getDate())) {
+      } else if (dayNumber === minDate.getDate()) {
         leftCurrentDayInListEle = dayEl;
       }
     }
@@ -403,15 +411,15 @@ class TestFunctions {
     }
     for (const dayEl of rightDayListEle.querySelectorAll('.devui-in-month-day')) {
       const dayNumber = Number(dayEl.querySelector('.devui-calendar-date').textContent.trim());
-      if (dayNumber === (maxDate.getDate() + 1)) {
+      if (dayNumber === maxDate.getDate() + 1) {
         expect(dayEl.classList).toContain('disabled');
-      } else if (dayNumber === (maxDate.getDate())) {
+      } else if (dayNumber === maxDate.getDate()) {
         rightCurrentDayInListEle = dayEl;
       }
     }
     return {
       left: leftCurrentDayInListEle,
-      right: rightCurrentDayInListEle
+      right: rightCurrentDayInListEle,
     };
   }
 }
@@ -443,9 +451,11 @@ class TestFunctions {
           (click)="startPicker.toggle()"
           #leftInputEle
         />
-        <div [style.display]="rangeStart ? 'block' : 'none'" 
-        class="devui-input-group-addon close-icon-wrapper" 
-        (click)="startPicker.clear()">
+        <div
+          [style.display]="rangeStart ? 'block' : 'none'"
+          class="devui-input-group-addon close-icon-wrapper"
+          (click)="startPicker.clear()"
+        >
           <i class="icon icon-close"></i>
         </div>
         <div class="devui-input-group-addon" (click)="startPicker.toggle()">
@@ -472,7 +482,8 @@ class TestFunctions {
       </div>
     </div>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestTwoDatePickerComponent {
   rangeStart = null;
@@ -491,17 +502,12 @@ class TestTwoDatePickerComponent {
 
   getValue = jasmine.createSpy('get value');
 
-  constructor() { }
+  constructor() {}
 }
 
 @Component({
   template: `
-    <div
-      class="two-date-wrapper"
-      dTwoDatePicker
-      #twoDatePicker="twoDatePicker"
-      (selectedRangeChange)="getValue('range', $event)"
-    >
+    <div class="two-date-wrapper" dTwoDatePicker #twoDatePicker="twoDatePicker" (selectedRangeChange)="getValue('range', $event)">
       <div
         dTwoDatePickerStart
         #startPicker="twoDatePickerStart"
@@ -509,7 +515,9 @@ class TestTwoDatePickerComponent {
         (selectStart)="getValue('start', $event)"
         (click)="startPicker.toggle()"
         #leftInputEle
-      >{{rangeStart || 'Start'}}</div>
+      >
+        {{ rangeStart || 'Start' }}
+      </div>
       <div
         dTwoDatePickerEnd
         #endPicker="twoDatePickerEnd"
@@ -517,10 +525,13 @@ class TestTwoDatePickerComponent {
         (selectEnd)="getValue('end', $event)"
         (click)="endPicker.toggle()"
         #rightInputEle
-      >{{rangeEnd || 'End'}}</div>
+      >
+        {{ rangeEnd || 'End' }}
+      </div>
     </div>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestTwoDatePickerDivComponent {
   rangeStart = null;
@@ -531,7 +542,7 @@ class TestTwoDatePickerDivComponent {
 
   getValue = jasmine.createSpy('get value');
 
-  constructor() { }
+  constructor() {}
 }
 
 describe('twoDatePicker', () => {
@@ -543,7 +554,7 @@ describe('twoDatePicker', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [DatepickerModule, NoopAnimationsModule, FormsModule],
-      declarations: [TestTwoDatePickerComponent]
+      declarations: [TestTwoDatePickerComponent],
     }).compileComponents();
   }));
 
@@ -560,10 +571,17 @@ describe('twoDatePicker', () => {
     it('should datePicker show, should hideOnRangeSelected works', fakeAsync(() => {
       CommonFunctions.openDatePicker(fixture, 'right');
       const classList = [
-        '.devui-two-date-wrapper', '.devui-two-date-picker', '.devui-date-picker',
-        '.devui-month-view', '.devui-month-view-table',
-        '.devui-calender-header', '.devui-week-header',
-        '.devui-day', '.devui-out-of-month', '.devui-in-month-day', '.devui-calendar-date'
+        '.devui-two-date-wrapper',
+        '.devui-two-date-picker',
+        '.devui-date-picker',
+        '.devui-month-view',
+        '.devui-month-view-table',
+        '.devui-calender-header',
+        '.devui-week-header',
+        '.devui-day',
+        '.devui-out-of-month',
+        '.devui-in-month-day',
+        '.devui-calendar-date',
       ];
       expect(domHelper.judgeAppendToBodyStyleClasses(classList)).toBeTruthy();
 
@@ -710,8 +728,8 @@ describe('twoDatePicker', () => {
           max: year,
           format: {
             date: 'MM.dd.y',
-            time: 'MM.dd.y mm-ss-HH'
-          }
+            time: 'MM.dd.y mm-ss-HH',
+          },
         };
         component.dateFormat = undefined;
         component.minDate = undefined;
@@ -732,7 +750,7 @@ describe('twoDatePicker', () => {
           timePicker: false,
           dateConverter: null,
           min: year,
-          max: year
+          max: year,
         };
         component.dateFormat = undefined;
         component.minDate = undefined;

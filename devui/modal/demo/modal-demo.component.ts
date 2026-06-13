@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -47,7 +47,8 @@ import modalTestComponentTs from './modal-test.component.ts.txt?raw';
   selector: 'd-modal-demo',
   templateUrl: './modal-demo.component.html',
   styles: [':host ::ng-deep d-button:not(first-child) { margin-left: 8px }'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class ModalDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [
@@ -117,8 +118,8 @@ export class ModalDemoComponent implements OnInit, OnDestroy {
   fixedWrapperSource: Array<DevuiSourceData> = [
     { title: 'HTML', language: 'xml', code: fixedHtml },
     { title: 'TS', language: 'typescript', code: fixedTs },
-    { title: 'Dialog HTML', language: 'xml',     code: modalTestComponentHtml },
-    { title: 'Dialog TS', language: 'typescript',     code: modalTestComponentTs },
+    { title: 'Dialog HTML', language: 'xml', code: modalTestComponentHtml },
+    { title: 'Dialog TS', language: 'typescript', code: modalTestComponentTs },
   ];
   casesSource: Array<DevuiSourceData> = [
     { title: 'HTML', language: 'xml', code: casesHtml },

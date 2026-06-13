@@ -1,21 +1,21 @@
 @if (multiItems.length > 0) {
-  <ul class="devui-select-tag-list devui-scrollbar {{ mode }}" [style.maxHeight]="maxHeight">
-    @for (item of multiItems; track trackByOptionPointer(index, item); let index = $index) {
-      <li
-        class="devui-select-tag-item"
-        [style.maxWidth]="maxWidth"
+<ul class="devui-select-tag-list devui-scrollbar {{ mode }}" [style.maxHeight]="maxHeight">
+  @for (item of multiItems; track trackByOptionPointer(index, item); let index = $index) {
+  <li
+    class="devui-select-tag-item"
+    [style.maxWidth]="maxWidth"
     [ngClass]="{
       disabled: disabled || (optionDisabledKey && item.option[optionDisabledKey])
     }"
-        >
-        <d-tag
-          [deletable]="!(disabled || (optionDisabledKey && item.option[optionDisabledKey]))"
-          [maxWidth]="'100%'"
-          [tag]="valueParser(item.option)"
-          [customViewTemplate]="customViewTemplate"
-          (tagDelete)="removeItem(item, $event?.event, index)"
-        ></d-tag>
-      </li>
-    }
-  </ul>
+  >
+    <d-tag
+      [deletable]="!(disabled || (optionDisabledKey && item.option[optionDisabledKey]))"
+      [maxWidth]="'100%'"
+      [tag]="valueParser(item.option)"
+      [customViewTemplate]="customViewTemplate"
+      (tagDelete)="removeItem(item, $safeNavigationMigration($event?.event), index)"
+    ></d-tag>
+  </li>
+  }
+</ul>
 }

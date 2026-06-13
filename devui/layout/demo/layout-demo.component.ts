@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -36,7 +36,8 @@ import topAsideScss from './top-aside/top-aside.component.scss?raw';
   selector: 'd-demo-input-number',
   templateUrl: './layout-demo.component.html',
   styleUrls: ['./layout-demo.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class LayoutDemoComponent implements OnInit, OnDestroy {
   GridBasic: Array<DevuiSourceData> = [

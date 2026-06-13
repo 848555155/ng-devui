@@ -1,4 +1,4 @@
-import { Component, DebugElement } from '@angular/core';
+import { Component, DebugElement, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -9,24 +9,23 @@ import { RateModule } from './rate.module';
     <d-rate [(ngModel)]="value" [icon]="'icon-star-o'"></d-rate>
     <div>当前有{{ value }}颗星</div>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestRateComponent {
   value = 2;
 }
 
 @Component({
-  template: `
-    <d-rate [(ngModel)]="value" [icon]="'icon-star-o'" [read]="true"></d-rate>
-  `,
-  standalone: false
+  template: ` <d-rate [(ngModel)]="value" [icon]="'icon-star-o'" [read]="true"></d-rate> `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestRateReadOnlyComponent {
   value = 2.5;
 }
 
 describe('rate', () => {
-
   describe('rate basic', () => {
     let testComponent: TestRateComponent;
     let rateElement: HTMLElement;
@@ -36,7 +35,7 @@ describe('rate', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [RateModule, FormsModule],
-        declarations: [TestRateComponent]
+        declarations: [TestRateComponent],
       }).compileComponents();
     });
 
@@ -49,7 +48,6 @@ describe('rate', () => {
     });
 
     describe('Rate demo has created successfully', () => {
-
       it('Rate should create alert testComponent', () => {
         expect(testComponent).toBeTruthy();
       });
@@ -98,7 +96,6 @@ describe('rate', () => {
         expect(fourthStarEle.querySelector('.devui-star-color-active').getAttribute('style')).toBe('width: 0px;');
         expect(testComponent.value).toBe(3);
       });
-
     });
   });
 
@@ -111,7 +108,7 @@ describe('rate', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [RateModule, FormsModule],
-        declarations: [TestRateReadOnlyComponent]
+        declarations: [TestRateReadOnlyComponent],
       }).compileComponents();
     });
 
@@ -124,7 +121,6 @@ describe('rate', () => {
     });
 
     describe('Rate demo has created successfully', () => {
-
       it('Rate should create alert testComponent', () => {
         expect(testComponent).toBeTruthy();
       });

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -21,7 +21,8 @@ import headerTemplateScss from './header-template/cascader-header-template.compo
 @Component({
   selector: 'd-demo-cascader',
   templateUrl: './cascader-demo.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class CascaderDemoComponent implements OnInit, OnDestroy {
   cascaderBasicComponent = [
@@ -86,7 +87,7 @@ export class CascaderDemoComponent implements OnInit, OnDestroy {
       { dAnchorLink: 'parent-cascader', value: values['parent-cascader'] },
       { dAnchorLink: 'template-cascader', value: values['template-cascader'] },
       { dAnchorLink: 'lazyload-cascader', value: values['lazyload-cascader'] },
-      { dAnchorLink: 'cascader-header-template', value: values['cascader-header-template']},
+      { dAnchorLink: 'cascader-header-template', value: values['cascader-header-template'] },
     ];
   }
 

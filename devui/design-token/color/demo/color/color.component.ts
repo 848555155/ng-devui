@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ThemeService } from 'ng-devui/theme';
 import { devuiSwatches } from 'ng-devui/theme-collection';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
@@ -15,7 +15,8 @@ export interface colorItemConfig {
   selector: 'd-color',
   templateUrl: './color.component.html',
   styleUrls: ['./color.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class ColorComponent implements OnInit, OnDestroy {
   themeService: ThemeService;

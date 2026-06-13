@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -7,9 +7,9 @@ import { environment } from 'src/environments/environment';
   selector: 'd-button-design',
   templateUrl: './button-design.component.html',
   styleUrls: ['./button-design.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
-
 export class ButtonDesignComponent implements OnInit, OnDestroy {
   structureImgSrc;
   useImgSrc;

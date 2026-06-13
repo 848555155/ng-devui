@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -12,7 +12,8 @@ import scrollTargetScss from './scroll-target/scroll-target.component.scss?raw';
 @Component({
   selector: 'd-demo-sticky',
   templateUrl: './sticky-demo.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class StickyDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

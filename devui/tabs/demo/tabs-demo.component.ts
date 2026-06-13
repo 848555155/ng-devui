@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -33,7 +33,8 @@ import tabsTransferTs from './configurable-tabs/tabs-transfer/tabs-transfer.comp
 @Component({
   selector: 'd-demo-tabs',
   templateUrl: './tabs-demo.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TabsDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

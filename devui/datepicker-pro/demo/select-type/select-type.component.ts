@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 const ONE_HOUR_TIME = 60 * 60 * 1000;
 const ONE_DAY_TIME = ONE_HOUR_TIME * 24;
@@ -7,7 +7,8 @@ const ONE_WEEK_TIME = ONE_DAY_TIME * 7;
   selector: 'd-demo-select-datepicker',
   templateUrl: './select-type.component.html',
   styleUrls: ['./select-type.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class SelectDatepickerDemoComponent {
   value2 = [new Date('2021-4-5'), new Date('2021-4-8')];
@@ -16,23 +17,28 @@ export class SelectDatepickerDemoComponent {
 
   showPanel = false;
 
-  options = [{
-    id: 1,
-    name: '最近1h',
-    value: [new Date(new Date().getTime() - ONE_HOUR_TIME), new Date()]
-  }, {
-    id: 2,
-    name: '最近一天',
-    value: [new Date(new Date().getTime() - ONE_DAY_TIME), new Date()]
-  }, {
-    id: 3,
-    name: '最近一周',
-    value: [new Date(new Date().getTime() - ONE_WEEK_TIME), new Date()]
-  }, {
-    id: 4,
-    name: '自定义范围',
-    value: []
-  }];
+  options = [
+    {
+      id: 1,
+      name: '最近1h',
+      value: [new Date(new Date().getTime() - ONE_HOUR_TIME), new Date()],
+    },
+    {
+      id: 2,
+      name: '最近一天',
+      value: [new Date(new Date().getTime() - ONE_DAY_TIME), new Date()],
+    },
+    {
+      id: 3,
+      name: '最近一周',
+      value: [new Date(new Date().getTime() - ONE_WEEK_TIME), new Date()],
+    },
+    {
+      id: 4,
+      name: '自定义范围',
+      value: [],
+    },
+  ];
   currentOption = {};
 
   onChange(value) {
@@ -43,13 +49,13 @@ export class SelectDatepickerDemoComponent {
 
   ensureDate() {
     this.showPanel = false;
-    this.options[3].name = this.options[3].value.map(d => d?.toLocaleDateString() || '').join(' - ');
+    this.options[3].name = this.options[3].value.map((d) => d?.toLocaleDateString() || '').join(' - ');
     this.options = [...this.options];
   }
 
   cancel() {
     this.showPanel = false;
-    this.options[3].value = this.options[3].name.split(' - ').map(d => new Date(d));
+    this.options[3].value = this.options[3].name.split(' - ').map((d) => new Date(d));
     this.options = [...this.options];
   }
 }

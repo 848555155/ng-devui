@@ -1,16 +1,6 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-  TemplateRef,
-  ViewChild
-} from '@angular/core';
+import { Component, EventEmitter, Input, Output, TemplateRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { FileUploader } from './file-uploader.class';
-import {
-  IUploadOptions,
-  UploadStatus
-} from './file-uploader.types';
+import { IUploadOptions, UploadStatus } from './file-uploader.types';
 import { UploadComponent } from './upload.class';
 import { UploadedFilesComponent } from './uploaded-files.component';
 
@@ -19,7 +9,8 @@ import { UploadedFilesComponent } from './uploaded-files.component';
   exportAs: 'dSingleUploadView',
   templateUrl: './single-upload-view.component.html',
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class SingleUploadViewComponent extends UploadComponent {
   @Input() uploadOptions: IUploadOptions;
@@ -53,7 +44,7 @@ export class SingleUploadViewComponent extends UploadComponent {
   }
 
   // 解决templateContext 传递method.bind(this)引发模板中内嵌组件initialize问题
-  deleteFileProxy = file => {
+  deleteFileProxy = (file) => {
     this.deleteFile(file);
   };
 

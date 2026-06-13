@@ -1,4 +1,4 @@
-import { Component, DebugElement } from '@angular/core';
+import { Component, DebugElement, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { AvatarModule } from 'ng-devui/avatar/avatar.module';
@@ -19,7 +19,8 @@ import { CardComponent } from './card.component';
       <!-- <d-card-extend></d-card-extend> -->
     </d-card>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestCardComponent {
   align = 'start';
@@ -35,7 +36,7 @@ describe('card', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [CardModule, AvatarModule],
-      declarations: [TestCardComponent]
+      declarations: [TestCardComponent],
     });
   });
 

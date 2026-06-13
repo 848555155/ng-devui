@@ -1,19 +1,20 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy } from '@angular/core';
 import { DevuiCommonsService } from '../../devui-commons.service';
 import { I18nUtil } from '../../i18n/i18n.util';
 
 @Component({
-    selector: 'd-header-language-switch',
-    templateUrl: './language-switch.component.html',
-    styleUrls: ['./language-switch.component.scss'],
-    standalone: false
+  selector: 'd-header-language-switch',
+  templateUrl: './language-switch.component.html',
+  styleUrls: ['./language-switch.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class LanguageSwitchComponent implements OnInit {
   @Input() languageArr: string[] = ['CN', 'EN'];
   @Output() languageEvent = new EventEmitter<string>();
   currentLang: string;
 
-  constructor(private commonsService: DevuiCommonsService) { }
+  constructor(private commonsService: DevuiCommonsService) {}
 
   ngOnInit(): void {
     this.currentLang = I18nUtil.getCurrentLanguage();

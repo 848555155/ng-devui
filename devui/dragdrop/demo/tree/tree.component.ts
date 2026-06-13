@@ -1,27 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-tree',
   templateUrl: './tree.component.html',
   styleUrls: ['./tree.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TreeComponent implements OnInit {
-  list1 = [
-    { name: 'Visual Studio Code' },
-    { name: 'Sublime' },
-    { name: 'Atom' }
-  ];
+  list1 = [{ name: 'Visual Studio Code' }, { name: 'Sublime' }, { name: 'Atom' }];
 
-  list2 = [
-    { name: 'WebStorm' , children: [{ name: 'notepadd++'}]},
-  ];
-  constructor() {
+  list2 = [{ name: 'WebStorm', children: [{ name: 'notepadd++' }] }];
+  constructor() {}
 
-  }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onDrop(e: any, target) {
     const item = e.dragData.item;
@@ -50,5 +42,4 @@ export class TreeComponent implements OnInit {
     }
     target.splice(index, 0, item);
   }
-
 }

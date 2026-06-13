@@ -1,4 +1,4 @@
-import { Component, DebugElement, ViewChild } from '@angular/core';
+import { Component, DebugElement, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -13,104 +13,104 @@ import { CascaderItem } from './cascader.type';
 const OPTION = [
   {
     label: '测试1',
-    value : 1,
+    value: 1,
     children: [
       {
         label: '测试1-1',
-        value : 4,
+        value: 4,
         children: [
           {
             label: '测试1-1-1',
-            value : 8,
-            isLeaf: true
+            value: 8,
+            isLeaf: true,
           },
           {
             label: '测试1-1-2',
-            value : 9,
+            value: 9,
             children: [
               {
                 label: '测试1-1-2-1',
-                value : 81,
-                isLeaf: true
-              }
+                value: 81,
+                isLeaf: true,
+              },
             ],
-          }
-        ]
+          },
+        ],
       },
       {
         label: '测试1-2',
-        value : 41,
-        isLeaf: true
+        value: 41,
+        isLeaf: true,
       },
       {
         label: '测试1-3',
-        value : 42,
-        isLeaf: true
+        value: 42,
+        isLeaf: true,
       },
       {
         label: '测试1-4',
-        value : 43,
-        isLeaf: true
-      }
+        value: 43,
+        isLeaf: true,
+      },
     ],
   },
   {
     label: '测试2',
-    value : 2,
+    value: 2,
     children: [
       {
         label: '测试2-1',
-        value : 5,
+        value: 5,
         children: [
           {
             label: '测试2-1-1',
-            value : 51,
-            isLeaf: true
+            value: 51,
+            isLeaf: true,
           },
           {
             label: '测试2-1-2',
-            value : 61,
+            value: 61,
             isLeaf: true,
-            disabled: true
-          }
-        ]
+            disabled: true,
+          },
+        ],
       },
       {
         label: '测试2-2',
-        value : 6,
+        value: 6,
         children: [
           {
             label: '测试2-2-1',
-            value : 512,
-            isLeaf: true
+            value: 512,
+            isLeaf: true,
           },
           {
             label: '测试2-2-2',
-            value : 611,
-            isLeaf: true
-          }
-        ]
+            value: 611,
+            isLeaf: true,
+          },
+        ],
       },
       {
         label: '测试2-3',
-        value : 712,
-        isLeaf: true
-      }
-    ]
+        value: 712,
+        isLeaf: true,
+      },
+    ],
   },
   {
     label: '测试3',
-    value : 3,
+    value: 3,
     children: [],
     isLeaf: true,
-    disabled: true
+    disabled: true,
   },
   {
     label: '测试4',
-    value : 95,
+    value: 95,
     children: [],
     isLeaf: true,
-  }
+  },
 ];
 
 @Component({
@@ -130,10 +130,11 @@ const OPTION = [
       [canSelectParent]="canSelectParent"
     ></d-cascader>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class BasicComponent {
-  @ViewChild('cascaderCmp', {static: true}) cascaderCmp: CascaderComponent;
+  @ViewChild('cascaderCmp', { static: true }) cascaderCmp: CascaderComponent;
   width = 250;
   options = [...OPTION];
 
@@ -159,10 +160,11 @@ class BasicComponent {
       [allowSearch]="allowSearch"
     ></d-cascader>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class SearchComponent {
-  @ViewChild('cascaderCmp', {static: true}) cascaderCmp: CascaderComponent;
+  @ViewChild('cascaderCmp', { static: true }) cascaderCmp: CascaderComponent;
   options = [...OPTION];
   allowSearch = true;
   value: Array<string | number>;
@@ -183,10 +185,11 @@ class SearchComponent {
       [loadChildrenFn]="null"
     ></d-cascader>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class MultipleComponent {
-  @ViewChild('cascaderCmp', {static: true}) cascaderCmp: CascaderComponent;
+  @ViewChild('cascaderCmp', { static: true }) cascaderCmp: CascaderComponent;
   options = [...OPTION];
   allowSearch = true;
   value: Array<string | number>[] = [];
@@ -208,76 +211,77 @@ class MultipleComponent {
       [loadChildrenFn]="loadChildren"
     ></d-cascader>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class LazyLoadComponent {
   options = [
     {
       label: '测试1',
-      value : 1,
+      value: 1,
     },
     {
       label: '测试2',
-      value : 2,
+      value: 2,
     },
     {
       label: '测试3',
-      value : 3,
-    }
+      value: 3,
+    },
   ];
 
   children1 = [
     {
       label: '测试1-1',
-      value : 4,
-      isLeaf: true
+      value: 4,
+      isLeaf: true,
     },
     {
       label: '测试1-2',
-      value : 41,
-      isLeaf: true
+      value: 41,
+      isLeaf: true,
     },
     {
       label: '测试1-3',
-      value : 42,
-      isLeaf: true
+      value: 42,
+      isLeaf: true,
     },
     {
       label: '测试1-4',
-      value : 43,
-      isLeaf: true
-    }
+      value: 43,
+      isLeaf: true,
+    },
   ];
 
   children2 = [
     {
       label: '测试2-1',
-      value : 5,
+      value: 5,
     },
     {
       label: '测试2-2',
-      value : 6,
-      isLeaf: true
+      value: 6,
+      isLeaf: true,
     },
     {
       label: '测试2-3',
-      value : 712,
-      isLeaf: true
-    }
+      value: 712,
+      isLeaf: true,
+    },
   ];
 
   children3 = [
     {
       label: '测试2-1-1',
-      value : 51,
-      isLeaf: true
+      value: 51,
+      isLeaf: true,
     },
     {
       label: '测试2-1-2',
-      value : 61,
+      value: 61,
       isLeaf: true,
-      disabled: true
-    }
+      disabled: true,
+    },
   ];
   allowSearch = true;
   value: Array<string | number> = [];
@@ -306,7 +310,7 @@ describe('cascader', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [CascaderModule, NoopAnimationsModule, FormsModule],
-      declarations: [BasicComponent, SearchComponent, MultipleComponent, LazyLoadComponent]
+      declarations: [BasicComponent, SearchComponent, MultipleComponent, LazyLoadComponent],
     }).compileComponents();
   });
 
@@ -341,7 +345,8 @@ describe('cascader', () => {
       firstNodeItemEle.dispatchEvent(new Event('click'));
       tick();
       fixture.detectChanges();
-      secondLeafNodeEle = fixture.debugElement.queryAll(By.css('ul'))[1]
+      secondLeafNodeEle = fixture.debugElement
+        .queryAll(By.css('ul'))[1]
         .queryAll(By.directive(CascaderLiComponent))[1]
         .query(By.css('li')).nativeElement;
       secondLeafNodeEle.dispatchEvent(new Event('click'));
@@ -409,7 +414,7 @@ describe('cascader', () => {
 
       it('dropdown should display correct data', fakeAsync(() => {
         clickDropDownToggle();
-        const debugLiList =  fixture.debugElement.queryAll(By.directive(CascaderLiComponent));
+        const debugLiList = fixture.debugElement.queryAll(By.directive(CascaderLiComponent));
         expect(debugLiList.length).toBe(4); // 数量对
         debugLiList.forEach((ele, index) => {
           expect(ele.query(By.css('li')).nativeElement.innerText).toEqual(testComponent.options[index].label); // label显示对
@@ -693,7 +698,7 @@ describe('cascader', () => {
 
       const secondUlCheckList = fixture.debugElement.queryAll(By.css('ul'))[1].queryAll(By.css('d-checkbox'));
       // 子项全部被选中
-      secondUlCheckList.forEach(debugChecked => {
+      secondUlCheckList.forEach((debugChecked) => {
         expect(debugChecked.query(By.css('.devui-checkbox,.active'))).toBeTruthy();
       });
 
@@ -720,7 +725,7 @@ describe('cascader', () => {
       expect(searchInputEle).toBeTruthy();
     }));
 
-    it ('multiple search result should work', fakeAsync(() => {
+    it('multiple search result should work', fakeAsync(() => {
       clickDropDownToggle();
       const searchInputEle = fixture.debugElement.query(By.css('.inner-input')).nativeElement;
       searchInputEle.value = '1-1';
@@ -740,7 +745,7 @@ describe('cascader', () => {
       expect(fixture.debugElement.query(By.css('d-tag > .devui-tag-item > span')).nativeElement.innerText).toBe('测试1-1-1');
     }));
 
-    it ('click active result should not work', fakeAsync(() => {
+    it('click active result should not work', fakeAsync(() => {
       clickDropDownToggle();
       const searchInputEle = fixture.debugElement.query(By.css('.inner-input')).nativeElement;
       searchInputEle.value = '1-1';
@@ -809,7 +814,6 @@ describe('cascader', () => {
       expect(fixture.debugElement.queryAll(By.css('ul'))[1].query(By.css('.checked'))).toBeFalsy();
       expect(fixture.debugElement.queryAll(By.css('d-tag')).length).toBe(0);
     }));
-
   });
 
   describe('lazyload cascader', () => {
@@ -858,6 +862,5 @@ describe('cascader', () => {
       expect(fixture.debugElement.query(By.css('.devui-cascader-loading'))).toBeFalsy();
       expect(fixture.debugElement.queryAll(By.css('ul')).length).toBe(2);
     }));
-
   });
 });

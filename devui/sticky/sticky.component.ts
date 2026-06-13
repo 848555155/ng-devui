@@ -10,6 +10,7 @@ import {
   OnInit,
   Output,
   ViewChild,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { WindowRef } from 'ng-devui/window-ref';
 import { Subscription, fromEvent } from 'rxjs';
@@ -25,7 +26,8 @@ export type StickyStatus = 'normal' | 'follow' | 'stay' | 'remain';
     </div>
   `,
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class StickyComponent implements OnInit, AfterViewInit, OnDestroy {
   @HostBinding('style.position') hostPosition = 'relative';
@@ -103,63 +105,63 @@ export class StickyComponent implements OnInit, AfterViewInit, OnDestroy {
 
   statusProcess(status) {
     switch (status) {
-    case 'normal':
-      this.wrapper.nativeElement.style.top = 'auto';
-      this.wrapper.nativeElement.style.left = 'auto';
-      this.wrapper.nativeElement.style.position = 'static';
-      break;
-    case 'follow': {
-      const viewOffset =
-        this.scrollTarget && this.scrollTarget !== this.windowRef.window ? this.scrollTarget.getBoundingClientRect().top : 0;
-      this.wrapper.nativeElement.style.top = Number(viewOffset) + ((this.view && this.view.top) || 0) + 'px';
-      this.wrapper.nativeElement.style.left = this.wrapper.nativeElement.getBoundingClientRect().left + 'px';
-      this.wrapper.nativeElement.style.position = 'fixed';
-      break;
-    }
-    case 'stay': {
-      this.wrapper.nativeElement.style.top = this.calculateRelativePosition(this.wrapper.nativeElement, this.parentNode, 'top') + 'px';
-      this.wrapper.nativeElement.style.left = 'auto';
-      this.wrapper.nativeElement.style.position = 'relative';
-      break;
-    }
-    case 'remain': {
-      if (this.wrapper.nativeElement.style.position !== 'fixed' || this.wrapper.nativeElement.style.position !== 'absolute') {
+      case 'normal':
+        this.wrapper.nativeElement.style.top = 'auto';
+        this.wrapper.nativeElement.style.left = 'auto';
+        this.wrapper.nativeElement.style.position = 'static';
+        break;
+      case 'follow': {
+        const viewOffset =
+          this.scrollTarget && this.scrollTarget !== this.windowRef.window ? this.scrollTarget.getBoundingClientRect().top : 0;
+        this.wrapper.nativeElement.style.top = Number(viewOffset) + ((this.view && this.view.top) || 0) + 'px';
+        this.wrapper.nativeElement.style.left = this.wrapper.nativeElement.getBoundingClientRect().left + 'px';
+        this.wrapper.nativeElement.style.position = 'fixed';
+        break;
+      }
+      case 'stay': {
         this.wrapper.nativeElement.style.top = this.calculateRelativePosition(this.wrapper.nativeElement, this.parentNode, 'top') + 'px';
         this.wrapper.nativeElement.style.left = 'auto';
-        this.wrapper.nativeElement.style.position = 'absolute'; // 要先转为absolute再计算，否则如果处于非fixed影响计算
+        this.wrapper.nativeElement.style.position = 'relative';
+        break;
       }
-      this.wrapper.nativeElement.style.top =
-        this.calculateRemainPosition(this.wrapper.nativeElement, this.parentNode, this.container) + 'px';
-      this.wrapper.nativeElement.style.left = this.calculateRelativePosition(this.wrapper.nativeElement, this.parentNode, 'left') + 'px';
-      this.wrapper.nativeElement.style.position = 'relative';
-      break;
-    }
-    default:
+      case 'remain': {
+        if (this.wrapper.nativeElement.style.position !== 'fixed' || this.wrapper.nativeElement.style.position !== 'absolute') {
+          this.wrapper.nativeElement.style.top = this.calculateRelativePosition(this.wrapper.nativeElement, this.parentNode, 'top') + 'px';
+          this.wrapper.nativeElement.style.left = 'auto';
+          this.wrapper.nativeElement.style.position = 'absolute'; // 要先转为absolute再计算，否则如果处于非fixed影响计算
+        }
+        this.wrapper.nativeElement.style.top =
+          this.calculateRemainPosition(this.wrapper.nativeElement, this.parentNode, this.container) + 'px';
+        this.wrapper.nativeElement.style.left = this.calculateRelativePosition(this.wrapper.nativeElement, this.parentNode, 'left') + 'px';
+        this.wrapper.nativeElement.style.position = 'relative';
+        break;
+      }
+      default:
     }
   }
 
   @HostListener('window:resize')
-    throttle = () => {
-      const fn = this.scrollAndResizeHock;
-      const time = Date.now();
-      if (this.scrollTimer) {
-        clearTimeout(this.scrollTimer);
-      }
-      if (!this.scrollPreStart) {
-        this.scrollPreStart = time;
-      }
-      if (time - this.scrollPreStart > this.THROTTLE_TRIGGER) {
+  throttle = () => {
+    const fn = this.scrollAndResizeHock;
+    const time = Date.now();
+    if (this.scrollTimer) {
+      clearTimeout(this.scrollTimer);
+    }
+    if (!this.scrollPreStart) {
+      this.scrollPreStart = time;
+    }
+    if (time - this.scrollPreStart > this.THROTTLE_TRIGGER) {
+      fn();
+      this.scrollPreStart = null;
+      this.scrollTimer = null;
+    } else {
+      this.scrollTimer = setTimeout(() => {
         fn();
         this.scrollPreStart = null;
         this.scrollTimer = null;
-      } else {
-        this.scrollTimer = setTimeout(() => {
-          fn();
-          this.scrollPreStart = null;
-          this.scrollTimer = null;
-        }, this.THROTTLE_DELAY);
-      }
-    };
+      }, this.THROTTLE_DELAY);
+    }
+  };
   scrollAndResizeHock = () => {
     if (this.container.getBoundingClientRect().left - (this.containerLeft || 0) !== 0) {
       this.status = 'stay';

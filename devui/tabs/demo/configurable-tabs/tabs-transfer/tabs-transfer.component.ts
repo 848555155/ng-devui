@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { TransferDataFormat } from 'ng-devui/transfer';
 
 export interface TabsDataFormat {
@@ -11,7 +11,8 @@ export interface TabsDataFormat {
 }
 @Component({
   templateUrl: './tabs-transfer.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TabsTransferComponent implements OnInit {
   @Input() data: any;

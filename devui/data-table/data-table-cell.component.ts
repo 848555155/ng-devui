@@ -12,6 +12,7 @@ import {
   OnInit,
   SimpleChange,
   ViewChild,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { I18nFormat, I18nService } from 'ng-devui/i18n';
 import { InputNumberComponent } from 'ng-devui/input-number';
@@ -29,7 +30,8 @@ import { DataTableColumnTmplComponent } from './tmpl/data-table-column-tmpl.comp
   selector: 'd-data-table-cell,[dDataTableCell]',
   templateUrl: './data-table-cell.component.html',
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class DataTableCellComponent implements OnInit, OnChanges, OnDestroy {
   @ViewChild(EditorDirective) editorHost: EditorDirective;
@@ -236,17 +238,17 @@ export class DataTableCellComponent implements OnInit, OnChanges, OnDestroy {
     let componentFactory;
     let editorComponent;
     switch (this.column.fieldType) {
-    case 'number':
-      editorComponent = InputNumberComponent;
-      break;
-    case 'select':
-      editorComponent = SelectComponent;
-      break;
-    case 'treeSelect':
-      editorComponent = TreeSelectComponent;
-      break;
-    default:
-      this.templateEditorActive = true;
+      case 'number':
+        editorComponent = InputNumberComponent;
+        break;
+      case 'select':
+        editorComponent = SelectComponent;
+        break;
+      case 'treeSelect':
+        editorComponent = TreeSelectComponent;
+        break;
+      default:
+        this.templateEditorActive = true;
     }
 
     if (editorComponent) {

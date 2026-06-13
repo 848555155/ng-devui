@@ -14,7 +14,8 @@ import {
   TemplateRef,
   ViewChild,
   ViewContainerRef,
-  DOCUMENT
+  DOCUMENT,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { ResizeDirective } from 'ng-devui/splitter';
 import { backdropFadeInOut, flyInOut } from 'ng-devui/utils';
@@ -24,7 +25,7 @@ import { debounceTime, distinctUntilChanged, filter, map, switchMap, takeUntil, 
 
 @Directive({
   selector: '[dDrawerContentHost]',
-  standalone: false
+  standalone: false,
 })
 export class DrawerContentDirective {
   constructor(public viewContainerRef: ViewContainerRef) {}
@@ -36,7 +37,8 @@ export class DrawerContentDirective {
   styleUrls: ['./drawer.component.scss'],
   animations: [backdropFadeInOut, flyInOut],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class DrawerComponent implements OnInit, OnDestroy {
   animateState = 'void';

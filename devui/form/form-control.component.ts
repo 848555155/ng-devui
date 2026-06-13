@@ -1,4 +1,14 @@
-import { ChangeDetectorRef, Component, ElementRef, HostBinding, Input, OnInit, Renderer2, TemplateRef } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  HostBinding,
+  Input,
+  OnInit,
+  Renderer2,
+  TemplateRef,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { DFormControlStatus } from './validator-directive/validate.type';
 
 @Component({
@@ -6,7 +16,8 @@ import { DFormControlStatus } from './validator-directive/validate.type';
   templateUrl: './form-control.component.html',
   styleUrls: ['./form-control.component.scss'],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class FormControlComponent implements OnInit {
   @Input() extraInfo: string | TemplateRef<any>;

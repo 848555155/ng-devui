@@ -1,5 +1,15 @@
-
-import { AfterViewInit, Component, ElementRef, Inject, Input, OnInit, QueryList, ViewChildren, DOCUMENT } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Inject,
+  Input,
+  OnInit,
+  QueryList,
+  ViewChildren,
+  DOCUMENT,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import * as hljs from 'highlight.js/lib/core';
@@ -17,7 +27,7 @@ import getStartedEn from './getStarted-en.md?raw';
   template: `
     <div dCodeCopy class="get-start">
       <div class="readme">
-        <div [innerHTML]="readMe | safe: 'html'" #documentation></div>
+        <div [innerHTML]="readMe | safe : 'html'" #documentation></div>
       </div>
     </div>
   `,
@@ -29,7 +39,8 @@ import getStartedEn from './getStarted-en.md?raw';
       }
     `,
   ],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class GetStartedComponent implements OnInit, AfterViewInit {
   _readMe: HTMLElement;

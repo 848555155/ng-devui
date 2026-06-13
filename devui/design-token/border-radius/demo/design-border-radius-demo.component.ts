@@ -1,11 +1,12 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'd-design-border-radius-demo',
   templateUrl: './design-border-radius-demo.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class DesignBorderRadiusDemoComponent implements OnInit, OnDestroy {
   navItems = [];
@@ -28,9 +29,7 @@ export class DesignBorderRadiusDemoComponent implements OnInit, OnDestroy {
   }
 
   setNavValues(values) {
-    this.navItems = [
-      { dAnchorLink: 'border-radius', value: values['border-radius'] }
-    ];
+    this.navItems = [{ dAnchorLink: 'border-radius', value: values['border-radius'] }];
   }
 
   ngOnDestroy() {
@@ -38,5 +37,4 @@ export class DesignBorderRadiusDemoComponent implements OnInit, OnDestroy {
       this.subs.unsubscribe();
     }
   }
-
 }

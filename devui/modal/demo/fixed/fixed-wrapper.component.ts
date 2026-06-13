@@ -1,4 +1,4 @@
-import { Component, Renderer2 } from '@angular/core';
+import { Component, Renderer2, ChangeDetectionStrategy } from '@angular/core';
 import { DialogService } from 'ng-devui/modal';
 import { DocumentRef } from 'ng-devui/window-ref';
 import { ModalTestComponent } from '../modal-test.component';
@@ -6,16 +6,13 @@ import { ModalTestComponent } from '../modal-test.component';
 @Component({
   selector: 'd-fixed-wrapper',
   templateUrl: './fixed-wrapper.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class FixedWrapperComponent {
   scrollTop: number;
 
-  constructor(
-    private dialogService: DialogService,
-    private documentRef: DocumentRef,
-    private renderer: Renderer2
-  ) {}
+  constructor(private dialogService: DialogService, private documentRef: DocumentRef, private renderer: Renderer2) {}
 
   openStandardDialog(dialogtype?: string) {
     this.setHtmlStyle();

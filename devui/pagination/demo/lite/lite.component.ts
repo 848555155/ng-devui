@@ -1,26 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-lite',
   templateUrl: './lite.component.html',
   styleUrls: ['./lite.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class LiteComponent {
   pager1 = {
     total: 100,
     pageIndex: 1,
-    pageSize: 10
+    pageSize: 10,
   };
   pager2 = {
     total: 30,
     pageIndex: 3,
-    pageSize: 10
+    pageSize: 10,
   };
   pager3 = {
     total: 306,
     pageIndex: 1,
-    pageSize: 10
+    pageSize: 10,
   };
 
   setTotal(number) {

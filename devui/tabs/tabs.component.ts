@@ -12,6 +12,7 @@ import {
   SimpleChanges,
   TemplateRef,
   ViewChild,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { sum } from 'lodash-es';
 import { Observable } from 'rxjs';
@@ -28,7 +29,8 @@ export interface ITabOperation {
   styleUrls: ['./tabs.component.scss'],
   exportAs: 'tabs',
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TabsComponent implements OnChanges, AfterViewInit {
   static ID_SEED = 0;

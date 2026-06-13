@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { DataTableComponent, FilterConfig, SortDirection, SortEventArg } from 'ng-devui/data-table';
 import { LoadingType } from 'ng-devui/loading';
 import { SourceType, originSource } from '../mock-data';
@@ -7,10 +7,10 @@ import { SourceType, originSource } from '../mock-data';
   selector: 'd-interaction-column',
   templateUrl: './interaction-column.component.html',
   styleUrls: ['./interaction-column.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class InteractionColumnComponent implements OnInit {
-
   @ViewChild(DataTableComponent, { static: true }) datatable: DataTableComponent;
   pagerSource = JSON.parse(JSON.stringify(originSource));
   sortableDataSource: Array<SourceType> = JSON.parse(JSON.stringify(originSource.slice(0, 6)));
@@ -177,5 +177,4 @@ export class InteractionColumnComponent implements OnInit {
   onToggle(data) {
     console.log('onToggle ---', data);
   }
-
 }

@@ -1,15 +1,16 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-demo-scroll-container',
   templateUrl: './scroll-container.component.html',
   styleUrls: ['./scroll-container.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class ScrollContainerComponent implements OnInit, AfterViewInit {
   @ViewChild('header', { static: true }) headerRef: ElementRef;
 
-  @ViewChild('navSprite', {static: true}) navSprite;
+  @ViewChild('navSprite', { static: true }) navSprite;
 
   view = { top: 0, bottom: 0 };
 
@@ -26,7 +27,7 @@ export class ScrollContainerComponent implements OnInit, AfterViewInit {
     this.cdr.detectChanges();
   }
 
-  ngAfterViewInit () {
+  ngAfterViewInit() {
     this.navSprite.getNavData();
   }
 }

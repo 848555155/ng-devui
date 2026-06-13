@@ -1,4 +1,4 @@
-import { Component, DebugElement, ViewChild } from '@angular/core';
+import { Component, DebugElement, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { of } from 'rxjs';
@@ -9,7 +9,8 @@ import { ToggleModule } from './toggle.module';
   template: `
     <d-toggle #comp [disabled]="disabled" [size]="'sm'" [checked]="checked" (change)="onChange()" [beforeChange]="beforeChange"></d-toggle>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestToggleComponent {
   @ViewChild('comp') comp;
@@ -29,7 +30,7 @@ describe('toggle', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [ToggleModule],
-      declarations: [TestToggleComponent]
+      declarations: [TestToggleComponent],
     });
   });
 

@@ -1,4 +1,4 @@
-import { Component, DebugElement, ViewChild } from '@angular/core';
+import { Component, DebugElement, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -20,7 +20,8 @@ import { PaginationModule } from './pagination.module';
     [maxItems]="5"
   >
   </d-pagination>`,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestPaginationComponent {
   @ViewChild('pagination') pagination: PaginationComponent;
@@ -42,7 +43,8 @@ class TestPaginationComponent {
     [lite]="true"
   >
   </d-pagination>`,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestLitePaginationComponent {
   @ViewChild('pagination') pagination: PaginationComponent;
@@ -77,47 +79,47 @@ describe('pagination basic', () => {
     describe('basic pagination', () => {
       it('should pagination display correctly', () => {
         expect(component).toBeTruthy();
-        const classes = [
-          '.devui-pagination',
-          '.devui-page-size',
-          '.devui-total-size',
-          '.devui-pagination-list',
-          '.devui-jump-container'
-        ];
+        const classes = ['.devui-pagination', '.devui-page-size', '.devui-total-size', '.devui-pagination-list', '.devui-jump-container'];
         expect(domHelper.judgeStyleClasses(classes)).toBeTruthy();
       });
       it('should pagination jump correctly', fakeAsync(() => {
-        const pageEl: HTMLElement = debugEl.nativeElement
-          .querySelector('.devui-pagination-list.devui-pagination-sm li:nth-child(2)');
+        const pageEl: HTMLElement = debugEl.nativeElement.querySelector('.devui-pagination-list.devui-pagination-sm li:nth-child(2)');
         pageEl.dispatchEvent(new Event('click'));
         fixture.detectChanges();
-        expect(debugEl.nativeElement.querySelector('.devui-pagination-list.devui-pagination-sm li:nth-child(2)').classList)
-          .toContain('active');
-        expect(debugEl.nativeElement.querySelector('.devui-pagination-list.devui-pagination-sm li:nth-child(1)').classList)
-          .toContain('disabled');
+        expect(debugEl.nativeElement.querySelector('.devui-pagination-list.devui-pagination-sm li:nth-child(2)').classList).toContain(
+          'active'
+        );
+        expect(debugEl.nativeElement.querySelector('.devui-pagination-list.devui-pagination-sm li:nth-child(1)').classList).toContain(
+          'disabled'
+        );
 
-        const nextLink = debugEl.nativeElement
-          .querySelector('.devui-pagination-list.devui-pagination-sm li:nth-child(7) .devui-pagination-link');
+        const nextLink = debugEl.nativeElement.querySelector(
+          '.devui-pagination-list.devui-pagination-sm li:nth-child(7) .devui-pagination-link'
+        );
         nextLink.dispatchEvent(new Event('click'));
         fixture.detectChanges();
-        expect(debugEl.nativeElement.querySelector('.devui-pagination-list.devui-pagination-sm li:nth-child(3)').classList)
-          .toContain('active');
+        expect(debugEl.nativeElement.querySelector('.devui-pagination-list.devui-pagination-sm li:nth-child(3)').classList).toContain(
+          'active'
+        );
 
-        const preLink = debugEl.nativeElement
-          .querySelector('.devui-pagination-list.devui-pagination-sm li:nth-child(1) .devui-pagination-link');
+        const preLink = debugEl.nativeElement.querySelector(
+          '.devui-pagination-list.devui-pagination-sm li:nth-child(1) .devui-pagination-link'
+        );
         preLink.dispatchEvent(new Event('click'));
         fixture.detectChanges();
-        expect(debugEl.nativeElement.querySelector('.devui-pagination-list.devui-pagination-sm li:nth-child(2)').classList)
-          .toContain('active');
+        expect(debugEl.nativeElement.querySelector('.devui-pagination-list.devui-pagination-sm li:nth-child(2)').classList).toContain(
+          'active'
+        );
 
-        const lastPageEl: HTMLElement = debugEl.nativeElement
-          .querySelector('.devui-pagination-list.devui-pagination-sm li:nth-child(6)');
+        const lastPageEl: HTMLElement = debugEl.nativeElement.querySelector('.devui-pagination-list.devui-pagination-sm li:nth-child(6)');
         lastPageEl.dispatchEvent(new Event('click'));
         fixture.detectChanges();
-        expect(debugEl.nativeElement.querySelector('.devui-pagination-list.devui-pagination-sm li:nth-child(6)').classList)
-          .toContain('active');
-        expect(debugEl.nativeElement.querySelector('.devui-pagination-list.devui-pagination-sm li:nth-child(7)').classList)
-          .toContain('disabled');
+        expect(debugEl.nativeElement.querySelector('.devui-pagination-list.devui-pagination-sm li:nth-child(6)').classList).toContain(
+          'active'
+        );
+        expect(debugEl.nativeElement.querySelector('.devui-pagination-list.devui-pagination-sm li:nth-child(7)').classList).toContain(
+          'disabled'
+        );
         flush();
       }));
 
@@ -158,15 +160,16 @@ describe('pagination basic', () => {
         expect(inputEl.value).toBe('1');
         const enterEvent = createKeyBoardEvent('keyup', {
           key: 'Enter',
-          code: 'Enter'
+          code: 'Enter',
         });
 
         inputEl.dispatchEvent(enterEvent);
         fixture.detectChanges();
         tick(50);
         fixture.detectChanges();
-        expect(debugEl.nativeElement.querySelector('.devui-pagination-list.devui-pagination-sm li:nth-child(2)').classList)
-          .toContain('active');
+        expect(debugEl.nativeElement.querySelector('.devui-pagination-list.devui-pagination-sm li:nth-child(2)').classList).toContain(
+          'active'
+        );
         flush();
       }));
     });
@@ -188,14 +191,9 @@ describe('pagination basic', () => {
     describe('should lite pagination display correctly', () => {
       it('should lite pagination display correctly', () => {
         expect(component).toBeTruthy();
-        const classes = [
-          '.devui-pagination',
-          '.devui-lite-paginator',
-          '.devui-pagination-link-lite'
-        ];
+        const classes = ['.devui-pagination', '.devui-lite-paginator', '.devui-pagination-link-lite'];
         expect(domHelper.judgeStyleClasses(classes)).toBeTruthy();
       });
     });
   });
-
 });

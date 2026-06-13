@@ -1,4 +1,3 @@
-
 import {
   AfterViewInit,
   Component,
@@ -10,7 +9,8 @@ import {
   OnInit,
   QueryList,
   ViewChildren,
-  DOCUMENT
+  DOCUMENT,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IExampleData } from 'ng-devui/shared/helpers';
@@ -28,7 +28,8 @@ hljs.registerLanguage('typescript', typescript);
   selector: 'd-demo-cell',
   styleUrls: ['./example-panel.component.scss'],
   templateUrl: './example-panel.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class ExamplePanelComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() data: IExampleData;

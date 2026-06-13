@@ -5,7 +5,15 @@
       "ng-devui/shared": ["./devui/shared"],
       "ng-devui/shared/*": ["./devui/shared/*"],
       "ng-devui": ["./publish"],
-      "ng-devui/*": ["./publish/*"],
+      "ng-devui/*": ["./publish/*"]
+    }
+  },
+  "angularCompilerOptions": {
+    "extendedDiagnostics": {
+      "checks": {
+        "nullishCoalescingNotNullable": "suppress",
+        "optionalChainNotNullable": "suppress"
+      }
     }
   }
 }

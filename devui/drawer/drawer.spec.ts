@@ -1,4 +1,4 @@
-import { Component, DebugElement } from '@angular/core';
+import { Component, DebugElement, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,12 +11,15 @@ import { DrawerContentComponent } from './demo/drawerContent/drawer-content.comp
     <div class="placeHolder"></div>
     <d-button>close</d-button>
   `,
-  styles: [`
-    .placeHolder {
-      height: 2000px;
-    }
-  `],
-  standalone: false
+  styles: [
+    `
+      .placeHolder {
+        height: 2000px;
+      }
+    `,
+  ],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestDrawerComponent {
   onClose = jasmine.createSpy('onClose');
@@ -35,18 +38,10 @@ class TestDrawerComponent {
     data: {
       text: 'hello',
       name: 'tom1',
-      items: [
-        'This is item 1',
-        'This is item 2',
-        'This is item 3',
-        'This is item 4',
-        'This is item 5',
-      ]
-    }
+      items: ['This is item 1', 'This is item 2', 'This is item 3', 'This is item 4', 'This is item 5'],
+    },
   };
-  constructor(private drawerService: DrawerService) {
-
-  }
+  constructor(private drawerService: DrawerService) {}
   openDrawer() {
     this.results = this.drawerService.open(this.drawerOptions);
   }
@@ -64,12 +59,11 @@ describe('Drawer', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [DrawerModule, ButtonModule, NoopAnimationsModule],
-      declarations: [TestDrawerComponent, DrawerContentComponent]
-    }).overrideModule(BrowserDynamicTestingModule, {
-      set: {
-
-      }
+      declarations: [TestDrawerComponent, DrawerContentComponent],
     })
+      .overrideModule(BrowserDynamicTestingModule, {
+        set: {},
+      })
       .compileComponents();
   });
 

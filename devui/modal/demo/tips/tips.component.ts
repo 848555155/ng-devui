@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { DialogService } from 'ng-devui/modal';
 
 @Component({
   selector: 'd-tips',
   templateUrl: './tips.component.html',
   styles: ['.btn-group d-button:not(first-child) { margin-left: 8px }'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TipsComponent {
   config = {

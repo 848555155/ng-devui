@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -49,7 +49,8 @@ import modelValueTs2 from './model-value/map-to.pipe.ts.txt?raw';
   selector: 'd-select-demo',
   templateUrl: './select-demo.component.html',
   styleUrls: ['./select-demo.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class SelectDemoComponent implements OnInit, OnDestroy {
   SelectBasicComponent: Array<DevuiSourceData> = [

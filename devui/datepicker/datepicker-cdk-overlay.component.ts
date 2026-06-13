@@ -17,7 +17,8 @@ import {
   TemplateRef,
   ViewContainerRef,
   forwardRef,
-  DOCUMENT
+  DOCUMENT,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { I18nInterface, I18nService } from 'ng-devui/i18n';
@@ -77,7 +78,8 @@ import { DatePickerConfigService as DatePickerConfig } from './date-picker.confi
   animations: [fadeInOut],
   styleUrls: ['./datepicker-cdk-overlay.component.scss'],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class DatePickerAppendToBodyComponent implements OnInit, OnChanges, OnDestroy, ControlValueAccessor {
   @Input() appendToBodyDirections: Array<AppendToBodyDirection | ConnectedPosition> = ['rightDown', 'leftDown', 'rightUp', 'leftUp'];
@@ -335,14 +337,14 @@ export class DatePickerAppendToBodyComponent implements OnInit, OnChanges, OnDes
 
   onPositionChange(position: ConnectedOverlayPositionChange) {
     switch (position.connectionPair.overlayY) {
-    case 'top':
-    case 'center':
-      this.datepickerPosition = 'bottom';
-      break;
-    case 'bottom':
-      this.datepickerPosition = 'top';
-      break;
-    default:
+      case 'top':
+      case 'center':
+        this.datepickerPosition = 'bottom';
+        break;
+      case 'bottom':
+        this.datepickerPosition = 'top';
+        break;
+      default:
     }
   }
 

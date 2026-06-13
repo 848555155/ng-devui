@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { EditableTip } from 'ng-devui/data-table';
 import { cloneDeep } from 'lodash-es';
 import { editableOriginSource, genderSource } from '../mock-data';
@@ -6,7 +6,8 @@ import { editableOriginSource, genderSource } from '../mock-data';
 @Component({
   selector: 'd-editable',
   templateUrl: './data-table-demo-editable.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class DatatableDemoEditableComponent implements OnInit {
   genderSource = genderSource;
@@ -15,8 +16,7 @@ export class DatatableDemoEditableComponent implements OnInit {
   editableTip = EditableTip.hover;
   nameEditing: boolean;
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onEditEnd(rowItem, field) {
     rowItem[field] = false;

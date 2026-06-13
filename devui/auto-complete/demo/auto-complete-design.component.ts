@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
 @Component({
   selector: 'd-auto-complete-design',
   templateUrl: './auto-complete-design.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
-
 export class AutoCompleteDesignComponent implements OnInit {
   designObj;
   subs: Subscription = new Subscription();

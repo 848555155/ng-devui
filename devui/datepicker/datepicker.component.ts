@@ -13,6 +13,7 @@ import {
   Renderer2,
   SimpleChanges,
   TemplateRef,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { I18nInterface, I18nService } from 'ng-devui/i18n';
@@ -33,7 +34,8 @@ import { DatePickerConfigService as DatePickerConfig } from './date-picker.confi
     },
   ],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class DatepickerComponent implements OnInit, OnChanges, OnDestroy, ControlValueAccessor {
   static DAY_DURATION = 24 * 60 * 60 * 1000;
@@ -567,20 +569,20 @@ export class DatepickerComponent implements OnInit, OnChanges, OnDestroy, Contro
     const min = 0;
     let max = 59;
     switch (type) {
-    case 'h': {
-      timeType = 'currentHour';
-      max = 23;
-      break;
-    }
-    case 'm': {
-      timeType = 'currentMinute';
-      break;
-    }
-    case 's': {
-      timeType = 'currentSecond';
-      break;
-    }
-    default:
+      case 'h': {
+        timeType = 'currentHour';
+        max = 23;
+        break;
+      }
+      case 'm': {
+        timeType = 'currentMinute';
+        break;
+      }
+      case 's': {
+        timeType = 'currentSecond';
+        break;
+      }
+      default:
     }
     let value = event.target.value;
     const selectionStart = event.target.selectionStart;
@@ -638,38 +640,38 @@ export class DatepickerComponent implements OnInit, OnChanges, OnDestroy, Contro
 
   timeUp(type) {
     switch (type) {
-    case 'h': {
-      Number(this.currentHour) < 23 ? (this.currentHour = Number(this.currentHour) + 1) : (this.currentHour = 0);
-      break;
-    }
-    case 'm': {
-      Number(this.currentMinute) < 59 ? (this.currentMinute = Number(this.currentMinute) + 1) : (this.currentMinute = 0);
-      break;
-    }
-    case 's': {
-      Number(this.currentSecond) < 59 ? (this.currentSecond = Number(this.currentSecond) + 1) : (this.currentSecond = 0);
-      break;
-    }
-    default:
+      case 'h': {
+        Number(this.currentHour) < 23 ? (this.currentHour = Number(this.currentHour) + 1) : (this.currentHour = 0);
+        break;
+      }
+      case 'm': {
+        Number(this.currentMinute) < 59 ? (this.currentMinute = Number(this.currentMinute) + 1) : (this.currentMinute = 0);
+        break;
+      }
+      case 's': {
+        Number(this.currentSecond) < 59 ? (this.currentSecond = Number(this.currentSecond) + 1) : (this.currentSecond = 0);
+        break;
+      }
+      default:
     }
     this.onTimeChange();
   }
 
   timeDown(type) {
     switch (type) {
-    case 'h': {
-      Number(this.currentHour) > 0 ? (this.currentHour = Number(this.currentHour) - 1) : (this.currentHour = 23);
-      break;
-    }
-    case 'm': {
-      Number(this.currentMinute) > 0 ? (this.currentMinute = Number(this.currentMinute) - 1) : (this.currentMinute = 59);
-      break;
-    }
-    case 's': {
-      Number(this.currentSecond) > 0 ? (this.currentSecond = Number(this.currentSecond) - 1) : (this.currentSecond = 59);
-      break;
-    }
-    default:
+      case 'h': {
+        Number(this.currentHour) > 0 ? (this.currentHour = Number(this.currentHour) - 1) : (this.currentHour = 23);
+        break;
+      }
+      case 'm': {
+        Number(this.currentMinute) > 0 ? (this.currentMinute = Number(this.currentMinute) - 1) : (this.currentMinute = 59);
+        break;
+      }
+      case 's': {
+        Number(this.currentSecond) > 0 ? (this.currentSecond = Number(this.currentSecond) - 1) : (this.currentSecond = 59);
+        break;
+      }
+      default:
     }
     this.onTimeChange();
   }

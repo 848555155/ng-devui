@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -23,7 +23,8 @@ import decimalLimitCss from './decimalLimit/decimal-limit.component.css?raw';
 @Component({
   selector: 'd-demo-input-number',
   templateUrl: './input-number-demo.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class InputNumberDemoComponent implements OnInit, OnDestroy {
   InputNumberBasic: Array<DevuiSourceData> = [

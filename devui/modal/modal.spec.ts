@@ -1,4 +1,4 @@
-import { Component, DebugElement, Input, TemplateRef, ViewChild } from '@angular/core';
+import { Component, DebugElement, Input, TemplateRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed, fakeAsync, flush, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
@@ -20,7 +20,8 @@ import { IDialogOptions, IModalOptions } from './modal.types';
       <div class="iAmTemplate">I am Template</div>
     </ng-template>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestDialogComponent {
   @ViewChild('testContentTemplate') testContentTemplate: TemplateRef<any>;
@@ -43,7 +44,7 @@ class TestDialogComponent {
         btnwidth: undefined,
         autofocus: undefined,
         disabled: undefined,
-      }
+      },
     ],
     width: undefined,
     backdropCloseable: undefined,
@@ -83,15 +84,12 @@ describe('dialog', () => {
       TestBed.configureTestingModule({
         imports: [ModalModule, NoopAnimationsModule, ButtonModule],
         declarations: [TestDialogComponent, ModalTestComponent],
-        providers: [
-          DialogService
-        ],
-
-      }).overrideModule(BrowserDynamicTestingModule, {
-        set: {
-
-        }
-      }).compileComponents();
+        providers: [DialogService],
+      })
+        .overrideModule(BrowserDynamicTestingModule, {
+          set: {},
+        })
+        .compileComponents();
     }));
 
     beforeEach(() => {
@@ -109,13 +107,19 @@ describe('dialog', () => {
 
       const classList = [
         // modal的class
-        '.modal-backdrop', '.modal', '.in', '.modal-dialog', '.modal-content',
+        '.modal-backdrop',
+        '.modal',
+        '.in',
+        '.modal-dialog',
+        '.modal-content',
         // dialog header的class
-        '.modal-header', '.standard-title', '.title-text',
+        '.modal-header',
+        '.standard-title',
+        '.title-text',
         // dialog body的class
         '.modal-body',
         // dialog footer的class
-        '.modal-footer'
+        '.modal-footer',
       ];
       expect(domHelper.judgeAppendToBodyStyleClasses(classList)).toBeTruthy();
 
@@ -252,7 +256,7 @@ describe('dialog', () => {
           btnwidth: '100px',
           autofocus: false,
           disabled: true,
-        }
+        },
       ];
       component.dialogConfig.width = '500px';
       component.dialogConfig.backdropCloseable = false;
@@ -324,7 +328,8 @@ describe('dialog', () => {
     <h3 (click)="close($event)" class="closeModal">Modal Component</h3>
     <div (click)="btnClick($event)" class="btnModal">iAmBtn</div>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class OpenModalComponent {
   constructor() {}
@@ -343,13 +348,11 @@ class OpenModalComponent {
 }
 
 @Component({
-  template: `
-    <d-button (btnClick)="openModal()">click me!</d-button>
-  `,
-  standalone: false
+  template: ` <d-button (btnClick)="openModal()">click me!</d-button> `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestModalComponent {
-
   results: any;
   modalConfig: IModalOptions = {
     component: OpenModalComponent,
@@ -357,8 +360,8 @@ class TestModalComponent {
     data: {
       onClose: (event) => {
         this.results.modalInstance.hide();
-      }
-    }
+      },
+    },
   };
 
   constructor(private modalService: ModalService) {}
@@ -380,11 +383,11 @@ describe('modal', () => {
         imports: [ModalModule, NoopAnimationsModule, ButtonModule],
         declarations: [TestModalComponent, OpenModalComponent],
         providers: [ModalService],
-      }).overrideModule(BrowserDynamicTestingModule, {
-        set: {
-
-        }
-      }).compileComponents();
+      })
+        .overrideModule(BrowserDynamicTestingModule, {
+          set: {},
+        })
+        .compileComponents();
     }));
 
     beforeEach(() => {
@@ -435,11 +438,11 @@ describe('modal', () => {
         imports: [ModalModule, NoopAnimationsModule, ButtonModule],
         declarations: [TestModalComponent, ModalAlertComponent],
         providers: [ModalService],
-      }).overrideModule(BrowserDynamicTestingModule, {
-        set: {
-
-        }
-      }).compileComponents();
+      })
+        .overrideModule(BrowserDynamicTestingModule, {
+          set: {},
+        })
+        .compileComponents();
     }));
 
     beforeEach(() => {
@@ -457,7 +460,7 @@ describe('modal', () => {
       fixture.detectChanges();
 
       const header = document.querySelector('.modal-header') as HTMLElement;
-      EventHelper.mouseMoveTrigger(header, {x: 943, y: 509}, {x: 10, y: 84});
+      EventHelper.mouseMoveTrigger(header, { x: 943, y: 509 }, { x: 10, y: 84 });
       fixture.detectChanges();
 
       const modalContent = document.querySelector('.modal-content') as HTMLElement;
@@ -498,7 +501,7 @@ function createKeyBoardEvent(type: string, key: string, keyCode?: string): Keybo
   });
 
   Object.defineProperties(event, {
-    keyCode: {value: Number(keyCode)}
+    keyCode: { value: Number(keyCode) },
   });
 
   return event;

@@ -1,15 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-splitter-demo-multi',
   templateUrl: './splitter-demo-multi.component.html',
   styleUrls: ['../splitter-demo.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class SplitterDemoMultiComponent {
-
-  constructor() {
-  }
+  constructor() {}
 
   sizeChange(size) {
     console.log(size);

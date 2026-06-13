@@ -1,15 +1,15 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-tree-design',
   templateUrl: './tree-design.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
-
 export class TreeDesignComponent implements OnInit {
   imgSrc;
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     this.imgSrc = environment.deployPrefix + 'assets/no-data.png';

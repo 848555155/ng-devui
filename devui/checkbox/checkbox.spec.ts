@@ -1,4 +1,4 @@
-import { Component, DebugElement, ViewChild } from '@angular/core';
+import { Component, DebugElement, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -18,7 +18,8 @@ import { CheckBoxModule } from './checkbox.module';
     [beforeChange]="beforeChange"
   >
   </d-checkbox>`,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestCheckBoxComponent {
   @ViewChild('comp') comp: CheckBoxComponent;

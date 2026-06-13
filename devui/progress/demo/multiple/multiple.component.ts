@@ -1,11 +1,12 @@
-import { AfterViewInit, Component, TemplateRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, TemplateRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ProgressComponent } from 'ng-devui/progress';
 
 @Component({
   selector: 'd-multiple',
   templateUrl: './multiple.component.html',
   styleUrls: ['./multiple.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class MultipleComponent implements AfterViewInit {
   @ViewChild('multilineBar') barInstance: ProgressComponent;

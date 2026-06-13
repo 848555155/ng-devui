@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-transfer-demo-base',
   templateUrl: './transfer-demo-base.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TransferDemoBaseComponent {
   disabled = false;
@@ -44,7 +45,7 @@ export class TransferDemoBaseComponent {
 
   // Example: Transfer will be disabled when option1 is selected.
   beforeTransfer(source, target) {
-    return !source.find(t => t.id === 1).checked;
+    return !source.find((t) => t.id === 1).checked;
   }
 
   onChange(event: any) {

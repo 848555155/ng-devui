@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -24,7 +24,8 @@ import singleTs from './single/single.component.ts.txt?raw';
 @Component({
   selector: 'd-demo-time-axis',
   templateUrl: './time-axis-demo.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TimeAxisDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

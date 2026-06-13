@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: 'd-demo-checkbox-basic',
   templateUrl: './checkbox-basic.component.html',
   styleUrls: ['./checkbox-basic.component.css'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class CheckboxBasicComponent {
   public checked = false;

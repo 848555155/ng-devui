@@ -1,4 +1,4 @@
-import { Component, ContentChildren, HostBinding, QueryList } from '@angular/core';
+import { Component, ContentChildren, HostBinding, QueryList, ChangeDetectionStrategy } from '@angular/core';
 import { AsideComponent } from './elements/aside.component';
 
 @Component({
@@ -6,7 +6,8 @@ import { AsideComponent } from './elements/aside.component';
   template: '<ng-content></ng-content>',
   styleUrls: ['./layout.component.scss'],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class LayoutComponent {
   @ContentChildren(AsideComponent) listOfSideBarComponent: QueryList<AsideComponent>;

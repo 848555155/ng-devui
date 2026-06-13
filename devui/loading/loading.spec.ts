@@ -1,4 +1,4 @@
-import { Component, DebugElement, OnInit } from '@angular/core';
+import { Component, DebugElement, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,7 +18,8 @@ import { LoadingType } from './loading.types';
       style="height: 150px;"
     ></div>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestLoadingComponent {
   showLoading = true;
@@ -35,12 +36,11 @@ class TestLoadingComponent {
   template: `
     <div dLoading [loadingTemplateRef]="loadingTemplateRef" [loading]="loading" [style.height.px]="150"></div>
     <ng-template #loadingTemplateRef>
-      <div class="test-template-loading">
-        测试自定义loading
-      </div>
+      <div class="test-template-loading">测试自定义loading</div>
     </ng-template>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestLoadingTemplateComponent implements OnInit {
   loading: LoadingType;
@@ -54,7 +54,7 @@ describe('loading', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [LoadingModule, NoopAnimationsModule],
-      declarations: [TestLoadingComponent, TestLoadingTemplateComponent]
+      declarations: [TestLoadingComponent, TestLoadingTemplateComponent],
     }).compileComponents();
   });
 

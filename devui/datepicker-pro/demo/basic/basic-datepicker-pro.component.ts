@@ -1,11 +1,10 @@
-import {
-  Component
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-basic-datepicker-pro',
   templateUrl: './basic-datepicker-pro.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class BasicDatepickerProComponent {
   value1;
@@ -14,11 +13,9 @@ export class BasicDatepickerProComponent {
   value4 = new Date();
   minDate = new Date(new Date().setMonth(new Date().getMonth() - 1));
   maxDate = new Date(new Date().setMonth(new Date().getMonth() + 2));
-  constructor() {
-  }
+  constructor() {}
 
   onChange(date) {
     console.log(date);
   }
-
 }

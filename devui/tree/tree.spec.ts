@@ -1,4 +1,4 @@
-import { Component, DebugElement, ViewChild } from '@angular/core';
+import { Component, DebugElement, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -20,7 +20,8 @@ import { TreeModule } from './tree.module';
     >
     </d-tree>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestTreeComponent {
   @ViewChild('basicTree') basicTree: TreeComponent;
@@ -38,30 +39,30 @@ class TestTreeComponent {
           open: true,
           items: [
             {
-              title: '叶子节点111'
-            }
+              title: '叶子节点111',
+            },
           ],
           data: {
-            isOpen: true
-          }
+            isOpen: true,
+          },
         },
         {
           title: '父节点12 - 折叠',
           open: true,
           items: [
             {
-              title: '叶子节点121'
-            }
+              title: '叶子节点121',
+            },
           ],
           data: {
-            isOpen: true
-          }
+            isOpen: true,
+          },
         },
         {
           title: '父节点13 - 没有子节点 - 动态加载',
-          isParent: true
-        }
-      ]
+          isParent: true,
+        },
+      ],
     },
     {
       id: 'parent2',
@@ -69,9 +70,9 @@ class TestTreeComponent {
       title: '父节点2',
       data: {
         id: 'data2_1',
-        name: 'parentName2'
-      }
-    }
+        name: 'parentName2',
+      },
+    },
   ];
 
   onDblClick = jasmine.createSpy('double click');
@@ -89,7 +90,7 @@ describe('tree', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [TreeModule, NoopAnimationsModule],
-      declarations: [TestTreeComponent]
+      declarations: [TestTreeComponent],
     });
   });
 
@@ -113,7 +114,7 @@ describe('tree', () => {
         '.devui-tree-node__content',
         '.devui-tree-node__content--value-wrapper',
         '.devui-tree-node__folder',
-        '.devui-tree-node__title'
+        '.devui-tree-node__title',
       ];
 
       expect(domHelper.judgeStyleClasses(classes)).toBeTruthy();
@@ -181,8 +182,8 @@ describe('tree', () => {
         title: 'New Node',
         open: false,
         disableToggle: true,
-        isParent: true
-      }
+        isParent: true,
+      },
     ];
     fixture.detectChanges();
     const folderIconEl: HTMLElement = debugEl.query(By.css('.devui-tree-node__folder')).nativeElement;
@@ -197,14 +198,14 @@ describe('tree', () => {
         title: 'New Node',
         open: false,
         disableToggle: false,
-        items: []
-      }
+        items: [],
+      },
     ];
     fixture.detectChanges();
-    const newNodeEl: HTMLElement = debugEl
-      .query(By.css('d-tree d-tree-nodes .devui-tree-node__content .devui-tree-node__title')).nativeElement;
+    const newNodeEl: HTMLElement = debugEl.query(
+      By.css('d-tree d-tree-nodes .devui-tree-node__content .devui-tree-node__title')
+    ).nativeElement;
     expect(newNodeEl.textContent).toEqual('New Node');
-
   });
 });
 
@@ -216,7 +217,7 @@ describe('tree factory', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [TreeModule, NoopAnimationsModule],
-      declarations: [TestTreeComponent]
+      declarations: [TestTreeComponent],
     }).compileComponents();
   });
 
@@ -278,16 +279,16 @@ describe('tree factory', () => {
 
     const disabledNodes = component.basicTree.treeFactory.getDisabledNodes();
     fixture.detectChanges();
-    expect(disabledNodes.every(item => item.data.disabled)).toBeTruthy();
+    expect(disabledNodes.every((item) => item.data.disabled)).toBeTruthy();
   });
 
   it('should check nodes by id of parent node', () => {
     const checkedNodes = component.basicTree.treeFactory.checkNodesById('parent1', true) as any;
-    expect(checkedNodes.every(item => item.data.isChecked)).toBeTruthy();
+    expect(checkedNodes.every((item) => item.data.isChecked)).toBeTruthy();
   });
 
   it('should check nodes by id of child node', () => {
     const checkedNodes = component.basicTree.treeFactory.checkNodesById('child11', true) as any;
-    expect(checkedNodes.every(item => item.data.isChecked)).toBeTruthy();
+    expect(checkedNodes.every((item) => item.data.isChecked)).toBeTruthy();
   });
 });

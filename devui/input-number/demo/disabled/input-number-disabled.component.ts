@@ -1,10 +1,11 @@
-import {Component} from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-input-number-disabled',
   templateUrl: './input-number-disabled.component.html',
   styleUrls: ['./input-number-disabled.component.css'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class InputNumberDisabledComponent {
   min = 1;

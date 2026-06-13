@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy } from '@angular/core';
 import { I18nInterface, I18nService } from 'ng-devui/i18n';
 import { Subscription } from 'rxjs';
 import { UnitRole } from '../gantt.model';
@@ -7,7 +7,8 @@ import { UnitRole } from '../gantt.model';
   selector: 'd-gantt-tools',
   templateUrl: './gantt-tools.component.html',
   styleUrls: ['./gantt-tools.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class GanttToolsComponent implements OnInit {
   @Input('currentUnit') set currentUnit(val) {
@@ -77,16 +78,16 @@ export class GanttToolsComponent implements OnInit {
 
   avtionHandle(type) {
     switch (type) {
-    case 'today':
-      this.goToday.emit();
-      break;
-    case 'reduce':
-      this.reduceUnit.emit();
-      break;
-    case 'increase':
-      this.increaseUnit.emit();
-      break;
-    default:
+      case 'today':
+        this.goToday.emit();
+        break;
+      case 'reduce':
+        this.reduceUnit.emit();
+        break;
+      case 'increase':
+        this.increaseUnit.emit();
+        break;
+      default:
     }
   }
 

@@ -1,4 +1,4 @@
-import { Component, DebugElement, ViewChild } from '@angular/core';
+import { Component, DebugElement, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BackTopModule } from 'ng-devui/back-top';
@@ -9,12 +9,15 @@ import { BackTopComponent } from './back-top.component';
     <d-back-top #basicBackTop [bottom]="bottom" [right]="right" [visibleHeight]="visibleHeight"></d-back-top>
   `,
   styles: [
-    `.container {
-      height: 1500px;
-      width: 300px;
-    }`
+    `
+      .container {
+        height: 1500px;
+        width: 300px;
+      }
+    `,
   ],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestBackTopComponent {
   @ViewChild('basicBackTop') basicBackTop: BackTopComponent;
@@ -25,15 +28,16 @@ class TestBackTopComponent {
 
 @Component({
   template: `
-  <div class="scroll-container">
-    <d-back-top #targetBackTop [scrollTarget]="target" [visibleHeight]="visibleHeight"></d-back-top>
-    <div class="scroll-content">
-      <div class="text"></div>
+    <div class="scroll-container">
+      <d-back-top #targetBackTop [scrollTarget]="target" [visibleHeight]="visibleHeight"></d-back-top>
+      <div class="scroll-content">
+        <div class="text"></div>
+      </div>
     </div>
-  </div>
   `,
   styles: [
-    `.scroll-container {
+    `
+      .scroll-container {
         width: 600px;
       }
       .scroll-content {
@@ -44,9 +48,10 @@ class TestBackTopComponent {
       .text {
         height: 1900px;
       }
-    `
+    `,
   ],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestTargetBackTopComponent {
   @ViewChild('targetBackTop') targetBackTop: BackTopComponent;
@@ -56,40 +61,41 @@ class TestTargetBackTopComponent {
 
 @Component({
   template: `
-  <d-back-top [customTemplate]="customTemplate">
-    <ng-template #customTemplate>
-      <div class="devui-backtop-custom">
-        <span class="icon-chevron-up"></span>
-      </div>
-    </ng-template>
-  </d-back-top>
+    <d-back-top [customTemplate]="customTemplate">
+      <ng-template #customTemplate>
+        <div class="devui-backtop-custom">
+          <span class="icon-chevron-up"></span>
+        </div>
+      </ng-template>
+    </d-back-top>
   `,
   styles: [
-    `.devui-backtop-custom {
-      text-align: center;
-      border-radius: 50%;
-      background-color: #859bff;
-      width: 40px;
-      height: 40px;
-    }
-    .icon-chevron-up {
-      font-size: 16px;
-      color: #ffffff;
-      line-height: 40px;
-    }
     `
+      .devui-backtop-custom {
+        text-align: center;
+        border-radius: 50%;
+        background-color: #859bff;
+        width: 40px;
+        height: 40px;
+      }
+      .icon-chevron-up {
+        font-size: 16px;
+        color: #ffffff;
+        line-height: 40px;
+      }
+    `,
   ],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
-class TestCustomBackTopComponent {
-}
+class TestCustomBackTopComponent {}
 
 describe('back-top', () => {
   let fixture: ComponentFixture<any>;
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [BackTopModule],
-      declarations: [TestBackTopComponent, TestTargetBackTopComponent, TestCustomBackTopComponent]
+      declarations: [TestBackTopComponent, TestTargetBackTopComponent, TestCustomBackTopComponent],
     });
   });
 
@@ -104,13 +110,13 @@ describe('back-top', () => {
     let component: TestBackTopComponent;
     let debugEl: DebugElement;
     let backTopBtn: HTMLElement;
-    beforeEach((() => {
+    beforeEach(() => {
       fixture = TestBed.createComponent(TestBackTopComponent);
       debugEl = fixture.debugElement;
       component = debugEl.componentInstance;
-      backTopBtn =  debugEl.query(By.css('.devui-backtop')).nativeElement;
+      backTopBtn = debugEl.query(By.css('.devui-backtop')).nativeElement;
       fixture.detectChanges();
-    }));
+    });
 
     it('should create correctly', () => {
       expect(component).toBeTruthy();
@@ -174,7 +180,7 @@ describe('back-top', () => {
       fixture = TestBed.createComponent(TestTargetBackTopComponent);
       debugEl = fixture.debugElement;
       component = debugEl.componentInstance;
-      backTopBtn =  debugEl.query(By.css('.devui-backtop')).nativeElement;
+      backTopBtn = debugEl.query(By.css('.devui-backtop')).nativeElement;
       component.target = debugEl.query(By.css('.scroll-content')).nativeElement;
       fixture.detectChanges();
     }));
@@ -223,12 +229,12 @@ describe('back-top', () => {
   describe('customTemplate', () => {
     let debugEl: DebugElement;
     let component: TestCustomBackTopComponent;
-    beforeEach((() => {
+    beforeEach(() => {
       fixture = TestBed.createComponent(TestCustomBackTopComponent);
       debugEl = fixture.debugElement;
       component = debugEl.componentInstance;
       fixture.detectChanges();
-    }));
+    });
 
     it('should create correctly', () => {
       expect(component).toBeTruthy();

@@ -1,16 +1,14 @@
-import { Component, DebugElement } from '@angular/core';
+import { Component, DebugElement, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ButtonModule } from 'ng-devui/button';
 import { ButtonGroupComponent } from './button-group.component';
 
 @Component({
-  template: `
-    <d-button-group [size]="size"></d-button-group>
-  `,
-  standalone: false
+  template: ` <d-button-group [size]="size"></d-button-group> `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
-
 class TestButtonGroupComponent {
   size = 'md';
 }
@@ -24,7 +22,7 @@ describe('button-group', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [ButtonModule],
-      declarations: [TestButtonGroupComponent]
+      declarations: [TestButtonGroupComponent],
     });
   });
 

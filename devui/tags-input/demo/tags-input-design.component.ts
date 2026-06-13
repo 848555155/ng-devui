@@ -1,15 +1,15 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-tags-input-design',
   templateUrl: './tags-input-design.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
-
 export class TagsInputDesignComponent implements OnInit {
   imgSrc;
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     this.imgSrc = environment.deployPrefix + 'assets/no-data.png';

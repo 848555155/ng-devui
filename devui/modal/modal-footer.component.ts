@@ -1,7 +1,4 @@
-import {
-  Component,
-  Input
-} from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { IButtonStyle } from 'ng-devui/button';
 
 @Component({
@@ -9,7 +6,8 @@ import { IButtonStyle } from 'ng-devui/button';
   templateUrl: './modal-footer.component.html',
   styleUrls: ['./modal-footer.component.scss'],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class ModalFooterComponent {
   @Input() buttons: Array<{

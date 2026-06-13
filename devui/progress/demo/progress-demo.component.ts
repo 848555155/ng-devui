@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -16,7 +16,8 @@ import progressDemoScss from './progress-demo.component.scss?raw';
   selector: 'd-demo-progress',
   templateUrl: './progress-demo.component.html',
   styleUrls: ['./progress-demo.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class ProgressDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [
@@ -37,7 +38,7 @@ export class ProgressDemoComponent implements OnInit, OnDestroy {
 
   navItems = [];
   subs: Subscription = new Subscription();
-  constructor(private translate: TranslateService) { }
+  constructor(private translate: TranslateService) {}
 
   ngOnInit() {
     this.subs.add(

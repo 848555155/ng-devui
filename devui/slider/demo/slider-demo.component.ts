@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import basicHtml from './basic/slider-basic.component.html?raw';
@@ -14,7 +14,8 @@ import customFormatterScss from './custom-formatter/slider-custom-formatter.comp
 @Component({
   selector: 'd-slider-demo',
   templateUrl: './slider-demo.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class SliderDemoComponent implements OnInit, OnDestroy {
   SliderBasicComponent = [

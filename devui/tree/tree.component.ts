@@ -13,7 +13,8 @@ import {
   SimpleChanges,
   TemplateRef,
   ViewChild,
-  ViewChildren
+  ViewChildren,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { I18nInterface, I18nService } from 'ng-devui/i18n';
 import { DevConfigService, expandCollapseForDomDestroy, WithConfig } from 'ng-devui/utils';
@@ -26,7 +27,8 @@ import { Dictionary, ITreeItem, TreeFactory, TreeNode } from './tree-factory.cla
   styleUrls: ['./tree.component.scss'],
   preserveWhitespaces: false,
   animations: [expandCollapseForDomDestroy],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TreeComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
   treeFactory: TreeFactory;
@@ -157,12 +159,15 @@ export class TreeComponent implements OnInit, OnChanges, AfterViewInit, OnDestro
   }
 
   public isSelectableRegion(ele) {
-    if (ele && !ele.classList.contains('devui-tree-node__content--value-wrapper')
-      && !ele.classList.contains('devui-tree-node__content')
-      && !ele.classList.contains('devui-tree-node__title')
-      && !ele.classList.contains('devui-tree-node-highlight')
-      && ele.tagName !== 'D-HIGHLIGHT'
-      && ele.parentNode?.tagName !== 'D-HIGHLIGHT') {
+    if (
+      ele &&
+      !ele.classList.contains('devui-tree-node__content--value-wrapper') &&
+      !ele.classList.contains('devui-tree-node__content') &&
+      !ele.classList.contains('devui-tree-node__title') &&
+      !ele.classList.contains('devui-tree-node-highlight') &&
+      ele.tagName !== 'D-HIGHLIGHT' &&
+      ele.parentNode?.tagName !== 'D-HIGHLIGHT'
+    ) {
       return false;
     }
     return true;

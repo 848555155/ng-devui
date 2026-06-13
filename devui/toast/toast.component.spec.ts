@@ -1,4 +1,4 @@
-import { Component, DebugElement } from '@angular/core';
+import { Component, DebugElement, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ToastComponent } from './toast.component';
@@ -8,7 +8,8 @@ import { ToastModule } from './toast.module';
   template: `
     <d-toast [sticky]="sticky" [life]="life" [value]="msgs" [style]="style" [styleClass]="styleClass" [lifeMode]="mode"></d-toast>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestToastComponent {
   msgs = [];
@@ -28,7 +29,7 @@ describe('toast', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [ToastModule],
-        declarations: [TestToastComponent]
+        declarations: [TestToastComponent],
       }).compileComponents();
     });
 
@@ -194,7 +195,7 @@ describe('toast', () => {
         testComponent.msgs = [
           { life: 3000, severity: 'info', summary: 'info', detail: 'info content' },
           { life: 6000, severity: 'success', summary: 'success', detail: 'success content' },
-          { severity: 'error', summary: 'error', detail: 'error content' }
+          { severity: 'error', summary: 'error', detail: 'error content' },
         ];
         fixture.detectChanges();
         const infoElement = toastElement.query(By.css('div.devui-toast-message-info')).nativeElement;
@@ -223,7 +224,7 @@ describe('toast', () => {
         fixture.detectChanges();
         testComponent.msgs = [
           { life: 110000, severity: 'error', summary: 'error', detail: 'error content' },
-          { severity: 'common', summary: 'common', detail: 'common content' }
+          { severity: 'common', summary: 'common', detail: 'common content' },
         ];
         fixture.detectChanges();
         const errorElement = toastElement.query(By.css('div.devui-toast-message-error')).nativeElement;
@@ -257,7 +258,7 @@ describe('toast', () => {
         fixture.detectChanges();
         testComponent.msgs = [
           { severity: 'info', summary: 'info', detail: 'info content' },
-          { severity: 'success', summary: 'success', detail: 'success content' }
+          { severity: 'success', summary: 'success', detail: 'success content' },
         ];
         fixture.detectChanges();
         const infoElement = toastElement.query(By.css('div.devui-toast-message-info')).nativeElement;

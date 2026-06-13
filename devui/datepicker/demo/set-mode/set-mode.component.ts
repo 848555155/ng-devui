@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-set-mode',
   templateUrl: './set-mode.component.html',
   styleUrls: ['./set-mode.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class SetModeComponent {
   selectedDate1 = null;
@@ -15,5 +16,4 @@ export class SetModeComponent {
     // 当[mode]="'month'",返回值是当月第一天的日期对象，请右键检查打开console查看
     console.log(value);
   }
-
 }

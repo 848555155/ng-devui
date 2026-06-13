@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox/devui-source-data';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs/internal/Subscription';
@@ -11,7 +11,8 @@ import iconGroupScss from './icon-group/icon-group.component.scss?raw';
 
 @Component({
   templateUrl: './icon-demo.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class IconDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

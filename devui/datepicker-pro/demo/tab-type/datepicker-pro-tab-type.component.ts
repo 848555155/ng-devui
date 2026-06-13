@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { DatepickerProCalendarComponent } from 'ng-devui/datepicker-pro';
 import { padStart } from 'lodash-es';
 
@@ -6,7 +6,8 @@ import { padStart } from 'lodash-es';
   selector: 'd-demo-datepicker-pro-tab-type',
   templateUrl: './datepicker-pro-tab-type.component.html',
   styleUrls: ['./datepicker-pro-tab-type.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class DatepickerProTabTypeComponent implements OnInit {
   @ViewChild('calendar') calendarCmp: DatepickerProCalendarComponent;
@@ -20,13 +21,13 @@ export class DatepickerProTabTypeComponent implements OnInit {
   relativeUnit = 'minute';
   options = ['minute', 'hours', 'days'];
   unitMap = {
-    'minute': 1 / (24 * 60),
-    'hours': 1 / 24,
-    'days': 1
+    minute: 1 / (24 * 60),
+    hours: 1 / 24,
+    days: 1,
   };
   quickDateMap = {
-    'today': [new Date(new Date().setHours(0, 0, 0)), new Date()],
-    'yesterday': this.getDateRange(-1),
+    today: [new Date(new Date().setHours(0, 0, 0)), new Date()],
+    yesterday: this.getDateRange(-1),
     'this week': this.getDateRange(-7),
     'last week': this.getDateRange(-14),
     'this month': this.getDateRange(-30),
@@ -44,24 +45,37 @@ export class DatepickerProTabTypeComponent implements OnInit {
     'last 1 year': this.getDateRange(-365),
     'last 2 year': this.getDateRange(-365 * 2),
   };
-  values = ['today', 'yesterday', 'this week', 'last week', 'this month', 'last month', 'last 15 minutes',
-    'last 30 minutes', 'last 1 hour', 'last 4 hours', 'last 12 hours', 'last 24 hours', 'last 7 days', 'last 30 days',
-    'last 60 days', 'last 90 days', 'last 1 year', 'last 2 years'];
-  constructor() {
-
-  }
+  values = [
+    'today',
+    'yesterday',
+    'this week',
+    'last week',
+    'this month',
+    'last month',
+    'last 15 minutes',
+    'last 30 minutes',
+    'last 1 hour',
+    'last 4 hours',
+    'last 12 hours',
+    'last 24 hours',
+    'last 7 days',
+    'last 30 days',
+    'last 60 days',
+    'last 90 days',
+    'last 1 year',
+    'last 2 years',
+  ];
+  constructor() {}
 
   getDateRange(days) {
     return [new Date(new Date().getTime() + days * 1000 * 3600 * 24), new Date()];
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   valueChange(value: string) {
     if (value) {
-      this.dateValue = this.quickDateMap[value].map(d => this.getTimeStr(d) || '').join(' - ');
+      this.dateValue = this.quickDateMap[value].map((d) => this.getTimeStr(d) || '').join(' - ');
       this.curDate = this.quickDateMap[value];
       this.isOpen = false;
       this.relativeNumber = null;
@@ -69,7 +83,7 @@ export class DatepickerProTabTypeComponent implements OnInit {
   }
 
   ensureDate() {
-    this.dateValue = this.curDate.map(d => this.getTimeStr(d) || '').join(' - ');
+    this.dateValue = this.curDate.map((d) => this.getTimeStr(d) || '').join(' - ');
     this.isOpen = false;
     this.choose = '';
     this.relativeNumber = null;
@@ -77,7 +91,7 @@ export class DatepickerProTabTypeComponent implements OnInit {
 
   cancel() {
     if (this.dateValue) {
-      this.curDate = this.dateValue.split(' - ').map(d => new Date(d));
+      this.curDate = this.dateValue.split(' - ').map((d) => new Date(d));
     }
     this.isOpen = false;
   }
@@ -86,7 +100,7 @@ export class DatepickerProTabTypeComponent implements OnInit {
     this.choose = '';
     this.curDate = this.getDateRange(-1 * this.unitMap[this.relativeUnit] * this.relativeNumber);
     console.log(this.curDate);
-    this.dateValue = this.curDate.map(d => this.getTimeStr(d) || '').join(' - ');
+    this.dateValue = this.curDate.map((d) => this.getTimeStr(d) || '').join(' - ');
     this.isOpen = false;
   }
 
@@ -99,6 +113,10 @@ export class DatepickerProTabTypeComponent implements OnInit {
 
   getTimeStr(date: Date) {
     /* eslint-disable-next-line  max-len*/
-    return `${date.toLocaleDateString()} ${padStart(String(date.getHours()), 2, '0')}:${padStart(String(date.getMinutes()), 2, '0')}:${padStart(String(date.getSeconds()), 2, '0')}`;
+    return `${date.toLocaleDateString()} ${padStart(String(date.getHours()), 2, '0')}:${padStart(
+      String(date.getMinutes()),
+      2,
+      '0'
+    )}:${padStart(String(date.getSeconds()), 2, '0')}`;
   }
 }

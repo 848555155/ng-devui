@@ -1,11 +1,12 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges, TemplateRef } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { IAxisConfigs, IQuadrantConfigs, IViewConfigs } from '../quadrant-diagram.type';
 
 @Component({
   selector: 'd-quadrant-region',
   templateUrl: './quadrant-region.component.html',
   styleUrls: ['./quadrant-region.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class QuadrantRegionComponent implements OnInit, OnChanges {
   @Input() quadrantConfigs: Array<IQuadrantConfigs>;

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { DataTableComponent } from 'ng-devui/data-table';
 import { originSource, SourceType } from '../mock-data';
 
@@ -7,19 +7,19 @@ import { originSource, SourceType } from '../mock-data';
   templateUrl: './fix-height-virtual-scroll.component.html',
   styles: [
     `
-    .splitter-wrapper{
-      height: 600px;
-      padding: 10px;
-    }
-    d-splitter-pane{
-      padding: 5px 0;
-    }
-    `
+      .splitter-wrapper {
+        height: 600px;
+        padding: 10px;
+      }
+      d-splitter-pane {
+        padding: 5px 0;
+      }
+    `,
   ],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class FixHeightVirtualScrollComponent implements OnInit {
-
   @ViewChild('dataTable') dataTable: DataTableComponent;
   dataTableOptions = {
     columns: [
@@ -46,8 +46,8 @@ export class FixHeightVirtualScrollComponent implements OnInit {
         header: 'Date of birth',
         fieldType: 'date',
         sortable: true,
-      }
-    ]
+      },
+    ],
   };
 
   dataSource: Array<SourceType> = JSON.parse(JSON.stringify(originSource.slice()));
@@ -69,5 +69,4 @@ export class FixHeightVirtualScrollComponent implements OnInit {
     // 非window.resize改变的虚拟滚动表格，需要通过table实例来更新CDk虚拟滚动的视窗大小来实现新的高度渲染
     this.dataTable.updateVirtualScrollSize();
   }
-
 }

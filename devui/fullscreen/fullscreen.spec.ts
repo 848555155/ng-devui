@@ -1,4 +1,4 @@
-import { Component, DebugElement, ViewChild } from '@angular/core';
+import { Component, DebugElement, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ButtonModule } from '../button/button.module';
@@ -13,7 +13,8 @@ import { FullscreenModule } from './fullscreen.module';
       </div>
     </d-fullscreen>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestFullscreenComponent {
   @ViewChild('fullscreen') fullscreen: FullscreenComponent;

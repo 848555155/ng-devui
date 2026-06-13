@@ -1,4 +1,3 @@
-
 import {
   AfterViewInit,
   Component,
@@ -15,7 +14,8 @@ import {
   TemplateRef,
   ViewChild,
   ViewChildren,
-  DOCUMENT
+  DOCUMENT,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { I18nInterface, I18nService } from 'ng-devui/i18n';
 import { DevConfigService, WithConfig, expandCollapseForDomDestroy } from 'ng-devui/utils';
@@ -32,7 +32,8 @@ import { ICheckboxInput, IDropType } from './tree.types';
   exportAs: 'dOperableTreeComponent',
   preserveWhitespaces: false,
   animations: [expandCollapseForDomDestroy],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class OperableTreeComponent implements OnInit, OnDestroy, AfterViewInit {
   static ID_SEED = 0;
@@ -337,17 +338,16 @@ export class OperableTreeComponent implements OnInit, OnDestroy, AfterViewInit {
           if (this.beforeNodeDrop) {
             dragResult = this.beforeNodeDrop(dragNodeId, dropNodeId, this.dragState.dropType, dragNodeIds);
           }
-          dragResult
-            .then(() => {
-              this.setSelection(dropNode, dragNodeId, dragNodeIds, dragNodesCheckStatus);
-              if (this.nodeOnDrop.observers.length > 0) {
-                if (this.isOpenedOonDragOver.length) {
-                  const ids = this.treeFactory.getLineage(dropNode);
-                  this.isOpenedOonDragOver = difference(this.isOpenedOonDragOver, ids);
-                }
-                this.nodeOnDrop.emit({ event, treeNode: dropNode, dropType: this.dragState.dropType });
+          dragResult.then(() => {
+            this.setSelection(dropNode, dragNodeId, dragNodeIds, dragNodesCheckStatus);
+            if (this.nodeOnDrop.observers.length > 0) {
+              if (this.isOpenedOonDragOver.length) {
+                const ids = this.treeFactory.getLineage(dropNode);
+                this.isOpenedOonDragOver = difference(this.isOpenedOonDragOver, ids);
               }
-            });
+              this.nodeOnDrop.emit({ event, treeNode: dropNode, dropType: this.dragState.dropType });
+            }
+          });
         } else {
           this.dropFormOutside(event, dropNode);
         }
@@ -409,16 +409,16 @@ export class OperableTreeComponent implements OnInit, OnDestroy, AfterViewInit {
     const originalParentNode = hasParentId ? this.treeFactory.nodes[movingNode.parentId] : this.treeFactory.treeRoot;
 
     switch (this.dragState.dropType) {
-    case 'prev':
-      this.handlerDropSort(movingNodeIndex, dropNodeIndex, movingNode, dropNode, originalParentNode, 'prev');
-      break;
-    case 'next':
-      this.handlerDropSort(movingNodeIndex, dropNodeIndex, movingNode, dropNode, originalParentNode, 'next');
-      break;
-    case 'inner':
-      this.handlerDropInner(movingNodeIndex, movingNode, dropNode, originalParentNode);
-      break;
-    default:
+      case 'prev':
+        this.handlerDropSort(movingNodeIndex, dropNodeIndex, movingNode, dropNode, originalParentNode, 'prev');
+        break;
+      case 'next':
+        this.handlerDropSort(movingNodeIndex, dropNodeIndex, movingNode, dropNode, originalParentNode, 'next');
+        break;
+      case 'inner':
+        this.handlerDropInner(movingNodeIndex, movingNode, dropNode, originalParentNode);
+        break;
+      default:
     }
   }
 
@@ -643,16 +643,16 @@ export class OperableTreeComponent implements OnInit, OnDestroy, AfterViewInit {
           })
           .catch((e, reaction = 'cancel') => {
             switch (reaction) {
-            case 'justify': {
-              const parentNode = this.treeFactory.nodes[treeNode.parentId];
-              const title = treeNode.data.title;
-              this.treeFactory.deleteNodeById(treeNode.id);
-              this.addChildNode(null, parentNode, { title: title });
-              break;
-            }
-            case 'cancel':
-            default:
-              this.treeFactory.deleteNodeById(treeNode.id);
+              case 'justify': {
+                const parentNode = this.treeFactory.nodes[treeNode.parentId];
+                const title = treeNode.data.title;
+                this.treeFactory.deleteNodeById(treeNode.id);
+                this.addChildNode(null, parentNode, { title: title });
+                break;
+              }
+              case 'cancel':
+              default:
+                this.treeFactory.deleteNodeById(treeNode.id);
             }
             return Promise.reject(e);
           });

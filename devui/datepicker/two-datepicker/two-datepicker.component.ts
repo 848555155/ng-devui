@@ -12,7 +12,8 @@ import {
   Output,
   TemplateRef,
   ViewChild,
-  DOCUMENT
+  DOCUMENT,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { I18nInterface, I18nService } from 'ng-devui/i18n';
 import { DateConverter, DefaultDateConverter, DevConfigService, WithConfig, fadeInOut } from 'ng-devui/utils';
@@ -27,7 +28,8 @@ import { DatePickerConfigService as DatePickerConfig } from '../date-picker.conf
   templateUrl: 'two-datepicker.component.html',
   styleUrls: ['./two-datepicker.component.scss'],
   animations: [fadeInOut],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TwoDatePickerComponent implements OnInit, OnDestroy {
   @Input() locale: string;
@@ -202,14 +204,14 @@ export class TwoDatePickerComponent implements OnInit, OnDestroy {
 
   onPositionChange(position: ConnectedOverlayPositionChange) {
     switch (position.connectionPair.overlayY) {
-    case 'top':
-    case 'center':
-      this.datePosition = 'bottom';
-      break;
-    case 'bottom':
-      this.datePosition = 'top';
-      break;
-    default:
+      case 'top':
+      case 'center':
+        this.datePosition = 'bottom';
+        break;
+      case 'bottom':
+        this.datePosition = 'top';
+        break;
+      default:
     }
     this.switchOriginPositionSub.next(this.whichOpen);
   }
@@ -232,13 +234,13 @@ export class TwoDatePickerComponent implements OnInit, OnDestroy {
 
   syncPickerPair(currentCalender: object, orientation: string) {
     switch (orientation) {
-    case 'left':
-      this.currentCalendars[0] = currentCalender;
-      break;
-    case 'right':
-      this.currentCalendars[1] = currentCalender;
-      break;
-    default:
+      case 'left':
+        this.currentCalendars[0] = currentCalender;
+        break;
+      case 'right':
+        this.currentCalendars[1] = currentCalender;
+        break;
+      default:
     }
   }
 

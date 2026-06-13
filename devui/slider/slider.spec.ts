@@ -1,4 +1,4 @@
-import { Component, DebugElement, ViewChild } from '@angular/core';
+import { Component, DebugElement, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -24,12 +24,15 @@ import { SliderModule } from './slider.module';
     >
     </d-slider>
   `,
-  styles: [`
-    .slider {
-      width: 300px;
-    }
-  `],
-  standalone: false
+  styles: [
+    `
+      .slider {
+        width: 300px;
+      }
+    `,
+  ],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestSliderBasicComponent {
   @ViewChild('sliderCmp') sliderCmp: SliderComponent;
@@ -53,7 +56,7 @@ describe('slider', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [SliderModule, FormsModule, NoopAnimationsModule, PopoverModule],
-      declarations: [TestSliderBasicComponent]
+      declarations: [TestSliderBasicComponent],
     }).compileComponents();
   }));
 
@@ -116,8 +119,8 @@ describe('slider', () => {
       const disabledRect = handleEl.getBoundingClientRect();
       mouseMoveTrigger(
         handleEl,
-        {x: disabledRect.right, y: disabledRect.height },
-        {x: disabledRect.right + 300, y: disabledRect.height}
+        { x: disabledRect.right, y: disabledRect.height },
+        { x: disabledRect.right + 300, y: disabledRect.height }
       );
       fixture.detectChanges();
       tick();
@@ -151,11 +154,7 @@ describe('slider', () => {
       fixture.detectChanges();
       testComponent.step = 100;
       fixture.detectChanges();
-      mouseMoveTrigger(
-        handleEl,
-        {x: handleRect.right, y: handleRect.height },
-        {x: handleRect.right + 150, y: handleRect.height}
-      );
+      mouseMoveTrigger(handleEl, { x: handleRect.right, y: handleRect.height }, { x: handleRect.right + 150, y: handleRect.height });
 
       expect(testComponent.value).toEqual(100);
     }));

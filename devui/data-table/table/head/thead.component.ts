@@ -9,6 +9,7 @@ import {
   OnInit,
   QueryList,
   SimpleChanges,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { TableCheckOptions, TableCheckStatusArg } from '../../data-table.model';
@@ -19,7 +20,8 @@ import { TableThComponent } from './th/th.component';
   /* eslint-disable-next-line @angular-eslint/component-selector*/
   selector: '[dTableHead]',
   templateUrl: './thead.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TableTheadComponent implements OnInit, AfterContentInit, OnDestroy, OnChanges {
   @Input() checkable: boolean;

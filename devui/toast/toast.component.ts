@@ -9,6 +9,7 @@ import {
   Output,
   TemplateRef,
   ViewChild,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { isEqual } from 'lodash-es';
 import { Subject, Subscription } from 'rxjs';
@@ -28,7 +29,8 @@ export interface Message {
   templateUrl: './toast.component.html',
   styleUrls: ['./toast.component.scss'],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class ToastComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('container', { static: true }) containerViewChild: ElementRef;
@@ -106,12 +108,12 @@ export class ToastComponent implements OnInit, AfterViewInit, OnDestroy {
 
   severityDelay(item: Message) {
     switch (item.severity) {
-    case 'warn':
-    case 'error':
-      return 10000;
-    default:
-      // common | success | info | default
-      return 5000;
+      case 'warn':
+      case 'error':
+        return 10000;
+      default:
+        // common | success | info | default
+        return 5000;
     }
   }
 

@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { GanttService } from '../gantt.service';
 
@@ -6,7 +6,8 @@ import { GanttService } from '../gantt.service';
   selector: 'd-gantt-milestone',
   templateUrl: './gantt-milestone.component.html',
   styleUrls: ['./gantt-milestone.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class GanttMilestoneComponent implements OnInit, OnChanges, OnDestroy {
   @Input() startDate: Date;

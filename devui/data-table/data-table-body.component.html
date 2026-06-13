@@ -62,9 +62,9 @@
     class="{{ rowItem.$rowClass ? rowItem.$rowClass : '' }}"
     [ngClass]="{ 'table-row-selected': rowItem.$checked }"
     [dragData]="{ data: rowItem }"
-    [dragScope]="rowItem?.$draggable['scope']"
-    [dragOverClass]="rowItem?.$draggable['class']"
-    [dragHandle]="rowItem?.$draggable['handler']"
+    [dragScope]="$safeNavigationMigration(rowItem?.$draggable['scope'])"
+    [dragOverClass]="$safeNavigationMigration(rowItem?.$draggable['class'])"
+    [dragHandle]="$safeNavigationMigration(rowItem?.$draggable['handler'])"
   ></tr>
   <tr *ngIf="rowItem && rowItem['$isDetailOpen'] && rowItem.detail">
     <td [attr.colspan]="checkable ? 2 : 1"></td>

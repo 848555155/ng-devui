@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-demo-basic',
   templateUrl: './basic.component.html',
   styleUrls: ['./basic.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class BasicComponent implements OnInit {
   constructor() {}
@@ -13,7 +14,7 @@ export class BasicComponent implements OnInit {
     rules: {
       selector: '.readtip-target',
       title: 'Name: Jack',
-      content: 'This is Jack\'s profile',
+      content: "This is Jack's profile",
     },
   };
 

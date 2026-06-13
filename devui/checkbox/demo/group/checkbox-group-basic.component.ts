@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: 'd-checkbox-group-basic',
   templateUrl: './checkbox-group-basic.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class CheckboxGroupBasicComponent {
   public checked = false;

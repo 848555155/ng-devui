@@ -10,6 +10,7 @@ import {
   NgZone,
   OnInit,
   Output,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { DATA_TABLE_ROW } from './data-table-row.token';
 import { DATA_TABLE } from './data-table.token';
@@ -27,7 +28,8 @@ import { DataTableColumnTmplComponent } from './tmpl/data-table-column-tmpl.comp
       useExisting: forwardRef(() => DataTableRowComponent),
     },
   ],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class DataTableRowComponent implements OnInit {
   @Input() rowItem: any;

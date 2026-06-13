@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox/devui-source-data';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -19,7 +19,8 @@ import virtualScrollScss from './virtual-scroll/transfer-virtual-scroll.componen
 @Component({
   selector: 'd-transfer-demo',
   templateUrl: './transfer-demo.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TransferDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [
@@ -71,7 +72,7 @@ export class TransferDemoComponent implements OnInit, OnDestroy {
       { dAnchorLink: 'transfer-demo-search', value: values['transfer-demo-search'] },
       { dAnchorLink: 'transfer-demo-sort', value: values['transfer-demo-sort'] },
       { dAnchorLink: 'transfer-demo-custom', value: values['transfer-demo-custom'] },
-      { dAnchorLink: 'transfer-demo-virtual-scroll', value: values['transfer-demo-virtual-scroll']},
+      { dAnchorLink: 'transfer-demo-virtual-scroll', value: values['transfer-demo-virtual-scroll'] },
     ];
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -14,26 +14,27 @@ import mockStepsTs from './mock-steps.ts.txt?raw';
 @Component({
   selector: 'd-user-guide-demo',
   templateUrl: './user-guide-demo.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class UserGuideDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [
-    {title: 'HTML', language: 'xml', code:  basicHtml},
-    {title: 'TS', language: 'typescript', code:  basicTs},
-    {title: 'DATA', language: 'typescript', code: mockStepsTs},
-    {title: 'SCSS', language: 'css', code:  basicScss}
+    { title: 'HTML', language: 'xml', code: basicHtml },
+    { title: 'TS', language: 'typescript', code: basicTs },
+    { title: 'DATA', language: 'typescript', code: mockStepsTs },
+    { title: 'SCSS', language: 'css', code: basicScss },
   ];
 
   serviceWaySource: Array<DevuiSourceData> = [
-    {title: 'HTML', language: 'xml', code:  serviceWayHtml},
-    {title: 'TS', language: 'typescript', code:  serviceWayTs},
-    {title: 'DATA', language: 'typescript', code: mockStepsTs},
-    {title: 'SCSS', language: 'css', code:  serviceWayScss}
+    { title: 'HTML', language: 'xml', code: serviceWayHtml },
+    { title: 'TS', language: 'typescript', code: serviceWayTs },
+    { title: 'DATA', language: 'typescript', code: mockStepsTs },
+    { title: 'SCSS', language: 'css', code: serviceWayScss },
   ];
 
   navItems = [];
   subs: Subscription = new Subscription();
-  constructor(private translate: TranslateService) { }
+  constructor(private translate: TranslateService) {}
 
   ngOnInit() {
     this.subs.add(
@@ -52,8 +53,8 @@ export class UserGuideDemoComponent implements OnInit, OnDestroy {
 
   setNavValues(values) {
     this.navItems = [
-      { dAnchorLink: 'user-guide-basic', value: values['user-guide-basic']},
-      { dAnchorLink: 'user-guide-service-way', value: values['user-guide-service-way']},
+      { dAnchorLink: 'user-guide-basic', value: values['user-guide-basic'] },
+      { dAnchorLink: 'user-guide-service-way', value: values['user-guide-service-way'] },
     ];
   }
 
@@ -62,5 +63,4 @@ export class UserGuideDemoComponent implements OnInit, OnDestroy {
       this.subs.unsubscribe();
     }
   }
-
 }

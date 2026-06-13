@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ReadTipOptions } from 'ng-devui/read-tip';
 
 @Component({
   selector: 'd-demo-multi',
   templateUrl: './multi-readtip.component.html',
   styleUrls: ['./multi-readtip.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class MultiReadtipComponent implements OnInit {
   multiReadTip: ReadTipOptions = {

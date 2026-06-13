@@ -1,18 +1,18 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { DrawerService, IDrawerOpenResult } from 'ng-devui/drawer';
 
 @Component({
   selector: 'd-template',
   templateUrl: './template.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TemplateComponent implements OnInit {
   @ViewChild('drawerContent', { static: true }) drawerContent: TemplateRef<any>;
   results: IDrawerOpenResult;
-  constructor(private drawerService: DrawerService) { }
+  constructor(private drawerService: DrawerService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   openDrawer() {
     this.results = this.drawerService.open({
@@ -26,7 +26,7 @@ export class TemplateComponent implements OnInit {
       onClose: () => {
         console.log('on drawer closed');
       },
-      contentTemplate: this.drawerContent
+      contentTemplate: this.drawerContent,
     });
   }
 

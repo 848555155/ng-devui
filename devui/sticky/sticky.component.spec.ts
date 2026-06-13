@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, DebugElement, ViewChild } from '@angular/core';
+import { Component, DebugElement, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ButtonModule } from '../button';
@@ -49,7 +49,8 @@ import { StickyModule } from './sticky.module';
     </div>
   `,
   styleUrls: ['./demo/scroll-target/scroll-target.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestStickyComponent {
   zIndex = 1000;
@@ -101,7 +102,8 @@ class TestStickyComponent {
     </div>
   `,
   styleUrls: ['./demo/basic/basic.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestStickyWindowComponent {
   stickyView = {

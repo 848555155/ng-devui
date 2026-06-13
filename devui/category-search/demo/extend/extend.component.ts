@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, QueryList, TemplateRef, ViewChild, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, QueryList, TemplateRef, ViewChild, ViewChildren, ChangeDetectionStrategy } from '@angular/core';
 import { CategorySearchComponent, ICategorySearchTagItem } from 'ng-devui/category-search';
 import { SelectComponent } from 'ng-devui/select';
 import { cloneDeep } from 'lodash-es';
@@ -8,7 +8,8 @@ import { demoData } from '../demo-data';
   selector: 'd-extend',
   templateUrl: './extend.component.html',
   styleUrls: ['./extend.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class ExtendComponent implements AfterViewInit {
   @ViewChild('extendTemplate') extendTemplate: TemplateRef<any>;

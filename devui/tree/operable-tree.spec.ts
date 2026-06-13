@@ -1,4 +1,4 @@
-import { Component, DebugElement, ViewChild } from '@angular/core';
+import { Component, DebugElement, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -36,7 +36,8 @@ import { TreeModule } from './tree.module';
     >
     </d-operable-tree>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestOperableTreeComponent {
   @ViewChild('operableTree') operableTree: OperableTreeComponent;
@@ -96,7 +97,8 @@ class TestOperableTreeComponent {
     <d-operable-tree #operableTree [tree]="treeItems" [treeNodeIdKey]="'id'" [treeNodeChildrenKey]="'children'" [virtualScroll]="true">
     </d-operable-tree>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestVirtualScrollTreeComponent {
   @ViewChild('operableTree') operableTree: OperableTreeComponent;
@@ -145,7 +147,8 @@ class TestVirtualScrollTreeComponent {
     </d-operable-tree>
     <pre>transferData:{{ transferData }}</pre>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestDragDropTreeComponent {
   @ViewChild('comp') comp: OperableTreeComponent;

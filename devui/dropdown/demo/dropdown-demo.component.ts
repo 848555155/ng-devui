@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -39,7 +39,8 @@ import setIsOpenScss from './set-is-open/dropdown-set-is-open.component.scss?raw
       }
     `,
   ],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class DropdownDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

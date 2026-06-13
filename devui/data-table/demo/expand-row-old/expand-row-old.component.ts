@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { AfterContentInit, Component, OnInit, TemplateRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { TableExpandConfig } from 'ng-devui/data-table';
 import { originSource, SourceType } from '../mock-data';
 
@@ -7,25 +7,26 @@ import { originSource, SourceType } from '../mock-data';
   templateUrl: './expand-row-old.component.html',
   styles: [
     `
-  .input-block {
-    width: 200px;
-    display: inline-block;
-    margin-right: 5px;
-  }
-  .cursor-pointer{
-    vertical-align: middle;
-    cursor: pointer;
-  }
-  .edit-padding-fix {
-    margin-top: -2px;
-    margin-bottom: -2px;
-  }
-  .tips-icon {
-    margin-right: 5px;
-  }
-  `
+      .input-block {
+        width: 200px;
+        display: inline-block;
+        margin-right: 5px;
+      }
+      .cursor-pointer {
+        vertical-align: middle;
+        cursor: pointer;
+      }
+      .edit-padding-fix {
+        margin-top: -2px;
+        margin-bottom: -2px;
+      }
+      .tips-icon {
+        margin-right: 5px;
+      }
+    `,
   ],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class ExpandRowOldComponent implements OnInit, AfterContentInit {
   @ViewChild('quickAddRowTip', { static: true }) quickAddRowTip: TemplateRef<any>;

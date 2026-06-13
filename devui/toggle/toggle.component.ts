@@ -1,7 +1,4 @@
-import {
-  Component, EventEmitter, forwardRef, HostListener, Input,
-  Output, TemplateRef
-} from '@angular/core';
+import { Component, EventEmitter, forwardRef, HostListener, Input, Output, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AnimationNumberDuration } from 'ng-devui/utils';
 import { Observable } from 'rxjs';
@@ -11,13 +8,16 @@ import { Observable } from 'rxjs';
   templateUrl: './toggle.component.html',
   styleUrls: [`./toggle.component.scss`],
   exportAs: 'toggle',
-  providers: [{
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => ToggleComponent),
-    multi: true
-  }],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => ToggleComponent),
+      multi: true,
+    },
+  ],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class ToggleComponent implements ControlValueAccessor {
   private _checked: boolean;

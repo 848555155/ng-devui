@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-without-content',
@@ -10,7 +10,8 @@ import { Component } from '@angular/core';
       }
     `,
   ],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class WithoutContentComponent {
   tabActiveId: string | number = 'tab2';

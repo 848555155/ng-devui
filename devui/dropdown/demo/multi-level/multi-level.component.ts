@@ -1,11 +1,12 @@
 import { ConnectedPosition } from '@angular/cdk/overlay';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-dropdown-demo-multi-level',
   templateUrl: './multi-level.component.html',
   styleUrls: ['./multi-level.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class DropDownDemoMultiLevelComponent {
   subMenuDirections: ConnectedPosition[] = [

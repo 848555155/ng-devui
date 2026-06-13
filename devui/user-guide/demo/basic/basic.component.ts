@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { DialogService } from 'ng-devui/modal';
 import { IStep } from 'ng-devui/user-guide';
 import { mockSteps } from '../mock-steps';
@@ -7,13 +7,14 @@ import { mockSteps } from '../mock-steps';
   selector: 'd-user-guide-basic',
   templateUrl: './basic.component.html',
   styleUrls: ['./basic.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class BasicComponent implements OnInit {
   @ViewChild('contentTemplate') contentTemplate: TemplateRef<any>;
   steps: Array<IStep> = mockSteps;
 
-  constructor(private dialogService: DialogService) { }
+  constructor(private dialogService: DialogService) {}
 
   ngOnInit() {
     setTimeout(() => {
@@ -37,9 +38,8 @@ export class BasicComponent implements OnInit {
           handler: ($event: Event) => {
             results.modalInstance.hide();
           },
-        }
+        },
       ],
     });
   }
-
 }

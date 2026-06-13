@@ -10,6 +10,7 @@ import {
   Output,
   Renderer2,
   SimpleChanges,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { I18nService } from 'ng-devui/i18n';
@@ -29,7 +30,8 @@ import { SimpleDate } from '../single-date-range-picker.component';
       multi: true,
     },
   ],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TwoDatepickerSingleComponent extends SingleDatepickerComponent implements OnChanges, OnInit {
   @Input() selectedRange: Date[] = Array(2);

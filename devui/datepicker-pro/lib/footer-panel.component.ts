@@ -1,6 +1,4 @@
-import {
-  Component, Input, OnDestroy, TemplateRef
-} from '@angular/core';
+import { Component, Input, OnDestroy, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { I18nInterface, I18nService } from 'ng-devui/i18n';
 import { Subscription } from 'rxjs';
 import { DatepickerProService } from '../datepicker-pro.service';
@@ -10,7 +8,8 @@ import { DatepickerProService } from '../datepicker-pro.service';
   templateUrl: './footer-panel.component.html',
   styleUrls: ['./footer-panel.component.scss'],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class FooterPanelComponent implements OnDestroy {
   @Input() footerTemplate: TemplateRef<any>;
@@ -24,17 +23,16 @@ export class FooterPanelComponent implements OnDestroy {
 
   get confirmDisable() {
     if (this.isRange) {
-      return (this.pickerSrv.currentActiveInput === 'start' && !this.pickerSrv.curRangeDate[0]) ||
-      (this.pickerSrv.currentActiveInput === 'end' && !this.pickerSrv.curRangeDate[1]);
+      return (
+        (this.pickerSrv.currentActiveInput === 'start' && !this.pickerSrv.curRangeDate[0]) ||
+        (this.pickerSrv.currentActiveInput === 'end' && !this.pickerSrv.curRangeDate[1])
+      );
     } else {
       return false;
     }
   }
 
-  constructor(
-    private pickerSrv: DatepickerProService,
-    protected i18n: I18nService
-  ) {
+  constructor(private pickerSrv: DatepickerProService, protected i18n: I18nService) {
     this.setI18nText();
   }
 
@@ -68,5 +66,4 @@ export class FooterPanelComponent implements OnDestroy {
   ngOnDestroy() {
     this.i18nSubscription.unsubscribe();
   }
-
 }

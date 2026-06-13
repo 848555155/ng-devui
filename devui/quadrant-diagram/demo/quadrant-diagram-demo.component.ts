@@ -1,6 +1,4 @@
-import {
-  Component, OnDestroy, OnInit
-} from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -14,19 +12,19 @@ import configScss from './config/config.component.scss?raw';
 @Component({
   selector: 'd-quadrant-diagram-demo',
   templateUrl: './quadrant-diagram-demo.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
-
 export class QuadrantDiagramDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [
     { title: 'HTML', language: 'xml', code: basicHtml },
     { title: 'TS', language: 'typescript', code: basicTs },
-    { title: 'SCSS', language: 'css', code: basicScss }
+    { title: 'SCSS', language: 'css', code: basicScss },
   ];
   configSource: Array<DevuiSourceData> = [
     { title: 'HTML', language: 'xml', code: configHtml },
     { title: 'TS', language: 'typescript', code: configTs },
-    { title: 'SCSS', language: 'css', code: configScss }
+    { title: 'SCSS', language: 'css', code: configScss },
   ];
 
   navItems = [];
@@ -60,5 +58,4 @@ export class QuadrantDiagramDemoComponent implements OnInit, OnDestroy {
       this.subs.unsubscribe();
     }
   }
-
 }

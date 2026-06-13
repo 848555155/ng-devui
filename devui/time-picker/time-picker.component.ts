@@ -18,7 +18,8 @@ import {
   ViewChild,
   ViewContainerRef,
   forwardRef,
-  DOCUMENT
+  DOCUMENT,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { I18nInterface, I18nService } from 'ng-devui/i18n';
@@ -57,7 +58,8 @@ interface TimeObj {
   templateUrl: 'time-picker.component.html',
   animations: [fadeInOut],
   styleUrls: ['./time-picker.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TimePickerComponent implements OnChanges, OnInit, OnDestroy, ControlValueAccessor {
   @Input() appendToBodyDirections: Array<AppendToBodyDirection | ConnectedPosition> = ['rightDown', 'leftDown', 'rightUp', 'leftUp'];
@@ -347,16 +349,16 @@ export class TimePickerComponent implements OnChanges, OnInit, OnDestroy, Contro
     if (type && timeArr.length === 1) {
       let valid;
       switch (type) {
-      case 'hh':
-        valid = time <= this._maxTimeHour && time >= this._minTimeHour;
-        break;
-      case 'mm':
-        valid = this.isMinuteInRange(time);
-        break;
-      case 'ss':
-        valid = this.isSecondInRange(time);
-        break;
-      default:
+        case 'hh':
+          valid = time <= this._maxTimeHour && time >= this._minTimeHour;
+          break;
+        case 'mm':
+          valid = this.isMinuteInRange(time);
+          break;
+        case 'ss':
+          valid = this.isSecondInRange(time);
+          break;
+        default:
       }
       return valid;
     }
@@ -438,14 +440,14 @@ export class TimePickerComponent implements OnChanges, OnInit, OnDestroy, Contro
 
   onPositionChange(position: ConnectedOverlayPositionChange) {
     switch (position.connectionPair.overlayY) {
-    case 'top':
-    case 'center':
-      this.dropdownPosition = 'bottom';
-      break;
-    case 'bottom':
-      this.dropdownPosition = 'top';
-      break;
-    default:
+      case 'top':
+      case 'center':
+        this.dropdownPosition = 'bottom';
+        break;
+      case 'bottom':
+        this.dropdownPosition = 'top';
+        break;
+      default:
     }
   }
 
@@ -497,16 +499,16 @@ export class TimePickerComponent implements OnChanges, OnInit, OnDestroy, Contro
     const selectedTimeArr = this.selectedTime ? this.selectedTime.split(':') : this.illegalTime.split(':');
     let whichList;
     switch (index) {
-    case 0:
-      whichList = 'first';
-      break;
-    case 1:
-      whichList = 'second';
-      break;
-    case 2:
-      whichList = 'third';
-      break;
-    default:
+      case 0:
+        whichList = 'first';
+        break;
+      case 1:
+        whichList = 'second';
+        break;
+      case 2:
+        whichList = 'third';
+        break;
+      default:
     }
     const type = this.format.split(':')[index];
     const arr = ['hh', 'mm', 'ss'];
@@ -604,16 +606,16 @@ export class TimePickerComponent implements OnChanges, OnInit, OnDestroy, Contro
     const timeArr = current ? current.split(':') : this[which].split(':');
     this.format.split(':').forEach((t, i) => {
       switch (t) {
-      case 'hh':
-        this[`_${which}Hour`] = timeArr[i];
-        break;
-      case 'mm':
-        this[`_${which}Min`] = timeArr[i];
-        break;
-      case 'ss':
-        this[`_${which}Sec`] = timeArr[i];
-        break;
-      default:
+        case 'hh':
+          this[`_${which}Hour`] = timeArr[i];
+          break;
+        case 'mm':
+          this[`_${which}Min`] = timeArr[i];
+          break;
+        case 'ss':
+          this[`_${which}Sec`] = timeArr[i];
+          break;
+        default:
       }
     });
   }
@@ -623,16 +625,16 @@ export class TimePickerComponent implements OnChanges, OnInit, OnDestroy, Contro
     const res = [];
     formatArr.forEach((t) => {
       switch (t) {
-      case 'hh':
-        res.push(this[`_${which}Hour`]);
-        break;
-      case 'mm':
-        res.push(this[`_${which}Min`]);
-        break;
-      case 'ss':
-        res.push(this[`_${which}Sec`]);
-        break;
-      default:
+        case 'hh':
+          res.push(this[`_${which}Hour`]);
+          break;
+        case 'mm':
+          res.push(this[`_${which}Min`]);
+          break;
+        case 'ss':
+          res.push(this[`_${which}Sec`]);
+          break;
+        default:
       }
     });
     return res.join(':');
@@ -657,16 +659,16 @@ export class TimePickerComponent implements OnChanges, OnInit, OnDestroy, Contro
       }
       typeArr.forEach((t, i) => {
         switch (t) {
-        case 'hh':
-          this._selectedTimeHour = unshiftString(timeArr[i], 2, '0');
-          break;
-        case 'mm':
-          this._selectedTimeMin = unshiftString(timeArr[i], 2, '0');
-          break;
-        case 'ss':
-          this._selectedTimeSec = unshiftString(timeArr[i], 2, '0');
-          break;
-        default:
+          case 'hh':
+            this._selectedTimeHour = unshiftString(timeArr[i], 2, '0');
+            break;
+          case 'mm':
+            this._selectedTimeMin = unshiftString(timeArr[i], 2, '0');
+            break;
+          case 'ss':
+            this._selectedTimeSec = unshiftString(timeArr[i], 2, '0');
+            break;
+          default:
         }
       });
     }

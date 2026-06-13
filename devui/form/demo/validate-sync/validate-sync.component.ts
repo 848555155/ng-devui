@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { DValidateRules, FormLayout } from 'ng-devui/form';
 import { of } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
@@ -6,7 +6,8 @@ import { delay, map } from 'rxjs/operators';
 @Component({
   selector: 'd-form-demo-validate-sync',
   templateUrl: './validate-sync.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class ValidateSyncComponent {
   layoutDirection: FormLayout = FormLayout.Vertical;

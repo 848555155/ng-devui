@@ -1,30 +1,19 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnDestroy,
-  OnInit,
-  Output,
-  TemplateRef,
-  ViewChild
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, TemplateRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 
 import { I18nInterface, I18nService } from 'ng-devui/i18n';
 import { Subscription } from 'rxjs';
 import { FileUploader } from './file-uploader.class';
-import {
-  IUploadOptions,
-  UploadStatus
-} from './file-uploader.types';
+import { IUploadOptions, UploadStatus } from './file-uploader.types';
 import { UploadComponent } from './upload.class';
 import { UploadedFilesComponent } from './uploaded-files.component';
 @Component({
   selector: 'd-multiple-upload-view',
   templateUrl: './multiple-upload-view.component.html',
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
-export class MultipleUploadViewComponent extends UploadComponent implements OnDestroy , OnInit {
+export class MultipleUploadViewComponent extends UploadComponent implements OnDestroy, OnInit {
   @ViewChild('dUploadedFiles', { static: true }) uploadedFilesComponent: UploadedFilesComponent;
   @Input() uploadOptions: IUploadOptions;
   @Input() preloadFilesRef: TemplateRef<any>;
@@ -69,7 +58,7 @@ export class MultipleUploadViewComponent extends UploadComponent implements OnDe
   }
 
   // 解决templateContext 传递method.bind(this)引发模板中内嵌组件initialize问题
-  deleteFileProxy = file => {
+  deleteFileProxy = (file) => {
     this.deleteFile(file);
   };
 
@@ -80,7 +69,6 @@ export class MultipleUploadViewComponent extends UploadComponent implements OnDe
   ngOnDestroy(): void {
     if (this.i18nSubscription) {
       this.i18nSubscription.unsubscribe();
-
     }
   }
 }

@@ -1,15 +1,15 @@
-import { Component, Input, TemplateRef } from '@angular/core';
+import { Component, Input, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-toggle-menu-placeholder',
   template: `
-    @if (isTemplate) {
-    } @else {
-      <span class="devui-placeholder">{{ placeholder }}</span>
+    @if (isTemplate) { } @else {
+    <span class="devui-placeholder">{{ placeholder }}</span>
     }
-    `,
+  `,
   styleUrls: [`./toggle-menu-placeholder.component.scss`],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class ToggleMenuPlaceholderComponent {
   @Input() placeholder: TemplateRef<any> | string;

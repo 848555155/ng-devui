@@ -14,6 +14,7 @@ import {
   SimpleChanges,
   TemplateRef,
   ViewChild,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AutoCompleteDirective, AutoCompletePopupComponent } from 'ng-devui/auto-complete';
@@ -32,7 +33,8 @@ import { Observable, of } from 'rxjs';
     },
   ],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class MultiAutoCompleteComponent implements OnInit, OnChanges, ControlValueAccessor {
   static ID_SEED = 0;

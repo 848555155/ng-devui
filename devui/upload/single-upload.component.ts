@@ -1,4 +1,3 @@
-
 import {
   Component,
   EventEmitter,
@@ -11,7 +10,8 @@ import {
   Output,
   TemplateRef,
   ViewChild,
-  DOCUMENT
+  DOCUMENT,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { I18nInterface, I18nService } from 'ng-devui/i18n';
@@ -37,7 +37,8 @@ import { SliceUploadService } from './slice-upload.service';
     },
   ],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class SingleUploadComponent implements OnDestroy, OnInit, ControlValueAccessor {
   dSingleUploadView;

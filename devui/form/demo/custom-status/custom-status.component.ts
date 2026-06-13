@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DFormControlStatus, FormLayout } from 'ng-devui/form';
 
 @Component({
   selector: 'd-form-custom-status',
   templateUrl: './custom-status.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class CustomStatusComponent implements OnInit {
   layoutDirection: FormLayout = FormLayout.Horizontal;
@@ -13,15 +14,15 @@ export class CustomStatusComponent implements OnInit {
   inputStatus: DFormControlStatus = 'pending';
 
   verifierOptions = [
-    { 'id': '1', 'name': 'Administrator1'},
-    { 'id': '2', 'name': 'Administrator2'},
-    { 'id': '3', 'name': 'Administrator3'},
-    { 'id': '4', 'name': 'Administrator4'},
-    { 'id': '5', 'name': 'Administrator5'},
-    { 'id': '6', 'name': 'Administrator6'},
+    { id: '1', name: 'Administrator1' },
+    { id: '2', name: 'Administrator2' },
+    { id: '3', name: 'Administrator3' },
+    { id: '4', name: 'Administrator4' },
+    { id: '5', name: 'Administrator5' },
+    { id: '6', name: 'Administrator6' },
   ];
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     setInterval(() => {
@@ -32,5 +33,4 @@ export class CustomStatusComponent implements OnInit {
       }, 2000);
     }, 3000);
   }
-
 }

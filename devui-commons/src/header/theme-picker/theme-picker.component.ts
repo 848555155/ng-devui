@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Theme, ThemeService, ThemeServiceFollowSystemOff, ThemeServiceFollowSystemOn } from 'ng-devui/theme';
 import { Subscription } from 'rxjs';
 import { DevuiCommonsService } from '../../../src/devui-commons.service';
@@ -8,10 +8,11 @@ import { themePicker } from './theme-picker-i18n.type';
 import { themePickerImg } from './theme-picker-img';
 
 @Component({
-    selector: 'theme-picker',
-    templateUrl: './theme-picker.component.html',
-    styleUrls: ['./theme-picker.component.scss'],
-    standalone: false
+  selector: 'theme-picker',
+  templateUrl: './theme-picker.component.html',
+  styleUrls: ['./theme-picker.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class ThemePickerComponent implements OnInit, OnDestroy {
   themeService!: ThemeService;
@@ -25,18 +26,17 @@ export class ThemePickerComponent implements OnInit, OnDestroy {
   sub: Subscription;
   largeFontSizeMode = false;
   activeThemeType: string | number = 'devuiTheme';
-  advancedThemeList = [{ value: 'infinity', url: themePickerImg.infinity },
+  advancedThemeList = [
+    { value: 'infinity', url: themePickerImg.infinity },
     { value: 'sweet', url: themePickerImg.sweet },
     { value: 'provence', url: themePickerImg.provence },
     { value: 'deep', url: themePickerImg.deep },
-    { value: 'galaxy', url: themePickerImg.galaxy }];
+    { value: 'galaxy', url: themePickerImg.galaxy },
+  ];
   currentAdvancedTheme = 'infinity';
   subs: Subscription = new Subscription();
   themePicker: any = {};
-  constructor(
-    private cdr: ChangeDetectorRef,
-    private commonsService: DevuiCommonsService
-  ) { }
+  constructor(private cdr: ChangeDetectorRef, private commonsService: DevuiCommonsService) {}
 
   ngOnInit() {
     if (typeof window !== 'undefined') {
@@ -45,7 +45,7 @@ export class ThemePickerComponent implements OnInit, OnDestroy {
       this.theme = (window as any).devuiCurrentTheme;
     }
     const themeName = localStorage.getItem('user-custom-theme')?.split('-')[0];
-    this.currentAdvancedTheme = this.advancedThemeList.find(theme => theme.value === themeName) ? themeName : 'infinity';
+    this.currentAdvancedTheme = this.advancedThemeList.find((theme) => theme.value === themeName) ? themeName : 'infinity';
     this.advancedThemeChange(this.currentAdvancedTheme);
     this.themePrefix = this.getThemePrefix();
     this.themeMode = this.themes[this.theme]?.isDark ? 'dark' : 'light';
@@ -63,11 +63,11 @@ export class ThemePickerComponent implements OnInit, OnDestroy {
 
   setI18n(lang?) {
     const curLanguage = lang || I18nUtil.getCurrentLanguage() || 'zh-cn';
-    this.themePicker = themePicker[curLanguage];    
+    this.themePicker = themePicker[curLanguage];
   }
 
   getThemePrefix() {
-    return (this.theme.split('-')[0] !== 'devui' && this.theme.split('-')[0] !== 'green') ? 'devui' : this.theme.split('-')[0];
+    return this.theme.split('-')[0] !== 'devui' && this.theme.split('-')[0] !== 'green' ? 'devui' : this.theme.split('-')[0];
   }
   initTheme() {
     if (!this.checkInitThemeType()) {
@@ -76,7 +76,7 @@ export class ThemePickerComponent implements OnInit, OnDestroy {
     } else {
       this.activeThemeType = 'advancedTheme';
       const themeName = localStorage.getItem('user-custom-theme')?.split('-')[0];
-      this.currentAdvancedTheme = this.advancedThemeList.find(theme => theme.value === themeName) ? themeName : 'infinity';
+      this.currentAdvancedTheme = this.advancedThemeList.find((theme) => theme.value === themeName) ? themeName : 'infinity';
       this.advancedThemeChange(this.currentAdvancedTheme);
     }
   }
@@ -86,7 +86,7 @@ export class ThemePickerComponent implements OnInit, OnDestroy {
 
   checkInitThemeType() {
     const advancedThemePrefixList = ['infinity', 'sweet', 'provence', 'deep', 'galaxy'];
-    return advancedThemePrefixList.some(item => localStorage.getItem('user-custom-theme').startsWith(item));
+    return advancedThemePrefixList.some((item) => localStorage.getItem('user-custom-theme').startsWith(item));
   }
 
   themePrefixChange(prefix: string) {
@@ -100,7 +100,7 @@ export class ThemePickerComponent implements OnInit, OnDestroy {
 
   themesChange() {
     if (this.largeFontSizeMode) {
-      this.largeFontTheme.data = { ...this.themes[`${this.themePrefix}-${this.themeMode}-theme`].data, ...LargeFontSize};
+      this.largeFontTheme.data = { ...this.themes[`${this.themePrefix}-${this.themeMode}-theme`].data, ...LargeFontSize };
       this.theme = `devui-large-font-theme`;
     } else {
       this.theme = `${this.themePrefix}-${this.themeMode}-theme`;
@@ -116,7 +116,7 @@ export class ThemePickerComponent implements OnInit, OnDestroy {
 
   themeFontSizeChange() {
     if (typeof window !== 'undefined' && this.largeFontSizeMode) {
-      this.largeFontTheme.data = { ...this.themes[(window as any).devuiCurrentTheme].data, ...LargeFontSize};
+      this.largeFontTheme.data = { ...this.themes[(window as any).devuiCurrentTheme].data, ...LargeFontSize };
       this.theme = `devui-large-font-theme`;
     } else {
       this.theme = `${this.themePrefix}-${this.themeMode}-theme`;
@@ -131,7 +131,7 @@ export class ThemePickerComponent implements OnInit, OnDestroy {
       }
       this.sub = ThemeServiceFollowSystemOn({
         lightThemeName: `${this.themePrefix}-light-large-theme`,
-        darkThemeName: `${this.themePrefix}-dark-large-theme`
+        darkThemeName: `${this.themePrefix}-dark-large-theme`,
       });
       this.setThemeFontSizeScheme('on');
     } else {
@@ -149,7 +149,7 @@ export class ThemePickerComponent implements OnInit, OnDestroy {
       }
       this.sub = ThemeServiceFollowSystemOn({
         lightThemeName: `${this.themePrefix}-light-theme`,
-        darkThemeName: `${this.themePrefix}-dark-theme`
+        darkThemeName: `${this.themePrefix}-dark-theme`,
       });
       this.setThemePrefersColorScheme('on');
     } else {

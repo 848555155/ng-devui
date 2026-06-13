@@ -1,4 +1,4 @@
-import { Component, DebugElement } from '@angular/core';
+import { Component, DebugElement, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ButtonModule } from 'ng-devui/button';
@@ -15,10 +15,11 @@ import { ButtonComponent } from './button.component';
       [icon]="icon"
       [showLoading]="loading"
     >
-      {{text}}
+      {{ text }}
     </d-button>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestButtonComponent {
   bsStyle = 'primary';
@@ -37,10 +38,11 @@ class TestButtonComponent {
 @Component({
   template: `
     @if (show) {
-      <d-button [autofocus]="true">{{text}}</d-button>
+    <d-button [autofocus]="true">{{ text }}</d-button>
     }
-    `,
-  standalone: false
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestButtonAutoFocusComponent {
   show = false;
@@ -59,13 +61,13 @@ describe('Button', () => {
     let testComponent: TestButtonComponent;
     let buttonDebugElement: DebugElement;
     let buttonInsideNativeElement: HTMLElement;
-    beforeEach((() => {
+    beforeEach(() => {
       fixture = TestBed.createComponent(TestButtonComponent);
       testComponent = fixture.debugElement.componentInstance;
       buttonDebugElement = fixture.debugElement.query(By.directive(ButtonComponent));
       buttonInsideNativeElement = buttonDebugElement.query(By.css('button')).nativeElement;
       fixture.detectChanges();
-    }));
+    });
     describe('button default behavior', () => {
       it('Button demo has created successfully', () => {
         expect(testComponent).toBeTruthy();
@@ -215,5 +217,4 @@ describe('Button', () => {
       expect(document.activeElement).toBeTruthy();
     }));
   });
-
 });

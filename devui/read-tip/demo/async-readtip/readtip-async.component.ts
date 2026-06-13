@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ReadTipOptions } from 'ng-devui/read-tip';
 import { of } from 'rxjs';
 
@@ -6,7 +6,8 @@ import { of } from 'rxjs';
   selector: 'd-demo-async',
   templateUrl: './readtip-async.component.html',
   styleUrls: ['./readtip-async.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class ReadtipAsyncComponent implements OnInit {
   readTipOptions: ReadTipOptions = {

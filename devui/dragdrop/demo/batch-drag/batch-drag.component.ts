@@ -1,10 +1,11 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-batch-drag',
   templateUrl: './batch-drag.component.html',
   styleUrls: ['./batch-drag.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class BatchDragComponent {
   lists = [

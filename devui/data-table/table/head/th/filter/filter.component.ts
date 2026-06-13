@@ -1,4 +1,3 @@
-
 import {
   ChangeDetectorRef,
   Component,
@@ -13,7 +12,8 @@ import {
   SimpleChanges,
   TemplateRef,
   ViewChild,
-  DOCUMENT
+  DOCUMENT,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { DropDownDirective } from 'ng-devui/dropdown';
 import { I18nInterface, I18nService } from 'ng-devui/i18n';
@@ -26,7 +26,8 @@ import { TABLE_TH } from '../th.token';
   selector: 'd-table-filter',
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class FilterComponent implements OnInit, OnChanges, OnDestroy {
   @Input() beforeFilter: (value) => boolean | Promise<boolean> | Observable<boolean>;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -6,9 +6,9 @@ import { environment } from 'src/environments/environment';
 @Component({
   selector: 'd-select-design',
   templateUrl: './select-design.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
-
 export class SelectDesignComponent implements OnInit {
   designObj;
   subs: Subscription = new Subscription();

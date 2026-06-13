@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { TableWidthConfig } from 'ng-devui/data-table';
 import { originSource, SourceType } from '../mock-data';
 
@@ -6,7 +6,8 @@ import { originSource, SourceType } from '../mock-data';
   selector: 'd-mutil-styles',
   templateUrl: './mutil-styles.component.html',
   styleUrls: ['./mutil-styles.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class MutilStylesComponent implements OnInit {
   headerBk = false;
@@ -17,66 +18,66 @@ export class MutilStylesComponent implements OnInit {
   borderItems = [
     {
       id: '',
-      title: 'Normal'
+      title: 'Normal',
     },
     {
       id: 'borderless',
-      title: 'Borderless'
+      title: 'Borderless',
     },
     {
       id: 'bordered',
-      title: 'Bordered'
-    }
+      title: 'Bordered',
+    },
   ];
 
   TypeItems = [
     {
       id: 'embed',
-      title: 'Embed'
+      title: 'Embed',
     },
     {
       id: 'normal',
-      title: 'Normal'
-    }
+      title: 'Normal',
+    },
   ];
 
   activeSizeTab: any = 'sm';
   sizeItems = [
     {
       id: 'mini',
-      title: 'Mini'
+      title: 'Mini',
     },
     {
       id: 'xs',
-      title: 'Small'
+      title: 'Small',
     },
     {
       id: 'sm',
-      title: 'Normal'
+      title: 'Normal',
     },
     {
       id: 'md',
-      title: 'Middle'
+      title: 'Middle',
     },
     {
       id: 'lg',
-      title: 'Large'
-    }
+      title: 'Large',
+    },
   ];
 
   activeLayoutTab: any = 'fixed';
   layoutItems = [
     {
       id: 'fixed',
-      title: 'fixed'
+      title: 'fixed',
     },
     {
       id: 'auto',
-      title: 'auto'
-    }
+      title: 'auto',
+    },
   ];
 
-  constructor() { }
+  constructor() {}
 
   basicDataSource: Array<SourceType> = JSON.parse(JSON.stringify(originSource.slice(0, 6)));
   dataTableOptions = {
@@ -84,55 +85,54 @@ export class MutilStylesComponent implements OnInit {
       {
         field: 'firstName',
         header: 'First Name',
-        fieldType: 'text'
+        fieldType: 'text',
       },
       {
         field: 'lastName',
         header: 'Last Name',
-        fieldType: 'text'
+        fieldType: 'text',
       },
       {
         field: 'gender',
         header: 'Gender',
-        fieldType: 'text'
+        fieldType: 'text',
       },
       {
         field: 'dob',
         header: 'Date of birth',
-        fieldType: 'date'
-      }
-    ]
+        fieldType: 'date',
+      },
+    ],
   };
 
   tableWidthConfig: TableWidthConfig[] = [
     {
       field: 'checkbox',
-      width: '41px'
+      width: '41px',
     },
     {
       field: '#',
-      width: '20%'
+      width: '20%',
     },
     {
       field: 'firstName',
-      width: '20%'
+      width: '20%',
     },
     {
       field: 'lastName',
-      width: '20%'
+      width: '20%',
     },
     {
       field: 'gender',
-      width: '20%'
+      width: '20%',
     },
     {
       field: 'dob',
-      width: '20%'
-    }
+      width: '20%',
+    },
   ];
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   layoutChange(layout) {
     if (layout === 'auto') {
@@ -141,28 +141,28 @@ export class MutilStylesComponent implements OnInit {
       this.tableWidthConfig = [
         {
           field: 'checkbox',
-          width: '30px'
+          width: '30px',
         },
         {
           field: '#',
-          width: '20%'
+          width: '20%',
         },
         {
           field: 'firstName',
-          width: '20%'
+          width: '20%',
         },
         {
           field: 'lastName',
-          width: '20%'
+          width: '20%',
         },
         {
           field: 'gender',
-          width: '20%'
+          width: '20%',
         },
         {
           field: 'dob',
-          width: '20%'
-        }
+          width: '20%',
+        },
       ];
     }
   }

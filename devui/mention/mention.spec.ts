@@ -1,6 +1,6 @@
 import { DOWN_ARROW, ENTER, ESCAPE, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
 import { OverlayModule } from '@angular/cdk/overlay';
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -10,9 +10,19 @@ import { MentionDirective } from './mention.directive';
 import { MentionModule } from './mention.module';
 
 @Component({
-  template: ` <textarea dTextarea placeholder="Please Enter" id="textArea" dMention [mentionSuggestions]="suggestions" 
-  [mentionTrigger]="prefixes" [mentionPosition]="mentionPosition"></textarea> `,
-  standalone: false
+  template: `
+    <textarea
+      dTextarea
+      placeholder="Please Enter"
+      id="textArea"
+      dMention
+      [mentionSuggestions]="suggestions"
+      [mentionTrigger]="prefixes"
+      [mentionPosition]="mentionPosition"
+    ></textarea>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestMentionComponent {
   @ViewChild(MentionDirective, { static: false }) trigger!: MentionDirective;
@@ -140,7 +150,7 @@ describe('mention', () => {
       fixture.detectChanges();
       const enterEvent = createKeyBoardEvent('keydown', {
         key: 'Enter',
-        keyCode: ENTER
+        keyCode: ENTER,
       });
       testComponent.trigger.onKeyDown(enterEvent);
       fixture.detectChanges();
@@ -155,7 +165,7 @@ describe('mention', () => {
       fixture.detectChanges();
       const escapeEvent = createKeyBoardEvent('keydown', {
         key: 'escape',
-        keyCode: ESCAPE
+        keyCode: ESCAPE,
       });
       testComponent.trigger.onKeyDown(escapeEvent);
       fixture.detectChanges();
@@ -171,7 +181,7 @@ describe('mention', () => {
       fixture.detectChanges();
       const arrowEvent = createKeyBoardEvent('keydown', {
         key: 'ArrowDown',
-        keyCode: DOWN_ARROW
+        keyCode: DOWN_ARROW,
       });
       testComponent.trigger.onKeyDown(arrowEvent);
       fixture.detectChanges();
@@ -188,7 +198,7 @@ describe('mention', () => {
       fixture.detectChanges();
       const arrowEvent = createKeyBoardEvent('keydown', {
         key: 'ArrowUp',
-        keyCode: UP_ARROW
+        keyCode: UP_ARROW,
       });
       testComponent.trigger.onKeyDown(arrowEvent);
       fixture.detectChanges();
@@ -205,7 +215,7 @@ describe('mention', () => {
       fixture.detectChanges();
       const arrowEvent = createKeyBoardEvent('keydown', {
         key: 'ArrowDown',
-        keyCode: DOWN_ARROW
+        keyCode: DOWN_ARROW,
       });
       [1, 2, 3, 4, 5, 6, 7].forEach(() => testComponent.trigger.onKeyDown(arrowEvent));
       fixture.detectChanges();
@@ -222,7 +232,7 @@ describe('mention', () => {
       fixture.detectChanges();
       const arrowEvent = createKeyBoardEvent('keydown', {
         key: 'ArrowRight',
-        keyCode: RIGHT_ARROW
+        keyCode: RIGHT_ARROW,
       });
       [1, 2].forEach(() => testComponent.trigger.onKeyDown(arrowEvent));
       fixture.detectChanges();

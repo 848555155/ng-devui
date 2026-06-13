@@ -1,10 +1,11 @@
-import {Component} from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-input-number-basic',
   templateUrl: './input-number-basic.component.html',
   styleUrls: ['./input-number-basic.component.css'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class InputNumberBasicComponent {
   min = 15;

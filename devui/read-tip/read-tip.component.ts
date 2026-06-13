@@ -11,7 +11,8 @@ import {
   OnDestroy,
   OnInit,
   Renderer2,
-  TemplateRef
+  TemplateRef,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { PositionService } from 'ng-devui/position';
 import { PositionType } from 'ng-devui/tooltip';
@@ -30,7 +31,8 @@ import { debounceTime } from 'rxjs/operators';
       transition('visible => *', animate('150ms cubic-bezier(0.4, 0.0, 1, 1)')),
     ]),
   ],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class ReadTipComponent implements OnInit, AfterViewInit, AfterContentChecked, OnDestroy {
   @Input() triggerElementRef: ElementRef;

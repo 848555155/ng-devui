@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -12,7 +12,8 @@ import zIndexTs from './z-index/z-index.component.ts.txt?raw';
 @Component({
   selector: 'd-image-preview-demo',
   templateUrl: './image-preview-demo.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class DImagePreviewDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [
@@ -25,7 +26,7 @@ export class DImagePreviewDemoComponent implements OnInit, OnDestroy {
   ];
   zIndexSource: Array<DevuiSourceData> = [
     { title: 'HTML', language: 'xml', code: zIndexHtml },
-    { title: 'TS', language: 'typescript', code: zIndexTs }
+    { title: 'TS', language: 'typescript', code: zIndexTs },
   ];
 
   navItems = [];

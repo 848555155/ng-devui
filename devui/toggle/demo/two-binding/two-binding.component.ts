@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { DialogService } from 'ng-devui/modal';
 
 @Component({
@@ -12,7 +12,8 @@ import { DialogService } from 'ng-devui/modal';
       }
     `,
   ],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TwoBindingComponent {
   enable = true;

@@ -1,11 +1,12 @@
-import { Component, EventEmitter, HostBinding, Input, OnInit, Output, TemplateRef } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, OnInit, Output, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { TimeAxisMode } from '../time-axis.type';
 
 @Component({
   selector: 'd-time-axis-item',
   templateUrl: './time-axis-item.component.html',
   styleUrls: ['./time-axis-item.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TimeAxisItemComponent implements OnInit {
   @Input() model;
@@ -30,35 +31,35 @@ export class TimeAxisItemComponent implements OnInit {
   @Input()
   set type(type) {
     switch (type) {
-    case 'success':
-      this._type = 'right';
-      break;
+      case 'success':
+        this._type = 'right';
+        break;
 
-    case 'danger':
-      this._type = 'danger';
-      break;
+      case 'danger':
+        this._type = 'danger';
+        break;
 
-    case 'warning':
-      this._type = 'warning';
-      break;
+      case 'warning':
+        this._type = 'warning';
+        break;
 
-    case 'primary':
-      this._type = 'primary';
-      break;
+      case 'primary':
+        this._type = 'primary';
+        break;
 
-    case 'running':
-      this._type = 'running';
-      this.dotText = '↻';
-      break;
+      case 'running':
+        this._type = 'running';
+        this.dotText = '↻';
+        break;
 
-    default:
-      break;
+      default:
+        break;
     }
   }
 
   /**
-  * @deprecated Use type to replace.
-  */
+   * @deprecated Use type to replace.
+   */
   @Input()
   set status(status) {
     if (status !== undefined) {
@@ -80,11 +81,11 @@ export class TimeAxisItemComponent implements OnInit {
     return this.direction === 'vertical' && this?.lineStyle?.style === 'none';
   }
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     if (this.position === undefined) {
-      this.position = (this.direction === 'vertical' ? 'right' : 'bottom');
+      this.position = this.direction === 'vertical' ? 'right' : 'bottom';
     }
   }
 
@@ -97,9 +98,8 @@ export class TimeAxisItemComponent implements OnInit {
   }
 
   get timeAxisLineClass() {
-    let styleClass = `devui-time-axis-line-style-${ this.lineStyle?.style || 'solid' }`;
+    let styleClass = `devui-time-axis-line-style-${this.lineStyle?.style || 'solid'}`;
     styleClass += this.timePosition !== 'bottom' ? ' devui-time-axis-item-line' : ' devui-time-axis-item-line-time-bottom';
     return styleClass;
   }
-
 }

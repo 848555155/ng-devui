@@ -1,6 +1,5 @@
-
 import { HttpClient } from '@angular/common/http';
-import { Component, Inject, OnInit, ViewChild, DOCUMENT } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild, DOCUMENT, ChangeDetectionStrategy } from '@angular/core';
 import { IFileOptions, IUploadOptions, SingleUploadComponent } from 'ng-devui/upload';
 import { Observable } from 'rxjs';
 
@@ -8,7 +7,8 @@ import { Observable } from 'rxjs';
   selector: 'd-demo-upload-slice',
   templateUrl: './upload-slice.component.html',
   styleUrls: ['./upload-slice.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class UploadSliceComponent implements OnInit {
   @ViewChild('singleuploadDrag', { static: true }) singleuploadDrag: SingleUploadComponent;

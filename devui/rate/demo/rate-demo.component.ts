@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -23,7 +23,8 @@ import templateTs from './template/template.component.ts.txt?raw';
   selector: 'd-demo-rate',
   templateUrl: './rate-demo.component.html',
   styleUrls: ['./rate-demo.component.css'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class RateDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

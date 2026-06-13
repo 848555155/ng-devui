@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 
@@ -6,7 +6,8 @@ import { Subscription } from 'rxjs';
   selector: 'd-input-group-responsive',
   templateUrl: './responsive.component.html',
   styleUrls: ['./responsive.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class ResponsiveComponent implements OnInit {
   width = '100%';

@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { DialogService } from 'ng-devui/modal';
 import { ModalTestComponent } from './modal-test.component';
 
 @Component({
   selector: 'd-basic-update',
   templateUrl: './basic-update.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class BasicUpdateComponent {
   constructor(private dialogService: DialogService) {}
@@ -45,8 +46,8 @@ export class BasicUpdateComponent {
         age: 10,
         address: 'Chengdu',
         statusChange: () => {
-          results.modalInstance.updateButtonOptions([{disabled: true}]);
-        }
+          results.modalInstance.updateButtonOptions([{ disabled: true }]);
+        },
       },
     });
     console.log(results.modalContentInstance);

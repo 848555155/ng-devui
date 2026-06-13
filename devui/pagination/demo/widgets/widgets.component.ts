@@ -1,19 +1,18 @@
-import {
-  Component
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-widgets',
   templateUrl: './widgets.component.html',
   styleUrls: ['./widgets.component.css'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class WidgetsComponent {
   pager = {
     total: 306,
     pageIndex: 5,
     pageSize: 10,
-    pageSizeOptions: [10, 20, 30, 40, 50]
+    pageSizeOptions: [10, 20, 30, 40, 50],
   };
   preLink = '<span class="icon-arrow-left"></span>';
   nextLink = '<span class="icon-arrow-right"></span>';

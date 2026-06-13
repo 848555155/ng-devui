@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, HostListener, Input, OnDestroy, OnInit, TemplateRef } from '@angular/core';
+import { ChangeDetectorRef, Component, HostListener, Input, OnDestroy, OnInit, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CascaderService } from './cascader.service';
@@ -8,7 +8,8 @@ import { CascaderItem } from './cascader.type';
   selector: 'd-cascader-li',
   templateUrl: './cascader-li.component.html',
   styleUrls: ['./cascader-li.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class CascaderLiComponent implements OnInit, OnDestroy {
   @Input() width = 200;
@@ -44,15 +45,13 @@ export class CascaderLiComponent implements OnInit, OnDestroy {
     }
   }
 
-  constructor(
-    private cascaderSrv: CascaderService,
-    private cdr: ChangeDetectorRef
-  ) { }
+  constructor(private cascaderSrv: CascaderService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     if (this.isLazyLoad) {
       this.isLeaf = !!this.option.isLeaf;
-    } else { // 当不是懒加载时可以通过children是否为空来判断是否为叶子节点
+    } else {
+      // 当不是懒加载时可以通过children是否为空来判断是否为叶子节点
       this.isLeaf = this.option.isLeaf || !(this.option.children && this.option.children.length);
     }
 
@@ -60,9 +59,7 @@ export class CascaderLiComponent implements OnInit, OnDestroy {
   }
 
   initObserable(): void {
-    this.cascaderSrv.resetStatus.pipe(
-      takeUntil(this.unsubscribe$)
-    ).subscribe(res => {
+    this.cascaderSrv.resetStatus.pipe(takeUntil(this.unsubscribe$)).subscribe((res) => {
       this.selected = false;
       this.halfCheck = false;
       this.active = false;
@@ -99,7 +96,7 @@ export class CascaderLiComponent implements OnInit, OnDestroy {
       this.option.value,
       this.option.halfChecked ? false : !this.option.checked,
       this.checkboxRelation.upward,
-      this.checkboxRelation.downward,
+      this.checkboxRelation.downward
     );
 
     if (status) {
@@ -120,7 +117,7 @@ export class CascaderLiComponent implements OnInit, OnDestroy {
     this.cascaderSrv.updateTagList.next({
       isAdd: checked,
       option: this.option,
-      isEmit: true
+      isEmit: true,
     });
   }
 
@@ -128,5 +125,4 @@ export class CascaderLiComponent implements OnInit, OnDestroy {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
   }
-
 }

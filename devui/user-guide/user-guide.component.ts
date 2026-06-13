@@ -1,10 +1,12 @@
 import {
-  AfterViewInit, Component,
+  AfterViewInit,
+  Component,
   ComponentFactoryResolver,
   ComponentRef,
   Input,
   OnDestroy,
-  OnInit
+  OnInit,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { I18nInterface, I18nService } from 'ng-devui/i18n';
 import { OverlayContainerRef } from 'ng-devui/overlay-container';
@@ -16,11 +18,12 @@ import { UserGuideUIComponent } from './user-guide-ui.component';
   selector: 'd-user-guide',
   templateUrl: './user-guide.component.html',
   styleUrls: ['./user-guide.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class UserGuideComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() steps;
-  @Input() userGuideEntrancePosition = {bottom: '30px', left: '30px'};
+  @Input() userGuideEntrancePosition = { bottom: '30px', left: '30px' };
   @Input() showUserGuideEntrance = true;
   firstOpenShow: string;
   i18nCommonText: I18nInterface['userGuide'];
@@ -29,10 +32,12 @@ export class UserGuideComponent implements OnInit, AfterViewInit, OnDestroy {
 
   modalRef: ComponentRef<UserGuideUIComponent>;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver,
-              private overlayContainerRef: OverlayContainerRef,
-              private userGuideCoreService: UserGuideCoreService,
-              private i18n: I18nService) { }
+  constructor(
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private overlayContainerRef: OverlayContainerRef,
+    private userGuideCoreService: UserGuideCoreService,
+    private i18n: I18nService
+  ) {}
   ngOnInit() {
     this.firstOpenShow = localStorage.getItem('devui-user-guide-first-open-show') || 'true';
 
@@ -95,9 +100,11 @@ export class UserGuideComponent implements OnInit, AfterViewInit, OnDestroy {
 
   goStep(index: number) {
     let realStep = index;
-    for (let i = 0 ; i < index; i++) {
-      if (this.steps[this.currentTutorial].detail[i].type === 'interactable'
-        && this.steps[this.currentTutorial].detail[i].eventType === 'clickable') {
+    for (let i = 0; i < index; i++) {
+      if (
+        this.steps[this.currentTutorial].detail[i].type === 'interactable' &&
+        this.steps[this.currentTutorial].detail[i].eventType === 'clickable'
+      ) {
         realStep = i;
         break;
       }
@@ -106,12 +113,10 @@ export class UserGuideComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   createGuide(index: number) {
-    this.modalRef = this.overlayContainerRef.createComponent(
-      this.componentFactoryResolver.resolveComponentFactory(UserGuideUIComponent)
-    );
+    this.modalRef = this.overlayContainerRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(UserGuideUIComponent));
     this.modalRef.instance.showDots = this.steps[index]?.showDots;
     this.modalRef.instance.maxContentWidth = this.steps[index]?.maxContentWidth ? this.steps[index]?.maxContentWidth : 320;
-    this.modalRef.instance.isCover = this.steps[index]?.isCover === undefined ? true: this.steps[index]?.isCover;
+    this.modalRef.instance.isCover = this.steps[index]?.isCover === undefined ? true : this.steps[index]?.isCover;
     this.modalRef.instance.extraConfig = this.steps[index]?.extraConfig;
     this.modalRef.instance.close = () => {
       if (this.modalRef) {
@@ -122,5 +127,4 @@ export class UserGuideComponent implements OnInit, AfterViewInit, OnDestroy {
     const panel = document.querySelector('.user-guide-panel') as HTMLElement;
     panel.style.visibility = 'hidden';
   }
-
 }

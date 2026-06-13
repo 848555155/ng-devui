@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -14,7 +14,8 @@ import demoDataTs from './demo-data.ts.txt?raw';
 @Component({
   selector: 'd-category-search-demo',
   templateUrl: './category-search-demo.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class CategorySearchDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

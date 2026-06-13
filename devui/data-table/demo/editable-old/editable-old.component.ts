@@ -1,19 +1,13 @@
-import {
-  Component,
-  OnInit,
-  ViewChild
-} from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { DataTableComponent } from 'ng-devui/data-table';
 import { cloneDeep } from 'lodash-es';
-import {
-  editableOriginSource,
-  genderSource
-} from '../mock-data';
+import { editableOriginSource, genderSource } from '../mock-data';
 
 @Component({
   selector: 'd-editable-old',
   templateUrl: './editable-old.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class EditableOldComponent implements OnInit {
   @ViewChild(DataTableComponent, { static: true }) dataTable: DataTableComponent;
@@ -24,8 +18,7 @@ export class EditableOldComponent implements OnInit {
     console.log(event.rowItem);
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   beforeCellEdit = () => {
     return new Promise((resolve) => {
@@ -36,7 +29,7 @@ export class EditableOldComponent implements OnInit {
 
   beforeCellEditEnd = (rowItem, column) => {
     console.log('before edit end:', rowItem, column);
-    if (column.field === "lastName" && rowItem[column.field].length < 3) {
+    if (column.field === 'lastName' && rowItem[column.field].length < 3) {
       return false;
     }
     return true;
@@ -45,5 +38,4 @@ export class EditableOldComponent implements OnInit {
   finishEdit() {
     this.dataTable.cancelEditingStatus();
   }
-
 }

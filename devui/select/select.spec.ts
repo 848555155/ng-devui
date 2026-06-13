@@ -1,4 +1,4 @@
-import { Component, DebugElement, ViewChild } from '@angular/core';
+import { Component, DebugElement, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed, fakeAsync, flush, tick } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -55,7 +55,8 @@ import { SelectComponent } from './select.component';
       }
     `,
   ],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestSelectComponent {
   option;
@@ -98,7 +99,8 @@ class TestSelectComponent {
       [width]="width"
     ></d-select>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestSelectAppendToBodyComponent {
   option;
@@ -130,7 +132,8 @@ class TestSelectAppendToBodyComponent {
     >
     </d-select>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestSelectLazyLoadVirtualScrollComponent {
   @ViewChild(SelectComponent) selectComponent: SelectComponent;
@@ -178,17 +181,19 @@ class TestSelectLazyLoadVirtualScrollComponent {
       }
     `,
   ],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestSelectVirtualScrollItemSizeComponent extends TestSelectLazyLoadVirtualScrollComponent {}
 
 @Component({
   template: `
     @if (init) {
-      <d-select [options]="options" [(ngModel)]="option" [autoFocus]="autoFocus" [toggleOnFocus]="toggleOnFocus"></d-select>
+    <d-select [options]="options" [(ngModel)]="option" [autoFocus]="autoFocus" [toggleOnFocus]="toggleOnFocus"></d-select>
     }
-    `,
-  standalone: false
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestSelecAutoFocusNToggleOnFocusComponent {
   init = false;
@@ -211,16 +216,16 @@ class TestSelecAutoFocusNToggleOnFocusComponent {
         <div class="custom-title">最近选择</div>
         <ul class="custom-box">
           @for (recent of recently; track recent; let i = $index) {
-            <li class="custom-item" (click)="choose(recent, getIndex(recent), $event)">
-              <div class="custom-single">
-                {{ recent }}
-              </div>
-            </li>
+          <li class="custom-item" (click)="choose(recent, getIndex(recent), $event)">
+            <div class="custom-single">
+              {{ recent }}
+            </div>
+          </li>
           }
         </ul>
       </div>
     </ng-template>
-    `,
+  `,
   styles: [
     `
       .custom-wrapper {
@@ -250,7 +255,8 @@ class TestSelecAutoFocusNToggleOnFocusComponent {
       }
     `,
   ],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestSelectCustomAreaComponent {
   option;
@@ -274,83 +280,56 @@ class TestSelectCustomAreaComponent {
         }
       }"
     >
-    <ng-template let-option="option" let-position="position" let-template="template">
-      @if (position === 'result') {
-        @if (!multiple) {
-          <div>single-result: {{ option }}</div>
-        }
-        @if (multiple) {
-          <div>
-            multiple-result:
-            @for (op of option; track op; let first = $first) {
-              @if (!first) {
-                ,
-                }{{ op }}
-              }
-            </div>
+      <ng-template let-option="option" let-position="position" let-template="template">
+        @if (position === 'result') { @if (!multiple) {
+        <div>single-result: {{ option }}</div>
+        } @if (multiple) {
+        <div>
+          multiple-result: @for (op of option; track op; let first = $first) { @if (!first) { , }{{ op }}
           }
-        }
-        @if (position === 'list') {
-          @if (templateMode === 'list' || templateMode === 'both') {
-            @if (!multiple) {
-              <div>single-item: {{ option }}</div>
-            }
-            @if (multiple) {
-              <div>multiple-item: {{ option }}</div>
-            }
-          }
-          @if (templateMode === 'result') {
-            <ng-template
-              [ngTemplateOutlet]="template"
-            [ngTemplateOutletContext]="{
-              option: option,
-              checked: checked,
-              filterKey: filterKey
-            }"
-            ></ng-template>
-          }
-        }
-      </ng-template>
-    </d-select>
-    <ng-template #inputItemTemplate let-option="option" let-position="position" let-template="template">
-      @if (position === 'result') {
-        @if (!multiple) {
-          <div>input-single-result: {{ option }}</div>
-        }
-        @if (multiple) {
-          <div>
-            input-multiple-result:
-            @for (op of option; track op; let first = $first) {
-              @if (!first) {
-                ,
-                }{{ op }}
-              }
-            </div>
-          }
-        }
-        @if (position === 'list') {
-          @if (templateMode === 'list' || templateMode === 'both') {
-            @if (!multiple) {
-              <div>input-single-item: {{ option }}</div>
-            }
-            @if (multiple) {
-              <div>input-multiple-item: {{ option }}</div>
-            }
-          }
-          @if (templateMode === 'result') {
-            <ng-template
-              [ngTemplateOutlet]="template"
+        </div>
+        } } @if (position === 'list') { @if (templateMode === 'list' || templateMode === 'both') { @if (!multiple) {
+        <div>single-item: {{ option }}</div>
+        } @if (multiple) {
+        <div>multiple-item: {{ option }}</div>
+        } } @if (templateMode === 'result') {
+        <ng-template
+          [ngTemplateOutlet]="template"
           [ngTemplateOutletContext]="{
             option: option,
             checked: checked,
             filterKey: filterKey
           }"
-            ></ng-template>
-          }
-        }
+        ></ng-template>
+        } }
       </ng-template>
-    `,
-  standalone: false
+    </d-select>
+    <ng-template #inputItemTemplate let-option="option" let-position="position" let-template="template">
+      @if (position === 'result') { @if (!multiple) {
+      <div>input-single-result: {{ option }}</div>
+      } @if (multiple) {
+      <div>
+        input-multiple-result: @for (op of option; track op; let first = $first) { @if (!first) { , }{{ op }}
+        }
+      </div>
+      } } @if (position === 'list') { @if (templateMode === 'list' || templateMode === 'both') { @if (!multiple) {
+      <div>input-single-item: {{ option }}</div>
+      } @if (multiple) {
+      <div>input-multiple-item: {{ option }}</div>
+      } } @if (templateMode === 'result') {
+      <ng-template
+        [ngTemplateOutlet]="template"
+        [ngTemplateOutletContext]="{
+          option: option,
+          checked: checked,
+          filterKey: filterKey
+        }"
+      ></ng-template>
+      } }
+    </ng-template>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestSelectTemplateComponent {
   option;

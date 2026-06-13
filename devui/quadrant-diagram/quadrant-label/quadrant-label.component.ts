@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges, TemplateRef } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { QuadrantDiagramService } from '../quadrant-diagram.service';
 import { IAxisConfigs, IViewConfigs } from '../quadrant-diagram.type';
 import { LARGE_LABEL_SIZE_CENTER_POINT, NORMAL_LABEL_SIZE_CENTER_POINT, SMALL_LABEL_SIZE_CENTER_POINT } from '../quadrant.config';
@@ -6,7 +6,8 @@ import { LARGE_LABEL_SIZE_CENTER_POINT, NORMAL_LABEL_SIZE_CENTER_POINT, SMALL_LA
   selector: 'd-quadrant-label',
   templateUrl: './quadrant-label.component.html',
   styleUrls: ['./quadrant-label.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class QuadrantLabelComponent implements OnChanges {
   @Input() currentLabelSize;
@@ -26,31 +27,31 @@ export class QuadrantLabelComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes?.currentLabelSize) {
       switch (this.currentLabelSize) {
-      case 'small':
-        this.currentCenterPoint = SMALL_LABEL_SIZE_CENTER_POINT;
-        this.currentLabelTemplate = this.smallLabelTemplate;
-        break;
-      case 'normal':
-        this.currentCenterPoint = NORMAL_LABEL_SIZE_CENTER_POINT;
-        this.currentLabelTemplate = this.normalLabelTemplate;
-        break;
-      default:
-        this.currentCenterPoint = LARGE_LABEL_SIZE_CENTER_POINT;
-        this.currentLabelTemplate = this.largeLabelTemplate;
+        case 'small':
+          this.currentCenterPoint = SMALL_LABEL_SIZE_CENTER_POINT;
+          this.currentLabelTemplate = this.smallLabelTemplate;
+          break;
+        case 'normal':
+          this.currentCenterPoint = NORMAL_LABEL_SIZE_CENTER_POINT;
+          this.currentLabelTemplate = this.normalLabelTemplate;
+          break;
+        default:
+          this.currentCenterPoint = LARGE_LABEL_SIZE_CENTER_POINT;
+          this.currentLabelTemplate = this.largeLabelTemplate;
       }
     }
   }
 
   /**
-  * @param offsetY the half height of label
-  */
+   * @param offsetY the half height of label
+   */
   getLabelTopValue(yAxisValue, offsetY) {
     return this.view.height - yAxisValue * this.axisConfigs.yTickSpacing - this.axisConfigs.originPosition.bottom - offsetY;
   }
 
   /**
-  * @param offsetX the half width of label
-  */
+   * @param offsetX the half width of label
+   */
   getLabelLeftValue(xAxisValue, offsetX) {
     return xAxisValue * this.axisConfigs.xTickSpacing + this.axisConfigs.originPosition.left - offsetX;
   }

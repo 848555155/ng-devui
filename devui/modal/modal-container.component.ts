@@ -1,10 +1,4 @@
-import {
-  Component,
-  Input,
-  OnInit,
-  TemplateRef,
-  ViewChild
-} from '@angular/core';
+import { Component, Input, OnInit, TemplateRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { IButtonStyle } from 'ng-devui/button';
 import { ModalComponent } from './modal.component';
@@ -14,7 +8,8 @@ import { ModalContentDirective } from './modal.directive';
   templateUrl: './modal-container.component.html',
   styleUrls: ['./modal-container.component.scss'],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class ModalContainerComponent implements OnInit {
   @Input() maxHeight: string;
@@ -66,7 +61,7 @@ export class ModalContainerComponent implements OnInit {
 
   updateButtonOptions(buttonOptions = []) {
     this.buttons = this.buttons.map((button, index) => {
-      return {...button, ...buttonOptions[index]};
+      return { ...button, ...buttonOptions[index] };
     });
   }
 }

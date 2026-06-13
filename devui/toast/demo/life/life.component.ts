@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-life',
@@ -18,21 +18,22 @@ import { Component } from '@angular/core';
       }
     `,
   ],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class LifeComponent {
   msgs: Array<Object> = [];
 
   showToast(type: any) {
     switch (type) {
-    case 'error':
-      this.msgs = [{ severity: type, content: 'This is a test text. This is a test text. This is a test text.' }];
-      break;
-    case 'common':
-      this.msgs = [{ severity: type, content: 'This is a test text. This is a test text. This is a test text.' }];
-      break;
-    default:
-      this.msgs = [{ severity: type, summary: 'Summary', content: 'This is a test text. This is a test text. This is a test text.' }];
+      case 'error':
+        this.msgs = [{ severity: type, content: 'This is a test text. This is a test text. This is a test text.' }];
+        break;
+      case 'common':
+        this.msgs = [{ severity: type, content: 'This is a test text. This is a test text. This is a test text.' }];
+        break;
+      default:
+        this.msgs = [{ severity: type, summary: 'Summary', content: 'This is a test text. This is a test text. This is a test text.' }];
     }
   }
 }

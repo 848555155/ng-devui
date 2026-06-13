@@ -1,5 +1,15 @@
-
-import { AfterViewInit, Component, ElementRef, Inject, Input, OnDestroy, OnInit, Renderer2, DOCUMENT } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Inject,
+  Input,
+  OnDestroy,
+  OnInit,
+  Renderer2,
+  DOCUMENT,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { I18nService } from 'ng-devui/i18n';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
@@ -16,6 +26,7 @@ import { CodeCopyModule } from '../../../devui-commons/src/codecopy/codecopy.mod
   imports: [SafePipeModule, NavSpriteModule, CodeCopyModule],
   templateUrl: './devui-api.component.html',
   styleUrls: ['./devui-api.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   preserveWhitespaces: false,
 })
 export class DevUIApiComponent implements OnInit, AfterViewInit, OnDestroy {

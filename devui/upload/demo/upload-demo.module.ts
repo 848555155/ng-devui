@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -26,7 +26,8 @@ import { marked } from 'marked';
 import apiCn from '../doc/api-cn.md?raw';
 import apiEn from '../doc/api-en.md?raw';
 
-@NgModule({ exports: [UploadDemoComponent],
+@NgModule({
+  exports: [UploadDemoComponent],
   declarations: [
     UploadDemoComponent,
     UploadDesignComponent,
@@ -36,8 +37,10 @@ import apiEn from '../doc/api-en.md?raw';
     UploadAutoComponent,
     DynamicUploadOptionsComponent,
     CustomizeAreaUploadComponent,
-    UploadSliceComponent
-  ], imports: [TranslateModule,
+    UploadSliceComponent,
+  ],
+  imports: [
+    TranslateModule,
     CommonModule,
     UploadModule,
     DevUIModule,
@@ -55,10 +58,16 @@ import apiEn from '../doc/api-en.md?raw';
         component: UploadDesignComponent,
       },
       { path: 'demo', component: UploadDemoComponent },
-      { path: 'api', component: DevUIApiComponent, data: {
-        'zh-cn': marked.parse(apiCn),
-        'en-us': marked.parse(apiEn)
-      } }
-    ])], providers: [provideHttpClient(withInterceptorsFromDi())] })
-export class UploadDemoModule {
-}
+      {
+        path: 'api',
+        component: DevUIApiComponent,
+        data: {
+          'zh-cn': marked.parse(apiCn),
+          'en-us': marked.parse(apiEn),
+        },
+      },
+    ]),
+  ],
+  providers: [provideHttpClient(withXhr(), withInterceptorsFromDi())],
+})
+export class UploadDemoModule {}

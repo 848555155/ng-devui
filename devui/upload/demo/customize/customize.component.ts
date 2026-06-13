@@ -1,22 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IFileOptions, IUploadOptions } from 'ng-devui/upload';
 
 @Component({
   selector: 'd-customize',
   templateUrl: './customize.component.html',
   styleUrls: ['./customize.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class CustomizeComponent {
   additionalParameter2 = {
     name: 'tom',
-    age: 11
+    age: 11,
   };
   uploadOptions2: IUploadOptions = {
     uri: '/upload',
     additionalParameter: this.additionalParameter2,
     maximumSize: 20,
-    checkSameName: true
+    checkSameName: true,
   };
   fileOptions2: IFileOptions = {
     multiple: true,
@@ -57,15 +58,15 @@ export class CustomizeComponent {
         uri: '/upload',
         additionalParameter: this.additionalParameter2,
         maximumSize: 0.1,
-        checkSameName: true
+        checkSameName: true,
       };
     }
-    if (file.type  === 'image/png') {
+    if (file.type === 'image/png') {
       uploadOptions = {
         uri: '/upload',
         additionalParameter: this.additionalParameter2,
         maximumSize: 0.5,
-        checkSameName: true
+        checkSameName: true,
       };
     }
     return uploadOptions;

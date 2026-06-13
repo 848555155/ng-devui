@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { of } from 'rxjs';
 
 @Component({
@@ -17,7 +17,8 @@ import { of } from 'rxjs';
       }
     `,
   ],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class MultiAutoCompleteDemoDisabledComponent {
   toggle: boolean;

@@ -15,7 +15,8 @@ import {
   Renderer2,
   SimpleChanges,
   TemplateRef,
-  ViewChild
+  ViewChild,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { I18nInterface, I18nService } from 'ng-devui/i18n';
@@ -40,7 +41,8 @@ import DefaultIcons from './tree-default-icons';
     },
   ],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TreeSelectComponent implements ControlValueAccessor, OnInit, AfterViewInit, OnDestroy, OnChanges {
   @Input() checkableRelation: 'upward' | 'downward' | 'both' | 'none' = 'both';

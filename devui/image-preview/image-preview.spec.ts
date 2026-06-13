@@ -1,4 +1,4 @@
-import { Component, DebugElement } from '@angular/core';
+import { Component, DebugElement, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -9,11 +9,12 @@ import { ImagePreviewModule } from './image-preview.module';
   template: `
     <div dImagePreview>
       @for (imgUrl of imgUrls; track imgUrl) {
-        <img src="{{ imgUrl }}" />
+      <img src="{{ imgUrl }}" />
       }
     </div>
-    `,
-  standalone: false
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestImagePreviewComponent {
   imgUrls = ['/components/assets/overview/banner/18.png', '/components/assets/overview/banner/19.png'];

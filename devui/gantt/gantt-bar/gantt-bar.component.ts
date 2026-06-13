@@ -12,6 +12,7 @@ import {
   SimpleChanges,
   TemplateRef,
   ViewChild,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { Observable, Subscription, fromEvent } from 'rxjs';
 import { distinctUntilChanged, map, pluck, takeUntil, tap } from 'rxjs/operators';
@@ -22,7 +23,8 @@ import { GanttService } from '../gantt.service';
   selector: 'd-gantt-bar',
   templateUrl: './gantt-bar.component.html',
   styleUrls: ['./gantt-bar.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class GanttBarComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
   private moveBarStartListener: Observable<number>;

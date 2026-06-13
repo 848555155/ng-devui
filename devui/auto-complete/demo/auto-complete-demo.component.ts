@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -22,10 +22,9 @@ import lazyLoadTs from './lazy-load/auto-complete-demo-lazy-load.component.ts.tx
 @Component({
   selector: 'd-auto-complete-demo',
   templateUrl: './auto-complete-demo.component.html',
-  styleUrls: [
-    './auto-complete-demo.component.scss'
-  ],
-  standalone: false
+  styleUrls: ['./auto-complete-demo.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class AutoCompleteDemoComponent implements OnInit, OnDestroy {
   AutoCompleteDemoBasic: Array<DevuiSourceData> = [

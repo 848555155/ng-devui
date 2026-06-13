@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import basicHtml from './basic/splitter-demo-basic.component.html?raw';
@@ -17,7 +17,8 @@ import splitterDemoScss from './splitter-demo.component.scss?raw';
 @Component({
   selector: 'd-demo-splitter',
   templateUrl: './splitter-demo.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class SplitterDemoComponent implements OnInit, OnDestroy {
   SplitterBasicComponent = [

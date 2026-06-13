@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { TransferDataFormat } from 'ng-devui/transfer';
 
 @Component({
   selector: 'd-transfer-demo-sort',
   templateUrl: './transfer-demo-sort.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TransferDemoSortComponent {
   disabled = false;

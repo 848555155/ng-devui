@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterContentInit, Component, ElementRef, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { TableWidthConfig } from 'ng-devui/data-table';
 import { originSource, SourceType } from '../mock-data';
 
@@ -7,25 +7,26 @@ import { originSource, SourceType } from '../mock-data';
   templateUrl: './expand-row.component.html',
   styles: [
     `
-  .input-block {
-    width: 200px;
-    display: inline-block;
-    margin-right: 5px;
-  }
-  .cursor-pointer{
-    vertical-align: middle;
-    cursor: pointer;
-  }
-  .edit-padding-fix {
-    margin-top: -2px;
-    margin-bottom: -2px;
-  }
-  .tips-icon {
-    margin-right: 5px;
-  }
-  `
+      .input-block {
+        width: 200px;
+        display: inline-block;
+        margin-right: 5px;
+      }
+      .cursor-pointer {
+        vertical-align: middle;
+        cursor: pointer;
+      }
+      .edit-padding-fix {
+        margin-top: -2px;
+        margin-bottom: -2px;
+      }
+      .tips-icon {
+        margin-right: 5px;
+      }
+    `,
   ],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class ExpandRowComponent implements OnInit, AfterContentInit {
   @ViewChild('quickAddRowTip') quickAddRowTip: ElementRef;
@@ -36,28 +37,28 @@ export class ExpandRowComponent implements OnInit, AfterContentInit {
   tableWidthConfig: TableWidthConfig[] = [
     {
       field: 'expand',
-      width: '40px'
+      width: '40px',
     },
     {
       field: '$index',
-      width: '50px'
+      width: '50px',
     },
     {
       field: 'firstName',
-      width: '150px'
+      width: '150px',
     },
     {
       field: 'lastName',
-      width: '150px'
+      width: '150px',
     },
     {
       field: 'gender',
-      width: '100px'
+      width: '100px',
     },
     {
       field: 'dob',
-      width: '100px'
-    }
+      width: '100px',
+    },
   ];
   defaultRowData = {
     firstName: '',

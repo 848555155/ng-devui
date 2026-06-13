@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-demo-transfer-virtual-scroll',
   templateUrl: './transfer-virtual-scroll.component.html',
   styleUrls: ['./transfer-virtual-scroll.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TransferVirtualScrollComponent implements OnInit {
   disabled = false;
@@ -111,9 +112,7 @@ export class TransferVirtualScrollComponent implements OnInit {
     { name: 'Option100', value: 3, id: 100, checked: false },
   ];
 
-  targetOption = [
-
-  ];
+  targetOption = [];
 
   transferToTarget(data: any) {
     console.log(data);
@@ -127,11 +126,7 @@ export class TransferVirtualScrollComponent implements OnInit {
     this.disabled = event;
   }
 
-  constructor() {
+  constructor() {}
 
-  }
-
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 }

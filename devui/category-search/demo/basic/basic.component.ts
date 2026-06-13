@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ICategorySearchTagItem } from 'ng-devui/category-search';
 import { cloneDeep } from 'lodash-es';
 import { demoData } from '../demo-data';
@@ -6,7 +6,8 @@ import { demoData } from '../demo-data';
 @Component({
   selector: 'd-basic',
   templateUrl: './basic.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class BasicComponent {
   category = cloneDeep(demoData.slice(0, -2));

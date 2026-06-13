@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ThemeService } from 'ng-devui/theme';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -12,7 +12,8 @@ export interface fontItemConfig {
   selector: 'd-font',
   templateUrl: './font.component.html',
   styleUrls: ['./font.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class FontComponent implements OnInit, OnDestroy {
   themeService: ThemeService;

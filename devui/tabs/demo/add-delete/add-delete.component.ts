@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: 'd-add-delete',
   templateUrl: './add-delete.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class AddDeleteComponent implements OnInit {
   tabActiveId: string | number = 'tab1';

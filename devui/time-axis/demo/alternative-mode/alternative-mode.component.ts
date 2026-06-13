@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-demo-time-axis-alternative-mode',
   templateUrl: './alternative-mode.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class AlternativeModeComponent {
   dataHorizontal = {
@@ -12,52 +13,52 @@ export class AlternativeModeComponent {
       {
         text: 'Download',
         position: 'top',
-        dotColor: 'chocolate'
+        dotColor: 'chocolate',
       },
       {
         text: 'Check',
         position: 'bottom',
-        dotColor: 'var(--devui-success)'
+        dotColor: 'var(--devui-success)',
       },
       {
         text: 'Build',
         position: 'top',
-        dotColor: 'var(--devui-danger)'
+        dotColor: 'var(--devui-danger)',
       },
       {
         text: 'Deploy',
         position: 'bottom',
-        dotColor: 'var(--devui-warning)'
+        dotColor: 'var(--devui-warning)',
       },
       {
         text: 'End',
         position: 'top',
-        dotColor: 'var(--devui-waiting)'
+        dotColor: 'var(--devui-waiting)',
       },
-    ]
+    ],
   };
   dataVertical = {
     direction: 'vertical',
     list: [
       {
-        text: 'Download'
+        text: 'Download',
       },
       {
         text: 'Check',
-        dotColor: 'var(--devui-success)'
+        dotColor: 'var(--devui-success)',
       },
       {
         text: 'Build',
-        dotColor: 'var(--devui-danger)'
+        dotColor: 'var(--devui-danger)',
       },
       {
         text: 'Deploy',
-        dotColor: 'var(--devui-warning)'
+        dotColor: 'var(--devui-warning)',
       },
       {
         text: 'End',
-        dotColor: 'var(--devui-waiting)'
+        dotColor: 'var(--devui-waiting)',
       },
-    ]
+    ],
   };
 }

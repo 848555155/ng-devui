@@ -1,31 +1,12 @@
-﻿import {
-  ChangeDetectorRef,
-  Component,
-  DebugElement,
-  ViewChild
-} from '@angular/core';
-import {
-  ComponentFixture,
-  fakeAsync,
-  flush,
-  TestBed,
-  tick
-} from '@angular/core/testing';
+﻿import { ChangeDetectorRef, Component, DebugElement, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { CheckBoxModule } from 'ng-devui/checkbox';
-import {
-  DataTableComponent,
-  EditableTip,
-  TableCheckOptions,
-  TableWidthConfig,
-} from 'ng-devui/data-table';
+import { DataTableComponent, EditableTip, TableCheckOptions, TableWidthConfig } from 'ng-devui/data-table';
 import { DatepickerModule } from 'ng-devui/datepicker';
-import {
-  DropDownMenuDirective,
-  DropDownModule
-} from 'ng-devui/dropdown';
+import { DropDownMenuDirective, DropDownModule } from 'ng-devui/dropdown';
 import { InputNumberModule } from 'ng-devui/input-number';
 import { SelectModule } from 'ng-devui/select';
 import { TooltipModule } from 'ng-devui/tooltip';
@@ -34,13 +15,7 @@ import { of } from 'rxjs/internal/observable/of';
 import { I18nModule } from '../i18n';
 import { DomHelper } from '../utils/testing/dom-helper';
 import { DataTableModule } from './data-table.module';
-import {
-  editableOriginSource,
-  genderSource,
-  originSource,
-  SourceType,
-  treeDataSource
-} from './demo/mock-data';
+import { editableOriginSource, genderSource, originSource, SourceType, treeDataSource } from './demo/mock-data';
 
 // basic
 @Component({
@@ -52,12 +27,12 @@ import {
       [checkable]="checkable"
       [type]="'striped'"
       [tableWidthConfig]="tableWidthConfig"
-      >
+    >
       <thead dTableHead>
         <tr dTableRow>
           <th dHeadCell>#</th>
           @for (colOption of dataTableOptions.columns; track colOption) {
-            <th dHeadCell>{{ colOption.header }}</th>
+          <th dHeadCell>{{ colOption.header }}</th>
           }
         </tr>
       </thead>
@@ -66,16 +41,17 @@ import {
           <tr dTableRow>
             <td dTableCell>{{ rowIndex + 1 }}</td>
             @for (colOption of dataTableOptions.columns; track colOption) {
-              <td dTableCell>
-                {{ colOption.fieldType === 'date' ? (rowItem[colOption.field] | i18nDate: 'short':false) : rowItem[colOption.field] }}
-              </td>
+            <td dTableCell>
+              {{ colOption.fieldType === 'date' ? (rowItem[colOption.field] | i18nDate : 'short' : false) : rowItem[colOption.field] }}
+            </td>
             }
           </tr>
         </ng-template>
       </tbody>
     </d-data-table>
-    `,
-  standalone: false
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestDataTableBasicComponent {
   @ViewChild('tableComp') tableComp;
@@ -135,7 +111,7 @@ class TestDataTableBasicComponent {
             (filterChange)="onFirstFilterChange($event)"
             [resizeEnabled]="true"
             (resizeEndEvent)="onResize($event, 'firstName')"
-            >
+          >
             First Name
           </th>
           <th
@@ -151,7 +127,7 @@ class TestDataTableBasicComponent {
             [customFilterTemplate]="customFilterTemplate"
             [resizeEnabled]="true"
             (resizeEndEvent)="onResize($event, 'lastName')"
-            >
+          >
             Last Name
           </th>
           <th
@@ -163,7 +139,7 @@ class TestDataTableBasicComponent {
             [filterMultiple]="false"
             [filterList]="filterListRadio"
             (filterChange)="filterChangeRadio($event)"
-            >
+          >
             Gender
           </th>
           <th dHeadCell>Date of birth</th>
@@ -183,27 +159,27 @@ class TestDataTableBasicComponent {
                 [content]="rowItem.$checkBoxTips"
                 [position]="['top', 'right', 'bottom', 'left']"
                 [showAnimation]="false"
-                >
+              >
               </d-checkbox>
             </td>
             <td dTableCell>{{ rowItem?.id }}</td>
             <td dTableCell>
               @if (!rowItem.firstNameEdit) {
-                <span>{{ rowItem?.firstName }}</span>
-              }
-              @if (rowItem.firstNameEdit) {
-                <input [(ngModel)]="rowItem.firstName" type="text" />
+              <span>{{ rowItem?.firstName }}</span>
+              } @if (rowItem.firstNameEdit) {
+              <input [(ngModel)]="rowItem.firstName" type="text" />
               }
             </td>
             <td dTableCell>{{ rowItem?.lastName }}</td>
             <td dTableCell>{{ rowItem?.gender }}</td>
-            <td dTableCell>{{ rowItem?.dob | i18nDate: 'short':false }}</td>
+            <td dTableCell>{{ $safeNavigationMigration(rowItem?.dob) | i18nDate : 'short' : false }}</td>
           </tr>
         </ng-template>
       </tbody>
     </d-data-table>
-    `,
-  standalone: false
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestDataTableAdvancedComponent {
   @ViewChild(DataTableComponent) datatable: DataTableComponent;
@@ -212,42 +188,44 @@ class TestDataTableAdvancedComponent {
   filterList = [
     {
       name: 'Mark',
-      value: 'Mark'
+      value: 'Mark',
     },
     {
       name: 'Jacob',
-      value: 'Jacob'
+      value: 'Jacob',
     },
     {
       name: 'Danni',
-      value: 'Danni'
-    }
+      value: 'Danni',
+    },
   ];
   filterList2 = [
     {
       name: 'Clear',
-      value: 'Clear'
+      value: 'Clear',
     },
     {
       name: 'Male',
-      value: 'Male'
+      value: 'Male',
     },
     {
       name: 'Female',
-      value: 'Female'
-    }
+      value: 'Female',
+    },
   ];
   filterListRadio = [
     {
       name: 'Clear',
       value: 'Clear',
-    }, {
+    },
+    {
       name: 'Male',
       value: 'Male',
-    }, {
+    },
+    {
       name: 'Female',
       value: 'Female',
-    }
+    },
   ];
 
   onSortChange = jasmine.createSpy('on sort change');
@@ -256,12 +234,12 @@ class TestDataTableAdvancedComponent {
   checkOptions: TableCheckOptions[] = [
     {
       label: '全选所有数据',
-      onChecked: this.checkTotalData.bind(this)
+      onChecked: this.checkTotalData.bind(this),
     },
     {
       label: '全选当前页数据',
-      onChecked: undefined
-    }
+      onChecked: undefined,
+    },
   ];
 
   constructor(private ref: ChangeDetectorRef) {}
@@ -299,90 +277,93 @@ class TestDataTableAdvancedComponent {
       <tbody dTableBody>
         <ng-template let-rowItem="rowItem" let-rowIndex="rowIndex">
           <tr dTableRow>
-            <td dTableCell [editable]="true" [editableTip]="editableTip" [beforeEditStart]="beforeEditStart"
-              [beforeEditEnd]="beforeEditEnd" (editStatusEvent)="onEditing($event, rowItem, 'nameEdit')">
+            <td
+              dTableCell
+              [editable]="true"
+              [editableTip]="editableTip"
+              [beforeEditStart]="beforeEditStart"
+              [beforeEditEnd]="beforeEditEnd"
+              (editStatusEvent)="onEditing($event, rowItem, 'nameEdit')"
+            >
               @if (!rowItem['nameEdit']) {
-                <span>{{ rowItem?.lastName }}</span>
-              }
-              @if (rowItem['nameEdit']) {
-                <form class="form-inline edit-padding-fix">
-                  <div class="devui-form-group">
-                    <div class="devui-input-group">
-                      <input
-                        class="devui-form-control"
-                        name="lastname"
-                        [(ngModel)]="rowItem.lastName"
-                        [attr.maxlength]="100"
-                        [attr.minlength]="3"
-                        />
-                    </div>
+              <span>{{ rowItem?.lastName }}</span>
+              } @if (rowItem['nameEdit']) {
+              <form class="form-inline edit-padding-fix">
+                <div class="devui-form-group">
+                  <div class="devui-input-group">
+                    <input
+                      class="devui-form-control"
+                      name="lastname"
+                      [(ngModel)]="rowItem.lastName"
+                      [attr.maxlength]="100"
+                      [attr.minlength]="3"
+                    />
                   </div>
-                </form>
+                </div>
+              </form>
               }
             </td>
             <td dTableCell [editable]="true" (editStatusEvent)="onEditing($event, rowItem, 'dateEdit')">
               @if (!rowItem['dateEdit']) {
-                <span>{{ rowItem?.dob | i18nDate: 'short':false }}</span>
-              }
-              @if (rowItem['dateEdit']) {
-                <form class="form-inline edit-padding-fix">
-                  <div class="devui-form-group">
-                    <div class="devui-input-group devui-dropdown-origin">
-                      <input
-                        class="devui-form-control search"
-                        name="date"
-                        [(ngModel)]="rowItem.dob"
-                        dDatepicker
-                        appendToBody
-                        #datePicker="datepicker"
-                        [autoOpen]="true"
-                        (ngModelChange)="dateEditEnd(rowItem)"
-                        />
-                      <div class="devui-input-group-addon" (click)="datePicker.toggle($event, true)">
-                        <i class="icon icon-calendar"></i>
-                      </div>
+              <span>{{ $safeNavigationMigration(rowItem?.dob) | i18nDate : 'short' : false }}</span>
+              } @if (rowItem['dateEdit']) {
+              <form class="form-inline edit-padding-fix">
+                <div class="devui-form-group">
+                  <div class="devui-input-group devui-dropdown-origin">
+                    <input
+                      class="devui-form-control search"
+                      name="date"
+                      [(ngModel)]="rowItem.dob"
+                      dDatepicker
+                      appendToBody
+                      #datePicker="datepicker"
+                      [autoOpen]="true"
+                      (ngModelChange)="dateEditEnd(rowItem)"
+                    />
+                    <div class="devui-input-group-addon" (click)="datePicker.toggle($event, true)">
+                      <i class="icon icon-calendar"></i>
                     </div>
                   </div>
-                </form>
+                </div>
+              </form>
               }
             </td>
             <td dTableCell [editable]="true" (editStatusEvent)="onEditing($event, rowItem, 'ageEdit')">
               @if (!rowItem['ageEdit']) {
-                <span class="input-number">{{ rowItem?.age }}</span>
-              }
-              @if (rowItem['ageEdit']) {
-                <div class="edit-padding-fix">
-                  <d-input-number [(ngModel)]="rowItem.age"></d-input-number>
-                </div>
+              <span class="input-number">{{ rowItem?.age }}</span>
+              } @if (rowItem['ageEdit']) {
+              <div class="edit-padding-fix">
+                <d-input-number [(ngModel)]="rowItem.age"></d-input-number>
+              </div>
               }
             </td>
             <td dTableCell [editable]="true" (editStatusEvent)="onEditing($event, rowItem, 'genderEdit')">
               @if (!rowItem['genderEdit']) {
-                <span>{{ rowItem?.gender?.label }}</span>
-              }
-              @if (rowItem['genderEdit']) {
-                <div class="customized-editor edit-padding-fix">
-                  <d-select
-                    [options]="genderSource"
-                    isSearch="true"
-                    [filterKey]="'label'"
-                    autoFocus="true"
-                    toggleOnFocus="true"
-                    [appendToBody]="true"
-                    [(ngModel)]="rowItem.gender"
-                    (ngModelChange)="genderEditEnd(rowItem)"
-                    >
-                    <ng-template let-option="option" let-filterKey="filterKey"> gender:{{ option[filterKey] }} </ng-template>
-                  </d-select>
-                </div>
+              <span>{{ rowItem?.gender?.label }}</span>
+              } @if (rowItem['genderEdit']) {
+              <div class="customized-editor edit-padding-fix">
+                <d-select
+                  [options]="genderSource"
+                  isSearch="true"
+                  [filterKey]="'label'"
+                  autoFocus="true"
+                  toggleOnFocus="true"
+                  [appendToBody]="true"
+                  [(ngModel)]="rowItem.gender"
+                  (ngModelChange)="genderEditEnd(rowItem)"
+                >
+                  <ng-template let-option="option" let-filterKey="filterKey"> gender:{{ option[filterKey] }} </ng-template>
+                </d-select>
+              </div>
               }
             </td>
           </tr>
         </ng-template>
       </tbody>
     </d-data-table>
-    `,
-  standalone: false
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestDataTableEditComponent {
   genderSource = genderSource;
@@ -457,7 +438,8 @@ class TestDataTableEditComponent {
       </tbody>
     </d-data-table>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestDataTableWithChildrenComponent {
   tableWidthConfig: TableWidthConfig[] = [
@@ -528,7 +510,7 @@ class TestDataTableWithChildrenComponent {
         <ng-template let-rowItem="rowItem" let-rowIndex="rowIndex">
           <tr dTableRow>
             <td dTableCell>{{ rowIndex + 1 }}</td>
-            <td dTableCell>{{ rowItem['dob'] | i18nDate: 'short':false }}</td>
+            <td dTableCell>{{ rowItem['dob'] | i18nDate : 'short' : false }}</td>
             <td dTableCell>{{ rowItem['firstName'] }}</td>
             <td dTableCell>{{ rowItem['lastName'] }}</td>
             <td dTableCell>{{ rowItem['gender'] }}</td>
@@ -537,7 +519,8 @@ class TestDataTableWithChildrenComponent {
       </tbody>
     </d-data-table>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestDataTableMultiHeaderComponent {
   basicDataSource: Array<SourceType> = JSON.parse(JSON.stringify(originSource.slice(0, 6)));
@@ -550,13 +533,9 @@ class TestDataTableMultiHeaderComponent {
       <thead dTableHead [checkable]="true">
         <tr dTableRow>
           @for (colOption of dataTableOptions.columns; track colOption) {
-            <th
-              dHeadCell
-              [fixedLeft]="colOption.fixedLeft"
-              [fixedRight]="colOption.fixedRight"
-              >
-              {{ colOption.header }}
-            </th>
+          <th dHeadCell [fixedLeft]="colOption.fixedLeft" [fixedRight]="colOption.fixedRight">
+            {{ colOption.header }}
+          </th>
           }
         </tr>
       </thead>
@@ -564,20 +543,17 @@ class TestDataTableMultiHeaderComponent {
         <ng-template let-rowItem="rowItem" let-rowIndex="rowIndex">
           <tr dTableRow>
             @for (colOption of dataTableOptions.columns; track colOption) {
-              <td
-                dTableCell
-                [fixedLeft]="colOption.fixedLeft"
-                [fixedRight]="colOption.fixedRight"
-                >
-                {{ colOption.fieldType === 'date' ? (rowItem[colOption.field] | i18nDate: 'short':false) : rowItem[colOption.field] }}
-              </td>
+            <td dTableCell [fixedLeft]="colOption.fixedLeft" [fixedRight]="colOption.fixedRight">
+              {{ colOption.fieldType === 'date' ? (rowItem[colOption.field] | i18nDate : 'short' : false) : rowItem[colOption.field] }}
+            </td>
             }
           </tr>
         </ng-template>
       </tbody>
     </d-data-table>
-    `,
-  standalone: false
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestDataFixedColumnComponent {
   basicDataSource: Array<SourceType> = JSON.parse(JSON.stringify(originSource.slice(0, 6)));
@@ -587,80 +563,80 @@ class TestDataFixedColumnComponent {
         field: 'firstName',
         header: 'First Name',
         fieldType: 'text',
-        fixedLeft: '0px'
+        fixedLeft: '0px',
       },
       {
         field: 'lastName',
         header: 'Last Name',
-        fieldType: 'text'
+        fieldType: 'text',
       },
       {
         field: 'gender',
         header: 'gender',
-        fieldType: 'text'
-      },
-      {
-        field: 'dob',
-        header: 'Date of birth',
-        fieldType: 'date'
-      },
-      {
-        field: 'dob',
-        header: 'Date of birth',
-        fieldType: 'date'
-      },
-      {
-        field: 'dob',
-        header: 'Date of birth',
-        fieldType: 'date'
-      },
-      {
-        field: 'dob',
-        header: 'Date of birth',
-        fieldType: 'date'
+        fieldType: 'text',
       },
       {
         field: 'dob',
         header: 'Date of birth',
         fieldType: 'date',
-        fixedRight: '0px'
-      }
-    ]
+      },
+      {
+        field: 'dob',
+        header: 'Date of birth',
+        fieldType: 'date',
+      },
+      {
+        field: 'dob',
+        header: 'Date of birth',
+        fieldType: 'date',
+      },
+      {
+        field: 'dob',
+        header: 'Date of birth',
+        fieldType: 'date',
+      },
+      {
+        field: 'dob',
+        header: 'Date of birth',
+        fieldType: 'date',
+        fixedRight: '0px',
+      },
+    ],
   };
 
   tableWidthConfig: TableWidthConfig[] = [
     {
       field: 'firstName',
-      width: '150px'
+      width: '150px',
     },
     {
       field: 'lastName',
-      width: '150px'
+      width: '150px',
     },
     {
       field: 'gender',
-      width: '150px'
+      width: '150px',
     },
     {
       field: 'dob',
-      width: '150px'
+      width: '150px',
     },
     {
       field: 'dob',
-      width: '150px'
+      width: '150px',
     },
     {
       field: 'dob',
-      width: '150px'
+      width: '150px',
     },
     {
       field: 'dob',
-      width: '150px'
+      width: '150px',
     },
     {
       field: 'dob',
-      width: '150px'
-    }
+      width: '150px',
+    },
   ];
 }
 
@@ -674,7 +650,7 @@ describe('data-table', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [DataTableModule, I18nModule, NoopAnimationsModule],
-        declarations: [TestDataTableBasicComponent]
+        declarations: [TestDataTableBasicComponent],
       });
     });
 
@@ -705,7 +681,7 @@ describe('data-table', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [FormsModule, DataTableModule, CheckBoxModule, TooltipModule, I18nModule, DropDownModule, NoopAnimationsModule],
-        declarations: [TestDataTableAdvancedComponent]
+        declarations: [TestDataTableAdvancedComponent],
       });
     });
 
@@ -800,7 +776,7 @@ describe('data-table', () => {
 
     it('should set header checkOptions work', fakeAsync(() => {
       const dropdownElement = debugEl.query(By.css('.devui-data-table .devui-table .devui-checkable-cell .select-options'));
-      dropdownElement.nativeElement.dispatchEvent(new MouseEvent('mouseenter', {'bubbles': false, 'cancelable': false}));
+      dropdownElement.nativeElement.dispatchEvent(new MouseEvent('mouseenter', { bubbles: false, cancelable: false }));
       fixture.detectChanges();
       tick(50); // debounce time
       fixture.detectChanges();
@@ -830,7 +806,7 @@ describe('data-table', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [FormsModule, DataTableModule, DatepickerModule, I18nModule, InputNumberModule, SelectModule, NoopAnimationsModule],
-        declarations: [TestDataTableEditComponent]
+        declarations: [TestDataTableEditComponent],
       });
     });
 
@@ -857,9 +833,7 @@ describe('data-table', () => {
       tick(); // wait for origin data display
       fixture.detectChanges();
 
-      const inputRow1Column1 = debugEl.query(
-        By.css('table.devui-table tbody tr td .devui-input-group input.devui-form-control')
-      );
+      const inputRow1Column1 = debugEl.query(By.css('table.devui-table tbody tr td .devui-input-group input.devui-form-control'));
       expect(inputRow1Column1).toBeTruthy();
 
       inputRow1Column1.nativeElement.value = 'Otto_test';
@@ -885,9 +859,7 @@ describe('data-table', () => {
       editIconRow1Column1.nativeElement.dispatchEvent(new Event('click'));
       tick();
       fixture.detectChanges();
-      const inputRow1Column1 = debugEl.query(
-        By.css('table.devui-table tbody tr td .devui-input-group input.devui-form-control')
-      );
+      const inputRow1Column1 = debugEl.query(By.css('table.devui-table tbody tr td .devui-input-group input.devui-form-control'));
       expect(inputRow1Column1).toBeTruthy();
       document.dispatchEvent(new Event('click'));
       tick();
@@ -901,9 +873,7 @@ describe('data-table', () => {
       debugEl.query(By.css('table.devui-table tbody tr td span.cell-modify')).nativeElement.dispatchEvent(new Event('click'));
       tick();
       fixture.detectChanges();
-      const inputRow1Column12 = debugEl.query(
-        By.css('table.devui-table tbody tr td .devui-input-group input.devui-form-control')
-      );
+      const inputRow1Column12 = debugEl.query(By.css('table.devui-table tbody tr td .devui-input-group input.devui-form-control'));
       expect(inputRow1Column12).toBeTruthy();
       document.dispatchEvent(new Event('click'));
       tick();
@@ -921,9 +891,7 @@ describe('data-table', () => {
       document.dispatchEvent(new Event('click'));
       tick();
       fixture.detectChanges();
-      const inputRow1Column1 = debugEl.query(
-        By.css('table.devui-table tbody tr td .devui-input-group input.devui-form-control')
-      );
+      const inputRow1Column1 = debugEl.query(By.css('table.devui-table tbody tr td .devui-input-group input.devui-form-control'));
       expect(inputRow1Column1).toBeFalsy();
       flush();
       // observable test
@@ -937,9 +905,7 @@ describe('data-table', () => {
       document.dispatchEvent(new Event('click'));
       tick();
       fixture.detectChanges();
-      const inputRow1Column12 = debugEl.query(
-        By.css('table.devui-table tbody tr td .devui-input-group input.devui-form-control')
-      );
+      const inputRow1Column12 = debugEl.query(By.css('table.devui-table tbody tr td .devui-input-group input.devui-form-control'));
       expect(inputRow1Column12).toBeFalsy();
     }));
 
@@ -949,9 +915,7 @@ describe('data-table', () => {
       debugEl.query(By.css('table.devui-table tbody tr td span.cell-modify')).nativeElement.dispatchEvent(new Event('click'));
       tick();
       fixture.detectChanges();
-      const inputRow1Column1 = debugEl.query(
-        By.css('table.devui-table tbody tr td .devui-input-group input.devui-form-control')
-      );
+      const inputRow1Column1 = debugEl.query(By.css('table.devui-table tbody tr td .devui-input-group input.devui-form-control'));
       expect(inputRow1Column1).toBeTruthy();
       document.dispatchEvent(new Event('click'));
       tick();
@@ -965,9 +929,7 @@ describe('data-table', () => {
       debugEl.query(By.css('table.devui-table tbody tr td span.cell-modify')).nativeElement.dispatchEvent(new Event('click'));
       tick();
       fixture.detectChanges();
-      const inputRow1Column12 = debugEl.query(
-        By.css('table.devui-table tbody tr td .devui-input-group input.devui-form-control')
-      );
+      const inputRow1Column12 = debugEl.query(By.css('table.devui-table tbody tr td .devui-input-group input.devui-form-control'));
       expect(inputRow1Column12).toBeTruthy();
     }));
     it('should beforeEditStart return false edit not work', fakeAsync(() => {
@@ -978,9 +940,7 @@ describe('data-table', () => {
       debugEl.query(By.css('table.devui-table tbody tr td span.cell-modify')).nativeElement.dispatchEvent(new Event('click'));
       tick();
       fixture.detectChanges();
-      const inputRow1Column1 = debugEl.query(
-        By.css('table.devui-table tbody tr td .devui-input-group input.devui-form-control')
-      );
+      const inputRow1Column1 = debugEl.query(By.css('table.devui-table tbody tr td .devui-input-group input.devui-form-control'));
       expect(inputRow1Column1).toBeFalsy();
     }));
 
@@ -993,9 +953,7 @@ describe('data-table', () => {
       document.dispatchEvent(new Event('click'));
       tick();
       fixture.detectChanges();
-      const inputRow1Column1 = debugEl.query(
-        By.css('table.devui-table tbody tr td .devui-input-group input.devui-form-control')
-      );
+      const inputRow1Column1 = debugEl.query(By.css('table.devui-table tbody tr td .devui-input-group input.devui-form-control'));
       expect(inputRow1Column1).toBeFalsy();
       flush();
       // test return undefined
@@ -1009,9 +967,7 @@ describe('data-table', () => {
       document.dispatchEvent(new Event('click'));
       tick();
       fixture.detectChanges();
-      const inputRow1Column12 = debugEl.query(
-        By.css('table.devui-table tbody tr td .devui-input-group input.devui-form-control')
-      );
+      const inputRow1Column12 = debugEl.query(By.css('table.devui-table tbody tr td .devui-input-group input.devui-form-control'));
       expect(inputRow1Column12).toBeFalsy();
     }));
 
@@ -1026,9 +982,7 @@ describe('data-table', () => {
       document.dispatchEvent(new Event('click'));
       tick();
       fixture.detectChanges();
-      const inputRow1Column1 = debugEl.query(
-        By.css('table.devui-table tbody tr td .devui-input-group input.devui-form-control')
-      );
+      const inputRow1Column1 = debugEl.query(By.css('table.devui-table tbody tr td .devui-input-group input.devui-form-control'));
       expect(inputRow1Column1).toBeTruthy();
     }));
 
@@ -1037,17 +991,13 @@ describe('data-table', () => {
       debugEl.query(By.css('table.devui-table tbody tr td:nth-child(3) div.cell-editable')).nativeElement.dispatchEvent(new Event('click'));
       tick();
       fixture.detectChanges();
-      const inputRow1Column1 = debugEl.query(
-        By.css('table.devui-table tbody tr td:nth-child(3) d-input-number')
-      );
+      const inputRow1Column1 = debugEl.query(By.css('table.devui-table tbody tr td:nth-child(3) d-input-number'));
       expect(inputRow1Column1).toBeTruthy();
       flush();
       debugEl.query(By.css('table.devui-table tbody tr td span.cell-modify')).nativeElement.dispatchEvent(new Event('click'));
       tick();
       fixture.detectChanges();
-      const inputRow1Column12 = debugEl.query(
-        By.css('table.devui-table tbody tr td:nth-child(3) d-input-number')
-      );
+      const inputRow1Column12 = debugEl.query(By.css('table.devui-table tbody tr td:nth-child(3) d-input-number'));
       expect(inputRow1Column12).toBeFalsy();
     }));
   });
@@ -1060,7 +1010,7 @@ describe('data-table', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [FormsModule, DataTableModule, CheckBoxModule, TooltipModule, I18nModule, DropDownModule, NoopAnimationsModule],
-        declarations: [TestDataTableAdvancedComponent]
+        declarations: [TestDataTableAdvancedComponent],
       });
     });
 
@@ -1131,7 +1081,7 @@ describe('data-table', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [DataTableModule, CheckBoxModule, FormsModule, TooltipModule],
-        declarations: [TestDataTableWithChildrenComponent]
+        declarations: [TestDataTableWithChildrenComponent],
       });
     });
 
@@ -1215,7 +1165,7 @@ describe('data-table', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [DataTableModule, I18nModule],
-        declarations: [TestDataTableMultiHeaderComponent]
+        declarations: [TestDataTableMultiHeaderComponent],
       });
     });
 

@@ -10,7 +10,8 @@ import {
   OnChanges,
   Output,
   QueryList,
-  SimpleChanges
+  SimpleChanges,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DevConfigService, WithConfig } from 'ng-devui/utils';
@@ -29,7 +30,8 @@ import { RadioComponent } from './radio.component';
     },
   ],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class RadioGroupComponent implements ControlValueAccessor, OnChanges, AfterViewInit {
   @Input() name: string;

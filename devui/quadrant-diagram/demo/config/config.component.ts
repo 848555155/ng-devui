@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IAxisConfigs, ILabelDataConfigs, IQuadrantConfigs, IViewConfigs } from 'ng-devui/quadrant-diagram';
 
 @Component({
   selector: 'd-config',
   templateUrl: './config.component.html',
   styleUrls: ['./config.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class ConfigComponent {
   xWeight = 2;
@@ -28,25 +29,21 @@ export class ConfigComponent {
   };
   quadrantConfigs: Array<IQuadrantConfigs> = [
     {
-
       title: 'Perfect',
       backgroundColor: 'rgba(232,240,253,0.4)',
       color: 'rgba(81,112,255,0.5)',
     },
     {
-
       title: 'Excellent',
       backgroundColor: 'rgba(232,240,253,0.2)',
       color: 'rgba(81,112,255,0.5)',
     },
     {
-
       title: 'Keep it up',
       backgroundColor: 'rgba(243,246,248,0.4)',
       color: 'rgba(149,158,178,0.5)',
     },
     {
-
       title: 'Full of potential',
       backgroundColor: 'rgba(232,240,253,0.2)',
       color: 'rgba(81,112,255,0.5)',
@@ -102,5 +99,4 @@ export class ConfigComponent {
     // Place the dragged data on the quadrant graph to display
     this.labelData.push(label);
   }
-
 }

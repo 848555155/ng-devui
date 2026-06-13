@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-hide',
   templateUrl: './hide.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class HideComponent implements OnInit {
   tagList3: any = [
@@ -15,9 +16,7 @@ export class HideComponent implements OnInit {
     { id: 777, name: 'custom label6', labelStyle: 'purple-w98' },
   ];
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

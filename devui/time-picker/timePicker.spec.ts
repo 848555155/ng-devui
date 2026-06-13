@@ -1,4 +1,4 @@
-import { Component, DebugElement, ElementRef, TemplateRef, ViewChild } from '@angular/core';
+import { Component, DebugElement, ElementRef, TemplateRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed, fakeAsync, flush, tick, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -142,7 +142,8 @@ class TestFunctions {
       <div class="test-template" (click)="timePicker.clearAll()">test template</div>
     </ng-template>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestTimePickerComponent {
   placeHolderHeight = false;

@@ -1,11 +1,12 @@
-import { Component, DebugElement, ViewChild } from '@angular/core';
+import { Component, DebugElement, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { AvatarComponent } from './avatar.component';
 import { AvatarModule } from './avatar.module';
 @Component({
   template: ` <d-avatar #comp [name]="name" [gender]="gender" [width]="width"></d-avatar> `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestAvatarComponent {
   @ViewChild('comp') comp: AvatarComponent;
@@ -16,7 +17,8 @@ class TestAvatarComponent {
 
 @Component({
   template: ` <d-avatar #comp [customText]="'自定义'" [width]="80" [height]="80"></d-avatar> `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestCustomAvatarComponent {
   @ViewChild('comp') comp: AvatarComponent;

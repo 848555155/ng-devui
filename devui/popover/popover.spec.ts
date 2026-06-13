@@ -1,4 +1,4 @@
-import { Component, DebugElement } from '@angular/core';
+import { Component, DebugElement, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -32,7 +32,8 @@ import { PopoverModule } from './popover.module';
       warning
     </d-button>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestPopoverBasicComponent {
   direction = 'left';
@@ -44,7 +45,6 @@ class TestPopoverBasicComponent {
 }
 
 describe('popover', () => {
-
   afterEach(() => {
     const popOverEl = document.getElementsByTagName('d-popover');
     for (let i = 0; i < popOverEl.length; i++) {
@@ -60,7 +60,7 @@ describe('popover', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [PopoverModule, ButtonModule, BrowserAnimationsModule],
-        declarations: [TestPopoverBasicComponent]
+        declarations: [TestPopoverBasicComponent],
       }).compileComponents();
     });
 
@@ -72,7 +72,6 @@ describe('popover', () => {
     });
 
     describe('Popover basic demo has created successfully', () => {
-
       it('Popover basic should create popover testComponent', () => {
         expect(testComponent).toBeTruthy();
       });
@@ -88,8 +87,10 @@ describe('popover', () => {
         const buttonEle = debugEle.query(By.css('d-button')).nativeElement;
 
         for (const i in config) {
-          if (Object.prototype.hasOwnProperty.call(config, i)) {  // use if to fix tslint error
-            if (i === '0') { // TODO:需要解决元素destroy不销毁问题，这里用例暂时先注释
+          if (Object.prototype.hasOwnProperty.call(config, i)) {
+            // use if to fix tslint error
+            if (i === '0') {
+              // TODO:需要解决元素destroy不销毁问题，这里用例暂时先注释
               testComponent.direction = config[i];
               testComponent.content = config[i];
               fixture.detectChanges();
@@ -136,8 +137,6 @@ describe('popover', () => {
         expect(debugEle.query(By.css('d-popover .devui-popover-content')).nativeElement.textContent).toBe('hover1');
         // TODO:mouseleave/blur/visible=false状态下，元素已destroy且不可见，但单元测试仍能检测到元素，单元测试与实际情况有差异，暂时不做测试
       }));
-
     });
   });
-
 });

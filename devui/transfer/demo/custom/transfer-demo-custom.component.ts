@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { DataTableComponent } from 'ng-devui/data-table';
 
 interface SourceType {
@@ -15,7 +15,8 @@ interface SourceType {
   selector: 'd-transfer-demo-custom',
   templateUrl: './transfer-demo-custom.component.html',
   styleUrls: ['./transfer-demo-custom.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TransferDemoCustomComponent {
   originSource: Array<SourceType> = [
@@ -82,7 +83,7 @@ export class TransferDemoCustomComponent {
       lastName: 'Yu',
       gender: 'Female',
       dob: new Date(1991, 3, 1),
-      detail: 'This is another line detail'
+      detail: 'This is another line detail',
     },
     {
       id: 10,
@@ -110,7 +111,7 @@ export class TransferDemoCustomComponent {
   pager = {
     total: 12,
     pageSize: 6,
-    componentSize: 'sm'
+    componentSize: 'sm',
   };
   targetSource = [];
   basicDataSource: Array<SourceType> = JSON.parse(JSON.stringify(this.originSource.slice(0, this.pager.pageSize)));
@@ -146,11 +147,13 @@ export class TransferDemoCustomComponent {
 
   transferToTarget() {
     const checkedRows = this.sourceTable.getCheckedRows();
-    const ids = checkedRows.map(item => item.id);
-    this.originSource = this.originSource.filter(item => {
-      return (!ids.find(id => id === item.id));
+    const ids = checkedRows.map((item) => item.id);
+    this.originSource = this.originSource.filter((item) => {
+      return !ids.find((id) => id === item.id);
     });
-    this.originSource.forEach(item => {item.$checked = false;});
+    this.originSource.forEach((item) => {
+      item.$checked = false;
+    });
     this.basicDataSource = JSON.parse(JSON.stringify(this.originSource));
     this.targetSource = this.basicTargetSource.concat(checkedRows);
     this.basicTargetSource = JSON.parse(JSON.stringify(this.targetSource));
@@ -163,11 +166,13 @@ export class TransferDemoCustomComponent {
 
   transferToSource() {
     const checkedRows = this.targetTable.getCheckedRows();
-    const ids = checkedRows.map(item => item.id);
-    this.targetSource = this.targetSource.filter(item => {
-      return !ids.find(id => id === item.id);
+    const ids = checkedRows.map((item) => item.id);
+    this.targetSource = this.targetSource.filter((item) => {
+      return !ids.find((id) => id === item.id);
     });
-    this.targetSource.forEach(item => {item.$checked = false;});
+    this.targetSource.forEach((item) => {
+      item.$checked = false;
+    });
     this.basicTargetSource = JSON.parse(JSON.stringify(this.targetSource));
     this.originSource = this.basicDataSource.concat(checkedRows);
     this.basicDataSource = JSON.parse(JSON.stringify(this.originSource));

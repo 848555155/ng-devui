@@ -1,4 +1,14 @@
-import { AfterViewInit, Component, ContentChildren, Input, OnChanges, QueryList, SimpleChanges, TemplateRef } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ContentChildren,
+  Input,
+  OnChanges,
+  QueryList,
+  SimpleChanges,
+  TemplateRef,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { merge } from 'lodash-es';
 import { ProgressTemplateDirective } from './progress-template.directive';
 import { IGradientColor, IProgressItem, ShowContentConfig } from './progress.types';
@@ -8,7 +18,8 @@ import { IGradientColor, IProgressItem, ShowContentConfig } from './progress.typ
   templateUrl: './progress.component.html',
   styleUrls: ['./progress.component.scss'],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class ProgressComponent implements OnChanges, AfterViewInit {
   static ID_SEED = 0;
@@ -74,10 +85,10 @@ export class ProgressComponent implements OnChanges, AfterViewInit {
       this.showContentConfig =
         typeof this.showContent === 'boolean'
           ? {
-            showInnerContent: this.showContent,
-            showOuterContent: this.showContent,
-            showCenterContent: false,
-          }
+              showInnerContent: this.showContent,
+              showOuterContent: this.showContent,
+              showCenterContent: false,
+            }
           : { ...this.showContentConfig, ...this.showContent };
     }
   }
@@ -106,13 +117,13 @@ export class ProgressComponent implements OnChanges, AfterViewInit {
     const data = this.multiProgressConfig?.length
       ? [...this.multiProgressConfig]
       : [
-        {
-          color: (this.checkStrokeColor() || this.barbgcolor) ?? '',
-          percentage: this.percentage ?? 0,
-          percentageText: this.percentageText ?? '',
-          content: this.content ?? '',
-        },
-      ];
+          {
+            color: (this.checkStrokeColor() || this.barbgcolor) ?? '',
+            percentage: this.percentage ?? 0,
+            percentageText: this.percentageText ?? '',
+            content: this.content ?? '',
+          },
+        ];
 
     if (this.type === 'line') {
       this.checkSumOfPercentages(data, (sum: number, item: IProgressItem) => {

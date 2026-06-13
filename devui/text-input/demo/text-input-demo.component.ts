@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -12,7 +12,8 @@ import sizeHtml from './size/text-input-size.component.html?raw';
 import sizeTs from './size/text-input-size.component.ts.txt?raw';
 @Component({
   templateUrl: './text-input-demo.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TextInputDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

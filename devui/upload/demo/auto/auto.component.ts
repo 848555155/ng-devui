@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IFileOptions, IUploadOptions } from 'ng-devui/upload';
 
 @Component({
   selector: 'd-auto',
   templateUrl: './auto.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class UploadAutoComponent {
   additionalParameter1 = {
     name: 'tom',
-    age: 11
+    age: 11,
   };
 
   fileOptions1: IFileOptions = {
@@ -23,11 +24,10 @@ export class UploadAutoComponent {
     additionalParameter: this.additionalParameter1,
     maximumSize: 0.5,
     method: 'GET',
-    fileFieldName: 'dFile'
+    fileFieldName: 'dFile',
   };
 
-  constructor() {
-  }
+  constructor() {}
 
   success(result) {
     console.log(result);

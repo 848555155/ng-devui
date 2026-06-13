@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { SelectComponent } from 'ng-devui/select';
 import { of } from 'rxjs';
 
 @Component({
   selector: 'd-custom-search',
   templateUrl: './custom-search.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class CustomSearchComponent {
   @ViewChild('networkSearchSelect') selectComponent: SelectComponent;

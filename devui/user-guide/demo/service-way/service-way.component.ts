@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { IStep, UserGuideService } from 'ng-devui/user-guide';
 import { mockSteps } from '../mock-steps';
 
@@ -6,12 +6,13 @@ import { mockSteps } from '../mock-steps';
   selector: 'd-user-guide-service-way',
   templateUrl: './service-way.component.html',
   styleUrls: ['./service-way.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class ServiceWayComponent implements OnInit {
   steps: Array<IStep> = mockSteps;
 
-  constructor(private userGuideService: UserGuideService) { }
+  constructor(private userGuideService: UserGuideService) {}
 
   ngOnInit() {
     this.userGuideService.setSteps(this.steps);

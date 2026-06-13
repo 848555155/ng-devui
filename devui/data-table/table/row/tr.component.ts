@@ -1,5 +1,15 @@
 import {
-  AfterViewInit, ChangeDetectorRef, Component, ContentChildren, ElementRef, EventEmitter, OnInit, Output, QueryList, Renderer2
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  ContentChildren,
+  ElementRef,
+  EventEmitter,
+  OnInit,
+  Output,
+  QueryList,
+  Renderer2,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { RowCheckChangeEventArg, TableCheckOptions } from '../../data-table.model';
 import { TableThComponent } from '../head/th/th.component';
@@ -9,7 +19,8 @@ import { TableThComponent } from '../head/th/th.component';
   selector: '[dTableRow]',
   templateUrl: './tr.component.html',
   styleUrls: ['./tr.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TableTrComponent implements OnInit, AfterViewInit {
   @ContentChildren(TableThComponent) thList: QueryList<TableThComponent>;
@@ -28,14 +39,9 @@ export class TableTrComponent implements OnInit, AfterViewInit {
 
   @Output() headerCheckStatusEvent = new EventEmitter<boolean>();
   @Output() checkStatusEvent = new EventEmitter<RowCheckChangeEventArg>();
-  constructor(
-    private eleRef: ElementRef,
-    private render2: Renderer2,
-    private cdr: ChangeDetectorRef
-  ) { }
+  constructor(private eleRef: ElementRef, private render2: Renderer2, private cdr: ChangeDetectorRef) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   ngAfterViewInit() {
     if (this.thList) {
@@ -57,8 +63,6 @@ export class TableTrComponent implements OnInit, AfterViewInit {
       const firstEle = fixRightList[0];
       this.render2.addClass(firstEle, 'devui-first-sticky-right-cell');
     }
-
-
   }
 
   onHeaderCheckChange(checked) {

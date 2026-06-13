@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { cloneDeep } from 'lodash-es';
 import { Subject } from 'rxjs';
@@ -41,10 +41,11 @@ interface ComponentsOption {
 }
 
 @Component({
-    selector: 'd-sidebar',
-    templateUrl: './sidebar.component.html',
-    styleUrls: ['./sidebar.component.scss'],
-    standalone: false
+  selector: 'd-sidebar',
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() sideMenuList: navItem[] = [];
@@ -72,7 +73,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
   }
   rotateDegrees = 0;
   docLinkMap = {
-    'opensource': LinkMap.versionRelease,
+    opensource: LinkMap.versionRelease,
   };
   get navData() {
     return this._navData;
@@ -89,7 +90,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
       this.filterData(term);
     });
     this.changelogLink = this.docLinkMap.opensource;
-    if(this.showVersions){
+    if (this.showVersions) {
       this.currentOption = this.versionOptions[0];
     }
     this.linkDefaultTarget = this.linkType === 'routerLink' ? '_self' : '_blank';

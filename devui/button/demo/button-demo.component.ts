@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -27,7 +27,8 @@ import groupsScss from './groups/groups.component.scss?raw';
 @Component({
   selector: 'd-demo-button',
   templateUrl: './button-demo.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class ButtonDemoComponent implements OnInit, OnDestroy {
   commonSource: Array<DevuiSourceData> = [

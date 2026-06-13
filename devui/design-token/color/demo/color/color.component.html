@@ -10,56 +10,55 @@
   <div class="color-block block-7"></div>
 
   @for (table of dataSource | keyvalue : preserveOrder; track table) {
-    <div>
-      <div class="devui-table-catalog">
-        {{ 'components.design-color.colorDemo.instance.catalogs.' + table.key | translate }}
-      </div>
-      <d-data-table #datatable [dataSource]="table.value">
-        <thead dTableHead>
+  <div>
+    <div class="devui-table-catalog">
+      {{ 'components.design-color.colorDemo.instance.catalogs.' + table.key | translate }}
+    </div>
+    <d-data-table #datatable [dataSource]="table.value">
+      <thead dTableHead>
+        <tr dTableRow>
+          <th dHeadCell>{{ 'components.design-color.colorDemo.instance.defaultTable.colorVar' | translate }}</th>
+          <th dHeadCell>{{ 'components.design-color.colorDemo.instance.defaultTable.themeValue' | translate }}</th>
+          <th dHeadCell>{{ 'components.design-color.colorDemo.instance.defaultTable.description' | translate }}</th>
+        </tr>
+      </thead>
+      <tbody dTableBody>
+        <ng-template let-rowItem="rowItem" let-rowIndex="rowIndex">
           <tr dTableRow>
-            <th dHeadCell>{{ 'components.design-color.colorDemo.instance.defaultTable.colorVar' | translate }}</th>
-            <th dHeadCell>{{ 'components.design-color.colorDemo.instance.defaultTable.themeValue' | translate }}</th>
-            <th dHeadCell>{{ 'components.design-color.colorDemo.instance.defaultTable.description' | translate }}</th>
-          </tr>
-        </thead>
-        <tbody dTableBody>
-          <ng-template let-rowItem="rowItem" let-rowIndex="rowIndex">
-            <tr dTableRow>
-              <td dTableCell>{{ rowItem?.name }}</td>
-              <td dTableCell>
-                <div class="color-name">
-                  {{ rowItem?.value }}
-                </div>
-                @if (rowItem?.value) {
-                  <div class="color-cube" [ngStyle]="{ 'background-color': rowItem?.value }"></div>
-                }
-              </td>
-              <td dTableCell>{{ rowItem?.description }}</td>
-            </tr>
-          </ng-template>
-        </tbody>
-      </d-data-table>
-    </div>
-  }
-  @if (showFormColor) {
-    <div style="margin-top: 8px">
-      <span class="devui-table-catalog">{{ 'components.design-color.colorDemo.instance.formColor' | translate }}</span>
-      <div class="swatches">
-        @for (col of colorTypeList; track col; let index = $index) {
-          <div class="formColor">
-            @for (block of colorNumberList; track block; let idx = $index) {
-              <div>
-                <div class="swatches-block" [ngStyle]="{ color: idx > 4 ? '#fff' : '#252b3a' }" [ngClass]="'block-' + col + '-' + block">
-                  <div>{{ '$devui-' + col + '-' + block }}</div>
-                  <div>{{ swatchesList['devui-' + col + '-' + block] }}</div>
-                </div>
+            <td dTableCell>{{ rowItem?.name }}</td>
+            <td dTableCell>
+              <div class="color-name">
+                {{ rowItem?.value }}
               </div>
-            }
-            {{ col }}
+              @if (rowItem?.value) {
+              <div class="color-cube" [ngStyle]="{ 'background-color': $safeNavigationMigration(rowItem?.value) }"></div>
+              }
+            </td>
+            <td dTableCell>{{ rowItem?.description }}</td>
+          </tr>
+        </ng-template>
+      </tbody>
+    </d-data-table>
+  </div>
+  } @if (showFormColor) {
+  <div style="margin-top: 8px">
+    <span class="devui-table-catalog">{{ 'components.design-color.colorDemo.instance.formColor' | translate }}</span>
+    <div class="swatches">
+      @for (col of colorTypeList; track col; let index = $index) {
+      <div class="formColor">
+        @for (block of colorNumberList; track block; let idx = $index) {
+        <div>
+          <div class="swatches-block" [ngStyle]="{ color: idx > 4 ? '#fff' : '#252b3a' }" [ngClass]="'block-' + col + '-' + block">
+            <div>{{ '$devui-' + col + '-' + block }}</div>
+            <div>{{ swatchesList['devui-' + col + '-' + block] }}</div>
           </div>
+        </div>
         }
+        {{ col }}
       </div>
-      <div class="swatches"></div>
+      }
     </div>
+    <div class="swatches"></div>
+  </div>
   }
 </div>

@@ -1,10 +1,11 @@
-import {Component} from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-slider-basic',
   templateUrl: './slider-basic.component.html',
   styleUrls: ['./slider-basic.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class SliderBasicComponent {
   inputValue = 12;

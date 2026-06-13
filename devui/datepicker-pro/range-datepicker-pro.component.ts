@@ -13,6 +13,7 @@ import {
   Output,
   TemplateRef,
   ViewChild,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { EN_US, I18nFormat, I18nInterface, I18nService } from 'ng-devui/i18n';
@@ -35,7 +36,8 @@ import { DateConfig } from './lib/datepicker-pro.type';
     },
   ],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class RangeDatepickerProComponent implements OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
   @Input() mode: 'year' | 'month' | 'date' | 'week' = 'date';

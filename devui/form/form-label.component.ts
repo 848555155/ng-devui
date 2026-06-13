@@ -3,7 +3,10 @@ import {
   Component,
   ElementRef,
   HostBinding,
-  Input, Renderer2, TemplateRef
+  Input,
+  Renderer2,
+  TemplateRef,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { DFormControlStatus } from './validator-directive/validate.type';
 
@@ -12,7 +15,8 @@ import { DFormControlStatus } from './validator-directive/validate.type';
   templateUrl: './form-label.component.html',
   styleUrls: ['./form-label.component.scss'],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class FormLabelComponent {
   @Input() required = false;
@@ -26,11 +30,7 @@ export class FormLabelComponent {
     return this.feedbackStatus !== null;
   }
 
-  constructor(
-    private cdr: ChangeDetectorRef,
-    elementRef: ElementRef,
-    renderer: Renderer2
-  ) {
+  constructor(private cdr: ChangeDetectorRef, elementRef: ElementRef, renderer: Renderer2) {
     renderer.addClass(elementRef.nativeElement, 'devui-form-label');
   }
 

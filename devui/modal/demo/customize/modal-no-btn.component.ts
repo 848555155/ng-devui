@@ -1,10 +1,11 @@
-import { Component, ElementRef, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-modal-no-btn',
   templateUrl: './modal-no-btn.component.html',
   styleUrls: ['./modal-no-btn.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class ModalNoBtnComponent implements OnInit {
   constructor(private elr: ElementRef) {}

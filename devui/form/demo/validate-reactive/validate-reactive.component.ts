@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { DFormGroupRuleDirective, DValidateRules, FormLayout } from 'ng-devui/form';
 import { of } from 'rxjs';
@@ -8,7 +8,8 @@ import { delay, map } from 'rxjs/operators';
   selector: 'd-form-demo-validate-reactive',
   templateUrl: './validate-reactive.component.html',
   styleUrls: ['./validate-reactive.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class ValidateReactiveComponent implements OnInit {
   layoutDirection: FormLayout = FormLayout.Vertical;

@@ -1,10 +1,11 @@
-import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { Component, TemplateRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { DialogService, ModalService } from 'ng-devui/modal';
 
 @Component({
   selector: 'd-template',
   templateUrl: './template.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TemplateComponent {
   @ViewChild('dialogContent', { static: true }) dialogContent: TemplateRef<any>;

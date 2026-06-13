@@ -1,4 +1,4 @@
-import { Component, DebugElement, ElementRef, TemplateRef, ViewChild } from '@angular/core';
+import { Component, DebugElement, ElementRef, TemplateRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -12,7 +12,7 @@ import { DatepickerModule } from './datepicker.module';
 class CommonFunctions {
   static i18nConfig = {
     'zh-cn': zhCN,
-    'en-us': enUS
+    'en-us': enUS,
   };
 
   static i18nText() {
@@ -36,7 +36,6 @@ class CommonFunctions {
         [(ngModel)]="selectedDate1"
         #datePicker1="datepicker"
         (selectedDateChange)="getValue($event)"
-    
         [cssClass]="cssClass"
         [showTime]="showTime"
         [disabled]="disabled"
@@ -47,11 +46,11 @@ class CommonFunctions {
         [maxDate]="maxDate"
         [autoOpen]="autoOpen"
         [customViewTemplate]="customViewTemplate"
-        />
+      />
       @if (selectedDate1) {
-        <div class="devui-input-group-addon close-icon-wrapper" (click)="datePicker1.clearAll()">
-          <i class="icon icon-close"></i>
-        </div>
+      <div class="devui-input-group-addon close-icon-wrapper" (click)="datePicker1.clearAll()">
+        <i class="icon icon-close"></i>
+      </div>
       }
       <div class="devui-input-group-addon" (click)="datePicker1.toggle(toggle); toggle = !toggle" #icon>
         <i class="icon icon-calendar"></i>
@@ -60,12 +59,13 @@ class CommonFunctions {
     <ng-template #myCustomView>
       <div class="test-template">test template</div>
     </ng-template>
-    `,
-  standalone: false
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestDatePickerDirectiveComponent {
   selectedDate1;
-  @ViewChild('inputEle', {read: ElementRef}) inputEle: ElementRef;
+  @ViewChild('inputEle', { read: ElementRef }) inputEle: ElementRef;
   @ViewChild('icon', { read: ElementRef }) icon: ElementRef;
   @ViewChild('myCustomView') myCustomView: TemplateRef<any>;
 
@@ -100,7 +100,6 @@ class TestDatePickerDirectiveComponent {
         #datePicker1="datepicker"
         (selectedDateChange)="getValue($event)"
         appendToBody
-    
         [cssClass]="cssClass"
         [showTime]="showTime"
         [disabled]="disabled"
@@ -110,11 +109,11 @@ class TestDatePickerDirectiveComponent {
         [maxDate]="maxDate"
         [autoOpen]="autoOpen"
         [customViewTemplate]="customViewTemplate"
-        />
+      />
       @if (selectedDate1) {
-        <div class="devui-input-group-addon close-icon-wrapper" (click)="datePicker1.clearAll()">
-          <i class="icon icon-close"></i>
-        </div>
+      <div class="devui-input-group-addon close-icon-wrapper" (click)="datePicker1.clearAll()">
+        <i class="icon icon-close"></i>
+      </div>
       }
       <div class="devui-input-group-addon" (click)="datePicker1.toggle(toggle); toggle = !toggle" #icon>
         <i class="icon icon-calendar"></i>
@@ -123,8 +122,9 @@ class TestDatePickerDirectiveComponent {
     <ng-template #myCustomView>
       <div class="test-template">test template</div>
     </ng-template>
-    `,
-  standalone: false
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestDatePickerAppendToBodyComponent {
   selectedDate1;
@@ -166,12 +166,11 @@ class TestDatePickerAppendToBodyComponent {
       (selectedDateChange)="getValue($event)"
     ></d-datepicker>
     <ng-template #myCustomView let-clearAll="clearAll">
-      <div class="test-template" (click)="clearAll()">
-        clear
-      </div>
+      <div class="test-template" (click)="clearAll()">clear</div>
     </ng-template>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestDatePickerCmpComponent {
   dateConfig = null;
@@ -193,7 +192,7 @@ describe('datePicker', () => {
     beforeEach(waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [DatepickerModule, NoopAnimationsModule, FormsModule],
-        declarations: [TestDatePickerDirectiveComponent]
+        declarations: [TestDatePickerDirectiveComponent],
       }).compileComponents();
     }));
 
@@ -210,10 +209,15 @@ describe('datePicker', () => {
       it('should datePicker show', fakeAsync(() => {
         tickEvent(component.inputEle.nativeElement, new Event('focus'), fixture);
         const classList = [
-          '.devui-month-view', '.devui-month-view-table',
-          '.devui-date-header', '.devui-week-header',
-          '.devui-day', '.devui-out-of-month', '.devui-in-month-day', '.devui-calendar-date',
-          '.time-picker-view'
+          '.devui-month-view',
+          '.devui-month-view-table',
+          '.devui-date-header',
+          '.devui-week-header',
+          '.devui-day',
+          '.devui-out-of-month',
+          '.devui-in-month-day',
+          '.devui-calendar-date',
+          '.time-picker-view',
         ];
         expect(domHelper.judgeStyleClasses(classList)).toBeTruthy();
 
@@ -283,8 +287,8 @@ describe('datePicker', () => {
             max: 2020,
             format: {
               date: 'MM.dd.y',
-              time: 'MM.dd.y mm-ss-HH'
-            }
+              time: 'MM.dd.y mm-ss-HH',
+            },
           };
           component.autoOpen = true;
         });
@@ -298,7 +302,7 @@ describe('datePicker', () => {
       describe('test wrong control', () => {
         beforeEach(() => {
           component.dateConfig = {
-            timePicker: true
+            timePicker: true,
           };
         });
 
@@ -325,7 +329,7 @@ describe('datePicker', () => {
     beforeEach(waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [DatepickerModule, NoopAnimationsModule, FormsModule],
-        declarations: [TestDatePickerAppendToBodyComponent]
+        declarations: [TestDatePickerAppendToBodyComponent],
       }).compileComponents();
     }));
 
@@ -342,10 +346,15 @@ describe('datePicker', () => {
       it('should datePicker show', fakeAsync(() => {
         tickEvent(component.inputEle.nativeElement, new Event('focus'), fixture);
         const classList = [
-          '.devui-month-view', '.devui-month-view-table',
-          '.devui-date-header', '.devui-week-header',
-          '.devui-day', '.devui-out-of-month', '.devui-in-month-day', '.devui-calendar-date',
-          '.time-picker-view'
+          '.devui-month-view',
+          '.devui-month-view-table',
+          '.devui-date-header',
+          '.devui-week-header',
+          '.devui-day',
+          '.devui-out-of-month',
+          '.devui-in-month-day',
+          '.devui-calendar-date',
+          '.time-picker-view',
         ];
         expect(domHelper.judgeAppendToBodyStyleClasses(classList)).toBeTruthy();
 
@@ -417,8 +426,8 @@ describe('datePicker', () => {
             max: 2020,
             format: {
               date: 'MM.dd.y',
-              time: 'MM.dd.y mm-ss-HH'
-            }
+              time: 'MM.dd.y mm-ss-HH',
+            },
           };
           component.autoOpen = true;
         });
@@ -432,7 +441,7 @@ describe('datePicker', () => {
       describe('test wrong control', () => {
         beforeEach(() => {
           component.dateConfig = {
-            timePicker: true
+            timePicker: true,
           };
         });
 
@@ -459,7 +468,7 @@ describe('datePicker', () => {
     beforeEach(waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [DatepickerModule, NoopAnimationsModule, FormsModule],
-        declarations: [TestDatePickerCmpComponent]
+        declarations: [TestDatePickerCmpComponent],
       }).compileComponents();
     }));
 
@@ -476,11 +485,16 @@ describe('datePicker', () => {
       it('should datePicker show', fakeAsync(() => {
         const classList = [
           'd-datepicker',
-          '.devui-month-view', '.devui-month-view-table',
-          '.devui-date-header', '.devui-week-header',
+          '.devui-month-view',
+          '.devui-month-view-table',
+          '.devui-date-header',
+          '.devui-week-header',
           '.devui-date-title',
-          '.devui-day', '.devui-out-of-month', '.devui-in-month-day', '.devui-calendar-date',
-          '.time-picker-view'
+          '.devui-day',
+          '.devui-out-of-month',
+          '.devui-in-month-day',
+          '.devui-calendar-date',
+          '.time-picker-view',
         ];
         expect(domHelper.judgeAppendToBodyStyleClasses(classList)).toBeTruthy();
         flush();
@@ -556,9 +570,9 @@ describe('datePicker', () => {
           component.selectedDate = new Date(now);
           component.selectedDate.setFullYear(component.selectedDate.getFullYear() + 1);
           fixture.detectChanges();
-          expect(
-            debugEl.query(By.css('.devui-day.active')).query(By.css('.devui-calendar-date')
-            ).nativeElement.innerText.trim()).toBe((String(now.getDate())).padStart(2, '0'));
+          expect(debugEl.query(By.css('.devui-day.active')).query(By.css('.devui-calendar-date')).nativeElement.innerText.trim()).toBe(
+            String(now.getDate()).padStart(2, '0')
+          );
           flush();
         }));
 
@@ -567,9 +581,9 @@ describe('datePicker', () => {
           component.selectedDate = new Date(now);
           component.selectedDate.setFullYear(component.selectedDate.getFullYear() - 1);
           fixture.detectChanges();
-          expect(
-            debugEl.query(By.css('.devui-day.active')).query(By.css('.devui-calendar-date')
-            ).nativeElement.innerText.trim()).toBe((String(now.getDate())).padStart(2, '0'));
+          expect(debugEl.query(By.css('.devui-day.active')).query(By.css('.devui-calendar-date')).nativeElement.innerText.trim()).toBe(
+            String(now.getDate()).padStart(2, '0')
+          );
           flush();
         }));
       });
@@ -662,7 +676,7 @@ describe('datePicker', () => {
         const now = new Date();
         beforeEach(() => {
           component.dateConfig = {
-            timePicker: true
+            timePicker: true,
           };
           component.minDate = component.maxDate = now;
         });
@@ -770,7 +784,7 @@ describe('datePicker', () => {
 });
 
 function padZero(value) {
-  return (String(value)).padStart(2, '0');
+  return String(value).padStart(2, '0');
 }
 
 function resolveMonth(str) {
@@ -861,7 +875,7 @@ function testNgModelAndYearMonth(fixture, wrapperEle, component) {
 
   let currentLastYearInListEle;
   for (const el of yearListEle.children) {
-    if (Number(el.innerText.trim()) === (Number(currentYear) - 1)) {
+    if (Number(el.innerText.trim()) === Number(currentYear) - 1) {
       currentLastYearInListEle = el;
       break;
     }
@@ -892,9 +906,9 @@ function testNgModelAndYearMonth(fixture, wrapperEle, component) {
   expect(currentMonthInListEle.classList).toContain('active');
 
   let currentLastMonthInListEle;
-  const tempMonth = (currentMonth === '1' ? '13' : currentMonth);
+  const tempMonth = currentMonth === '1' ? '13' : currentMonth;
   for (const el of monthListEle.children) {
-    if (Number(resolveMonth(el.innerText.trim())) === (Number(tempMonth) - 1)) {
+    if (Number(resolveMonth(el.innerText.trim())) === Number(tempMonth) - 1) {
       currentLastMonthInListEle = el;
       break;
     }
@@ -926,10 +940,7 @@ function testNgModelAndYearMonth(fixture, wrapperEle, component) {
 
   for (const dayEl of dayListEle.querySelectorAll('.devui-in-month-day')) {
     const dayNumber = Number(dayEl.querySelector('.devui-calendar-date').innerText.trim());
-    if (
-      (currentDay !== '01') && dayNumber === (Number(currentDay) - 1) ||
-      (currentDay === '01') && dayNumber === (Number(currentDay) + 1)
-    ) {
+    if ((currentDay !== '01' && dayNumber === Number(currentDay) - 1) || (currentDay === '01' && dayNumber === Number(currentDay) + 1)) {
       currentWhichDayInListEle = dayEl;
       currentWhichDay = currentWhichDayInListEle.querySelector('.devui-calendar-date').innerText.trim();
       break;
@@ -938,7 +949,7 @@ function testNgModelAndYearMonth(fixture, wrapperEle, component) {
 
   tickEvent(currentWhichDayInListEle, new Event('click'), fixture);
 
-  const newWhichDay = (currentDay === '01' ? new Date().getDate() + 1 : new Date().getDate() - 1);
+  const newWhichDay = currentDay === '01' ? new Date().getDate() + 1 : new Date().getDate() - 1;
   expect(component.getValue).toHaveBeenCalled();
   expect(component.inputEle.nativeElement.value).toBe(
     `${new Date().getFullYear()}/${padZero(new Date().getMonth() + 1)}/${padZero(newWhichDay)}`
@@ -999,9 +1010,7 @@ function testNgModelAndYearMonth(fixture, wrapperEle, component) {
   dayListEle = wrapperEle.querySelector('tbody');
   currentDayInListEle = dayListEle.querySelector('.active');
   currentDay = currentDayInListEle.querySelector('.devui-calendar-date').innerText.trim();
-  expect(component.inputEle.nativeElement.value).toBe(
-    `${new Date().getFullYear()}/${padZero(new Date().getMonth() + 1)}/05`
-  );
+  expect(component.inputEle.nativeElement.value).toBe(`${new Date().getFullYear()}/${padZero(new Date().getMonth() + 1)}/05`);
   closeDatePicker(fixture);
 
   component.inputEle.nativeElement.value = `${new Date().getFullYear()}/${padZero(new Date().getMonth() + 1)}/05`;
@@ -1052,12 +1061,12 @@ function testInputParam(fixture, wrapperEle, component) {
   if (nextAvailable.getDate() !== 1) {
     availableDayNumberList.push(nextAvailable);
   }
-  availableDayNumberList.forEach((date, index) => { availableDayNumberList[index] = (String(date.getDate())).padStart(2, '0'); });
+  availableDayNumberList.forEach((date, index) => {
+    availableDayNumberList[index] = String(date.getDate()).padStart(2, '0');
+  });
   for (const dayEl of dayListEle.querySelectorAll('.devui-in-month-day')) {
     const dayNumber = dayEl.querySelector('.devui-calendar-date').innerText.trim();
-    if (
-      availableDayNumberList.indexOf(dayNumber) < 0
-    ) {
+    if (availableDayNumberList.indexOf(dayNumber) < 0) {
       expect(dayEl.classList).toContain('disabled');
     }
   }
@@ -1115,7 +1124,11 @@ function testTimePicker(fixture, wrapperEle, component) {
 
   expect(component.getValue).toHaveBeenCalled();
   /* eslint-disable-next-line max-len*/
-  expect(component.inputEle.nativeElement.value).toBe(`${new Date().getFullYear()}/${padZero(new Date().getMonth() + 1)}/${padZero(new Date().getDate())} 0${timeEvent}:0${timeEvent}:0${timeEvent}`);
+  expect(component.inputEle.nativeElement.value).toBe(
+    `${new Date().getFullYear()}/${padZero(new Date().getMonth() + 1)}/${padZero(
+      new Date().getDate()
+    )} 0${timeEvent}:0${timeEvent}:0${timeEvent}`
+  );
   expect(component.selectedDate1).toEqual(
     new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), Number(timeEvent), Number(timeEvent), Number(timeEvent))
   );
@@ -1125,13 +1138,19 @@ function testTimePicker(fixture, wrapperEle, component) {
   tickEvent(component.inputEle.nativeElement, new Event('blur'), fixture, 1000);
   fixture.detectChanges();
   /* eslint-disable-next-line max-len*/
-  expect(component.inputEle.nativeElement.value).toBe(`${new Date().getFullYear()}/${padZero(new Date().getMonth() + 1)}/${padZero(new Date().getDate())} 0${timeEvent}:0${timeEvent}:0${timeEvent}`);
+  expect(component.inputEle.nativeElement.value).toBe(
+    `${new Date().getFullYear()}/${padZero(new Date().getMonth() + 1)}/${padZero(
+      new Date().getDate()
+    )} 0${timeEvent}:0${timeEvent}:0${timeEvent}`
+  );
 }
 
 function testTimePickerInput(inputEle, fixture, timeEvent) {
   const backSpaceKeyboard = EventHelper.createKeyBoardEvent('keydown', { key: 'Backspace', keyCode: 8 });
   const keyBoardEvent = EventHelper.createKeyBoardEvent('keydown', {
-    key: timeEvent, code: `Digit${timeEvent}`, charCode: 48 + Number(timeEvent)
+    key: timeEvent,
+    code: `Digit${timeEvent}`,
+    charCode: 48 + Number(timeEvent),
   });
   const changeEvent = new Event('change');
   tickEvent(inputEle, backSpaceKeyboard, fixture);
@@ -1171,5 +1190,9 @@ function testDateConfig(fixture, wrapperEle, component) {
 
   // MM.dd.y mm-ss-HH
   /* eslint-disable-next-line max-len*/
-  expect(component.inputEle.nativeElement.value).toBe(`${padZero(new Date().getMonth() + 1)}.${padZero(new Date().getDate())}.${new Date().getFullYear()} ${padZero(new Date().getMinutes())}-${padZero(new Date().getSeconds())}-${padZero(new Date().getHours())}`);
+  expect(component.inputEle.nativeElement.value).toBe(
+    `${padZero(new Date().getMonth() + 1)}.${padZero(new Date().getDate())}.${new Date().getFullYear()} ${padZero(
+      new Date().getMinutes()
+    )}-${padZero(new Date().getSeconds())}-${padZero(new Date().getHours())}`
+  );
 }

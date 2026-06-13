@@ -1,4 +1,4 @@
-import { Component, DebugElement } from '@angular/core';
+import { Component, DebugElement, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,7 +19,8 @@ import { AccordionModule } from './accordion.module';
       [accordionType]="accordionTypeEmbed ? 'embed' : 'normal'"
     ></d-accordion>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestAccordionComponent {
   restrictOneOpen = false;
@@ -95,7 +96,8 @@ class TestAccordionComponent {
       </ng-template>
     </ng-template>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestAccordionTemplateComponent {
   restrictOneOpen = false;
@@ -142,7 +144,8 @@ class TestAccordionTemplateComponent {
 
 @Component({
   template: ` <d-accordion [data]="menu" class="menu" [linkType]="'routerLink'"></d-accordion> `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestAccordionLinkComponent {
   constructor(private router: Router) {}
@@ -159,7 +162,8 @@ class TestAccordionLinkComponent {
 
 @Component({
   template: ` <d-accordion [data]="menu" class="menu" [linkType]="'hrefLink'" [linkDefaultTarget]="'self'"></d-accordion> `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestAccordionHrefLinkComponent {
   menu = [

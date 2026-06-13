@@ -1,4 +1,4 @@
-import { Component, forwardRef, HostBinding, HostListener, Input } from '@angular/core';
+import { Component, forwardRef, HostBinding, HostListener, Input, ChangeDetectionStrategy } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DevConfigService, WithConfig } from 'ng-devui/utils';
 import { Observable } from 'rxjs';
@@ -15,7 +15,8 @@ import { Observable } from 'rxjs';
     },
   ],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class RadioComponent implements ControlValueAccessor {
   private _name: string;

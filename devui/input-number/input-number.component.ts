@@ -1,4 +1,3 @@
-
 import {
   AfterViewInit,
   ChangeDetectorRef,
@@ -15,7 +14,8 @@ import {
   Renderer2,
   SimpleChanges,
   ViewChild,
-  DOCUMENT
+  DOCUMENT,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DevConfigService, WithConfig } from 'ng-devui/utils';
@@ -35,7 +35,8 @@ export type InputSizeType = '' | 'sm' | 'lg';
   styleUrls: ['./input-number.component.scss'],
   providers: [INPUT_NUMBER_CONTROL_VALUE_ACCESSOR],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class InputNumberComponent implements ControlValueAccessor, OnChanges, OnDestroy, AfterViewInit {
   @Input() step = 1;

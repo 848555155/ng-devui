@@ -1,4 +1,3 @@
-
 import {
   AfterViewInit,
   ChangeDetectorRef,
@@ -14,7 +13,8 @@ import {
   Renderer2,
   SimpleChanges,
   TemplateRef,
-  DOCUMENT
+  DOCUMENT,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { PositionService } from 'ng-devui/position';
 import { directionFadeInOut } from 'ng-devui/utils';
@@ -31,7 +31,8 @@ interface PopoverStyle {
   templateUrl: './popover.component.html',
   styleUrls: [`./popover.component.scss`],
   animations: [directionFadeInOut],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class PopoverComponent implements OnInit, AfterViewInit, OnDestroy, OnChanges {
   @Input() triggerElementRef: ElementRef;

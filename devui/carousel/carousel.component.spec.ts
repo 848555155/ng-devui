@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { CarouselComponent } from './carousel.component';
@@ -6,24 +6,32 @@ import { CarouselModule } from './carousel.module';
 @Component({
   template: `
     <section>
-      <d-carousel #carousel="dCarousel" [autoplay]="autoplay" [autoplaySpeed]="autoplaySpeed" [height]="height" [dotTrigger]="dotTrigger"
-        [activeIndex]="activeIndex" [arrowTrigger]="arrowTrigger">
+      <d-carousel
+        #carousel="dCarousel"
+        [autoplay]="autoplay"
+        [autoplaySpeed]="autoplaySpeed"
+        [height]="height"
+        [dotTrigger]="dotTrigger"
+        [activeIndex]="activeIndex"
+        [arrowTrigger]="arrowTrigger"
+      >
         @for (i of array; track i) {
-          <d-carousel-item>{{ 'page ' + i }}</d-carousel-item>
+        <d-carousel-item>{{ 'page ' + i }}</d-carousel-item>
         }
       </d-carousel>
     </section>
-    `,
+  `,
   styles: [
     `
-    d-carousel-item {
-      text-align: center;
-      line-height: 200px;
-      background: var(--devui-global-bg, #f5f5f5);
-    }
-    `
+      d-carousel-item {
+        text-align: center;
+        line-height: 200px;
+        background: var(--devui-global-bg, #f5f5f5);
+      }
+    `,
   ],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestCarouselComponent {
   array = [1, 2, 3, 4];
@@ -44,9 +52,8 @@ describe('CarouselComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [CarouselModule],
-      declarations: [ TestCarouselComponent ],
-    })
-      .compileComponents();
+      declarations: [TestCarouselComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -5,7 +5,7 @@
   [closeScope]="'blank'"
   (toggleEvent)="showFilterContent($event)"
   #filterDropdown="d-dropdown"
-  >
+>
   <span dDropDownToggle>
     <i
       class="filter-icon"
@@ -13,7 +13,7 @@
         'filter-icon-active': filterIconActive === undefined ? filterIconActiveInner : filterIconActive,
         'filter-icon-visiable': showFilterIcon
       }"
-      >
+    >
       <svg
         width="16px"
         height="16px"
@@ -21,7 +21,7 @@
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
-        >
+      >
         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
           <g>
             <polygon points="10.0085775 7 10.0085775 15 6 13 6 7 2 3 2 1 14 1 14 3"></polygon>
@@ -36,18 +36,18 @@
     [ngClass]="{ 'filter-content-hidden': isFilterHidden }"
     [style.width]="filterBoxWidth || '250px'"
     [ngStyle]="{ 'min-height': filterBoxHeight ? filterBoxHeight : '60px' }"
-    >
+  >
     @if (filterDropdown.isOpen) {
-      <ng-template
-        [ngTemplateOutlet]="customFilterTemplate || (filterMultiple ? filterContentTmplForMultiple : filterContentTmplForRadio)"
+    <ng-template
+      [ngTemplateOutlet]="customFilterTemplate || (filterMultiple ? filterContentTmplForMultiple : filterContentTmplForRadio)"
       [ngTemplateOutletContext]="{
         $implicit: this,
         filterListDisplay: filterListDisplay,
         dropdown: filterDropdown,
         column: column
       }"
-        >
-      </ng-template>
+    >
+    </ng-template>
     }
   </div>
 </span>
@@ -60,25 +60,25 @@
         [style.width]="filterWidthNum - filterPadding + 'px'"
         [isKeyupSearch]="true"
         [styleType]="'gray'"
-        [placeholder]="i18nCommonText?.searchPlaceholder"
+        [placeholder]="$safeNavigationMigration(i18nCommonText?.searchPlaceholder)"
         (searchFn)="onSearch($event)"
       ></d-search>
     </div>
     <div class="filter-options">
       <d-checkbox
         style="display: inline-block"
-        [label]="i18nCommonText?.checkAll"
+        [label]="$safeNavigationMigration(i18nCommonText?.checkAll)"
         (change)="filterCheckAll($event)"
         [halfchecked]="filterHalfChecked"
         [(ngModel)]="filterAllChecked"
-        >
+      >
       </d-checkbox>
       @if (extraFilterTemplate) {
-        <ng-template
-          [ngTemplateOutlet]="extraFilterTemplate"
-          [ngTemplateOutletContext]="{ checked: filterAllChecked, halfChecked: filterHalfChecked }"
-          >
-        </ng-template>
+      <ng-template
+        [ngTemplateOutlet]="extraFilterTemplate"
+        [ngTemplateOutletContext]="{ checked: filterAllChecked, halfChecked: filterHalfChecked }"
+      >
+      </ng-template>
       }
       <div class="line"></div>
       <cdk-virtual-scroll-viewport
@@ -88,12 +88,12 @@
         class="normal-filter-list-container devui-scrollbar"
         [style.height]="filterBoxHeight ? 'calc(' + filterBoxHeight + ' - 180px)' : 30 * (filterListMultiple?.length || 1) + 'px'"
         [style.maxHeight]="filterBoxHeight ? 'none' : '250px'"
-        >
+      >
         <div *cdkVirtualFor="let item of filterListMultiple" class="checkbox-group">
           <d-checkbox [label]="item.name" [(ngModel)]="item.checked" (change)="checkboxChange($event, item)"> </d-checkbox>
         </div>
         @if (!filterListMultiple?.length) {
-          <div class="no-data-container">{{ i18nCommonText?.noData }}</div>
+        <div class="no-data-container">{{ i18nCommonText?.noData }}</div>
         }
       </cdk-virtual-scroll-viewport>
     </div>
@@ -105,36 +105,36 @@
         [disabled]="!isDirty && !filterHalfChecked && !filterAllChecked"
         (btnClick)="resetFilterData(); closeFilter(dropdown)"
         >{{ i18nCommonText?.reset }}</d-button
+      >
+      <d-button class="button-style" (click)="getFilterDataMultiple(); closeFilter(dropdown)">{{ i18nCommonText?.btnOk }}</d-button>
+    </div>
+  </div>
+</ng-template>
+<ng-template #filterContentTmplForRadio let-filterListRadio="filterListDisplay" let-dropdown="dropdown">
+  <div class="data-table-column-filter-content filter-bg filter-font-color" [style.width]="filterBoxWidth" [style.height]="filterBoxHeight">
+    <div class="filter-search-container">
+      <d-search
+        [iconPosition]="'left'"
+        [style.width]="filterWidthNum - filterPadding + 'px'"
+        [isKeyupSearch]="true"
+        [styleType]="'gray'"
+        [placeholder]="$safeNavigationMigration(i18nCommonText?.searchPlaceholder)"
+        (searchFn)="onSearch($event)"
+      ></d-search>
+    </div>
+    <div class="filter-options" role="menu">
+      <div class="normal-filter-list-container devui-scrollbar" role="menuitem" [style.maxHeight]="filterBoxHeight ? 'none' : '350px'">
+        @for (item of filterListRadio; track item) {
+        <div
+          [title]="item.name"
+          class="drop-down-item"
+          [ngClass]="{ 'filter-item-active': selectedItem === item }"
+          (click)="getFilterDataRadio(item); closeFilter(dropdown)"
         >
-        <d-button class="button-style" (click)="getFilterDataMultiple(); closeFilter(dropdown)">{{ i18nCommonText?.btnOk }}</d-button>
-      </div>
-    </div>
-  </ng-template>
-  <ng-template #filterContentTmplForRadio let-filterListRadio="filterListDisplay" let-dropdown="dropdown">
-    <div class="data-table-column-filter-content filter-bg filter-font-color" [style.width]="filterBoxWidth" [style.height]="filterBoxHeight">
-      <div class="filter-search-container">
-        <d-search
-          [iconPosition]="'left'"
-          [style.width]="filterWidthNum - filterPadding + 'px'"
-          [isKeyupSearch]="true"
-          [styleType]="'gray'"
-          [placeholder]="i18nCommonText?.searchPlaceholder"
-          (searchFn)="onSearch($event)"
-        ></d-search>
-      </div>
-      <div class="filter-options" role="menu">
-        <div class="normal-filter-list-container devui-scrollbar" role="menuitem" [style.maxHeight]="filterBoxHeight ? 'none' : '350px'">
-          @for (item of filterListRadio; track item) {
-            <div
-              [title]="item.name"
-              class="drop-down-item"
-              [ngClass]="{ 'filter-item-active': selectedItem === item }"
-              (click)="getFilterDataRadio(item); closeFilter(dropdown)"
-              >
-              {{ item.name }}
-            </div>
-          }
+          {{ item.name }}
         </div>
+        }
       </div>
     </div>
-  </ng-template>
+  </div>
+</ng-template>

@@ -1,4 +1,4 @@
-import { Component, DebugElement } from '@angular/core';
+import { Component, DebugElement, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,14 +11,14 @@ import { TooltipModule } from './tooltip.module';
       {{ direction }}
     </d-button>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestTooltipBasicComponent {
   direction = 'left';
 }
 
 describe('tooltip', () => {
-
   describe('tooltip basic', () => {
     let testComponent: TestTooltipBasicComponent;
     let fixture: ComponentFixture<TestTooltipBasicComponent>;
@@ -27,7 +27,7 @@ describe('tooltip', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [TooltipModule, ButtonModule, BrowserAnimationsModule, NoopAnimationsModule],
-        declarations: [TestTooltipBasicComponent]
+        declarations: [TestTooltipBasicComponent],
       }).compileComponents();
     });
 
@@ -39,7 +39,6 @@ describe('tooltip', () => {
     });
 
     describe('Tooltip basic demo has created successfully', () => {
-
       it('Tooltip basic should create tooltip testComponent', () => {
         expect(testComponent).toBeTruthy();
       });
@@ -68,8 +67,6 @@ describe('tooltip', () => {
       }));
 
       // TODO:mouseleave/blur状态下，元素已destroy且不可见，但单元测试仍能检测到元素，单元测试与实际情况有差异，暂时不做测试
-
     });
   });
-
 });

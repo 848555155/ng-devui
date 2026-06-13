@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: 'd-tree-select-custom-template',
   templateUrl: './custom-template.component.html',
   styleUrls: ['./custom-template.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TreeSelectCustomTemplateComponent {
   data = [

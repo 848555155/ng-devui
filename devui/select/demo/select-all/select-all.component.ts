@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: 'd-select-all',
   templateUrl: './select-all.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class SelectAllComponent {
-  options =  [
+  options = [
     {
       name: 'Option 1',
       value: 4,
@@ -23,5 +24,5 @@ export class SelectAllComponent {
       value: 32,
     },
   ];
-  selectedItems =  [...this.options];
+  selectedItems = [...this.options];
 }

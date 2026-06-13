@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -12,10 +12,9 @@ import disabledTs from './disabled/multi-auto-complete-demo-disabled.component.t
 @Component({
   selector: 'd-multi-auto-complete-demo',
   templateUrl: './multi-auto-complete-demo.component.html',
-  styleUrls: [
-    './multi-auto-complete-demo.component.scss'
-  ],
-  standalone: false
+  styleUrls: ['./multi-auto-complete-demo.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class MultiAutoCompleteDemoComponent implements OnInit, OnDestroy {
   MultiAutoCompleteDemoDefault: Array<DevuiSourceData> = [

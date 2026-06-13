@@ -1,4 +1,3 @@
-
 import {
   ChangeDetectorRef,
   Component,
@@ -16,7 +15,8 @@ import {
   Renderer2,
   SimpleChanges,
   TemplateRef,
-  DOCUMENT
+  DOCUMENT,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { fromEvent, Observable, Subscription } from 'rxjs';
 import { FilterConfig, SortDirection, SortEventArg } from '../../../data-table.model';
@@ -33,7 +33,8 @@ import { TABLE_TH } from './th.token';
       useExisting: forwardRef(() => TableThComponent),
     },
   ],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TableThComponent implements OnChanges, OnDestroy {
   @HostBinding('class.resizeable') resizeEnabledClass = false;
@@ -65,7 +66,8 @@ export class TableThComponent implements OnChanges, OnDestroy {
   }>();
 
   @HostBinding('class.can-sort')
-  @Input() sortable: boolean;
+  @Input()
+  sortable: boolean;
   @Input() sortDirection: SortDirection;
   @Input() showSortIcon = true;
   @Output() sortDirectionChange = new EventEmitter<SortDirection>();
@@ -95,9 +97,11 @@ export class TableThComponent implements OnChanges, OnDestroy {
   @Input() fixedLeft: string;
   @Input() fixedRight: string;
   @HostBinding('class.devui-last-sticky-left-cell')
-  @Input() isLastFixedLeft: boolean;
+  @Input()
+  isLastFixedLeft: boolean;
   @HostBinding('class.devui-first-sticky-right-cell')
-  @Input() isFirstFixedRight: boolean;
+  @Input()
+  isFirstFixedRight: boolean;
 
   resizeBarRefElement: HTMLElement;
   element: HTMLElement;
@@ -333,7 +337,6 @@ export class TableThComponent implements OnChanges, OnDestroy {
   };
 
   move(event: MouseEvent): void {
-
     const movementX = event.clientX - this.mouseDownScreenX;
     const newWidth = this.initialWidth + movementX;
 

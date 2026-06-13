@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, TemplateRef } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export type ITagMode = 'default' | 'checkable' | 'closeable';
@@ -10,7 +10,8 @@ export type ITagSize = 'md' | 'lg';
   styleUrls: ['./tag.component.scss'],
   exportAs: 'Tag',
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TagComponent implements OnChanges {
   /**

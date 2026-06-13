@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { DevUICodeboxModule, DevuiDemosData } from '../devui-codebox';
@@ -12,6 +12,7 @@ import { AnchorModule } from 'ng-devui/anchor';
 @Component({
   selector: 'd-demo',
   imports: [CommonModule, FormsModule, TranslateModule, AnchorModule, DevUICodeboxModule, DDemoNavModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './devui-demo.component.html',
 })
 export class DevuiDemoComponent {

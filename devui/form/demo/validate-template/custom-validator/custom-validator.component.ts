@@ -1,22 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'd-form-demo-custom-validator',
   templateUrl: './custom-validator.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class CustomValidatorComponent {
   singleSelectData = null;
 
   verifierOptions = [
-    { 'id': '1', 'name': 'Administrator1'},
-    { 'id': '2', 'name': 'Administrator2'},
-    { 'id': '3', 'name': 'Administrator3'},
-    { 'id': '4', 'name': 'Administrator4'},
-    { 'id': '5', 'name': 'Administrator5'},
-    { 'id': '6', 'name': 'Administrator6'},
+    { id: '1', name: 'Administrator1' },
+    { id: '2', name: 'Administrator2' },
+    { id: '3', name: 'Administrator3' },
+    { id: '4', name: 'Administrator4' },
+    { id: '5', name: 'Administrator5' },
+    { id: '6', name: 'Administrator6' },
   ];
 
   maxUsers(num) {
@@ -38,8 +39,6 @@ export class CustomValidatorComponent {
       });
     }
 
-    return of(message).pipe(
-      delay(300)
-    );
+    return of(message).pipe(delay(300));
   }
 }

@@ -143,9 +143,10 @@ export class ReadTipDirective implements OnInit, OnDestroy {
       );
     } else {
       this.readTipComponentRef = this.viewContainerRef.createComponent(
-        this.componentFactoryResolver.resolveComponentFactory(ReadTipComponent),
-        this.viewContainerRef.length,
-        this.inject
+        ReadTipComponent,
+        {
+          injector: this.inject
+        }
       );
     }
 

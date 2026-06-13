@@ -1,4 +1,3 @@
-
 import {
   AfterViewInit,
   ChangeDetectorRef,
@@ -18,7 +17,8 @@ import {
   QueryList,
   SimpleChanges,
   ViewChildren,
-  DOCUMENT
+  DOCUMENT,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { I18nInterface, I18nService } from 'ng-devui/i18n';
 import { Subscription } from 'rxjs';
@@ -32,7 +32,8 @@ import { DataTableColumnTmplComponent } from './tmpl/data-table-column-tmpl.comp
   templateUrl: './data-table-head.component.html',
   styleUrls: ['./data-table-head.component.scss'],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class DataTableHeadComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy, DoCheck {
   @Input() checkable: boolean;

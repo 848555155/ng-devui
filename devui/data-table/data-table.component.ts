@@ -23,7 +23,8 @@ import {
   SimpleChanges,
   TemplateRef,
   ViewChild,
-  DOCUMENT
+  DOCUMENT,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { merge, Subscription } from 'rxjs';
 import { switchMap, takeUntil } from 'rxjs/operators';
@@ -61,7 +62,8 @@ const SCROLL_BAR_WIDTH = 8;
       useExisting: forwardRef(() => DataTableComponent),
     },
   ],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class DataTableComponent implements OnDestroy, OnInit, OnChanges, AfterContentInit, AfterViewInit {
   /**
@@ -197,8 +199,8 @@ export class DataTableComponent implements OnDestroy, OnInit, OnChanges, AfterCo
    */
   @Output() rowDBClick = new EventEmitter<RowSelectedEventArg>();
   /**
-  * 行detail toggle事件
-  */
+   * 行detail toggle事件
+   */
   @Output() detialToggle = new EventEmitter<any>();
   /**
    * 表格单元格开始编辑前的拦截事件
@@ -380,7 +382,7 @@ export class DataTableComponent implements OnDestroy, OnInit, OnChanges, AfterCo
 
   @Input() set dataSource(dataSource: any[]) {
     if (dataSource === null || !dataSource) {
-    /* eslint-disable-next-line no-param-reassign */
+      /* eslint-disable-next-line no-param-reassign */
       dataSource = [];
     }
     this._dataSource = dataSource;
@@ -950,9 +952,8 @@ export class DataTableComponent implements OnDestroy, OnInit, OnChanges, AfterCo
   }
 
   onBodyScroll(event?: Event) {
-    const target = <HTMLElement>event?.target
-      || this.normalScrollElement?.nativeElement
-      || this.virtualScrollViewport?.elementRef.nativeElement;
+    const target =
+      <HTMLElement>event?.target || this.normalScrollElement?.nativeElement || this.virtualScrollViewport?.elementRef.nativeElement;
 
     if (this.isCellEdit) {
       // Y轴滚动距离超过tr高度时取消目前编辑状态

@@ -1,4 +1,4 @@
-import { Component, DebugElement, ElementRef, TemplateRef, ViewChild } from '@angular/core';
+import { Component, DebugElement, ElementRef, TemplateRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed, fakeAsync, flush, tick, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -29,11 +29,11 @@ import { DatepickerModule } from './datepicker.module';
         [customViewTemplate]="customViewTemplate"
         [hideOnRangeSelected]="hideOnRangeSelected"
         #inputEle
-        />
+      />
       @if (everyRange(dateRange)) {
-        <div class="devui-input-group-addon close-icon-wrapper" (click)="dateRangePicker.clearAll()">
-          <i class="icon icon-close"></i>
-        </div>
+      <div class="devui-input-group-addon close-icon-wrapper" (click)="dateRangePicker.clearAll()">
+        <i class="icon icon-close"></i>
+      </div>
       }
       <div class="devui-input-group-addon" (click)="$event.stopPropagation(); dateRangePicker.toggle(toggle); toggle = !toggle" #icon>
         <i class="icon icon-calendar"></i>
@@ -42,8 +42,9 @@ import { DatepickerModule } from './datepicker.module';
         <div class="test-template" (click)="chooseToday(chooseDate)">test template</div>
       </ng-template>
     </div>
-    `,
-  standalone: false
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestDateRangePickerComponent {
   dateRange = [null, null];
@@ -87,7 +88,8 @@ class TestDateRangePickerComponent {
       #inputEle
     />
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestDateRangePickerOriginComponent {
   @ViewChild('inputEle', { read: ElementRef }) inputEle: ElementRef;
@@ -109,7 +111,8 @@ class TestDateRangePickerOriginComponent {
       <div class="test-template clear" (click)="clearAll(reason)">clear</div>
     </ng-template>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestDateRangePickerCmpComponent {
   dateConfig;
@@ -951,6 +954,13 @@ function testDateConfig(fixture, wrapperEle, component) {
 
   expect(component.inputEle.nativeElement.value).toBe(
     /* eslint-disable-next-line max-len*/
-    `${strDate(0, 0, 0, undefined, ['mm', 'dd', 'yy'], '.')} 00-00-00${component.splitter}${strDate(0, 1, 0, undefined, ['mm', 'dd', 'yy'], '.')} 00-00-00`
+    `${strDate(0, 0, 0, undefined, ['mm', 'dd', 'yy'], '.')} 00-00-00${component.splitter}${strDate(
+      0,
+      1,
+      0,
+      undefined,
+      ['mm', 'dd', 'yy'],
+      '.'
+    )} 00-00-00`
   );
 }

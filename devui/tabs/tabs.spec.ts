@@ -1,4 +1,4 @@
-import { Component, DebugElement, ViewChild } from '@angular/core';
+import { Component, DebugElement, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { of } from 'rxjs';
@@ -6,52 +6,49 @@ import { DomHelper } from '../utils/testing/dom-helper';
 import { TabsComponent } from './tabs.component';
 import { TabsModule } from './tabs.module';
 @Component({
-  template: `<d-tabs #tabs [type]="'tabs'" [(activeTab)]="activeTab" [beforeChange]="beforeChange"
-    (activeTabChange)="activeTabChange($event)">
+  template: `<d-tabs
+    #tabs
+    [type]="'tabs'"
+    [(activeTab)]="activeTab"
+    [beforeChange]="beforeChange"
+    (activeTabChange)="activeTabChange($event)"
+  >
     <d-tab [id]="Tab1.id" [title]="Tab1.title">
-      <p>
-        这是Tab1的内容
-      </p>
+      <p>这是Tab1的内容</p>
     </d-tab>
 
     <d-tab [id]="Tab2.id" [title]="Tab2.title" [disabled]="true">
-      <p>
-        这是Tab2的内容
-      </p>
+      <p>这是Tab2的内容</p>
     </d-tab>
 
     <d-tab [id]="Tab3.id" [title]="Tab3.title">
-      <p>
-        这是Tab3的内容
-      </p>
+      <p>这是Tab3的内容</p>
     </d-tab>
     <d-tab [id]="Tab4.id" [title]="Tab4.title">
-      <p>
-        这是Tab4的内容
-      </p>
+      <p>这是Tab4的内容</p>
     </d-tab>
   </d-tabs>`,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
-
 class TestTabsComponent {
   @ViewChild('tabs') tabs: TabsComponent;
   activeTab = 'tab3';
   Tab1 = {
     id: 'tab1',
-    title: 'Tab1'
+    title: 'Tab1',
   };
   Tab2 = {
     id: 'tab2',
-    title: 'Tab2'
+    title: 'Tab2',
   };
   Tab3 = {
     id: 'tab3',
-    title: 'Tab3'
+    title: 'Tab3',
   };
   Tab4 = {
     id: 'tab4',
-    title: 'Tab4'
+    title: 'Tab4',
   };
   activeTabChange = jasmine.createSpy('tab changed');
   beforeChange = () => {
@@ -61,18 +58,18 @@ class TestTabsComponent {
 
 @Component({
   template: `<d-tabs #pills [(activeTab)]="tabActiveId" [type]="type">
-      @for (item of tabItems; track item) {
-        <d-tab [id]="item.id">
-          <ng-template dTabTitle>
-            {{ item.title }}
-          </ng-template>
-          {{ item.content }}
-        </d-tab>
-      }
-    </d-tabs>`,
-  standalone: false
+    @for (item of tabItems; track item) {
+    <d-tab [id]="item.id">
+      <ng-template dTabTitle>
+        {{ item.title }}
+      </ng-template>
+      {{ item.content }}
+    </d-tab>
+    }
+  </d-tabs>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
-
 class TestTabsTypeComponent {
   @ViewChild('pills') pills: TabsComponent;
   tabActiveId = 'tab1';
@@ -82,17 +79,17 @@ class TestTabsTypeComponent {
       id: 'tab1',
       title: 'Tab1',
       disabled: true,
-      content: `这是Tab1的内容`
+      content: `这是Tab1的内容`,
     },
     {
       id: 'tab2',
       title: 'Tab2',
-      content: `这是Tab2的内容`
+      content: `这是Tab2的内容`,
     },
     {
       id: 'tab3',
       title: 'Tab3',
-      content: `这是Tab3的内容`
+      content: `这是Tab3的内容`,
     },
   ];
 }
@@ -101,7 +98,7 @@ describe('tabs', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [TabsModule],
-      declarations: [TestTabsComponent]
+      declarations: [TestTabsComponent],
     }).compileComponents();
   });
 
@@ -123,12 +120,8 @@ describe('tabs', () => {
         expect(debugEl.nativeElement.querySelector('#' + component.activeTab).classList).toContain('active');
         expect(debugEl.nativeElement.querySelector('#' + component.activeTab + ' a span').textContent).toBe(component.Tab3.title);
         expect(debugEl.nativeElement.querySelector('#tab2').classList).toContain('disabled');
-        const classes = [
-          '.devui-tab-content',
-          '.devui-nav-tabs',
-        ];
+        const classes = ['.devui-tab-content', '.devui-nav-tabs'];
         expect(domHelper.judgeStyleClasses(classes)).toBeTruthy();
-
       });
 
       it('should tab click event trigger', fakeAsync(() => {
@@ -148,7 +141,7 @@ describe('tabs', () => {
         fixture.detectChanges();
         tabEl.dispatchEvent(new Event('click'));
         tick(300);
-        activeTabTest(component, 'tab4',  false);
+        activeTabTest(component, 'tab4', false);
 
         component.beforeChange = () => {
           return true;
@@ -157,7 +150,6 @@ describe('tabs', () => {
         tabEl.dispatchEvent(new Event('click'));
         tick(300);
         activeTabTest(component, 'tab4');
-
       }));
       it('should beforeChange work as observable', fakeAsync(() => {
         const tabEl: HTMLElement = debugEl.query(By.css('#tab4')).nativeElement;
@@ -167,7 +159,7 @@ describe('tabs', () => {
         fixture.detectChanges();
         tabEl.dispatchEvent(new Event('click'));
         tick(300);
-        activeTabTest(component, 'tab4',  false);
+        activeTabTest(component, 'tab4', false);
         component.beforeChange = () => {
           return of(true);
         };
@@ -184,7 +176,7 @@ describe('tabs', () => {
         fixture.detectChanges();
         tabEl.dispatchEvent(new Event('click'));
         tick(300);
-        activeTabTest(component, 'tab4',  false);
+        activeTabTest(component, 'tab4', false);
         component.beforeChange = () => {
           return Promise.resolve(true);
         };
@@ -193,18 +185,15 @@ describe('tabs', () => {
         tick(300);
         activeTabTest(component, 'tab4');
       }));
-
     });
-
   });
-
 });
 
 describe('should different type has different class', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [TabsModule],
-      declarations: [TestTabsTypeComponent]
+      declarations: [TestTabsTypeComponent],
     }).compileComponents();
   });
   describe('should tabs display differently accordion to type', () => {
@@ -227,11 +216,8 @@ describe('should different type has different class', () => {
         fixture.detectChanges();
         expect(debugEl.query(By.css('.devui-nav')).nativeElement.classList).toContain('devui-nav-' + component.type);
       });
-
     });
-
   });
-
 });
 
 function activeTabTest(component, itemClicked, canChange = true) {

@@ -1,26 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-basic',
   templateUrl: './basic.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class BasicComponent implements OnInit {
   pager = {
     total: 306,
     pageIndex: 5,
-    pageSize: 10
+    pageSize: 10,
   };
 
   pagerLg = {
     total: 1000,
     pageIndex: 5,
-    pageSize: 50
+    pageSize: 50,
   };
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

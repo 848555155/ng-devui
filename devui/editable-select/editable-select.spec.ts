@@ -1,4 +1,4 @@
-import { Component, DebugElement } from '@angular/core';
+import { Component, DebugElement, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -10,7 +10,8 @@ import { EditableSelectModule } from './editable-select.module';
     <d-editable-select [source]="languages" [searchFn]="onSearchLocal" [maxHeight]="300" [(ngModel)]="selectItem1" name="multiple-auto">
     </d-editable-select>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestEditableSelectComponent {
   selectItem1;
@@ -27,7 +28,7 @@ describe('editable-select', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [FormsModule, EditableSelectModule, NoopAnimationsModule],
-        declarations: [TestEditableSelectComponent]
+        declarations: [TestEditableSelectComponent],
       });
     });
 

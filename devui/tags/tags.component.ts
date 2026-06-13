@@ -14,6 +14,7 @@ import {
   TemplateRef,
   ViewChild,
   ViewChildren,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ITagMode, ITagSize } from './tag.component';
@@ -24,7 +25,8 @@ import { ITagMode, ITagSize } from './tag.component';
   styleUrls: ['./tags.component.scss'],
   exportAs: 'Tags',
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TagsComponent implements OnInit, AfterViewInit, OnChanges {
   /**

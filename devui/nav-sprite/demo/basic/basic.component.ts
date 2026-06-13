@@ -1,17 +1,16 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-demo-basic',
   templateUrl: './basic.component.html',
   styleUrls: ['./basic.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class BasicComponent implements AfterViewInit {
+  @ViewChild('navSprite', { static: true }) navSprite;
 
-  @ViewChild('navSprite', {static: true}) navSprite;
-
-  ngAfterViewInit () {
+  ngAfterViewInit() {
     this.navSprite.getNavData();
   }
-
 }

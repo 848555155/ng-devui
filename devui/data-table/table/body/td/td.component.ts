@@ -1,11 +1,15 @@
-import { Component,
+import {
+  Component,
   ElementRef,
-  EventEmitter, HostBinding,
+  EventEmitter,
+  HostBinding,
   Input,
   OnChanges,
   OnDestroy,
   Output,
-  SimpleChanges, } from '@angular/core';
+  SimpleChanges,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { Observable, Subscription, fromEvent } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { EditableTip } from '../../../data-table.model';
@@ -16,7 +20,8 @@ import { TableTdService } from './td.service';
   selector: '[dTableCell]',
   templateUrl: './td.component.html',
   styleUrls: ['./td.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TableTdComponent implements OnChanges, OnDestroy {
   @HostBinding('class.devui-sticky-left-cell') stickyLeftClass: boolean;

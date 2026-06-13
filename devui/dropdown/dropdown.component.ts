@@ -7,7 +7,18 @@ import {
   ScrollStrategyOptions,
   VerticalConnectionPos,
 } from '@angular/cdk/overlay';
-import { Component, ElementRef, Host, Input, OnChanges, OnInit, SimpleChanges, ViewChild, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Host,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+  ViewChild,
+  ViewEncapsulation,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import {
   AppendToBodyDirection,
   AppendToBodyDirectionsConfig,
@@ -43,7 +54,8 @@ import { DropDownDirective } from './dropdown.directive';
   encapsulation: ViewEncapsulation.None,
   animations: [fadeInOut],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class DropDownAppendToBodyComponent implements OnInit, OnChanges {
   @ViewChild('dropDownWrapper') dropDownWrapper: ElementRef;
@@ -119,14 +131,14 @@ export class DropDownAppendToBodyComponent implements OnInit, OnChanges {
 
   onPositionChange(position: ConnectedOverlayPositionChange) {
     switch (position.connectionPair.overlayY) {
-    case 'top':
-    case 'center':
-      this.menuPosition = 'bottom';
-      break;
-    case 'bottom':
-      this.menuPosition = 'top';
-      break;
-    default:
+      case 'top':
+      case 'center':
+        this.menuPosition = 'bottom';
+        break;
+      case 'bottom':
+        this.menuPosition = 'top';
+        break;
+      default:
     }
   }
 }

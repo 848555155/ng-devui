@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox/devui-source-data';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -14,7 +14,8 @@ import customScss from './custom/custom.component.scss?raw';
 
 @Component({
   templateUrl: './time-picker-demo.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TimePickerDemoComponent implements OnInit, OnDestroy {
   TimePickerDemoBasicComponent: DevuiSourceData[] = [

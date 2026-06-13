@@ -1,13 +1,12 @@
-import { Component, DebugElement } from '@angular/core';
+import { Component, DebugElement, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { I18nService } from 'ng-devui/i18n';
 import { RelativeTimeModule } from './relative-time.module';
 @Component({
-  template: `
-    <span class="display">{{ source | dRelativeTime: limit: compareTime | async }}</span>
-  `,
-  standalone: false
+  template: ` <span class="display">{{ source | dRelativeTime : limit : compareTime | async }}</span> `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestRelativeTimePipeComponent {
   limit = 3 * 12 * 30 * 24 * 60 * 60; // 转换阈值设为三年
@@ -25,7 +24,7 @@ describe('relative time', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [TestRelativeTimePipeComponent],
-      imports: [RelativeTimeModule]
+      imports: [RelativeTimeModule],
     }).compileComponents();
     fixture = TestBed.createComponent(TestRelativeTimePipeComponent);
     fixture.detectChanges();

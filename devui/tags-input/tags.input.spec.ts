@@ -1,4 +1,4 @@
-import { Component, DebugElement, OnInit, ViewChild } from '@angular/core';
+import { Component, DebugElement, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -19,7 +19,8 @@ import { TagsInputModule } from './tags.input.module';
     >
     </d-tags-input>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestTagsInputComponent implements OnInit {
   @ViewChild('comp') comp: TagsInputComponent;

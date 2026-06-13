@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, DebugElement, ElementRef, ViewChild } from '@angular/core';
+import { Component, DebugElement, ElementRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -10,7 +10,7 @@ import { DropDownModule } from './dropdown.module';
 @Component({
   template: `
     @if (expand) {
-      <div class="height-expand"></div>
+    <div class="height-expand"></div>
     }
     <div
       dDropDown
@@ -21,7 +21,7 @@ import { DropDownModule } from './dropdown.module';
       [closeScope]="closeScope"
       [closeOnMouseLeaveMenu]="closeOnMouseLeaveMenu"
       #dropdown="d-dropdown"
-      >
+    >
       <a dDropDownToggle class="devui-dropdown-default devui-dropdown-origin">
         更多操作
         <span class="icon icon-chevron-down"></span>
@@ -54,7 +54,7 @@ import { DropDownModule } from './dropdown.module';
       </ul>
     </div>
     <div class="toggle" (click)="dropdown.toggle()">打开/关闭</div>
-    `,
+  `,
   styles: [
     `
       .height-expand {
@@ -62,7 +62,8 @@ import { DropDownModule } from './dropdown.module';
       }
     `,
   ],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestDropdownComponent {
   trigger: 'hover' | 'click' | 'manually' = 'click';
@@ -119,7 +120,8 @@ class TestDropdownComponent {
       }
     `,
   ],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestDropdownAppendToBodyComponent {
   @ViewChild('areaItem', { static: true }) area: ElementRef;
@@ -132,31 +134,32 @@ class TestDropdownAppendToBodyComponent {
 @Component({
   template: `
     @if (init) {
-      <div class="area">
-        <div dDropDown>
-          <a dDropDownToggle class="devui-dropdown-default devui-dropdown-origin" [autoFocus]="autoFocus" [toggleOnFocus]="toggleOnFocus">
-            更多操作
-            <span class="icon icon-chevron-down"></span>
-          </a>
-          <ul dDropDownMenu>
-            <li role="menuitem">
-              <a dDropDownMenuItem>菜单一</a>
-            </li>
-            <li class="disabled" role="menuitem">
-              <a dDropDownMenuItem class="disabled">菜单二(禁用)</a>
-            </li>
-            <li role="menuitem">
-              <a dDropDownMenuItem>菜单三</a>
-            </li>
-            <li role="menuitem">
-              <a dDropDownMenuItem>菜单四</a>
-            </li>
-          </ul>
-        </div>
+    <div class="area">
+      <div dDropDown>
+        <a dDropDownToggle class="devui-dropdown-default devui-dropdown-origin" [autoFocus]="autoFocus" [toggleOnFocus]="toggleOnFocus">
+          更多操作
+          <span class="icon icon-chevron-down"></span>
+        </a>
+        <ul dDropDownMenu>
+          <li role="menuitem">
+            <a dDropDownMenuItem>菜单一</a>
+          </li>
+          <li class="disabled" role="menuitem">
+            <a dDropDownMenuItem class="disabled">菜单二(禁用)</a>
+          </li>
+          <li role="menuitem">
+            <a dDropDownMenuItem>菜单三</a>
+          </li>
+          <li role="menuitem">
+            <a dDropDownMenuItem>菜单四</a>
+          </li>
+        </ul>
       </div>
+    </div>
     }
-    `,
-  standalone: false
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestDropdownToggleComponent {
   autoFocus = false;
@@ -217,7 +220,8 @@ class TestDropdownToggleComponent {
       </ul>
     </div>
   </section> `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestMultiLevelComponent {
   trigger1 = 'click';

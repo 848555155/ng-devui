@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-input-group-design',
   templateUrl: './input-group-design.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class InputGroupDesignComponent implements OnInit {
   imgSrc: string;

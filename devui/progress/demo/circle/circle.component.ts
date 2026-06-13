@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: 'd-circle',
   styleUrls: ['./circle.component.scss'],
   templateUrl: './circle.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class CircleComponent implements OnInit {
   count = 0;

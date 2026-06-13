@@ -1,10 +1,11 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { TreeComponent } from 'ng-devui/tree';
 
 @Component({
   selector: 'd-merge-node',
   templateUrl: './merge-node.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class MergeNodeComponent implements AfterViewInit {
   @ViewChild('basicTree') basicTree: TreeComponent;
@@ -23,15 +24,15 @@ export class MergeNodeComponent implements AfterViewInit {
                   title: 'parent node 1111',
                   items: [
                     {
-                      title: 'leaf node 11111'
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
+                      title: 'leaf node 11111',
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
         },
-      ]
+      ],
     },
     {
       title: 'parent node 2',
@@ -41,23 +42,23 @@ export class MergeNodeComponent implements AfterViewInit {
           open: true,
           items: [
             {
-              title: 'leaf node 211'
+              title: 'leaf node 211',
             },
             {
-              title: 'leaf node 212'
+              title: 'leaf node 212',
             },
             {
-              title: 'leaf node 213'
+              title: 'leaf node 213',
             },
             {
-              title: 'leaf node 214'
+              title: 'leaf node 214',
             },
             {
-              title: 'leaf node 215'
+              title: 'leaf node 215',
             },
-          ]
+          ],
         },
-      ]
+      ],
     },
     {
       title: 'parent node 3',
@@ -69,23 +70,23 @@ export class MergeNodeComponent implements AfterViewInit {
               title: 'leaf node 311',
               items: [
                 {
-                  title: 'leaf node 3111'
-                }
-              ]
-            }
-          ]
+                  title: 'leaf node 3111',
+                },
+              ],
+            },
+          ],
         },
         {
-          title: 'leaf node 32'
+          title: 'leaf node 32',
         },
         {
-          title: 'leaf node 33'
-        }
-      ]
-    }
+          title: 'leaf node 33',
+        },
+      ],
+    },
   ];
 
-  constructor() { }
+  constructor() {}
 
   ngAfterViewInit(): void {
     // 树节点初始化完毕后调用mergeTreeNodes方法将节点合并

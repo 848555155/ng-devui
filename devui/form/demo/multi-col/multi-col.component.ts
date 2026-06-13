@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormLayout } from 'ng-devui/form';
 
 @Component({
   selector: 'd-form-demo-multi-col',
   templateUrl: './multi-col.component.html',
   styleUrls: ['./multi-col.component.css'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class MultiColComponent implements OnInit {
   layoutDirection: FormLayout = FormLayout.Columns;
@@ -24,53 +25,61 @@ export class MultiColComponent implements OnInit {
   multipleSelectDemoConfig3: any;
   singleDateDemoConfig2: any;
 
-  labelList = [{
-    id: 1,
-    label: 'Option1'
-  },
-  {
-    id: 2,
-    label: 'Option2'
-  },
-  {
-    id: 3,
-    label: 'Option3'
-  }];
+  labelList = [
+    {
+      id: 1,
+      label: 'Option1',
+    },
+    {
+      id: 2,
+      label: 'Option2',
+    },
+    {
+      id: 3,
+      label: 'Option3',
+    },
+  ];
 
   addedLabelList = [];
 
-  selectOptions = [{
-    id: 1,
-    label: 'Option1'
-  },
-  {
-    id: 2,
-    label: 'Option2'
-  },
-  {
-    id: 3,
-    label: 'Option3'
-  }];
+  selectOptions = [
+    {
+      id: 1,
+      label: 'Option1',
+    },
+    {
+      id: 2,
+      label: 'Option2',
+    },
+    {
+      id: 3,
+      label: 'Option3',
+    },
+  ];
 
-  radioOptions = [{
-    id: 7,
-    label: 'Manual execution'
-  }, {
-    id: 8,
-    label: 'Daily execution'
-  }, {
-    id: 9,
-    label: 'Weekly execution'
-  }];
+  radioOptions = [
+    {
+      id: 7,
+      label: 'Manual execution',
+    },
+    {
+      id: 8,
+      label: 'Daily execution',
+    },
+    {
+      id: 9,
+      label: 'Weekly execution',
+    },
+  ];
 
   checkboxOptions = [
-    { 'id': '1', 'label': 'Mon', checked: true },
-    { 'id': '2', 'label': 'Tue' },
-    { 'id': '3', 'label': 'Wed' },
-    { 'id': '4', 'label': 'Thur' },
-    { 'id': '5', 'label': 'Fri' },
-    { 'id': '6', 'label': 'Sat' },
-    { 'id': '0', 'label': 'Sun' }
+    { id: '1', label: 'Mon', checked: true },
+    { id: '2', label: 'Tue' },
+    { id: '3', label: 'Wed' },
+    { id: '4', label: 'Thur' },
+    { id: '5', label: 'Fri' },
+    { id: '6', label: 'Sat' },
+    { id: '0', label: 'Sun' },
   ];
 
   formData = {
@@ -84,15 +93,14 @@ export class MultiColComponent implements OnInit {
     singDateValue: '',
     multiDateValue: {
       startDate: '',
-      endDate: ''
+      endDate: '',
     },
 
     inputValue2: '',
     singDateValue2: '',
   };
 
-  constructor() {
-  }
+  constructor() {}
 
   ngOnInit() {
     this.multipleSelect2DemoConfig = {
@@ -101,7 +109,7 @@ export class MultiColComponent implements OnInit {
       isSearch: true,
       multiple: 'true',
       labelization: { enable: true, labelMaxWidth: '120px' },
-      options: this.selectOptions
+      options: this.selectOptions,
     };
   }
 }

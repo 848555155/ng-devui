@@ -1,5 +1,16 @@
-
-import { Component, ElementRef, Inject, Input, OnDestroy, OnInit, Renderer2, TemplateRef, ViewChild, DOCUMENT } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Inject,
+  Input,
+  OnDestroy,
+  OnInit,
+  Renderer2,
+  TemplateRef,
+  ViewChild,
+  DOCUMENT,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { backdropFadeInOut, wipeInOutAnimation } from 'ng-devui/utils';
 import { isUndefined } from 'lodash-es';
 import { Observable, Subscription, fromEvent } from 'rxjs';
@@ -11,7 +22,8 @@ import { ModalContainerDirective } from './modal.directive';
   styleUrls: ['./modal.component.scss'],
   animations: [backdropFadeInOut, wipeInOutAnimation],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class ModalComponent implements OnInit, OnDestroy {
   @Input() id: string;
@@ -187,16 +199,16 @@ export class ModalComponent implements OnInit, OnDestroy {
   resolveTransformTranslate() {
     let autoOffsetYByPlacement;
     switch (this.placement) {
-    case 'top':
-      autoOffsetYByPlacement = '40px';
-      break;
-    case 'bottom':
-      autoOffsetYByPlacement = '-40px';
-      break;
-    case 'center':
-    default:
-      autoOffsetYByPlacement = 0;
-      break;
+      case 'top':
+        autoOffsetYByPlacement = '40px';
+        break;
+      case 'bottom':
+        autoOffsetYByPlacement = '-40px';
+        break;
+      case 'center':
+      default:
+        autoOffsetYByPlacement = 0;
+        break;
     }
     if (this.placement !== 'unset') {
       const offsetX = this.offsetX ? this.offsetX : '0';

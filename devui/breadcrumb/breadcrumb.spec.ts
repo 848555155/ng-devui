@@ -1,4 +1,4 @@
-import { Component, DebugElement, ViewChild } from '@angular/core';
+import { Component, DebugElement, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -10,28 +10,34 @@ import { BreadCrumbComponent } from './breadcrumb.component';
 import { BreadcrumbModule } from './breadcrumb.module';
 @Component({
   template: `<d-breadcrumb #breadcrumb>
-    <d-breadcrumb-item #breadcrumbItem>
-      <a routerLink="/components/zh-cn/get-start">DevUI</a>
-    </d-breadcrumb-item>
-    <d-breadcrumb-item>
-      <span>面包屑</span>
-    </d-breadcrumb-item>
-  </d-breadcrumb>
-  <d-breadcrumb #breadcrumbWithSource [source]="source"></d-breadcrumb>
-  `,
-  standalone: false
+      <d-breadcrumb-item #breadcrumbItem>
+        <a routerLink="/components/zh-cn/get-start">DevUI</a>
+      </d-breadcrumb-item>
+      <d-breadcrumb-item>
+        <span>面包屑</span>
+      </d-breadcrumb-item>
+    </d-breadcrumb>
+    <d-breadcrumb #breadcrumbWithSource [source]="source"></d-breadcrumb> `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestBreadCrumbComponent {
   @ViewChild('breadcrumb') breadcrumb: BreadCrumbComponent;
   @ViewChild('breadcrumbItem') breadcrumbItem: BreadCrumbItemComponent;
-  source = [{ title: 'DevUI', showMenu: false, link: '/components/zh-cn/get-start' },
+  source = [
+    { title: 'DevUI', showMenu: false, link: '/components/zh-cn/get-start' },
     {
-      title: '面包屑', showMenu: true, link: '/components/zh-cn/breadcrumb/demo', noNavigation: true, isSearch: true,
+      title: '面包屑',
+      showMenu: true,
+      link: '/components/zh-cn/breadcrumb/demo',
+      noNavigation: true,
+      isSearch: true,
       menuList: [
         { name: '锚点', link: '/components/anchor/demo', target: '_blank' },
-        { name: '按钮', link: '/', linkType: 'routerLink' } // 测试是否进入navigateTo方法处理routerLink的情况
-      ]
-    }];
+        { name: '按钮', link: '/', linkType: 'routerLink' }, // 测试是否进入navigateTo方法处理routerLink的情况
+      ],
+    },
+  ];
 }
 
 describe('breadcrumb basic', () => {
@@ -57,10 +63,7 @@ describe('breadcrumb basic', () => {
 
     describe('should breadcrumb work correctly', () => {
       it('should breadcrumb display correctly', () => {
-        const classes = [
-          '.devui-breadcrumb-item',
-          '.devui-breadcrumb-separator',
-        ];
+        const classes = ['.devui-breadcrumb-item', '.devui-breadcrumb-separator'];
         expect(domHelper.judgeStyleClasses(classes)).toBeTruthy();
       });
       it('should jump to link correctly', fakeAsync(() => {
@@ -88,17 +91,16 @@ describe('breadcrumb basic', () => {
         expect(inputEl.value).toBe('按钮');
         const enterEvent = createKeyBoardEvent('keydown', {
           key: 'Enter',
-          code: 'Enter'
+          code: 'Enter',
         });
         inputEl.dispatchEvent(enterEvent);
         tick(300);
         fixture.detectChanges();
         const resultEl = debugEl.queryAll(By.css('.cdk-overlay-container .devui-dropdown-menu > ul > li'));
-        resultEl.forEach(ele => {
+        resultEl.forEach((ele) => {
           expect(ele.nativeElement.querySelector('a').textContent).toContain('按钮');
         });
       }));
     });
   });
-
 });

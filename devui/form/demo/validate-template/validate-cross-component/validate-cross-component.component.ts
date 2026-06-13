@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { DFormGroupRuleDirective, DValidateRules, FormLayout } from 'ng-devui/form';
 import { of } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
@@ -6,17 +6,18 @@ import { delay, map } from 'rxjs/operators';
 @Component({
   selector: 'd-form-demo-template-cross-component',
   templateUrl: './validate-cross-component.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class CrossComponentComponent {
   layoutDirection: FormLayout = FormLayout.Vertical;
 
   formData = {
     userName: '',
-    userGroup: {}
+    userGroup: {},
   };
 
-  formRules: {[key: string]: DValidateRules} = {
+  formRules: { [key: string]: DValidateRules } = {
     rule: { message: 'The form verification failed, please check.' },
     usernameRules: {
       validators: [
@@ -25,13 +26,11 @@ export class CrossComponentComponent {
         { maxlength: 128 },
         {
           pattern: /^[a-zA-Z0-9]+(\s+[a-zA-Z0-9]+)*$/,
-          message: 'The user name cannot contain characters except uppercase and lowercase letters.'
-        }
+          message: 'The user name cannot contain characters except uppercase and lowercase letters.',
+        },
       ],
-      asyncValidators: [
-        { sameName: this.checkName.bind(this), message: 'Duplicate name.' }
-      ]
-    }
+      asyncValidators: [{ sameName: this.checkName.bind(this), message: 'Duplicate name.' }],
+    },
   };
 
   existUsernames = ['123', '123456', 'DevUI'];
@@ -44,14 +43,16 @@ export class CrossComponentComponent {
     console.log(this.formData);
     // do something for submitting
     if (this.userFormDir.isReady) {
-      of(this.formData).pipe(
-        map((val) => 'success'),
-        delay(500)
-      ).subscribe((res) => {
-        if (res === 'success') {
-          this.showToast('success', 'Success', 'Registration succeeded.');
-        }
-      });
+      of(this.formData)
+        .pipe(
+          map((val) => 'success'),
+          delay(500)
+        )
+        .subscribe((res) => {
+          if (res === 'success') {
+            this.showToast('success', 'Success', 'Registration succeeded.');
+          }
+        });
     } else {
       this.showToast('error', 'Error', 'Check whether all validation items pass.');
     }

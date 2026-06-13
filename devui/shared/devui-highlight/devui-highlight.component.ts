@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import * as HighLight from 'highlight.js/lib/core';
 import xml from 'highlight.js/lib/languages/xml';
 import css from 'highlight.js/lib/languages/css';
@@ -10,11 +10,10 @@ HighLight.registerLanguage('typescript', typescript);
 @Component({
   selector: 'd-highlight',
   encapsulation: ViewEncapsulation.None,
-  template: `
-    <pre [ngClass]="'language-'+language"><code #codeEl [innerText]="code"></code></pre>
-  `,
+  template: ` <pre [ngClass]="'language-' + language"><code #codeEl [innerText]="code"></code></pre> `,
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class DevUIHighlightComponent implements OnInit, AfterViewInit {
   // response: HighlightResult;
@@ -35,9 +34,7 @@ export class DevUIHighlightComponent implements OnInit, AfterViewInit {
     HighLight.highlightBlock(this.codeElement.nativeElement);
   }
 
-  constructor() {
-  }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }

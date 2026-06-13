@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, DebugElement } from '@angular/core';
+import { Component, DebugElement, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Router } from '@angular/router';
@@ -48,7 +48,8 @@ import { AnchorModule } from './anchor.module';
     </div>
   `,
   styleUrls: ['./demo/scroll-target/scroll-target.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestAnchorComponent {
   view = { top: 60, bottom: 0 };
@@ -99,7 +100,8 @@ class TestAnchorComponent {
       </div>
     </section>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestHashAnchorComponent {
   constructor(private router: Router) {}

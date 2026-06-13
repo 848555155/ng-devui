@@ -1,4 +1,4 @@
-import { Component, DebugElement, ViewChild } from '@angular/core';
+import { Component, DebugElement, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -8,16 +8,10 @@ import { CheckBoxModule } from './checkbox.module';
 
 @Component({
   template: `
-  <d-checkbox-group
-      [(ngModel)]="values"
-      [name]="'City'"
-      [options]="options"
-      [direction]="'row'"
-      [isShowTitle]="true"
-    >
-  </d-checkbox-group>
+    <d-checkbox-group [(ngModel)]="values" [name]="'City'" [options]="options" [direction]="'row'" [isShowTitle]="true"> </d-checkbox-group>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestCheckBoxGroupComponent {
   options = ['data1', 'data2', 'data3', 'data4', 'data5', 'data6', 'data7'];
@@ -28,7 +22,7 @@ class TestCheckBoxGroupComponent {
 
 @Component({
   template: `
-  <d-checkbox-group
+    <d-checkbox-group
       [(ngModel)]="values"
       [name]="'City'"
       [options]="options"
@@ -36,9 +30,10 @@ class TestCheckBoxGroupComponent {
       [isShowTitle]="true"
       [filterKey]="'name'"
     >
-  </d-checkbox-group>
+    </d-checkbox-group>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestCheckBoxGroupObjComponent {
   options = [
@@ -75,7 +70,11 @@ describe('checkbox-group', () => {
 
     it('should have correct classes', () => {
       const classList = [
-        '.devui-checkbox', '.devui-checkbox-input', '.devui-checkbox-material', '.devui-checkbox-tick', '.devui-checkbox-group',
+        '.devui-checkbox',
+        '.devui-checkbox-input',
+        '.devui-checkbox-material',
+        '.devui-checkbox-tick',
+        '.devui-checkbox-group',
       ];
       expect(domHelper.judgeStyleClasses(classList)).toBeTruthy();
     });
@@ -116,7 +115,11 @@ describe('checkbox-group', () => {
 
     it('should have correct classes', () => {
       const classList = [
-        '.devui-checkbox', '.devui-checkbox-input', '.devui-checkbox-material', '.devui-checkbox-tick', '.devui-checkbox-group',
+        '.devui-checkbox',
+        '.devui-checkbox-input',
+        '.devui-checkbox-material',
+        '.devui-checkbox-tick',
+        '.devui-checkbox-group',
       ];
       expect(domHelper.judgeStyleClasses(classList)).toBeTruthy();
     });

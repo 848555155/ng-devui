@@ -1,10 +1,11 @@
-import { Component, ElementRef, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-modal-alert',
   templateUrl: './modal-alert.component.html',
   styleUrls: ['./modal-alert.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class ModalAlertComponent implements OnInit {
   constructor(private elr: ElementRef) {}

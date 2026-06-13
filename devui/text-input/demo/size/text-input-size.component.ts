@@ -1,16 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-demo-text-input-size',
   templateUrl: './text-input-size.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TextInputSizeComponent implements OnInit {
-  constructor() {
+  constructor() {}
 
-  }
-
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 }

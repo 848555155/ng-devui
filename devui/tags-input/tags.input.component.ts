@@ -14,6 +14,7 @@ import {
   SimpleChanges,
   TemplateRef,
   ViewChild,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { I18nInterface, I18nService } from 'ng-devui/i18n';
@@ -36,7 +37,8 @@ import { debounceTime, map, switchMap } from 'rxjs/operators';
   ],
   exportAs: 'TagsInput',
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TagsInputComponent implements ControlValueAccessor, OnInit, OnDestroy, OnChanges, AfterViewInit {
   /**
@@ -338,29 +340,29 @@ export class TagsInputComponent implements ControlValueAccessor, OnInit, OnDestr
   passEvent(data) {
     const { event, type } = data;
     switch (type) {
-    case 'keydown.enter':
-    case 'blur':
-      // keydown.enter 和 keydown 都接收会重复处理
-      // 点击会聚焦input，input失焦事件不会冒泡，单独处理
-      break;
-    case 'keydown': {
-      const hotkeys = [this.KEYS.enter, this.KEYS.tab];
-      if (this.isAddBySpace) {
-        hotkeys.push(this.KEYS.space);
-      }
-      if (hotkeys.includes(event.keyCode)) {
-        event.preventDefault();
-        event.stopPropagation();
-        if (this.selectBox?.selectIndex !== -1) {
-          this.addSuggestionByIndex(this.selectBox.selectIndex, this.availableOptions[this.selectBox.selectIndex]);
-        } else if (this.generateOptionFromInput) {
-          this.addTag();
+      case 'keydown.enter':
+      case 'blur':
+        // keydown.enter 和 keydown 都接收会重复处理
+        // 点击会聚焦input，input失焦事件不会冒泡，单独处理
+        break;
+      case 'keydown': {
+        const hotkeys = [this.KEYS.enter, this.KEYS.tab];
+        if (this.isAddBySpace) {
+          hotkeys.push(this.KEYS.space);
         }
+        if (hotkeys.includes(event.keyCode)) {
+          event.preventDefault();
+          event.stopPropagation();
+          if (this.selectBox?.selectIndex !== -1) {
+            this.addSuggestionByIndex(this.selectBox.selectIndex, this.availableOptions[this.selectBox.selectIndex]);
+          } else if (this.generateOptionFromInput) {
+            this.addTag();
+          }
+        }
+        break;
       }
-      break;
-    }
-    default:
-      this.inputEvent = { event, type };
+      default:
+        this.inputEvent = { event, type };
     }
   }
 

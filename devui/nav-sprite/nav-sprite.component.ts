@@ -1,4 +1,3 @@
-
 import {
   AfterViewInit,
   ChangeDetectorRef,
@@ -15,7 +14,8 @@ import {
   TemplateRef,
   ViewChild,
   ViewChildren,
-  DOCUMENT
+  DOCUMENT,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { scrollAnimate } from 'ng-devui/utils';
@@ -33,7 +33,8 @@ const DEFAULT_OPTIONS = {
   selector: 'd-nav-sprite',
   templateUrl: './nav-sprite.component.html',
   styleUrls: ['./nav-sprite.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class NavSpriteComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() target: HTMLElement; // 爬取目录的容器
@@ -72,7 +73,7 @@ export class NavSpriteComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('defaultNavItemTemplate', { static: true }) defaultNavItemTemplate: TemplateRef<any>; // 单条导航目录的默认模板
 
   @ViewChildren('items', { read: ElementRef })
-    items!: QueryList<ElementRef>;
+  items!: QueryList<ElementRef>;
 
   @Output() afterNavInit = new EventEmitter(); // 组件初始化后返回组件实例
 
@@ -282,13 +283,19 @@ export class NavSpriteComponent implements OnInit, AfterViewInit, OnDestroy {
       const target = this.menus[index];
       target.scrollPosition = this.getScrollPosition(target.element);
       scrollAnimate(
-        this.targetContainer, this.targetContainer.scrollTop, target?.scrollPosition.startLine + 1, undefined, undefined, () => {
+        this.targetContainer,
+        this.targetContainer.scrollTop,
+        target?.scrollPosition.startLine + 1,
+        undefined,
+        undefined,
+        () => {
           this.setUrlHash();
           this.setTargetActive();
           setTimeout(() => {
             this.isToViewByNav = false;
           }, this.timeGap);
-        });
+        }
+      );
       this.isToViewByNav = true;
     }
   }

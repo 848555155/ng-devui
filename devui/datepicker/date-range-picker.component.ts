@@ -11,6 +11,7 @@ import {
   SimpleChanges,
   TemplateRef,
   ViewChild,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { I18nInterface, I18nService } from 'ng-devui/i18n';
@@ -33,7 +34,8 @@ import { SelectDateRangeChangeEventArgs, SelectDateRangeChangeReason } from './d
   templateUrl: './date-range-picker.component.html',
   styleUrls: ['./date-range-picker.component.scss'],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class DateRangePickerComponent implements OnChanges, OnInit, ControlValueAccessor, OnDestroy {
   @Input() locale: string;
@@ -193,13 +195,13 @@ export class DateRangePickerComponent implements OnChanges, OnInit, ControlValue
 
   syncPickerPair(currentCalender: object, orientation: string) {
     switch (orientation) {
-    case 'left':
-      this.currentCalendars[0] = currentCalender;
-      break;
-    case 'right':
-      this.currentCalendars[1] = currentCalender;
-      break;
-    default:
+      case 'left':
+        this.currentCalendars[0] = currentCalender;
+        break;
+      case 'right':
+        this.currentCalendars[1] = currentCalender;
+        break;
+      default:
     }
   }
 

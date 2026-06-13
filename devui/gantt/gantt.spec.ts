@@ -1,10 +1,7 @@
-import { Component, DebugElement, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, DebugElement, ElementRef, OnDestroy, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import {
-  GanttBarComponent, GanttModule, GanttScaleComponent, GanttScaleUnit,
-  GanttService, GanttTaskInfo
-} from 'ng-devui/gantt';
+import { GanttBarComponent, GanttModule, GanttScaleComponent, GanttScaleUnit, GanttService, GanttTaskInfo } from 'ng-devui/gantt';
 import { I18nModule } from 'ng-devui/i18n';
 import { Subscription } from 'rxjs';
 import { DomHelper } from '../utils/testing/dom-helper';
@@ -17,23 +14,23 @@ import { DomHelper } from '../utils/testing/dom-helper';
       </div>
       <div #ganttBody class="body" [style.width]="ganttScaleWidth">
         @for (item of list; track item) {
-          <div class="item">
-            <d-gantt-bar
-              [startDate]="item?.startDate"
-              [endDate]="item?.endDate"
-              [tipTemplateRef]="tipTemplate"
-              [id]="item?.id"
-              [scrollElement]="ganttContainer"
-              [progressRate]="item?.progressRate"
-              (barMoveStartEvent)="onGanttBarMoveStart($event)"
-              (barMovingEvent)="onGanttBarMoving($event)"
-              (barResizeStartEvent)="onGanttBarResizeStart($event)"
-              (barResizingEvent)="onGanttBarResizing($event)"
-              (barMoveEndEvent)="onGanttBarMove($event)"
-              (barResizeEndEvent)="onGanttBarResize($event)"
-              (barProgressEvent)="onBarProgressEvent($event)"
-            ></d-gantt-bar>
-          </div>
+        <div class="item">
+          <d-gantt-bar
+            [startDate]="$safeNavigationMigration(item?.startDate)"
+            [endDate]="$safeNavigationMigration(item?.endDate)"
+            [tipTemplateRef]="tipTemplate"
+            [id]="$safeNavigationMigration(item?.id)"
+            [scrollElement]="ganttContainer"
+            [progressRate]="$safeNavigationMigration(item?.progressRate)"
+            (barMoveStartEvent)="onGanttBarMoveStart($event)"
+            (barMovingEvent)="onGanttBarMoving($event)"
+            (barResizeStartEvent)="onGanttBarResizeStart($event)"
+            (barResizingEvent)="onGanttBarResizing($event)"
+            (barMoveEndEvent)="onGanttBarMove($event)"
+            (barResizeEndEvent)="onGanttBarResize($event)"
+            (barProgressEvent)="onBarProgressEvent($event)"
+          ></d-gantt-bar>
+        </div>
         }
       </div>
     </div>
@@ -42,28 +39,58 @@ import { DomHelper } from '../utils/testing/dom-helper';
       <div class="content">
         <div>持续时间：{{ ganttInstance?.duration }}</div>
         <div>当前进度：{{ (ganttInstance?.progressRate || 0) + '%' }}</div>
-        <div>开始时间：{{ ganttInstance?.startDate | i18nDate: 'short' }}</div>
-        <div>结束时间：{{ ganttInstance?.endDate | i18nDate: 'short' }}</div>
+        <div>开始时间：{{ $safeNavigationMigration(ganttInstance?.startDate) | i18nDate : 'short' }}</div>
+        <div>结束时间：{{ $safeNavigationMigration(ganttInstance?.endDate) | i18nDate : 'short' }}</div>
       </div>
     </ng-template>
+  `,
+  styles: [
+    `
+      .gantt-container {
+        padding: 0 30px 0 30px;
+        overflow: scroll;
+      }
+      .gantt-container .header {
+        position: relative;
+        border-bottom: 1px solid #adb0b8;
+      }
+      .gantt-container .body {
+        position: relative;
+        min-height: 400px;
+      }
+      .gantt-container .body .item {
+        height: 40px;
+        padding-top: 8px;
+      }
+      ::ng-deep .devui-gantt-tips .title {
+        font-size: 14px;
+        color: #252b3a;
+        line-height: 24px;
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+      ::ng-deep .devui-gantt-tips .content {
+        font-size: 12px;
+        color: #252b3a;
+        line-height: 24px;
+      }
     `,
-  styles: [`.gantt-container {padding: 0 30px 0 30px; overflow: scroll;}
-    .gantt-container .header {position: relative;border-bottom: 1px solid #adb0b8;}
-    .gantt-container .body {position: relative;min-height: 400px;}.gantt-container .body .item {height: 40px;padding-top: 8px;}
-    ::ng-deep .devui-gantt-tips .title {font-size: 14px;color: #252b3a;line-height: 24px;font-weight: bold;margin-bottom: 15px;}
-    ::ng-deep .devui-gantt-tips .content {font-size: 12px;color: #252b3a;line-height: 24px;}`],
-  standalone: false
+  ],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestGanttComponent implements OnInit, OnDestroy {
   @ViewChild('ganttContainer') ganttContainer: ElementRef;
   curYear = 2020;
-  list = [{
-    id: '1',
-    title: 'title1',
-    startDate: new Date(this.curYear, 4, 5),
-    endDate: new Date(this.curYear, 4, 10),
-    progressRate: 30
-  }];
+  list = [
+    {
+      id: '1',
+      title: 'title1',
+      startDate: new Date(this.curYear, 4, 5),
+      endDate: new Date(this.curYear, 4, 10),
+      progressRate: 30,
+    },
+  ];
   ganttStartDate: Date;
   ganttEndDate: Date;
   unit = GanttScaleUnit.day;
@@ -71,7 +98,7 @@ class TestGanttComponent implements OnInit, OnDestroy {
   ganttSacleConfigHandler: Subscription;
   currentAction: string;
 
-  constructor(private ganttService: GanttService) { }
+  constructor(private ganttService: GanttService) {}
 
   ngOnInit() {
     this.ganttStartDate = new Date(this.curYear, 4, 1);
@@ -79,7 +106,7 @@ class TestGanttComponent implements OnInit, OnDestroy {
     this.ganttService.setScaleConfig({
       startDate: this.ganttStartDate,
       endDate: this.ganttEndDate,
-      unit: this.unit
+      unit: this.unit,
     });
     this.ganttScaleWidth = this.ganttService.getDurationWidth(this.ganttStartDate, this.ganttEndDate) + 'px';
     this.ganttSacleConfigHandler = this.ganttService.ganttScaleConfigChange.subscribe((config) => {
@@ -151,7 +178,7 @@ describe('gantt', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [GanttModule, I18nModule],
-        declarations: [TestGanttComponent]
+        declarations: [TestGanttComponent],
       }).compileComponents();
     });
 
@@ -184,7 +211,6 @@ describe('gantt', () => {
 
       const ganttBarTrack = ganttBar.querySelector('.devui-gantt-bar-track');
       expect(ganttBarTrack.style.width).toBe('30%');
-
     });
 
     it('should mouse over&leave on bar ok', fakeAsync(() => {
@@ -196,7 +222,6 @@ describe('gantt', () => {
 
       const ganttTips = document.querySelector('.devui-gantt-tips');
       expect(ganttTips).toBeTruthy();
-
     }));
 
     it('should drag progress ok', fakeAsync(() => {

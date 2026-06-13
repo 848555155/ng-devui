@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { StepsGuideService } from 'ng-devui/steps-guide';
 import { basicData, positionData } from '../fakeData';
 
@@ -6,7 +6,8 @@ import { basicData, positionData } from '../fakeData';
   selector: 'd-basic',
   templateUrl: './basic.component.html',
   styleUrls: ['./basic.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class BasicComponent implements OnInit {
   currentStep: any;
@@ -15,7 +16,9 @@ export class BasicComponent implements OnInit {
   constructor(private stepService: StepsGuideService) {}
 
   ngOnInit() {
-    this.stepService.currentIndex.subscribe((index) => {this.currentStep = index;});
+    this.stepService.currentIndex.subscribe((index) => {
+      this.currentStep = index;
+    });
     /* 由于整个demo是在一个页面内显示多个操作指引序列，因此需要在初始化时重置显示状态 */
     localStorage.setItem('devui_guide_step-position-demo', '0'); /* 设置第三个序列为不显示状态 */
     localStorage.setItem('devui_guide_step-custom-demo', '0'); /* 设置第二个序列为不显示状态 */

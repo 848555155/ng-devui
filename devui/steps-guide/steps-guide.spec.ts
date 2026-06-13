@@ -1,4 +1,4 @@
-import { Component, DebugElement, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, DebugElement, ElementRef, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed, fakeAsync, flush, tick, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -134,7 +134,8 @@ class TestFunctions {
       }
     `,
   ],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestStepsGuideComponent implements OnInit {
   steps = [

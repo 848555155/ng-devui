@@ -1,9 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   templateUrl: './drawer-content.component.html',
   styleUrls: ['./drawer-content.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class DrawerContentComponent {
   @Input() items;
@@ -11,8 +12,7 @@ export class DrawerContentComponent {
   @Input() close;
   @Input() changeWidth;
   isFullScreen = false;
-  constructor() {
-  }
+  constructor() {}
   toggleFullScreen() {
     this.isFullScreen = !this.isFullScreen;
     this.fullScreen();

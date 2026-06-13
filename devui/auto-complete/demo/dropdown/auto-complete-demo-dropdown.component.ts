@@ -1,12 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-auto-complete-demo-dropdown',
   templateUrl: './auto-complete-demo-dropdown.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class AutoDemoDropdownComponent {
   selectItem1: any;
-  languages = ['C#', 'C', 'C++', 'CPython', 'Java', 'JavaScript', 'Go', 'Python', 'Ruby', 'F#', 'TypeScript', 'SQL',
-    'LiveScript', 'CoffeeScript'];
+  languages = [
+    'C#',
+    'C',
+    'C++',
+    'CPython',
+    'Java',
+    'JavaScript',
+    'Go',
+    'Python',
+    'Ruby',
+    'F#',
+    'TypeScript',
+    'SQL',
+    'LiveScript',
+    'CoffeeScript',
+  ];
 }

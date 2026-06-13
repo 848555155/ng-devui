@@ -1,18 +1,9 @@
-import { Component } from '@angular/core';
-import {
-  ComponentFixture,
-  fakeAsync,
-  flush,
-  TestBed,
-  tick
-} from '@angular/core/testing';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import {
-  Observable,
-  of
-} from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import { PanelComponent } from './panel.component';
 import { PanelModule } from './panel.module';
@@ -27,12 +18,13 @@ import { PanelModule } from './panel.module';
       [beforeToggle]="beforeToggle"
       (toggle)="togglePanel($event)"
     >
-    <d-panel-header>Panel with header and footer</d-panel-header>
-    <d-panel-body>This is body</d-panel-body>
-    <d-panel-footer>This is footer</d-panel-footer>
-  </d-panel>
+      <d-panel-header>Panel with header and footer</d-panel-header>
+      <d-panel-body>This is body</d-panel-body>
+      <d-panel-footer>This is footer</d-panel-footer>
+    </d-panel>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestPanelComponent {
   type = 'primary';

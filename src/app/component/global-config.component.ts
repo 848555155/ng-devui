@@ -1,5 +1,16 @@
-
-import { AfterViewInit, Component, ElementRef, Inject, Input, OnInit, QueryList, Renderer2, ViewChildren, DOCUMENT } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Inject,
+  Input,
+  OnInit,
+  QueryList,
+  Renderer2,
+  ViewChildren,
+  DOCUMENT,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { I18nService } from 'ng-devui/i18n';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
@@ -18,7 +29,7 @@ import globalConfigEn from './globalConfig-en.md?raw';
   template: `
     <div dCodeCopy class="get-start">
       <div class="readme">
-        <div [innerHTML]="readMe | safe: 'html'" #documentation></div>
+        <div [innerHTML]="readMe | safe : 'html'" #documentation></div>
       </div>
     </div>
   `,
@@ -30,7 +41,8 @@ import globalConfigEn from './globalConfig-en.md?raw';
       }
     `,
   ],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class GlobalConfigComponent implements OnInit, AfterViewInit {
   _readMe: HTMLElement;

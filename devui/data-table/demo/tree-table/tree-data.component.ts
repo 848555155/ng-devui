@@ -1,52 +1,42 @@
-import {
-  Component,
-  OnInit,
-  ViewChild
-} from '@angular/core';
-import {
-  CheckableRelation,
-  DataTableComponent,
-  TableWidthConfig
-} from 'ng-devui/data-table';
-import {
-  SourceType,
-  treeDataSource
-} from '../mock-data';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { CheckableRelation, DataTableComponent, TableWidthConfig } from 'ng-devui/data-table';
+import { SourceType, treeDataSource } from '../mock-data';
 
 @Component({
   selector: 'd-tree-data',
   templateUrl: './tree-data.component.html',
   styles: ['.demo-margin { margin: 5px 5px 0 0;}'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TreeDataComponent implements OnInit {
   iconParentOpen: string;
   iconParentClose: string;
   basicDataSource: Array<SourceType> = JSON.parse(JSON.stringify(treeDataSource.slice(0, 6)));
-  checkableRelation: CheckableRelation = {downward: true, upward: true};
+  checkableRelation: CheckableRelation = { downward: true, upward: true };
   @ViewChild(DataTableComponent, { static: true }) datatable: DataTableComponent;
 
   tableWidthConfig: TableWidthConfig[] = [
     {
       field: 'checkbox',
-      width: '4%'
+      width: '4%',
     },
     {
       field: 'title',
-      width: '36%'
+      width: '36%',
     },
     {
       field: 'lastName',
-      width: '20%'
+      width: '20%',
     },
     {
       field: 'status',
-      width: '20%'
+      width: '20%',
     },
     {
       field: 'dob',
-      width: '20%'
-    }
+      width: '20%',
+    },
   ];
 
   ngOnInit() {
@@ -68,13 +58,12 @@ export class TreeDataComponent implements OnInit {
               status: 'done',
               dob: new Date(1989, 1, 1),
               startDate: new Date(2020, 1, 4),
-              endDate: new Date(2020, 1, 8)
+              endDate: new Date(2020, 1, 8),
             });
           }
         }
         resolve(rowItem);
       }, 500);
-
     });
   };
 
@@ -82,18 +71,20 @@ export class TreeDataComponent implements OnInit {
     return new Promise((resolve) => {
       setTimeout(() => {
         this.basicDataSource[0].children[0].children[1].children[0].children = [];
-        this.basicDataSource[0].children[0].children[1].children[0].children.push({
-          title: 'table title01211',
-          lastName: 'Mark',
-          status: 'done',
-          dob: new Date(1989, 1, 1),
-        },
-        {
-          title: 'table title01212',
-          lastName: 'Mark',
-          status: 'done',
-          dob: new Date(1991, 3, 1)
-        });
+        this.basicDataSource[0].children[0].children[1].children[0].children.push(
+          {
+            title: 'table title01211',
+            lastName: 'Mark',
+            status: 'done',
+            dob: new Date(1989, 1, 1),
+          },
+          {
+            title: 'table title01212',
+            lastName: 'Mark',
+            status: 'done',
+            dob: new Date(1991, 3, 1),
+          }
+        );
         resolve(undefined);
       }, 500);
     });
@@ -119,7 +110,7 @@ export class TreeDataComponent implements OnInit {
       rowIndex: rowIndex,
       nestedIndex: nestedIndex,
       rowItem: rowItem,
-      checked: checked
+      checked: checked,
     });
   }
 

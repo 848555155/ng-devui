@@ -1,13 +1,12 @@
-import {
-  Component, HostListener, Input, TemplateRef
-} from '@angular/core';
+import { Component, HostListener, Input, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-datepicker-panel',
   templateUrl: './datepicker-panel.component.html',
   styleUrls: ['./datepicker-panel.component.scss'],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class DatepickerPanelComponent {
   @Input() isRangeType: boolean;
@@ -17,12 +16,10 @@ export class DatepickerPanelComponent {
   @Input() footerTemplate: TemplateRef<any>;
   @Input() mode: 'year' | 'month' | 'date' | 'week' = 'date';
 
-  constructor() {
-  }
+  constructor() {}
 
   @HostListener('click', ['$event'])
   onClick(event: MouseEvent) {
     event.stopPropagation();
   }
-
 }

@@ -1,4 +1,14 @@
-import { AfterContentInit, AfterViewInit, Component, ContentChildren, ElementRef, Input, QueryList, TemplateRef } from '@angular/core';
+import {
+  AfterContentInit,
+  AfterViewInit,
+  Component,
+  ContentChildren,
+  ElementRef,
+  Input,
+  QueryList,
+  TemplateRef,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { TimeAxisItemComponent } from './time-axis-item/time-axis-item.component';
 import { TimeAxisMode } from './time-axis.type';
 @Component({
@@ -7,9 +17,9 @@ import { TimeAxisMode } from './time-axis.type';
   styleUrls: [`./time-axis.component.scss`],
   exportAs: 'time-axis',
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
-
 export class TimeAxisComponent implements AfterContentInit, AfterViewInit {
   @ContentChildren(TimeAxisItemComponent) listOfItems!: QueryList<TimeAxisItemComponent>;
   @Input() data;
@@ -18,9 +28,7 @@ export class TimeAxisComponent implements AfterContentInit, AfterViewInit {
   @Input() mode: TimeAxisMode = 'normal';
   @Input() widthMode = 'fitContent';
 
-  constructor(private elementRef: ElementRef) {
-
-  }
+  constructor(private elementRef: ElementRef) {}
 
   ngAfterContentInit() {
     if (this.mode === 'alternative') {
@@ -32,10 +40,10 @@ export class TimeAxisComponent implements AfterContentInit, AfterViewInit {
 
   ngAfterViewInit() {
     if (this._direction === 'horizontal' && this.mode !== 'top' && this.mode !== 'bottom') {
-      const ulElement = this.elementRef.nativeElement.querySelector('.devui-time-axis-horizontal')  as HTMLElement;
-      const topElement = this.elementRef.nativeElement.querySelector('.devui-time-axis-item-data-horizontal-top')  as HTMLElement;
-      const bottomElement = this.elementRef.nativeElement.querySelector('.devui-time-axis-item-data-horizontal-bottom')  as HTMLElement;
-      ulElement.style.height = `${ Math.max(topElement.offsetHeight, bottomElement.offsetHeight) * 2 + 42}px`;
+      const ulElement = this.elementRef.nativeElement.querySelector('.devui-time-axis-horizontal') as HTMLElement;
+      const topElement = this.elementRef.nativeElement.querySelector('.devui-time-axis-item-data-horizontal-top') as HTMLElement;
+      const bottomElement = this.elementRef.nativeElement.querySelector('.devui-time-axis-item-data-horizontal-bottom') as HTMLElement;
+      ulElement.style.height = `${Math.max(topElement.offsetHeight, bottomElement.offsetHeight) * 2 + 42}px`;
     }
   }
 

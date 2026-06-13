@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
-import { AfterViewInit, Component, DebugElement, ElementRef } from '@angular/core';
+import { AfterViewInit, Component, DebugElement, ElementRef, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -18,7 +18,8 @@ import { IframeEventPropagateDirective } from './iframe-event-propagate.directiv
     <button dSimulateATag [href]="'//angular.io'" [target]="target">Open Angualr website</button>
     <button class="btn-func" (click)="goto()">Open Angualr website</button>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestSimulateTagComponent {
   target = '_blank';
@@ -33,7 +34,8 @@ class TestSimulateTagComponent {
     <button class="btn-1" (click)="download()">Download File</button>
     <button class="btn-2" (click)="download2()">Download File with Header</button>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestDownloadComponent {
   downError: string;
@@ -85,7 +87,8 @@ class TestDownloadComponent {
       </div>
     </div>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestClipBoardComponent {
   value = 'Copied Content';
@@ -104,7 +107,8 @@ class TestClipBoardComponent {
       <iframe class="content-box"></iframe>
     </div>
   `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestIframeComponent implements AfterViewInit {
   constructor(private el: ElementRef) {}
@@ -240,7 +244,7 @@ describe('download file', () => {
     TestBed.configureTestingModule({
       declarations: [TestDownloadComponent],
       imports: [CommonModule, DCommonModule],
-      providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+      providers: [provideHttpClient(withXhr(), withInterceptorsFromDi()), provideHttpClientTesting()],
     });
 
     fixture = TestBed.createComponent(TestDownloadComponent);

@@ -1,4 +1,4 @@
-import { Component, DebugElement, ViewChild } from '@angular/core';
+import { Component, DebugElement, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ProgressComponent } from './progress.component';
@@ -6,7 +6,8 @@ import { ProgressModule } from './progress.module';
 @Component({
   template: `<d-progress #progress [percentage]="percentage" [percentageText]="percentageText" [showContent]="showContentConfig">
   </d-progress>`,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestProgressComponent {
   @ViewChild('progress') progress: ProgressComponent;
@@ -22,7 +23,8 @@ class TestProgressComponent {
 @Component({
   template: ` <d-progress #progress [isCircle]="true" [percentage]="percentage" [strokeColor]="strokeColor" [strokeWidth]="strokeWidth">
   </d-progress>`,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestCircleProgressComponent {
   @ViewChild('progress') progress: ProgressComponent;

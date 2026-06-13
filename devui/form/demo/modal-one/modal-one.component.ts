@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormLayout } from 'ng-devui/form';
 
 @Component({
   selector: 'd-form-demo-modal-one',
   templateUrl: './modal-one.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class ModalOneComponent implements OnInit {
   layoutDirection: FormLayout = FormLayout.Vertical;
@@ -24,53 +25,61 @@ export class ModalOneComponent implements OnInit {
   singleDateDemoConfig2: any;
   disabled: false;
 
-  labelList = [{
-    id: 1,
-    label: 'Option1'
-  },
-  {
-    id: 2,
-    label: 'Option2'
-  },
-  {
-    id: 3,
-    label: 'Option3'
-  }];
+  labelList = [
+    {
+      id: 1,
+      label: 'Option1',
+    },
+    {
+      id: 2,
+      label: 'Option2',
+    },
+    {
+      id: 3,
+      label: 'Option3',
+    },
+  ];
 
   addedLabelList = [];
 
-  selectOptions = [{
-    id: 1,
-    label: 'Option1'
-  },
-  {
-    id: 2,
-    label: 'Option2'
-  },
-  {
-    id: 3,
-    label: 'Option3'
-  }];
+  selectOptions = [
+    {
+      id: 1,
+      label: 'Option1',
+    },
+    {
+      id: 2,
+      label: 'Option2',
+    },
+    {
+      id: 3,
+      label: 'Option3',
+    },
+  ];
 
-  radioOptions = [{
-    id: 4,
-    label: 'Manual execution'
-  }, {
-    id: 5,
-    label: 'Daily execution'
-  }, {
-    id: 6,
-    label: 'Weekly execution'
-  }];
+  radioOptions = [
+    {
+      id: 4,
+      label: 'Manual execution',
+    },
+    {
+      id: 5,
+      label: 'Daily execution',
+    },
+    {
+      id: 6,
+      label: 'Weekly execution',
+    },
+  ];
 
   checkboxOptions = [
-    { 'id': '1', 'label': 'Mon', checked: true },
-    { 'id': '2', 'label': 'Tue' },
-    { 'id': '3', 'label': 'Wed' },
-    { 'id': '4', 'label': 'Thur' },
-    { 'id': '5', 'label': 'Fri' },
-    { 'id': '6', 'label': 'Sat' },
-    { 'id': '0', 'label': 'Sun' }
+    { id: '1', label: 'Mon', checked: true },
+    { id: '2', label: 'Tue' },
+    { id: '3', label: 'Wed' },
+    { id: '4', label: 'Thur' },
+    { id: '5', label: 'Fri' },
+    { id: '6', label: 'Sat' },
+    { id: '0', label: 'Sun' },
   ];
 
   formData = {
@@ -84,7 +93,7 @@ export class ModalOneComponent implements OnInit {
     singDateValue: '',
     multiDateValue: {
       startDate: '',
-      endDate: ''
+      endDate: '',
     },
 
     inputValue2: '',
@@ -98,7 +107,7 @@ export class ModalOneComponent implements OnInit {
       isSearch: true,
       multiple: 'true',
       labelization: { enable: true, labelMaxWidth: '120px' },
-      options: this.selectOptions
+      options: this.selectOptions,
     };
   }
 }

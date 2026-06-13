@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FileUploader, IFileOptions, IUploadOptions } from 'ng-devui/upload';
 
 @Component({
   selector: 'd-customize-area-upload',
   templateUrl: './customize-area-upload.component.html',
   styleUrls: ['./customize-area-upload.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
-
 export class CustomizeAreaUploadComponent {
   message: Array<Object> = [];
   uploadedFiles: Array<Object> = [];
@@ -16,10 +16,10 @@ export class CustomizeAreaUploadComponent {
   uploadOptions: IUploadOptions = {
     uri: '/upload',
     maximumSize: 50,
-    checkSameName: true
+    checkSameName: true,
   };
   fileOptions: IFileOptions = {
-    multiple: true
+    multiple: true,
   };
   UPLOADED: string;
   CANCELUPLOAD: string;
@@ -30,11 +30,11 @@ export class CustomizeAreaUploadComponent {
   }
   dynamicUploadOptionsFn(file, options) {
     let uploadOptions = options;
-    if (file.type  === 'image/png') {
+    if (file.type === 'image/png') {
       uploadOptions = {
         uri: '/upload',
         maximumSize: 0.5,
-        checkSameName: true
+        checkSameName: true,
       };
     }
     return uploadOptions;

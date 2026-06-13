@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { DFormGroupRuleDirective, DValidateRules, FormLayout } from 'ng-devui/form';
 import { of } from 'rxjs';
@@ -7,7 +7,8 @@ import { delay, map } from 'rxjs/operators';
 @Component({
   selector: 'd-form-demo-validate-cross-component',
   templateUrl: './validate-cross-component.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class ValidateCrossComponentComponent implements OnInit {
   layoutDirection: FormLayout = FormLayout.Vertical;

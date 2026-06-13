@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { DValidateRules, FormLayout } from 'ng-devui/form';
 import { of } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
@@ -6,7 +6,8 @@ import { delay, map } from 'rxjs/operators';
 @Component({
   selector: 'd-form-demo-user-register',
   templateUrl: './user-register.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class UserRegisterComponent {
   layoutDirection: FormLayout = FormLayout.Vertical;
@@ -30,15 +31,19 @@ export class UserRegisterComponent {
           pattern: /^[a-zA-Z0-9]+(\s+[a-zA-Z0-9]+)*$/,
           message: {
             'zh-cn': '仅允许输入数字与大小写字母',
-            'en-us': 'The user name cannot contain characters except uppercase and lowercase letters.'
+            'en-us': 'The user name cannot contain characters except uppercase and lowercase letters.',
           },
         },
       ],
-      asyncValidators: [{ sameName: this.checkName.bind(this), message: {
-        'zh-cn': '用户名重名',
-        'en-us': 'Duplicate name.'
-      }
-      }],
+      asyncValidators: [
+        {
+          sameName: this.checkName.bind(this),
+          message: {
+            'zh-cn': '用户名重名',
+            'en-us': 'Duplicate name.',
+          },
+        },
+      ],
     },
     passwordRules: {
       validators: [{ required: true }, { minlength: 6 }, { maxlength: 15 }, { pattern: /^[a-zA-Z0-9]+(\s+[a-zA-Z0-9]+)*$/ }],

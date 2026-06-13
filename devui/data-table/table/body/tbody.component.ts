@@ -1,4 +1,4 @@
-import { Component, ContentChild, Input, OnInit, TemplateRef } from '@angular/core';
+import { Component, ContentChild, Input, OnInit, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { TableWidthConfig } from '../../data-table.model';
 import { TableTrComponent } from '../row/tr.component';
 
@@ -7,7 +7,8 @@ import { TableTrComponent } from '../row/tr.component';
   selector: '[dTableBody]',
   templateUrl: './tbody.component.html',
   styleUrls: ['./tbody.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TableTbodyComponent implements OnInit {
   @Input() dataSource: any[] = [];

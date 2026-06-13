@@ -13,6 +13,7 @@ import {
   SimpleChanges,
   TemplateRef,
   ViewChild,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DropDownAppendToBodyComponent, DropDownDirective } from 'ng-devui/dropdown';
@@ -38,7 +39,8 @@ const DEBOUNCE_TIME = 200;
     CascaderService,
   ],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class CascaderComponent implements OnInit, OnDestroy, OnChanges, ControlValueAccessor {
   @ViewChild('mainDropdown') mainDropdown: DropDownDirective;

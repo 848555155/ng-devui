@@ -1,6 +1,13 @@
 import {
-  AfterViewInit, Component, ElementRef, HostBinding, HostListener, Input, OnDestroy,
-  Renderer2
+  AfterViewInit,
+  Component,
+  ElementRef,
+  HostBinding,
+  HostListener,
+  Input,
+  OnDestroy,
+  Renderer2,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { PositionService } from 'ng-devui/position';
 import { directionFadeInOut } from 'ng-devui/utils';
@@ -11,11 +18,10 @@ import { PositionType } from './tooltip.types';
   selector: 'd-tooltip',
   templateUrl: './tooltip.component.html',
   styleUrls: ['./tooltip.component.scss'],
-  animations: [
-    directionFadeInOut
-  ],
+  animations: [directionFadeInOut],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TooltipComponent implements AfterViewInit, OnDestroy {
   @Input() content: string;
@@ -29,9 +35,9 @@ export class TooltipComponent implements AfterViewInit, OnDestroy {
   }
   currentPosition: PositionType;
   @Input() triggerElementRef: ElementRef;
-  @Input()  showAnimation  = true;
+  @Input() showAnimation = true;
   scrollElement: Element;
-  animateState: string ;
+  animateState: string;
 
   @HostBinding('style.display') display = 'block';
   @HostBinding('class') get class() {
@@ -46,20 +52,14 @@ export class TooltipComponent implements AfterViewInit, OnDestroy {
   }
   _onScroll: Subscription;
 
-  constructor(
-    private positionService: PositionService,
-    private tooltip: ElementRef,
-    private renderer2: Renderer2
-  ) {
-  }
+  constructor(private positionService: PositionService, private tooltip: ElementRef, private renderer2: Renderer2) {}
 
   ngAfterViewInit() {
     this.updatePosition();
     this.scrollElement = this.positionService.getScrollParent(this.triggerElementRef.nativeElement);
-    this._onScroll = fromEvent((this.scrollElement || window), 'scroll')
-      .subscribe(() => {
-        this.updatePosition();
-      });
+    this._onScroll = fromEvent(this.scrollElement || window, 'scroll').subscribe(() => {
+      this.updatePosition();
+    });
   }
 
   ngOnDestroy() {
@@ -77,8 +77,7 @@ export class TooltipComponent implements AfterViewInit, OnDestroy {
   }
 
   // will be overwrite by tooltip directive
-  onHidden() {
-  }
+  onHidden() {}
 
   @HostListener('@directionFadeInOut.done', ['$event'])
   onAnimationEnd(event) {
@@ -91,9 +90,14 @@ export class TooltipComponent implements AfterViewInit, OnDestroy {
     // 解决tooltip自身大小导致出现滚动条，影响位置计算
     this.renderer2.setStyle(this.tooltip.nativeElement, 'visibility', 'hidden');
     this.renderer2.setStyle(this.tooltip.nativeElement, 'transform', 'translate(0, -99999px)');
-    const rect = this.positionService.positionElements(this.triggerElementRef.nativeElement,
-      this.tooltip.nativeElement, this.position, true);
-    setTimeout(() => { // 预防脏检查
+    const rect = this.positionService.positionElements(
+      this.triggerElementRef.nativeElement,
+      this.tooltip.nativeElement,
+      this.position,
+      true
+    );
+    setTimeout(() => {
+      // 预防脏检查
       this.currentPosition = rect.placementPrimary;
     });
     this.renderer2.setStyle(this.tooltip.nativeElement, 'left', `${rect.left}px`);

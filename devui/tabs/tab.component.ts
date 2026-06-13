@@ -1,4 +1,4 @@
-import { Component, ContentChild, Input, TemplateRef, ViewChild } from '@angular/core';
+import { Component, ContentChild, Input, TemplateRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { TabContentDirective } from './tab-content.directive';
 import { TabTitleDirective } from './tab-title.directive';
 
@@ -6,7 +6,8 @@ import { TabTitleDirective } from './tab-title.directive';
   selector: 'd-tab',
   template: `<ng-template #innerContent><ng-content></ng-content></ng-template>`,
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class TabComponent {
   /**

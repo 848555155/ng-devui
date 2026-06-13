@@ -1,35 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-origin-placeholder',
   templateUrl: './origin-placeholder.component.html',
   styleUrls: ['./origin-placeholder.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class OriginPlaceholderComponent {
-  list1 =  [
-    { name: 'Visual Studio Code' },
-    { name: 'WebStorm' },
-    { name: 'Sublime Text' },
-    { name: 'Atom' },
-    { name: 'Notepad++' },
-  ];
+  list1 = [{ name: 'Visual Studio Code' }, { name: 'WebStorm' }, { name: 'Sublime Text' }, { name: 'Atom' }, { name: 'Notepad++' }];
 
-  list2 = [
-    { name: 'Chrome' },
-    { name: 'Firefox' },
-    { name: 'Opera' },
-    { name: 'Edge' },
-    { name: 'Internet Explorer' },
-    { name: 'Safari' },
-  ];
-  list3 = [
-    {name: 'Linux'},
-    {name: 'Windows'},
-    {name: 'Mac OS'},
-    {name: 'DOS'},
-    {name: 'Chrome OS'},
-  ];
+  list2 = [{ name: 'Chrome' }, { name: 'Firefox' }, { name: 'Opera' }, { name: 'Edge' }, { name: 'Internet Explorer' }, { name: 'Safari' }];
+  list3 = [{ name: 'Linux' }, { name: 'Windows' }, { name: 'Mac OS' }, { name: 'DOS' }, { name: 'Chrome OS' }];
 
   onDrop(e: any, targetArray) {
     console.log(e);

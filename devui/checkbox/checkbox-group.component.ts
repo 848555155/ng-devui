@@ -1,4 +1,14 @@
-import { Component, EventEmitter, forwardRef, Input, OnChanges, Output, SimpleChanges, TemplateRef } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  forwardRef,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+  TemplateRef,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DevConfigService, WithConfig } from 'ng-devui/utils';
 import { isArray } from 'lodash-es';
@@ -16,7 +26,8 @@ import { Observable } from 'rxjs';
     },
   ],
   preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class CheckBoxGroupComponent implements OnChanges, ControlValueAccessor {
   static ID_SEED = 0;

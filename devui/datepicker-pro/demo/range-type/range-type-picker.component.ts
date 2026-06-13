@@ -1,11 +1,10 @@
-import {
-  Component
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-range-type-picker',
   templateUrl: './range-type-picker.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class RangeTypepickerProComponent {
   value1 = [new Date('2020/03/01'), new Date('2020/04/20')];
@@ -15,12 +14,9 @@ export class RangeTypepickerProComponent {
   value5 = [];
   minDate = new Date('2023/4/19 20:30:30');
   maxDate = new Date().setHours(21);
-  constructor() {
-
-  }
+  constructor() {}
 
   onChange(dateList) {
     console.log(dateList);
   }
-
 }

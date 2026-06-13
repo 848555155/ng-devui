@@ -1,11 +1,12 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { SelectComponent } from 'ng-devui/select';
 import { of } from 'rxjs';
 
 @Component({
   selector: 'd-user-search-n-lazyload',
   templateUrl: './user-search-n-lazyload.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class UserSearchNLazyLoadComponent {
   @ViewChild('selectComponent', { static: true }) selectComponent: SelectComponent;

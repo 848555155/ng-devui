@@ -1,4 +1,4 @@
-import { Component, DebugElement } from '@angular/core';
+import { Component, DebugElement, ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -7,7 +7,8 @@ import { SearchModule } from './search.module';
 
 @Component({
   template: ` <d-search [size]="size" [(ngModel)]="searchText" [maxLength]="maxLen" (searchFn)="onSearch($event)"></d-search> `,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 class TestSearchComponent {
   size = '';
@@ -30,7 +31,7 @@ describe('search', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [SearchModule, FormsModule],
-      declarations: [TestSearchComponent]
+      declarations: [TestSearchComponent],
     }).compileComponents();
   }));
 

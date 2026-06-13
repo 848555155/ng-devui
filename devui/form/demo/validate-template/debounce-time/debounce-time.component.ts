@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'd-form-demo-debounce-time',
   templateUrl: './debounce-time.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class DebounceTimeComponent {
   singleInputData = '';
@@ -19,8 +20,6 @@ export class DebounceTimeComponent {
       message = 'The field already exists.';
     }
 
-    return of(message).pipe(
-      delay(500)
-    );
+    return of(message).pipe(delay(500));
   }
 }

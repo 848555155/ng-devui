@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-button-loading',
   templateUrl: './loading.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class LoadingComponent implements OnInit {
   showLoading = false;
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   toggleLoading() {
     this.showLoading = true;
@@ -18,5 +18,4 @@ export class LoadingComponent implements OnInit {
       this.showLoading = false;
     }, 1000);
   }
-
 }

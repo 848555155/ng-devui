@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { SplitterOrientation } from 'ng-devui/splitter';
 
 @Component({
   selector: 'd-splitter-demo-basic',
   templateUrl: './splitter-demo-basic.component.html',
   styleUrls: ['../splitter-demo.component.scss'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class SplitterDemoBasicComponent {
   // splitter input
@@ -18,8 +19,7 @@ export class SplitterDemoBasicComponent {
   minSize = '20%';
   maxSize = '60%';
 
-  constructor() {
-  }
+  constructor() {}
 
   sizeChange(size) {
     console.log(size);

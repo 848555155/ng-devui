@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-basic',
   templateUrl: './basic.component.html',
   styleUrls: ['./basic.component.css'],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class BasicComponent implements OnInit {
   message = 'Upload a file in sh,js,ts,java,css,html,xml.aql,rb,py,php,c,cpp,txt format.';
@@ -13,5 +14,4 @@ export class BasicComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
-
 }

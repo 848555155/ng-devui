@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -23,7 +23,8 @@ import sliceScss from './slice/upload-slice.component.scss?raw';
 @Component({
   selector: 'd-upload-demo',
   templateUrl: './upload-demo.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class UploadDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

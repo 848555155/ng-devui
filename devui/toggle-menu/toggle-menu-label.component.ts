@@ -1,11 +1,12 @@
-import { Component, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
+import { Component, EventEmitter, Input, Output, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { ToggleMenuListItem } from './toggle-menu.type';
 
 @Component({
   selector: 'd-toggle-menu-label',
   templateUrl: './toggle-menu-label.component.html',
   styleUrls: [`./toggle-menu-label.component.scss`],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class ToggleMenuLabelComponent {
   @Input() mode: 'normal' | 'scroll-y' | 'multiple-line' | string;
