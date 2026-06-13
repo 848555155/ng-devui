@@ -70,6 +70,8 @@
     <div
       #carouselContainer
       class="devui-alert-carousel-box"
+      [style.transition]="transitionSpeed() ? 'top ' + transitionSpeed() + 'ms ease' : ''"
+      [style.top]="carouselTop()"
       (mouseenter)="stopTransition$.next(true)"
       (mouseleave)="stopTransition$.next(false)"
     >
@@ -101,7 +103,7 @@
       </svg>
     </span>
     }
-    <ng-container *ngTemplateOutlet="operationTemplate();context: { close }"> </ng-container>
+    <ng-container *ngTemplateOutlet="operationTemplate(); context: { close }"> </ng-container>
     @if (closeable()) {
     <div class="devui-close" (click)="close()">
       <svg

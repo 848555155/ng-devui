@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { AlertCarouselItemComponent, AlertComponent } from 'ng-devui/alert';
 
 @Component({
@@ -12,7 +12,6 @@ import { AlertCarouselItemComponent, AlertComponent } from 'ng-devui/alert';
       }
     `,
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CarouselComponent {
   data = [

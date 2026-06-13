@@ -1,26 +1,23 @@
 import {
   afterRenderEffect,
   booleanAttribute,
-  ChangeDetectionStrategy,
   Component,
   computed,
   contentChildren,
-  effect,
   ElementRef,
   inject,
   input,
   numberAttribute,
   output,
-  Renderer2,
   signal,
   TemplateRef,
   viewChild,
 } from '@angular/core';
-import { AlertCarouselItemComponent } from './alert-carousel-item.component';
-import { AlertType } from './alert.types';
 import { NgTemplateOutlet } from '@angular/common';
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
-import { BehaviorSubject, combineLatest, filter, first, switchMap, takeUntil, timer } from 'rxjs';
+import { BehaviorSubject, combineLatest, filter, switchMap, takeUntil, timer } from 'rxjs';
+import { AlertCarouselItemComponent } from './alert-carousel-item.component';
+import { AlertType } from './alert.types';
 
 @Component({
   selector: 'd-alert',
@@ -28,7 +25,6 @@ import { BehaviorSubject, combineLatest, filter, first, switchMap, takeUntil, ti
   templateUrl: './alert.component.html',
   styleUrls: ['./alert.component.scss'],
   preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AlertComponent {
   type = input<AlertType>('info');
@@ -45,13 +41,15 @@ export class AlertComponent {
   carouselItems = contentChildren(AlertCarouselItemComponent);
   hide = signal(false);
   autoplayHeight = signal('');
-  carouselNum = computed(() => this.carouselItems().length);
   currentIndex = signal(1);
-  SINGLE_LINE_HEIGHT = '24px';
+  readonly SINGLE_LINE_HEIGHT = '24px';
+
+  carouselNum = computed(() => this.carouselItems().length);
+  carouselTop = computed(() => `${-(this.currentIndex() - 1) * 100}%`);
 
   private el = inject(ElementRef);
-  private renderer = inject(Renderer2);
   stopTransition$ = new BehaviorSubject(false);
+
   timer$ = combineLatest({
     autoplay: toObservable(this.autoplay),
     speed: toObservable(this.autoplaySpeed),
@@ -67,31 +65,17 @@ export class AlertComponent {
       this.next();
     });
 
+  dismissSub = toObservable(this.dismissTime)
+    .pipe(
+      takeUntilDestroyed(),
+      filter((t): t is number => !!t),
+      switchMap((time) => timer(time)),
+    )
+    .subscribe(() => this.close());
+
   constructor() {
     afterRenderEffect(() => {
       this.renderCarouselItem();
-    });
-    afterRenderEffect(() => {
-      if (this.transitionSpeed() && this.box()) {
-        this.renderer.setStyle(this.box().nativeElement, 'transition', `top ${this.transitionSpeed()}ms ease`);
-      }
-    });
-    afterRenderEffect(() => {
-      if (!this.box()) {
-        return;
-      }
-      const size = this.currentIndex() - 1;
-      this.renderer.setStyle(this.box().nativeElement, 'top', `${-size * 100}%`);
-    });
-    effect(() => {
-      const dismissTime = this.dismissTime() || 0;
-      if (dismissTime) {
-        timer(0, dismissTime)
-          .pipe(first())
-          .subscribe(() => {
-            this.close();
-          });
-      }
     });
   }
 

@@ -1,11 +1,10 @@
-import { ChangeDetectionStrategy, Component, ElementRef, inject } from '@angular/core';
+import { Component, ElementRef, inject } from '@angular/core';
 
 @Component({
   selector: 'd-alert-carousel-item',
   styleUrls: ['./alert-carousel-item.component.scss'],
   template: `<ng-content></ng-content>`,
   preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AlertCarouselItemComponent {
   el = inject(ElementRef);

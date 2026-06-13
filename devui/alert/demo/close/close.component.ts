@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { AlertComponent } from 'ng-devui/alert';
 
 @Component({
@@ -6,7 +6,6 @@ import { AlertComponent } from 'ng-devui/alert';
   imports: [AlertComponent],
   templateUrl: './close.component.html',
   styleUrls: ['./close.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CloseComponent {
   handleClose($event: AlertComponent) {
