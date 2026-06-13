@@ -1,4 +1,4 @@
-import { ComponentFactoryResolver, Injector, TemplateRef, Type } from '@angular/core';
+import { Injector, TemplateRef, Type } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface IModalOptions {
@@ -12,7 +12,6 @@ export interface IModalOptions {
   data?: any;
   handler?: Function;
   backdropCloseable?: boolean;
-  componentFactoryResolver?: ComponentFactoryResolver;
   injector?: Injector;
   onClose?: Function;
   beforeHidden?: () => boolean | Promise<boolean> | Observable<boolean>;
@@ -47,7 +46,6 @@ export interface IDialogOptions {
   showAnimation?: boolean;
   showAnimate?: boolean;
   data?: any;
-  componentFactoryResolver?: ComponentFactoryResolver;
   injector?: Injector;
   onClose?: Function;
   onMaximize?: Function;

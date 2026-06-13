@@ -1,5 +1,4 @@
 import {
-  ComponentFactoryResolver,
   Injector,
   TemplateRef,
   Type
@@ -9,7 +8,6 @@ import { DrawerComponent } from './drawer.component';
 
 export interface IDrawerOptions {
   drawerContentComponent?: Type<any>;
-  componentFactoryResolver?: ComponentFactoryResolver;
   injector?: Injector;
   id?: string;
   width?: string;

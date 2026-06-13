@@ -1,5 +1,4 @@
 import {
-  ComponentFactoryResolver,
   ComponentRef,
   EmbeddedViewRef,
   Injectable,
@@ -18,7 +17,6 @@ export class LoadingService {
   private renderer = inject(RendererFactory2).createRenderer(null, null);
   document = inject(DOCUMENT);
   private overlayContainerRef = inject(OverlayContainerRef);
-  private componentFactoryResolver = inject(ComponentFactoryResolver);
 
   // loading 服务内的函数，外部就可以传入ILoadingOptions类型的参数调用它
   open({
@@ -32,14 +30,12 @@ export class LoadingService {
     zIndex,
     loadingStyle = 'default',
   }: ILoadingOptions = {}) {
-    const finalComponentFactoryResolver = this.componentFactoryResolver;
-
     let positionTypeOld = '';
     positionTypeOld = target.style.position || '';
     let backdropRef: ComponentRef<LoadingBackdropComponent>;
     if (backdrop) {
       backdropRef = this.overlayContainerRef.createComponent(
-        finalComponentFactoryResolver.resolveComponentFactory(LoadingBackdropComponent),
+        LoadingBackdropComponent,
         injector
       );
       backdropRef.setInput('backdrop', backdrop);
@@ -50,7 +46,7 @@ export class LoadingService {
     }
 
     const loadingRef = this.overlayContainerRef.createComponent(
-      finalComponentFactoryResolver.resolveComponentFactory(LoadingComponent),
+      LoadingComponent,
       injector
     );
 

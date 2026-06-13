@@ -1,6 +1,5 @@
 import {
   AfterViewInit,
-  ComponentFactoryResolver,
   ComponentRef,
   Directive,
   ElementRef,
@@ -43,7 +42,6 @@ export class TooltipDirective implements OnChanges, AfterViewInit, OnDestroy {
   constructor(
     private triggerElementRef: ElementRef,
     private overlayContainerRef: OverlayContainerRef,
-    private componentFactoryResolver: ComponentFactoryResolver,
     private devConfigService: DevConfigService
   ) {}
 
@@ -56,9 +54,7 @@ export class TooltipDirective implements OnChanges, AfterViewInit, OnDestroy {
   }
 
   createTooltip() {
-    this.tooltipComponentRef = this.overlayContainerRef.createComponent(
-      this.componentFactoryResolver.resolveComponentFactory(TooltipComponent)
-    );
+    this.tooltipComponentRef = this.overlayContainerRef.createComponent(TooltipComponent);
 
     this.instanceAssignValue(['content', 'position', 'showAnimation', 'triggerElementRef']);
 

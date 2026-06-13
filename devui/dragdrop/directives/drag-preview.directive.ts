@@ -1,4 +1,4 @@
-import { ComponentFactoryResolver, Directive, Input, TemplateRef } from '@angular/core';
+import { Directive, Input, TemplateRef } from '@angular/core';
 import { OverlayContainerRef } from 'ng-devui/overlay-container';
 import { DragDropService } from '../services/drag-drop.service';
 import { DragPreviewComponent } from './drag-preview.component';
@@ -16,16 +16,11 @@ export class DragPreviewDirective {
     skipBatchPreview: false
   };
   public previewRef;
-  constructor(private componentFactoryResolver: ComponentFactoryResolver,
-              private overlayContainerRef: OverlayContainerRef, private dragDropService: DragDropService) {
+  constructor(private overlayContainerRef: OverlayContainerRef, private dragDropService: DragDropService) {
   }
 
   public createPreview() {
-    const finalComponentFactoryResolver = this.componentFactoryResolver;
-
-    const previewRef = this.overlayContainerRef.createComponent(
-      finalComponentFactoryResolver.resolveComponentFactory(DragPreviewComponent)
-    );
+    const previewRef = this.overlayContainerRef.createComponent(DragPreviewComponent);
     this.previewRef = previewRef;
     this.updateData();
     return this.previewRef;

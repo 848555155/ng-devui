@@ -1,5 +1,4 @@
 import {
-  ComponentFactoryResolver,
   ComponentRef, Injectable
 } from '@angular/core';
 import { OverlayContainerRef } from 'ng-devui/overlay-container';
@@ -14,8 +13,7 @@ export class UserGuideService {
 
   modalRef: ComponentRef<UserGuideUIComponent>;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver,
-              private overlayContainerRef: OverlayContainerRef,
+  constructor(private overlayContainerRef: OverlayContainerRef,
               private userGuideCoreService: UserGuideCoreService) { }
 
   setSteps(steps) {
@@ -79,9 +77,7 @@ export class UserGuideService {
   }
 
   createGuide(index: number) {
-    this.modalRef = this.overlayContainerRef.createComponent(
-      this.componentFactoryResolver.resolveComponentFactory(UserGuideUIComponent)
-    );
+    this.modalRef = this.overlayContainerRef.createComponent(UserGuideUIComponent);
     this.modalRef.instance.showDots = this.steps[index]?.showDots;
     this.modalRef.instance.maxContentWidth = this.steps[index]?.maxContentWidth ? this.steps[index]?.maxContentWidth : 320;
     this.modalRef.instance.isCover = this.steps[index]?.isCover === undefined ? true: this.steps[index]?.isCover;

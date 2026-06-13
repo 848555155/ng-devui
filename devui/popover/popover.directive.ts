@@ -1,6 +1,5 @@
 
 import {
-  ComponentFactoryResolver,
   ComponentRef,
   Directive,
   ElementRef,
@@ -126,7 +125,6 @@ export class PopoverDirective implements OnInit, OnDestroy {
     private overlayContainerRef: OverlayContainerRef,
     private viewContainerRef: ViewContainerRef,
     private injector: Injector,
-    private componentFactoryResolver: ComponentFactoryResolver,
     private devConfigService: DevConfigService,
     @Inject(DOCUMENT) private doc: any
   ) {
@@ -143,14 +141,11 @@ export class PopoverDirective implements OnInit, OnDestroy {
 
   createPopover() {
     if (this.eleAppendToBody) {
-      this.popoverComponentRef = this.overlayContainerRef.createComponent(
-        this.componentFactoryResolver.resolveComponentFactory(PopoverComponent)
-      );
+      this.popoverComponentRef = this.overlayContainerRef.createComponent(PopoverComponent);
     } else {
       this.popoverComponentRef = this.viewContainerRef.createComponent(
-        this.componentFactoryResolver.resolveComponentFactory(PopoverComponent),
-        this.viewContainerRef.length,
-        this.injector
+        PopoverComponent,
+        { index: this.viewContainerRef.length, injector: this.injector }
       );
     }
 

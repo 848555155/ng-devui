@@ -1,6 +1,6 @@
 import { DomPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
 import {
-  AfterViewInit, ApplicationRef, ComponentFactoryResolver, Directive, ElementRef, HostBinding, Injector,
+  AfterViewInit, ApplicationRef, Directive, ElementRef, HostBinding, Injector,
   Input, OnChanges, OnDestroy, Optional, SimpleChanges, TemplateRef, ViewContainerRef
 } from '@angular/core';
 import { DashboardComponent } from '../dashboard.component';
@@ -43,7 +43,6 @@ export class DashboardLibraryWidgetDirective implements OnChanges, AfterViewInit
   }
   constructor(
     private el: ElementRef,
-    private cfr: ComponentFactoryResolver,
     private appRef: ApplicationRef,
     private injector: Injector,
     private vcf: ViewContainerRef,

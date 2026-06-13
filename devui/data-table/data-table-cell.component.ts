@@ -1,7 +1,6 @@
 import {
   ChangeDetectorRef,
   Component,
-  ComponentFactoryResolver,
   ElementRef,
   HostBinding,
   Inject,
@@ -68,7 +67,6 @@ export class DataTableCellComponent implements OnInit, OnChanges, OnDestroy {
     @Inject(DATA_TABLE_ROW) public rowComponent: any,
     private i18n: I18nService,
     private changeDetectorRef: ChangeDetectorRef,
-    private componentFactoryResolver: ComponentFactoryResolver,
     private cellRef: ElementRef,
     private ngZone: NgZone
   ) {}
@@ -235,7 +233,6 @@ export class DataTableCellComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   creatCellEditor() {
-    let componentFactory;
     let editorComponent;
     switch (this.column.fieldType) {
       case 'number':
@@ -252,15 +249,14 @@ export class DataTableCellComponent implements OnInit, OnChanges, OnDestroy {
     }
 
     if (editorComponent) {
-      componentFactory = this.componentFactoryResolver.resolveComponentFactory(editorComponent);
       const viewContainerRef = this.editorHost.viewContainerRef;
       viewContainerRef.clear();
-      const componentRef = viewContainerRef.createComponent<{ writeValue: Function; registerOnChange: Function }>(componentFactory);
+      const componentRef = viewContainerRef.createComponent<{ writeValue: Function; registerOnChange: Function }>(editorComponent);
       const componentInstance = componentRef.instance;
       if (this.column.extraOptions) {
-        componentFactory.inputs.forEach((input) => {
-          if (this.column.extraOptions[input.templateName]) {
-            componentInstance[input.propName] = this.column.extraOptions[input.templateName];
+        Object.keys(this.column.extraOptions).forEach(key => {
+          if (this.column.extraOptions[key] !== undefined) {
+            componentInstance[key] = this.column.extraOptions[key];
           }
         });
       }

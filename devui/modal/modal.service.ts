@@ -1,6 +1,5 @@
 
 import {
-  ComponentFactoryResolver,
   Inject,
   Injectable,
   Renderer2, RendererFactory2,
@@ -17,8 +16,7 @@ export class ModalService {
   private renderer: Renderer2;
   document: Document;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver,
-              private overlayContainerRef: OverlayContainerRef, private rendererFactory: RendererFactory2,
+  constructor(private overlayContainerRef: OverlayContainerRef, private rendererFactory: RendererFactory2,
               private devConfigService: DevConfigService,
               @Inject(DOCUMENT) private doc: any) {
     this.renderer = this.rendererFactory.createRenderer(null, null);
@@ -40,7 +38,6 @@ export class ModalService {
      */
     showAnimate,
     backdropCloseable,
-    componentFactoryResolver,
     onClose,
     beforeHidden,
     placement = 'center',
@@ -51,9 +48,8 @@ export class ModalService {
     escapable = true,
     cssClass
   }: IModalOptions) {
-    const finalComponentFactoryResolver = componentFactoryResolver || this.componentFactoryResolver;
     const modalRef = this.overlayContainerRef.createComponent(
-      finalComponentFactoryResolver.resolveComponentFactory(ModalComponent),
+      ModalComponent,
       injector
     );
     const componentConfig = this.devConfigService.getConfigForComponent('modal') || {};
@@ -82,7 +78,7 @@ export class ModalService {
     let modalContentInstance;
     if (component) {
       modalContentInstance = modalRef.instance.modalContainerHost.viewContainerRef
-        .createComponent(finalComponentFactoryResolver.resolveComponentFactory(component), 0, injector);
+        .createComponent(component, { index: 0, injector });
       assign(modalContentInstance.instance, { data, handler });
     }
 

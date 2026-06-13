@@ -1,4 +1,4 @@
-import { ComponentFactoryResolver, Injectable, Injector, Type } from '@angular/core';
+import { Injectable, Injector, Type } from '@angular/core';
 import { OverlayContainerRef } from 'ng-devui/overlay-container';
 import { assign } from 'lodash-es';
 import { Message, ToastComponent } from './toast.component';
@@ -13,12 +13,11 @@ export interface IToastOptions {
   injector?: Injector;
   appendUpperLimit?: number;
   component?: Type<any>;
-  componentFactoryResolver?: ComponentFactoryResolver;
 }
 
 @Injectable()
 export class ToastService {
-  constructor(private overlayContainerRef: OverlayContainerRef, private componentFactoryResolver: ComponentFactoryResolver) {}
+  constructor(private overlayContainerRef: OverlayContainerRef) {}
 
   open({
     value,
@@ -33,11 +32,9 @@ export class ToastService {
      * @deprecated
      */
     component,
-    componentFactoryResolver,
   }: IToastOptions = {}) {
-    const finalComponentFactoryResolver = componentFactoryResolver || this.componentFactoryResolver;
     const toastRef = this.overlayContainerRef.createComponent(
-      finalComponentFactoryResolver.resolveComponentFactory(ToastComponent),
+      ToastComponent,
       injector
     );
     assign(toastRef.instance, {

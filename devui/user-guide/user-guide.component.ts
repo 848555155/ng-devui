@@ -1,7 +1,6 @@
 import {
   AfterViewInit,
   Component,
-  ComponentFactoryResolver,
   ComponentRef,
   Input,
   OnDestroy,
@@ -33,7 +32,6 @@ export class UserGuideComponent implements OnInit, AfterViewInit, OnDestroy {
   modalRef: ComponentRef<UserGuideUIComponent>;
 
   constructor(
-    private componentFactoryResolver: ComponentFactoryResolver,
     private overlayContainerRef: OverlayContainerRef,
     private userGuideCoreService: UserGuideCoreService,
     private i18n: I18nService
@@ -113,7 +111,7 @@ export class UserGuideComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   createGuide(index: number) {
-    this.modalRef = this.overlayContainerRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(UserGuideUIComponent));
+    this.modalRef = this.overlayContainerRef.createComponent(UserGuideUIComponent);
     this.modalRef.instance.showDots = this.steps[index]?.showDots;
     this.modalRef.instance.maxContentWidth = this.steps[index]?.maxContentWidth ? this.steps[index]?.maxContentWidth : 320;
     this.modalRef.instance.isCover = this.steps[index]?.isCover === undefined ? true : this.steps[index]?.isCover;

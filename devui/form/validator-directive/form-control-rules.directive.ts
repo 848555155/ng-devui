@@ -1,5 +1,4 @@
 import {
-  ComponentFactoryResolver,
   ComponentRef,
   Directive,
   ElementRef,
@@ -532,8 +531,7 @@ export class DFormControlRuleDirective extends DAbstractControlRuleDirective imp
           @Optional() @Host() @SkipSelf() parentDir: DFormGroupRuleDirective,
           private i18n: I18nService,
           public triggerElementRef: ElementRef,
-          private overlayContainerRef: OverlayContainerRef,
-          private componentFactoryResolver: ComponentFactoryResolver
+          private overlayContainerRef: OverlayContainerRef
   ) {
     super(cd, parentDir);
   }
@@ -621,9 +619,7 @@ export class DFormControlRuleDirective extends DAbstractControlRuleDirective imp
   }
 
   createPopover(type: 'error' | 'warning', content: string) {
-    this.popoverComponentRef = this.overlayContainerRef.createComponent(
-      this.componentFactoryResolver.resolveComponentFactory(PopoverComponent)
-    );
+    this.popoverComponentRef = this.overlayContainerRef.createComponent(PopoverComponent);
     Object.assign(this.popoverComponentRef.instance, {
       content: content,
       triggerElementRef: this.triggerElementRef,

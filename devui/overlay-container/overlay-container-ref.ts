@@ -1,12 +1,14 @@
 import {
   ApplicationRef,
-  ComponentFactory,
   ComponentRef,
+  createComponent,
   ElementRef,
   EmbeddedViewRef,
+  EnvironmentInjector,
   Injectable,
   Injector,
   TemplateRef,
+  Type,
   ViewRef,
 } from '@angular/core';
 
@@ -31,8 +33,12 @@ export class OverlayContainerRef {
     return this.insert(viewRef);
   }
 
-  createComponent<C>(componentFactory: ComponentFactory<C>, injector?: Injector, projectableNodes?: any[][]) {
-    const componentRef = componentFactory.create(injector || this._injector, projectableNodes) as ComponentRef<C>;
+  createComponent<C>(componentType: Type<C>, injector?: Injector, projectableNodes?: any[][]) {
+    const componentRef = createComponent(componentType, {
+      environmentInjector: this._appRef.injector,
+      elementInjector: injector || this._injector,
+      projectableNodes: projectableNodes,
+    }) as ComponentRef<C>;
     this.insert(componentRef.hostView);
     return componentRef;
   }

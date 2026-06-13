@@ -1,6 +1,5 @@
 
 import {
-  ComponentFactoryResolver,
   ComponentRef,
   Directive,
   ElementRef,
@@ -98,7 +97,6 @@ export class StepsGuideDirective implements OnInit, OnDestroy {
   constructor(
     private stepService: StepsGuideService,
     private elm: ElementRef,
-    private componentFactoryResolver: ComponentFactoryResolver,
     private overlayContainerRef: OverlayContainerRef,
     @Inject(DOCUMENT) private doc: any
   ) {
@@ -181,7 +179,7 @@ export class StepsGuideDirective implements OnInit, OnDestroy {
   insert(option: GuideOptions) {
     const hasGuide = this.document.querySelector('body>.devui-step-item');
     if (!hasGuide) {
-      this.stepRef = this.overlayContainerRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(StepsGuideComponent));
+      this.stepRef = this.overlayContainerRef.createComponent(StepsGuideComponent);
       Object.assign(this.stepRef.instance, option, { extraConfig: this.extraConfig });
       this.stepRef.instance.close = (step, type?) => {
         this.operateChange.emit({ clickType: type, currentIndex: step });

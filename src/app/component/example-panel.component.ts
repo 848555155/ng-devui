@@ -1,7 +1,6 @@
 import {
   AfterViewInit,
   Component,
-  ComponentFactoryResolver,
   ElementRef,
   Inject,
   Input,
@@ -54,7 +53,6 @@ export class ExamplePanelComponent implements OnInit, AfterViewInit, OnDestroy {
   showDesignTab = false;
   showTabComponents = ['button', 'auto-complete', 'select', 'text-input'];
   constructor(
-    private componentFactoryResolver: ComponentFactoryResolver,
     private comDataService: ComponentDataService,
     private router: Router,
     private route: ActivatedRoute,

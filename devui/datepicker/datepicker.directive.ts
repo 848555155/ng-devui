@@ -2,7 +2,6 @@ import { animate, AnimationBuilder, AnimationMetadata, AnimationPlayer, style } 
 
 import {
   ChangeDetectorRef,
-  ComponentFactoryResolver,
   ComponentRef,
   Directive,
   ElementRef,
@@ -153,7 +152,6 @@ export class DatepickerDirective implements OnInit, OnDestroy, ControlValueAcces
   constructor(
     private elementRef: ElementRef,
     private viewContainerRef: ViewContainerRef,
-    private componentFactoryResolver: ComponentFactoryResolver,
     private renderer2: Renderer2,
     private injector: Injector,
     private datePickerConfig: DatePickerConfig,
@@ -166,8 +164,7 @@ export class DatepickerDirective implements OnInit, OnDestroy, ControlValueAcces
     this._dateConfig = datePickerConfig.dateConfig;
     this.dateConverter = datePickerConfig.dateConfig.dateConverter || new DefaultDateConverter();
     this.selectedDate = null;
-    const factory = this.componentFactoryResolver.resolveComponentFactory(DatepickerComponent);
-    this.cmpRef = this.viewContainerRef.createComponent(factory, this.viewContainerRef.length, this.injector);
+    this.cmpRef = this.viewContainerRef.createComponent(DatepickerComponent, { index: this.viewContainerRef.length, injector: this.injector });
     this.setI18nText();
     this.document = this.doc;
   }

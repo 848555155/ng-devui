@@ -1,4 +1,4 @@
-import { ComponentFactoryResolver, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { OverlayContainerRef } from 'ng-devui/overlay-container';
 import { assign, isUndefined } from 'lodash-es';
 import { DrawerComponent } from './drawer.component';
@@ -7,14 +7,12 @@ import { IDrawerOpenResult, IDrawerOptions } from './drawer.types';
 @Injectable()
 export class DrawerService {
   constructor(
-    private overlayContainerRef: OverlayContainerRef,
-    private componentFactoryResolver: ComponentFactoryResolver
+    private overlayContainerRef: OverlayContainerRef
   ) { }
 
   open({
     drawerContentComponent,
     injector,
-    componentFactoryResolver,
     id,
     zIndex,
     width,
@@ -34,9 +32,8 @@ export class DrawerService {
     contentTemplate,
     resizable = false
   }: IDrawerOptions): IDrawerOpenResult {
-    const componentFactoryResolver_ = componentFactoryResolver || this.componentFactoryResolver;
     const drawerRef = this.overlayContainerRef.createComponent(
-      componentFactoryResolver_.resolveComponentFactory(DrawerComponent),
+      DrawerComponent,
       injector
     );
     assign(drawerRef.instance, {
@@ -60,9 +57,8 @@ export class DrawerService {
     let drawerContentRef;
     if (drawerContentComponent) {
       drawerContentRef = drawerRef.instance.drawerContentHost.viewContainerRef.createComponent(
-        componentFactoryResolver_.resolveComponentFactory(drawerContentComponent),
-        0,
-        injector
+        drawerContentComponent,
+        { index: 0, injector }
       );
       assign(drawerContentRef.instance, data);
     }

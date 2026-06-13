@@ -1,7 +1,6 @@
 import { CdkOverlayOrigin, ConnectedPosition, ScrollStrategy, ScrollStrategyOptions } from '@angular/cdk/overlay';
 import {
   ChangeDetectorRef,
-  ComponentFactoryResolver,
   ComponentRef,
   Directive,
   ElementRef,
@@ -144,7 +143,6 @@ export class AutoCompleteDirective implements OnInit, OnDestroy, OnChanges, Cont
     private autoCompleteConfig: AutoCompleteConfig,
     private elementRef: ElementRef,
     private viewContainerRef: ViewContainerRef,
-    private componentFactoryResolver: ComponentFactoryResolver,
     private renderer: Renderer2,
     private injector: Injector,
     private positionService: PositionService,
@@ -164,8 +162,7 @@ export class AutoCompleteDirective implements OnInit, OnDestroy, OnChanges, Cont
     this.subscription = this.valueChanges.subscribe((source) => this.onSourceChange(source));
 
     // 动态的创建了popup组件，
-    const factory = this.componentFactoryResolver.resolveComponentFactory(AutoCompletePopupComponent);
-    this.popupRef = this.viewContainerRef.createComponent(factory, this.viewContainerRef.length, this.injector);
+    this.popupRef = this.viewContainerRef.createComponent(AutoCompletePopupComponent, { index: this.viewContainerRef.length, injector: this.injector });
     this.popupRef.instance.hoverItem.subscribe((item) => this.hoverItem.emit(item));
     this.fillPopup(this.source);
 

@@ -1,6 +1,5 @@
 
 import {
-  ComponentFactoryResolver,
   ComponentRef,
   Directive,
   ElementRef,
@@ -107,7 +106,6 @@ export class ReadTipDirective implements OnInit, OnDestroy {
 
   constructor(
     private el: ElementRef,
-    private componentFactoryResolver: ComponentFactoryResolver,
     private overlayContainerRef: OverlayContainerRef,
     private inject: Injector,
     private viewContainerRef: ViewContainerRef,
@@ -138,9 +136,7 @@ export class ReadTipDirective implements OnInit, OnDestroy {
 
   createReadTip(target, rule?: ReadTipRule) {
     if (rule.appendToBody) {
-      this.readTipComponentRef = this.overlayContainerRef.createComponent(
-        this.componentFactoryResolver.resolveComponentFactory(ReadTipComponent)
-      );
+      this.readTipComponentRef = this.overlayContainerRef.createComponent(ReadTipComponent);
     } else {
       this.readTipComponentRef = this.viewContainerRef.createComponent(
         ReadTipComponent,

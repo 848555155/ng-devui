@@ -1,6 +1,5 @@
 import { Clipboard } from '@angular/cdk/clipboard';
 import {
-  ComponentFactoryResolver,
   ComponentRef,
   Directive,
   ElementRef,
@@ -36,7 +35,6 @@ export class ClipboardDirective implements OnDestroy {
   private clipboard = inject(Clipboard);
   private i18n = inject(I18nService);
   private overlayContainerRef = inject(OverlayContainerRef);
-  private componentFactoryResolver = inject(ComponentFactoryResolver);
   document = inject(DOCUMENT);
   i18nCommonText: I18nInterface['common'] = this.i18n.getI18nText().common;
   i18nSubscription = this.i18n.langChange().subscribe((data) => {
@@ -63,9 +61,7 @@ export class ClipboardDirective implements OnDestroy {
     if (this.popoverComponentRef) {
       this.popoverComponentRef.destroy();
     }
-    this.popoverComponentRef = this.overlayContainerRef.createComponent(
-      this.componentFactoryResolver.resolveComponentFactory(PopoverComponent)
-    );
+    this.popoverComponentRef = this.overlayContainerRef.createComponent(PopoverComponent);
     this.popoverComponentRef.setInput('content', this.tipContent());
     this.popoverComponentRef.setInput('triggerElementRef', this.elm);
     this.popoverComponentRef.setInput('position', this.position());
