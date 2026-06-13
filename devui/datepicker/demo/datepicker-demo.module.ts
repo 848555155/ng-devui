@@ -31,6 +31,9 @@ import { DatepickerRangeComponent } from './range/datepicker-range.component';
 import { SetModeComponent } from './set-mode/set-mode.component';
 import { TwoDatepickerBasicComponent } from './two-datepicker-basic/two-datepicker-basic.component';
 import { TwoDatepickerFormatComponent } from './two-datepicker-format/two-datepicker-format.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
 @NgModule({
   imports: [
     TranslateModule,
@@ -51,8 +54,8 @@ import { TwoDatepickerFormatComponent } from './two-datepicker-format/two-datepi
       },
       { path: 'demo', component: DatepickerDemoComponent},
       { path: 'api', component: DevUIApiComponent, data: {
-        'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-        'en-us': require('!html-loader!markdown-loader!../doc/api-en.md')
+        'zh-cn': marked.parse(apiCn),
+        'en-us': marked.parse(apiEn)
       }}
     ])
   ],

@@ -1,3 +1,5 @@
+@use '../theme/color' as *;
+
 .over-flow-ellipsis {
   overflow: hidden;
   white-space: nowrap;

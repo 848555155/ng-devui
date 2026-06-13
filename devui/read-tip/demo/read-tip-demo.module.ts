@@ -15,6 +15,9 @@ import { MultiReadtipComponent } from './multi-readtip/multi-readtip.component';
 import { ReadTipDemoComponent } from './read-tip-demo.component';
 import { ReadTipDesignComponent } from './read-tip-design.component';
 import { ReadtipTemplateComponent } from './readtip-template/readtip-template.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
 
 @NgModule({
   imports: [
@@ -37,8 +40,8 @@ import { ReadtipTemplateComponent } from './readtip-template/readtip-template.co
         path: 'api',
         component: DevUIApiComponent,
         data: {
-          'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-          'en-us': require('!html-loader!markdown-loader!../doc/api-en.md'),
+          'zh-cn': marked.parse(apiCn),
+          'en-us': marked.parse(apiEn),
         },
       },
     ]),

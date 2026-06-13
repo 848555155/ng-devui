@@ -1,8 +1,8 @@
-@import '../style/core/animation';
-@import '../style/theme/color';
-@import '../style/theme/corner';
-@import '../style/core/font';
-@import '../style/core/shadow';
+@use '../style/core/animation' as *;
+@use '../style/theme/color' as *;
+@use '../style/theme/corner' as *;
+@use '../style/core/font' as *;
+@use '../style/core/shadow' as *;
 
 :root {
   --devui-menu-width: 100%;

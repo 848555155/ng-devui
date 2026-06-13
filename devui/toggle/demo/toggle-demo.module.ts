@@ -15,6 +15,9 @@ import { CustomComponent } from './custom/custom.component';
 import { ToggleDemoComponent } from './toggle-demo.component';
 import { ToggleDesignComponent } from './toggle-design.component';
 import { TwoBindingComponent } from './two-binding/two-binding.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
 
 @NgModule({
   imports: [
@@ -37,8 +40,8 @@ import { TwoBindingComponent } from './two-binding/two-binding.component';
         path: 'api',
         component: DevUIApiComponent,
         data: {
-          'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-          'en-us': require('!html-loader!markdown-loader!../doc/api-en.md'),
+          'zh-cn': marked.parse(apiCn),
+          'en-us': marked.parse(apiEn),
         },
       },
     ]),

@@ -4,6 +4,12 @@ import {
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import basicHtml from './basic/basic.component.html?raw';
+import basicTs from './basic/basic.component.ts.txt?raw';
+import basicScss from './basic/basic.component.scss?raw';
+import configHtml from './config/config.component.html?raw';
+import configTs from './config/config.component.ts.txt?raw';
+import configScss from './config/config.component.scss?raw';
 
 @Component({
   selector: 'd-quadrant-diagram-demo',
@@ -13,14 +19,14 @@ import { Subscription } from 'rxjs';
 
 export class QuadrantDiagramDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./basic/basic.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./basic/basic.component.ts?raw') },
-    { title: 'SCSS', language: 'css', code: require('./basic/basic.component.scss?raw') }
+    { title: 'HTML', language: 'xml', code: basicHtml },
+    { title: 'TS', language: 'typescript', code: basicTs },
+    { title: 'SCSS', language: 'css', code: basicScss }
   ];
   configSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./config/config.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./config/config.component.ts?raw') },
-    { title: 'SCSS', language: 'css', code: require('./config/config.component.scss?raw') }
+    { title: 'HTML', language: 'xml', code: configHtml },
+    { title: 'TS', language: 'typescript', code: configTs },
+    { title: 'SCSS', language: 'css', code: configScss }
   ];
 
   navItems = [];

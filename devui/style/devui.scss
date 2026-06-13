@@ -1,2 +1,2 @@
-@import './core/index';
+@use './core/index' as *;
 // 正式迁移过来后在引入

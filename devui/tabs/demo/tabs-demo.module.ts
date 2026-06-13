@@ -27,6 +27,9 @@ import { TypePillsComponent } from './type-pills/type-pills.component';
 import { TypeSliderComponent } from './type-slider/type-slider.component';
 import { TypeWrappedComponent } from './type-wrapped/type-wrapped.component';
 import { WithoutContentComponent } from './without-content/without-content.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
 
 @NgModule({
   imports: [
@@ -52,8 +55,8 @@ import { WithoutContentComponent } from './without-content/without-content.compo
         path: 'api',
         component: DevUIApiComponent,
         data: {
-          'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-          'en-us': require('!html-loader!markdown-loader!../doc/api-en.md'),
+          'zh-cn': marked.parse(apiCn),
+          'en-us': marked.parse(apiEn),
         },
       },
     ]),

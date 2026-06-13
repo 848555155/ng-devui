@@ -2,6 +2,12 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox/devui-source-data';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs/internal/Subscription';
+import basicHtml from './basic/basic.component.html?raw';
+import basicTs from './basic/basic.component.ts.txt?raw';
+import basicScss from './basic/basic.component.scss?raw';
+import iconGroupHtml from './icon-group/icon-group.component.html?raw';
+import iconGroupTs from './icon-group/icon-group.component.ts.txt?raw';
+import iconGroupScss from './icon-group/icon-group.component.scss?raw';
 
 @Component({
   templateUrl: './icon-demo.component.html',
@@ -9,14 +15,14 @@ import { Subscription } from 'rxjs/internal/Subscription';
 })
 export class IconDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'html', code: require('./basic/basic.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./basic/basic.component.ts?raw') },
-    { title: 'CSS', language: 'css', code: require('./basic/basic.component.scss?raw') },
+    { title: 'HTML', language: 'html', code: basicHtml },
+    { title: 'TS', language: 'typescript', code: basicTs },
+    { title: 'CSS', language: 'css', code: basicScss },
   ];
   iconGroupSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'html', code: require('./icon-group/icon-group.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./icon-group/icon-group.component.ts?raw') },
-    { title: 'CSS', language: 'css', code: require('./icon-group/icon-group.component.scss?raw') },
+    { title: 'HTML', language: 'html', code: iconGroupHtml },
+    { title: 'TS', language: 'typescript', code: iconGroupTs },
+    { title: 'CSS', language: 'css', code: iconGroupScss },
   ];
 
   navItems = [{ dAnchorLink: 'basic', value: '基本用法' }];

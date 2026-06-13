@@ -1,4 +1,6 @@
-@import '../styles-var/devui-var.scss';
+@use '../styles-var/devui-var.scss' as *;
+
+@mixin overwrite-theme-styles() {
 // TODO: 组件支持全局配置默认尺寸参数后删除
 // button default size change to '32px'
 .devui-btn:not(.devui-btn-xs):not(.devui-btn-sm):not(.devui-btn-lg) {
@@ -545,4 +547,5 @@ d-datepicker-pro .devui-datepicker-pro-wrapper .devui-single-picker .devui-input
 
 input[dtimepicker] {
   height: 32px !important;
+}
 }

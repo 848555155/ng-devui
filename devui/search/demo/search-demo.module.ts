@@ -16,6 +16,9 @@ import { NgmodelComponent } from './ngmodel/ngmodel.component';
 import { SearchNoBorderComponent } from './no-border/search-no-border.component';
 import { SearchDemoComponent } from './search-demo.component';
 import { SearchDesignComponent } from './search-design.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
 
 @NgModule({
   imports: [
@@ -35,8 +38,8 @@ import { SearchDesignComponent } from './search-design.component';
       },
       { path: 'demo', component: SearchDemoComponent},
       { path: 'api', component: DevUIApiComponent, data: {
-        'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-        'en-us': require('!html-loader!markdown-loader!../doc/api-en.md')
+        'zh-cn': marked.parse(apiCn),
+        'en-us': marked.parse(apiEn)
       }}
     ])
   ],

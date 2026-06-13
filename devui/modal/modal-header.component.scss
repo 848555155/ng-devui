@@ -1,5 +1,5 @@
-@import '../style/theme/color';
-@import '../style/core/_font';
+@use '../style/theme/color' as *;
+@use '../style/core/_font' as *;
 
 .modal-header {
   padding: 20px 20px 0 20px;

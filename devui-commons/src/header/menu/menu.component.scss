@@ -1,4 +1,4 @@
-@import '../../../../devui/styles-var/devui-var.scss';
+@use '../../../../devui/styles-var/devui-var.scss' as *;
 
 .menu-list-wrapper.devui-scrollbar {
   margin: 0 !important;

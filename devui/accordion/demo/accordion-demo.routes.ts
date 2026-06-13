@@ -7,6 +7,24 @@ import { LinkComponent } from './link/link.component';
 import { TemplateComponent } from './template/template.component';
 import { MultiLevelComponent } from './multi-level/multi-level.component';
 import { ChangeKeyComponent } from './change-key/change-key.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
+import basicHtml from './basic/basic.component.html?raw';
+import basicTs from './basic/basic.component.ts.txt?raw';
+import basicCss from './basic/basic.component.css?raw';
+import linkHtml from './link/link.component.html?raw';
+import linkTs from './link/link.component.ts.txt?raw';
+import linkCss from './link/link.component.css?raw';
+import templateHtml from './template/template.component.html?raw';
+import templateTs from './template/template.component.ts.txt?raw';
+import templateScss from './template/template.component.scss?raw';
+import multiLevelHtml from './multi-level/multi-level.component.html?raw';
+import multiLevelTs from './multi-level/multi-level.component.ts.txt?raw';
+import multiLevelCss from './multi-level/multi-level.component.css?raw';
+import changeKeyHtml from './change-key/change-key.component.html?raw';
+import changeKeyTs from './change-key/change-key.component.ts.txt?raw';
+import changeKeyCss from './change-key/change-key.component.css?raw';
 
 export default [
   { path: '', redirectTo: 'demo', pathMatch: 'full' },
@@ -25,9 +43,9 @@ export default [
           name: 'basicDemo',
           component: BasicComponent,
           source: [
-            { title: 'HTML', language: 'xml', code: require('./basic/basic.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./basic/basic.component.ts?raw') },
-            { title: 'SCSS', language: 'css', code: require('./basic/basic.component.css?raw') },
+            { title: 'HTML', language: 'xml', code: basicHtml },
+            { title: 'TS', language: 'typescript', code: basicTs },
+            { title: 'SCSS', language: 'css', code: basicCss },
           ],
         },
         {
@@ -36,9 +54,9 @@ export default [
           noDescription: true,
           component: LinkComponent,
           source: [
-            { title: 'HTML', language: 'xml', code: require('./link/link.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./link/link.component.ts?raw') },
-            { title: 'SCSS', language: 'css', code: require('./link/link.component.css?raw') },
+            { title: 'HTML', language: 'xml', code: linkHtml },
+            { title: 'TS', language: 'typescript', code: linkTs },
+            { title: 'SCSS', language: 'css', code: linkCss },
           ],
         },
         {
@@ -46,9 +64,9 @@ export default [
           name: 'templateDemo',
           component: TemplateComponent,
           source: [
-            { title: 'HTML', language: 'xml', code: require('./template/template.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./template/template.component.ts?raw') },
-            { title: 'SCSS', language: 'css', code: require('./template/template.component.scss?raw') },
+            { title: 'HTML', language: 'xml', code: templateHtml },
+            { title: 'TS', language: 'typescript', code: templateTs },
+            { title: 'SCSS', language: 'css', code: templateScss },
           ],
         },
         {
@@ -56,9 +74,9 @@ export default [
           name: 'multiLevelDemo',
           component: MultiLevelComponent,
           source: [
-            { title: 'HTML', language: 'xml', code: require('./multi-level/multi-level.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./multi-level/multi-level.component.ts?raw') },
-            { title: 'SCSS', language: 'css', code: require('./multi-level/multi-level.component.css?raw') },
+            { title: 'HTML', language: 'xml', code: multiLevelHtml },
+            { title: 'TS', language: 'typescript', code: multiLevelTs },
+            { title: 'SCSS', language: 'css', code: multiLevelCss },
           ],
         },
         {
@@ -66,9 +84,9 @@ export default [
           name: 'changeKeyDemo',
           component: ChangeKeyComponent,
           source: [
-            { title: 'HTML', language: 'xml', code: require('./change-key/change-key.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./change-key/change-key.component.ts?raw') },
-            { title: 'SCSS', language: 'css', code: require('./change-key/change-key.component.css?raw') },
+            { title: 'HTML', language: 'xml', code: changeKeyHtml },
+            { title: 'TS', language: 'typescript', code: changeKeyTs },
+            { title: 'SCSS', language: 'css', code: changeKeyCss },
           ],
         },
       ],
@@ -78,8 +96,8 @@ export default [
     path: 'api',
     component: DevUIApiComponent,
     data: {
-      'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-      'en-us': require('!html-loader!markdown-loader!../doc/api-en.md'),
+      'zh-cn': marked.parse(apiCn),
+      'en-us': marked.parse(apiEn),
     },
   },
 ] as Routes;

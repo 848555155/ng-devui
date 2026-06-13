@@ -30,6 +30,9 @@ import { TreeDemoComponent } from './tree-demo.component';
 import { TreeDesignComponent } from './tree-design.component';
 import { OperationForAllNodesComponent } from './tree-factory/tree-factory.component';
 import { VirtualScrollComponent } from './virtual-scroll/virtual-scroll.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
 
 @NgModule({
   imports: [
@@ -57,8 +60,8 @@ import { VirtualScrollComponent } from './virtual-scroll/virtual-scroll.componen
       },
       { path: 'demo', component: TreeDemoComponent},
       { path: 'api', component: DevUIApiComponent, data: {
-        'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-        'en-us': require('!html-loader!markdown-loader!../doc/api-en.md')
+        'zh-cn': marked.parse(apiCn),
+        'en-us': marked.parse(apiEn)
       }}
     ])
   ],

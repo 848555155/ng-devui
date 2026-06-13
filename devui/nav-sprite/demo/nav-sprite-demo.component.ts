@@ -2,6 +2,12 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { DevuiSourceData } from "ng-devui/shared/devui-codebox";
 import { TranslateService, TranslationChangeEvent } from "@ngx-translate/core";
 import { Subscription } from "rxjs";
+import basicHtml from './basic/basic.component.html?raw';
+import basicTs from './basic/basic.component.ts.txt?raw';
+import basicScss from './basic/basic.component.scss?raw';
+import scrollContainerHtml from './scroll-container/scroll-container.component.html?raw';
+import scrollContainerTs from './scroll-container/scroll-container.component.ts.txt?raw';
+import scrollContainerScss from './scroll-container/scroll-container.component.scss?raw';
 @Component({
   selector: "d-nav-sprite-demo",
   templateUrl: "./nav-sprite-demo.component.html",
@@ -12,34 +18,34 @@ export class NavSpriteDemoComponent implements OnInit, OnDestroy {
     {
       title: "HTML",
       language: "xml",
-      code: require("./basic/basic.component.html?raw"),
+      code: basicHtml,
     },
     {
       title: "TS",
       language: "typescript",
-      code: require("./basic/basic.component.ts?raw"),
+      code: basicTs,
     },
     {
       title: "SCSS",
       language: "css",
-      code: require("./basic/basic.component.scss?raw"),
+      code: basicScss,
     },
   ];
   scrollSource: Array<DevuiSourceData> = [
     {
       title: "HTML",
       language: "xml",
-      code: require("./scroll-container/scroll-container.component.html?raw"),
+      code: scrollContainerHtml,
     },
     {
       title: "TS",
       language: "typescript",
-      code: require("./scroll-container/scroll-container.component.ts?raw"),
+      code: scrollContainerTs,
     },
     {
       title: "SCSS",
       language: "css",
-      code: require("./scroll-container/scroll-container.component.scss?raw"),
+      code: scrollContainerScss,
     },
   ];
   navItems = [];

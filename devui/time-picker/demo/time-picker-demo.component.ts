@@ -2,6 +2,15 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox/devui-source-data';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import basicHtml from './basic/basic.component.html?raw';
+import basicTs from './basic/basic.component.ts.txt?raw';
+import basicScss from './basic/basic.component.scss?raw';
+import formatHtml from './format/format.component.html?raw';
+import formatTs from './format/format.component.ts.txt?raw';
+import formatScss from './format/format.component.scss?raw';
+import customHtml from './custom/custom.component.html?raw';
+import customTs from './custom/custom.component.ts.txt?raw';
+import customScss from './custom/custom.component.scss?raw';
 
 @Component({
   templateUrl: './time-picker-demo.component.html',
@@ -9,19 +18,19 @@ import { Subscription } from 'rxjs';
 })
 export class TimePickerDemoComponent implements OnInit, OnDestroy {
   TimePickerDemoBasicComponent: DevuiSourceData[] = [
-    { title: 'HTML', language: 'xml', code: require('./basic/basic.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./basic/basic.component.ts?raw') },
-    { title: 'SASS', language: 'css', code: require('./basic/basic.component.scss?raw') },
+    { title: 'HTML', language: 'xml', code: basicHtml },
+    { title: 'TS', language: 'typescript', code: basicTs },
+    { title: 'SASS', language: 'css', code: basicScss },
   ];
   TimePickerDemoFormatComponent: DevuiSourceData[] = [
-    { title: 'HTML', language: 'xml', code: require('./format/format.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./format/format.component.ts?raw') },
-    { title: 'SASS', language: 'css', code: require('./format/format.component.scss?raw') },
+    { title: 'HTML', language: 'xml', code: formatHtml },
+    { title: 'TS', language: 'typescript', code: formatTs },
+    { title: 'SASS', language: 'css', code: formatScss },
   ];
   TimePickerDemoCustomComponent: DevuiSourceData[] = [
-    { title: 'HTML', language: 'xml', code: require('./custom/custom.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./custom/custom.component.ts?raw') },
-    { title: 'SASS', language: 'css', code: require('./custom/custom.component.scss?raw') },
+    { title: 'HTML', language: 'xml', code: customHtml },
+    { title: 'TS', language: 'typescript', code: customTs },
+    { title: 'SASS', language: 'css', code: customScss },
   ];
 
   navItems = [];

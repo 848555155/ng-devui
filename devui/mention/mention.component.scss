@@ -1,8 +1,8 @@
-@import '../style/theme/color';
-@import '../style/theme/corner';
-@import '../style/core/font';
-@import '../style/theme/shadow';
-@import '../style/core/z-index';
+@use '../style/theme/color' as *;
+@use '../style/theme/corner' as *;
+@use '../style/core/font' as *;
+@use '../style/theme/shadow' as *;
+@use '../style/core/z-index' as *;
 
 .devui-mention-dropdown {
   position: absolute;

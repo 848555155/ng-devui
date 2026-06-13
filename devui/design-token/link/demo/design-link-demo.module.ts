@@ -11,6 +11,9 @@ import { DDemoNavModule } from 'devui-commons/src/demo-nav/d-demo-nav.module';
 import { DesignLinkDemoComponent } from './design-link-demo.component';
 import { LinkDesignComponent } from './link-design.component';
 import { LinkComponent } from './link/link.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
 @NgModule({
   declarations: [DesignLinkDemoComponent, LinkComponent],
   imports: [
@@ -29,8 +32,8 @@ import { LinkComponent } from './link/link.component';
       },
       { path: 'demo', component: DesignLinkDemoComponent},
       { path: 'api', component: DevUIApiComponent, data: {
-        'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-        'en-us': require('!html-loader!markdown-loader!../doc/api-en.md')
+        'zh-cn': marked.parse(apiCn),
+        'en-us': marked.parse(apiEn)
       }}
     ])
   ]

@@ -1,7 +1,7 @@
-@import '../style/theme/color';
-@import '../style/core/_font';
-@import '../style/core/z-index';
-@import '../style/theme/shadow';
+@use '../style/theme/color' as *;
+@use '../style/core/_font' as *;
+@use '../style/core/z-index' as *;
+@use '../style/theme/shadow' as *;
 
 .user-guide {
   width: 60px;

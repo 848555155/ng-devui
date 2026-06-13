@@ -16,6 +16,9 @@ import { BasicComponent } from './basic/basic.component';
 import { DashboardDemoComponent } from './dashboard-demo.component';
 import { DashboardDesignComponent } from './dashboard-design.component';
 import { MoreConfigComponent } from './more-config/more-config.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
 
 @NgModule({
   declarations: [
@@ -48,8 +51,8 @@ import { MoreConfigComponent } from './more-config/more-config.component';
       },
       { path: 'demo', component: DashboardDemoComponent },
       { path: 'api', component: DevUIApiComponent, data: {
-        'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-        'en-us': require('!html-loader!markdown-loader!../doc/api-en.md')
+        'zh-cn': marked.parse(apiCn),
+        'en-us': marked.parse(apiEn)
       }}
     ])
   ]

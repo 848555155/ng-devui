@@ -21,6 +21,9 @@ import { OriginPlaceholderComponent } from './origin-placeholder/origin-placehol
 import { PositionComponent } from './position/position.component';
 import { SwitchComponent } from './switch/switch.component';
 import { TreeComponent } from './tree/tree.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
 
 @NgModule({
   imports: [
@@ -41,8 +44,8 @@ import { TreeComponent } from './tree/tree.component';
       },
       { path: 'demo', component: DragDropDemoComponent},
       { path: 'api', component: DevUIApiComponent, data: {
-        'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-        'en-us': require('!html-loader!markdown-loader!../doc/api-en.md')
+        'zh-cn': marked.parse(apiCn),
+        'en-us': marked.parse(apiEn)
       }}
     ])
   ],

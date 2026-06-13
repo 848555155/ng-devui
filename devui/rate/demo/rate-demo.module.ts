@@ -17,6 +17,9 @@ import { RateDemoComponent } from './rate-demo.component';
 import { RateDesignComponent } from './rate-design.component';
 import { RateDemoTemplateComponent } from './template/template.component';
 import { TypeComponent } from './type/type.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
 
 @NgModule({
   imports: [
@@ -38,8 +41,8 @@ import { TypeComponent } from './type/type.component';
         path: 'api',
         component: DevUIApiComponent,
         data: {
-          'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-          'en-us': require('!html-loader!markdown-loader!../doc/api-en.md'),
+          'zh-cn': marked.parse(apiCn),
+          'en-us': marked.parse(apiEn),
         },
       },
     ]),

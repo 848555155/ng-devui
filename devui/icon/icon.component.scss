@@ -1,5 +1,5 @@
-@import './icon-style-token.scss';
-@import '../style/core/animation';
+@use './icon-style-token.scss' as *;
+@use '../style/core/animation' as *;
 
 :host {
   display: inline-flex;

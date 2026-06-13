@@ -53,6 +53,9 @@ import { ChildFormComponent } from './validate-template/validate-cross-component
 import { CrossComponentComponent } from './validate-template/validate-cross-component/validate-cross-component.component';
 import { ValidateTemplateFormComponent } from './validate-template/validate-template-form/validate-template-form.component';
 import { ValidateUpdateComponent } from './validate-update/validate-update.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
 
 @NgModule({
   imports: [
@@ -95,8 +98,8 @@ import { ValidateUpdateComponent } from './validate-update/validate-update.compo
         path: 'api',
         component: DevUIApiComponent,
         data: {
-          'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-          'en-us': require('!html-loader!markdown-loader!../doc/api-en.md'),
+          'zh-cn': marked.parse(apiCn),
+          'en-us': marked.parse(apiEn),
         },
       },
     ]),

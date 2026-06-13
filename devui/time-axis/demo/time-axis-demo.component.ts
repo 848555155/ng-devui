@@ -2,6 +2,24 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import allStatesHtml from './all-states/time-axis-all-states.component.html?raw';
+import allStatesTs from './all-states/time-axis-all-states.component.ts.txt?raw';
+import allStatesScss from './all-states/time-axis-all-states.component.scss?raw';
+import directionHtml from './direction/time-axis-direction.component.html?raw';
+import directionTs from './direction/time-axis-direction.component.ts.txt?raw';
+import htmlContentHtml from './html-content/time-axis-html-content.component.html?raw';
+import htmlContentTs from './html-content/time-axis-html-content.component.ts.txt?raw';
+import htmlContentScss from './html-content/time-axis-html-content.component.scss?raw';
+import templateContentHtml from './template-content/time-axis-template-content.component.html?raw';
+import templateContentTs from './template-content/time-axis-template-content.component.ts.txt?raw';
+import alternativeModeHtml from './alternative-mode/alternative-mode.component.html?raw';
+import alternativeModeTs from './alternative-mode/alternative-mode.component.ts.txt?raw';
+import seperateWayHtml from './seperate-way/seperate-way.component.html?raw';
+import seperateWayTs from './seperate-way/seperate-way.component.ts.txt?raw';
+import customDotHtml from './custom-dot/custom-dot.component.html?raw';
+import customDotTs from './custom-dot/custom-dot.component.ts.txt?raw';
+import singleHtml from './single/single.component.html?raw';
+import singleTs from './single/single.component.ts.txt?raw';
 
 @Component({
   selector: 'd-demo-time-axis',
@@ -10,38 +28,38 @@ import { Subscription } from 'rxjs';
 })
 export class TimeAxisDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./all-states/time-axis-all-states.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./all-states/time-axis-all-states.component.ts?raw') },
-    { title: 'SCSS', language: 'css', code: require('./all-states/time-axis-all-states.component.scss?raw') },
+    { title: 'HTML', language: 'xml', code: allStatesHtml },
+    { title: 'TS', language: 'typescript', code: allStatesTs },
+    { title: 'SCSS', language: 'css', code: allStatesScss },
   ];
   directionSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./direction/time-axis-direction.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./direction/time-axis-direction.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: directionHtml },
+    { title: 'TS', language: 'typescript', code: directionTs },
   ];
   htmlSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./html-content/time-axis-html-content.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./html-content/time-axis-html-content.component.ts?raw') },
-    { title: 'SCSS', language: 'css', code: require('./html-content/time-axis-html-content.component.scss?raw') },
+    { title: 'HTML', language: 'xml', code: htmlContentHtml },
+    { title: 'TS', language: 'typescript', code: htmlContentTs },
+    { title: 'SCSS', language: 'css', code: htmlContentScss },
   ];
   templateSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./template-content/time-axis-template-content.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./template-content/time-axis-template-content.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: templateContentHtml },
+    { title: 'TS', language: 'typescript', code: templateContentTs },
   ];
   alternativeModeSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./alternative-mode/alternative-mode.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./alternative-mode/alternative-mode.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: alternativeModeHtml },
+    { title: 'TS', language: 'typescript', code: alternativeModeTs },
   ];
   seperateWaySource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./seperate-way/seperate-way.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./seperate-way/seperate-way.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: seperateWayHtml },
+    { title: 'TS', language: 'typescript', code: seperateWayTs },
   ];
   customDotSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./custom-dot/custom-dot.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./custom-dot/custom-dot.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: customDotHtml },
+    { title: 'TS', language: 'typescript', code: customDotTs },
   ];
   singleSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./single/single.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./single/single.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: singleHtml },
+    { title: 'TS', language: 'typescript', code: singleTs },
   ];
 
   navItems = [];

@@ -1,6 +1,15 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import basicHtml from './basic/slider-basic.component.html?raw';
+import basicTs from './basic/slider-basic.component.ts.txt?raw';
+import basicScss from './basic/slider-basic.component.scss?raw';
+import disabledHtml from './disabled/slider-disabled.component.html?raw';
+import disabledTs from './disabled/slider-disabled.component.ts.txt?raw';
+import disabledScss from './disabled/slider-disabled.component.scss?raw';
+import customFormatterHtml from './custom-formatter/slider-custom-formatter.component.html?raw';
+import customFormatterTs from './custom-formatter/slider-custom-formatter.component.ts.txt?raw';
+import customFormatterScss from './custom-formatter/slider-custom-formatter.component.scss?raw';
 
 @Component({
   selector: 'd-slider-demo',
@@ -9,19 +18,19 @@ import { Subscription } from 'rxjs';
 })
 export class SliderDemoComponent implements OnInit, OnDestroy {
   SliderBasicComponent = [
-    { title: 'HTML', language: 'html', code: require('./basic/slider-basic.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./basic/slider-basic.component.ts?raw') },
-    { title: 'SCSS', language: 'css', code: require('./basic/slider-basic.component.scss?raw') },
+    { title: 'HTML', language: 'html', code: basicHtml },
+    { title: 'TS', language: 'typescript', code: basicTs },
+    { title: 'SCSS', language: 'css', code: basicScss },
   ];
   SliderDisabledComponent = [
-    { title: 'HTML', language: 'html', code: require('./disabled/slider-disabled.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./disabled/slider-disabled.component.ts?raw') },
-    { title: 'SCSS', language: 'css', code: require('./disabled/slider-disabled.component.scss?raw') },
+    { title: 'HTML', language: 'html', code: disabledHtml },
+    { title: 'TS', language: 'typescript', code: disabledTs },
+    { title: 'SCSS', language: 'css', code: disabledScss },
   ];
   SliderCustomFormatterComponent = [
-    { title: 'HTML', language: 'html', code: require('./custom-formatter/slider-custom-formatter.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./custom-formatter/slider-custom-formatter.component.ts?raw') },
-    { title: 'SCSS', language: 'css', code: require('./custom-formatter/slider-custom-formatter.component.scss?raw') },
+    { title: 'HTML', language: 'html', code: customFormatterHtml },
+    { title: 'TS', language: 'typescript', code: customFormatterTs },
+    { title: 'SCSS', language: 'css', code: customFormatterScss },
   ];
   list = ['基本用法', '禁止输入态', '定制Popover的显示内容'];
 

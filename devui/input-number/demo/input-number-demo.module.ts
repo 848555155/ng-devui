@@ -16,6 +16,9 @@ import { InputNumberDemoComponent } from './input-number-demo.component';
 import { InputNumberDesignComponent } from './input-number-design.component';
 import { InputNumberPlaceholderAndMaxLengthComponent } from './placeholderAndMaxLength/input-number-placeholder-maxLength.component';
 import { InputNumberRegComponent } from './reg/input-number-reg.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
 
 @NgModule({
   imports: [
@@ -37,8 +40,8 @@ import { InputNumberRegComponent } from './reg/input-number-reg.component';
         path: 'api',
         component: DevUIApiComponent,
         data: {
-          'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-          'en-us': require('!html-loader!markdown-loader!../doc/api-en.md'),
+          'zh-cn': marked.parse(apiCn),
+          'en-us': marked.parse(apiEn),
         },
       },
     ]),

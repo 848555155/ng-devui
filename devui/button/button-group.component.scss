@@ -1,4 +1,4 @@
-@import './button.component';
+@use './button.component' as *;
 
 :host ::ng-deep .devui-btn-group {
   display: flex;

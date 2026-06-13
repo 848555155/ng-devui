@@ -1,5 +1,5 @@
-@import '../style/theme/color';
-@import '../style/core/animation';
+@use '../style/theme/color' as *;
+@use '../style/core/animation' as *;
 
 :host {
   .devui-toggle-menu-operation-container {

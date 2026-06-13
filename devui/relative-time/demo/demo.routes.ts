@@ -4,6 +4,13 @@ import { DevuiDemoComponent } from 'ng-devui/shared/devui-demo/devui-demo.compon
 import { RelativeTimeDesignComponent } from './relative-time-design.component';
 import { BasicComponent } from './basic/basic.component';
 import { CustomTimeComponent } from './custom-time/custom-time.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
+import basicHtml from './basic/basic.component.html?raw';
+import basicTs from './basic/basic.component.ts.txt?raw';
+import customTimeHtml from './custom-time/custom-time.component.html?raw';
+import customTimeTs from './custom-time/custom-time.component.ts.txt?raw';
 
 export default [
   { path: '', redirectTo: 'demo', pathMatch: 'full' },
@@ -22,8 +29,8 @@ export default [
           name: 'basicDemo',
           component: BasicComponent,
           source: [
-            { title: 'HTML', language: 'xml', code: require('./basic/basic.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./basic/basic.component.ts?raw') },
+            { title: 'HTML', language: 'xml', code: basicHtml },
+            { title: 'TS', language: 'typescript', code: basicTs },
           ],
         },
         {
@@ -31,8 +38,8 @@ export default [
           name: 'customDemo',
           component: CustomTimeComponent,
           source: [
-            { title: 'HTML', language: 'xml', code: require('./custom-time/custom-time.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./custom-time/custom-time.component.ts?raw') },
+            { title: 'HTML', language: 'xml', code: customTimeHtml },
+            { title: 'TS', language: 'typescript', code: customTimeTs },
           ],
         },
       ],
@@ -42,8 +49,8 @@ export default [
     path: 'api',
     component: DevUIApiComponent,
     data: {
-      'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-      'en-us': require('!html-loader!markdown-loader!../doc/api-en.md'),
+      'zh-cn': marked.parse(apiCn),
+      'en-us': marked.parse(apiEn),
     },
   },
 ] as Routes;

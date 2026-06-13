@@ -1,8 +1,8 @@
-@import '../style/theme/color';
-@import '../style/theme/shadow';
-@import '../style/theme/corner';
-@import '../style/core/font';
-@import '../style/core/animation';
+@use '../style/theme/color' as *;
+@use '../style/theme/shadow' as *;
+@use '../style/theme/corner' as *;
+@use '../style/core/font' as *;
+@use '../style/core/animation' as *;
 
 :host {
   display: block;

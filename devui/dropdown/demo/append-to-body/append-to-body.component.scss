@@ -1,4 +1,4 @@
-@import '../../../../devui/styles-var/devui-var.scss';
+@use '../../../../devui/styles-var/devui-var.scss' as *;
 
 .align-origin {
   border: 1px dashed $devui-line;

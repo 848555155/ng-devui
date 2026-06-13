@@ -1,4 +1,4 @@
-@import '../style/core/_font';
+@use '../style/core/_font' as *;
 
 :host {
   .devui-toggle-menu-input-template-container {

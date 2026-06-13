@@ -2,6 +2,34 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import basicHtml from './basic/basic.component.html?raw';
+import basicTs from './basic/basic.component.ts.txt?raw';
+import withoutContentHtml from './without-content/without-content.component.html?raw';
+import withoutContentTs from './without-content/without-content.component.ts.txt?raw';
+import beforeChangeHtml from './before-change/before-change.component.html?raw';
+import beforeChangeTs from './before-change/before-change.component.ts.txt?raw';
+import customHtml from './custom/custom.component.html?raw';
+import customTs from './custom/custom.component.ts.txt?raw';
+import typePillsHtml from './type-pills/type-pills.component.html?raw';
+import typePillsTs from './type-pills/type-pills.component.ts.txt?raw';
+import typeOptionsHtml from './type-options/type-options.component.html?raw';
+import typeOptionsTs from './type-options/type-options.component.ts.txt?raw';
+import typeSliderHtml from './type-slider/type-slider.component.html?raw';
+import typeSliderTs from './type-slider/type-slider.component.ts.txt?raw';
+import typeWrappedHtml from './type-wrapped/type-wrapped.component.html?raw';
+import typeWrappedTs from './type-wrapped/type-wrapped.component.ts.txt?raw';
+import sizeHtml from './size/size.component.html?raw';
+import sizeTs from './size/size.component.ts.txt?raw';
+import addDeleteHtml from './add-delete/add-delete.component.html?raw';
+import addDeleteTs from './add-delete/add-delete.component.ts.txt?raw';
+import bigDataHtml from './big-data/big-data.component.html?raw';
+import bigDataTs from './big-data/big-data.component.ts.txt?raw';
+import bigDataScss from './big-data/big-data.component.scss?raw';
+import configurableTabsHtml from './configurable-tabs/configurable-tabs.component.html?raw';
+import configurableTabsTs from './configurable-tabs/configurable-tabs.component.ts.txt?raw';
+import configurableTabsScss from './configurable-tabs/configurable-tabs.component.scss?raw';
+import tabsTransferHtml from './configurable-tabs/tabs-transfer/tabs-transfer.component.html?raw';
+import tabsTransferTs from './configurable-tabs/tabs-transfer/tabs-transfer.component.ts.txt?raw';
 @Component({
   selector: 'd-demo-tabs',
   templateUrl: './tabs-demo.component.html',
@@ -9,65 +37,65 @@ import { Subscription } from 'rxjs';
 })
 export class TabsDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./basic/basic.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./basic/basic.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: basicHtml },
+    { title: 'TS', language: 'typescript', code: basicTs },
   ];
 
   withoutContentSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./without-content/without-content.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./without-content/without-content.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: withoutContentHtml },
+    { title: 'TS', language: 'typescript', code: withoutContentTs },
   ];
 
   beforeChangeSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./before-change/before-change.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./before-change/before-change.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: beforeChangeHtml },
+    { title: 'TS', language: 'typescript', code: beforeChangeTs },
   ];
   customSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./custom/custom.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./custom/custom.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: customHtml },
+    { title: 'TS', language: 'typescript', code: customTs },
   ];
   typePillsSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./type-pills/type-pills.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./type-pills/type-pills.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: typePillsHtml },
+    { title: 'TS', language: 'typescript', code: typePillsTs },
   ];
   typeOptionsSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./type-options/type-options.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./type-options/type-options.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: typeOptionsHtml },
+    { title: 'TS', language: 'typescript', code: typeOptionsTs },
   ];
   typeSliderSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./type-slider/type-slider.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./type-slider/type-slider.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: typeSliderHtml },
+    { title: 'TS', language: 'typescript', code: typeSliderTs },
   ];
   typeWrappedSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./type-wrapped/type-wrapped.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./type-wrapped/type-wrapped.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: typeWrappedHtml },
+    { title: 'TS', language: 'typescript', code: typeWrappedTs },
   ];
   sizeSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./size/size.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./size/size.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: sizeHtml },
+    { title: 'TS', language: 'typescript', code: sizeTs },
   ];
   AddDeleteSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./add-delete/add-delete.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./add-delete/add-delete.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: addDeleteHtml },
+    { title: 'TS', language: 'typescript', code: addDeleteTs },
   ];
   BigDataSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./big-data/big-data.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./big-data/big-data.component.ts?raw') },
-    { title: 'SCSS', language: 'css', code: require('./big-data/big-data.component.scss?raw') },
+    { title: 'HTML', language: 'xml', code: bigDataHtml },
+    { title: 'TS', language: 'typescript', code: bigDataTs },
+    { title: 'SCSS', language: 'css', code: bigDataScss },
   ];
   ConfigurableSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./configurable-tabs/configurable-tabs.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./configurable-tabs/configurable-tabs.component.ts?raw') },
-    { title: 'SCSS', language: 'css', code: require('./configurable-tabs/configurable-tabs.component.scss?raw') },
+    { title: 'HTML', language: 'xml', code: configurableTabsHtml },
+    { title: 'TS', language: 'typescript', code: configurableTabsTs },
+    { title: 'SCSS', language: 'css', code: configurableTabsScss },
     {
       title: 'tabs-transfer HTML',
       language: 'xml',
-      code: require('./configurable-tabs/tabs-transfer/tabs-transfer.component.html?raw'),
+      code: tabsTransferHtml,
     },
     {
       title: 'tabs-transfer TS',
       language: 'typescript',
-      code: require('./configurable-tabs/tabs-transfer/tabs-transfer.component.ts?raw'),
+      code: tabsTransferTs,
     },
   ];
   navItems = [];

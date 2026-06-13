@@ -2,6 +2,12 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import basicHtml from './basic/basic.component.html?raw';
+import basicTs from './basic/basic.component.ts.txt?raw';
+import customOpenHtml from './custom-open/custom-open.component.html?raw';
+import customOpenTs from './custom-open/custom-open.component.ts.txt?raw';
+import zIndexHtml from './z-index/z-index.component.html?raw';
+import zIndexTs from './z-index/z-index.component.ts.txt?raw';
 
 @Component({
   selector: 'd-image-preview-demo',
@@ -10,16 +16,16 @@ import { Subscription } from 'rxjs';
 })
 export class DImagePreviewDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./basic/basic.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./basic/basic.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: basicHtml },
+    { title: 'TS', language: 'typescript', code: basicTs },
   ];
   customOpen: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./custom-open/custom-open.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./custom-open/custom-open.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: customOpenHtml },
+    { title: 'TS', language: 'typescript', code: customOpenTs },
   ];
   zIndexSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./z-index/z-index.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./z-index/z-index.component.ts?raw') }
+    { title: 'HTML', language: 'xml', code: zIndexHtml },
+    { title: 'TS', language: 'typescript', code: zIndexTs }
   ];
 
   navItems = [];

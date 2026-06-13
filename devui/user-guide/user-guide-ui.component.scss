@@ -1,9 +1,9 @@
-@import '../style/theme/color';
-@import '../style/theme/corner';
-@import '../style/core/_font';
-@import '../style/core/z-index';
-@import '../style/core/animation';
-@import '../style/theme/shadow';
+@use '../style/theme/color' as *;
+@use '../style/theme/corner' as *;
+@use '../style/core/_font' as *;
+@use '../style/core/z-index' as *;
+@use '../style/core/animation' as *;
+@use '../style/theme/shadow' as *;
 
 .user-guide-mask-layer {
   position: fixed;

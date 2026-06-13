@@ -11,6 +11,9 @@ import { DDemoNavModule } from 'devui-commons/src/demo-nav/d-demo-nav.module';
 import { ColorDesignComponent } from './color-design.component';
 import { ColorComponent } from './color/color.component';
 import { DesignColorDemoComponent } from './design-color-demo.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
 @NgModule({
   declarations: [DesignColorDemoComponent, ColorComponent],
   imports: [
@@ -29,8 +32,8 @@ import { DesignColorDemoComponent } from './design-color-demo.component';
       },
       { path: 'demo', component: DesignColorDemoComponent},
       { path: 'api', component: DevUIApiComponent, data: {
-        'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-        'en-us': require('!html-loader!markdown-loader!../doc/api-en.md')
+        'zh-cn': marked.parse(apiCn),
+        'en-us': marked.parse(apiEn)
       }}
     ])
   ]

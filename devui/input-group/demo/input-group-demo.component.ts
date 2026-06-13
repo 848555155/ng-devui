@@ -2,6 +2,15 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import basicHtml from './basic/basic.component.html?raw';
+import basicTs from './basic/basic.component.ts.txt?raw';
+import basicScss from './basic/basic.component.scss?raw';
+import responsiveHtml from './responsive/responsive.component.html?raw';
+import responsiveTs from './responsive/responsive.component.ts.txt?raw';
+import responsiveScss from './responsive/responsive.component.scss?raw';
+import embedHtml from './embed/embed.component.html?raw';
+import embedTs from './embed/embed.component.ts.txt?raw';
+import embedScss from './embed/embed.component.scss?raw';
 @Component({
   selector: 'd-input-group-demo',
   templateUrl: './input-group-demo.component.html',
@@ -9,19 +18,19 @@ import { Subscription } from 'rxjs';
 })
 export class InputGroupDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./basic/basic.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./basic/basic.component.ts?raw') },
-    { title: 'SCSS', language: 'css', code: require('./basic/basic.component.scss?raw') },
+    { title: 'HTML', language: 'xml', code: basicHtml },
+    { title: 'TS', language: 'typescript', code: basicTs },
+    { title: 'SCSS', language: 'css', code: basicScss },
   ];
   responsiveSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./responsive/responsive.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./responsive/responsive.component.ts?raw') },
-    { title: 'SCSS', language: 'css', code: require('./responsive/responsive.component.scss?raw') },
+    { title: 'HTML', language: 'xml', code: responsiveHtml },
+    { title: 'TS', language: 'typescript', code: responsiveTs },
+    { title: 'SCSS', language: 'css', code: responsiveScss },
   ];
   embedSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./embed/embed.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./embed/embed.component.ts?raw') },
-    { title: 'SCSS', language: 'css', code: require('./embed/embed.component.scss?raw') },
+    { title: 'HTML', language: 'xml', code: embedHtml },
+    { title: 'TS', language: 'typescript', code: embedTs },
+    { title: 'SCSS', language: 'css', code: embedScss },
   ];
 
   navItems = [];

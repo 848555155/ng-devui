@@ -16,6 +16,9 @@ import { GanttDemoComponent } from './gantt-demo.component';
 import { GanttDesignComponent } from './gantt-design.component';
 import { ResetPositionComponent } from './table/reset-position/reset-position.component';
 import { TableComponent } from './table/table.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
 @NgModule({
   declarations: [GanttDemoComponent, BasicComponent, ResetPositionComponent, TableComponent],
   imports: [
@@ -37,8 +40,8 @@ import { TableComponent } from './table/table.component';
       },
       { path: 'demo', component: GanttDemoComponent},
       { path: 'api', component: DevUIApiComponent, data: {
-        'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-        'en-us': require('!html-loader!markdown-loader!../doc/api-en.md')
+        'zh-cn': marked.parse(apiCn),
+        'en-us': marked.parse(apiEn)
       }}
     ])
   ]

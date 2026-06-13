@@ -1,8 +1,8 @@
-@import '../style/theme/color';
-@import '../style/core/font';
-@import '../style/theme/corner';
-@import '../style/core/animation';
-@import '../style/theme/z-index';
+@use '../style/theme/color' as *;
+@use '../style/core/font' as *;
+@use '../style/theme/corner' as *;
+@use '../style/core/animation' as *;
+@use '../style/theme/z-index' as *;
 
 .devui-tree-select {
   position: relative;

@@ -1,6 +1,6 @@
-@import '../style/core/layout';
-@import '../style/theme/color';
-@import '../style/core/_font';
+@use '../style/core/layout' as *;
+@use '../style/theme/color' as *;
+@use '../style/core/_font' as *;
 
 .devui-form-horizontal :host.devui-form-controls {
   flex: 1 1 auto;

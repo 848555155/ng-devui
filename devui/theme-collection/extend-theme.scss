@@ -1,11 +1,12 @@
-@import '../styles-var/devui-var.scss';
+@use '../styles-var/devui-var.scss' as *;
+@use './overwrite-style.scss' as *;
 
 body[ui-theme='infinity-theme'],
 body[ui-theme='sweet-theme'],
 body[ui-theme='provence-theme'],
 body[ui-theme='deep-theme'],
 body[ui-theme='galaxy-theme'] {
-  @import './overwrite-style.scss';
+  @include overwrite-theme-styles();
 }
 
 body[ui-theme='sweet-theme'] {

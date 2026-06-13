@@ -1,5 +1,5 @@
-@import '../style/theme/color';
-@import '../style/theme/corner';
+@use '../style/theme/color' as *;
+@use '../style/theme/corner' as *;
 
 .devui-datepicker {
   border-radius: $devui-border-radius;

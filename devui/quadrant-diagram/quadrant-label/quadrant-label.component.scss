@@ -1,7 +1,7 @@
-@import '../../style/theme/shadow';
-@import '../../style/core/_font';
-@import '../../style/theme/corner';
-@import '../../style/theme/color';
+@use '../../style/theme/shadow' as *;
+@use '../../style/core/_font' as *;
+@use '../../style/theme/corner' as *;
+@use '../../style/theme/color' as *;
 
 .devui-list-style {
   font-size: $devui-font-size-card-title;

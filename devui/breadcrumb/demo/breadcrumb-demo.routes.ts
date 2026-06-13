@@ -7,6 +7,20 @@ import { ClickBlockComponent } from './click-block/click-block.component';
 import { CustomComponent } from './custom/custom.component';
 import { MenuComponent } from './menu/menu.component';
 import { SourceConfigComponent } from './source-config/source-config.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
+import basicHtml from './basic/basic.component.html?raw';
+import basicTs from './basic/basic.component.ts.txt?raw';
+import sourceConfigHtml from './source-config/source-config.component.html?raw';
+import sourceConfigTs from './source-config/source-config.component.ts.txt?raw';
+import customHtml from './custom/custom.component.html?raw';
+import customTs from './custom/custom.component.ts.txt?raw';
+import customScss from './custom/custom.component.scss?raw';
+import menuHtml from './menu/menu.component.html?raw';
+import menuTs from './menu/menu.component.ts.txt?raw';
+import clickBlockHtml from './click-block/click-block.component.html?raw';
+import clickBlockTs from './click-block/click-block.component.ts.txt?raw';
 
 export default [
   { path: '', redirectTo: 'demo', pathMatch: 'full' },
@@ -26,8 +40,8 @@ export default [
           noDescription: true,
           component: BasicComponent,
           source: [
-            { title: 'HTML', language: 'xml', code: require('./basic/basic.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./basic/basic.component.ts?raw') },
+            { title: 'HTML', language: 'xml', code: basicHtml },
+            { title: 'TS', language: 'typescript', code: basicTs },
           ],
         },
         {
@@ -36,8 +50,8 @@ export default [
           noDescription: true,
           component: SourceConfigComponent,
           source: [
-            { title: 'HTML', language: 'xml', code: require('./source-config/source-config.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./source-config/source-config.component.ts?raw') },
+            { title: 'HTML', language: 'xml', code: sourceConfigHtml },
+            { title: 'TS', language: 'typescript', code: sourceConfigTs },
           ],
         },
         {
@@ -46,9 +60,9 @@ export default [
           noDescription: true,
           component: MenuComponent,
           source: [
-            { title: 'HTML', language: 'xml', code: require('./custom/custom.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./custom/custom.component.ts?raw') },
-            { title: 'SCSS', language: 'css', code: require('./custom/custom.component.scss?raw') },
+            { title: 'HTML', language: 'xml', code: customHtml },
+            { title: 'TS', language: 'typescript', code: customTs },
+            { title: 'SCSS', language: 'css', code: customScss },
           ],
         },
         {
@@ -57,8 +71,8 @@ export default [
           noDescription: true,
           component: CustomComponent,
           source: [
-            { title: 'HTML', language: 'xml', code: require('./menu/menu.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./menu/menu.component.ts?raw') },
+            { title: 'HTML', language: 'xml', code: menuHtml },
+            { title: 'TS', language: 'typescript', code: menuTs },
           ],
         },
         {
@@ -67,8 +81,8 @@ export default [
           noDescription: true,
           component: ClickBlockComponent,
           source: [
-            { title: 'HTML', language: 'xml', code: require('./click-block/click-block.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./click-block/click-block.component.ts?raw') },
+            { title: 'HTML', language: 'xml', code: clickBlockHtml },
+            { title: 'TS', language: 'typescript', code: clickBlockTs },
           ],
         },
       ],
@@ -78,8 +92,8 @@ export default [
     path: 'api',
     component: DevUIApiComponent,
     data: {
-      'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-      'en-us': require('!html-loader!markdown-loader!../doc/api-en.md'),
+      'zh-cn': marked.parse(apiCn),
+      'en-us': marked.parse(apiEn),
     },
   },
 ] as Routes;

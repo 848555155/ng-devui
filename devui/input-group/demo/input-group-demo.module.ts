@@ -19,6 +19,9 @@ import { EmbedComponent } from './embed/embed.component';
 import { InputGroupDemoComponent } from './input-group-demo.component';
 import { InputGroupDesignComponent } from './input-group-design.component';
 import { ResponsiveComponent } from './responsive/responsive.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
 
 @NgModule({
   imports: [
@@ -46,8 +49,8 @@ import { ResponsiveComponent } from './responsive/responsive.component';
         path: 'api',
         component: DevUIApiComponent,
         data: {
-          'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-          'en-us': require('!html-loader!markdown-loader!../doc/api-en.md'),
+          'zh-cn': marked.parse(apiCn),
+          'en-us': marked.parse(apiEn),
         },
       },
     ]),

@@ -14,6 +14,9 @@ import { BasicComponent } from "./basic/basic.component";
 import { CategorySearchDemoComponent } from "./category-search-demo.component";
 import { CategorySearchDesignComponent } from "./category-search-design.component";
 import { ExtendComponent } from "./extend/extend.component";
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
 @NgModule({
   declarations: [
     CategorySearchDemoComponent,
@@ -48,8 +51,8 @@ import { ExtendComponent } from "./extend/extend.component";
         path: "api",
         component: DevUIApiComponent,
         data: {
-          "zh-cn": require("!html-loader!markdown-loader!../doc/api-cn.md"),
-          "en-us": require("!html-loader!markdown-loader!../doc/api-en.md"),
+          "zh-cn": marked.parse(apiCn),
+          "en-us": marked.parse(apiEn),
         },
       },
     ]),

@@ -1,4 +1,4 @@
-@import '../../../../devui/styles-var/devui-var.scss';
+@use '../../../../devui/styles-var/devui-var.scss' as *;
 
 d-icon + d-icon {
   margin-left: 16px;

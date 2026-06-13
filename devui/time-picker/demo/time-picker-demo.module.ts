@@ -15,6 +15,9 @@ import { CustomComponent } from './custom/custom.component';
 import { FormatComponent } from './format/format.component';
 import { TimePickerDemoComponent } from './time-picker-demo.component';
 import { TimePickerDesignComponent } from './time-picker-design.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
 
 @NgModule({
   imports: [
@@ -35,8 +38,8 @@ import { TimePickerDesignComponent } from './time-picker-design.component';
       },
       { path: 'demo', component: TimePickerDemoComponent },
       { path: 'api', component: DevUIApiComponent, data: {
-        'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-        'en-us': require('!html-loader!markdown-loader!../doc/api-en.md')
+        'zh-cn': marked.parse(apiCn),
+        'en-us': marked.parse(apiEn)
       } }
     ])
   ],

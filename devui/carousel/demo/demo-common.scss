@@ -1,4 +1,4 @@
-@import '../../../devui/styles-var/devui-var.scss';
+@use '../../../devui/styles-var/devui-var.scss' as *;
 
 d-carousel-item {
   text-align: center;

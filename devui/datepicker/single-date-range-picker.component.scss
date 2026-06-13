@@ -1,5 +1,5 @@
-@import '../style/theme/color';
-@import 'datepicker.component.scss';
+@use '../style/theme/color' as *;
+@use 'datepicker.component.scss' as *;
 
 .devui-month-view {
   box-shadow: none;

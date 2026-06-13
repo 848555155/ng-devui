@@ -1,6 +1,6 @@
-@import '../style/theme/color';
-@import '../style/core/_font';
-@import '../style/theme/corner';
+@use '../style/theme/color' as *;
+@use '../style/core/_font' as *;
+@use '../style/theme/corner' as *;
 
 @mixin list {
   d-toggle-menu-input,

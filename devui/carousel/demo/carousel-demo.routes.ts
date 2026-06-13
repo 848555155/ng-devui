@@ -7,6 +7,20 @@ import { CarouselDemoBasicComponent } from './basic/carousel-demo-basic.componen
 import { CarouselDemoTriggerComponent } from './trigger/carousel-demo-trigger.component';
 import { CarouselDemoAutoPlayComponent } from './autoplay/carousel-demo-autoplay.component';
 import { CarouselDemoCustomComponent } from './custom/carousel-demo-custom.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
+import basicHtml from './basic/carousel-demo-basic.component.html?raw';
+import basicTs from './basic/carousel-demo-basic.component.ts.txt?raw';
+import triggerHtml from './trigger/carousel-demo-trigger.component.html?raw';
+import triggerTs from './trigger/carousel-demo-trigger.component.ts.txt?raw';
+import autoplayHtml from './autoplay/carousel-demo-autoplay.component.html?raw';
+import autoplayTs from './autoplay/carousel-demo-autoplay.component.ts.txt?raw';
+import customHtml from './custom/carousel-demo-custom.component.html?raw';
+import customTs from './custom/carousel-demo-custom.component.ts.txt?raw';
+import withTransitionProgressHtml from './with-transition-progress/with-transition-progress.component.html?raw';
+import withTransitionProgressTs from './with-transition-progress/with-transition-progress.component.ts.txt?raw';
+import demoCommonScss from './demo-common.scss?raw';
 
 export default [
   { path: '', redirectTo: 'demo', pathMatch: 'full' },
@@ -26,9 +40,9 @@ export default [
           noDescription: true,
           component: CarouselDemoBasicComponent,
           source: [
-            { title: 'HTML', language: 'html', code: require('./basic/carousel-demo-basic.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./basic/carousel-demo-basic.component.ts?raw') },
-            { title: 'SCSS', language: 'css', code: require('./demo-common.scss?raw') },
+            { title: 'HTML', language: 'html', code: basicHtml },
+            { title: 'TS', language: 'typescript', code: basicTs },
+            { title: 'SCSS', language: 'css', code: demoCommonScss },
           ],
         },
         {
@@ -36,9 +50,9 @@ export default [
           name: 'triggerDemo',
           component: CarouselDemoTriggerComponent,
           source: [
-            { title: 'HTML', language: 'html', code: require('./trigger/carousel-demo-trigger.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./trigger/carousel-demo-trigger.component.ts?raw') },
-            { title: 'SCSS', language: 'css', code: require('./demo-common.scss?raw') },
+            { title: 'HTML', language: 'html', code: triggerHtml },
+            { title: 'TS', language: 'typescript', code: triggerTs },
+            { title: 'SCSS', language: 'css', code: demoCommonScss },
           ],
         },
         {
@@ -47,8 +61,8 @@ export default [
           noDescription: true,
           component: CarouselDemoAutoPlayComponent,
           source: [
-            { title: 'HTML', language: 'html', code: require('./autoplay/carousel-demo-autoplay.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./autoplay/carousel-demo-autoplay.component.ts?raw') },
+            { title: 'HTML', language: 'html', code: autoplayHtml },
+            { title: 'TS', language: 'typescript', code: autoplayTs },
           ],
         },
         {
@@ -57,9 +71,9 @@ export default [
           noDescription: true,
           component: CarouselDemoCustomComponent,
           source: [
-            { title: 'HTML', language: 'html', code: require('./custom/carousel-demo-custom.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./custom/carousel-demo-custom.component.ts?raw') },
-            { title: 'SCSS', language: 'css', code: require('./demo-common.scss?raw') },
+            { title: 'HTML', language: 'html', code: customHtml },
+            { title: 'TS', language: 'typescript', code: customTs },
+            { title: 'SCSS', language: 'css', code: demoCommonScss },
           ],
         },
         {
@@ -68,8 +82,8 @@ export default [
           noDescription: true,
           component: WithTransitionProgressComponent,
           source: [
-            { title: 'HTML', language: 'xml', code: require('./with-transition-progress/with-transition-progress.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./with-transition-progress/with-transition-progress.component.ts?raw') },
+            { title: 'HTML', language: 'xml', code: withTransitionProgressHtml },
+            { title: 'TS', language: 'typescript', code: withTransitionProgressTs },
           ],
         },
       ],
@@ -79,8 +93,8 @@ export default [
     path: 'api',
     component: DevUIApiComponent,
     data: {
-      'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-      'en-us': require('!html-loader!markdown-loader!../doc/api-en.md'),
+      'zh-cn': marked.parse(apiCn),
+      'en-us': marked.parse(apiEn),
     },
   },
 ] as Routes;

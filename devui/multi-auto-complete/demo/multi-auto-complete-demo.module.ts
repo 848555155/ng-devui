@@ -15,6 +15,9 @@ import { MultiAutoCompleteDemoDefaultComponent } from './default/multi-auto-comp
 import { MultiAutoCompleteDemoDisabledComponent } from './disabled/multi-auto-complete-demo-disabled.component';
 import { MultiAutoCompleteDemoComponent } from './multi-auto-complete-demo.component';
 import { MultiAutoCompleteDesignComponent } from './multi-auto-complete-design.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
 
 @NgModule({
   imports: [
@@ -38,8 +41,8 @@ import { MultiAutoCompleteDesignComponent } from './multi-auto-complete-design.c
         path: 'api',
         component: DevUIApiComponent,
         data: {
-          'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-          'en-us': require('!html-loader!markdown-loader!../doc/api-en.md'),
+          'zh-cn': marked.parse(apiCn),
+          'en-us': marked.parse(apiEn),
         },
       },
     ]),

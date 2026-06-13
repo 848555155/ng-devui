@@ -2,6 +2,21 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox/devui-source-data';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import basicHtml from './basic/with-source.component.html?raw';
+import basicTs from './basic/with-source.component.ts.txt?raw';
+import objectHtml from './object/object-source.component.html?raw';
+import objectTs from './object/object-source.component.ts.txt?raw';
+import searchFunctionHtml from './search-function/with-search-function.component.html?raw';
+import searchFunctionTs from './search-function/with-search-function.component.ts.txt?raw';
+import disableDataHtml from './disable-data/disable-data-with-source.component.html?raw';
+import disableDataTs from './disable-data/disable-data-with-source.component.ts.txt?raw';
+import asyncDataFunctionHtml from './async-data-function/async-data-with-function.component.html?raw';
+import asyncDataFunctionTs from './async-data-function/async-data-with-function.component.ts.txt?raw';
+import lazyLoadHtml from './lazy-load/lazy-load.component.html?raw';
+import lazyLoadTs from './lazy-load/lazy-load.component.ts.txt?raw';
+import customAreaHtml from './custom-area/custom-area.component.html?raw';
+import customAreaTs from './custom-area/custom-area.component.ts.txt?raw';
+import customAreaScss from './custom-area/custom-area.component.scss?raw';
 
 @Component({
   selector: 'd-editable-select-demo',
@@ -11,33 +26,33 @@ import { Subscription } from 'rxjs';
 })
 export class EditableSelectDemoComponent implements OnInit, OnDestroy {
   BasicSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./basic/with-source.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./basic/with-source.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: basicHtml },
+    { title: 'TS', language: 'typescript', code: basicTs },
   ];
   ObjectSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./object/object-source.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./object/object-source.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: objectHtml },
+    { title: 'TS', language: 'typescript', code: objectTs },
   ];
   SearchFnSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./search-function/with-search-function.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./search-function/with-search-function.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: searchFunctionHtml },
+    { title: 'TS', language: 'typescript', code: searchFunctionTs },
   ];
   DisableDataSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./disable-data/disable-data-with-source.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./disable-data/disable-data-with-source.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: disableDataHtml },
+    { title: 'TS', language: 'typescript', code: disableDataTs },
   ];
   AsyncDataSearchFnSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./async-data-function/async-data-with-function.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./async-data-function/async-data-with-function.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: asyncDataFunctionHtml },
+    { title: 'TS', language: 'typescript', code: asyncDataFunctionTs },
   ];
   LazyLoadComponentSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./lazy-load/lazy-load.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./lazy-load/lazy-load.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: lazyLoadHtml },
+    { title: 'TS', language: 'typescript', code: lazyLoadTs },
   ];
   customAreaSourceData: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./custom-area/custom-area.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./custom-area/custom-area.component.ts?raw') },
-    { title: 'SCSS', language: 'scss', code: require('./custom-area/custom-area.component.scss?raw') },
+    { title: 'HTML', language: 'xml', code: customAreaHtml },
+    { title: 'TS', language: 'typescript', code: customAreaTs },
+    { title: 'SCSS', language: 'scss', code: customAreaScss },
   ];
   navItems = [];
   subs: Subscription = new Subscription();

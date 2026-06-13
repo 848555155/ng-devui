@@ -5,6 +5,18 @@ import { DevuiDemoComponent } from 'ng-devui/shared/devui-demo/devui-demo.compon
 import { BasicComponent } from './basic/basic.component';
 import { ConfigComponent } from './config/config.component';
 import { SpecialComponent } from './special/special.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
+import basicHtml from './basic/basic.component.html?raw';
+import basicTs from './basic/basic.component.ts.txt?raw';
+import basicCss from './basic/basic.component.css?raw';
+import specialHtml from './special/special.component.html?raw';
+import specialTs from './special/special.component.ts.txt?raw';
+import specialCss from './special/special.component.css?raw';
+import configHtml from './config/config.component.html?raw';
+import configTs from './config/config.component.ts.txt?raw';
+import configCss from './config/config.component.css?raw';
 
 export default [
   { path: '', redirectTo: 'demo', pathMatch: 'full' },
@@ -23,9 +35,9 @@ export default [
           name: 'basicDemo',
           component: BasicComponent,
           source: [
-            { title: 'HTML', language: 'xml', code: require('./basic/basic.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./basic/basic.component.ts?raw') },
-            { title: 'SCSS', language: 'css', code: require('./basic/basic.component.css?raw') },
+            { title: 'HTML', language: 'xml', code: basicHtml },
+            { title: 'TS', language: 'typescript', code: basicTs },
+            { title: 'SCSS', language: 'css', code: basicCss },
           ],
         },
         {
@@ -33,9 +45,9 @@ export default [
           name: 'configDemo',
           component: ConfigComponent,
           source: [
-            { title: 'HTML', language: 'xml', code: require('./special/special.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./special/special.component.ts?raw') },
-            { title: 'SCSS', language: 'css', code: require('./special/special.component.css?raw') },
+            { title: 'HTML', language: 'xml', code: specialHtml },
+            { title: 'TS', language: 'typescript', code: specialTs },
+            { title: 'SCSS', language: 'css', code: specialCss },
           ],
         },
         {
@@ -43,9 +55,9 @@ export default [
           name: 'specialDemo',
           component: SpecialComponent,
           source: [
-            { title: 'HTML', language: 'xml', code: require('./config/config.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./config/config.component.ts?raw') },
-            { title: 'SCSS', language: 'css', code: require('./config/config.component.css?raw') },
+            { title: 'HTML', language: 'xml', code: configHtml },
+            { title: 'TS', language: 'typescript', code: configTs },
+            { title: 'SCSS', language: 'css', code: configCss },
           ],
         },
       ],
@@ -55,8 +67,8 @@ export default [
     path: 'api',
     component: DevUIApiComponent,
     data: {
-      'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-      'en-us': require('!html-loader!markdown-loader!../doc/api-en.md'),
+      'zh-cn': marked.parse(apiCn),
+      'en-us': marked.parse(apiEn),
     },
   },
 ] as Routes;

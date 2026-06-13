@@ -6,6 +6,7 @@ import {
   forwardRef,
   inject,
   input,
+  Input,
   model,
   OnChanges,
   OnDestroy,
@@ -65,7 +66,7 @@ export class AccordionComponent implements AccordionOptions, OnChanges, OnInit, 
   linkDefaultTarget = input('_self');
 
   accordionType = input<'normal' | 'embed'>('normal');
-  showAnimation: boolean = true;
+  @Input() showAnimation: boolean = true;
 
   activeItem: any;
   i18nCommonText: any;

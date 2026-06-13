@@ -3,10 +3,15 @@ import { AfterViewInit, Component, ElementRef, Inject, Input, OnInit, QueryList,
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import * as hljs from 'highlight.js/lib/core';
-['bash', 'typescript', 'json'].forEach((langName) => {
-  const langModule = require(`highlight.js/lib/languages/${langName}`);
-  hljs.registerLanguage(langName, langModule);
-});
+import bash from 'highlight.js/lib/languages/bash';
+import typescript from 'highlight.js/lib/languages/typescript';
+import json from 'highlight.js/lib/languages/json';
+hljs.registerLanguage('bash', bash);
+hljs.registerLanguage('typescript', typescript);
+hljs.registerLanguage('json', json);
+import { marked } from 'marked';
+import getStartedCn from './getStarted-cn.md?raw';
+import getStartedEn from './getStarted-en.md?raw';
 
 @Component({
   template: `
@@ -53,7 +58,7 @@ export class GetStartedComponent implements OnInit, AfterViewInit {
 
   setReadMe(lang) {
     const currLang = lang === 'en-us' ? 'en' : 'cn';
-    this.readMe = require(`!html-loader!markdown-loader!./getStarted-${currLang}.md`);
+    this.readMe = marked.parse(currLang === 'en' ? getStartedEn : getStartedCn);
   }
 
   refreshView() {

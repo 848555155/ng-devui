@@ -1,4 +1,4 @@
-@import '../style/theme/color';
+@use '../style/theme/color' as *;
 
 .devui-avatar-style {
   display: inline-block;

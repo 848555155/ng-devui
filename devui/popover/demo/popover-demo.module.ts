@@ -17,6 +17,9 @@ import { PopoverDemoComponent } from './popover-demo.component';
 import { PopoverDesignComponent } from './popover-design.component';
 import { PositionComponent } from './position/position.component';
 import { ScrollElementComponent } from './scroll-element/scroll-element.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
 
 @NgModule({
   imports: [
@@ -39,8 +42,8 @@ import { ScrollElementComponent } from './scroll-element/scroll-element.componen
         path: 'api',
         component: DevUIApiComponent,
         data: {
-          'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-          'en-us': require('!html-loader!markdown-loader!../doc/api-en.md'),
+          'zh-cn': marked.parse(apiCn),
+          'en-us': marked.parse(apiEn),
         },
       },
     ]),

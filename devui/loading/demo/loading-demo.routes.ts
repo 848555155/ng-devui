@@ -8,6 +8,25 @@ import { FullScreenComponent } from './full-screen/full-screen.component';
 import { PromiseComponent } from './promise/promise.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { ShowLoadingComponent } from './show-loading/show-loading.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
+import basicHtml from './basic/basic.component.html?raw';
+import basicTs from './basic/basic.component.ts.txt?raw';
+import basicScss from './basic/basic.component.scss?raw';
+import customHtml from './custom/custom.component.html?raw';
+import customTs from './custom/custom.component.ts.txt?raw';
+import customScss from './custom/custom.component.scss?raw';
+import promiseHtml from './promise/promise.component.html?raw';
+import promiseTs from './promise/promise.component.ts.txt?raw';
+import subscriptionHtml from './subscription/subscription.component.html?raw';
+import subscriptionTs from './subscription/subscription.component.ts.txt?raw';
+import showLoadingHtml from './show-loading/show-loading.component.html?raw';
+import showLoadingTs from './show-loading/show-loading.component.ts.txt?raw';
+import showLoadingScss from './show-loading/show-loading.component.scss?raw';
+import fullScreenHtml from './full-screen/full-screen.component.html?raw';
+import fullScreenTs from './full-screen/full-screen.component.ts.txt?raw';
+import fullScreenScss from './full-screen/full-screen.component.scss?raw';
 
 export default [
   { path: '', redirectTo: 'demo', pathMatch: 'full' },
@@ -26,9 +45,9 @@ export default [
           name: 'basicDemo',
           component: BasicComponent,
           source: [
-            { title: 'HTML', language: 'xml', code: require('./basic/basic.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./basic/basic.component.ts?raw') },
-            { title: 'SCSS', language: 'css', code: require('./basic/basic.component.scss?raw') },
+            { title: 'HTML', language: 'xml', code: basicHtml },
+            { title: 'TS', language: 'typescript', code: basicTs },
+            { title: 'SCSS', language: 'css', code: basicScss },
           ],
         },
         {
@@ -36,9 +55,9 @@ export default [
           name: 'customDemo',
           component: CustomComponent,
           source: [
-            { title: 'HTML', language: 'xml', code: require('./custom/custom.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./custom/custom.component.ts?raw') },
-            { title: 'SCSS', language: 'css', code: require('./custom/custom.component.scss?raw') },
+            { title: 'HTML', language: 'xml', code: customHtml },
+            { title: 'TS', language: 'typescript', code: customTs },
+            { title: 'SCSS', language: 'css', code: customScss },
           ],
         },
         {
@@ -46,8 +65,8 @@ export default [
           name: 'promiseDemo',
           component: PromiseComponent,
           source: [
-            { title: 'HTML', language: 'xml', code: require('./promise/promise.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./promise/promise.component.ts?raw') },
+            { title: 'HTML', language: 'xml', code: promiseHtml },
+            { title: 'TS', language: 'typescript', code: promiseTs },
           ],
         },
         {
@@ -55,8 +74,8 @@ export default [
           name: 'subscriptionDemo',
           component: SubscriptionComponent,
           source: [
-            { title: 'HTML', language: 'xml', code: require('./subscription/subscription.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./subscription/subscription.component.ts?raw') },
+            { title: 'HTML', language: 'xml', code: subscriptionHtml },
+            { title: 'TS', language: 'typescript', code: subscriptionTs },
           ],
         },
         {
@@ -64,9 +83,9 @@ export default [
           name: 'showLoadingDemo',
           component: ShowLoadingComponent,
           source: [
-            { title: 'HTML', language: 'xml', code: require('./show-loading/show-loading.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./show-loading/show-loading.component.ts?raw') },
-            { title: 'SCSS', language: 'typescript', code: require('./show-loading/show-loading.component.scss?raw') },
+            { title: 'HTML', language: 'xml', code: showLoadingHtml },
+            { title: 'TS', language: 'typescript', code: showLoadingTs },
+            { title: 'SCSS', language: 'typescript', code: showLoadingScss },
           ],
         },
         {
@@ -74,9 +93,9 @@ export default [
           name: 'fullScreenDemo',
           component: FullScreenComponent,
           source: [
-            { title: 'HTML', language: 'xml', code: require('./full-screen/full-screen.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./full-screen/full-screen.component.ts?raw') },
-            { title: 'SCSS', language: 'typescript', code: require('./full-screen/full-screen.component.scss?raw') },
+            { title: 'HTML', language: 'xml', code: fullScreenHtml },
+            { title: 'TS', language: 'typescript', code: fullScreenTs },
+            { title: 'SCSS', language: 'typescript', code: fullScreenScss },
           ],
         },
       ],
@@ -86,8 +105,8 @@ export default [
     path: 'api',
     component: DevUIApiComponent,
     data: {
-      'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-      'en-us': require('!html-loader!markdown-loader!../doc/api-en.md'),
+      'zh-cn': marked.parse(apiCn),
+      'en-us': marked.parse(apiEn),
     },
   },
 ] as Routes;

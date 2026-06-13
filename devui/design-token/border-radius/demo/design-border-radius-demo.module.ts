@@ -11,6 +11,9 @@ import { DDemoNavModule } from 'devui-commons/src/demo-nav/d-demo-nav.module';
 import { BorderRadiusDesignComponent } from './border-radius-design.component';
 import { BorderRadiusComponent } from './border-radius/border-radius.component';
 import { DesignBorderRadiusDemoComponent } from './design-border-radius-demo.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
 @NgModule({
   declarations: [DesignBorderRadiusDemoComponent, BorderRadiusComponent],
   imports: [
@@ -29,8 +32,8 @@ import { DesignBorderRadiusDemoComponent } from './design-border-radius-demo.com
       },
       { path: 'demo', component: DesignBorderRadiusDemoComponent},
       { path: 'api', component: DevUIApiComponent, data: {
-        'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-        'en-us': require('!html-loader!markdown-loader!../doc/api-en.md')
+        'zh-cn': marked.parse(apiCn),
+        'en-us': marked.parse(apiEn)
       }}
     ])
   ]

@@ -1,9 +1,15 @@
-@import '../theme/color.scss';
-@import '../theme/shadow';
-@import '../theme/corner';
-@import '../theme/font';
-@import '../theme/animation';
-@import '../../style/theme/z-index';
+@use '../theme/color.scss' as *;
+@use '../theme/shadow' as *;
+@use '../theme/corner' as *;
+@use '../theme/font' as *;
+@use '../theme/animation' as *;
+@use '../../style/theme/z-index' as *;
+@forward '../theme/z-index';
+@forward '../theme/animation';
+@forward '../theme/font';
+@forward '../theme/corner';
+@forward '../theme/shadow';
+@forward '../theme/color';
 
 @mixin devui-no-data-tip() {
   cursor: not-allowed;

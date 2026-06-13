@@ -1,4 +1,4 @@
-@import '../../../../../style/theme/color';
+@use '../../../../../style/theme/color' as *;
 
 .sort-clickable {
   cursor: pointer;

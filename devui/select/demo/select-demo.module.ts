@@ -32,6 +32,9 @@ import { SelectDesignComponent } from './select-design.component';
 import { UserLimitSelectedNumberComponent } from './user-limit-selected-number/user-limit-selected-number.component';
 import { UserMailSearchComponent } from './user-mail-search/user-mail-search.component';
 import { UserSearchNLazyLoadComponent } from './user-search-n-lazyload/user-search-n-lazyload.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
 
 @NgModule({
   imports: [
@@ -55,8 +58,8 @@ import { UserSearchNLazyLoadComponent } from './user-search-n-lazyload/user-sear
         path: 'api',
         component: DevUIApiComponent,
         data: {
-          'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-          'en-us': require('!html-loader!markdown-loader!../doc/api-en.md'),
+          'zh-cn': marked.parse(apiCn),
+          'en-us': marked.parse(apiEn),
         },
       },
     ]),

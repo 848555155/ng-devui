@@ -2,6 +2,20 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import basicHtml from './basic/basic.component.html?raw';
+import basicTs from './basic/basic.component.ts.txt?raw';
+import disabledHtml from './disabled/disabled.component.html?raw';
+import disabledTs from './disabled/disabled.component.ts.txt?raw';
+import horizontalHtml from './horizontal/horizontal.component.html?raw';
+import horizontalTs from './horizontal/horizontal.component.ts.txt?raw';
+import verticalHtml from './vertical/vertical.component.html?raw';
+import verticalTs from './vertical/vertical.component.ts.txt?raw';
+import conditionChangeHtml from './condition-change/condition-change.component.html?raw';
+import conditionChangeTs from './condition-change/condition-change.component.ts.txt?raw';
+import conditionRadioGroupHtml from './condition-radio-group/condition-radio-group.component.html?raw';
+import conditionRadioGroupTs from './condition-radio-group/condition-radio-group.component.ts.txt?raw';
+import customHtml from './custom/custom.component.html?raw';
+import customTs from './custom/custom.component.ts.txt?raw';
 
 @Component({
   selector: 'd-demo-radio',
@@ -12,32 +26,32 @@ export class RadioDemoComponent implements OnInit, OnDestroy {
   navItems = [];
   subs: Subscription = new Subscription();
   basicSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./basic/basic.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./basic/basic.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: basicHtml },
+    { title: 'TS', language: 'typescript', code: basicTs },
   ];
   disabledSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./disabled/disabled.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./disabled/disabled.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: disabledHtml },
+    { title: 'TS', language: 'typescript', code: disabledTs },
   ];
   horizontalSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./horizontal/horizontal.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./horizontal/horizontal.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: horizontalHtml },
+    { title: 'TS', language: 'typescript', code: horizontalTs },
   ];
   verticalSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./vertical/vertical.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./vertical/vertical.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: verticalHtml },
+    { title: 'TS', language: 'typescript', code: verticalTs },
   ];
   conditionChangeSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./condition-change/condition-change.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./condition-change/condition-change.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: conditionChangeHtml },
+    { title: 'TS', language: 'typescript', code: conditionChangeTs },
   ];
   conditionChangeGroupSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./condition-radio-group/condition-radio-group.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./condition-radio-group/condition-radio-group.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: conditionRadioGroupHtml },
+    { title: 'TS', language: 'typescript', code: conditionRadioGroupTs },
   ];
   customSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./custom/custom.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./custom/custom.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: customHtml },
+    { title: 'TS', language: 'typescript', code: customTs },
   ];
 
   constructor(private translate: TranslateService) {}

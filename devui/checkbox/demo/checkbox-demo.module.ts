@@ -15,6 +15,9 @@ import { CheckboxDesignComponent } from './checkbox-design.component';
 import { CheckboxConditionChangeComponent } from './condition-change/condition-change.component';
 import { CheckboxConditionGroupComponent } from './condition-group/condition-group.component';
 import { CheckboxGroupBasicComponent } from './group/checkbox-group-basic.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
 
 @NgModule({
   imports: [
@@ -34,8 +37,8 @@ import { CheckboxGroupBasicComponent } from './group/checkbox-group-basic.compon
       },
       { path: 'demo', component: CheckBoxDemoComponent},
       { path: 'api', component: DevUIApiComponent, data: {
-        'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-        'en-us': require('!html-loader!markdown-loader!../doc/api-en.md')
+        'zh-cn': marked.parse(apiCn),
+        'en-us': marked.parse(apiEn)
       }}
     ])
   ],

@@ -1,4 +1,4 @@
-@import '../../../../devui/styles-var/devui-var.scss';
+@use '../../../../devui/styles-var/devui-var.scss' as *;
 
 em.icon-chevron-down-2 {
   transition: transform $devui-animation-duration-slow $devui-animation-ease-in-out-smooth;

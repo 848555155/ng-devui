@@ -1,6 +1,9 @@
-@import '../theme/color.scss';
-@import './font.scss';
-@import '../theme/corner';
+@use '../theme/color.scss' as *;
+@use './font.scss' as *;
+@use '../theme/corner' as *;
+@forward '../theme/corner';
+@forward './font';
+@forward '../theme/color';
 
 ul.devui-dropdown-menu {
   > li {

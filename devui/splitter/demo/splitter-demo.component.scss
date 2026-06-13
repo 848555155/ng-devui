@@ -1,4 +1,4 @@
-@import '../../../devui/styles-var/devui-var.scss';
+@use '../../../devui/styles-var/devui-var.scss' as *;
 
 .splitter-border {
   border: 1px solid $devui-dividing-line;

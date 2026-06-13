@@ -1,5 +1,5 @@
-@import './core/color';
-@import './core/shadow';
+@use './core/color' as *;
+@use './core/shadow' as *;
 
 @media (max-width: 1279px) {
   @media (any-hover: none) {

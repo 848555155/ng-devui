@@ -1,6 +1,6 @@
-@import '../style/theme/color';
-@import '../style/theme/shadow';
-@import '../style/core/z-index';
+@use '../style/theme/color' as *;
+@use '../style/theme/shadow' as *;
+@use '../style/core/z-index' as *;
 
 $component-scope: 'devui-image-preview';
 

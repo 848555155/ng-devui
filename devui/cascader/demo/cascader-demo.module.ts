@@ -19,6 +19,9 @@ import { MultipleCascaderComponent } from './multiple-cascader/multiple-cascader
 import { ParentSelectCascaderComponent } from './parent-select-cascader/parent-select-cascader.component';
 import { SearchCascaderComponent } from './search-cascader/search-cascader.component';
 import { TemplateCascaderComponent } from './template-cascader/template-cascader.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
 
 @NgModule({
   imports: [
@@ -42,8 +45,8 @@ import { TemplateCascaderComponent } from './template-cascader/template-cascader
         path: 'api',
         component: DevUIApiComponent,
         data: {
-          'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-          'en-us': require('!html-loader!markdown-loader!../doc/api-en.md'),
+          'zh-cn': marked.parse(apiCn),
+          'en-us': marked.parse(apiEn),
         },
       },
     ]),

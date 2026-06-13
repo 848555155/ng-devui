@@ -2,6 +2,13 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox/devui-source-data';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import basicHtml from './basic/basic.component.html?raw';
+import basicTs from './basic/basic.component.ts.txt?raw';
+import customHtml from './custom/custom.component.html?raw';
+import customTs from './custom/custom.component.ts.txt?raw';
+import customScss from './custom/custom.component.scss?raw';
+import hideHtml from './hide/hide.component.html?raw';
+import hideTs from './hide/hide.component.ts.txt?raw';
 @Component({
   selector: 'd-demo-tags',
   templateUrl: './tags-demo.component.html',
@@ -9,19 +16,19 @@ import { Subscription } from 'rxjs';
 })
 export class TagsDemoComponent implements OnDestroy, OnInit {
   basicSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./basic/basic.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./basic/basic.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: basicHtml },
+    { title: 'TS', language: 'typescript', code: basicTs },
   ];
 
   customSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./custom/custom.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./custom/custom.component.ts?raw') },
-    { title: 'SCSS', language: 'css', code: require('./custom/custom.component.scss?raw') },
+    { title: 'HTML', language: 'xml', code: customHtml },
+    { title: 'TS', language: 'typescript', code: customTs },
+    { title: 'SCSS', language: 'css', code: customScss },
   ];
 
   hideSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./hide/hide.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./hide/hide.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: hideHtml },
+    { title: 'TS', language: 'typescript', code: hideTs },
   ];
 
   navItems = [];

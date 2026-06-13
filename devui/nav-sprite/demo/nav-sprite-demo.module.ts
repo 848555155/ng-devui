@@ -11,6 +11,9 @@ import { BasicComponent } from "./basic/basic.component";
 import { NavSpriteDesignComponent } from "./nav-sprite-design.component";
 import { ScrollContainerComponent } from "./scroll-container/scroll-container.component";
 import { NavSpriteDemoComponent } from "./nav-sprite-demo.component";
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
 @NgModule({
   imports: [
     TranslateModule,
@@ -37,8 +40,8 @@ import { NavSpriteDemoComponent } from "./nav-sprite-demo.component";
         path: "api",
         component: DevUIApiComponent,
         data: {
-          "zh-cn": require("!html-loader!markdown-loader!../doc/api-cn.md"),
-          "en-us": require("!html-loader!markdown-loader!../doc/api-en.md"),
+          "zh-cn": marked.parse(apiCn),
+          "en-us": marked.parse(apiEn),
         },
       },
     ]),

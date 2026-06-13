@@ -1,5 +1,6 @@
 // 字号大小变量
-@import '../theme/font';
+@use '../theme/font' as *;
+@forward '../theme/font';
 
 $font-family: 'Helvetica','Arial', 'PingFangSC-Regular', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', 'HarmonyOS Sans SC', 'HarmonyOS Sans', 'Microsoft JhengHei';
 

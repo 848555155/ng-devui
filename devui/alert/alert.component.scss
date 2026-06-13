@@ -1,7 +1,7 @@
-@import '../style/theme/color';
-@import '../style/theme/shadow';
-@import '../style/theme/corner';
-@import '../style/core/_font';
+@use '../style/theme/color' as *;
+@use '../style/theme/shadow' as *;
+@use '../style/theme/corner' as *;
+@use '../style/core/_font' as *;
 
 :host {
   display: block;

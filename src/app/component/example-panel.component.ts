@@ -19,12 +19,10 @@ import * as hljs from 'highlight.js/lib/core';
 import { Subscription, fromEvent } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ComponentDataService } from './component.data.service';
-
-['javascript', 'typescript'].forEach((langName) => {
-  // Using require() here because import() support hasn't landed in Webpack yet
-  const langModule = require(`highlight.js/lib/languages/${langName}`);
-  hljs.registerLanguage(langName, langModule);
-});
+import javascript from 'highlight.js/lib/languages/javascript';
+import typescript from 'highlight.js/lib/languages/typescript';
+hljs.registerLanguage('javascript', javascript);
+hljs.registerLanguage('typescript', typescript);
 
 @Component({
   selector: 'd-demo-cell',

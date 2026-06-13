@@ -1,6 +1,6 @@
-@import '../style/theme/color';
-@import '../style/core/font';
-@import '../style/core/animation';
+@use '../style/theme/color' as *;
+@use '../style/core/font' as *;
+@use '../style/core/animation' as *;
 
 .devui-form-group.devui-has-feedback {
   & > .devui-form-control-feedback {

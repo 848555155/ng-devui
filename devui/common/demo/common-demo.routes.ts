@@ -11,6 +11,29 @@ import { IframPropagateDemoComponent } from './iframe-propagate/iframe-propagate
 import { LazyLoadComponent } from './lazy-load/lazy-load.component';
 import { ClipboardDemoComponent } from './clipboard/clipboard.component';
 import { ShapeIconHoverableDemoComponent } from './shapeIconHoverable/shapeIconHoverable.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
+import datePipeHtml from './pipe/date-pipe/date-pipe.component.html?raw';
+import datePipeTs from './pipe/date-pipe/date-pipe.component.ts.txt?raw';
+import safeNullPipeHtml from './pipe/safe-null-pipe/safe-null-pipe.component.html?raw';
+import safeNullPipeTs from './pipe/safe-null-pipe/safe-null-pipe.component.ts.txt?raw';
+import helperBrowserHtml from './helper-browser/helper-browser.component.html?raw';
+import helperBrowserTs from './helper-browser/helper-browser.component.ts.txt?raw';
+import helperJumpHtml from './helper-jump/helper-jump.component.html?raw';
+import helperJumpTs from './helper-jump/helper-jump.component.ts.txt?raw';
+import helperDownloadHtml from './helper-download/helper-download.component.html?raw';
+import helperDownloadTs from './helper-download/helper-download.component.ts.txt?raw';
+import iframePropagateHtml from './iframe-propagate/iframe-propagate.component.html?raw';
+import iframePropagateTs from './iframe-propagate/iframe-propagate.component.ts.txt?raw';
+import clipboardHtml from './clipboard/clipboard.component.html?raw';
+import clipboardTs from './clipboard/clipboard.component.ts.txt?raw';
+import clipboardScss from './clipboard/clipboard.component.scss?raw';
+import shapeIconHoverableHtml from './shapeIconHoverable/shapeIconHoverable.component.html?raw';
+import shapeIconHoverableTs from './shapeIconHoverable/shapeIconHoverable.component.ts.txt?raw';
+import lazyLoadHtml from './lazy-load/lazy-load.component.html?raw';
+import lazyLoadTs from './lazy-load/lazy-load.component.ts.txt?raw';
+import lazyLoadScss from './lazy-load/lazy-load.component.scss?raw';
 
 export default [
   { path: '', redirectTo: 'demo', pathMatch: 'full' },
@@ -30,8 +53,8 @@ export default [
           noDescription: true,
           component: DatePipeDemoComponent,
           source: [
-            { title: 'HTML', language: 'html', code: require('./pipe/date-pipe/date-pipe.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./pipe/date-pipe/date-pipe.component.ts?raw') },
+            { title: 'HTML', language: 'html', code: datePipeHtml },
+            { title: 'TS', language: 'typescript', code: datePipeTs },
           ],
         },
         {
@@ -39,8 +62,8 @@ export default [
           name:  'pipeDemo.dSafeNullPipe',
           component: SafeNullPipeComponent,
           source: [
-            { title: 'HTML', language: 'html', code: require('./pipe/safe-null-pipe/safe-null-pipe.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./pipe/safe-null-pipe/safe-null-pipe.component.ts?raw') },
+            { title: 'HTML', language: 'html', code: safeNullPipeHtml },
+            { title: 'TS', language: 'typescript', code: safeNullPipeTs },
           ],
         },
         {
@@ -49,8 +72,8 @@ export default [
           noDescription: true,
           component: HelperBrowserComponent,
           source: [
-            { title: 'HTML', language: 'html', code: require('./helper-browser/helper-browser.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./helper-browser/helper-browser.component.ts?raw') },
+            { title: 'HTML', language: 'html', code: helperBrowserHtml },
+            { title: 'TS', language: 'typescript', code: helperBrowserTs },
           ],
         },
         {
@@ -59,8 +82,8 @@ export default [
           noDescription: true,
           component: HelperJumpDemoComponent,
           source: [
-            { title: 'HTML', language: 'html', code: require('./helper-jump/helper-jump.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./helper-jump/helper-jump.component.ts?raw') },
+            { title: 'HTML', language: 'html', code: helperJumpHtml },
+            { title: 'TS', language: 'typescript', code: helperJumpTs },
           ],
         },
         {
@@ -69,8 +92,8 @@ export default [
           noDescription: true,
           component: HelperDownloadDemoComponent,
           source: [
-            { title: 'HTML', language: 'html', code: require('./helper-download/helper-download.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./helper-download/helper-download.component.ts?raw') },
+            { title: 'HTML', language: 'html', code: helperDownloadHtml },
+            { title: 'TS', language: 'typescript', code: helperDownloadTs },
           ],
         },
         {
@@ -78,8 +101,8 @@ export default [
           name:  'iframePropagateDemo',
           component: IframPropagateDemoComponent,
           source: [
-            { title: 'HTML', language: 'html', code: require('./iframe-propagate/iframe-propagate.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./iframe-propagate/iframe-propagate.component.ts?raw') },
+            { title: 'HTML', language: 'html', code: iframePropagateHtml },
+            { title: 'TS', language: 'typescript', code: iframePropagateTs },
           ],
         },
         {
@@ -88,9 +111,9 @@ export default [
           noDescription: true,
           component: ClipboardDemoComponent,
           source: [
-            { title: 'HTML', language: 'html', code: require('./clipboard/clipboard.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./clipboard/clipboard.component.ts?raw') },
-            { title: 'SCSS', language: 'css', code: require('./clipboard/clipboard.component.scss?raw') },
+            { title: 'HTML', language: 'html', code: clipboardHtml },
+            { title: 'TS', language: 'typescript', code: clipboardTs },
+            { title: 'SCSS', language: 'css', code: clipboardScss },
           ],
         },
         {
@@ -99,8 +122,8 @@ export default [
           noDescription: true,
           component: ShapeIconHoverableDemoComponent,
           source: [
-            { title: 'HTML', language: 'html', code: require('./shapeIconHoverable/shapeIconHoverable.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./shapeIconHoverable/shapeIconHoverable.component.ts?raw') },
+            { title: 'HTML', language: 'html', code: shapeIconHoverableHtml },
+            { title: 'TS', language: 'typescript', code: shapeIconHoverableTs },
           ],
         },
         {
@@ -108,9 +131,9 @@ export default [
           name:  'lazyLoadDemo',
           component: LazyLoadComponent,
           source: [
-            { title: 'HTML', language: 'html', code: require('./lazy-load/lazy-load.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./lazy-load/lazy-load.component.ts?raw') },
-            { title: 'SCSS', language: 'css', code: require('./lazy-load/lazy-load.component.scss?raw') },
+            { title: 'HTML', language: 'html', code: lazyLoadHtml },
+            { title: 'TS', language: 'typescript', code: lazyLoadTs },
+            { title: 'SCSS', language: 'css', code: lazyLoadScss },
           ],
         },
       ]
@@ -120,8 +143,8 @@ export default [
     path: 'api',
     component: DevUIApiComponent,
     data: {
-      'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-      'en-us': require('!html-loader!markdown-loader!../doc/api-en.md'),
+      'zh-cn': marked.parse(apiCn),
+      'en-us': marked.parse(apiEn),
     },
   },
 ] as Routes;

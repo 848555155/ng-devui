@@ -2,6 +2,14 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox/devui-source-data';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import basicHtml from './basic/basic.component.html?raw';
+import basicTs from './basic/basic.component.ts.txt?raw';
+import asyncHtml from './async/async.component.html?raw';
+import asyncTs from './async/async.component.ts.txt?raw';
+import customizeHtml from './customize/customize.component.html?raw';
+import customizeTs from './customize/customize.component.ts.txt?raw';
+import virtualScrollHtml from './virtual-scroll/virtual-scroll.component.html?raw';
+import virtualScrollTs from './virtual-scroll/virtual-scroll.component.ts.txt?raw';
 @Component({
   selector: 'd-demo-basic',
   templateUrl: './tags.input-demo.component.html',
@@ -17,23 +25,23 @@ import { Subscription } from 'rxjs';
 })
 export class TagsInputDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./basic/basic.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./basic/basic.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: basicHtml },
+    { title: 'TS', language: 'typescript', code: basicTs },
   ];
 
   asyncSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./async/async.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./async/async.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: asyncHtml },
+    { title: 'TS', language: 'typescript', code: asyncTs },
   ];
 
   customizeSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./customize/customize.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./customize/customize.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: customizeHtml },
+    { title: 'TS', language: 'typescript', code: customizeTs },
   ];
 
   virtualScrollSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./virtual-scroll/virtual-scroll.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./virtual-scroll/virtual-scroll.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: virtualScrollHtml },
+    { title: 'TS', language: 'typescript', code: virtualScrollTs },
   ];
 
   navItems = [];

@@ -1,6 +1,6 @@
-@import '../../style/theme/color';
-@import '../../style/theme/shadow';
-@import '../../style/theme/corner';
+@use '../../style/theme/color' as *;
+@use '../../style/theme/shadow' as *;
+@use '../../style/theme/corner' as *;
 
 .devui-two-date-wrapper {
   display: inline-flex !important;

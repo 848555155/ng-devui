@@ -1,7 +1,7 @@
-@import '../../style/theme/color';
-@import '../../style/theme/shadow';
-@import '../../style/theme/corner';
-@import '../../style/theme/z-index';
+@use '../../style/theme/color' as *;
+@use '../../style/theme/shadow' as *;
+@use '../../style/theme/corner' as *;
+@use '../../style/theme/z-index' as *;
 
 .popper {
   position: relative;

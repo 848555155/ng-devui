@@ -1,4 +1,4 @@
-@import '../style/theme/color';
+@use '../style/theme/color' as *;
 
 svg.svg-icon-arrow > g > polygon {
   fill: $devui-icon-text;

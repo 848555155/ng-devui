@@ -20,6 +20,9 @@ import { OpenOneComponent } from './open-one/open-one.component';
 import { LoopComponent } from './loop/loop.component';
 import { CustomNodeComponent } from './custom-node/custom-node.component';
 import { AutoExpandComponent } from './auto-expand/auto-expand.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
 
 @NgModule({
   imports: [
@@ -40,8 +43,8 @@ import { AutoExpandComponent } from './auto-expand/auto-expand.component';
         path: 'api',
         component: DevUIApiComponent,
         data: {
-          'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-          'en-us': require('!html-loader!markdown-loader!../doc/api-en.md'),
+          'zh-cn': marked.parse(apiCn),
+          'en-us': marked.parse(apiEn),
         },
       },
     ]),

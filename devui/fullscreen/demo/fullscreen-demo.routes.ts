@@ -4,6 +4,13 @@ import { DevuiDemoComponent } from 'ng-devui/shared/devui-demo/devui-demo.compon
 import { FullscreenDesignComponent } from './fullscreen-design.component';
 import { FullscreenDemoImmersiveComponent } from './immersive/immersive.component';
 import { FullscreenDemoNormalComponent } from './normal/normal.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
+import normalHtml from './normal/normal.component.html?raw';
+import normalTs from './normal/normal.component.ts.txt?raw';
+import immersiveHtml from './immersive/immersive.component.html?raw';
+import immersiveTs from './immersive/immersive.component.ts.txt?raw';
 
 export default [
   { path: '', redirectTo: 'demo', pathMatch: 'full' },
@@ -25,12 +32,12 @@ export default [
             {
               title: 'HTML',
               language: 'xml',
-              code: require('./normal/normal.component.html?raw'),
+              code: normalHtml,
             },
             {
               title: 'TS',
               language: 'typescript',
-              code: require('./normal/normal.component.ts?raw'),
+              code: normalTs,
             },
           ],
         },
@@ -42,12 +49,12 @@ export default [
             {
               title: 'HTML',
               language: 'xml',
-              code: require('./immersive/immersive.component.html?raw'),
+              code: immersiveHtml,
             },
             {
               title: 'TS',
               language: 'typescript',
-              code: require('./immersive/immersive.component.ts?raw'),
+              code: immersiveTs,
             },
           ],
         },
@@ -58,8 +65,8 @@ export default [
     path: 'api',
     component: DevUIApiComponent,
     data: {
-      'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-      'en-us': require('!html-loader!markdown-loader!../doc/api-en.md'),
+      'zh-cn': marked.parse(apiCn),
+      'en-us': marked.parse(apiEn),
     },
   },
 ] as Routes;

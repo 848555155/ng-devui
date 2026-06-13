@@ -1,5 +1,5 @@
-@import '../style/theme/color';
-@import './tree.component';
+@use '../style/theme/color' as *;
+@use './tree.component' as *;
 
 :host {
   display: block;

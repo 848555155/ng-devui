@@ -1,7 +1,7 @@
-@import '../style/theme/color';
-@import '../style/theme/shadow';
-@import '../style/theme/corner';
-@import '../style/core/_font';
+@use '../style/theme/color' as *;
+@use '../style/theme/shadow' as *;
+@use '../style/theme/corner' as *;
+@use '../style/core/_font' as *;
 
 $devui-table-inset-shadow-left: var(--devui-table-inset-shadow-left, 8px 0 8px -4px);
 $devui-table-inset-shadow-right: var(--devui-table-inset-shadow-right, -8px 0 8px -4px);

@@ -16,6 +16,9 @@ import { TagsInputDemoCustomizeComponent } from './customize/customize.component
 import { TagsInputDesignComponent } from './tags-input-design.component';
 import { TagsInputDemoComponent } from './tags.input-demo.component';
 import { TagsInputDemoVirtualScrollComponent } from './virtual-scroll/virtual-scroll.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
 
 @NgModule({
   imports: [
@@ -39,8 +42,8 @@ import { TagsInputDemoVirtualScrollComponent } from './virtual-scroll/virtual-sc
         path: 'api',
         component: DevUIApiComponent,
         data: {
-          'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-          'en-us': require('!html-loader!markdown-loader!../doc/api-en.md'),
+          'zh-cn': marked.parse(apiCn),
+          'en-us': marked.parse(apiEn),
         },
       },
     ]),

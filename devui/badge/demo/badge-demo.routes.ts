@@ -8,6 +8,26 @@ import { StatusComponent } from './status/status.component';
 import { PositionComponent } from './position/position.component';
 import { CustomComponent } from './custom/custom.component';
 import { BadgeDesignComponent } from './badge-design.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
+import basicHtml from './basic/basic.component.html?raw';
+import basicTs from './basic/basic.component.ts.txt?raw';
+import basicScss from './basic/basic.component.scss?raw';
+import countHtml from './count/count.component.html?raw';
+import countTs from './count/count.component.ts.txt?raw';
+import countScss from './count/count.component.scss?raw';
+import dotHtml from './dot/dot.component.html?raw';
+import dotTs from './dot/dot.component.ts.txt?raw';
+import dotScss from './dot/dot.component.scss?raw';
+import statusHtml from './status/status.component.html?raw';
+import statusTs from './status/status.component.ts.txt?raw';
+import positionHtml from './position/position.component.html?raw';
+import positionTs from './position/position.component.ts.txt?raw';
+import positionScss from './position/position.component.scss?raw';
+import customHtml from './custom/custom.component.html?raw';
+import customTs from './custom/custom.component.ts.txt?raw';
+import customScss from './custom/custom.component.scss?raw';
 
 export default [
   { path: '', redirectTo: 'demo', pathMatch: 'full' },
@@ -26,9 +46,9 @@ export default [
           name: 'basicDemo',
           component: BasicComponent,
           source: [
-            { title: 'HTML', language: 'xml', code: require('./basic/basic.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./basic/basic.component.ts?raw') },
-            { title: 'SCSS', language: 'css', code: require('./basic/basic.component.scss?raw') },
+            { title: 'HTML', language: 'xml', code: basicHtml },
+            { title: 'TS', language: 'typescript', code: basicTs },
+            { title: 'SCSS', language: 'css', code: basicScss },
           ],
         },
         {
@@ -36,9 +56,9 @@ export default [
           name: 'countDemo',
           component: CountComponent,
           source: [
-            { title: 'HTML', language: 'xml', code: require('./count/count.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./count/count.component.ts?raw') },
-            { title: 'SCSS', language: 'css', code: require('./count/count.component.scss?raw') },
+            { title: 'HTML', language: 'xml', code: countHtml },
+            { title: 'TS', language: 'typescript', code: countTs },
+            { title: 'SCSS', language: 'css', code: countScss },
           ],
         },
         {
@@ -46,9 +66,9 @@ export default [
           name: 'dotDemo',
           component: DotComponent,
           source: [
-            { title: 'HTML', language: 'xml', code: require('./dot/dot.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./dot/dot.component.ts?raw') },
-            { title: 'SCSS', language: 'css', code: require('./dot/dot.component.scss?raw') },
+            { title: 'HTML', language: 'xml', code: dotHtml },
+            { title: 'TS', language: 'typescript', code: dotTs },
+            { title: 'SCSS', language: 'css', code: dotScss },
           ],
         },
         {
@@ -56,8 +76,8 @@ export default [
           name: 'statusDemo',
           component: StatusComponent,
           source: [
-            { title: 'HTML', language: 'xml', code: require('./status/status.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./status/status.component.ts?raw') },
+            { title: 'HTML', language: 'xml', code: statusHtml },
+            { title: 'TS', language: 'typescript', code: statusTs },
           ],
         },
         {
@@ -65,9 +85,9 @@ export default [
           name: 'positionDemo',
           component: PositionComponent,
           source: [
-            { title: 'HTML', language: 'xml', code: require('./position/position.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./position/position.component.ts?raw') },
-            { title: 'SCSS', language: 'css', code: require('./position/position.component.scss?raw') },
+            { title: 'HTML', language: 'xml', code: positionHtml },
+            { title: 'TS', language: 'typescript', code: positionTs },
+            { title: 'SCSS', language: 'css', code: positionScss },
           ],
         },
         {
@@ -75,9 +95,9 @@ export default [
           name: 'customDemo',
           component: CustomComponent,
           source: [
-            { title: 'HTML', language: 'xml', code: require('./custom/custom.component.html?raw') },
-            { title: 'TS', language: 'typescript', code: require('./custom/custom.component.ts?raw') },
-            { title: 'SCSS', language: 'css', code: require('./custom/custom.component.scss?raw') },
+            { title: 'HTML', language: 'xml', code: customHtml },
+            { title: 'TS', language: 'typescript', code: customTs },
+            { title: 'SCSS', language: 'css', code: customScss },
           ],
         },
       ],
@@ -87,8 +107,8 @@ export default [
     path: 'api',
     component: DevUIApiComponent,
     data: {
-      'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-      'en-us': require('!html-loader!markdown-loader!../doc/api-en.md'),
+      'zh-cn': marked.parse(apiCn),
+      'en-us': marked.parse(apiEn),
     },
   },
 ] as Routes;

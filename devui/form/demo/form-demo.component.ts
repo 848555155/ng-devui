@@ -2,6 +2,54 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox/devui-source-data';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import basicHtml from './basic/basic.component.html?raw';
+import basicTs from './basic/basic.component.ts.txt?raw';
+import basicCss from './basic/basic.component.css?raw';
+import labelHorizontalHtml from './label-horizontal/label-horizontal.component.html?raw';
+import labelHorizontalTs from './label-horizontal/label-horizontal.component.ts.txt?raw';
+import labelHorizontalCss from './label-horizontal/label-horizontal.component.css?raw';
+import modalHtml from './modal/modal.component.html?raw';
+import modalTs from './modal/modal.component.ts.txt?raw';
+import modalCss from './modal/modal.component.css?raw';
+import modalOneHtml from './modal-one/modal-one.component.html?raw';
+import modalOneTs from './modal-one/modal-one.component.ts.txt?raw';
+import multiColHtml from './multi-col/multi-col.component.html?raw';
+import multiColTs from './multi-col/multi-col.component.ts.txt?raw';
+import multiColCss from './multi-col/multi-col.component.css?raw';
+import innerValidatorHtml from './validate-template/inner-validator/inner-validator.component.html?raw';
+import innerValidatorTs from './validate-template/inner-validator/inner-validator.component.ts.txt?raw';
+import customValidatorHtml from './validate-template/custom-validator/custom-validator.component.html?raw';
+import customValidatorTs from './validate-template/custom-validator/custom-validator.component.ts.txt?raw';
+import errorStrategyHtml from './validate-template/error-strategy/error-strategy.component.html?raw';
+import errorStrategyTs from './validate-template/error-strategy/error-strategy.component.ts.txt?raw';
+import customMessageShowHtml from './validate-template/custom-message-show/custom-message-show.component.html?raw';
+import customMessageShowTs from './validate-template/custom-message-show/custom-message-show.component.ts.txt?raw';
+import customMessageShowScss from './validate-template/custom-message-show/custom-message-show.component.scss?raw';
+import debounceTimeHtml from './validate-template/debounce-time/debounce-time.component.html?raw';
+import debounceTimeTs from './validate-template/debounce-time/debounce-time.component.ts.txt?raw';
+import validateTemplateFormHtml from './validate-template/validate-template-form/validate-template-form.component.html?raw';
+import validateTemplateFormTs from './validate-template/validate-template-form/validate-template-form.component.ts.txt?raw';
+import userRegisterHtml from './validate-template/user-register/user-register.component.html?raw';
+import userRegisterTs from './validate-template/user-register/user-register.component.ts.txt?raw';
+import validateCrossComponentHtml from './validate-template/validate-cross-component/validate-cross-component.component.html?raw';
+import validateCrossComponentTs from './validate-template/validate-cross-component/validate-cross-component.component.ts.txt?raw';
+import childFormHtml from './validate-template/validate-cross-component/child-form/child-form.component.html?raw';
+import childFormTs from './validate-template/validate-cross-component/child-form/child-form.component.ts.txt?raw';
+import validateCrossComponentHtml1 from './validate-cross-component/validate-cross-component.component.html?raw';
+import validateCrossComponentTs1 from './validate-cross-component/validate-cross-component.component.ts.txt?raw';
+import childControlHtml from './validate-cross-component/child-control/child-user.component.html?raw';
+import childControlTs from './validate-cross-component/child-control/child-user.component.ts.txt?raw';
+import customStatusHtml from './custom-status/custom-status.component.html?raw';
+import customStatusTs from './custom-status/custom-status.component.ts.txt?raw';
+import validateReactiveHtml from './validate-reactive/validate-reactive.component.html?raw';
+import validateReactiveTs from './validate-reactive/validate-reactive.component.ts.txt?raw';
+import validateReactiveScss from './validate-reactive/validate-reactive.component.scss?raw';
+import validateSyncHtml from './validate-sync/validate-sync.component.html?raw';
+import validateSyncTs from './validate-sync/validate-sync.component.ts.txt?raw';
+import validateDynamicRuleHtml from './validate-dynamic-rule/validate-dynamic-rule.component.html?raw';
+import validateDynamicRuleTs from './validate-dynamic-rule/validate-dynamic-rule.component.ts.txt?raw';
+import validateUpdateHtml from './validate-update/validate-update.component.html?raw';
+import validateUpdateTs from './validate-update/validate-update.component.ts.txt?raw';
 
 @Component({
   selector: 'd-form-demo',
@@ -11,137 +59,137 @@ import { Subscription } from 'rxjs';
 })
 export class FormDemoComponent implements OnInit, OnDestroy {
   BasicSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./basic/basic.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./basic/basic.component.ts?raw') },
-    { title: 'SCSS', language: 'css', code: require('./basic/basic.component.css?raw') },
+    { title: 'HTML', language: 'xml', code: basicHtml },
+    { title: 'TS', language: 'typescript', code: basicTs },
+    { title: 'SCSS', language: 'css', code: basicCss },
   ];
   LabelHorizontalSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./label-horizontal/label-horizontal.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./label-horizontal/label-horizontal.component.ts?raw') },
-    { title: 'SCSS', language: 'css', code: require('./label-horizontal/label-horizontal.component.css?raw') },
+    { title: 'HTML', language: 'xml', code: labelHorizontalHtml },
+    { title: 'TS', language: 'typescript', code: labelHorizontalTs },
+    { title: 'SCSS', language: 'css', code: labelHorizontalCss },
   ];
   ModalSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./modal/modal.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./modal/modal.component.ts?raw') },
-    { title: 'SCSS', language: 'css', code: require('./modal/modal.component.css?raw') },
-    { title: 'ModalOne HTML', language: 'xml', code: require('./modal-one/modal-one.component.html?raw') },
-    { title: 'ModalOne TS', language: 'typescript', code: require('./modal-one/modal-one.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: modalHtml },
+    { title: 'TS', language: 'typescript', code: modalTs },
+    { title: 'SCSS', language: 'css', code: modalCss },
+    { title: 'ModalOne HTML', language: 'xml', code: modalOneHtml },
+    { title: 'ModalOne TS', language: 'typescript', code: modalOneTs },
   ];
   MultiColSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./multi-col/multi-col.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./multi-col/multi-col.component.ts?raw') },
-    { title: 'SCSS', language: 'css', code: require('./multi-col/multi-col.component.css?raw') },
+    { title: 'HTML', language: 'xml', code: multiColHtml },
+    { title: 'TS', language: 'typescript', code: multiColTs },
+    { title: 'SCSS', language: 'css', code: multiColCss },
   ];
 
   InnerValidatorSource: Array<DevuiSourceData> = [
     {
       title: 'HTML',
       language: 'xml',
-      code: require('./validate-template/inner-validator/inner-validator.component.html?raw'),
+      code: innerValidatorHtml,
     },
     {
       title: 'TS',
       language: 'typescript',
-      code: require('./validate-template/inner-validator/inner-validator.component.ts?raw'),
+      code: innerValidatorTs,
     },
   ];
   CustomValidatorSource: Array<DevuiSourceData> = [
     {
       title: 'HTML',
       language: 'xml',
-      code: require('./validate-template/custom-validator/custom-validator.component.html?raw'),
+      code: customValidatorHtml,
     },
     {
       title: 'TS',
       language: 'typescript',
-      code: require('./validate-template/custom-validator/custom-validator.component.ts?raw'),
+      code: customValidatorTs,
     },
   ];
   ErrorStrategySource: Array<DevuiSourceData> = [
     {
       title: 'HTML',
       language: 'xml',
-      code: require('./validate-template/error-strategy/error-strategy.component.html?raw'),
+      code: errorStrategyHtml,
     },
     {
       title: 'TS',
       language: 'typescript',
-      code: require('./validate-template/error-strategy/error-strategy.component.ts?raw'),
+      code: errorStrategyTs,
     },
   ];
   CustomMessageShowSource: Array<DevuiSourceData> = [
     {
       title: 'HTML',
       language: 'xml',
-      code: require('./validate-template/custom-message-show/custom-message-show.component.html?raw'),
+      code: customMessageShowHtml,
     },
     {
       title: 'TS',
       language: 'typescript',
-      code: require('./validate-template/custom-message-show/custom-message-show.component.ts?raw'),
+      code: customMessageShowTs,
     },
     {
       title: 'SCSS',
       language: 'css',
-      code: require('./validate-template/custom-message-show/custom-message-show.component.scss?raw'),
+      code: customMessageShowScss,
     },
   ];
   DebounceTimeSource: Array<DevuiSourceData> = [
     {
       title: 'HTML',
       language: 'xml',
-      code: require('./validate-template/debounce-time/debounce-time.component.html?raw'),
+      code: debounceTimeHtml,
     },
     {
       title: 'TS',
       language: 'typescript',
-      code: require('./validate-template/debounce-time/debounce-time.component.ts?raw'),
+      code: debounceTimeTs,
     },
   ];
   ValidateTemplateForm: Array<DevuiSourceData> = [
     {
       title: 'HTML',
       language: 'xml',
-      code: require('./validate-template/validate-template-form/validate-template-form.component.html?raw'),
+      code: validateTemplateFormHtml,
     },
     {
       title: 'TS',
       language: 'typescript',
-      code: require('./validate-template/validate-template-form/validate-template-form.component.ts?raw'),
+      code: validateTemplateFormTs,
     },
   ];
   UserRegisterShowSource: Array<DevuiSourceData> = [
     {
       title: 'HTML',
       language: 'xml',
-      code: require('./validate-template/user-register/user-register.component.html?raw'),
+      code: userRegisterHtml,
     },
     {
       title: 'TS',
       language: 'typescript',
-      code: require('./validate-template/user-register/user-register.component.ts?raw'),
+      code: userRegisterTs,
     },
   ];
   ValidateTemplateCrossComponent: Array<DevuiSourceData> = [
     {
       title: 'HTML',
       language: 'xml',
-      code: require('./validate-template/validate-cross-component/validate-cross-component.component.html?raw'),
+      code: validateCrossComponentHtml,
     },
     {
       title: 'TS',
       language: 'typescript',
-      code: require('./validate-template/validate-cross-component/validate-cross-component.component.ts?raw'),
+      code: validateCrossComponentTs,
     },
     {
       title: 'child-group.html',
       language: 'xml',
-      code: require('./validate-template/validate-cross-component/child-form/child-form.component.html?raw'),
+      code: childFormHtml,
     },
     {
       title: 'child-group.ts',
       language: 'typescript',
-      code: require('./validate-template/validate-cross-component/child-form/child-form.component.ts?raw'),
+      code: childFormTs,
     },
   ];
 
@@ -149,49 +197,49 @@ export class FormDemoComponent implements OnInit, OnDestroy {
     {
       title: 'HTML',
       language: 'xml',
-      code: require('./validate-cross-component/validate-cross-component.component.html?raw'),
+      code: validateCrossComponentHtml1,
     },
     {
       title: 'TS',
       language: 'typescript',
-      code: require('./validate-cross-component/validate-cross-component.component.ts?raw'),
+      code: validateCrossComponentTs1,
     },
     {
       title: 'child.html',
       language: 'xml',
-      code: require('./validate-cross-component/child-control/child-user.component.html?raw'),
+      code: childControlHtml,
     },
     {
       title: 'child.ts',
       language: 'typescript',
-      code: require('./validate-cross-component/child-control/child-user.component.ts?raw'),
+      code: childControlTs,
     },
   ];
 
   ValidateCustomStatus: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./custom-status/custom-status.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./custom-status/custom-status.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: customStatusHtml },
+    { title: 'TS', language: 'typescript', code: customStatusTs },
   ];
 
   ValidateReactiveSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./validate-reactive/validate-reactive.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./validate-reactive/validate-reactive.component.ts?raw') },
-    { title: 'SCSS', language: 'css', code: require('./validate-reactive/validate-reactive.component.scss?raw') },
+    { title: 'HTML', language: 'xml', code: validateReactiveHtml },
+    { title: 'TS', language: 'typescript', code: validateReactiveTs },
+    { title: 'SCSS', language: 'css', code: validateReactiveScss },
   ];
 
   ValidateSyncSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./validate-sync/validate-sync.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./validate-sync/validate-sync.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: validateSyncHtml },
+    { title: 'TS', language: 'typescript', code: validateSyncTs },
   ];
 
   ValidateDynamicRuleSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./validate-dynamic-rule/validate-dynamic-rule.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./validate-dynamic-rule/validate-dynamic-rule.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: validateDynamicRuleHtml },
+    { title: 'TS', language: 'typescript', code: validateDynamicRuleTs },
   ];
 
   ValidateUpdate: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./validate-update/validate-update.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./validate-update/validate-update.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: validateUpdateHtml },
+    { title: 'TS', language: 'typescript', code: validateUpdateTs },
   ];
 
   navItems = [];

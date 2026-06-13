@@ -2,6 +2,32 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import basicHtml from './basic/basic.component.html?raw';
+import basicTs from './basic/basic.component.ts.txt?raw';
+import treeFactoryHtml from './tree-factory/tree-factory.component.html?raw';
+import treeFactoryTs from './tree-factory/tree-factory.component.ts.txt?raw';
+import mergeNodeHtml from './merge-node/merge-node.component.html?raw';
+import mergeNodeTs from './merge-node/merge-node.component.ts.txt?raw';
+import customLoadingHtml from './custom-loading/custom-loading.component.html?raw';
+import customLoadingTs from './custom-loading/custom-loading.component.ts.txt?raw';
+import customLoadingTs1 from './custom-loading/custom-loading-svg.ts.txt?raw';
+import customKeyHtml from './custom-key/custom-key.component.html?raw';
+import customKeyTs from './custom-key/custom-key.component.ts.txt?raw';
+import searchFilterHtml from './search-filter/search-filter.component.html?raw';
+import searchFilterTs from './search-filter/search-filter.component.ts.txt?raw';
+import operateBtnHtml from './operate-btn/operate-btn.component.html?raw';
+import operateBtnTs from './operate-btn/operate-btn.component.ts.txt?raw';
+import customizeHtml from './customize/customize.component.html?raw';
+import customizeTs from './customize/customize.component.ts.txt?raw';
+import customizeScss from './customize/customize.component.scss?raw';
+import draggableHtml from './draggable/draggable.component.html?raw';
+import draggableTs from './draggable/draggable.component.ts.txt?raw';
+import draggableScss from './draggable/draggable.component.scss?raw';
+import checkControlHtml from './check-control/check-control.component.html?raw';
+import checkControlTs from './check-control/check-control.component.ts.txt?raw';
+import virtualScrollHtml from './virtual-scroll/virtual-scroll.component.html?raw';
+import virtualScrollTs from './virtual-scroll/virtual-scroll.component.ts.txt?raw';
+import virtualScrollCss from './virtual-scroll/virtual-scroll.component.css?raw';
 
 @Component({
   selector: 'd-tree-demo',
@@ -10,56 +36,56 @@ import { Subscription } from 'rxjs';
 })
 export class TreeDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./basic/basic.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./basic/basic.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: basicHtml },
+    { title: 'TS', language: 'typescript', code: basicTs },
   ];
   treeFactorySource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./tree-factory/tree-factory.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./tree-factory/tree-factory.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: treeFactoryHtml },
+    { title: 'TS', language: 'typescript', code: treeFactoryTs },
   ];
   MergeNodeSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./merge-node/merge-node.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./merge-node/merge-node.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: mergeNodeHtml },
+    { title: 'TS', language: 'typescript', code: mergeNodeTs },
   ];
   customLoadingSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./custom-loading/custom-loading.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./custom-loading/custom-loading.component.ts?raw') },
-    { title: 'SVG-TS', language: 'typescript', code: require('./custom-loading/custom-loading-svg.ts?raw') },
+    { title: 'HTML', language: 'xml', code: customLoadingHtml },
+    { title: 'TS', language: 'typescript', code: customLoadingTs },
+    { title: 'SVG-TS', language: 'typescript', code: customLoadingTs1 },
   ];
 
   customKeySource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./custom-key/custom-key.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./custom-key/custom-key.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: customKeyHtml },
+    { title: 'TS', language: 'typescript', code: customKeyTs },
   ];
   searchFilterSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./search-filter/search-filter.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./search-filter/search-filter.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: searchFilterHtml },
+    { title: 'TS', language: 'typescript', code: searchFilterTs },
   ];
 
   operateBtnSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./operate-btn/operate-btn.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./operate-btn/operate-btn.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: operateBtnHtml },
+    { title: 'TS', language: 'typescript', code: operateBtnTs },
   ];
 
   customizeSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./customize/customize.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./customize/customize.component.ts?raw') },
-    { title: 'SCSS', language: 'css', code: require('./customize/customize.component.scss?raw') },
+    { title: 'HTML', language: 'xml', code: customizeHtml },
+    { title: 'TS', language: 'typescript', code: customizeTs },
+    { title: 'SCSS', language: 'css', code: customizeScss },
   ];
 
   draggableSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./draggable/draggable.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./draggable/draggable.component.ts?raw') },
-    { title: 'SCSS', language: 'css', code: require('./draggable/draggable.component.scss?raw') },
+    { title: 'HTML', language: 'xml', code: draggableHtml },
+    { title: 'TS', language: 'typescript', code: draggableTs },
+    { title: 'SCSS', language: 'css', code: draggableScss },
   ];
   checkControlSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./check-control/check-control.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./check-control/check-control.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: checkControlHtml },
+    { title: 'TS', language: 'typescript', code: checkControlTs },
   ];
   virtualScrollSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./virtual-scroll/virtual-scroll.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./virtual-scroll/virtual-scroll.component.ts?raw') },
-    { title: 'SCSS', language: 'css', code: require('./virtual-scroll/virtual-scroll.component.css?raw') },
+    { title: 'HTML', language: 'xml', code: virtualScrollHtml },
+    { title: 'TS', language: 'typescript', code: virtualScrollTs },
+    { title: 'SCSS', language: 'css', code: virtualScrollCss },
   ];
 
   navItems = [];

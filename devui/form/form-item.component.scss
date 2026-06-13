@@ -1,4 +1,4 @@
-@import '../style/core/layout';
+@use '../style/core/layout' as *;
 
 .devui-form-horizontal :host.devui-form-item {
   margin-bottom: 20px;

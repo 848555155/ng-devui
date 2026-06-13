@@ -2,6 +2,12 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import basicHtml from './basic/basic.component.html?raw';
+import basicTs from './basic/basic.component.ts.txt?raw';
+import basicScss from './basic/basic.component.scss?raw';
+import scrollTargetHtml from './scroll-target/scroll-target.component.html?raw';
+import scrollTargetTs from './scroll-target/scroll-target.component.ts.txt?raw';
+import scrollTargetScss from './scroll-target/scroll-target.component.scss?raw';
 
 @Component({
   selector: 'd-demo-sticky',
@@ -10,14 +16,14 @@ import { Subscription } from 'rxjs';
 })
 export class StickyDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./basic/basic.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./basic/basic.component.ts?raw') },
-    { title: 'SCSS', language: 'css', code: require('./basic/basic.component.scss?raw') },
+    { title: 'HTML', language: 'xml', code: basicHtml },
+    { title: 'TS', language: 'typescript', code: basicTs },
+    { title: 'SCSS', language: 'css', code: basicScss },
   ];
   ScrollTargetSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./scroll-target/scroll-target.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./scroll-target/scroll-target.component.ts?raw') },
-    { title: 'SCSS', language: 'css', code: require('./scroll-target/scroll-target.component.scss?raw') },
+    { title: 'HTML', language: 'xml', code: scrollTargetHtml },
+    { title: 'TS', language: 'typescript', code: scrollTargetTs },
+    { title: 'SCSS', language: 'css', code: scrollTargetScss },
   ];
 
   navItems = [];

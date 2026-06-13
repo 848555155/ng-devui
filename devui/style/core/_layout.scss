@@ -43,7 +43,6 @@ $component-space: 24px;
 
 .grid {
   letter-spacing: -0.31em;
-  *letter-spacing: normal;
   word-spacing: -0.43em;
 }
 
@@ -77,8 +76,6 @@ $component-space: 24px;
 .u-19-24,
 .u-23-24 {
   display: inline-block;
-  *display: inline;
-  zoom: 1;
   letter-spacing: normal;
   word-spacing: normal;
   vertical-align: top;

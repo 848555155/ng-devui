@@ -2,6 +2,20 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import basicHtml from './basic/basic.component.html?raw';
+import basicTs from './basic/basic.component.ts.txt?raw';
+import lifeHtml from './life/life.component.html?raw';
+import lifeTs from './life/life.component.ts.txt?raw';
+import styleHtml from './style/style.component.html?raw';
+import styleScss from './style/style.component.scss?raw';
+import styleTs from './style/style.component.ts.txt?raw';
+import singleHtml from './single/single.component.html?raw';
+import singleTs from './single/single.component.ts.txt?raw';
+import appendHtml from './append/append.component.html?raw';
+import appendTs from './append/append.component.ts.txt?raw';
+import serviceHtml from './service/toast-service.component.html?raw';
+import serviceTs from './service/toast-service.component.ts.txt?raw';
+import serviceScss from './service/toast-service.component.scss?raw';
 
 @Component({
   selector: 'd-demo-toast',
@@ -10,31 +24,31 @@ import { Subscription } from 'rxjs';
 })
 export class ToastDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./basic/basic.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./basic/basic.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: basicHtml },
+    { title: 'TS', language: 'typescript', code: basicTs },
   ];
   lifeSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./life/life.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./life/life.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: lifeHtml },
+    { title: 'TS', language: 'typescript', code: lifeTs },
   ];
   styleSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./style/style.component.html?raw') },
-    { title: 'SCSS', language: 'css', code: require('./style/style.component.scss?raw') },
-    { title: 'TS', language: 'typescript', code: require('./style/style.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: styleHtml },
+    { title: 'SCSS', language: 'css', code: styleScss },
+    { title: 'TS', language: 'typescript', code: styleTs },
   ];
   singleSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./single/single.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./single/single.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: singleHtml },
+    { title: 'TS', language: 'typescript', code: singleTs },
   ];
   appendSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./append/append.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./append/append.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: appendHtml },
+    { title: 'TS', language: 'typescript', code: appendTs },
   ];
 
   ToastDemoService: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./service/toast-service.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./service/toast-service.component.ts?raw') },
-    { title: 'SCSS', language: 'css', code: require('./service/toast-service.component.scss?raw') },
+    { title: 'HTML', language: 'xml', code: serviceHtml },
+    { title: 'TS', language: 'typescript', code: serviceTs },
+    { title: 'SCSS', language: 'css', code: serviceScss },
   ];
   navItems = [];
   subs: Subscription = new Subscription();

@@ -6,6 +6,9 @@
 /out-tsc
 /publish
 
+# generated source copies (from .ts?raw migration)
+*.ts.txt
+
 # dependencies
 /node_modules
 

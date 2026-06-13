@@ -21,6 +21,9 @@ import { AutoDemoDropdownComponent } from './dropdown/auto-complete-demo-dropdow
 import { AutoDemoLatestComponent } from './latest/auto-complete-demo-latest.component';
 import { AutoDemoLazyLoadComponent } from './lazy-load/auto-complete-demo-lazy-load.component';
 import { AutoDemoObjectComponent } from './object/auto-complete-demo-object.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
 
 @NgModule({
   imports: [
@@ -42,8 +45,8 @@ import { AutoDemoObjectComponent } from './object/auto-complete-demo-object.comp
       },
       { path: 'demo', component: AutoCompleteDemoComponent},
       { path: 'api', component: DevUIApiComponent, data: {
-        'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-        'en-us': require('!html-loader!markdown-loader!../doc/api-en.md')
+        'zh-cn': marked.parse(apiCn),
+        'en-us': marked.parse(apiEn)
       }}
     ])
   ],

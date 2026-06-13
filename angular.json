@@ -14,7 +14,7 @@
       "schematics": {},
       "architect": {
         "build": {
-          "builder": "@angular-builders/custom-webpack:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "allowedCommonJsDependencies": [
               "date-fns",
@@ -24,13 +24,10 @@
               "color",
               "codesandbox"
             ],
-            "customWebpackConfig": {
-              "path": "scripts/extra-webpack.config.js"
-            },
             "outputPath": "dist/components",
             "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "browser": "src/main.ts",
+            "polyfills": ["zone.js"],
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
@@ -41,9 +38,19 @@
             "styles": [
               "node_modules/highlight.js/styles/an-old-hope.css",
               "src/styles.scss",
-              "devui/style/layout/devui-layout.scss"
+              "src/styles/devui-layout.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "loader": {
+              ".md": "text",
+              ".html": "text",
+              ".scss": "text",
+              ".css": "text",
+              ".txt": "text"
+            },
+            "stylePreprocessorOptions": {
+              "includePaths": ["node_modules", "."]
+            }
           },
           "configurations": {
             "production": {
@@ -57,10 +64,7 @@
               "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -70,23 +74,19 @@
               ]
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
             },
-            "es5": {
-              "tsConfig": "src/tsconfig.app.es5.json"
-            },
             "separate": {
               "tsConfig": "src/tsconfig.app.separate.json"
             }
-          }
+          },
+          "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-builders/custom-webpack:dev-server",
+          "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "buildTarget": "devui:build"
           },
@@ -96,12 +96,6 @@
             },
             "development": {
               "buildTarget": "devui:build:development"
-            },
-            "es5": {
-              "buildTarget": "devui:build:es5"
-            },
-            "separate": {
-              "buildTarget": "devui:build:separate"
             }
           },
           "defaultConfiguration": "development"
@@ -113,13 +107,10 @@
           }
         },
         "test": {
-          "builder": "@angular-builders/custom-webpack:karma",
+          "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "customWebpackConfig": {
-              "path": "scripts/extra-webpack.config.js"
-            },
             "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": ["zone.js"],
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
@@ -184,11 +175,8 @@
           }
         },
         "test": {
-          "builder": "@angular-builders/custom-webpack:karma",
+          "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "customWebpackConfig": {
-              "path": "scripts/extra-webpack.config.js"
-            },
             "main": "devui/test.ts",
             "tsConfig": "devui/tsconfig.spec.json",
             "karmaConfig": "devui/karma.conf.js",

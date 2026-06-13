@@ -11,6 +11,9 @@ import { DDemoNavModule } from 'devui-commons/src/demo-nav/d-demo-nav.module';
 import { DesignFontDemoComponent } from './design-font-demo.component';
 import { FontDesignComponent } from './font-design.component';
 import { FontComponent } from './font/font.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
 @NgModule({
   declarations: [DesignFontDemoComponent, FontComponent],
   imports: [
@@ -29,8 +32,8 @@ import { FontComponent } from './font/font.component';
       },
       { path: 'demo', component: DesignFontDemoComponent},
       { path: 'api', component: DevUIApiComponent, data: {
-        'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-        'en-us': require('!html-loader!markdown-loader!../doc/api-en.md')
+        'zh-cn': marked.parse(apiCn),
+        'en-us': marked.parse(apiEn)
       }}
     ])
   ]

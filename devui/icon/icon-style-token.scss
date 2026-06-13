@@ -1,5 +1,7 @@
-@import '../style/theme/color';
-@import '../style/theme/corner';
+@use '../style/theme/color' as *;
+@use '../style/theme/corner' as *;
+@forward '../style/theme/color';
+@forward '../style/theme/corner';
 
 // basic
 $devui-icon-font-size: var(--devui-icon-font-size, 16px);

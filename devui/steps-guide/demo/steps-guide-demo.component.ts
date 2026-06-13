@@ -2,6 +2,13 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import basicHtml from './basic/basic.component.html?raw';
+import basicTs from './basic/basic.component.ts.txt?raw';
+import positionHtml from './position/position.component.html?raw';
+import positionTs from './position/position.component.ts.txt?raw';
+import customHtml from './custom/custom.component.html?raw';
+import customTs from './custom/custom.component.ts.txt?raw';
+import fakeDataTs from './fakeData.ts.txt?raw';
 
 @Component({
   templateUrl: './steps-guide-demo.component.html',
@@ -9,21 +16,21 @@ import { Subscription } from 'rxjs';
 })
 export class StepsGuideDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./basic/basic.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./basic/basic.component.ts?raw') },
-    { title: 'DATA', language: 'typescript', code: require('./fakeData.ts?raw') },
+    { title: 'HTML', language: 'xml', code: basicHtml },
+    { title: 'TS', language: 'typescript', code: basicTs },
+    { title: 'DATA', language: 'typescript', code: fakeDataTs },
   ];
 
   positionSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./position/position.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./position/position.component.ts?raw') },
-    { title: 'DATA', language: 'typescript', code: require('./fakeData.ts?raw') },
+    { title: 'HTML', language: 'xml', code: positionHtml },
+    { title: 'TS', language: 'typescript', code: positionTs },
+    { title: 'DATA', language: 'typescript', code: fakeDataTs },
   ];
 
   customSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./custom/custom.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./custom/custom.component.ts?raw') },
-    { title: 'DATA', language: 'typescript', code: require('./fakeData.ts?raw') },
+    { title: 'HTML', language: 'xml', code: customHtml },
+    { title: 'TS', language: 'typescript', code: customTs },
+    { title: 'DATA', language: 'typescript', code: fakeDataTs },
   ];
 
   navItems = [];

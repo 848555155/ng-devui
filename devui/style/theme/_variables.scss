@@ -1,6 +1,6 @@
-@import './color';
-@import '../core/font';
-@import '../theme/font';
+@use './color' as *;
+@use '../core/font' as *;
+@use '../theme/font' as *;
 
 $text-color: $devui-text;
 $font-family: 'Helvetica','Arial', 'PingFangSC-Regular', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', 'HarmonyOS Sans SC', 'HarmonyOS Sans', 'Microsoft JhengHei';

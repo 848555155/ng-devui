@@ -1,6 +1,6 @@
-@import '../../style/core/animation';
-@import '../../style/theme/color';
-@import '../../style/theme/corner';
+@use '../../style/core/animation' as *;
+@use '../../style/theme/color' as *;
+@use '../../style/theme/corner' as *;
 
 .ui-draggable-dragging :host > * {
   pointer-events: none !important;

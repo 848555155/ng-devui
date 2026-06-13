@@ -1,8 +1,13 @@
-@import '../theme/color.scss';
-@import '../theme/shadow';
-@import '../theme/corner';
-@import '../theme/font';
-@import '../theme/animation';
+@use '../theme/color.scss' as *;
+@use '../theme/shadow' as *;
+@use '../theme/corner' as *;
+@use '../theme/font' as *;
+@use '../theme/animation' as *;
+@forward '../theme/animation';
+@forward '../theme/font';
+@forward '../theme/corner';
+@forward '../theme/shadow';
+@forward '../theme/color';
 
 @mixin gray-style-input {
   &:not([disabled]) {

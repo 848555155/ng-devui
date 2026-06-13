@@ -1,5 +1,5 @@
-@import '../style/theme/color';
-@import '../style/theme/shadow';
+@use '../style/theme/color' as *;
+@use '../style/theme/shadow' as *;
 
 .devui-quadrant-diagram {
   position: relative;

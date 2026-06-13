@@ -1,5 +1,5 @@
-@import '../../../../style/theme/color';
-@import '../../../../style/theme/corner';
+@use '../../../../style/theme/color' as *;
+@use '../../../../style/theme/corner' as *;
 
 svg.svg-icon-arrow > g > polygon {
   fill: $devui-icon-text;

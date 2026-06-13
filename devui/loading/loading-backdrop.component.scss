@@ -1,5 +1,5 @@
-@import '../style/theme/color';
-@import '../style/core/z-index';
+@use '../style/theme/color' as *;
+@use '../style/core/z-index' as *;
 
 .devui-loading-backdrop {
   position: absolute;

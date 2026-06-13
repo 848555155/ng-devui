@@ -2,6 +2,14 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import basicHtml from './basic/basic.component.html?raw';
+import basicTs from './basic/basic.component.ts.txt?raw';
+import basicScss from './basic/basic.component.scss?raw';
+import serviceWayHtml from './service-way/service-way.component.html?raw';
+import serviceWayTs from './service-way/service-way.component.ts.txt?raw';
+import serviceWayScss from './service-way/service-way.component.scss?raw';
+
+import mockStepsTs from './mock-steps.ts.txt?raw';
 
 @Component({
   selector: 'd-user-guide-demo',
@@ -10,17 +18,17 @@ import { Subscription } from 'rxjs';
 })
 export class UserGuideDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [
-    {title: 'HTML', language: 'xml', code:  require('./basic/basic.component.html?raw')},
-    {title: 'TS', language: 'typescript', code:  require('./basic/basic.component.ts?raw')},
-    {title: 'DATA', language: 'typescript', code: require('./mock-steps.ts?raw')},
-    {title: 'SCSS', language: 'css', code:  require('./basic/basic.component.scss?raw')}
+    {title: 'HTML', language: 'xml', code:  basicHtml},
+    {title: 'TS', language: 'typescript', code:  basicTs},
+    {title: 'DATA', language: 'typescript', code: mockStepsTs},
+    {title: 'SCSS', language: 'css', code:  basicScss}
   ];
 
   serviceWaySource: Array<DevuiSourceData> = [
-    {title: 'HTML', language: 'xml', code:  require('./service-way/service-way.component.html?raw')},
-    {title: 'TS', language: 'typescript', code:  require('./service-way/service-way.component.ts?raw')},
-    {title: 'DATA', language: 'typescript', code: require('./mock-steps.ts?raw')},
-    {title: 'SCSS', language: 'css', code:  require('./service-way/service-way.component.scss?raw')}
+    {title: 'HTML', language: 'xml', code:  serviceWayHtml},
+    {title: 'TS', language: 'typescript', code:  serviceWayTs},
+    {title: 'DATA', language: 'typescript', code: mockStepsTs},
+    {title: 'SCSS', language: 'css', code:  serviceWayScss}
   ];
 
   navItems = [];

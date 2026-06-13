@@ -2,6 +2,17 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import basicHtml from './basic/basic.component.html?raw';
+import basicTs from './basic/basic.component.ts.txt?raw';
+import asyncHtml from './async/async.component.html?raw';
+import asyncTs from './async/async.component.ts.txt?raw';
+import customHtml from './custom/custom.component.html?raw';
+import customTs from './custom/custom.component.ts.txt?raw';
+import customScss from './custom/custom.component.scss?raw';
+import prefixHtml from './prefix/prefix.component.html?raw';
+import prefixTs from './prefix/prefix.component.ts.txt?raw';
+import toggleHtml from './toggle/toggle.component.html?raw';
+import toggleTs from './toggle/toggle.component.ts.txt?raw';
 
 @Component({
   selector: 'd-mention-demo',
@@ -12,25 +23,25 @@ export class MentionDemoComponent implements OnInit, OnDestroy {
   navItems = [];
   subs: Subscription = new Subscription();
   basicSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./basic/basic.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./basic/basic.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: basicHtml },
+    { title: 'TS', language: 'typescript', code: basicTs },
   ];
   asyncSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./async/async.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./async/async.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: asyncHtml },
+    { title: 'TS', language: 'typescript', code: asyncTs },
   ];
   customSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./custom/custom.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./custom/custom.component.ts?raw') },
-    { title: 'CSS', language: 'css', code: require('./custom/custom.component.scss?raw') },
+    { title: 'HTML', language: 'xml', code: customHtml },
+    { title: 'TS', language: 'typescript', code: customTs },
+    { title: 'CSS', language: 'css', code: customScss },
   ];
   prefixSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./prefix/prefix.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./prefix/prefix.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: prefixHtml },
+    { title: 'TS', language: 'typescript', code: prefixTs },
   ];
   toggleSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./toggle/toggle.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./toggle/toggle.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: toggleHtml },
+    { title: 'TS', language: 'typescript', code: toggleTs },
   ];
 
   constructor(private translate: TranslateService) {}

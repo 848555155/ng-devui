@@ -19,6 +19,9 @@ import { EditableSelectDesignComponent } from './editable-select-design.componen
 import { LazyLoadComponent } from './lazy-load/lazy-load.component';
 import { ObjectSourceComponent } from './object/object-source.component';
 import { WithSearchFunctionComponent } from './search-function/with-search-function.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
 
 @NgModule({
   imports: [
@@ -42,8 +45,8 @@ import { WithSearchFunctionComponent } from './search-function/with-search-funct
         path: 'api',
         component: DevUIApiComponent,
         data: {
-          'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-          'en-us': require('!html-loader!markdown-loader!../doc/api-en.md'),
+          'zh-cn': marked.parse(apiCn),
+          'en-us': marked.parse(apiEn),
         },
       },
     ]),

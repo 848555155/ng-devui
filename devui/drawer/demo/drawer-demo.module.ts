@@ -17,6 +17,9 @@ import { DrawerContentComponent } from './drawerContent/drawer-content.component
 import { ResizeComponent } from './resize/resize.component';
 import { TemplateComponent } from './template/template.component';
 import { UndestroyableComponent } from './undestroyable/undestroyable.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
 
 @NgModule({
   imports: [
@@ -40,8 +43,8 @@ import { UndestroyableComponent } from './undestroyable/undestroyable.component'
         path: 'api',
         component: DevUIApiComponent,
         data: {
-          'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-          'en-us': require('!html-loader!markdown-loader!../doc/api-en.md'),
+          'zh-cn': marked.parse(apiCn),
+          'en-us': marked.parse(apiEn),
         },
       },
     ]),

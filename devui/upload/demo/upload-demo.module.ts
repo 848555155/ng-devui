@@ -22,6 +22,9 @@ import { MultiComponent } from './multi/multi.component';
 import { UploadSliceComponent } from './slice/upload-slice.component';
 import { UploadDemoComponent } from './upload-demo.component';
 import { UploadDesignComponent } from './upload-design.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
 
 @NgModule({ exports: [UploadDemoComponent],
   declarations: [
@@ -53,8 +56,8 @@ import { UploadDesignComponent } from './upload-design.component';
       },
       { path: 'demo', component: UploadDemoComponent },
       { path: 'api', component: DevUIApiComponent, data: {
-        'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-        'en-us': require('!html-loader!markdown-loader!../doc/api-en.md')
+        'zh-cn': marked.parse(apiCn),
+        'en-us': marked.parse(apiEn)
       } }
     ])], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class UploadDemoModule {

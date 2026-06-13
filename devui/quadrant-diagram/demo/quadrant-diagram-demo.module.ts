@@ -13,6 +13,9 @@ import { BasicComponent } from './basic/basic.component';
 import { ConfigComponent } from './config/config.component';
 import { QuadrantDiagramDemoComponent } from './quadrant-diagram-demo.component';
 import { QuadrantDiagramDesignComponent } from './quadrant-diagram-design.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
 @NgModule({
   imports: [
     CommonModule,
@@ -32,8 +35,8 @@ import { QuadrantDiagramDesignComponent } from './quadrant-diagram-design.compon
       { path: 'demo', component: QuadrantDiagramDemoComponent },
       {
         path: 'api', component: DevUIApiComponent, data: {
-          'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-          'en-us': require('!html-loader!markdown-loader!../doc/api-en.md')
+          'zh-cn': marked.parse(apiCn),
+          'en-us': marked.parse(apiEn)
         }
       }
     ])

@@ -2,6 +2,15 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import basicHtml from './basic/basic.component.html?raw';
+import basicTs from './basic/basic.component.ts.txt?raw';
+import extendHtml from './extend/extend.component.html?raw';
+import extendTs from './extend/extend.component.ts.txt?raw';
+import extendScss from './extend/extend.component.scss?raw';
+import autoScrollHtml from './auto-scroll/auto-scroll.component.html?raw';
+import autoScrollTs from './auto-scroll/auto-scroll.component.ts.txt?raw';
+import demoDataTs from './demo-data.ts.txt?raw';
+
 @Component({
   selector: 'd-category-search-demo',
   templateUrl: './category-search-demo.component.html',
@@ -12,56 +21,56 @@ export class CategorySearchDemoComponent implements OnInit, OnDestroy {
     {
       title: 'HTML',
       language: 'xml',
-      code: require('./basic/basic.component.html?raw'),
+      code: basicHtml,
     },
     {
       title: 'TS',
       language: 'typescript',
-      code: require('./basic/basic.component.ts?raw'),
+      code: basicTs,
     },
     {
       title: 'DATA',
       language: 'typescript',
-      code: require('./demo-data.ts?raw'),
+      code: demoDataTs,
     },
   ];
   extendSource: Array<DevuiSourceData> = [
     {
       title: 'HTML',
       language: 'xml',
-      code: require('./extend/extend.component.html?raw'),
+      code: extendHtml,
     },
     {
       title: 'TS',
       language: 'typescript',
-      code: require('./extend/extend.component.ts?raw'),
+      code: extendTs,
     },
     {
       title: 'DATA',
       language: 'typescript',
-      code: require('./demo-data.ts?raw'),
+      code: demoDataTs,
     },
     {
       title: 'SCSS',
       language: 'css',
-      code: require('./extend/extend.component.scss?raw'),
+      code: extendScss,
     },
   ];
   autoScrollSource: Array<DevuiSourceData> = [
     {
       title: 'HTML',
       language: 'xml',
-      code: require('./auto-scroll/auto-scroll.component.html?raw'),
+      code: autoScrollHtml,
     },
     {
       title: 'TS',
       language: 'typescript',
-      code: require('./auto-scroll/auto-scroll.component.ts?raw'),
+      code: autoScrollTs,
     },
     {
       title: 'DATA',
       language: 'typescript',
-      code: require('./demo-data.ts?raw'),
+      code: demoDataTs,
     },
   ];
   navItems = [];

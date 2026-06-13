@@ -1,5 +1,5 @@
-@import '../style/theme/color';
-@import '../style/core/layout';
+@use '../style/theme/color' as *;
+@use '../style/core/layout' as *;
 
 .devui-form-span {
   position: relative;

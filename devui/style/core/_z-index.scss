@@ -1,1 +1,2 @@
-@import '../theme/z-index';
+@use '../theme/z-index' as *;
+@forward '../theme/z-index';

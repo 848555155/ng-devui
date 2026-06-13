@@ -1,7 +1,11 @@
-@import '../style/theme/color';
-@import '../style/theme/corner';
-@import '../style/core/_font';
-@import '../style/core/animation';
+@use '../style/theme/color' as *;
+@use '../style/theme/corner' as *;
+@use '../style/core/_font' as *;
+@use '../style/core/animation' as *;
+@forward '../style/theme/color';
+@forward '../style/theme/corner';
+@forward '../style/core/_font';
+@forward '../style/core/animation';
 
 $keyframe-blue: #5e7ce0;
 

@@ -2,6 +2,46 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import basicHtml from './basic/basic.component.html?raw';
+import basicTs from './basic/basic.component.ts.txt?raw';
+import maximizeHtml from './maximize/maximize.component.html?raw';
+import maximizeTs from './maximize/maximize.component.ts.txt?raw';
+import basicUpdateHtml from './basic-update/basic-update.component.html?raw';
+import basicUpdateTs from './basic-update/basic-update.component.ts.txt?raw';
+import basicUpdateHtml1 from './basic-update/modal-test.component.html?raw';
+import basicUpdateTs1 from './basic-update/modal-test.component.ts.txt?raw';
+import customizeHtml from './customize/customize.component.html?raw';
+import customizeTs from './customize/customize.component.ts.txt?raw';
+import customizeHtml1 from './customize/modal-alert.component.html?raw';
+import customizeTs1 from './customize/modal-alert.component.ts.txt?raw';
+import customizeScss from './customize/modal-alert.component.scss?raw';
+import customizeHtml2 from './customize/modal-no-btn.component.html?raw';
+import customizeTs2 from './customize/modal-no-btn.component.ts.txt?raw';
+import customizeScss1 from './customize/modal-no-btn.component.scss?raw';
+import tipsHtml from './tips/tips.component.html?raw';
+import tipsTs from './tips/tips.component.ts.txt?raw';
+import hideHtml from './hide/hide.component.html?raw';
+import hideTs from './hide/hide.component.ts.txt?raw';
+import hideHtml1 from './hide/modal-form.component.html?raw';
+import hideScss from './hide/modal-form.component.scss?raw';
+import hideTs1 from './hide/modal-form.component.ts.txt?raw';
+import autofocusHtml from './autofocus/autofocus.component.html?raw';
+import autofocusTs from './autofocus/autofocus.component.ts.txt?raw';
+import templateHtml from './template/template.component.html?raw';
+import templateTs from './template/template.component.ts.txt?raw';
+import dialogContentHtml from './template/dialog-content/dialog-content.component.html?raw';
+import dialogContentTs from './template/dialog-content/dialog-content.component.ts.txt?raw';
+import modalContentHtml from './template/modal-content/modal-content.component.html?raw';
+import modalContentTs from './template/modal-content/modal-content.component.ts.txt?raw';
+import modalContentScss from './template/modal-content/modal-content.component.scss?raw';
+import fixedHtml from './fixed/fixed-wrapper.component.html?raw';
+import fixedTs from './fixed/fixed-wrapper.component.ts.txt?raw';
+import casesHtml from './cases/cases.component.html?raw';
+import casesTs from './cases/cases.component.ts.txt?raw';
+import casesHtml1 from './cases/modal-cases.component.html?raw';
+import casesTs1 from './cases/modal-cases.component.ts.txt?raw';
+import modalTestComponentHtml from './modal-test.component.html?raw';
+import modalTestComponentTs from './modal-test.component.ts.txt?raw';
 
 @Component({
   selector: 'd-modal-demo',
@@ -11,80 +51,80 @@ import { Subscription } from 'rxjs';
 })
 export class ModalDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./basic/basic.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./basic/basic.component.ts?raw') },
-    { title: 'Dialog HTML', language: 'xml', code: require('./modal-test.component.html?raw') },
-    { title: 'Dialog TS', language: 'typescript', code: require('./modal-test.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: basicHtml },
+    { title: 'TS', language: 'typescript', code: basicTs },
+    { title: 'Dialog HTML', language: 'xml', code: modalTestComponentHtml },
+    { title: 'Dialog TS', language: 'typescript', code: modalTestComponentTs },
   ];
   maximizeSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./maximize/maximize.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./maximize/maximize.component.ts?raw') },
-    { title: 'Dialog HTML', language: 'xml', code: require('./modal-test.component.html?raw') },
-    { title: 'Dialog TS', language: 'typescript', code: require('./modal-test.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: maximizeHtml },
+    { title: 'TS', language: 'typescript', code: maximizeTs },
+    { title: 'Dialog HTML', language: 'xml', code: modalTestComponentHtml },
+    { title: 'Dialog TS', language: 'typescript', code: modalTestComponentTs },
   ];
   basicUpdateSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./basic-update/basic-update.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./basic-update/basic-update.component.ts?raw') },
-    { title: 'Modal HTML', language: 'xml', code: require('./basic-update/modal-test.component.html?raw') },
-    { title: 'Modal TS', language: 'typescript', code: require('./basic-update/modal-test.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: basicUpdateHtml },
+    { title: 'TS', language: 'typescript', code: basicUpdateTs },
+    { title: 'Modal HTML', language: 'xml', code: basicUpdateHtml1 },
+    { title: 'Modal TS', language: 'typescript', code: basicUpdateTs1 },
   ];
   customizeSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./customize/customize.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./customize/customize.component.ts?raw') },
-    { title: 'ModalAlert HTML', language: 'xml', code: require('./customize/modal-alert.component.html?raw') },
-    { title: 'ModalAlert TS', language: 'typescript', code: require('./customize/modal-alert.component.ts?raw') },
-    { title: 'ModalAlert CSS', language: 'css', code: require('./customize/modal-alert.component.scss?raw') },
-    { title: 'ModalNoBtn HTML', language: 'xml', code: require('./customize/modal-no-btn.component.html?raw') },
-    { title: 'ModalNoBtn TS', language: 'typescript', code: require('./customize/modal-no-btn.component.ts?raw') },
-    { title: 'ModalNoBtn CSS', language: 'css', code: require('./customize/modal-no-btn.component.scss?raw') },
+    { title: 'HTML', language: 'xml', code: customizeHtml },
+    { title: 'TS', language: 'typescript', code: customizeTs },
+    { title: 'ModalAlert HTML', language: 'xml', code: customizeHtml1 },
+    { title: 'ModalAlert TS', language: 'typescript', code: customizeTs1 },
+    { title: 'ModalAlert CSS', language: 'css', code: customizeScss },
+    { title: 'ModalNoBtn HTML', language: 'xml', code: customizeHtml2 },
+    { title: 'ModalNoBtn TS', language: 'typescript', code: customizeTs2 },
+    { title: 'ModalNoBtn CSS', language: 'css', code: customizeScss1 },
   ];
   tipsSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./tips/tips.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./tips/tips.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: tipsHtml },
+    { title: 'TS', language: 'typescript', code: tipsTs },
   ];
   hideSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./hide/hide.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./hide/hide.component.ts?raw') },
-    { title: 'Dialog HTML', language: 'xml', code: require('./hide/modal-form.component.html?raw') },
-    { title: 'Dialog CSS', language: 'css', code: require('./hide/modal-form.component.scss?raw') },
-    { title: 'Dialog TS', language: 'typescript', code: require('./hide/modal-form.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: hideHtml },
+    { title: 'TS', language: 'typescript', code: hideTs },
+    { title: 'Dialog HTML', language: 'xml', code: hideHtml1 },
+    { title: 'Dialog CSS', language: 'css', code: hideScss },
+    { title: 'Dialog TS', language: 'typescript', code: hideTs1 },
   ];
   autofocusSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./autofocus/autofocus.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./autofocus/autofocus.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: autofocusHtml },
+    { title: 'TS', language: 'typescript', code: autofocusTs },
   ];
   templateSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./template/template.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./template/template.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: templateHtml },
+    { title: 'TS', language: 'typescript', code: templateTs },
     {
       title: 'Dialog HTML',
       language: 'xml',
-      code: require('./template/dialog-content/dialog-content.component.html?raw'),
+      code: dialogContentHtml,
     },
     {
       title: 'Dialog TS',
       language: 'typescript',
-      code: require('./template/dialog-content/dialog-content.component.ts?raw'),
+      code: dialogContentTs,
     },
-    { title: 'Modal HTML', language: 'xml', code: require('./template/modal-content/modal-content.component.html?raw') },
+    { title: 'Modal HTML', language: 'xml', code: modalContentHtml },
     {
       title: 'Modal TS',
       language: 'typescript',
-      code: require('./template/modal-content/modal-content.component.ts?raw'),
+      code: modalContentTs,
     },
-    { title: 'Modal CSS', language: 'css', code: require('./template/modal-content/modal-content.component.scss?raw') },
+    { title: 'Modal CSS', language: 'css', code: modalContentScss },
   ];
   fixedWrapperSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./fixed/fixed-wrapper.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./fixed/fixed-wrapper.component.ts?raw') },
-    { title: 'Dialog HTML', language: 'xml', code: require('./modal-test.component.html?raw') },
-    { title: 'Dialog TS', language: 'typescript', code: require('./modal-test.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: fixedHtml },
+    { title: 'TS', language: 'typescript', code: fixedTs },
+    { title: 'Dialog HTML', language: 'xml',     code: modalTestComponentHtml },
+    { title: 'Dialog TS', language: 'typescript',     code: modalTestComponentTs },
   ];
   casesSource: Array<DevuiSourceData> = [
-    { title: 'HTML', language: 'xml', code: require('./cases/cases.component.html?raw') },
-    { title: 'TS', language: 'typescript', code: require('./cases/cases.component.ts?raw') },
-    { title: 'Dialog HTML', language: 'xml', code: require('./cases/modal-cases.component.html?raw') },
-    { title: 'Dialog TS', language: 'typescript', code: require('./cases/modal-cases.component.ts?raw') },
+    { title: 'HTML', language: 'xml', code: casesHtml },
+    { title: 'TS', language: 'typescript', code: casesTs },
+    { title: 'Dialog HTML', language: 'xml', code: casesHtml1 },
+    { title: 'Dialog TS', language: 'typescript', code: casesTs1 },
   ];
 
   navItems = [];

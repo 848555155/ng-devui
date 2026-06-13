@@ -1,11 +1,11 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import * as HighLight from 'highlight.js/lib/core';
-
-['xml', 'css', 'typescript'].forEach((langName) => {
-  // Using require() here because import() support hasn't landed in Webpack yet
-  const langModule = require(`highlight.js/lib/languages/${langName}`);
-  HighLight.registerLanguage(langName, langModule);
-});
+import xml from 'highlight.js/lib/languages/xml';
+import css from 'highlight.js/lib/languages/css';
+import typescript from 'highlight.js/lib/languages/typescript';
+HighLight.registerLanguage('xml', xml);
+HighLight.registerLanguage('css', css);
+HighLight.registerLanguage('typescript', typescript);
 
 @Component({
   selector: 'd-highlight',

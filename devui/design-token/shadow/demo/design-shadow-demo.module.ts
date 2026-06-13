@@ -11,6 +11,9 @@ import { DDemoNavModule } from 'devui-commons/src/demo-nav/d-demo-nav.module';
 import { DesignShadowDemoComponent } from './design-shadow-demo.component';
 import { ShadowDesignComponent } from './shadow-design.component';
 import { ShadowComponent } from './shadow/shadow.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
 @NgModule({
   declarations: [DesignShadowDemoComponent, ShadowComponent],
   imports: [
@@ -29,8 +32,8 @@ import { ShadowComponent } from './shadow/shadow.component';
       },
       { path: 'demo', component: DesignShadowDemoComponent},
       { path: 'api', component: DevUIApiComponent, data: {
-        'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-        'en-us': require('!html-loader!markdown-loader!../doc/api-en.md')
+        'zh-cn': marked.parse(apiCn),
+        'en-us': marked.parse(apiEn)
       }}
     ])
   ]

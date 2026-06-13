@@ -23,6 +23,9 @@ import { TreeSelectCustomTemplateComponent } from './custom-template/custom-temp
 import { TreeSelectDemoComponent } from './tree-select-demo.component';
 import { TreeSelectDesignComponent } from './tree-select-design.component';
 import { TreeSelectVirtualScrollComponent } from './virtual-scroll/tree-select-virtual-scroll.component';
+import { marked } from 'marked';
+import apiCn from '../doc/api-cn.md?raw';
+import apiEn from '../doc/api-en.md?raw';
 
 @NgModule({
   imports: [
@@ -52,8 +55,8 @@ import { TreeSelectVirtualScrollComponent } from './virtual-scroll/tree-select-v
         path: 'api',
         component: DevUIApiComponent,
         data: {
-          'zh-cn': require('!html-loader!markdown-loader!../doc/api-cn.md'),
-          'en-us': require('!html-loader!markdown-loader!../doc/api-en.md'),
+          'zh-cn': marked.parse(apiCn),
+          'en-us': marked.parse(apiEn),
         },
       },
     ]),

@@ -1,5 +1,5 @@
-@import '../../style/core/_font';
-@import '../../style/theme/color';
+@use '../../style/core/_font' as *;
+@use '../../style/theme/color' as *;
 
 .devui-quadrant-region {
   position: absolute;
