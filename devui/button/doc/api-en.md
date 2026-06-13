@@ -14,15 +14,15 @@ In the page:
 # d-button
 ## d-button Parameter
 
-|   Parameter    |   Type |  Default |      Description          |  Jump to Demo |Global Config| 
-| :----------------: | :---------: | :------------: | :-----: | :--------------------------------------------------------------------------- | |
+|   Parameter    |   Type |  Default |      Description          |  Jump to Demo |
+| :----------------: | :---------: | :------------: | :-----: | :--------------------------------------------------------------------------- |
 |     id      |             `string`            |   --   | Optional. ID of the button. | [Primary Buttons](demo#button-primary)|
 |     type    |  [`IButtonType`](#ibuttontype)  |  'button' | Optional. The type is `'button' \| 'submit' \| 'reset'` |[Danger Buttons](demo#button-danger)   |
 |   bsStyle   | [`IButtonStyle`](#ibuttonstyle) |  'primary' | Optional. The style is `'primary' \| 'common' \| 'text' \| 'danger'` | [Common Buttons](demo#button-common) |
 |   bsSize    |  [`IButtonSize`](#ibuttonsize)   |   'md'  | Optional. The size is `'lg' \| 'md' \| 'sm' \| 'xs'` | [Button Size](demo#button-size) |
 |  bordered   |   `boolean`  |   false   | Optional. Indicating whether a border exists |  [Auto-focus Buttons](demo#button-auto-focus)|
 |    icon     |   `string`   |   --   | Optional. Customized button icon | [Icon Buttons](demo#button-icon) |
-|    shape     |    `'circle'`     |   --    | Optional. Customized button icon                                                       | [Icon Buttons](demo#button-icon)      |
+|    shape     |    `'circle'`     |   --    | Optional. Customized button shape                                                       | [Icon Buttons](demo#button-icon)      |
 | showLoading |   `boolean`  |   false   | Optional. Indicating whether to display the loading prompt | [Loading Buttons](demo#button-loading) |
 |    width    |   `string`   |     --    | Optional. Button width |[Combinations of Primary & Common Buttons](demo#button-primary-and-common) |
 |  disabled   |   `boolean`  |   false   | Optional. Indicating whether to disable the button | [Primary Buttons](demo#button-primary) |
@@ -39,8 +39,8 @@ In the page:
 
 ## d-button-group parameter
 
-| Parameter | Type | Default | Description | Jump to Demo |Global Config| 
-| :----------------: | :---------: | :------------: | :-----: | :--------------------------------------------------------------------------- | |
+| Parameter | Type | Default | Description | Jump to Demo |
+| :----------------: | :---------: | :------------: | :-----: | :--------------------------------------------------------------------------- |
 | size | [`IButtonGroupSize`](#ibuttongroupsize) | 'md' | Optional. The size is `'lg' \| 'md' \| 'sm' \| 'xs'` | [Button Group](demo#button-groups) |
 
 # Interface & Type Definition

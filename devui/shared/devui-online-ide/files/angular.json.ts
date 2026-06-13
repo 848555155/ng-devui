@@ -22,7 +22,7 @@ export default {
           },
         },
         serve: {
-          builder: '@angular-devkit/build-angular:dev-server',
+          builder: '@angular/build:dev-server',
           options: {
             browserTarget: 'demo:build',
           },
