@@ -1,4 +1,4 @@
-import { Directive } from '@angular/core';
+import { computed, Directive } from '@angular/core';
 import { AccordionBaseComponent } from './accordion-base-component.class';
 import { AccordionBaseItem } from './accordion.type';
 
@@ -9,10 +9,10 @@ import { AccordionBaseItem } from './accordion.type';
   },
 })
 export abstract class AccordionBaseItemComponent<T extends AccordionBaseItem> extends AccordionBaseComponent<T> {
-  active() {
+  active = computed(() => {
+    void this.accordion.stateVersion();
     return this.item() && this.item()[this.accordion.activeKey()];
-  }
-  itemTemplate() {
-    return this.accordion.itemTemplate();
-  }
+  });
+
+  itemTemplate = computed(() => this.accordion.itemTemplate());
 }

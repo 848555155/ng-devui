@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, computed, Directive, effect, inject, input, numberAttribute } from '@angular/core';
+import { computed, Directive, inject, input, numberAttribute } from '@angular/core';
 import { AccordionBase } from './accordion.type';
 import { ACCORDION } from './accordion-token';
 
@@ -18,11 +18,4 @@ export abstract class AccordionBaseComponent<T extends AccordionBase> {
   title = computed(() => this.item() && this.item()[this.accordion.titleKey()]);
 
   protected accordion = inject(ACCORDION);
-  cdr = inject(ChangeDetectorRef);
-  constructor() {
-    effect(() => {
-      const item = this.item();
-      item['$c'] = this;
-    });
-  }
 }

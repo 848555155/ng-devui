@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AccordionModule } from 'ng-devui/accordion';
 import { ToggleModule } from 'ng-devui/toggle';
@@ -8,11 +8,10 @@ import { ToggleModule } from 'ng-devui/toggle';
   imports: [AccordionModule, ToggleModule, FormsModule],
   templateUrl: './basic.component.html',
   styleUrls: ['./basic.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicComponent {
-  restrictOneOpen = false;
-  accordionTypeEmbed = false;
+  restrictOneOpen = signal(false);
+  accordionTypeEmbed = signal(false);
   menu = [
     {
       title: 'Content 1',

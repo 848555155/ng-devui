@@ -1,27 +1,22 @@
 import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   effect,
   forwardRef,
   inject,
   input,
-  Input,
   model,
-  OnChanges,
-  OnDestroy,
-  OnInit,
   output,
   signal,
-  SimpleChanges,
   TemplateRef,
+  untracked,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { I18nService } from 'ng-devui/i18n';
-import { DevConfigService, WithConfig } from 'ng-devui/utils';
-import { Subscription } from 'rxjs';
+import { DevConfigService } from 'ng-devui/utils';
 import { ACCORDION } from './accordion-token';
 import { AccordionItemClickEvent, AccordionMenuToggleEvent, AccordionMenuType, AccordionOptions } from './accordion.type';
 import { AccordionListComponent } from './accordion-list.component';
+
 @Component({
   selector: 'd-accordion',
   imports: [AccordionListComponent],
@@ -34,9 +29,8 @@ import { AccordionListComponent } from './accordion-list.component';
       useExisting: forwardRef(() => AccordionComponent),
     },
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AccordionComponent implements AccordionOptions, OnChanges, OnInit, OnDestroy {
+export class AccordionComponent implements AccordionOptions {
   data = model<Array<any> | AccordionMenuType>();
   titleKey = input('title');
   loadingKey = input('loading');
@@ -66,42 +60,33 @@ export class AccordionComponent implements AccordionOptions, OnChanges, OnInit, 
   linkDefaultTarget = input('_self');
 
   accordionType = input<'normal' | 'embed'>('normal');
-  @Input() showAnimation: boolean = true;
+  showAnimation = input(true);
+
+  stateVersion = signal(0);
 
   activeItem: any;
   i18nCommonText: any;
-  private i18nSubscription: Subscription | null = null;
 
-  private cdr = inject(ChangeDetectorRef);
   private i18n = inject(I18nService);
   private devConfigService = inject(DevConfigService);
 
   constructor() {
+    this.i18nCommonText = this.i18n.getI18nText().common;
+    this.i18n.langChange()
+      .pipe(takeUntilDestroyed())
+      .subscribe((data) => {
+        this.i18nCommonText = data.common;
+      });
+
     effect(() => {
       this.initActiveItem();
     });
-  }
 
-  ngOnChanges(changes: SimpleChanges) {
-    const autoOpenActiveMenu = changes['autoOpenActiveMenu'];
-    if (autoOpenActiveMenu) {
-      if (this.autoOpenActiveMenu() && autoOpenActiveMenu.previousValue === false) {
-        this.cleanOpenData();
+    effect(() => {
+      if (this.autoOpenActiveMenu()) {
+        untracked(() => this.cleanOpenData());
       }
-    }
-  }
-
-  ngOnInit() {
-    this.i18nCommonText = this.i18n.getI18nText().common;
-    this.i18nSubscription = this.i18n.langChange().subscribe((data) => {
-      this.i18nCommonText = data.common;
     });
-  }
-
-  ngOnDestroy() {
-    if (this.i18nSubscription) {
-      this.i18nSubscription.unsubscribe();
-    }
   }
 
   private flatten(arr: Array<any>, childrenKey = 'children', includeParent = false, includeLeaf = true) {
@@ -128,7 +113,7 @@ export class AccordionComponent implements AccordionOptions, OnChanges, OnInit, 
       item[this.openKey()] = undefined;
     });
   }
-  // 默认激活
+
   initActiveItem() {
     const activeItem = this.flatten(this.data(), this.childrenKey())
       .filter((item) => item[this.activeKey()])
@@ -142,7 +127,6 @@ export class AccordionComponent implements AccordionOptions, OnChanges, OnInit, 
     }
   }
 
-  // 点击了可点击菜单
   public itemClickFn = (itemEvent: AccordionItemClickEvent) => {
     const prevActiveItem = this.activeItem;
     this.activeItemFn(itemEvent.item);
@@ -155,24 +139,21 @@ export class AccordionComponent implements AccordionOptions, OnChanges, OnInit, 
     this.itemClick.emit({ ...itemEvent, prevActiveItem: prevActiveItem });
   };
 
-  // 打开或关闭可折叠菜单
   public menuToggleFn = (menuEvent: AccordionMenuToggleEvent) => {
     this.openMenuFn(menuEvent.item, menuEvent.open);
     this.menuToggle.emit(menuEvent);
   };
 
-  // 激活子菜单项并去掉其他子菜单的激活
   activeItemFn(item) {
     if (this.activeItem && this.activeItem[this.activeKey()]) {
       this.activeItem[this.activeKey()] = false;
-      this.activeItem['$c'].cdr.markForCheck();
     }
     item[this.activeKey()] = true;
     this.activeItem = item;
+    this.stateVersion.update((v) => v + 1);
     this.activeItemChange.emit(this.activeItem);
   }
 
-  // 打开或关闭一级菜单，如果有限制只能展开一项则关闭其他一级菜单
   openMenuFn(item, open: boolean) {
     if (open && this.restrictOneOpen()) {
       this.data.update((c) => {
@@ -186,5 +167,6 @@ export class AccordionComponent implements AccordionOptions, OnChanges, OnInit, 
       item[this.openKey()] = open;
       return c;
     });
+    this.stateVersion.update((v) => v + 1);
   }
 }

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { AccordionModule } from 'ng-devui/accordion';
 
 @Component({
@@ -6,7 +6,6 @@ import { AccordionModule } from 'ng-devui/accordion';
   imports: [AccordionModule],
   templateUrl: './change-key.component.html',
   styleUrls: ['./change-key.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChangeKeyComponent {
   key = {

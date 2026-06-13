@@ -1,16 +1,13 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   computed,
   inject,
   input,
-  linkedSignal,
   numberAttribute,
-  OnDestroy,
-  OnInit,
   viewChildren,
   ViewEncapsulation,
 } from '@angular/core';
+import { NgTemplateOutlet } from '@angular/common';
 import { expandCollapse, expandCollapseForDomDestroy } from 'ng-devui/utils';
 import { AccordionItemRouterlinkComponent } from './accordion-item-routerlink.component';
 import { AccordionMenuComponent } from './accordion-menu.component';
@@ -19,7 +16,6 @@ import { AccordionService } from './accordion.service';
 import { AccordionMenuItem } from './accordion.type';
 import { AccordionItemHreflinkComponent } from './accordion-item-hreflink.component';
 import { AccordionItemComponent } from './accordion-item.component';
-import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
   selector: 'd-accordion-list',
@@ -34,66 +30,45 @@ import { NgTemplateOutlet } from '@angular/common';
     '[class.devui-accordion-show-animate]': 'animateState()',
   },
   templateUrl: './accordion-list.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   animations: [expandCollapse, expandCollapseForDomDestroy],
   preserveWhitespaces: false,
 })
-export class AccordionListComponent implements OnInit, OnDestroy {
+export class AccordionListComponent {
   data = input<Array<AccordionMenuItem>>();
   deepth = input(0, { transform: numberAttribute });
   parent = input<AccordionMenuItem>();
   accordionMenuQueryList = viewChildren(AccordionMenuComponent);
   accordionItemRouterlinkQueryList = viewChildren(AccordionItemRouterlinkComponent);
 
-  animateState() {
-    return this.accordion.showAnimation;
-  }
-  loading() {
-    return this.parent() && this.parent()[this.accordion.loadingKey()];
-  }
-  noContent() {
-    return this.data() === undefined || this.data() === null || this.data().length === 0;
-  }
-  linkTypeKey() {
-    return this.accordion.linkTypeKey();
-  }
-  childrenKey() {
-    return this.accordion.childrenKey();
-  }
-  activeKey() {
-    return this.accordion.activeKey();
-  }
-  innerListTemplate() {
-    return this.accordion.innerListTemplate();
-  }
-  loadingTemplate() {
-    return this.accordion.loadingTemplate();
-  }
-  noContentTemplate() {
-    return this.accordion.noContentTemplate();
-  }
-  linkType() {
-    return this.accordion.linkType();
-  }
-  i18nCommonText() {
-    return this.accordion.i18nCommonText;
-  }
-  showNoContent() {
-    return this.accordion.showNoContent();
-  }
-  routerLinkActivated() {
-    return (
-      (!!this.accordionItemRouterlinkQueryList() &&
-        this.accordionItemRouterlinkQueryList().some((airlc) => this.isLinkRouterActive(airlc))) ||
-      (!!this.accordionMenuQueryList() && this.accordionMenuQueryList().some((amc) => this.isMenuRouterActive(amc)))
-    );
-  }
-  hasActiveChildren() {
-    return (
-      (!!this.accordionMenuQueryList() && this.accordionMenuQueryList().some((amc) => this.isMenuDataActive(amc))) ||
-      (!!this.data() && !!this.data().length && this.data().some((item) => this.isItemData(item) && this.isItemDataActive(item)))
-    );
+  animateState = computed(() => this.accordion.showAnimation());
+  loading = computed(() => this.parent() && this.parent()[this.accordion.loadingKey()]);
+  noContent = computed(() => this.data() === undefined || this.data() === null || this.data().length === 0);
+  linkTypeKey = computed(() => this.accordion.linkTypeKey());
+  childrenKey = computed(() => this.accordion.childrenKey());
+  activeKey = computed(() => this.accordion.activeKey());
+  innerListTemplate = computed(() => this.accordion.innerListTemplate());
+  loadingTemplate = computed(() => this.accordion.loadingTemplate());
+  noContentTemplate = computed(() => this.accordion.noContentTemplate());
+  linkType = computed(() => this.accordion.linkType());
+  i18nCommonText = computed(() => this.accordion.i18nCommonText);
+  showNoContent = computed(() => this.accordion.showNoContent());
+
+  routerLinkActivated = computed(() =>
+    this.accordionItemRouterlinkQueryList().some((airlc) => this.isLinkRouterActive(airlc)) ||
+    this.accordionMenuQueryList().some((amc) => this.isMenuRouterActive(amc))
+  );
+
+  hasActiveChildren = computed(() =>
+    this.accordionMenuQueryList().some((amc) => this.isMenuDataActive(amc)) ||
+    (!!this.data().length && this.data().some((item) => this.isItemData(item) && this.isItemDataActive(item)))
+  );
+
+  private accordion = inject(ACCORDION);
+  private accordionService = inject(AccordionService);
+
+  constructor() {
+    this.accordionService.setChildListInstance(this, this.parent());
   }
 
   private isLinkRouterActive(airlc: AccordionItemRouterlinkComponent) {
@@ -114,21 +89,6 @@ export class AccordionListComponent implements OnInit, OnDestroy {
 
   private isItemData(item: AccordionMenuItem) {
     return item[this.childrenKey()] === undefined;
-  }
-
-  private accordion = inject(ACCORDION);
-  private accordionService = inject(AccordionService);
-
-  ngOnInit(): void {
-    if (this.parent()) {
-      this.accordionService.setChildListInstance(this, this.parent());
-    }
-  }
-
-  ngOnDestroy(): void {
-    if (this.parent()) {
-      this.accordionService.setChildListInstance(undefined, this.parent());
-    }
   }
 
   menuToggleItemFn = (item: any, event?: MouseEvent) => {

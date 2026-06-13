@@ -3,7 +3,7 @@
   <div class="devui-accordion-splitter" [class.devui-parent-list]="deepth() === 0" [style.left.px]="deepth() * 20 + 10"></div>
   @if (!itemTemplate()) {
   {{ title() }}
-  } @if (itemTemplate()) {
+  } @else {
   <ng-container
     *ngTemplateOutlet="
       itemTemplate();
@@ -16,12 +16,12 @@
   ></ng-container>
   }
 </a>
-} @if (disabled()) {
+} @else {
 <a class="devui-over-flow-ellipsis" [title]="title()">
   <div class="devui-accordion-splitter" [class.devui-parent-list]="deepth() === 0" [style.left.px]="deepth() * 20 + 10"></div>
   @if (!itemTemplate()) {
   {{ title() }}
-  } @if (itemTemplate()) {
+  } @else {
   <ng-container
     *ngTemplateOutlet="
       itemTemplate();
@@ -34,5 +34,4 @@
   ></ng-container>
   }
 </a>
-
 }

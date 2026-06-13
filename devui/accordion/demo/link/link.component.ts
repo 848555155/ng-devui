@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { AccordionModule } from 'ng-devui/accordion';
 
 @Component({
@@ -6,7 +6,6 @@ import { AccordionModule } from 'ng-devui/accordion';
   imports: [AccordionModule],
   templateUrl: './link.component.html',
   styleUrls: ['./link.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LinkComponent {
   menu = [

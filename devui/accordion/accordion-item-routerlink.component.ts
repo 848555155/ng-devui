@@ -1,25 +1,22 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   computed,
-  HostListener,
   inject,
-  linkedSignal,
   viewChild,
   ViewEncapsulation,
 } from '@angular/core';
 import { Router, RouterLinkActive, RouterModule } from '@angular/router';
-import { AccordionBaseLinkComponent } from './accordion-base-link-component.class';
 import { NgTemplateOutlet } from '@angular/common';
+import { AccordionBaseLinkComponent } from './accordion-base-link-component.class';
 
 @Component({
   selector: 'd-accordion-item-routerlink',
   imports: [RouterModule, NgTemplateOutlet],
   host: {
     '[class.devui-router-active]': 'routerLinkActivated()',
+    '(click)': 'onClick($event)',
   },
   templateUrl: './accordion-item-routerlink.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
 })
@@ -28,7 +25,6 @@ export class AccordionItemRouterlinkComponent extends AccordionBaseLinkComponent
   routerLinkActivated = computed(() => !!(this.routerLinkActiveDirective() && this.routerLinkActiveDirective().isActive));
   private router = inject(Router);
 
-  @HostListener('click', ['$event'])
   onClick(event: MouseEvent) {
     if (!this.disabled()) {
       this.accordion.linkItemClickFn({
@@ -54,6 +50,7 @@ export class AccordionItemRouterlinkComponent extends AccordionBaseLinkComponent
       return undefined;
     }
   });
+
   queryParams = computed(() => {
     if (this.link()) {
       return this.router.parseUrl(this.link()).queryParams;
@@ -61,6 +58,7 @@ export class AccordionItemRouterlinkComponent extends AccordionBaseLinkComponent
       return undefined;
     }
   });
+
   fragment = computed(() => {
     if (this.link()) {
       return this.router.parseUrl(this.link()).fragment;

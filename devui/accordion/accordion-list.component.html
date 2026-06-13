@@ -3,10 +3,7 @@
   @for (item of data(); track item) {
   <li class="devui-accordion-item">
     @if (item[childrenKey()] !== undefined) {
-    <!--菜单类型-->
     <d-accordion-menu [item]="item" [deepth]="deepth()" [parent]="parent()"></d-accordion-menu>
-    } @if (item[childrenKey()] !== undefined) {
-    <!--非菜单类型-->
     <d-accordion-list
       #listInstance
       class="devui-accordion-submenu"
@@ -17,29 +14,27 @@
       [@.disabled]="!animateState()"
     >
     </d-accordion-list>
-    } @if (item[childrenKey()] === undefined) { @if (linkType() === 'routerLink') {
-    <!--路由链接-->
-    <d-accordion-item-routerlink [item]="item" [deepth]="deepth()" [parent]="parent()"></d-accordion-item-routerlink>
-    } @if (linkType() === 'hrefLink') {
-    <!--普通链接-->
-    <d-accordion-item-hreflink [item]="item" [deepth]="deepth()" [parent]="parent()"></d-accordion-item-hreflink>
-    } @if (linkType() === 'dependOnLinkTypeKey') { @if (item[linkTypeKey()] === 'routerLink') {
-    <!--动态链接-->
-    <d-accordion-item-routerlink [item]="item" [deepth]="deepth()" [parent]="parent()"></d-accordion-item-routerlink>
-    } @if (item[linkTypeKey()] === 'hrefLink') {
-    <d-accordion-item-hreflink [item]="item" [deepth]="deepth()" [parent]="parent()"></d-accordion-item-hreflink>
-    }@if (item[linkTypeKey()] !== 'hrefLink' && item[linkTypeKey()] !== 'routerLink') {
-
-    <d-accordion-item [item]="item" [deepth]="deepth()" [parent]="parent()"></d-accordion-item>
-    } } @if (!linkType() || linkType() === '') {
-    <!--普通类型-->
-    <d-accordion-item [item]="item" [deepth]="deepth()" [parent]="parent()"></d-accordion-item>
-    } }
+    } @else {
+      @if (linkType() === 'routerLink') {
+      <d-accordion-item-routerlink [item]="item" [deepth]="deepth()" [parent]="parent()"></d-accordion-item-routerlink>
+      } @else if (linkType() === 'hrefLink') {
+      <d-accordion-item-hreflink [item]="item" [deepth]="deepth()" [parent]="parent()"></d-accordion-item-hreflink>
+      } @else if (linkType() === 'dependOnLinkTypeKey') {
+        @if (item[linkTypeKey()] === 'routerLink') {
+        <d-accordion-item-routerlink [item]="item" [deepth]="deepth()" [parent]="parent()"></d-accordion-item-routerlink>
+        } @else if (item[linkTypeKey()] === 'hrefLink') {
+        <d-accordion-item-hreflink [item]="item" [deepth]="deepth()" [parent]="parent()"></d-accordion-item-hreflink>
+        } @else {
+        <d-accordion-item [item]="item" [deepth]="deepth()" [parent]="parent()"></d-accordion-item>
+        }
+      } @else {
+      <d-accordion-item [item]="item" [deepth]="deepth()" [parent]="parent()"></d-accordion-item>
+      }
+    }
   </li>
   }
 </ul>
-} @if (innerListTemplate() && deepth() !== 0) {
-<!--列表模板-->
+} @else if (innerListTemplate() && deepth() !== 0) {
 <div>
   <ng-container
     *ngTemplateOutlet="
@@ -53,29 +48,36 @@
     "
   ></ng-container>
 </div>
-} @if (!innerListTemplate() && (loading() || (noContent() && showNoContent()))) {
-<!--无数据/加载中模板-->
+}
+
+@if (!innerListTemplate() && (loading() || (noContent() && showNoContent()))) {
 <ul>
   @if (loading() && !loadingTemplate()) {
-  <!--加载中-->
   <li class="devui-accordion-item">
     <div class="devui-accordion-item-title devui-over-flow-ellipsis" [style.textIndent.px]="deepth() * 20">
       {{ i18nCommonText()?.loading }}
     </div>
   </li>
-  } @if (loading() && loadingTemplate()) {
-  <!--自定义加载中-->
-  <ng-container *ngTemplateOutlet="loadingTemplate(); context: { item: parent(), deepth: deepth() }"></ng-container>
-  } @if (showNoContent() && !loading() && noContent() && !noContentTemplate()) {
-  <!--无数据-->
+  } @else if (loading() && loadingTemplate()) {
+  <ng-container
+    *ngTemplateOutlet="
+      loadingTemplate();
+      context: { item: parent(), deepth: deepth() }
+    "
+  ></ng-container>
+  } @else if (showNoContent() && !loading() && noContent() && !noContentTemplate()) {
   <li class="devui-accordion-item">
     <div class="devui-accordion-item-title devui-over-flow-ellipsis disabled" [style.textIndent.px]="deepth() * 20">
       {{ i18nCommonText()?.noData }}
     </div>
   </li>
-  } @if (showNoContent() && !loading() && noContent() && noContentTemplate()) {
-  <!--自定义无数据-->
-  <ng-container *ngTemplateOutlet="noContentTemplate(); context: { item: parent(), deepth: deepth() }"></ng-container>
+  } @else if (showNoContent() && !loading() && noContent() && noContentTemplate()) {
+  <ng-container
+    *ngTemplateOutlet="
+      noContentTemplate();
+      context: { item: parent(), deepth: deepth() }
+    "
+  ></ng-container>
   }
 </ul>
 }

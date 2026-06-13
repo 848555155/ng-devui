@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { AccordionModule } from 'ng-devui/accordion';
 
 @Component({
@@ -6,7 +6,6 @@ import { AccordionModule } from 'ng-devui/accordion';
   imports: [AccordionModule],
   templateUrl: './template.component.html',
   styleUrls: ['./template.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TemplateComponent {
   menu = [
@@ -25,7 +24,7 @@ export class TemplateComponent {
     },
     {
       title: 'Content 4 (Custom No Data Template)',
-      children: [], // 可展开菜单节点必须有children非undefined
+      children: [],
     },
     {
       title: 'Content 5 (Custom loading Template)',

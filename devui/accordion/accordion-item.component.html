@@ -1,6 +1,6 @@
 @if (!itemTemplate()) {
 {{ title() }}
-} @if (itemTemplate()) {
+} @else {
 <ng-container
   *ngTemplateOutlet="
     itemTemplate();

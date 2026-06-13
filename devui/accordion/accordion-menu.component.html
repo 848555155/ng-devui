@@ -10,7 +10,7 @@
 
   @if (!menuItemTemplate()) {
   {{ title() }}
-  } @if (menuItemTemplate()) {
+  } @else {
   <ng-container
     *ngTemplateOutlet="
       menuItemTemplate();
