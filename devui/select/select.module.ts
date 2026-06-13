@@ -21,7 +21,7 @@ import { SelectComponent } from './select.component';
     LazyLoadModule,
     TagsModule,
   ],
-  exports: [SelectComponent],
   declarations: [SelectComponent, BeforeCheckboxChangePipe],
+  exports: [SelectComponent]
 })
 export class SelectModule {}

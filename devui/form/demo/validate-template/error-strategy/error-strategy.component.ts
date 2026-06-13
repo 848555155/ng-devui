@@ -4,9 +4,9 @@ import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'd-form-demo-error-strategy',
-  templateUrl: './error-strategy.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './error-strategy.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ErrorStrategyComponent {
   singleSelectData1 = null;

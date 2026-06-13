@@ -3,7 +3,7 @@ import { ButtonComponent } from 'ng-devui/button';
 
 @Component({
   selector: 'd-button-common',
-    imports: [ButtonComponent],
+  imports: [ButtonComponent],
   templateUrl: './common.component.html',
 })
 export class CommonComponent {}

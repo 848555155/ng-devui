@@ -3,10 +3,10 @@ import { of } from 'rxjs';
 
 @Component({
   selector: 'd-multi-auto-complete-array',
-  templateUrl: './multi-auto-complete-demo-array.component.html',
-  styleUrls: ['./multi-auto-complete-demo-array.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './multi-auto-complete-demo-array.component.html',
+  styleUrl: './multi-auto-complete-demo-array.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class MultiAutoCompleteDemoArrayComponent implements OnInit {
   multiItems1: string[] = ['C#', 'C', 'C++', 'CPython', 'Java'];
@@ -28,7 +28,7 @@ export class MultiAutoCompleteDemoArrayComponent implements OnInit {
     'CoffeeScript',
   ];
 
-  messages: Array<Object> = [];
+  messages: Array<object> = [];
 
   constructor(@Inject(DOCUMENT) private doc: any) {}
 

@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-nav-sprite-design',
-  templateUrl: './nav-sprite-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './nav-sprite-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class NavSpriteDesignComponent implements OnInit {
   imgSrc;

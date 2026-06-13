@@ -2,10 +2,10 @@ import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy } from '@a
 
 @Component({
   selector: 'd-demo-basic',
-  templateUrl: './basic.component.html',
-  styleUrls: ['./basic.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './basic.component.html',
+  styleUrl: './basic.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class BasicComponent implements AfterViewInit {
   @ViewChild('navSprite', { static: true }) navSprite;

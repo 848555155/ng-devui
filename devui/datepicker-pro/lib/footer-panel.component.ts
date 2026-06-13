@@ -5,11 +5,11 @@ import { DatepickerProService } from '../datepicker-pro.service';
 
 @Component({
   selector: 'd-datepicker-footer-panel',
-  templateUrl: './footer-panel.component.html',
-  styleUrls: ['./footer-panel.component.scss'],
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './footer-panel.component.html',
+  styleUrl: './footer-panel.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  preserveWhitespaces: false
 })
 export class FooterPanelComponent implements OnDestroy {
   @Input() footerTemplate: TemplateRef<any>;

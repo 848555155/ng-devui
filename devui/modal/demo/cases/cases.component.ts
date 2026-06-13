@@ -4,9 +4,9 @@ import { ModalCasesComponent } from './modal-cases.component';
 
 @Component({
   selector: 'd-cases',
-  templateUrl: './cases.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './cases.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class CasesComponent {
   constructor(private dialogService: DialogService) {}

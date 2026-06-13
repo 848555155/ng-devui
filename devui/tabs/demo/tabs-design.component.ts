@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-tabs-design',
-  templateUrl: './tabs-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './tabs-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TabsDesignComponent implements OnInit {
   imgSrc;

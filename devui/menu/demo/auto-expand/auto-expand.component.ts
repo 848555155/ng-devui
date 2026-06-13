@@ -78,9 +78,9 @@ function findAllParent(source: MenuItemType[], key: string) {
 
 @Component({
   selector: 'd-auto-expand',
+  standalone: false,
   templateUrl: './auto-expand.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AutoExpandComponent implements OnInit {
   menus = MENUS;

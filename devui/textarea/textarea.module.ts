@@ -6,7 +6,7 @@ import { TextareaDirective } from './textarea.directive';
 
 @NgModule({
   imports: [CommonModule, FormsModule],
-  exports: [TextareaDirective, TextareaMaxLengthComponent],
   declarations: [TextareaDirective, TextareaMaxLengthComponent],
+  exports: [TextareaDirective, TextareaMaxLengthComponent]
 })
 export class TextareaModule {}

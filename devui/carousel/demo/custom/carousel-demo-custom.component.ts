@@ -6,7 +6,7 @@ import { ArrowTrigger, CarouselComponent, CarouselItemComponent } from 'ng-devui
   selector: 'd-carousel-demo-custom',
   imports: [ButtonModule, CarouselComponent, CarouselItemComponent],
   templateUrl: './carousel-demo-custom.component.html',
-  styleUrls: ['../demo-common.scss'],
+  styleUrl: '../demo-common.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CarouselDemoCustomComponent {

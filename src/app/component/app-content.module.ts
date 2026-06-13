@@ -26,14 +26,6 @@ export function hljsLanguages() {
 }
 
 @NgModule({
-  declarations: [
-    ExamplePanelComponent,
-    AppContentComponent,
-    ComponentsOverviewComponent,
-    GetStartedComponent,
-    ThemeGuideComponent,
-    GlobalConfigComponent,
-  ],
   imports: [
     CommonModule,
     LazyLoadModule,
@@ -50,6 +42,14 @@ export function hljsLanguages() {
       },
     ]),
   ],
-  providers: [ComponentDataService],
+  declarations: [
+    ExamplePanelComponent,
+    AppContentComponent,
+    ComponentsOverviewComponent,
+    GetStartedComponent,
+    ThemeGuideComponent,
+    GlobalConfigComponent,
+  ],
+  providers: [ComponentDataService]
 })
 export class AppContentModule {}

@@ -2,9 +2,9 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { IFileOptions, IUploadOptions } from 'ng-devui/upload';
 @Component({
   selector: 'd-dynamic-upload-options',
-  templateUrl: './dynamic-upload-options.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './dynamic-upload-options.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DynamicUploadOptionsComponent implements OnInit {
   additionalParameter = {
@@ -22,7 +22,7 @@ export class DynamicUploadOptionsComponent implements OnInit {
     multiple: true,
     accept: '.xls,.xlsx,.pages,.mp3,.png',
   };
-  uploadedFiles: Array<Object> = [];
+  uploadedFiles: Array<object> = [];
 
   constructor() {}
 

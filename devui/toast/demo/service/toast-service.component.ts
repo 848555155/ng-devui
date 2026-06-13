@@ -2,10 +2,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ToastService } from 'ng-devui/toast';
 @Component({
   selector: 'd-demo-toast-service',
-  templateUrl: './toast-service.component.html',
-  styleUrls: ['./toast-service.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './toast-service.component.html',
+  styleUrl: './toast-service.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ToastServiceComponent {
   constructor(private toastService: ToastService) {}

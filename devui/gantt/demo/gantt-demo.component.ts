@@ -15,9 +15,9 @@ import mockDataTs from './mock-data.ts.txt?raw';
 
 @Component({
   selector: 'd-gantt-demo',
-  templateUrl: './gantt-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './gantt-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class GanttDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

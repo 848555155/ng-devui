@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { images } from '../image-mock';
 @Component({
   selector: 'd-image-preview-z-index',
-  templateUrl: './z-index.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './z-index.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ZIndexComponent {
   zIndex = 1050;

@@ -4,16 +4,16 @@ import { DResponseParameter } from './layout.types';
 
 @Component({
   selector: 'd-col',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   template: `
     <ng-content></ng-content>
   `,
-  styles: [`
+  styles: `
     :host.d-col {
       padding: 0;
     }
-  `],
-  standalone: false
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DColComponent implements OnInit, OnChanges {
 

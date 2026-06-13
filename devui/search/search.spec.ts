@@ -6,9 +6,9 @@ import { DomHelper } from '../utils/testing/dom-helper';
 import { SearchModule } from './search.module';
 
 @Component({
-  template: ` <d-search [size]="size" [(ngModel)]="searchText" [maxLength]="maxLen" (searchFn)="onSearch($event)"></d-search> `,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  template: ` <d-search [size]="size" [(ngModel)]="searchText" [maxLength]="maxLen" (searchFn)="onSearch($event)"></d-search> `,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestSearchComponent {
   size = '';

@@ -10,14 +10,14 @@ import { DashboardWidgetComponent } from './widget/widget.component';
   imports: [
     CommonModule,
   ],
-  exports: [
+  declarations: [
     DashboardComponent,
     DashboardWidgetComponent,
     DashboardLibraryWidgetDirective,
     DashboardLibraryTrashDirective,
     DashboardLibraryPanelDirective,
   ],
-  declarations: [
+  exports: [
     DashboardComponent,
     DashboardWidgetComponent,
     DashboardLibraryWidgetDirective,

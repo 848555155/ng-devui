@@ -5,8 +5,8 @@ import { DragPreviewComponent } from './drag-preview.component';
 
 @Directive({
   selector: '[dDraggable][dDragPreview]',
-  exportAs: 'dDragPreview',
-  standalone: false
+  standalone: false,
+  exportAs: 'dDragPreview'
 })
 
 export class DragPreviewDirective {

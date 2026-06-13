@@ -30,17 +30,15 @@ import setIsOpenScss from './set-is-open/dropdown-set-is-open.component.scss?raw
 
 @Component({
   selector: 'd-demo-dropdown',
+  standalone: false,
   templateUrl: './dropdown-demo.component.html',
-  styles: [
-    `
+  styles: `
       :host ::ng-deep .icon-chevron-down-2 {
         font-size: 14px !important;
         vertical-align: middle;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DropdownDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

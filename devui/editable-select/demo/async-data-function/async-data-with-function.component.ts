@@ -3,16 +3,14 @@ import { Observable, of, timer } from 'rxjs';
 
 @Component({
   selector: 'd-async-data-with-function',
+  standalone: false,
   templateUrl: './async-data-with-function.component.html',
-  styles: [
-    `
+  styles: `
       d-editable-select {
         margin: 12px 0;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class AsyncDataWithFunctionComponent {
   selectItem: any;

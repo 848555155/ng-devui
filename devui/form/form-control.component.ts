@@ -13,11 +13,11 @@ import { DFormControlStatus } from './validator-directive/validate.type';
 
 @Component({
   selector: 'd-form-control',
-  templateUrl: './form-control.component.html',
-  styleUrls: ['./form-control.component.scss'],
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './form-control.component.html',
+  styleUrl: './form-control.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  preserveWhitespaces: false
 })
 export class FormControlComponent implements OnInit {
   @Input() extraInfo: string | TemplateRef<any>;

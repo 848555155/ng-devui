@@ -24,6 +24,7 @@ import themeGuideCn from './themeGuide-cn.md?raw';
 import themeGuideEn from './themeGuide-en.md?raw';
 
 @Component({
+  standalone: false,
   template: `
     <div dCodeCopy class="get-start">
       <div class="readme">
@@ -31,15 +32,12 @@ import themeGuideEn from './themeGuide-en.md?raw';
       </div>
     </div>
   `,
-  styles: [
-    `
+  styles: `
       .readme {
         box-sizing: border-box;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ThemeGuideComponent implements OnInit, AfterViewInit {
   _readMe: HTMLElement;

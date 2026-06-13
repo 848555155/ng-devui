@@ -19,7 +19,7 @@ export interface IStepElement {
   position?: GuidePositionType;
   type?: 'normal' | 'interactable' | 'tip';
   eventType?: 'clickable' | 'inputable' | 'exit';
-  highlightOffset?: Array<Number>;
+  highlightOffset?: Array<number>;
   inputData?: string;
   waitingTime?: number;
   beforeChange?: Function;

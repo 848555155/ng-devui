@@ -4,9 +4,9 @@ import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'd-form-demo-custom-validator',
-  templateUrl: './custom-validator.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './custom-validator.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class CustomValidatorComponent {
   singleSelectData = null;

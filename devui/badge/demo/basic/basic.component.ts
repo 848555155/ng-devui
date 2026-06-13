@@ -5,6 +5,6 @@ import { BadgeComponent } from 'ng-devui/badge';
   selector: 'd-badge-basic',
   imports: [BadgeComponent],
   templateUrl: './basic.component.html',
-  styleUrls: ['./basic.component.scss'],
+  styleUrl: './basic.component.scss',
 })
 export class BasicComponent {}

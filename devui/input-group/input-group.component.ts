@@ -16,11 +16,11 @@ export type ISpliceType = 'standalone' | 'left' | 'right' | 'both';
 
 @Component({
   selector: 'd-input-group',
+  standalone: false,
   templateUrl: './input-group.component.html',
-  styleUrls: ['./input-group.component.scss'],
+  styleUrl: './input-group.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
-  standalone: false
+  preserveWhitespaces: false
 })
 export class InputGroupComponent implements AfterViewInit, OnDestroy {
   @Input() isEmbed = false;

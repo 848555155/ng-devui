@@ -2,9 +2,9 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-auto-focus',
-  templateUrl: './auto-focus.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './auto-focus.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class AutoFocusComponent implements OnInit {
   constructor() {}

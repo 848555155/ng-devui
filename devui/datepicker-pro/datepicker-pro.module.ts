@@ -25,12 +25,6 @@ import { RangeDatepickerProComponent } from './range-datepicker-pro.component';
     ButtonModule,
     PopoverModule
   ],
-  exports: [
-    DatepickerProComponent,
-    DatepickerPanelComponent,
-    RangeDatepickerProComponent,
-    DatepickerProCalendarComponent
-  ],
   declarations: [
     DatepickerProComponent,
     DatepickerPanelComponent,
@@ -44,6 +38,12 @@ import { RangeDatepickerProComponent } from './range-datepicker-pro.component';
   ],
   providers: [
     DatepickerProCommonDataService
+  ],
+  exports: [
+    DatepickerProComponent,
+    DatepickerPanelComponent,
+    RangeDatepickerProComponent,
+    DatepickerProCalendarComponent
   ]
 })
 export class DatepickerProModule {

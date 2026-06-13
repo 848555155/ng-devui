@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-demo-template-cascader',
-  templateUrl: './template-cascader.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './template-cascader.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TemplateCascaderComponent {
   options = [

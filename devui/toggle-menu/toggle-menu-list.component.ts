@@ -21,12 +21,12 @@ import { ToggleMenuListItem } from './toggle-menu.type';
 
 @Component({
   selector: 'd-toggle-menu-list',
+  standalone: false,
   templateUrl: './toggle-menu-list.component.html',
-  styleUrls: [`./toggle-menu-list.component.scss`],
-  animations: [fadeInOut],
+  styleUrl: `./toggle-menu-list.component.scss`,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
-  standalone: false
+  animations: [fadeInOut],
+  preserveWhitespaces: false
 })
 export class ToggleMenuListComponent implements OnInit, OnChanges, OnDestroy {
   /**

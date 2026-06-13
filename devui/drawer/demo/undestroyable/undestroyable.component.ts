@@ -4,9 +4,9 @@ import { DrawerContentComponent } from '../drawerContent/drawer-content.componen
 
 @Component({
   selector: 'd-undestroyable',
-  templateUrl: './undestroyable.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './undestroyable.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class UndestroyableComponent {
   results: IDrawerOpenResult;

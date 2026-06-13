@@ -6,7 +6,7 @@ import { CardModule } from 'ng-devui/card';
   selector: 'd-card-card-interactive',
   imports: [AvatarComponent, CardModule],
   templateUrl: './card-interactive.component.html',
-  styleUrls: ['./card-interactive.component.scss'],
+  styleUrl: './card-interactive.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardInteractiveComponent {}

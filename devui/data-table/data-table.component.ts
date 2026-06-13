@@ -51,11 +51,9 @@ const SCROLL_BAR_WIDTH = 8;
 
 @Component({
   selector: 'd-data-table',
+  standalone: false,
   templateUrl: './data-table.component.html',
   styleUrls: ['./data-table.component.scss', './data-table.component.color.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush,
-  exportAs: 'dataTable',
-  preserveWhitespaces: false,
   providers: [
     {
       provide: DATA_TABLE,
@@ -63,7 +61,9 @@ const SCROLL_BAR_WIDTH = 8;
     },
   ],
   changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  // changeDetection: ChangeDetectionStrategy.OnPush,
+  exportAs: 'dataTable',
+  preserveWhitespaces: false
 })
 export class DataTableComponent implements OnDestroy, OnInit, OnChanges, AfterContentInit, AfterViewInit {
   /**
@@ -382,7 +382,7 @@ export class DataTableComponent implements OnDestroy, OnInit, OnChanges, AfterCo
 
   @Input() set dataSource(dataSource: any[]) {
     if (dataSource === null || !dataSource) {
-      /* eslint-disable-next-line no-param-reassign */
+
       dataSource = [];
     }
     this._dataSource = dataSource;

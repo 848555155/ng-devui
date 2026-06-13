@@ -6,12 +6,12 @@ import { AccordionBaseItem } from './accordion.type';
 @Component({
   selector: 'd-accordion-item',
   imports: [NgTemplateOutlet],
+  templateUrl: './accordion-item.component.html',
+  encapsulation: ViewEncapsulation.None,
   host: {
     '(click)': 'onClick($event)',
   },
-  templateUrl: './accordion-item.component.html',
-  encapsulation: ViewEncapsulation.None,
-  preserveWhitespaces: false,
+  preserveWhitespaces: false
 })
 export class AccordionItemComponent extends AccordionBaseItemComponent<AccordionBaseItem> {
   onClick(event: MouseEvent) {

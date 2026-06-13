@@ -31,9 +31,9 @@ import tabTypeTs from './tab-type/datepicker-pro-tab-type.component.ts.txt?raw';
 import tabTypeScss from './tab-type/datepicker-pro-tab-type.component.scss?raw';
 @Component({
   selector: 'd-datepicker-pro-demo',
-  templateUrl: './datepicker-pro-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './datepicker-pro-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DatepickerProDemoComponent implements OnInit, OnDestroy {
   BasicSource: Array<DevuiSourceData> = [

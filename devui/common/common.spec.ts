@@ -14,12 +14,12 @@ import { HelperUtils } from './helper-utils';
 import { IframeEventPropagateDirective } from './iframe-event-propagate.directive';
 
 @Component({
+  standalone: false,
   template: `
     <button dSimulateATag [href]="'//angular.io'" [target]="target">Open Angualr website</button>
     <button class="btn-func" (click)="goto()">Open Angualr website</button>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestSimulateTagComponent {
   target = '_blank';
@@ -30,12 +30,12 @@ class TestSimulateTagComponent {
 }
 
 @Component({
+  standalone: false,
   template: `
     <button class="btn-1" (click)="download()">Download File</button>
     <button class="btn-2" (click)="download2()">Download File with Header</button>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestDownloadComponent {
   downError: string;
@@ -72,6 +72,7 @@ class TestDownloadComponent {
 }
 
 @Component({
+  standalone: false,
   template: `
     <div>
       <div class="input-group">
@@ -87,8 +88,7 @@ class TestDownloadComponent {
       </div>
     </div>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestClipBoardComponent {
   value = 'Copied Content';
@@ -101,14 +101,14 @@ class TestClipBoardComponent {
 }
 
 @Component({
+  standalone: false,
   template: `
     <div class="host-box" (click)="hostClick($event)" dIframeEventPropagate>
       <div><h2>Parent container</h2></div>
       <iframe class="content-box"></iframe>
     </div>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestIframeComponent implements AfterViewInit {
   constructor(private el: ElementRef) {}

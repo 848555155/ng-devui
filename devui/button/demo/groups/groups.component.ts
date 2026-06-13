@@ -4,8 +4,8 @@ import { DropDownModule } from 'ng-devui/dropdown';
 
 @Component({
   selector: 'd-button-groups',
-    imports: [ButtonComponent, ButtonGroupComponent, DropDownModule],
+  imports: [ButtonComponent, ButtonGroupComponent, DropDownModule],
   templateUrl: './groups.component.html',
-  styleUrls: ['./groups.component.scss'],
+  styleUrl: './groups.component.scss',
 })
 export class GroupsComponent {}

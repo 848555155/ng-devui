@@ -4,9 +4,9 @@ import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'd-form-demo-debounce-time',
-  templateUrl: './debounce-time.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './debounce-time.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DebounceTimeComponent {
   singleInputData = '';

@@ -7,9 +7,9 @@ import { StickyModule } from 'ng-devui/sticky';
   selector: 'd-anchor-async',
   imports: [AnchorModule, ButtonModule, StickyModule],
   templateUrl: './async.component.html',
-  styleUrls: ['./async.component.scss'],
+  styleUrl: './async.component.scss',
 })
 export class AsyncComponent {
-  loadMenu = signal(false);
-  loadContent = signal(false);
+  readonly loadMenu = signal(false);
+  readonly loadContent = signal(false);
 }

@@ -40,7 +40,6 @@ import apiEn from '../doc/api-en.md?raw';
       }}
     ])
   ],
-  exports: [PaginationDemoComponent],
   declarations: [
     PaginationDemoComponent,
     PaginationDesignComponent,
@@ -49,7 +48,7 @@ import apiEn from '../doc/api-en.md?raw';
     LiteComponent,
     WidgetsComponent
   ],
-
+  exports: [PaginationDemoComponent]
 })
 export class PaginationDemoModule {
 }

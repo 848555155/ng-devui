@@ -4,10 +4,10 @@ import { GanttService } from '../gantt.service';
 
 @Component({
   selector: 'd-gantt-milestone',
-  templateUrl: './gantt-milestone.component.html',
-  styleUrls: ['./gantt-milestone.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './gantt-milestone.component.html',
+  styleUrl: './gantt-milestone.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class GanttMilestoneComponent implements OnInit, OnChanges, OnDestroy {
   @Input() startDate: Date;

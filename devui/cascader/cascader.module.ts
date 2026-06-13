@@ -9,10 +9,6 @@ import { CascaderLiComponent } from './cascader-li.component';
 import { CascaderComponent } from './cascader.component';
 
 @NgModule({
-  declarations: [
-    CascaderComponent,
-    CascaderLiComponent
-  ],
   imports: [
     CommonModule,
     SelectModule,
@@ -21,6 +17,10 @@ import { CascaderComponent } from './cascader.component';
     TagsModule,
     CheckBoxModule
   ],
-  exports: [ CascaderComponent ],
+  declarations: [
+    CascaderComponent,
+    CascaderLiComponent
+  ],
+  exports: [ CascaderComponent ]
 })
 export class CascaderModule {}

@@ -21,10 +21,10 @@ import lazyLoadTs from './lazy-load/auto-complete-demo-lazy-load.component.ts.tx
 
 @Component({
   selector: 'd-auto-complete-demo',
-  templateUrl: './auto-complete-demo.component.html',
-  styleUrls: ['./auto-complete-demo.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './auto-complete-demo.component.html',
+  styleUrl: './auto-complete-demo.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class AutoCompleteDemoComponent implements OnInit, OnDestroy {
   AutoCompleteDemoBasic: Array<DevuiSourceData> = [

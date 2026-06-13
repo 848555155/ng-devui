@@ -92,9 +92,9 @@ const MENUS: MenuItemType[] = [
 
 @Component({
   selector: 'd-loop',
+  standalone: false,
   templateUrl: './loop.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoopComponent {
   menus = MENUS;

@@ -9,36 +9,36 @@ import { AccordionListComponent } from './accordion-list.component';
 @Component({
   selector: 'd-accordion-menu',
   imports: [NgTemplateOutlet],
+  templateUrl: './accordion-menu.component.html',
+  encapsulation: ViewEncapsulation.None,
   host: {
     class: 'devui-accordion-menu-item',
     '[class.open]': 'open()',
     '[class.devui-router-active]': 'routerLinkActivated()',
     '[class.devui-has-active-item]': 'hasActiveChildren()',
   },
-  templateUrl: './accordion-menu.component.html',
-  encapsulation: ViewEncapsulation.None,
-  preserveWhitespaces: false,
+  preserveWhitespaces: false
 })
 export class AccordionMenuComponent extends AccordionBaseComponent<AccordionBaseMenu<AccordionMenuItem>> {
-  accordionListFromView = signal<AccordionListComponent | null>(null);
+  readonly accordionListFromView = signal<AccordionListComponent | null>(null);
 
-  open = computed(() => {
+  readonly open = computed(() => {
     const keyOpen = this.item() && this.item()[this.accordion.openKey()];
     void this.accordion.stateVersion();
     return keyOpen === undefined && this.accordion.autoOpenActiveMenu() ? this.childActivated() : keyOpen;
   });
 
-  routerLinkActivated = computed(() => this.accordionListFromView()?.routerLinkActivated() || false);
+  readonly routerLinkActivated = computed(() => this.accordionListFromView()?.routerLinkActivated() || false);
 
-  hasActiveChildren = computed(() => this.accordionListFromView()?.hasActiveChildren() || false);
+  readonly hasActiveChildren = computed(() => this.accordionListFromView()?.hasActiveChildren() || false);
 
-  keyOpen = computed(() => this.item() && this.item()[this.accordion.openKey()]);
+  readonly keyOpen = computed(() => this.item() && this.item()[this.accordion.openKey()]);
 
-  children = computed(() => this.item() && this.item()[this.accordion.childrenKey()]);
+  readonly children = computed(() => this.item() && this.item()[this.accordion.childrenKey()]);
 
-  childActivated = computed(() => this.routerLinkActivated() || this.hasActiveChildren());
+  readonly childActivated = computed(() => this.routerLinkActivated() || this.hasActiveChildren());
 
-  menuItemTemplate = computed(() => this.accordion.menuItemTemplate());
+  readonly menuItemTemplate = computed(() => this.accordion.menuItemTemplate());
 
   sub = inject(AccordionService)
     .getChildListInstance()

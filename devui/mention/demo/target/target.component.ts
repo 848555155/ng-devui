@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-mention-target',
-  templateUrl: './target.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './target.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TargetComponent {
   mentionValue = '';

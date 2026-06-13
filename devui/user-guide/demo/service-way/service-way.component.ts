@@ -4,10 +4,10 @@ import { mockSteps } from '../mock-steps';
 
 @Component({
   selector: 'd-user-guide-service-way',
-  templateUrl: './service-way.component.html',
-  styleUrls: ['./service-way.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './service-way.component.html',
+  styleUrl: './service-way.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ServiceWayComponent implements OnInit {
   steps: Array<IStep> = mockSteps;

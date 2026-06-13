@@ -11,8 +11,8 @@ export enum FormLayout {
 
 @Directive({
   selector: '[dForm]',
-  exportAs: 'dForm',
-  standalone: false
+  standalone: false,
+  exportAs: 'dForm'
 })
 export class FormDirective {
   @Input() layout = FormLayout.Horizontal;
@@ -163,8 +163,8 @@ export class FormDirective {
 
 @Directive({
   selector: '[dActiveFormControl]',
-  exportAs: 'dActiveFormControl',
-  standalone: false
+  standalone: false,
+  exportAs: 'dActiveFormControl'
 })
 export class ActiveFormControlDirective {
   @HostBinding('class.devui-active-form') flag = true;

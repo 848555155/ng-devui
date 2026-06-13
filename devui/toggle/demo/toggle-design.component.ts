@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-toggle-design',
-  templateUrl: './toggle-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './toggle-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ToggleDesignComponent implements OnInit {
   imgSrc: string;

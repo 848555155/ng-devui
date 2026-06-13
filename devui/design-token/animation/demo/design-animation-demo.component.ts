@@ -4,9 +4,9 @@ import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'd-design-animation-demo',
-  templateUrl: './design-animation-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './design-animation-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DesignAnimationDemoComponent implements OnInit, OnDestroy {
   navItems = [];

@@ -3,9 +3,9 @@ import { IFileOptions, IUploadOptions } from 'ng-devui/upload';
 
 @Component({
   selector: 'd-auto',
-  templateUrl: './auto.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './auto.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class UploadAutoComponent {
   additionalParameter1 = {

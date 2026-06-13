@@ -7,8 +7,8 @@ import { DValidateSyncService } from '../services/d-validate-sync.service';
     [dValidateSyncKey][formGroupName],[dValidateSyncKey][formArrayName],[dValidateSyncKey][ngModelGroup],
     [dValidateSyncKey][formGroup],[dValidateSyncKey]form:not([ngNoForm]),[dValidateSyncKey][ngForm]
   `,
-  exportAs: 'dValidateSync',
-  standalone: false
+  standalone: false,
+  exportAs: 'dValidateSync'
 })
 
 export class DValidateSyncDirective implements OnChanges, OnDestroy {

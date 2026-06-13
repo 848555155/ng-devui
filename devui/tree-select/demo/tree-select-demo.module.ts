@@ -62,7 +62,6 @@ import apiEn from '../doc/api-en.md?raw';
     ]),
     ModalModule,
   ],
-  exports: [TreeSelectDemoComponent],
   declarations: [
     TreeSelectDemoComponent,
     TreeSelectDesignComponent,
@@ -79,7 +78,7 @@ import apiEn from '../doc/api-en.md?raw';
     TreeSelectIconParentComponent,
     TreeSelectVirtualScrollComponent,
   ],
-
   providers: [],
+  exports: [TreeSelectDemoComponent]
 })
 export class TreeSelectDemoModule {}

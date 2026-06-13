@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
   selector: 'd-button-design',
   imports: [TranslatePipe],
   templateUrl: './button-design.component.html',
-  styleUrls: ['./button-design.component.scss'],
+  styleUrl: './button-design.component.scss',
 })
 export class ButtonDesignComponent {
   private translate = inject(TranslateService);

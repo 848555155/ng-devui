@@ -1,9 +1,9 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: 'd-multi-keep-order',
-  templateUrl: './multi-keep-order.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './multi-keep-order.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class MultiKeepOrderComponent {
   options = [

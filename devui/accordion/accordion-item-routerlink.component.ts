@@ -12,17 +12,17 @@ import { AccordionBaseLinkComponent } from './accordion-base-link-component.clas
 @Component({
   selector: 'd-accordion-item-routerlink',
   imports: [RouterModule, NgTemplateOutlet],
+  templateUrl: './accordion-item-routerlink.component.html',
+  encapsulation: ViewEncapsulation.None,
   host: {
     '[class.devui-router-active]': 'routerLinkActivated()',
     '(click)': 'onClick($event)',
   },
-  templateUrl: './accordion-item-routerlink.component.html',
-  encapsulation: ViewEncapsulation.None,
-  preserveWhitespaces: false,
+  preserveWhitespaces: false
 })
 export class AccordionItemRouterlinkComponent extends AccordionBaseLinkComponent {
-  routerLinkActiveDirective = viewChild(RouterLinkActive);
-  routerLinkActivated = computed(() => !!(this.routerLinkActiveDirective() && this.routerLinkActiveDirective().isActive));
+  readonly routerLinkActiveDirective = viewChild(RouterLinkActive);
+  readonly routerLinkActivated = computed(() => !!(this.routerLinkActiveDirective() && this.routerLinkActiveDirective().isActive));
   private router = inject(Router);
 
   onClick(event: MouseEvent) {
@@ -35,7 +35,7 @@ export class AccordionItemRouterlinkComponent extends AccordionBaseLinkComponent
     }
   }
 
-  path = computed(() => {
+  readonly path = computed(() => {
     if (this.link()) {
       const handelPath = (url: string) => {
         let path = url;
@@ -51,7 +51,7 @@ export class AccordionItemRouterlinkComponent extends AccordionBaseLinkComponent
     }
   });
 
-  queryParams = computed(() => {
+  readonly queryParams = computed(() => {
     if (this.link()) {
       return this.router.parseUrl(this.link()).queryParams;
     } else {
@@ -59,7 +59,7 @@ export class AccordionItemRouterlinkComponent extends AccordionBaseLinkComponent
     }
   });
 
-  fragment = computed(() => {
+  readonly fragment = computed(() => {
     if (this.link()) {
       return this.router.parseUrl(this.link()).fragment;
     } else {

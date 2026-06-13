@@ -3,9 +3,9 @@ import { of } from 'rxjs';
 
 @Component({
   selector: 'd-with-search-function',
-  templateUrl: './with-search-function.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './with-search-function.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class WithSearchFunctionComponent {
   selectItem: any;

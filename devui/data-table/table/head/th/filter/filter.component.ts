@@ -24,10 +24,10 @@ import { TABLE_TH } from '../th.token';
 
 @Component({
   selector: 'd-table-filter',
-  templateUrl: './filter.component.html',
-  styleUrls: ['./filter.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './filter.component.html',
+  styleUrl: './filter.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class FilterComponent implements OnInit, OnChanges, OnDestroy {
   @Input() beforeFilter: (value) => boolean | Promise<boolean> | Observable<boolean>;

@@ -3,17 +3,15 @@ import { DialogService } from 'ng-devui/modal';
 
 @Component({
   selector: 'd-two-binding',
+  standalone: false,
   templateUrl: './two-binding.component.html',
-  styles: [
-    `
+  styles: `
       d-toggle {
         display: block;
         margin-bottom: 8px;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TwoBindingComponent {
   enable = true;

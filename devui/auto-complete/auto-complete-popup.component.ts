@@ -13,12 +13,12 @@ import { AutoCompleteConfig } from './auto-complete-config';
 
 @Component({
   selector: 'd-auto-complete-popup',
-  templateUrl: './auto-complete-popup.component.html',
-  styleUrls: ['auto-complete-popup.component.scss'],
-  animations: [fadeInOut],
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './auto-complete-popup.component.html',
+  styleUrl: 'auto-complete-popup.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  animations: [fadeInOut],
+  preserveWhitespaces: false
 })
 export class AutoCompletePopupComponent implements ControlValueAccessor {
   @Input() width: number;

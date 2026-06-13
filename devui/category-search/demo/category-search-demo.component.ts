@@ -13,9 +13,9 @@ import demoDataTs from './demo-data.ts.txt?raw';
 
 @Component({
   selector: 'd-category-search-demo',
-  templateUrl: './category-search-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './category-search-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class CategorySearchDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

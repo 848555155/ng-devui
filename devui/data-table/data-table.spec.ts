@@ -19,6 +19,7 @@ import { editableOriginSource, genderSource, originSource, SourceType, treeDataS
 
 // basic
 @Component({
+  standalone: false,
   template: `
     <d-data-table
       #tableComp
@@ -50,8 +51,7 @@ import { editableOriginSource, genderSource, originSource, SourceType, treeDataS
       </tbody>
     </d-data-table>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestDataTableBasicComponent {
   @ViewChild('tableComp') tableComp;
@@ -98,6 +98,7 @@ class TestDataTableBasicComponent {
 
 // data-table: checkable, sortable, filterable
 @Component({
+  standalone: false,
   template: `
     <d-data-table [dataSource]="sortableDataSource" [scrollable]="true" [tableWidthConfig]="tableWidthConfig" [onlyOneColumnSort]="true">
       <thead dTableHead [checkable]="true" [checkOptions]="checkOptions">
@@ -178,8 +179,7 @@ class TestDataTableBasicComponent {
       </tbody>
     </d-data-table>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestDataTableAdvancedComponent {
   @ViewChild(DataTableComponent) datatable: DataTableComponent;
@@ -264,6 +264,7 @@ class TestDataTableAdvancedComponent {
 
 // data-table: edit
 @Component({
+  standalone: false,
   template: `
     <d-data-table #dataTable [dataSource]="basicDataSource" (cellEditEnd)="thisCellEditEnd($event)" [scrollable]="true">
       <thead dTableHead>
@@ -362,8 +363,7 @@ class TestDataTableAdvancedComponent {
       </tbody>
     </d-data-table>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestDataTableEditComponent {
   genderSource = genderSource;
@@ -377,17 +377,18 @@ class TestDataTableEditComponent {
     rowItem[editField] = editing;
   }
 
-  beforeEditStart = (rowItem, field): Boolean | Promise<boolean> | Observable<boolean> => {
+  beforeEditStart = (rowItem, field): boolean | Promise<boolean> | Observable<boolean> => {
     return Promise.resolve(true);
   };
 
-  beforeEditEnd = (rowItem, field): Boolean | Promise<boolean> | Observable<boolean> => {
+  beforeEditEnd = (rowItem, field): boolean | Promise<boolean> | Observable<boolean> => {
     return Promise.resolve(true);
   };
 }
 
 // data-table: has children
 @Component({
+  standalone: false,
   template: `
     <d-data-table
       #comp
@@ -438,8 +439,7 @@ class TestDataTableEditComponent {
       </tbody>
     </d-data-table>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestDataTableWithChildrenComponent {
   tableWidthConfig: TableWidthConfig[] = [
@@ -492,6 +492,7 @@ class TestDataTableWithChildrenComponent {
 
 // data-table: multi header
 @Component({
+  standalone: false,
   template: `
     <d-data-table [type]="'striped'" [scrollable]="true" [tableWidthConfig]="tableWidthConfig" [dataSource]="basicDataSource">
       <thead dTableHead>
@@ -519,8 +520,7 @@ class TestDataTableWithChildrenComponent {
       </tbody>
     </d-data-table>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestDataTableMultiHeaderComponent {
   basicDataSource: Array<SourceType> = JSON.parse(JSON.stringify(originSource.slice(0, 6)));
@@ -528,6 +528,7 @@ class TestDataTableMultiHeaderComponent {
 
 // data-table: fixed column
 @Component({
+  standalone: false,
   template: `
     <d-data-table [dataSource]="basicDataSource" [scrollable]="true" [tableWidthConfig]="tableWidthConfig">
       <thead dTableHead [checkable]="true">
@@ -552,8 +553,7 @@ class TestDataTableMultiHeaderComponent {
       </tbody>
     </d-data-table>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestDataFixedColumnComponent {
   basicDataSource: Array<SourceType> = JSON.parse(JSON.stringify(originSource.slice(0, 6)));

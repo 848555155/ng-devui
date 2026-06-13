@@ -7,9 +7,9 @@ import { originSource, SourceType } from '../mock-data';
 
 @Component({
   selector: 'd-datatable-demo-multiheader',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   templateUrl: './data-table-demo-multiheader.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DatatableDemoMultiHeaderComponent implements OnInit {
   basicDataSource: Array<SourceType> = JSON.parse(JSON.stringify(originSource.slice(0, 6)));

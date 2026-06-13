@@ -21,8 +21,9 @@ import { SimpleDate } from '../single-date-range-picker.component';
 
 @Component({
   selector: 'd-two-datepicker-single',
+  standalone: false,
   templateUrl: '../single-date-range-picker.component.html',
-  styleUrls: ['../single-date-range-picker.component.scss'],
+  styleUrl: '../single-date-range-picker.component.scss',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -30,8 +31,7 @@ import { SimpleDate } from '../single-date-range-picker.component';
       multi: true,
     },
   ],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TwoDatepickerSingleComponent extends SingleDatepickerComponent implements OnChanges, OnInit {
   @Input() selectedRange: Date[] = Array(2);

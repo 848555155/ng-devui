@@ -15,13 +15,12 @@ import { DrawerService } from './drawer.service';
     PortalModule,
     OverlayContainerModule
   ],
-  exports: [DrawerComponent],
   declarations: [
     DrawerComponent,
     DrawerContentDirective
   ],
   providers: [DrawerService],
-
+  exports: [DrawerComponent]
 })
 export class DrawerModule {
 }

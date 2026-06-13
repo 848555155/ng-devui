@@ -40,6 +40,9 @@ import { DateRangePickerComponent } from './date-range-picker.component';
 @Component({
   /* eslint-disable-next-line @angular-eslint/component-selector*/
   selector: '[dDateRangePicker]',
+  standalone: false,
+  templateUrl: './date-range-picker.directive.html',
+  styleUrl: './date-range-picker.component.scss',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -47,13 +50,10 @@ import { DateRangePickerComponent } from './date-range-picker.component';
       multi: true,
     },
   ],
-  exportAs: 'dateRangePicker',
-  templateUrl: './date-range-picker.directive.html',
-  styleUrls: ['./date-range-picker.component.scss'],
-  animations: [fadeInOut],
-  preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  animations: [fadeInOut],
+  exportAs: 'dateRangePicker',
+  preserveWhitespaces: false
 })
 // tslint:disable-next-line: component-class-suffix
 export class DateRangePickerDirective implements OnInit, ControlValueAccessor, OnDestroy {
@@ -326,14 +326,14 @@ export class DateRangePickerDirective implements OnInit, ControlValueAccessor, O
 
   onPositionChange(position: ConnectedOverlayPositionChange) {
     switch (position.connectionPair.overlayY) {
-      case 'top':
-      case 'center':
-        this.datepickerPosition = 'bottom';
-        break;
-      case 'bottom':
-        this.datepickerPosition = 'top';
-        break;
-      default:
+    case 'top':
+    case 'center':
+      this.datepickerPosition = 'bottom';
+      break;
+    case 'bottom':
+      this.datepickerPosition = 'top';
+      break;
+    default:
     }
   }
 

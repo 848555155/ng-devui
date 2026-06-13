@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-font-design',
-  templateUrl: './font-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './font-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class FontDesignComponent implements OnInit {
   imgSrc;

@@ -3,8 +3,8 @@ import { DropDownDirective } from './dropdown.directive';
 
 @Directive({
   selector: '[dDropDownToggle]',
-  exportAs: 'd-dropdown-toggle',
-  standalone: false
+  standalone: false,
+  exportAs: 'd-dropdown-toggle'
 })
 export class DropDownToggleDirective implements OnInit, AfterViewInit {
   @HostBinding('attr.tabIndex') get tabIndex() {

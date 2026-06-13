@@ -11,9 +11,9 @@ import scrollTargetScss from './scroll-target/scroll-target.component.scss?raw';
 
 @Component({
   selector: 'd-demo-sticky',
-  templateUrl: './sticky-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './sticky-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class StickyDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

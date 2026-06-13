@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-mention-async',
-  templateUrl: './async.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './async.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class AsyncComponent {
   loading = true;

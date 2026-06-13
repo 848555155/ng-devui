@@ -3,10 +3,10 @@ import { ColData } from './table-option-toggle.component';
 
 @Component({
   selector: 'd-table-option-modal',
+  standalone: false,
   templateUrl: './table-option-modal.component.html',
   styleUrls: ['./table-option-modal.component.scss', './table-option-toggle.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TableOptionModalComponent implements OnInit {
   @Input() data: any;

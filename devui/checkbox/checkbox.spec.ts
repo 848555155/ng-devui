@@ -7,6 +7,7 @@ import { DomHelper } from '../utils/testing/dom-helper';
 import { CheckBoxComponent } from './checkbox.component';
 import { CheckBoxModule } from './checkbox.module';
 @Component({
+  standalone: false,
   template: `<d-checkbox
     #comp
     [label]="'??'"
@@ -18,8 +19,7 @@ import { CheckBoxModule } from './checkbox.module';
     [beforeChange]="beforeChange"
   >
   </d-checkbox>`,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestCheckBoxComponent {
   @ViewChild('comp') comp: CheckBoxComponent;

@@ -24,12 +24,12 @@ import { DatePickerConfigService as DatePickerConfig } from '../date-picker.conf
 @Component({
   /* eslint-disable-next-line @angular-eslint/component-selector*/
   selector: '[dTwoDatePicker]',
-  exportAs: 'twoDatePicker',
-  templateUrl: 'two-datepicker.component.html',
-  styleUrls: ['./two-datepicker.component.scss'],
-  animations: [fadeInOut],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: 'two-datepicker.component.html',
+  styleUrl: './two-datepicker.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  animations: [fadeInOut],
+  exportAs: 'twoDatePicker'
 })
 export class TwoDatePickerComponent implements OnInit, OnDestroy {
   @Input() locale: string;
@@ -204,14 +204,14 @@ export class TwoDatePickerComponent implements OnInit, OnDestroy {
 
   onPositionChange(position: ConnectedOverlayPositionChange) {
     switch (position.connectionPair.overlayY) {
-      case 'top':
-      case 'center':
-        this.datePosition = 'bottom';
-        break;
-      case 'bottom':
-        this.datePosition = 'top';
-        break;
-      default:
+    case 'top':
+    case 'center':
+      this.datePosition = 'bottom';
+      break;
+    case 'bottom':
+      this.datePosition = 'top';
+      break;
+    default:
     }
     this.switchOriginPositionSub.next(this.whichOpen);
   }
@@ -234,13 +234,13 @@ export class TwoDatePickerComponent implements OnInit, OnDestroy {
 
   syncPickerPair(currentCalender: object, orientation: string) {
     switch (orientation) {
-      case 'left':
-        this.currentCalendars[0] = currentCalender;
-        break;
-      case 'right':
-        this.currentCalendars[1] = currentCalender;
-        break;
-      default:
+    case 'left':
+      this.currentCalendars[0] = currentCalender;
+      break;
+    case 'right':
+      this.currentCalendars[1] = currentCalender;
+      break;
+    default:
     }
   }
 

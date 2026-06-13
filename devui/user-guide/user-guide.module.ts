@@ -17,7 +17,7 @@ import { UserGuideService } from './user-guide.service';
     SafePipeModule,
     IconModule
   ],
-  exports: [
+  declarations: [
     UserGuideComponent,
     UserGuideUIComponent
   ],
@@ -25,7 +25,7 @@ import { UserGuideService } from './user-guide.service';
     UserGuideCoreService,
     UserGuideService
   ],
-  declarations: [
+  exports: [
     UserGuideComponent,
     UserGuideUIComponent
   ]

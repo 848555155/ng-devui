@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-basic-datepicker-pro',
-  templateUrl: './basic-datepicker-pro.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './basic-datepicker-pro.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class BasicDatepickerProComponent {
   value1;

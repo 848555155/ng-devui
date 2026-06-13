@@ -53,10 +53,9 @@ import { debounceTime, filter, map, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'd-select',
+  standalone: false,
   templateUrl: './select.component.html',
-  styleUrls: [`./select.component.scss`],
-  exportAs: 'select',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrl: `./select.component.scss`,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -64,9 +63,10 @@ import { debounceTime, filter, map, switchMap } from 'rxjs/operators';
       multi: true,
     },
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [fadeInOut],
-  preserveWhitespaces: false,
-  standalone: false
+  exportAs: 'select',
+  preserveWhitespaces: false
 })
 export class SelectComponent implements ControlValueAccessor, OnInit, AfterViewInit, OnDestroy, OnChanges {
   /**

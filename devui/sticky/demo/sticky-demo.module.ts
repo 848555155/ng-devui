@@ -44,8 +44,7 @@ import apiEn from '../doc/api-en.md?raw';
       },
     ]),
   ],
-  exports: [StickyDemoComponent],
   declarations: [StickyDemoComponent, StickyDesignComponent, BasicComponent, ScrollTargetComponent],
-
+  exports: [StickyDemoComponent]
 })
 export class StickyDemoModule {}

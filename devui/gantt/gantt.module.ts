@@ -15,6 +15,14 @@ import { GanttService } from './gantt.service';
 import { ResizeHandleDirective } from './resize-handle.directive';
 
 @NgModule({
+  imports: [
+    CommonModule,
+    OverlayModule,
+    PopoverModule,
+    TooltipModule,
+    ButtonModule,
+    DropDownModule
+  ],
   declarations: [
     GanttScaleComponent,
     GanttBarComponent,
@@ -23,14 +31,6 @@ import { ResizeHandleDirective } from './resize-handle.directive';
     GanttBarParentComponent,
     ResizeHandleDirective,
     GanttToolsComponent
-  ],
-  imports: [
-    CommonModule,
-    OverlayModule,
-    PopoverModule,
-    TooltipModule,
-    ButtonModule,
-    DropDownModule
   ],
   providers: [GanttService],
   exports: [

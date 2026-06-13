@@ -51,6 +51,7 @@ const dataTableOptions = {
 
 // column: basic & checkable
 @Component({
+  standalone: false,
   template: `
     <d-data-table
       #datatable
@@ -73,8 +74,7 @@ const dataTableOptions = {
       }
     </d-data-table>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestDataTableColumnBasicComponent {
   @ViewChild('datatable') datatable;
@@ -97,6 +97,7 @@ class TestDataTableColumnBasicComponent {
 
 // column: checkable, sortable, filterable
 @Component({
+  standalone: false,
   template: `
     <d-data-table
       [dataSource]="sortableDataSource"
@@ -177,8 +178,7 @@ class TestDataTableColumnBasicComponent {
       </div>
     </ng-template>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestDataTableAdvancedColumnComponent implements OnInit {
   constructor(private ref: ChangeDetectorRef) {}
@@ -322,6 +322,7 @@ class TestDataTableAdvancedColumnComponent implements OnInit {
 
 // column: edit
 @Component({
+  standalone: false,
   template: `
     <d-data-table
       #dataTable
@@ -406,8 +407,7 @@ class TestDataTableAdvancedColumnComponent implements OnInit {
       </d-column>
     </d-data-table>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestDataTableColumnEditComponent {
   @ViewChild(DataTableComponent) dataTable: DataTableComponent;
@@ -423,6 +423,7 @@ class TestDataTableColumnEditComponent {
 
 // column: datatable with tree structure
 @Component({
+  standalone: false,
   template: `
     <d-data-table
       #dataTable
@@ -446,8 +447,7 @@ class TestDataTableColumnEditComponent {
       ></d-column>
     </d-data-table>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestDataTableColumnWithChildrenComponent {
   basicDataSource: Array<SourceType> = JSON.parse(JSON.stringify(treeDataSource.slice(0, 6)));
@@ -455,6 +455,7 @@ class TestDataTableColumnWithChildrenComponent {
 
 // column: datatable multi header
 @Component({
+  standalone: false,
   template: `
     <d-data-table
       [type]="'striped'"
@@ -498,8 +499,7 @@ class TestDataTableColumnWithChildrenComponent {
       ></d-column>
     </d-data-table>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestDataTableColumnMultiHeaderComponent {
   basicDataSource: Array<SourceType> = JSON.parse(JSON.stringify(originSource.slice(0, 6)));
@@ -509,6 +509,7 @@ class TestDataTableColumnMultiHeaderComponent {
 
 // column: fix header
 @Component({
+  standalone: false,
   template: `
     <d-data-table
       #datatable1
@@ -531,8 +532,7 @@ class TestDataTableColumnMultiHeaderComponent {
       }
     </d-data-table>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestDataTableColumnFixHeaderComponent {
   resizable = false;
@@ -542,6 +542,7 @@ class TestDataTableColumnFixHeaderComponent {
 
 // column: column drag
 @Component({
+  standalone: false,
   template: `
     <d-data-table
       #datatable
@@ -557,8 +558,7 @@ class TestDataTableColumnFixHeaderComponent {
       }
     </d-data-table>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestDataTableColumnDragComponent {
   isHeaderFixed = false;
@@ -568,6 +568,7 @@ class TestDataTableColumnDragComponent {
 
 // expand row
 @Component({
+  standalone: false,
   template: `
     <d-data-table
       #dataTable
@@ -593,8 +594,7 @@ class TestDataTableColumnDragComponent {
       </div>
     </ng-template>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestDataTableExpandComponent implements OnInit {
   @ViewChild('addSubRowContent', { static: true }) addSubRowContent: ElementRef;

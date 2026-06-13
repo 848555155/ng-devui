@@ -5,7 +5,7 @@ import { AccordionModule } from 'ng-devui/accordion';
   selector: 'd-change-key',
   imports: [AccordionModule],
   templateUrl: './change-key.component.html',
-  styleUrls: ['./change-key.component.css'],
+  styleUrl: './change-key.component.css',
 })
 export class ChangeKeyComponent {
   key = {

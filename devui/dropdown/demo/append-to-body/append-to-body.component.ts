@@ -2,10 +2,10 @@ import { Component, ElementRef, ViewChild, ChangeDetectionStrategy } from '@angu
 
 @Component({
   selector: 'd-dropdown-appendtobody',
-  templateUrl: './append-to-body.component.html',
-  styleUrls: ['./append-to-body.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './append-to-body.component.html',
+  styleUrl: './append-to-body.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DropDownDemoAppendToBodyComponent {
   @ViewChild('origin', { static: true }) originRef: ElementRef;

@@ -2,10 +2,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-widgets',
-  templateUrl: './widgets.component.html',
-  styleUrls: ['./widgets.component.css'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './widgets.component.html',
+  styleUrl: './widgets.component.css',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class WidgetsComponent {
   pager = {

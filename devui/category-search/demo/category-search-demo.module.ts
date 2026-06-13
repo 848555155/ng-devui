@@ -18,12 +18,6 @@ import { marked } from 'marked';
 import apiCn from '../doc/api-cn.md?raw';
 import apiEn from '../doc/api-en.md?raw';
 @NgModule({
-  declarations: [
-    CategorySearchDemoComponent,
-    BasicComponent,
-    ExtendComponent,
-    AutoScrollComponent,
-  ],
   imports: [
     TranslatePipe,
     CommonModule,
@@ -57,5 +51,11 @@ import apiEn from '../doc/api-en.md?raw';
       },
     ]),
   ],
+  declarations: [
+    CategorySearchDemoComponent,
+    BasicComponent,
+    ExtendComponent,
+    AutoScrollComponent,
+  ]
 })
 export class CategorySearchDemoModule {}

@@ -3,10 +3,10 @@ import { IAxisConfigs, ILabelDataConfigs, IQuadrantConfigs, IViewConfigs } from 
 
 @Component({
   selector: 'd-config',
-  templateUrl: './config.component.html',
-  styleUrls: ['./config.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './config.component.html',
+  styleUrl: './config.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ConfigComponent {
   xWeight = 2;

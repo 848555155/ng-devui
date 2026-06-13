@@ -7,10 +7,10 @@ import { ToggleModule } from 'ng-devui/toggle';
   selector: 'd-multi-level',
   imports: [AccordionModule, ToggleModule, FormsModule],
   templateUrl: './multi-level.component.html',
-  styleUrls: ['./multi-level.component.css'],
+  styleUrl: './multi-level.component.css',
 })
 export class MultiLevelComponent {
-  autoOpenActiveMenu = signal(false);
+  readonly autoOpenActiveMenu = signal(false);
   menu = [
     {
       title: 'Content 1 (as a leaf menu)',

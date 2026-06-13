@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-tree-select-icon-parent',
-  templateUrl: './icon-parent.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './icon-parent.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TreeSelectIconParentComponent {
   data1 = [

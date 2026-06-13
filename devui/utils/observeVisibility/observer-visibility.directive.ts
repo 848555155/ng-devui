@@ -19,10 +19,10 @@ import { delay, filter } from 'rxjs/operators';
   selector: '[dObserveVisibility]',
 })
 export class ObserveVisibilityDirective implements OnDestroy, OnInit, AfterViewInit {
-  debounceTime = input(0, { transform: numberAttribute });
-  threshold = input(1, { transform: numberAttribute });
-  root = input<HTMLElement>();
-  rootMargin = input('0px');
+  readonly debounceTime = input(0, { transform: numberAttribute });
+  readonly threshold = input(1, { transform: numberAttribute });
+  readonly root = input<HTMLElement>();
+  readonly rootMargin = input('0px');
   show = output<HTMLElement>();
   hide = output<HTMLElement>();
 

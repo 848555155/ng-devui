@@ -11,9 +11,9 @@ import zIndexTs from './z-index/z-index.component.ts.txt?raw';
 
 @Component({
   selector: 'd-image-preview-demo',
-  templateUrl: './image-preview-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './image-preview-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DImagePreviewDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

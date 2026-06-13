@@ -2,10 +2,10 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-tree',
-  templateUrl: './tree.component.html',
-  styleUrls: ['./tree.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './tree.component.html',
+  styleUrl: './tree.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TreeComponent implements OnInit {
   list1 = [{ name: 'Visual Studio Code' }, { name: 'Sublime' }, { name: 'Atom' }];

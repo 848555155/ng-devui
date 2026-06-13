@@ -18,9 +18,9 @@ import hoverDelayTimeHtml from './hover-delay-time/hover-delay-time.component.ht
 import hoverDelayTimeTs from './hover-delay-time/hover-delay-time.component.ts.txt?raw';
 
 @Component({
-  templateUrl: './popover-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './popover-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class PopoverDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

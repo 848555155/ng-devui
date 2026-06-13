@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-splitter-design',
-  templateUrl: './splitter-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './splitter-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class SplitterDesignComponent implements OnInit {
   imgSrc;

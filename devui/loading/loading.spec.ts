@@ -7,6 +7,7 @@ import { LoadingDirective } from './loading.directive';
 import { LoadingModule } from './loading.module';
 import { LoadingType } from './loading.types';
 @Component({
+  standalone: false,
   template: `
     <div
       dLoading
@@ -18,8 +19,7 @@ import { LoadingType } from './loading.types';
       style="height: 150px;"
     ></div>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestLoadingComponent {
   showLoading = true;
@@ -33,14 +33,14 @@ class TestLoadingComponent {
 }
 
 @Component({
+  standalone: false,
   template: `
     <div dLoading [loadingTemplateRef]="loadingTemplateRef" [loading]="loading" [style.height.px]="150"></div>
     <ng-template #loadingTemplateRef>
       <div class="test-template-loading">测试自定义loading</div>
     </ng-template>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestLoadingTemplateComponent implements OnInit {
   loading: LoadingType;

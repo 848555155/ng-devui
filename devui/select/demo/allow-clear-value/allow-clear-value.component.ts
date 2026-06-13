@@ -2,10 +2,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-allow-clear-value',
-  templateUrl: './allow-clear-value.component.html',
-  styleUrls: ['./allow-clear-value.component.css'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './allow-clear-value.component.html',
+  styleUrl: './allow-clear-value.component.css',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class AllowClearValueComponent {
   value: string;

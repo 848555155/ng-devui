@@ -9,9 +9,9 @@ import { originSource, SourceType } from '../mock-data';
 
 @Component({
   selector: 'd-fix-column',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   templateUrl: './fix-column.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FixColumnComponent implements OnInit {
   @ViewChild(DataTableComponent, { static: true }) datatable: DataTableComponent;

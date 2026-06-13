@@ -6,12 +6,12 @@ import { PanelModule } from 'ng-devui/panel';
   selector: 'd-condition-change',
   imports: [PanelModule, ButtonModule],
   templateUrl: './condition-change.component.html',
-  styleUrls: ['./condition-change.component.scss'],
+  styleUrl: './condition-change.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConditionChangeComponent {
   isCollapsed = true;
-  panelToggle = signal(true);
+  readonly panelToggle = signal(true);
   beforeToggle = (isOpened: boolean) => {
     return isOpened ? this.panelToggle() : true;
   };

@@ -8,16 +8,16 @@ import { UploadComponent } from './upload.class';
 import { UploadedFilesComponent } from './uploaded-files.component';
 @Component({
   selector: 'd-multiple-upload-view',
-  templateUrl: './multiple-upload-view.component.html',
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './multiple-upload-view.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  preserveWhitespaces: false
 })
 export class MultipleUploadViewComponent extends UploadComponent implements OnDestroy, OnInit {
   @ViewChild('dUploadedFiles', { static: true }) uploadedFilesComponent: UploadedFilesComponent;
   @Input() uploadOptions: IUploadOptions;
   @Input() preloadFilesRef: TemplateRef<any>;
-  @Input() uploadedFiles: Array<Object> = [];
+  @Input() uploadedFiles: Array<object> = [];
   @Input() uploadedFilesRef: TemplateRef<any>;
   @Input() filePath: string;
   @Output() deleteUploadedFileEvent: EventEmitter<any> = new EventEmitter<any>();

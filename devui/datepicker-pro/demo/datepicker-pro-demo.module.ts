@@ -65,7 +65,6 @@ import apiEn from '../doc/api-en.md?raw';
       },
     ]),
   ],
-  exports: [DatepickerProDemoComponent],
   declarations: [
     DatepickerProDemoComponent,
     DatepickerProDesignComponent,
@@ -82,6 +81,6 @@ import apiEn from '../doc/api-en.md?raw';
     MarkedTypeDemoComponent
   ],
   providers: [],
-
+  exports: [DatepickerProDemoComponent]
 })
 export class DatepickerProDemoModule {}

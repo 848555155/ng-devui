@@ -7,9 +7,9 @@ import { originSource, SourceType } from '../mock-data';
 
 @Component({
   selector: 'd-datatable-demo-maxheight',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   templateUrl: './data-table-demo-maxheight.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DatatableDemoMaxheightComponent implements OnInit {
 

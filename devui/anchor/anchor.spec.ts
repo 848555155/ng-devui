@@ -13,6 +13,7 @@ import { AnchorDirective } from './anchor.directive';
 import { AnchorModule } from './anchor.module';
 
 @Component({
+  standalone: false,
   template: `
     <div class="my-container">
       <div dAnchorBox [view]="view" [defaultAnchor]="'base-info'" class="mymain" style="position: relative">
@@ -47,9 +48,8 @@ import { AnchorModule } from './anchor.module';
       </div>
     </div>
   `,
-  styleUrls: ['./demo/scroll-target/scroll-target.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  styleUrl: './demo/scroll-target/scroll-target.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestAnchorComponent {
   view = { top: 60, bottom: 0 };
@@ -58,6 +58,7 @@ class TestAnchorComponent {
 }
 
 @Component({
+  standalone: false,
   template: `
     <section>
       <div
@@ -100,8 +101,7 @@ class TestAnchorComponent {
       </div>
     </section>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestHashAnchorComponent {
   constructor(private router: Router) {}

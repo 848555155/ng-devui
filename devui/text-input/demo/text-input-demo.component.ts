@@ -11,9 +11,9 @@ import passwordVisibleScss from './password-visible/password-visible.component.s
 import sizeHtml from './size/text-input-size.component.html?raw';
 import sizeTs from './size/text-input-size.component.ts.txt?raw';
 @Component({
-  templateUrl: './text-input-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './text-input-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TextInputDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

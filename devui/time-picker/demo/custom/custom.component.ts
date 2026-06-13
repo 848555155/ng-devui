@@ -3,10 +3,10 @@ import { unshiftString } from 'ng-devui/utils';
 
 @Component({
   selector: 'd-custom-demo',
-  styleUrls: ['./custom.component.scss'],
-  templateUrl: './custom.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './custom.component.html',
+  styleUrl: './custom.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class CustomComponent {
   selectedTime1;

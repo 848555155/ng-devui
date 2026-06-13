@@ -10,9 +10,9 @@ import scrollContainerTs from './scroll-container/scroll-container.component.ts.
 import scrollContainerScss from './scroll-container/scroll-container.component.scss?raw';
 @Component({
   selector: 'd-nav-sprite-demo',
-  templateUrl: './nav-sprite-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './nav-sprite-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class NavSpriteDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

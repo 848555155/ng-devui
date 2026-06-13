@@ -5,6 +5,7 @@ import { By } from '@angular/platform-browser';
 import { createKeyBoardEvent } from '../utils/testing/event-helper';
 import { InputNumberModule } from './input-number.module';
 @Component({
+  standalone: false,
   template: `
     <d-input-number
       #comp
@@ -21,8 +22,7 @@ import { InputNumberModule } from './input-number.module';
       (whileValueChanging)="valueChanging($event)"
     ></d-input-number>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestInputNumberComponent {
   disabled = false;
@@ -41,9 +41,9 @@ class TestInputNumberComponent {
 }
 
 @Component({
-  template: ` <d-input-number [disabled]="disabled" [(ngModel)]="value"></d-input-number> `,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  template: ` <d-input-number [disabled]="disabled" [(ngModel)]="value"></d-input-number> `,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestInputNumberDisabledComponent {
   value = 2;

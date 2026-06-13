@@ -18,10 +18,10 @@ import { TableTdService } from './td.service';
 @Component({
   /* eslint-disable-next-line @angular-eslint/component-selector*/
   selector: '[dTableCell]',
-  templateUrl: './td.component.html',
-  styleUrls: ['./td.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './td.component.html',
+  styleUrl: './td.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TableTdComponent implements OnChanges, OnDestroy {
   @HostBinding('class.devui-sticky-left-cell') stickyLeftClass: boolean;

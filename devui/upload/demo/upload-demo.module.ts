@@ -27,18 +27,6 @@ import apiCn from '../doc/api-cn.md?raw';
 import apiEn from '../doc/api-en.md?raw';
 
 @NgModule({
-  exports: [UploadDemoComponent],
-  declarations: [
-    UploadDemoComponent,
-    UploadDesignComponent,
-    BasicComponent,
-    MultiComponent,
-    CustomizeComponent,
-    UploadAutoComponent,
-    DynamicUploadOptionsComponent,
-    CustomizeAreaUploadComponent,
-    UploadSliceComponent,
-  ],
   imports: [
     TranslatePipe,
     CommonModule,
@@ -68,6 +56,18 @@ import apiEn from '../doc/api-en.md?raw';
       },
     ]),
   ],
+  declarations: [
+    UploadDemoComponent,
+    UploadDesignComponent,
+    BasicComponent,
+    MultiComponent,
+    CustomizeComponent,
+    UploadAutoComponent,
+    DynamicUploadOptionsComponent,
+    CustomizeAreaUploadComponent,
+    UploadSliceComponent,
+  ],
   providers: [provideHttpClient(withXhr(), withInterceptorsFromDi())],
+  exports: [UploadDemoComponent]
 })
 export class UploadDemoModule {}

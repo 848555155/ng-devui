@@ -7,10 +7,10 @@ import {
 
 @Component({
   selector: 'd-two-datepicker-basic',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   templateUrl: `./two-datepicker-basic.component.html`,
-  styleUrls: [`./two-datepicker-basic.component.scss`],
-  standalone: false
+  styleUrl: `./two-datepicker-basic.component.scss`,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TwoDatepickerBasicComponent implements OnInit {
   rangeStart;

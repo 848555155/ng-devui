@@ -15,10 +15,10 @@ import { UserGuideUIComponent } from './user-guide-ui.component';
 
 @Component({
   selector: 'd-user-guide',
-  templateUrl: './user-guide.component.html',
-  styleUrls: ['./user-guide.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './user-guide.component.html',
+  styleUrl: './user-guide.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class UserGuideComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() steps;

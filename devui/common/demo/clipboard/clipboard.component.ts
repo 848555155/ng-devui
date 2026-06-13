@@ -8,7 +8,7 @@ import { TextInputModule } from 'ng-devui/text-input';
   selector: 'd-common-clipboard',
   imports: [TextInputModule, ClipboardDirective, JsonPipe, FormsModule],
   templateUrl: './clipboard.component.html',
-  styleUrls: ['./clipboard.component.scss'],
+  styleUrl: './clipboard.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ClipboardDemoComponent {

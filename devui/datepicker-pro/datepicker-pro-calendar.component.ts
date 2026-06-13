@@ -22,8 +22,9 @@ import { DatepickerProService } from './datepicker-pro.service';
 
 @Component({
   selector: 'd-datepicker-calendar',
+  standalone: false,
   templateUrl: './datepicker-pro-calendar.component.html',
-  styleUrls: ['./datepicker-pro-calendar.component.scss'],
+  styleUrl: './datepicker-pro-calendar.component.scss',
   providers: [
     DatepickerProService,
     {
@@ -32,9 +33,8 @@ import { DatepickerProService } from './datepicker-pro.service';
       multi: true,
     },
   ],
-  preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  preserveWhitespaces: false
 })
 export class DatepickerProCalendarComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() set activeRangeType(type: 'start' | 'end') {

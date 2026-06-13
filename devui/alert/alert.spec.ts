@@ -4,13 +4,13 @@ import { By } from '@angular/platform-browser';
 import { AlertComponent } from './alert.component';
 import { AlertModule } from './alert.module';
 @Component({
+  standalone: false,
   template: `
     <d-alert [type]="type" [showIcon]="showIcon" (closeEvent)="handleClose($event)" [cssClass]="cssClass">
       <span>成功。消息提示成功。</span>
     </d-alert>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestAlertComponent {
   type = 'success';
@@ -23,9 +23,9 @@ class TestAlertComponent {
 }
 
 @Component({
-  template: ` <d-alert [type]="'success'" [closeable]="false" [dismissTime]="3000"> success </d-alert> `,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  template: ` <d-alert [type]="'success'" [closeable]="false" [dismissTime]="3000"> success </d-alert> `,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestAlertDissmissTimeComponent {}
 describe('alert', () => {

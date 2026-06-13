@@ -30,6 +30,9 @@ import { DragDropService } from './services/drag-drop.service';
     DragPreviewComponent,
     DragPreviewCloneDomRefComponent,
   ],
+  providers: [
+    DragDropService
+  ],
   exports: [
     DraggableDirective,
     DroppableDirective,
@@ -43,11 +46,7 @@ import { DragDropService } from './services/drag-drop.service';
     DragPreviewDirective,
     DragPreviewComponent,
     DragPreviewCloneDomRefComponent,
-  ],
-  providers: [
-    DragDropService
-  ],
-
+  ]
 })
 export class DragDropModule {
 }

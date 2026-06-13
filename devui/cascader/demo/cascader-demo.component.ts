@@ -20,9 +20,9 @@ import headerTemplateScss from './header-template/cascader-header-template.compo
 
 @Component({
   selector: 'd-demo-cascader',
-  templateUrl: './cascader-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './cascader-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class CascaderDemoComponent implements OnInit, OnDestroy {
   cascaderBasicComponent = [

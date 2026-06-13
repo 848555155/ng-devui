@@ -2,10 +2,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-labelization',
-  templateUrl: './labelization.component.html',
-  styleUrls: ['./labelization.component.css'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './labelization.component.html',
+  styleUrl: './labelization.component.css',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class LabelizationComponent {
   options = [

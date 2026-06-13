@@ -3,10 +3,10 @@ import { TreeComponent } from 'ng-devui/tree';
 
 @Component({
   selector: 'd-customize',
-  templateUrl: './customize.component.html',
-  styleUrls: ['./customize.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './customize.component.html',
+  styleUrl: './customize.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class CustomizeComponent {
   @ViewChild('operableTree', { static: true }) operableTree: TreeComponent;

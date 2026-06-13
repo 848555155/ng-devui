@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-custom-area',
-  templateUrl: './custom-area.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './custom-area.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class CustomAreaComponent {
   options = [

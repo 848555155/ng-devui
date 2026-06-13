@@ -3,8 +3,8 @@ import { DevConfigService, WithConfig } from 'ng-devui/utils';
 
 @Directive({
   selector: '[dTextInput]',
-  exportAs: 'dTextInput',
-  standalone: false
+  standalone: false,
+  exportAs: 'dTextInput'
 })
 export class TextDirective {
   @Input() @HostBinding('class.error') error: boolean;

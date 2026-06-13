@@ -6,6 +6,7 @@ import { of } from 'rxjs';
 import { RadioComponent } from './radio.component';
 import { RadioModule } from './radio.module';
 @Component({
+  standalone: false,
   template: `
     <section>
       @for (value of values; track value) {
@@ -22,8 +23,7 @@ import { RadioModule } from './radio.module';
       }
     </section>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestRadioComponent {
   values = ['Item1', 'Item2', 'Item3'];

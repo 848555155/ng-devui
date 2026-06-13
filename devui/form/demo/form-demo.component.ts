@@ -53,10 +53,10 @@ import validateUpdateTs from './validate-update/validate-update.component.ts.txt
 
 @Component({
   selector: 'd-form-demo',
-  templateUrl: './form-demo.component.html',
-  styleUrls: ['./form-demo.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './form-demo.component.html',
+  styleUrl: './form-demo.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class FormDemoComponent implements OnInit, OnDestroy {
   BasicSource: Array<DevuiSourceData> = [

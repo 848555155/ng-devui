@@ -5,9 +5,9 @@ import { ModalTestComponent } from '../modal-test.component';
 
 @Component({
   selector: 'd-fixed-wrapper',
-  templateUrl: './fixed-wrapper.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './fixed-wrapper.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class FixedWrapperComponent {
   scrollTop: number;

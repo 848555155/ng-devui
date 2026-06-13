@@ -9,8 +9,8 @@ import { DragPlaceholderInsertionEvent, DragPlaceholderInsertionIndexEvent } fro
 
 @Directive({
   selector: '[dDropSortSync]',
-  exportAs: 'dDropSortSync',
-  standalone: false
+  standalone: false,
+  exportAs: 'dDropSortSync'
 })
 
 export class DropSortSyncDirective extends DescendantChildren<DropSortSyncDirective> implements OnInit, OnDestroy {

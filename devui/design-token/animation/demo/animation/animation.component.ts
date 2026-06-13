@@ -5,9 +5,9 @@ import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'd-animation',
-  templateUrl: './animation.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './animation.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class AnimationComponent implements OnInit, OnDestroy {
   themeService: ThemeService;

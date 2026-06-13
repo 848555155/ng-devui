@@ -5,13 +5,13 @@ export const formInjectFactory = (form: NgForm) => form;
 
 @Component({
   selector: 'd-child-form-group',
+  standalone: false,
   templateUrl: './child-form.component.html',
-  viewProviders: [{ provide: ControlContainer, useExisting: NgForm }], // Inject the parent form.
   /* If you are not sure whether the upper-layer NgForm dependency exists,
     you can use the factory function to inject it. Note that if ngModelGroup is used, its parent container must exist. */
   // viewProviders: [ { provide: ControlContainer, useFactory: formInjectFactory, deps: [[new Optional(), NgForm]]}]
   changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  viewProviders: [{ provide: ControlContainer, useExisting: NgForm }] // Inject the parent form.
 })
 export class ChildFormComponent {
   @Input() userGroupData;

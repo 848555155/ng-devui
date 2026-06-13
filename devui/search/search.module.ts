@@ -9,10 +9,10 @@ import { SearchComponent } from './search.component';
     FormsModule,
     DCommonModule
   ],
-  exports: [
+  declarations: [
     SearchComponent,
   ],
-  declarations: [
+  exports: [
     SearchComponent,
   ]
 })

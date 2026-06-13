@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-z-index-design',
-  templateUrl: './z-index-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './z-index-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ZIndexDesignComponent implements OnInit {
   imgSrc;

@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-life',
+  standalone: false,
   templateUrl: './life.component.html',
-  styles: [
-    `
+  styles: `
       d-button {
         margin-right: 4px;
       }
@@ -17,23 +17,21 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
         color: #fff;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class LifeComponent {
-  msgs: Array<Object> = [];
+  msgs: Array<object> = [];
 
   showToast(type: any) {
     switch (type) {
-      case 'error':
-        this.msgs = [{ severity: type, content: 'This is a test text. This is a test text. This is a test text.' }];
-        break;
-      case 'common':
-        this.msgs = [{ severity: type, content: 'This is a test text. This is a test text. This is a test text.' }];
-        break;
-      default:
-        this.msgs = [{ severity: type, summary: 'Summary', content: 'This is a test text. This is a test text. This is a test text.' }];
+    case 'error':
+      this.msgs = [{ severity: type, content: 'This is a test text. This is a test text. This is a test text.' }];
+      break;
+    case 'common':
+      this.msgs = [{ severity: type, content: 'This is a test text. This is a test text. This is a test text.' }];
+      break;
+    default:
+      this.msgs = [{ severity: type, summary: 'Summary', content: 'This is a test text. This is a test text. This is a test text.' }];
     }
   }
 }

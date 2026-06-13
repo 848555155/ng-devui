@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-read-tip-design',
-  templateUrl: './read-tip-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './read-tip-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ReadTipDesignComponent implements OnInit {
   imgSrc;

@@ -2,10 +2,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-basic-demo',
-  styleUrls: ['./basic.component.scss'],
-  templateUrl: './basic.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './basic.component.html',
+  styleUrl: './basic.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class BasicComponent {
   selectedTime1;

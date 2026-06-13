@@ -455,10 +455,10 @@ const dControlErrorStatusHost = {
 @Directive({
   selector: `[dValidateRules][formGroupName],[dValidateRules][formArrayName],[dValidateRules][ngModelGroup],
           [dValidateRules][formGroup],[dValidateRules]form:not([ngNoForm]),[dValidateRules][ngForm]`,
+  standalone: false,
   /* eslint-disable-next-line @angular-eslint/no-host-metadata-property*/
   host: dControlErrorStatusHost,
-  exportAs: 'dValidateRules',
-  standalone: false
+  exportAs: 'dValidateRules'
 })
 export class DFormGroupRuleDirective extends DAbstractControlRuleDirective implements OnInit, OnChanges, OnDestroy {
   @Input('dValidateRules') rules: DValidateRules;
@@ -501,10 +501,10 @@ export class DFormGroupRuleDirective extends DAbstractControlRuleDirective imple
 
 @Directive({
   selector: '[dValidateRules][formControlName],[dValidateRules][ngModel],[dValidateRules][formControl]',
+  standalone: false,
   /* eslint-disable-next-line @angular-eslint/no-host-metadata-property*/
   host: dControlErrorStatusHost,
-  exportAs: 'dValidateRules',
-  standalone: false
+  exportAs: 'dValidateRules'
 })
 export class DFormControlRuleDirective extends DAbstractControlRuleDirective implements OnInit, OnChanges, OnDestroy {
   @Input('dValidateRules') rules: DValidateRules;

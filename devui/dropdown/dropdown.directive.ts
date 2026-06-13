@@ -27,9 +27,9 @@ import { DropDownService } from './dropdown.service';
 
 @Directive({
   selector: '[dDropDown]',
-  exportAs: 'd-dropdown',
+  standalone: false,
   providers: [DropDownService],
-  standalone: false
+  exportAs: 'd-dropdown'
 })
 export class DropDownDirective implements OnDestroy, OnChanges, AfterContentInit {
   @ContentChildren(forwardRef(() => DropDownDirective), { descendants: true }) dropdownChildren: QueryList<DropDownDirective>;

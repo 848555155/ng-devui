@@ -4,10 +4,10 @@ import { originSource, SourceType } from '../mock-data';
 
 @Component({
   selector: 'd-muti-drag-row',
-  templateUrl: './muti-drag-row.component.html',
-  styleUrls: ['./muti-drag-row.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './muti-drag-row.component.html',
+  styleUrl: './muti-drag-row.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class MutiDragRowComponent implements OnInit {
   basicDataSource: Array<SourceType> = JSON.parse(JSON.stringify(originSource.slice(0, 6)));

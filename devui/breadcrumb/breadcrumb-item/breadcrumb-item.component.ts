@@ -16,20 +16,20 @@ import { SearchModule } from 'ng-devui/search';
 
 @Component({
   selector: 'd-breadcrumb-item',
-  exportAs: 'dBreadcrumbItem',
   imports: [DropDownModule, SearchModule, NgTemplateOutlet],
   templateUrl: './breadcrumb-item.component.html',
-  styleUrls: ['./breadcrumb-item.component.scss'],
-  preserveWhitespaces: false,
+  styleUrl: './breadcrumb-item.component.scss',
+  exportAs: 'dBreadcrumbItem',
+  preserveWhitespaces: false
 })
 export class BreadCrumbItemComponent {
-  showMenu = input(false, { transform: booleanAttribute });
-  customMenuTemplate = input<TemplateRef<any>>();
-  menuList = input<Array<MenuConfig>>();
-  isSearch = input(false, { transform: booleanAttribute });
+  readonly showMenu = input(false, { transform: booleanAttribute });
+  readonly customMenuTemplate = input<TemplateRef<any>>();
+  readonly menuList = input<Array<MenuConfig>>();
+  readonly isSearch = input(false, { transform: booleanAttribute });
   toggleEvent = output<boolean>();
 
-  menuListDisplay = linkedSignal(() => this.menuList());
+  readonly menuListDisplay = linkedSignal(() => this.menuList());
   isOpen: boolean;
 
   breadCrumbComponent = inject(BREADCRUMB);

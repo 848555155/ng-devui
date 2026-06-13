@@ -65,7 +65,6 @@ import apiEn from '../doc/api-en.md?raw';
       }}
     ])
   ],
-  exports: [TreeDemoComponent],
   declarations: [
     TreeDemoComponent,
     TreeDesignComponent,
@@ -81,5 +80,6 @@ import apiEn from '../doc/api-en.md?raw';
     MergeNodeComponent,
     OperationForAllNodesComponent,
   ],
+  exports: [TreeDemoComponent]
 })
 export class TreeDemoModule {}

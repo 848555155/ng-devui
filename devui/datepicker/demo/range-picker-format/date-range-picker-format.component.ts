@@ -5,10 +5,10 @@ import {
 
 @Component({
   selector: 'd-datepicker-range-format',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   templateUrl: `./date-range-picker-format.component.html`,
-  styleUrls: [`./date-range-picker-format.component.scss`],
-  standalone: false
+  styleUrl: `./date-range-picker-format.component.scss`,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DateRangePickerFormatComponent {
   dateRange1 = [null, null];

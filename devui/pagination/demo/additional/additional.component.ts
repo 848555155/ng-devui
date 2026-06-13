@@ -2,10 +2,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-additional',
-  templateUrl: './additional.component.html',
-  styleUrls: ['./additional.component.css'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './additional.component.html',
+  styleUrl: './additional.component.css',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class AdditionalComponent {
   pager1 = {

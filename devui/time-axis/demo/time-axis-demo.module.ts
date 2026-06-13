@@ -44,7 +44,6 @@ import apiEn from '../doc/api-en.md?raw';
       }}
     ])
   ],
-  exports: [TimeAxisDemoComponent],
   declarations: [
     TimeAxisDemoComponent,
     TimeAxisDesignComponent,
@@ -57,8 +56,8 @@ import apiEn from '../doc/api-en.md?raw';
     SeperateWayComponent,
     CustomDotComponent
   ],
-
   providers: [],
+  exports: [TimeAxisDemoComponent]
 })
 export class TimeAxisDemoModule {
 }

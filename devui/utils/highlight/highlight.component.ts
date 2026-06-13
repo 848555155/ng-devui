@@ -10,16 +10,16 @@ import {
 
 @Component({
   selector: 'd-highlight',
+  template: ``,
+  styleUrl: './highlight.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     'style.display': 'inline',
-  },
-  template: ``,
-  styleUrls: ['./highlight.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  }
 })
 export class HighlightComponent {
-  value = input<string>();
-  term = input<string>();
+  readonly value = input<string>();
+  readonly term = input<string>();
   document = inject(DOCUMENT);
 
   private eleRef = inject<ElementRef<HTMLElement>>(ElementRef);

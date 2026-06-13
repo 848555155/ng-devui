@@ -7,20 +7,20 @@ import { LazyLoadDirective } from 'ng-devui/utils';
   selector: 'd-lazy-load',
   imports: [LazyLoadDirective, TranslatePipe, LoadingModule],
   templateUrl: './lazy-load.component.html',
-  styleUrls: ['./lazy-load.component.scss'],
+  styleUrl: './lazy-load.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LazyLoadComponent {
   sentence = 'all work and no play make jack a dull boy';
-  list = signal(new Array<string>(10).fill(this.sentence));
+  readonly list = signal(new Array<string>(10).fill(this.sentence));
   total = 40;
   next = 1;
   complete = false;
-  showLoading = signal(false);
+  readonly showLoading = signal(false);
 
   next1 = 1;
-  showLoading1 = signal(false);
-  list1 = signal(new Array(10).fill(this.sentence));
+  readonly showLoading1 = signal(false);
+  readonly list1 = signal(new Array(10).fill(this.sentence));
   target = window;
 
   onLoadMore() {

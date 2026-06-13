@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-tree-design',
-  templateUrl: './tree-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './tree-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TreeDesignComponent implements OnInit {
   imgSrc;

@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-before-change',
-  templateUrl: './before-change.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './before-change.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class CustomizeTmpComponent {
   tabActiveId: string | number = 'tab2';

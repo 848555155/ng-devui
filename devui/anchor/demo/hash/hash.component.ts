@@ -5,11 +5,11 @@ import { StickyModule } from 'ng-devui/sticky';
 @Component({
   selector: 'd-anchor-hash',
   imports: [AnchorModule, StickyModule],
+  templateUrl: './hash.component.html',
+  styleUrl: './hash.component.scss',
   host: {
     '(click)': 'hostClick($event)',
-  },
-  templateUrl: './hash.component.html',
-  styleUrls: ['./hash.component.scss'],
+  }
 })
 export class HashComponent {
   updateUrlWhenAnchorActive = true;

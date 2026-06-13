@@ -10,7 +10,7 @@ import { SelectFiles } from './select-files.utils';
 import { UploadComponent } from './upload.class';
 @Directive({
   selector: '[dUpload]',
-  exportAs: 'dUpload',
+  standalone: false,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -18,12 +18,12 @@ import { UploadComponent } from './upload.class';
       multi: true
     }
   ],
-  standalone: false
+  exportAs: 'dUpload'
 })
 export class UploadDirective extends UploadComponent implements OnDestroy {
   @Input() uploadOptions: IUploadOptions;
   @Input() fileOptions: IFileOptions;
-  @Input() uploadedFiles: Array<Object> = [];
+  @Input() uploadedFiles: Array<object> = [];
   @Input() fileUploaders: Array<FileUploader> = [];
   @Input() enableDrop = false;
   @Input() dynamicUploadOptionsFn: (files, uploadOptions) => IUploadOptions;

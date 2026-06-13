@@ -3,14 +3,14 @@ import { FileUploader, IFileOptions, IUploadOptions } from 'ng-devui/upload';
 
 @Component({
   selector: 'd-customize-area-upload',
-  templateUrl: './customize-area-upload.component.html',
-  styleUrls: ['./customize-area-upload.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './customize-area-upload.component.html',
+  styleUrl: './customize-area-upload.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class CustomizeAreaUploadComponent {
-  message: Array<Object> = [];
-  uploadedFiles: Array<Object> = [];
+  message: Array<object> = [];
+  uploadedFiles: Array<object> = [];
   fileUploaders: Array<FileUploader> = [];
   isDropOver = false;
   uploadOptions: IUploadOptions = {

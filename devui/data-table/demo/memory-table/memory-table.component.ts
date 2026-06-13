@@ -3,9 +3,9 @@ import { SourceType, originSource } from './../mock-data';
 
 @Component({
   selector: 'd-memory-table-demo',
-  templateUrl: './memory-table.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './memory-table.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class MemoryTableComponent implements OnInit {
   dataSource: Array<SourceType> = JSON.parse(JSON.stringify(originSource.slice(0, 6)));

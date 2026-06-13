@@ -5,7 +5,7 @@ import { ToggleMenuModule } from 'ng-devui/toggle-menu';
 import { TagsInputComponent } from './tags.input.component';
 @NgModule({
   imports: [CommonModule, FormsModule, ToggleMenuModule],
-  exports: [TagsInputComponent],
   declarations: [TagsInputComponent],
+  exports: [TagsInputComponent]
 })
 export class TagsInputModule {}

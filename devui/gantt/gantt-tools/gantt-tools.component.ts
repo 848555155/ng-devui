@@ -5,10 +5,10 @@ import { UnitRole } from '../gantt.model';
 
 @Component({
   selector: 'd-gantt-tools',
-  templateUrl: './gantt-tools.component.html',
-  styleUrls: ['./gantt-tools.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './gantt-tools.component.html',
+  styleUrl: './gantt-tools.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class GanttToolsComponent implements OnInit {
   @Input('currentUnit') set currentUnit(val) {
@@ -78,16 +78,16 @@ export class GanttToolsComponent implements OnInit {
 
   avtionHandle(type) {
     switch (type) {
-      case 'today':
-        this.goToday.emit();
-        break;
-      case 'reduce':
-        this.reduceUnit.emit();
-        break;
-      case 'increase':
-        this.increaseUnit.emit();
-        break;
-      default:
+    case 'today':
+      this.goToday.emit();
+      break;
+    case 'reduce':
+      this.reduceUnit.emit();
+      break;
+    case 'increase':
+      this.increaseUnit.emit();
+      break;
+    default:
     }
   }
 

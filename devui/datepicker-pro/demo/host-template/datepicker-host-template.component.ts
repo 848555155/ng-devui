@@ -3,9 +3,9 @@ import { DatepickerProComponent, RangeDatepickerProComponent } from 'ng-devui/da
 
 @Component({
   selector: 'd-datepicker-pro-host',
-  templateUrl: './datepicker-host-template.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './datepicker-host-template.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DatepickerProHostComponent {
   @ViewChild(RangeDatepickerProComponent) rangePicker: RangeDatepickerProComponent;

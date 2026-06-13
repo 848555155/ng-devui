@@ -23,6 +23,9 @@ import { SelectDateRangeChangeEventArgs, SelectDateRangeChangeReason } from './d
 
 @Component({
   selector: 'd-date-range-picker',
+  standalone: false,
+  templateUrl: './date-range-picker.component.html',
+  styleUrl: './date-range-picker.component.scss',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -30,12 +33,9 @@ import { SelectDateRangeChangeEventArgs, SelectDateRangeChangeReason } from './d
       multi: true,
     },
   ],
-  exportAs: 'dateRangePicker',
-  templateUrl: './date-range-picker.component.html',
-  styleUrls: ['./date-range-picker.component.scss'],
-  preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  exportAs: 'dateRangePicker',
+  preserveWhitespaces: false
 })
 export class DateRangePickerComponent implements OnChanges, OnInit, ControlValueAccessor, OnDestroy {
   @Input() locale: string;
@@ -195,13 +195,13 @@ export class DateRangePickerComponent implements OnChanges, OnInit, ControlValue
 
   syncPickerPair(currentCalender: object, orientation: string) {
     switch (orientation) {
-      case 'left':
-        this.currentCalendars[0] = currentCalender;
-        break;
-      case 'right':
-        this.currentCalendars[1] = currentCalender;
-        break;
-      default:
+    case 'left':
+      this.currentCalendars[0] = currentCalender;
+      break;
+    case 'right':
+      this.currentCalendars[1] = currentCalender;
+      break;
+    default:
     }
   }
 

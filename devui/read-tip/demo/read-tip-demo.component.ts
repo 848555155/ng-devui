@@ -17,9 +17,9 @@ import asyncReadtipScss from './async-readtip/readtip-async.component.scss?raw';
 
 @Component({
   selector: 'd-read-tip-demo',
-  templateUrl: './read-tip-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './read-tip-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ReadTipDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

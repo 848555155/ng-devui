@@ -16,9 +16,9 @@ import toggleTs from './toggle/toggle.component.ts.txt?raw';
 
 @Component({
   selector: 'd-mention-demo',
-  templateUrl: './mention-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './mention-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class MentionDemoComponent implements OnInit, OnDestroy {
   navItems = [];

@@ -4,16 +4,14 @@ import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'd-design-z-index-demo',
+  standalone: false,
   templateUrl: './design-z-index-demo.component.html',
-  styles: [
-    `
+  styles: `
       .devui-demo-title {
         margin-top: 20px;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DesignZIndexDemoComponent implements OnInit, OnDestroy {
   navItems = [];

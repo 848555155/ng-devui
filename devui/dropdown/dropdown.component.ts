@@ -32,7 +32,7 @@ import { DropDownDirective } from './dropdown.directive';
 @Component({
   /* eslint-disable-next-line @angular-eslint/component-selector*/
   selector: '[dDropDown][appendToBody]',
-  exportAs: 'd-dropdown-append-to-body',
+  standalone: false,
   template: `
     <ng-content></ng-content>
     <ng-template
@@ -50,12 +50,12 @@ import { DropDownDirective } from './dropdown.directive';
       </div>
     </ng-template>
   `,
-  styleUrls: ['dropdown.component.scss'],
+  styleUrl: 'dropdown.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
   encapsulation: ViewEncapsulation.None,
   animations: [fadeInOut],
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  exportAs: 'd-dropdown-append-to-body',
+  preserveWhitespaces: false
 })
 export class DropDownAppendToBodyComponent implements OnInit, OnChanges {
   @ViewChild('dropDownWrapper') dropDownWrapper: ElementRef;
@@ -131,14 +131,14 @@ export class DropDownAppendToBodyComponent implements OnInit, OnChanges {
 
   onPositionChange(position: ConnectedOverlayPositionChange) {
     switch (position.connectionPair.overlayY) {
-      case 'top':
-      case 'center':
-        this.menuPosition = 'bottom';
-        break;
-      case 'bottom':
-        this.menuPosition = 'top';
-        break;
-      default:
+    case 'top':
+    case 'center':
+      this.menuPosition = 'bottom';
+      break;
+    case 'bottom':
+      this.menuPosition = 'top';
+      break;
+    default:
     }
   }
 }

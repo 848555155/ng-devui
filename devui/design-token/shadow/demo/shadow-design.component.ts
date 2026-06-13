@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-shadow-design',
-  templateUrl: './shadow-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './shadow-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ShadowDesignComponent implements OnInit {
   imgSrc;

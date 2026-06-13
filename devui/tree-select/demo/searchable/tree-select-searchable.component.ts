@@ -3,9 +3,9 @@ import { TreeNode } from 'ng-devui/tree';
 
 @Component({
   selector: 'd-tree-select-searchable',
-  templateUrl: './tree-select-searchable.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './tree-select-searchable.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TreeSelectSearchableComponent {
   data1 = [

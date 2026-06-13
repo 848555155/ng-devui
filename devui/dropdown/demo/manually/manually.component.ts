@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-dropdown-demo-manually',
-  templateUrl: './manually.component.html',
-  styleUrls: ['./manually.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './manually.component.html',
+  styleUrl: './manually.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DropDownDemoManuallyComponent {}

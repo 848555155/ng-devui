@@ -11,9 +11,9 @@ import moreConfigScss from './more-config/more-config.component.scss?raw';
 
 @Component({
   selector: 'd-dashboard-demo',
-  templateUrl: './dashboard-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './dashboard-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DashboardDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

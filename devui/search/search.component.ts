@@ -22,11 +22,9 @@ import { debounceTime, filter, map, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'd-search',
+  standalone: false,
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss'],
-  exportAs: 'search',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
+  styleUrl: './search.component.scss',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -34,7 +32,9 @@ import { debounceTime, filter, map, takeUntil } from 'rxjs/operators';
       multi: true,
     },
   ],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  exportAs: 'search',
+  preserveWhitespaces: false
 })
 export class SearchComponent implements ControlValueAccessor, OnInit, OnDestroy, AfterViewInit {
   /**

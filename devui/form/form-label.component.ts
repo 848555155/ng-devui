@@ -12,11 +12,11 @@ import { DFormControlStatus } from './validator-directive/validate.type';
 
 @Component({
   selector: 'd-form-label',
-  templateUrl: './form-label.component.html',
-  styleUrls: ['./form-label.component.scss'],
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './form-label.component.html',
+  styleUrl: './form-label.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  preserveWhitespaces: false
 })
 export class FormLabelComponent {
   @Input() required = false;

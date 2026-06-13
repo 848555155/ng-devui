@@ -6,6 +6,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { createMouseEvent } from '../utils/testing/event-helper';
 import { ImagePreviewModule } from './image-preview.module';
 @Component({
+  standalone: false,
   template: `
     <div dImagePreview>
       @for (imgUrl of imgUrls; track imgUrl) {
@@ -13,8 +14,7 @@ import { ImagePreviewModule } from './image-preview.module';
       }
     </div>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestImagePreviewComponent {
   imgUrls = ['/components/assets/overview/banner/18.png', '/components/assets/overview/banner/19.png'];

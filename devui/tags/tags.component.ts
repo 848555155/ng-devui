@@ -21,12 +21,12 @@ import { ITagMode, ITagSize } from './tag.component';
 
 @Component({
   selector: 'd-tags',
-  templateUrl: './tags.component.html',
-  styleUrls: ['./tags.component.scss'],
-  exportAs: 'Tags',
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './tags.component.html',
+  styleUrl: './tags.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  exportAs: 'Tags',
+  preserveWhitespaces: false
 })
 export class TagsComponent implements OnInit, AfterViewInit, OnChanges {
   /**

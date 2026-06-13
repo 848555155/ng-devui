@@ -43,7 +43,6 @@ import apiEn from '../doc/api-en.md?raw';
       }}
     ])
   ],
-  exports: [TransferDemoComponent],
   declarations: [
     TransferDemoComponent,
     TransferDesignComponent,
@@ -52,6 +51,7 @@ import apiEn from '../doc/api-en.md?raw';
     TransferDemoCustomComponent,
     TransferDemoSortComponent,
     TransferVirtualScrollComponent
-  ]
+  ],
+  exports: [TransferDemoComponent]
 })
 export class TransferDemoModule { }

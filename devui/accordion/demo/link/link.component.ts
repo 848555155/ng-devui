@@ -5,7 +5,7 @@ import { AccordionModule } from 'ng-devui/accordion';
   selector: 'd-link',
   imports: [AccordionModule],
   templateUrl: './link.component.html',
-  styleUrls: ['./link.component.css'],
+  styleUrl: './link.component.css',
 })
 export class LinkComponent {
   menu = [

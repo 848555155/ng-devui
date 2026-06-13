@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-disable-data-with-source',
-  templateUrl: './disable-data-with-source.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './disable-data-with-source.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DisableDataWithSourceComponent {
   selectItem: any;

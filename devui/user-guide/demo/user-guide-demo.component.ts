@@ -13,9 +13,9 @@ import mockStepsTs from './mock-steps.ts.txt?raw';
 
 @Component({
   selector: 'd-user-guide-demo',
-  templateUrl: './user-guide-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './user-guide-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class UserGuideDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-tags-design',
-  templateUrl: './tags-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './tags-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TagsDesignComponent implements OnInit {
   imgSrc;

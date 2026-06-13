@@ -2,10 +2,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-tree-select-custom-icon',
-  templateUrl: './tree-select-custom-icon.component.html',
-  styleUrls: ['./tree-select-custom-icon.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './tree-select-custom-icon.component.html',
+  styleUrl: './tree-select-custom-icon.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TreeSelectCustomIconComponent {
   data = [

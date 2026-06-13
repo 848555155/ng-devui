@@ -3,10 +3,10 @@ import { FormLayout } from 'ng-devui/form';
 
 @Component({
   selector: 'd-form-demo-base',
-  templateUrl: './basic.component.html',
-  styleUrls: ['./basic.component.css'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './basic.component.html',
+  styleUrl: './basic.component.css',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class BasicComponent implements OnInit {
   layoutDirection: FormLayout = FormLayout.Vertical;

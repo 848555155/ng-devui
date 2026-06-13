@@ -4,7 +4,7 @@ import { afterRenderEffect, booleanAttribute, Directive, ElementRef, inject, inp
   selector: '[dAutoFocus]',
 })
 export class AutoFocusDirective {
-  autoFocus = input(false, { transform: booleanAttribute, alias: 'dAutoFocus' });
+  readonly autoFocus = input(false, { transform: booleanAttribute, alias: 'dAutoFocus' });
   private elementRef = inject(ElementRef);
   constructor() {
     afterRenderEffect(() => {

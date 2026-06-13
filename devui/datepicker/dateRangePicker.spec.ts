@@ -8,6 +8,7 @@ import * as EventHelper from '../utils/testing/event-helper';
 import { DatepickerModule } from './datepicker.module';
 
 @Component({
+  standalone: false,
   template: `
     <div class="devui-input-group devui-dropdown-origin">
       <input
@@ -43,8 +44,7 @@ import { DatepickerModule } from './datepicker.module';
       </ng-template>
     </div>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestDateRangePickerComponent {
   dateRange = [null, null];
@@ -77,6 +77,7 @@ class TestDateRangePickerComponent {
 }
 
 @Component({
+  standalone: false,
   template: `
     <div [style.height]="placeHolderHeight ? '900px' : '0'">this is place holder</div>
     <input
@@ -88,8 +89,7 @@ class TestDateRangePickerComponent {
       #inputEle
     />
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestDateRangePickerOriginComponent {
   @ViewChild('inputEle', { read: ElementRef }) inputEle: ElementRef;
@@ -100,6 +100,7 @@ class TestDateRangePickerOriginComponent {
 }
 
 @Component({
+  standalone: false,
   template: `
     <d-date-range-picker
       [dateConfig]="dateConfig"
@@ -111,8 +112,7 @@ class TestDateRangePickerOriginComponent {
       <div class="test-template clear" (click)="clearAll(reason)">clear</div>
     </ng-template>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestDateRangePickerCmpComponent {
   dateConfig;
@@ -875,7 +875,7 @@ function testTimePicker(fixture, wrapperEle, component) {
 
   expect(component.getValue).toHaveBeenCalled();
   expect(component.inputEle.nativeElement.value).toBe(
-    /* eslint-disable-next-line max-len*/
+
     `${strDate(0, 0, 0)} 0${timeEvent}:0${timeEvent}:0${timeEvent}${component.splitter}${strDate(
       0,
       1,
@@ -953,7 +953,7 @@ function testDateConfig(fixture, wrapperEle, component) {
   tickEvent(confirmBtn, new Event('click'), fixture);
 
   expect(component.inputEle.nativeElement.value).toBe(
-    /* eslint-disable-next-line max-len*/
+
     `${strDate(0, 0, 0, undefined, ['mm', 'dd', 'yy'], '.')} 00-00-00${component.splitter}${strDate(
       0,
       1,

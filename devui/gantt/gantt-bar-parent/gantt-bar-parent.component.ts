@@ -16,10 +16,10 @@ import { GanttService } from '../gantt.service';
 
 @Component({
   selector: 'd-gantt-bar-parent',
-  templateUrl: './gantt-bar-parent.component.html',
-  styleUrls: ['./gantt-bar-parent.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './gantt-bar-parent.component.html',
+  styleUrl: './gantt-bar-parent.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class GanttBarParentComponent implements OnInit, OnDestroy, OnChanges, AfterViewInit {
   @ViewChild('ganttBarProgress') ganttBarProgress: ElementRef;

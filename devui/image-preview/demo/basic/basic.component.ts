@@ -4,9 +4,9 @@ import { images } from '../image-mock';
 
 @Component({
   selector: 'd-image-preview-basic',
-  templateUrl: './basic.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './basic.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class BasicComponent {
   images = images;

@@ -4,9 +4,9 @@ import { By } from '@angular/platform-browser';
 import { AvatarComponent } from './avatar.component';
 import { AvatarModule } from './avatar.module';
 @Component({
-  template: ` <d-avatar #comp [name]="name" [gender]="gender" [width]="width"></d-avatar> `,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  template: ` <d-avatar #comp [name]="name" [gender]="gender" [width]="width"></d-avatar> `,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestAvatarComponent {
   @ViewChild('comp') comp: AvatarComponent;
@@ -16,9 +16,9 @@ class TestAvatarComponent {
 }
 
 @Component({
-  template: ` <d-avatar #comp [customText]="'自定义'" [width]="80" [height]="80"></d-avatar> `,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  template: ` <d-avatar #comp [customText]="'自定义'" [width]="80" [height]="80"></d-avatar> `,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestCustomAvatarComponent {
   @ViewChild('comp') comp: AvatarComponent;

@@ -13,10 +13,10 @@ interface IMenuType {
 
 @Component({
   selector: 'd-splitter-demo-shrink',
-  templateUrl: './shrink.component.html',
-  styleUrls: ['./shrink.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './shrink.component.html',
+  styleUrl: './shrink.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class SplitterDemoMenuFoldComponent implements OnInit {
   // splitter input

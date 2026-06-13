@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-range-type-picker',
-  templateUrl: './range-type-picker.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './range-type-picker.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class RangeTypepickerProComponent {
   value1 = [new Date('2020/03/01'), new Date('2020/04/20')];

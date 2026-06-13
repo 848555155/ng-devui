@@ -4,10 +4,10 @@ import { InputGroupComponent } from 'ng-devui/input-group';
 
 @Component({
   selector: 'd-input-group-embed',
-  templateUrl: './embed.component.html',
-  styleUrls: ['./embed.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './embed.component.html',
+  styleUrl: './embed.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class EmbedComponent {
   @ViewChild('protocolItem') protocolItem: InputGroupComponent;

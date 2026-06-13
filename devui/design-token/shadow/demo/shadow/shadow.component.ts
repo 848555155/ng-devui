@@ -5,10 +5,10 @@ import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'd-shadow',
-  templateUrl: './shadow.component.html',
-  styleUrls: ['./shadow.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './shadow.component.html',
+  styleUrl: './shadow.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ShadowComponent implements OnInit, OnDestroy {
   themeService: ThemeService;

@@ -6,11 +6,11 @@ import { ToggleComponent } from './toggle.component';
 import { ToggleModule } from './toggle.module';
 
 @Component({
+  standalone: false,
   template: `
     <d-toggle #comp [disabled]="disabled" [size]="'sm'" [checked]="checked" (change)="onChange()" [beforeChange]="beforeChange"></d-toggle>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestToggleComponent {
   @ViewChild('comp') comp;

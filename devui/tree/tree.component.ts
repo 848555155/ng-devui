@@ -23,12 +23,12 @@ import { takeUntil } from 'rxjs/operators';
 import { Dictionary, ITreeItem, TreeFactory, TreeNode } from './tree-factory.class';
 @Component({
   selector: 'd-tree',
-  templateUrl: './tree.component.html',
-  styleUrls: ['./tree.component.scss'],
-  preserveWhitespaces: false,
-  animations: [expandCollapseForDomDestroy],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './tree.component.html',
+  styleUrl: './tree.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  animations: [expandCollapseForDomDestroy],
+  preserveWhitespaces: false
 })
 export class TreeComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
   treeFactory: TreeFactory;

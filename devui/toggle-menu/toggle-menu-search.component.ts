@@ -15,11 +15,11 @@ import { debounceTime, filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'd-toggle-menu-search',
+  standalone: false,
   templateUrl: './toggle-menu-search.component.html',
-  styleUrls: [`./toggle-menu-search.component.scss`],
+  styleUrl: `./toggle-menu-search.component.scss`,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
-  standalone: false
+  preserveWhitespaces: false
 })
 export class ToggleMenuSearchComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() searchPlaceholder: string;

@@ -4,9 +4,9 @@ import { ModalTestComponent } from './modal-test.component';
 
 @Component({
   selector: 'd-basic-update',
-  templateUrl: './basic-update.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './basic-update.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class BasicUpdateComponent {
   constructor(private dialogService: DialogService) {}

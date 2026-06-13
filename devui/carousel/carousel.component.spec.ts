@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { CarouselComponent } from './carousel.component';
 import { CarouselModule } from './carousel.module';
 @Component({
+  standalone: false,
   template: `
     <section>
       <d-carousel
@@ -21,17 +22,14 @@ import { CarouselModule } from './carousel.module';
       </d-carousel>
     </section>
   `,
-  styles: [
-    `
+  styles: `
       d-carousel-item {
         text-align: center;
         line-height: 200px;
         background: var(--devui-global-bg, #f5f5f5);
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestCarouselComponent {
   array = [1, 2, 3, 4];

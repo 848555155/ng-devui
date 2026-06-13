@@ -6,10 +6,10 @@ import { SkeletonComponent } from '../skeleton/skeleton.component';
   selector: 'd-collapse',
   imports: [SkeletonComponent],
   templateUrl: './collapse.component.html',
-  styleUrls: ['./collapse.component.scss'],
-  animations: [expandCollapseForDomDestroy],
+  styleUrl: './collapse.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [expandCollapseForDomDestroy]
 })
 export class CollapseComponent {
-  open = signal(false);
+  readonly open = signal(false);
 }

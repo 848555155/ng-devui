@@ -22,24 +22,24 @@ import { ILoadingViewPosition, LoadingStyle, LoadingType } from './loading.types
 import { rxResource } from '@angular/core/rxjs-interop';
 @Directive({
   selector: '[dLoading]',
-  exportAs: 'dLoading',
   host: {
     '[style.position]': 'position()',
   },
+  exportAs: 'dLoading'
 })
 export class LoadingDirective {
-  backdrop = input(false, { transform: booleanAttribute });
-  message = input<string>();
-  positionType = input<string>();
-  showLoading = input<boolean>();
-  view = input<ILoadingViewPosition>();
-  zIndex = input(undefined, { transform: numberAttribute });
-  loading = input<LoadingType | boolean>();
-  loadingStyle = input<LoadingStyle>('default');
-  loadingTemplateRef = input<TemplateRef<any>>();
+  readonly backdrop = input(false, { transform: booleanAttribute });
+  readonly message = input<string>();
+  readonly positionType = input<string>();
+  readonly showLoading = input<boolean>();
+  readonly view = input<ILoadingViewPosition>();
+  readonly zIndex = input(undefined, { transform: numberAttribute });
+  readonly loading = input<LoadingType | boolean>();
+  readonly loadingStyle = input<LoadingStyle>('default');
+  readonly loadingTemplateRef = input<TemplateRef<any>>();
   backdropRef: ComponentRef<LoadingBackdropComponent>;
   loadingRef: ComponentRef<LoadingComponent>;
-  position = signal('');
+  readonly position = signal('');
 
   private elementRef = inject(ElementRef);
   private injector = inject(Injector);

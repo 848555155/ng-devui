@@ -2,10 +2,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-format-demo',
-  styleUrls: ['./format.component.scss'],
-  templateUrl: './format.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './format.component.html',
+  styleUrl: './format.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class FormatComponent {
   selectedTime1 = '12:27:50';

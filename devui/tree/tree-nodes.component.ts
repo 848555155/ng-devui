@@ -3,11 +3,11 @@ import { TreeFactory, TreeNode } from './tree-factory.class';
 
 @Component({
   selector: 'd-tree-nodes',
-  templateUrl: './tree-nodes.component.html',
-  styleUrls: ['./tree-nodes.component.scss'],
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './tree-nodes.component.html',
+  styleUrl: './tree-nodes.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  preserveWhitespaces: false
 })
 export class TreeNodesComponent {
   @Input() treeList: Array<TreeNode>;

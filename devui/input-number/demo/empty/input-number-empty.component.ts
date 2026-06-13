@@ -2,10 +2,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-input-number-empty',
-  templateUrl: './input-number-empty.component.html',
-  styleUrls: ['./input-number-empty.component.css'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './input-number-empty.component.html',
+  styleUrl: './input-number-empty.component.css',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class InputNumberEmptyComponent {
   min = -100;

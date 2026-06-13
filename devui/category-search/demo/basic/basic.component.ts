@@ -5,9 +5,9 @@ import { demoData } from '../demo-data';
 
 @Component({
   selector: 'd-basic',
-  templateUrl: './basic.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './basic.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class BasicComponent {
   category = cloneDeep(demoData.slice(0, -2));

@@ -26,10 +26,9 @@ import { SliceUploadService } from './slice-upload.service';
 
 @Component({
   selector: 'd-multiple-upload',
+  standalone: false,
   templateUrl: './multiple-upload.component.html',
-  exportAs: 'dMultipleUpload',
-  styleUrls: ['./upload-view.component.scss'],
-  preserveWhitespaces: false,
+  styleUrl: './upload-view.component.scss',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -38,7 +37,8 @@ import { SliceUploadService } from './slice-upload.service';
     },
   ],
   changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  exportAs: 'dMultipleUpload',
+  preserveWhitespaces: false
 })
 export class MultipleUploadComponent implements OnDestroy, OnInit {
   @Input() uploadOptions: IUploadOptions;
@@ -46,7 +46,7 @@ export class MultipleUploadComponent implements OnDestroy, OnInit {
   @Input() autoUpload = false;
   @Input() withoutBtn = false;
   @Input() showTip = false;
-  @Input() uploadedFiles: Array<Object> = [];
+  @Input() uploadedFiles: Array<object> = [];
   @Input() uploadedFilesRef: TemplateRef<any>;
   @Input() preloadFilesRef?: TemplateRef<any>;
   @Input() filePath: string;

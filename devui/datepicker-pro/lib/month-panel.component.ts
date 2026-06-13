@@ -15,11 +15,11 @@ import { DatepickerProService } from './../datepicker-pro.service';
 
 @Component({
   selector: 'd-month-panel',
+  standalone: false,
   templateUrl: './month-panel.component.html',
-  styleUrls: ['./month-panel.component.scss'],
-  preserveWhitespaces: false,
+  styleUrl: './month-panel.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false
+  preserveWhitespaces: false
 })
 export class MonthPanelComponent implements OnInit, OnDestroy {
   @ViewChild('scrollBody') scrollBodyCmp: CdkVirtualScrollViewport;

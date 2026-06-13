@@ -3,10 +3,10 @@ import { IFileOptions, IUploadOptions } from 'ng-devui/upload';
 
 @Component({
   selector: 'd-multi',
-  templateUrl: './multi.component.html',
-  styleUrls: ['./multi.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './multi.component.html',
+  styleUrl: './multi.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class MultiComponent {
   additionalParameter2 = {
@@ -42,8 +42,8 @@ export class MultiComponent {
     maximumSize: 20,
     checkSameName: true,
   };
-  uploadedFiles2: Array<Object> = [];
-  uploadedFiles3: Array<Object> = [];
+  uploadedFiles2: Array<object> = [];
+  uploadedFiles3: Array<object> = [];
   UPLOADED: string;
   FAILED: string;
   DELETE: string;

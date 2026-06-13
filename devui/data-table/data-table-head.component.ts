@@ -29,11 +29,11 @@ import { DataTableColumnTmplComponent } from './tmpl/data-table-column-tmpl.comp
 
 @Component({
   selector: 'd-data-table-head,[dDataTableHead]',
-  templateUrl: './data-table-head.component.html',
-  styleUrls: ['./data-table-head.component.scss'],
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './data-table-head.component.html',
+  styleUrl: './data-table-head.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  preserveWhitespaces: false
 })
 export class DataTableHeadComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy, DoCheck {
   @Input() checkable: boolean;

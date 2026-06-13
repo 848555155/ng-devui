@@ -13,9 +13,9 @@ import embedTs from './embed/embed.component.ts.txt?raw';
 import embedScss from './embed/embed.component.scss?raw';
 @Component({
   selector: 'd-input-group-demo',
-  templateUrl: './input-group-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './input-group-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class InputGroupDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

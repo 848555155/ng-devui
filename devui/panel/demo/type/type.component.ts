@@ -5,7 +5,7 @@ import { PanelModule } from 'ng-devui/panel';
   selector: 'd-type',
   imports: [PanelModule],
   templateUrl: './type.component.html',
-  styleUrls: ['./type.component.scss'],
+  styleUrl: './type.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TypeComponent {

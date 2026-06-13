@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-drawer-design',
-  templateUrl: './drawer-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './drawer-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DrawerDesignComponent implements OnInit {
   imgSrc;

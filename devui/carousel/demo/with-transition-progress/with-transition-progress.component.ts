@@ -5,7 +5,7 @@ import { CarouselComponent, CarouselItemComponent } from 'ng-devui/carousel';
   selector: 'd-carousel-with-transition-progress',
   imports: [CarouselComponent, CarouselItemComponent],
   templateUrl: './with-transition-progress.component.html',
-  styleUrls: ['../demo-common.scss'],
+  styleUrl: '../demo-common.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WithTransitionProgressComponent {

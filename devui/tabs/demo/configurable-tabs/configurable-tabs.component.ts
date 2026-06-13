@@ -3,10 +3,10 @@ import { DialogService } from 'ng-devui/modal';
 import { TabsTransferComponent } from './tabs-transfer/tabs-transfer.component';
 @Component({
   selector: 'd-configurable',
-  templateUrl: './configurable-tabs.component.html',
-  styleUrls: ['./configurable-tabs.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './configurable-tabs.component.html',
+  styleUrl: './configurable-tabs.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ConfigurableComponent {
   tabActiveId: string | number = 1;

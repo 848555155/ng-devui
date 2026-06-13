@@ -3,10 +3,10 @@ import { TransferDirection } from 'ng-devui';
 
 @Component({
   selector: 'd-transfer-demo-search',
-  templateUrl: './transfer-demo-search.component.html',
-  styleUrls: ['./transfer-demo-search.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './transfer-demo-search.component.html',
+  styleUrl: './transfer-demo-search.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TransferDemoSearchComponent {
   disabled = false;

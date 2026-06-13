@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-radio-design',
-  templateUrl: './radio-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './radio-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class RadioDesignComponent implements OnInit {
   imgSrc;

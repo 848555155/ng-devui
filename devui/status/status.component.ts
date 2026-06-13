@@ -3,10 +3,10 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 @Component({
   selector: 'd-status',
   templateUrl: './status.component.html',
-  styleUrls: ['./status.component.scss'],
-  preserveWhitespaces: false,
+  styleUrl: './status.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false
 })
 export class StatusComponent {
-  type = input<string>();
+  readonly type = input<string>();
 }

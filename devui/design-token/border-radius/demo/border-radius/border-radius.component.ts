@@ -5,9 +5,9 @@ import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'd-border-radius',
-  templateUrl: './border-radius.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './border-radius.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class BorderRadiusComponent implements OnInit, OnDestroy {
   themeService: ThemeService;

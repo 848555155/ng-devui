@@ -1,9 +1,9 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: 'd-type-wrapped',
-  templateUrl: './type-wrapped.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './type-wrapped.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TypeWrappedComponent {
   tabActiveId: string | number = 'tab1';

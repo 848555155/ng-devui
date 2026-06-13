@@ -5,6 +5,6 @@ import { BadgeComponent } from 'ng-devui/badge';
   selector: 'd-badge-count',
   imports: [BadgeComponent],
   templateUrl: './count.component.html',
-  styleUrls: ['./count.component.scss'],
+  styleUrl: './count.component.scss',
 })
 export class CountComponent {}

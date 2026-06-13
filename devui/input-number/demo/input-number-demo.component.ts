@@ -22,9 +22,9 @@ import decimalLimitTs from './decimalLimit/decimal-limit.component.ts.txt?raw';
 import decimalLimitCss from './decimalLimit/decimal-limit.component.css?raw';
 @Component({
   selector: 'd-demo-input-number',
-  templateUrl: './input-number-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './input-number-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class InputNumberDemoComponent implements OnInit, OnDestroy {
   InputNumberBasic: Array<DevuiSourceData> = [

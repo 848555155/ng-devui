@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-condition-radio-group',
-  templateUrl: './condition-radio-group.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './condition-radio-group.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ConditionRadioGroupComponent {
   items = ['Item1', 'Item2', 'Item3'];

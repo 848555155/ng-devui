@@ -5,10 +5,10 @@ import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'd-form-demo-validate-template-form',
-  templateUrl: './validate-template-form.component.html',
-  styleUrls: ['./validate-template-form.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './validate-template-form.component.html',
+  styleUrl: './validate-template-form.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ValidateTemplateFormComponent {
   layoutDirection: FormLayout = FormLayout.Vertical;

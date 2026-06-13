@@ -1,9 +1,9 @@
 import { AfterViewInit, Component, TemplateRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: 'd-demo-time-axis-template-content',
-  templateUrl: './time-axis-template-content.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './time-axis-template-content.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TimeAxisTemplateContentComponent implements AfterViewInit {
   @ViewChild('yearShow') yearShow: TemplateRef<any>;

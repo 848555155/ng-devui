@@ -22,9 +22,9 @@ import sliceScss from './slice/upload-slice.component.scss?raw';
 
 @Component({
   selector: 'd-upload-demo',
-  templateUrl: './upload-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './upload-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class UploadDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

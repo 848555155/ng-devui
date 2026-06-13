@@ -9,7 +9,6 @@ import { DropDownDirective } from './dropdown.directive';
 
 @NgModule({
   imports: [CommonModule, OverlayModule],
-  exports: [DropDownDirective, DropDownMenuItemDirective, DropDownMenuDirective, DropDownToggleDirective, DropDownAppendToBodyComponent],
   declarations: [
     DropDownDirective,
     DropDownMenuItemDirective,
@@ -17,5 +16,6 @@ import { DropDownDirective } from './dropdown.directive';
     DropDownToggleDirective,
     DropDownAppendToBodyComponent,
   ],
+  exports: [DropDownDirective, DropDownMenuItemDirective, DropDownMenuDirective, DropDownToggleDirective, DropDownAppendToBodyComponent]
 })
 export class DropDownModule {}

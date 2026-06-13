@@ -2,10 +2,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-decimal-limit',
-  templateUrl: './decimal-limit.component.html',
-  styleUrls: ['./decimal-limit.component.css'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './decimal-limit.component.html',
+  styleUrl: './decimal-limit.component.css',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DecimalLimitComponent {
   value = 2;

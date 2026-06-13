@@ -2,9 +2,9 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-manual',
-  templateUrl: './manual.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './manual.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ManualComponent implements OnInit {
   name;

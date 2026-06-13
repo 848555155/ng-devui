@@ -7,7 +7,7 @@ import { CardModule } from 'ng-devui/card';
   selector: 'd-custom',
   imports: [AvatarComponent, CardModule],
   templateUrl: './custom.component.html',
-  styleUrls: ['./custom.component.scss'],
+  styleUrl: './custom.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomComponent {

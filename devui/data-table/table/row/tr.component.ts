@@ -17,10 +17,10 @@ import { TableThComponent } from '../head/th/th.component';
 @Component({
   /* eslint-disable-next-line @angular-eslint/component-selector*/
   selector: '[dTableRow]',
-  templateUrl: './tr.component.html',
-  styleUrls: ['./tr.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './tr.component.html',
+  styleUrl: './tr.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TableTrComponent implements OnInit, AfterViewInit {
   @ContentChildren(TableThComponent) thList: QueryList<TableThComponent>;

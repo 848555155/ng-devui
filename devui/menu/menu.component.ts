@@ -16,11 +16,11 @@ import { MenuItemClickType } from './type';
 
 @Component({
   selector: 'd-menu, [dMenu]',
+  standalone: false,
   template: '<ng-content />',
+  styleUrl: './menu.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['./menu.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  standalone: false
+  encapsulation: ViewEncapsulation.None
 })
 export class MenuComponent implements OnInit, OnChanges, OnDestroy {
   @HostBinding('class.collapsed') @Input() collapsed = false;

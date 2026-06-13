@@ -5,9 +5,9 @@ import { DrawerContentComponent } from '../drawerContent/drawer-content.componen
 
 @Component({
   selector: 'd-basic',
-  templateUrl: './basic.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './basic.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class BasicComponent {
   results: IDrawerOpenResult;

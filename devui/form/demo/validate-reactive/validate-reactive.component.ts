@@ -6,10 +6,10 @@ import { delay, map } from 'rxjs/operators';
 
 @Component({
   selector: 'd-form-demo-validate-reactive',
-  templateUrl: './validate-reactive.component.html',
-  styleUrls: ['./validate-reactive.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './validate-reactive.component.html',
+  styleUrl: './validate-reactive.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ValidateReactiveComponent implements OnInit {
   layoutDirection: FormLayout = FormLayout.Vertical;
@@ -73,7 +73,7 @@ export class ValidateReactiveComponent implements OnInit {
 
   @ViewChild('userForm') userFormDir: DFormGroupRuleDirective;
 
-  msgs: Array<Object> = [];
+  msgs: Array<object> = [];
 
   constructor() {}
 

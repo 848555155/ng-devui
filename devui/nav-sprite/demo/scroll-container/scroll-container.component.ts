@@ -2,10 +2,10 @@ import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewCh
 
 @Component({
   selector: 'd-demo-scroll-container',
-  templateUrl: './scroll-container.component.html',
-  styleUrls: ['./scroll-container.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './scroll-container.component.html',
+  styleUrl: './scroll-container.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ScrollContainerComponent implements OnInit, AfterViewInit {
   @ViewChild('header', { static: true }) headerRef: ElementRef;

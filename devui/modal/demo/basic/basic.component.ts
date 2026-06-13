@@ -4,9 +4,9 @@ import { ModalTestComponent } from '../modal-test.component';
 
 @Component({
   selector: 'd-basic',
-  templateUrl: './basic.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './basic.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class BasicComponent {
   config = {

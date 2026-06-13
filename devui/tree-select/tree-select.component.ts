@@ -30,9 +30,9 @@ import DefaultIcons from './tree-default-icons';
 
 @Component({
   selector: 'd-tree-select',
+  standalone: false,
   templateUrl: './tree-select.component.html',
-  styleUrls: [`./tree-select.component.scss`],
-  exportAs: 'select',
+  styleUrl: `./tree-select.component.scss`,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -40,9 +40,9 @@ import DefaultIcons from './tree-default-icons';
       multi: true,
     },
   ],
-  preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  exportAs: 'select',
+  preserveWhitespaces: false
 })
 export class TreeSelectComponent implements ControlValueAccessor, OnInit, AfterViewInit, OnDestroy, OnChanges {
   @Input() checkableRelation: 'upward' | 'downward' | 'both' | 'none' = 'both';
@@ -291,7 +291,7 @@ export class TreeSelectComponent implements ControlValueAccessor, OnInit, AfterV
             insertObject[this.treeNodeTitleKey] = treeNode[this.treeNodeTitleKey];
             (this.value as any[]).push(insertObject);
             // 赋值触发setValue设置valueType和valueLength
-            /* eslint-disable-next-line no-self-assign*/
+
             this.value = this.value;
           }
         } else {

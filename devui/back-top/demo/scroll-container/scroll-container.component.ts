@@ -5,10 +5,10 @@ import { BackTopComponent } from 'ng-devui/back-top';
   selector: 'd-back-top-scroll-container',
   imports: [BackTopComponent],
   templateUrl: './scroll-container.component.html',
-  styleUrls: ['./scroll-container.component.scss'],
+  styleUrl: './scroll-container.component.scss',
 })
 export class ScrollContainerComponent {
-  scrollElement = viewChild<ElementRef<HTMLUListElement>>('scrollContent');
+  readonly scrollElement = viewChild<ElementRef<HTMLUListElement>>('scrollContent');
   sentence = 'You know some birds are not meant to be caged, their feathers are just too bright.';
   list = new Array(20).fill(this.sentence);
 

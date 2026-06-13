@@ -2,10 +2,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-layout-top-aside',
-  templateUrl: './top-aside.component.html',
-  styleUrls: ['./top-aside.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './top-aside.component.html',
+  styleUrl: './top-aside.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class LayoutTopAsideComponent {
   logoSrc = '/assets/logo.svg';

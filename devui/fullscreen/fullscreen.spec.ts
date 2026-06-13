@@ -6,6 +6,7 @@ import { DomHelper } from '../utils/testing/dom-helper';
 import { FullscreenComponent } from './fullscreen.component';
 import { FullscreenModule } from './fullscreen.module';
 @Component({
+  standalone: false,
   template: `
     <d-fullscreen #fullscreen [mode]="fullscreenMode" (fullscreenLaunch)="launchFullscreen($event)" [zIndex]="100">
       <div fullscreen-target>
@@ -13,8 +14,7 @@ import { FullscreenModule } from './fullscreen.module';
       </div>
     </d-fullscreen>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestFullscreenComponent {
   @ViewChild('fullscreen') fullscreen: FullscreenComponent;

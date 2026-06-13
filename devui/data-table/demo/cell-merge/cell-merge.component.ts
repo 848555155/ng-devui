@@ -3,10 +3,10 @@ import { originSource, SourceType } from '../mock-data';
 
 @Component({
   selector: 'd-cell-merge',
-  templateUrl: './cell-merge.component.html',
-  styleUrls: ['./cell-merge.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './cell-merge.component.html',
+  styleUrl: './cell-merge.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class CellMergeComponent implements OnInit {
   basicDataSource: Array<SourceType> = JSON.parse(JSON.stringify(originSource.slice(0, 6)));

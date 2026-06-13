@@ -3,10 +3,10 @@ import { ReadTipOptions } from 'ng-devui/read-tip';
 
 @Component({
   selector: 'd-demo-template',
-  templateUrl: './readtip-template.component.html',
-  styleUrls: ['./readtip-template.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './readtip-template.component.html',
+  styleUrl: './readtip-template.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ReadtipTemplateComponent implements OnInit {
   readTipOptions: ReadTipOptions = {

@@ -29,9 +29,9 @@ import virtualScrollScss from './virtual-scroll/tree-select-virtual-scroll.compo
 
 @Component({
   selector: 'd-tree-select-demo',
-  templateUrl: './tree-select-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './tree-select-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TreeSelectDemoComponent implements OnInit, OnDestroy {
   TreeSelectBasicComponent: Array<DevuiSourceData> = [

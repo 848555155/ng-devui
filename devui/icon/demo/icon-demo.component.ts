@@ -10,9 +10,9 @@ import iconGroupTs from './icon-group/icon-group.component.ts.txt?raw';
 import iconGroupScss from './icon-group/icon-group.component.scss?raw';
 
 @Component({
-  templateUrl: './icon-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './icon-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class IconDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

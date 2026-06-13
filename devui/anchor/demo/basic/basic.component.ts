@@ -6,6 +6,6 @@ import { StickyModule } from 'ng-devui/sticky';
   selector: 'd-anchor-basic',
   imports: [AnchorModule, StickyModule],
   templateUrl: './basic.component.html',
-  styleUrls: ['./basic.component.scss'],
+  styleUrl: './basic.component.scss',
 })
 export class BasicComponent {}

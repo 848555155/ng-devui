@@ -5,6 +5,6 @@ import { BadgeComponent } from 'ng-devui/badge';
   selector: 'd-position',
   imports: [BadgeComponent],
   templateUrl: './position.component.html',
-  styleUrls: ['./position.component.scss'],
+  styleUrl: './position.component.scss',
 })
 export class PositionComponent {}

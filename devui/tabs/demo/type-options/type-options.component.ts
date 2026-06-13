@@ -1,9 +1,9 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: 'd-type-options',
-  templateUrl: './type-options.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './type-options.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TypeOptionsComponent implements OnInit {
   tabActiveId: string | number = 'tab1';

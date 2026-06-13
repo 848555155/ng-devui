@@ -6,6 +6,7 @@ import { LoadingComponent } from './../loading/loading.component';
 import { ButtonComponent } from './button.component';
 
 @Component({
+  standalone: false,
   template: `
     <d-button
       [bsStyle]="bsStyle"
@@ -18,8 +19,7 @@ import { ButtonComponent } from './button.component';
       {{ text }}
     </d-button>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestButtonComponent {
   bsStyle = 'primary';
@@ -36,13 +36,13 @@ class TestButtonComponent {
   }
 }
 @Component({
+  standalone: false,
   template: `
     @if (show) {
     <d-button [autofocus]="true">{{ text }}</d-button>
     }
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestButtonAutoFocusComponent {
   show = false;

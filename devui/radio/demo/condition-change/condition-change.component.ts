@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-condition-change',
-  templateUrl: './condition-change.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './condition-change.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ConditionChangeComponent {
   items = ['Item1', 'Item2', 'Item3'];

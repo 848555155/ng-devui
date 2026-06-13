@@ -25,7 +25,7 @@ import { CodeCopyModule } from '../../../devui-commons/src/codecopy/codecopy.mod
   selector: 'd-api',
   imports: [SafePipeModule, NavSpriteModule, CodeCopyModule],
   templateUrl: './devui-api.component.html',
-  styleUrls: ['./devui-api.component.scss'],
+  styleUrl: './devui-api.component.scss',
   changeDetection: ChangeDetectionStrategy.Eager,
   preserveWhitespaces: false,
 })

@@ -5,7 +5,7 @@ import { IconModule } from 'ng-devui/icon';
   selector: 'd-basic',
   imports: [IconModule],
   templateUrl: './basic.component.html',
-  styleUrls: ['./basic.component.scss'],
+  styleUrl: './basic.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicComponent {}

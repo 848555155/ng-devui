@@ -7,7 +7,7 @@ import { EditableSelectComponent } from './editable-select.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, AutoCompleteModule, PositioningModule],
-  exports: [EditableSelectComponent],
   declarations: [EditableSelectComponent],
+  exports: [EditableSelectComponent]
 })
 export class EditableSelectModule {}

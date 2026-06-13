@@ -10,11 +10,11 @@ import { TagsComponent } from './tags.component';
     FormsModule,
     PopoverModule
   ],
-  exports: [
+  declarations: [
     TagsComponent,
     TagComponent
   ],
-  declarations: [
+  exports: [
     TagsComponent,
     TagComponent
   ]

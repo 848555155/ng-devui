@@ -9,6 +9,7 @@ import { MultipleUploadComponent } from './multiple-upload.component';
 import { SliceUploadService } from './slice-upload.service';
 import { UploadModule } from './upload.module';
 @Component({
+  standalone: false,
   template: `
     <d-multiple-upload
       #multipleUpload
@@ -27,8 +28,7 @@ import { UploadModule } from './upload.module';
     >
     </d-multiple-upload>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestUploadComponent {
   @ViewChild('multipleUpload') multipleUpload: MultipleUploadComponent;
@@ -41,7 +41,7 @@ class TestUploadComponent {
     name: 'tom',
     age: 11,
   };
-  uploadedFiles: Array<Object> = [];
+  uploadedFiles: Array<object> = [];
   uploadOptions: IUploadOptions = {
     uri: '/upload',
     headers: {},

@@ -6,19 +6,19 @@ import { BreadCrumbItemComponent } from './breadcrumb-item/breadcrumb-item.compo
 
 @Component({
   selector: 'd-breadcrumb',
-  exportAs: 'dBreadcrumb',
   imports: [BreadCrumbItemComponent],
   templateUrl: './breadcrumb.component.html',
-  styleUrls: ['./breadcrumb.component.scss'],
-  preserveWhitespaces: false,
+  styleUrl: './breadcrumb.component.scss',
   providers: [{
     provide: BREADCRUMB,
     useExisting: forwardRef(() => BreadCrumbComponent)
   }],
+  exportAs: 'dBreadcrumb',
+  preserveWhitespaces: false
 })
 export class BreadCrumbComponent {
-  separatorIcon = input<TemplateRef<any>>();
-  source = input<Array<SourceConfig>>([]);
+  readonly separatorIcon = input<TemplateRef<any>>();
+  readonly source = input<Array<SourceConfig>>([]);
   private breadCrumbService = inject(BreadCrumbService);
   navigateTo($event: MouseEvent, item: SourceConfig) {
     this.breadCrumbService.navigateTo($event, item);

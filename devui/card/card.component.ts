@@ -35,23 +35,23 @@ export class CardSubtitleDirective {}
 
 @Directive({
   selector: 'd-card-actions,[dCardActions]',
-  exportAs: 'dCardActions',
   host: {
     class: 'devui-card-actions',
     '[class.devui-card-actions-align-end]': 'align() === "end"',
     '[class.devui-card-actions-align-space-between]': 'align() === "spaceBetween"',
   },
+  exportAs: 'dCardActions'
 })
 export class CardActionsDirective {
-  align = input<'start' | 'end' | 'spaceBetween'>('start');
+  readonly align = input<'start' | 'end' | 'spaceBetween'>('start');
 }
 
 @Directive({
   selector: '[dCardMeta]',
-  exportAs: 'dCardMeta',
   host: {
     class: 'devui-card-meta',
   },
+  exportAs: 'dCardMeta'
 })
 export class CardMetaDirective {}
 
@@ -65,39 +65,39 @@ export class CardAvatarDirective {}
 
 @Component({
   selector: 'd-card',
-  exportAs: 'dCard',
+  templateUrl: './card.component.html',
+  styleUrl: './card.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   host: {
     class: 'devui-card',
     '[class.devui-card-interactive]': 'interactive()',
   },
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  exportAs: 'dCard'
 })
 export class CardComponent {
-  interactive = input(false, { transform: booleanAttribute });
+  readonly interactive = input(false, { transform: booleanAttribute });
 }
 
 @Component({
   selector: 'd-card-header',
+  templateUrl: './card-header.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   host: {
     class: 'devui-card-header',
-  },
-  templateUrl: './card-header.component.html',
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  }
 })
 export class CardHeaderComponent {}
 
 // waiting for design
 @Component({
   selector: 'd-card-extend',
+  templateUrl: './card-extend.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   host: {
     class: 'devui-card-extend',
-  },
-  templateUrl: './card-extend.component.html',
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  }
 })
 export class CardExtendComponent {}

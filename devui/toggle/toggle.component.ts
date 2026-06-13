@@ -5,9 +5,9 @@ import { Observable } from 'rxjs';
 
 @Component({
   selector: 'd-toggle',
+  standalone: false,
   templateUrl: './toggle.component.html',
-  styleUrls: [`./toggle.component.scss`],
-  exportAs: 'toggle',
+  styleUrl: `./toggle.component.scss`,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -15,9 +15,9 @@ import { Observable } from 'rxjs';
       multi: true,
     },
   ],
-  preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  exportAs: 'toggle',
+  preserveWhitespaces: false
 })
 export class ToggleComponent implements ControlValueAccessor {
   private _checked: boolean;

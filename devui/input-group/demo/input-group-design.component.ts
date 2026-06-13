@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-input-group-design',
-  templateUrl: './input-group-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './input-group-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class InputGroupDesignComponent implements OnInit {
   imgSrc: string;

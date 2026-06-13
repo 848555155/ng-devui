@@ -5,10 +5,10 @@ const ONE_DAY_TIME = ONE_HOUR_TIME * 24;
 const ONE_WEEK_TIME = ONE_DAY_TIME * 7;
 @Component({
   selector: 'd-demo-select-datepicker',
-  templateUrl: './select-type.component.html',
-  styleUrls: ['./select-type.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './select-type.component.html',
+  styleUrl: './select-type.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class SelectDatepickerDemoComponent {
   value2 = [new Date('2021-4-5'), new Date('2021-4-8')];

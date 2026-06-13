@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-multi-auto-complete-design',
-  templateUrl: './multi-auto-complete-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './multi-auto-complete-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class MultiAutoCompleteDesignComponent implements OnInit {
   imgSrc;

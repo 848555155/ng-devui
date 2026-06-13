@@ -50,7 +50,6 @@ import apiEn from '../doc/api-en.md?raw';
       }}
     ])
   ],
-  exports: [AutoCompleteDemoComponent],
   declarations: [
     AutoCompleteDemoComponent,
     AutoCompleteDesignComponent,
@@ -63,6 +62,7 @@ import apiEn from '../doc/api-en.md?raw';
     AutoDemoLatestComponent,
     AutoDemoLazyLoadComponent
   ],
-  providers: []
+  providers: [],
+  exports: [AutoCompleteDemoComponent]
 })
 export class AutoCompleteDemoModule { }

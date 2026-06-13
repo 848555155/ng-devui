@@ -13,10 +13,10 @@ import { DragDropService } from '../services/drag-drop.service';
 
 @Component({
   selector: 'd-drag-preview-clone-dom-ref',
-  template: '',
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  template: '',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  preserveWhitespaces: false
 })
 export class DragPreviewCloneDomRefComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() domRef: HTMLElement;

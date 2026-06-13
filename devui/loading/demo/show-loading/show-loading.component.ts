@@ -6,11 +6,11 @@ import { LoadingModule } from 'ng-devui/loading';
   selector: 'd-show-loading',
   imports: [ButtonModule, LoadingModule],
   templateUrl: './show-loading.component.html',
-  styleUrls: ['./show-loading.component.scss'],
+  styleUrl: './show-loading.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ShowLoadingComponent {
-  showLoading = signal(false);
+  readonly showLoading = signal(false);
   tableNames: string[][] = [[]];
   view = {
     top: '50px',

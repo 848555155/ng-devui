@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-slider-design',
-  templateUrl: './slider-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './slider-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class SliderDesignComponent implements OnInit {
   imgSrc;

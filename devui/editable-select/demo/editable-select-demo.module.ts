@@ -51,7 +51,6 @@ import apiEn from '../doc/api-en.md?raw';
       },
     ]),
   ],
-  exports: [EditableSelectDemoComponent],
   declarations: [
     EditableSelectDemoComponent,
     EditableSelectDesignComponent,
@@ -64,5 +63,6 @@ import apiEn from '../doc/api-en.md?raw';
     ObjectSourceComponent,
   ],
   providers: [],
+  exports: [EditableSelectDemoComponent]
 })
 export class EditableSelectDemoModule {}

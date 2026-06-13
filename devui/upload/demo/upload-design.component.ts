@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-upload-design',
-  templateUrl: './upload-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './upload-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class UploadDesignComponent implements OnInit {
   imgSrc;

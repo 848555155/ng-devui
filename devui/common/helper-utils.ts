@@ -165,7 +165,7 @@ export class HelperUtils {
     const requestBody = requestMethod === 'post' ? requestParams && requestParams.toString() : undefined;
 
     const responseOption = option.responseOption;
-    /* eslint-disable-next-line prefer-object-spread */
+
     const requestOption = Object.assign(
       {},
       {
@@ -332,8 +332,8 @@ export class HelperUtils {
   selector: '[dSimulateATag]',
 })
 export class SimulateATagDirective {
-  href = input<string>();
-  target = input<'_blank' | '_self' | '_parent' | '_top' | string>('_blank');
+  readonly href = input<string>();
+  readonly target = input<'_blank' | '_self' | '_parent' | '_top' | string>('_blank');
   @HostListener('click') onClick() {
     HelperUtils.jumpOuterUrl(this.href(), this.target());
   }

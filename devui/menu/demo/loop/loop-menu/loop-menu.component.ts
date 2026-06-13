@@ -3,6 +3,7 @@ import { MenuItemClickType, MenuItemType } from 'ng-devui/menu';
 
 @Component({
   selector: 'd-loop-menu',
+  standalone: false,
   template: `
     <div dMenu [collapsed]="collapsed" (menuItemClick)="menuItemClick($event)">
       @for (item of menus; track trackByMenu($index, item)) {
@@ -27,8 +28,7 @@ import { MenuItemClickType, MenuItemType } from 'ng-devui/menu';
       }
     </div>
     `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoopMenuComponent {
   @Input() collapsed = false;

@@ -14,10 +14,10 @@ import progressDemoScss from './progress-demo.component.scss?raw';
 
 @Component({
   selector: 'd-demo-progress',
-  templateUrl: './progress-demo.component.html',
-  styleUrls: ['./progress-demo.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './progress-demo.component.html',
+  styleUrl: './progress-demo.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ProgressDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

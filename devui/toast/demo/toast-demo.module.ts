@@ -48,7 +48,6 @@ import apiEn from '../doc/api-en.md?raw';
       },
     ]),
   ],
-  exports: [ToastDemoComponent],
   declarations: [
     ToastDemoComponent,
     ToastDesignComponent,
@@ -59,6 +58,6 @@ import apiEn from '../doc/api-en.md?raw';
     AppendComponent,
     ToastServiceComponent,
   ],
-
+  exports: [ToastDemoComponent]
 })
 export class ToastDemoModule {}

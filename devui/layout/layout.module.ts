@@ -14,6 +14,7 @@ import { DSpaceDirective } from './space.directive';
 import { DStyleDirective } from './style.directive';
 
 @NgModule({
+  imports: [CommonModule],
   declarations: [
     LayoutComponent,
     HeaderComponent,
@@ -41,7 +42,6 @@ import { DStyleDirective } from './style.directive';
     DColComponent,
     DSpaceDirective,
     DGutterDirective,
-  ],
-  imports: [CommonModule],
+  ]
 })
 export class LayoutModule {}

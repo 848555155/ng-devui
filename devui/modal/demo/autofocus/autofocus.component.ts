@@ -3,9 +3,9 @@ import { DialogService } from 'ng-devui/modal';
 
 @Component({
   selector: 'd-autofocus',
-  templateUrl: './autofocus.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './autofocus.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class AutofocusComponent {
   constructor(private dialogService: DialogService) {}

@@ -1,10 +1,10 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: 'd-big-data',
-  templateUrl: './big-data.component.html',
-  styleUrls: ['./big-data.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './big-data.component.html',
+  styleUrl: './big-data.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class BigDataComponent {
   toggle = false;

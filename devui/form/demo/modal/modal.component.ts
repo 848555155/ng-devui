@@ -4,11 +4,11 @@ import { ModalOneComponent } from '../modal-one/modal-one.component';
 
 @Component({
   selector: 'd-form-demo-modal',
-  templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.css'],
-  providers: [DialogService],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './modal.component.html',
+  styleUrl: './modal.component.css',
+  providers: [DialogService],
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ModalComponent implements OnInit {
   constructor(private dialogService: DialogService) {}

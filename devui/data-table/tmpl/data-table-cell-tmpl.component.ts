@@ -4,9 +4,9 @@ import { DataTableCellViewTmplComponent } from './data-table-cell-view-tmpl.comp
 
 @Component({
   selector: 'd-cell-template',
+  standalone: false,
   template: '',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DataTableCellTmplComponent {
   @Input() type: string;

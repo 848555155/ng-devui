@@ -25,9 +25,9 @@ import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'd-editable-select',
+  standalone: false,
   templateUrl: './editable-select.component.html',
-  styleUrls: ['./editable-select.component.scss'],
-  exportAs: 'editable-select',
+  styleUrl: './editable-select.component.scss',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -35,9 +35,9 @@ import { Observable, Subscription } from 'rxjs';
       multi: true,
     },
   ],
-  preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  exportAs: 'editable-select',
+  preserveWhitespaces: false
 })
 export class EditableSelectComponent implements ControlValueAccessor, OnInit, OnChanges, OnDestroy {
   @Input() appendToBody = false;

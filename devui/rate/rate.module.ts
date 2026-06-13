@@ -5,8 +5,8 @@ import { RateComponent } from './rate.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule],
-  exports: [RateComponent],
   declarations: [RateComponent],
   providers: [],
+  exports: [RateComponent]
 })
 export class RateModule { }

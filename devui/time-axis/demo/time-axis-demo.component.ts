@@ -23,9 +23,9 @@ import singleTs from './single/single.component.ts.txt?raw';
 
 @Component({
   selector: 'd-demo-time-axis',
-  templateUrl: './time-axis-demo.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './time-axis-demo.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TimeAxisDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

@@ -2,10 +2,10 @@ import { ChangeDetectorRef, Component, ChangeDetectionStrategy } from '@angular/
 
 @Component({
   selector: 'd-cross-dimension',
-  templateUrl: './cross-dimension.component.html',
-  styleUrls: ['./cross-dimension.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './cross-dimension.component.html',
+  styleUrl: './cross-dimension.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class CrossDimensionComponent {
   lists = {

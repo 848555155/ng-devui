@@ -5,6 +5,6 @@ import { ButtonComponent } from 'ng-devui/button';
   selector: 'd-button-icon',
   imports: [ButtonComponent],
   templateUrl: './icon.component.html',
-  styleUrls: ['./icon.component.scss'],
+  styleUrl: './icon.component.scss',
 })
 export class IconComponent {}

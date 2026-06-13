@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-layout-design',
-  templateUrl: './layout-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './layout-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class LayoutDesignComponent implements OnInit {
   imgSrc;

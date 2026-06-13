@@ -20,6 +20,7 @@ import { RadioComponent } from './radio.component';
 
 @Component({
   selector: 'd-radio-group',
+  standalone: false,
   templateUrl: './radio-group.component.html',
   styleUrls: ['./radio-group.component.scss', './radio.component.scss'],
   providers: [
@@ -29,9 +30,8 @@ import { RadioComponent } from './radio.component';
       multi: true,
     },
   ],
-  preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  preserveWhitespaces: false
 })
 export class RadioGroupComponent implements ControlValueAccessor, OnChanges, AfterViewInit {
   @Input() name: string;

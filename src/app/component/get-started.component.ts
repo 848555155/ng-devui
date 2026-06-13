@@ -24,6 +24,7 @@ import getStartedCn from './getStarted-cn.md?raw';
 import getStartedEn from './getStarted-en.md?raw';
 
 @Component({
+  standalone: false,
   template: `
     <div dCodeCopy class="get-start">
       <div class="readme">
@@ -31,16 +32,13 @@ import getStartedEn from './getStarted-en.md?raw';
       </div>
     </div>
   `,
-  styles: [
-    `
+  styles: `
       .readme {
         box-sizing: border-box;
         margin-bottom: 40px;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class GetStartedComponent implements OnInit, AfterViewInit {
   _readMe: HTMLElement;

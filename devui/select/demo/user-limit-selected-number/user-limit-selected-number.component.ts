@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-user-limit-selected-number',
-  templateUrl: './user-limit-selected-number.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './user-limit-selected-number.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class UserLimitSelectedNumberComponent {
   currentOption: any;

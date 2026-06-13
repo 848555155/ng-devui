@@ -39,7 +39,7 @@ import { DatepickerComponent } from './datepicker.component';
 
 @Directive({
   selector: '[dDatepicker]:not([appendToBody])',
-  exportAs: 'datepicker',
+  standalone: false,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -47,7 +47,7 @@ import { DatepickerComponent } from './datepicker.component';
       multi: true,
     },
   ],
-  standalone: false
+  exportAs: 'datepicker'
 })
 export class DatepickerDirective implements OnInit, OnDestroy, ControlValueAccessor {
   @Input() locale: string;

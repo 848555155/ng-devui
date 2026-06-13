@@ -3,9 +3,9 @@ import { of } from 'rxjs';
 
 @Component({
   selector: 'd-auto-complete-demo-array',
-  templateUrl: './auto-complete-demo-array.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './auto-complete-demo-array.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class AutoDemoArrayComponent {
   selectItem2: any;

@@ -2,10 +2,10 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input, TemplateRef } f
 
 @Component({
   selector: 'd-toggle-menu-input',
+  standalone: false,
   templateUrl: './toggle-menu-input.component.html',
-  styleUrls: [`./toggle-menu-input.component.scss`],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false
+  styleUrl: `./toggle-menu-input.component.scss`,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ToggleMenuInputComponent {
   @Input() value: any;

@@ -21,8 +21,10 @@ import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'd-read-tip',
+  standalone: false,
   templateUrl: './read-tip.component.html',
-  styleUrls: ['./read-tip.component.scss'],
+  styleUrl: './read-tip.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
   animations: [
     trigger('state', [
       state('void', style({ opacity: 0 })),
@@ -30,9 +32,7 @@ import { debounceTime } from 'rxjs/operators';
       transition('* => visible', animate('150ms cubic-bezier(0.0, 0.0, 0.2, 1)')),
       transition('visible => *', animate('150ms cubic-bezier(0.4, 0.0, 1, 1)')),
     ]),
-  ],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  ]
 })
 export class ReadTipComponent implements OnInit, AfterViewInit, AfterContentChecked, OnDestroy {
   @Input() triggerElementRef: ElementRef;

@@ -19,9 +19,9 @@ import { DataTableColumnTmplComponent } from './tmpl/data-table-column-tmpl.comp
 
 @Component({
   selector: 'd-data-table-row, [dDataTableRow]',
+  standalone: false,
   templateUrl: './data-table-row.component.html',
-  styleUrls: ['./data-table-row.component.scss'],
-  preserveWhitespaces: false,
+  styleUrl: './data-table-row.component.scss',
   providers: [
     {
       provide: DATA_TABLE_ROW,
@@ -29,7 +29,7 @@ import { DataTableColumnTmplComponent } from './tmpl/data-table-column-tmpl.comp
     },
   ],
   changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  preserveWhitespaces: false
 })
 export class DataTableRowComponent implements OnInit {
   @Input() rowItem: any;

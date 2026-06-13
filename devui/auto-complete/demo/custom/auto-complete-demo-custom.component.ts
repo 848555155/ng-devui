@@ -4,9 +4,9 @@ import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'd-auto-complete-demo-custom',
-  templateUrl: './auto-complete-demo-custom.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './auto-complete-demo-custom.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class AutoDemoCustomComponent {
   selectItem4: any;

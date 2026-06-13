@@ -3,9 +3,9 @@ import { originSource, SourceType } from '../mock-data';
 
 @Component({
   selector: 'd-virtual-scroll',
-  templateUrl: './virtual-scroll.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './virtual-scroll.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class VirtualScrollComponent implements OnInit {
   dataTableOptions = {

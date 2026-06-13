@@ -11,9 +11,9 @@ import configScss from './config/config.component.scss?raw';
 
 @Component({
   selector: 'd-quadrant-diagram-demo',
-  templateUrl: './quadrant-diagram-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './quadrant-diagram-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class QuadrantDiagramDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

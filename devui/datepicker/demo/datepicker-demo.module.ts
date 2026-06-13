@@ -59,7 +59,6 @@ import apiEn from '../doc/api-en.md?raw';
       }}
     ])
   ],
-  exports: [DatepickerDemoComponent],
   declarations: [
     DatepickerDemoComponent,
     DatepickerDemoBasicComponent,
@@ -82,7 +81,7 @@ import apiEn from '../doc/api-en.md?raw';
     TwoDatepickerBasicComponent,
     TwoDatepickerFormatComponent,
   ],
-
   providers: [],
+  exports: [DatepickerDemoComponent]
 })
 export class DatepickerDemoModule { }

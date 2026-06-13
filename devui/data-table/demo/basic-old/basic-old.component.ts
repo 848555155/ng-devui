@@ -3,9 +3,9 @@ import { originSource, SourceType } from '../mock-data';
 
 @Component({
   selector: 'd-basic-old',
-  templateUrl: './basic-old.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './basic-old.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class BasicOldComponent implements OnInit {
   basicDataSource: Array<SourceType> = JSON.parse(JSON.stringify(originSource.slice(0, 6)));

@@ -16,9 +16,9 @@ import { TreeComponent } from './tree.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, LoadingModule, CheckBoxModule, PopoverModule, SafePipeModule, HighlightModule, ScrollingModule],
-  exports: [TreeComponent, TreeNodesComponent, OperableTreeComponent],
   declarations: [TreeComponent, TreeNodesComponent, OperableTreeComponent, AutofocusDirective, FilterNodesPipe, TransferToArrayPipe],
   providers: [],
+  exports: [TreeComponent, TreeNodesComponent, OperableTreeComponent]
 })
 export class TreeModule {
 }

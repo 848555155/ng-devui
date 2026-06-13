@@ -11,9 +11,8 @@ import {PopoverDirective} from './popover.directive';
     PositioningModule,
     OverlayContainerModule
   ],
-  exports: [PopoverComponent, PopoverDirective],
   declarations: [PopoverComponent, PopoverDirective],
-
+  exports: [PopoverComponent, PopoverDirective]
 })
 export class PopoverModule {
 }

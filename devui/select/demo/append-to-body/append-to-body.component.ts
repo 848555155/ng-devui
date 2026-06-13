@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-append-to-body',
-  templateUrl: './append-to-body.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './append-to-body.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class AppendToBodyComponent {
   options = [

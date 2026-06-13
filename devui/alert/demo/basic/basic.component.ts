@@ -5,12 +5,10 @@ import { AlertComponent } from 'ng-devui/alert';
   selector: 'd-alert-basic',
   imports: [AlertComponent],
   templateUrl: './basic.component.html',
-  styles: [
-    `
+  styles: `
       d-alert {
         margin-bottom: 16px;
       }
     `,
-  ],
 })
 export class BasicComponent {}

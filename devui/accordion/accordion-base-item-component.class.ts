@@ -9,10 +9,10 @@ import { AccordionBaseItem } from './accordion.type';
   },
 })
 export abstract class AccordionBaseItemComponent<T extends AccordionBaseItem> extends AccordionBaseComponent<T> {
-  active = computed(() => {
+  readonly active = computed(() => {
     void this.accordion.stateVersion();
     return this.item() && this.item()[this.accordion.activeKey()];
   });
 
-  itemTemplate = computed(() => this.accordion.itemTemplate());
+  readonly itemTemplate = computed(() => this.accordion.itemTemplate());
 }

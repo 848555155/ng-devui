@@ -19,28 +19,28 @@ export type IButtonSize = 'lg' | 'md' | 'sm' | 'xs';
   selector: 'd-button',
   imports: [LoadingModule, DCommonModule],
   templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss'],
+  styleUrl: './button.component.scss',
   host: {
     '(click)': 'handleDisabled($event)',
   },
   preserveWhitespaces: false,
 })
 export class ButtonComponent {
-  id = input<string>();
-  type = input<IButtonType>('button');
-  bsStyle = input<IButtonStyle>('primary');
-  shape = input<'circle'>();
-  bsSize = input<IButtonSize>('md');
-  bsPosition = input<IButtonPosition>('default');
-  bordered = input<boolean>();
-  icon = input<string>();
-  disabled = input(false);
-  showLoading = input(false);
-  width = input<string>();
-  autofocus = input(false);
-  loadingTemplateRef = input<TemplateRef<any>>();
+  readonly id = input<string>();
+  readonly type = input<IButtonType>('button');
+  readonly bsStyle = input<IButtonStyle>('primary');
+  readonly shape = input<'circle'>();
+  readonly bsSize = input<IButtonSize>('md');
+  readonly bsPosition = input<IButtonPosition>('default');
+  readonly bordered = input<boolean>();
+  readonly icon = input<string>();
+  readonly disabled = input(false);
+  readonly showLoading = input(false);
+  readonly width = input<string>();
+  readonly autofocus = input(false);
+  readonly loadingTemplateRef = input<TemplateRef<any>>();
   btnClick = output<MouseEvent>();
-  buttonContent = viewChild.required<ElementRef>('buttonContent');
+  readonly buttonContent = viewChild.required<ElementRef>('buttonContent');
 
   handleDisabled($event: Event) {
     if (this.disabled()) {
@@ -51,8 +51,8 @@ export class ButtonComponent {
 
   waveLeft = 0;
   waveTop = 0;
-  showWave = signal(false);
-  isMouseDown = signal(false);
+  readonly showWave = signal(false);
+  readonly isMouseDown = signal(false);
 
   onClick(event) {
     if (!this.showLoading()) {

@@ -2,10 +2,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-splitter-demo-multi',
-  templateUrl: './splitter-demo-multi.component.html',
-  styleUrls: ['../splitter-demo.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './splitter-demo-multi.component.html',
+  styleUrl: '../splitter-demo.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class SplitterDemoMultiComponent {
   constructor() {}

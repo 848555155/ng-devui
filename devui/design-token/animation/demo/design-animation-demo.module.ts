@@ -15,7 +15,6 @@ import { marked } from 'marked';
 import apiCn from '../doc/api-cn.md?raw';
 import apiEn from '../doc/api-en.md?raw';
 @NgModule({
-  declarations: [DesignAnimationDemoComponent, AnimationComponent],
   imports: [
     TranslatePipe,
     CommonModule,
@@ -36,6 +35,7 @@ import apiEn from '../doc/api-en.md?raw';
         'en-us': marked.parse(apiEn)
       }}
     ])
-  ]
+  ],
+  declarations: [DesignAnimationDemoComponent, AnimationComponent]
 })
 export class DesignAnimationDemoModule { }

@@ -27,13 +27,13 @@ import { ICheckboxInput, IDropType } from './tree.types';
 
 @Component({
   selector: 'd-operable-tree',
-  templateUrl: './operable-tree.component.html',
-  styleUrls: ['./operable-tree.component.scss'],
-  exportAs: 'dOperableTreeComponent',
-  preserveWhitespaces: false,
-  animations: [expandCollapseForDomDestroy],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './operable-tree.component.html',
+  styleUrl: './operable-tree.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  animations: [expandCollapseForDomDestroy],
+  exportAs: 'dOperableTreeComponent',
+  preserveWhitespaces: false
 })
 export class OperableTreeComponent implements OnInit, OnDestroy, AfterViewInit {
   static ID_SEED = 0;
@@ -409,16 +409,16 @@ export class OperableTreeComponent implements OnInit, OnDestroy, AfterViewInit {
     const originalParentNode = hasParentId ? this.treeFactory.nodes[movingNode.parentId] : this.treeFactory.treeRoot;
 
     switch (this.dragState.dropType) {
-      case 'prev':
-        this.handlerDropSort(movingNodeIndex, dropNodeIndex, movingNode, dropNode, originalParentNode, 'prev');
-        break;
-      case 'next':
-        this.handlerDropSort(movingNodeIndex, dropNodeIndex, movingNode, dropNode, originalParentNode, 'next');
-        break;
-      case 'inner':
-        this.handlerDropInner(movingNodeIndex, movingNode, dropNode, originalParentNode);
-        break;
-      default:
+    case 'prev':
+      this.handlerDropSort(movingNodeIndex, dropNodeIndex, movingNode, dropNode, originalParentNode, 'prev');
+      break;
+    case 'next':
+      this.handlerDropSort(movingNodeIndex, dropNodeIndex, movingNode, dropNode, originalParentNode, 'next');
+      break;
+    case 'inner':
+      this.handlerDropInner(movingNodeIndex, movingNode, dropNode, originalParentNode);
+      break;
+    default:
     }
   }
 
@@ -643,16 +643,16 @@ export class OperableTreeComponent implements OnInit, OnDestroy, AfterViewInit {
           })
           .catch((e, reaction = 'cancel') => {
             switch (reaction) {
-              case 'justify': {
-                const parentNode = this.treeFactory.nodes[treeNode.parentId];
-                const title = treeNode.data.title;
-                this.treeFactory.deleteNodeById(treeNode.id);
-                this.addChildNode(null, parentNode, { title: title });
-                break;
-              }
-              case 'cancel':
-              default:
-                this.treeFactory.deleteNodeById(treeNode.id);
+            case 'justify': {
+              const parentNode = this.treeFactory.nodes[treeNode.parentId];
+              const title = treeNode.data.title;
+              this.treeFactory.deleteNodeById(treeNode.id);
+              this.addChildNode(null, parentNode, { title: title });
+              break;
+            }
+            case 'cancel':
+            default:
+              this.treeFactory.deleteNodeById(treeNode.id);
             }
             return Promise.reject(e);
           });

@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-image-preview-design',
-  templateUrl: './image-preview-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './image-preview-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ImagePreviewDesignComponent implements OnInit {
   imgSrc;

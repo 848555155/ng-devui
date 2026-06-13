@@ -2,10 +2,10 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-demo-search-no-border',
-  templateUrl: './search-no-border.component.html',
-  styleUrls: ['./search-no-border.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './search-no-border.component.html',
+  styleUrl: './search-no-border.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class SearchNoBorderComponent implements OnInit {
   constructor() {}

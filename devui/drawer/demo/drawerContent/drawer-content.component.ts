@@ -1,10 +1,10 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  templateUrl: './drawer-content.component.html',
-  styleUrls: ['./drawer-content.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './drawer-content.component.html',
+  styleUrl: './drawer-content.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DrawerContentComponent {
   @Input() items;

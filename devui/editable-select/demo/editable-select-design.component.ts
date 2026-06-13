@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-editable-select-design',
-  templateUrl: './editable-select-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './editable-select-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class EditableSelectDesignComponent implements OnInit {
   imgSrc;

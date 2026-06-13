@@ -14,9 +14,9 @@ import customTs from './custom/custom.component.ts.txt?raw';
 import customScss from './custom/custom.component.scss?raw';
 
 @Component({
-  templateUrl: './toggle-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './toggle-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ToggleDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

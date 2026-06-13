@@ -31,12 +31,12 @@ export type InputSizeType = '' | 'sm' | 'lg';
 
 @Component({
   selector: 'd-input-number',
-  templateUrl: './input-number.component.html',
-  styleUrls: ['./input-number.component.scss'],
-  providers: [INPUT_NUMBER_CONTROL_VALUE_ACCESSOR],
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './input-number.component.html',
+  styleUrl: './input-number.component.scss',
+  providers: [INPUT_NUMBER_CONTROL_VALUE_ACCESSOR],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  preserveWhitespaces: false
 })
 export class InputNumberComponent implements ControlValueAccessor, OnChanges, OnDestroy, AfterViewInit {
   @Input() step = 1;

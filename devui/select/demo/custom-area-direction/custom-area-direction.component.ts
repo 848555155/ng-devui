@@ -2,10 +2,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-custom-area-direction',
-  templateUrl: './custom-area-direction.component.html',
-  styleUrls: ['./custom-area-direction.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './custom-area-direction.component.html',
+  styleUrl: './custom-area-direction.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class CustomAreaDirectionComponent {
   options = [

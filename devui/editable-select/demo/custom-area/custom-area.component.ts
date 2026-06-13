@@ -2,10 +2,10 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-editable-select-custom-area',
-  templateUrl: './custom-area.component.html',
-  styleUrls: ['./custom-area.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './custom-area.component.html',
+  styleUrl: './custom-area.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class CustomAreaComponent implements OnInit {
   selectItem: any;

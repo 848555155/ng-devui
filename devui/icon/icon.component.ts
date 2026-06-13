@@ -18,17 +18,17 @@ import { fromEvent } from 'rxjs';
   selector: 'd-icon',
   imports: [NgTemplateOutlet],
   templateUrl: './icon.component.html',
-  styleUrls: ['./icon.component.scss'],
+  styleUrl: './icon.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IconComponent {
-  icon = input<string | TemplateRef<any>>();
-  operable = input(false, { transform: booleanAttribute });
-  disabled = input(false, { transform: booleanAttribute });
-  rotate = input<number | 'infinite'>();
-  color = input<string>();
+  readonly icon = input<string | TemplateRef<any>>();
+  readonly operable = input(false, { transform: booleanAttribute });
+  readonly disabled = input(false, { transform: booleanAttribute });
+  readonly rotate = input<number | 'infinite'>();
+  readonly color = input<string>();
 
-  template = computed(() => {
+  readonly template = computed(() => {
     const icon = this.icon();
     return icon instanceof TemplateRef ? icon : null;
   });

@@ -51,7 +51,6 @@ import apiEn from '../doc/api-en.md?raw';
       }}
     ])
   ],
-  exports: [DropdownDemoComponent],
   declarations: [
     DropdownDemoComponent,
     DropdownDesignComponent,
@@ -65,7 +64,7 @@ import apiEn from '../doc/api-en.md?raw';
     DropDownDemoManuallyComponent,
     DropdownSetIsOpenComponent,
   ],
-
+  exports: [DropdownDemoComponent]
 })
 export class DropdownDemoModule {
 }

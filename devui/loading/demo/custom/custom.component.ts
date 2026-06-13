@@ -7,12 +7,12 @@ import { firstValueFrom, timer } from 'rxjs';
   selector: 'd-custom',
   imports: [ButtonModule, LoadingModule],
   templateUrl: './custom.component.html',
-  styleUrls: ['./custom.component.scss'],
+  styleUrl: './custom.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomComponent {
-  loading1 = signal<LoadingType>(undefined);
-  loading2 = signal<LoadingType>(undefined);
+  readonly loading1 = signal<LoadingType>(undefined);
+  readonly loading2 = signal<LoadingType>(undefined);
   showLoading = true;
   tableNames: string[][] = [[]];
   view = {

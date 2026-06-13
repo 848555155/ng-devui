@@ -48,12 +48,12 @@ const mockFetchNames = (url: string) =>
   selector: 'd-basic',
   imports: [ButtonModule, LoadingModule],
   templateUrl: './basic.component.html',
-  styleUrls: ['./basic.component.scss'],
+  styleUrl: './basic.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicComponent {
-  loading = signal<LoadingType>(undefined);
-  tableNames = signal<string[][]>([]);
+  readonly loading = signal<LoadingType>(undefined);
+  readonly tableNames = signal<string[][]>([]);
   view = {
     top: '50px',
     left: '50%',

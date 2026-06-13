@@ -11,8 +11,8 @@ import {
 
 @Directive({
   selector: '[dDropScrollEnhanced]',
-  exportAs: 'dDropScrollEnhanced',
-  standalone: false
+  standalone: false,
+  exportAs: 'dDropScrollEnhanced'
 })
 export class DropScrollEnhancedDirective implements AfterViewInit, OnDestroy {
   @Input() minSpeed: DropScrollSpeed = 50;

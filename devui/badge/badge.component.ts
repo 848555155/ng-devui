@@ -4,24 +4,24 @@ import { BadgePositionType, BadgeStatusType } from './badge.types';
 @Component({
   selector: 'd-badge',
   templateUrl: './badge.component.html',
-  styleUrls: ['./badge.component.scss'],
+  styleUrl: './badge.component.scss',
 })
 export class BadgeComponent {
-  contentProjection = viewChild<ElementRef<HTMLSpanElement>>('contentProjection');
-  hasContent = computed(() => {
+  readonly contentProjection = viewChild<ElementRef<HTMLSpanElement>>('contentProjection');
+  readonly hasContent = computed(() => {
     const nodes = this.contentProjection()?.nativeElement;
     const contents = nodes.childNodes;
     return !!contents.length;
   });
-  count = input<number | string>();
-  maxCount = input(99, { transform: numberAttribute });
-  showDot = input(false, { transform: booleanAttribute });
-  status = input<BadgeStatusType>();
-  position = input<BadgePositionType>('top-right');
-  offset = input<[number, number]>();
-  bgColor = input<string>();
-  textColor = input<string>();
-  computedCountToNumber = computed(() => {
+  readonly count = input<number | string>();
+  readonly maxCount = input(99, { transform: numberAttribute });
+  readonly showDot = input(false, { transform: booleanAttribute });
+  readonly status = input<BadgeStatusType>();
+  readonly position = input<BadgePositionType>('top-right');
+  readonly offset = input<[number, number]>();
+  readonly bgColor = input<string>();
+  readonly textColor = input<string>();
+  readonly computedCountToNumber = computed(() => {
     const count = this.count();
     if (typeof count === 'number') {
       return count;

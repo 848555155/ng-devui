@@ -7,11 +7,11 @@ import { DatepickerProService } from '../datepicker-pro.service';
 
 @Component({
   selector: 'd-year-panel',
+  standalone: false,
   templateUrl: './year-panel.component.html',
-  styleUrls: ['./year-panel.component.scss'],
-  preserveWhitespaces: false,
+  styleUrl: './year-panel.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false
+  preserveWhitespaces: false
 })
 export class YearPanelComponent implements OnInit, OnDestroy {
   @ViewChild('scrollList') scrollListCmp: CdkVirtualScrollViewport;

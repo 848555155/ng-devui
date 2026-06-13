@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-demo-parent-select-cascader',
-  templateUrl: './parent-select-cascader.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './parent-select-cascader.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ParentSelectCascaderComponent {
   options = [

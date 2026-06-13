@@ -114,6 +114,7 @@ const OPTION = [
 ];
 
 @Component({
+  standalone: false,
   template: `
     <d-cascader
       #cascaderCmp
@@ -130,8 +131,7 @@ const OPTION = [
       [canSelectParent]="canSelectParent"
     ></d-cascader>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class BasicComponent {
   @ViewChild('cascaderCmp', { static: true }) cascaderCmp: CascaderComponent;
@@ -151,6 +151,7 @@ class BasicComponent {
 }
 
 @Component({
+  standalone: false,
   template: `
     <d-cascader
       #cascaderCmp
@@ -160,8 +161,7 @@ class BasicComponent {
       [allowSearch]="allowSearch"
     ></d-cascader>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class SearchComponent {
   @ViewChild('cascaderCmp', { static: true }) cascaderCmp: CascaderComponent;
@@ -173,6 +173,7 @@ class SearchComponent {
 }
 
 @Component({
+  standalone: false,
   template: `
     <d-cascader
       #cascaderCmp
@@ -185,8 +186,7 @@ class SearchComponent {
       [loadChildrenFn]="null"
     ></d-cascader>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class MultipleComponent {
   @ViewChild('cascaderCmp', { static: true }) cascaderCmp: CascaderComponent;
@@ -198,6 +198,7 @@ class MultipleComponent {
 }
 
 @Component({
+  standalone: false,
   template: `
     <d-cascader
       [options]="options"
@@ -211,8 +212,7 @@ class MultipleComponent {
       [loadChildrenFn]="loadChildren"
     ></d-cascader>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class LazyLoadComponent {
   options = [

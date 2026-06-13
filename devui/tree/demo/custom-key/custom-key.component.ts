@@ -3,9 +3,9 @@ import { OperableTreeComponent } from 'ng-devui/tree';
 
 @Component({
   selector: 'd-custom-key',
-  templateUrl: './custom-key.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './custom-key.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class CustomKeyComponent {
   @ViewChild('operableTree1', { static: true }) operableTreeComponent: OperableTreeComponent;

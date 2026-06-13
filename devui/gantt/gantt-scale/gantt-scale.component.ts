@@ -15,10 +15,10 @@ import { GanttBarStatus, GanttMilestone, GanttScaleDateInfo, GanttScaleUnit } fr
 import { GanttService } from '../gantt.service';
 @Component({
   selector: 'd-gantt-scale',
-  templateUrl: './gantt-scale.component.html',
-  styleUrls: ['./gantt-scale.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './gantt-scale.component.html',
+  styleUrl: './gantt-scale.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class GanttScaleComponent implements OnInit, OnChanges, OnDestroy {
   scaleData: GanttScaleDateInfo[];

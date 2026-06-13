@@ -133,6 +133,7 @@ export * from './version';
 
 @NgModule({
   imports: [],
+  declarations: [],
   exports: [
     AccordionModule,
     AlertModule,
@@ -199,8 +200,7 @@ export * from './version';
     MentionModule,
     NavSpriteModule,
     ReadTipModule
-  ],
-  declarations: [],
+  ]
 })
 export class DevUIModule {
   static forRoot(): ModuleWithProviders<DevUIModule> {

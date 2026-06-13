@@ -24,15 +24,15 @@ import { QuadrantRegionComponent } from './quadrant-region/quadrant-region.compo
     FullscreenModule,
     SafePipeModule
   ],
-  exports: [
-    QuadrantDiagramComponent
-  ],
   declarations: [
     QuadrantDiagramComponent,
     QuadrantDiagramAxisComponent,
     QuadrantRegionComponent,
     QuadrantLabelComponent
   ],
-  providers: [QuadrantDiagramService]
+  providers: [QuadrantDiagramService],
+  exports: [
+    QuadrantDiagramComponent
+  ]
 })
 export class QuadrantDiagramModule { }

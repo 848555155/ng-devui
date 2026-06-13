@@ -26,6 +26,7 @@ class CommonFunctions {
 }
 
 @Component({
+  standalone: false,
   template: `
     <div class="devui-input-group devui-dropdown-origin">
       <input
@@ -60,8 +61,7 @@ class CommonFunctions {
       <div class="test-template">test template</div>
     </ng-template>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestDatePickerDirectiveComponent {
   selectedDate1;
@@ -88,6 +88,7 @@ class TestDatePickerDirectiveComponent {
 }
 
 @Component({
+  standalone: false,
   template: `
     <div class="devui-input-group devui-dropdown-origin">
       <input
@@ -123,8 +124,7 @@ class TestDatePickerDirectiveComponent {
       <div class="test-template">test template</div>
     </ng-template>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestDatePickerAppendToBodyComponent {
   selectedDate1;
@@ -156,6 +156,7 @@ class TestDatePickerAppendToBodyComponent {
 }
 
 @Component({
+  standalone: false,
   template: `
     <d-datepicker
       [dateConfig]="dateConfig"
@@ -169,8 +170,7 @@ class TestDatePickerAppendToBodyComponent {
       <div class="test-template" (click)="clearAll()">clear</div>
     </ng-template>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestDatePickerCmpComponent {
   dateConfig = null;
@@ -1123,7 +1123,7 @@ function testTimePicker(fixture, wrapperEle, component) {
   tickEvent(confirmBtn, new Event('click'), fixture);
 
   expect(component.getValue).toHaveBeenCalled();
-  /* eslint-disable-next-line max-len*/
+
   expect(component.inputEle.nativeElement.value).toBe(
     `${new Date().getFullYear()}/${padZero(new Date().getMonth() + 1)}/${padZero(
       new Date().getDate()
@@ -1137,7 +1137,7 @@ function testTimePicker(fixture, wrapperEle, component) {
   tickEvent(component.inputEle.nativeElement, new Event('input'), fixture, 1000);
   tickEvent(component.inputEle.nativeElement, new Event('blur'), fixture, 1000);
   fixture.detectChanges();
-  /* eslint-disable-next-line max-len*/
+
   expect(component.inputEle.nativeElement.value).toBe(
     `${new Date().getFullYear()}/${padZero(new Date().getMonth() + 1)}/${padZero(
       new Date().getDate()
@@ -1189,7 +1189,7 @@ function testDateConfig(fixture, wrapperEle, component) {
   tickEvent(confirmBtn, new Event('click'), fixture);
 
   // MM.dd.y mm-ss-HH
-  /* eslint-disable-next-line max-len*/
+
   expect(component.inputEle.nativeElement.value).toBe(
     `${padZero(new Date().getMonth() + 1)}.${padZero(new Date().getDate())}.${new Date().getFullYear()} ${padZero(
       new Date().getMinutes()

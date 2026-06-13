@@ -4,13 +4,13 @@ import { By } from '@angular/platform-browser';
 import { BadgeModule } from 'ng-devui/badge/badge.module';
 import { BadgeComponent } from './badge.component';
 @Component({
+  standalone: false,
   template: `
     <d-badge [count]="count" [status]="status" [badgePos]="badgePos" [showDot]="showDot" [maxCount]="maxCount">
       <div>未读消息</div>
     </d-badge>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class HasContentBadgeComponent {
   count = 8;
@@ -21,9 +21,9 @@ class HasContentBadgeComponent {
 }
 
 @Component({
-  template: ` <d-badge [count]="count" [status]="status" [showDot]="showDot"> </d-badge> `,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  template: ` <d-badge [count]="count" [status]="status" [showDot]="showDot"> </d-badge> `,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class NoContentBadgeComponent {
   count = 6;

@@ -3,10 +3,10 @@ import { GanttService } from 'ng-devui/gantt';
 
 @Component({
   selector: 'd-reset-position',
-  templateUrl: './reset-position.component.html',
-  styleUrls: ['./reset-position.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './reset-position.component.html',
+  styleUrl: './reset-position.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ResetPositionComponent implements OnChanges {
   @Input() datatableElementRef: any;

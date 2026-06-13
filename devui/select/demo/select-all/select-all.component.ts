@@ -1,9 +1,9 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: 'd-select-all',
-  templateUrl: './select-all.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './select-all.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class SelectAllComponent {
   options = [

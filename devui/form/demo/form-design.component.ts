@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-form-design',
-  templateUrl: './form-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './form-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class FormDesignComponent implements OnInit {
   imgSrc;

@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-auto-complete-demo-lazy-load',
-  templateUrl: './auto-complete-demo-lazy-load.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './auto-complete-demo-lazy-load.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class AutoDemoLazyLoadComponent {
   languages = [

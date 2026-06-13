@@ -14,9 +14,9 @@ import widgetsHtml from './widgets/widgets.component.html?raw';
 import widgetsTs from './widgets/widgets.component.ts.txt?raw';
 @Component({
   selector: 'd-demo-pagination',
-  templateUrl: './pagination-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './pagination-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class PaginationDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

@@ -2,10 +2,10 @@ import { Component, Inject, OnInit, DOCUMENT, ChangeDetectionStrategy } from '@a
 
 @Component({
   selector: 'd-scroll-target',
-  templateUrl: './scroll-target.component.html',
-  styleUrls: ['./scroll-target.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './scroll-target.component.html',
+  styleUrl: './scroll-target.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ScrollTargetComponent implements OnInit {
   stickyView = {

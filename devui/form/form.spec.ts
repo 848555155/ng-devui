@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { FormDirective } from './form.directive';
 import { FormModule } from './form.module';
 @Component({
+  standalone: false,
   template: `
     <form dForm [layout]="layout" [labelSize]="labelSize">
       <d-form-item>
@@ -20,8 +21,7 @@ import { FormModule } from './form.module';
       </d-form-item>
     </form>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestFormComponent {
   layout = 'horizontal';

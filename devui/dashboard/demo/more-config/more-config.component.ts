@@ -4,10 +4,10 @@ import { FormLayout } from 'ng-devui/form';
 
 @Component({
   selector: 'd-more-config',
-  templateUrl: './more-config.component.html',
-  styleUrls: ['./more-config.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './more-config.component.html',
+  styleUrl: './more-config.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class MoreConfigComponent {
   layoutDirection: FormLayout = FormLayout.Horizontal;

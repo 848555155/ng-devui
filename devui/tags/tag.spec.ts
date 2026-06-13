@@ -6,6 +6,7 @@ import { TagComponent } from './tag.component';
 import { TagsModule } from './tags.module';
 
 @Component({
+  standalone: false,
   template: `
     <section>
       <d-tag
@@ -23,8 +24,7 @@ import { TagsModule } from './tags.module';
       </ng-template>
     </section>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestTagComponent {
   tagName = 'bug';

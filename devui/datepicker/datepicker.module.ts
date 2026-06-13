@@ -23,18 +23,6 @@ import { TwoDatePickerComponent } from './two-datepicker/two-datepicker.componen
     OverlayModule,
     ButtonModule
   ],
-  exports: [
-    DatepickerComponent,
-    DatepickerDirective,
-    DatePickerAppendToBodyComponent,
-    DateRangePickerComponent,
-    DateRangePickerDirective,
-    SingleDateRangePickerComponent,
-    TwoDatePickerComponent,
-    TwoDatepickerSingleComponent,
-    TwoDatePickerStartDirective,
-    TwoDatePickerEndDirective
-  ],
   declarations: [
     DatepickerComponent,
     DatepickerDirective,
@@ -47,8 +35,19 @@ import { TwoDatePickerComponent } from './two-datepicker/two-datepicker.componen
     TwoDatePickerStartDirective,
     TwoDatePickerEndDirective
   ],
-
-  providers: [DatePickerConfigService]
+  providers: [DatePickerConfigService],
+  exports: [
+    DatepickerComponent,
+    DatepickerDirective,
+    DatePickerAppendToBodyComponent,
+    DateRangePickerComponent,
+    DateRangePickerDirective,
+    SingleDateRangePickerComponent,
+    TwoDatePickerComponent,
+    TwoDatepickerSingleComponent,
+    TwoDatePickerStartDirective,
+    TwoDatePickerEndDirective
+  ]
 })
 export class DatepickerModule {
 }

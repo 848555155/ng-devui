@@ -39,15 +39,15 @@ export class FullscreenLaunchDirective {
 @Component({
   selector: 'd-fullscreen',
   templateUrl: './fullscreen.component.html',
-  styleUrls: ['./fullscreen.component.scss'],
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrl: './fullscreen.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false
 })
 export class FullscreenComponent {
-  mode = input<FullscreenMode>(DEFAULT_MODE);
-  zIndex = input(DEFAULT_ZINDEX, { transform: numberAttribute });
-  container = input<HTMLElement>();
-  beforeChange = input(() => Promise.resolve(true), {
+  readonly mode = input<FullscreenMode>(DEFAULT_MODE);
+  readonly zIndex = input(DEFAULT_ZINDEX, { transform: numberAttribute });
+  readonly container = input<HTMLElement>();
+  readonly beforeChange = input(() => Promise.resolve(true), {
     transform: (fuc: (isFullscreen: boolean, trigger: string) => boolean | Promise<boolean> | Observable<boolean>) => {
       if (!fuc) {
         return (isFullscreen: boolean, trigger: string) => Promise.resolve(true);
@@ -65,8 +65,8 @@ export class FullscreenComponent {
     },
   });
   fullscreenLaunch = output<{ isFullscreen: boolean }>();
-  btnLaunch = contentChild(FullscreenLaunchDirective);
-  btnTarget = contentChild(FullscreenTargetDirective);
+  readonly btnLaunch = contentChild(FullscreenLaunchDirective);
+  readonly btnTarget = contentChild(FullscreenTargetDirective);
   private currentTarget: HTMLElement;
   private isFullscreen = false;
 

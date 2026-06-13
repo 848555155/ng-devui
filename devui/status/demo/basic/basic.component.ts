@@ -5,7 +5,7 @@ import { StatusComponent } from 'ng-devui/status';
   selector: 'd-basic',
   imports: [StatusComponent],
   templateUrl: './basic.component.html',
-  styleUrls: ['./basic.component.css'],
+  styleUrl: './basic.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicComponent {}

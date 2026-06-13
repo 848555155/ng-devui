@@ -9,6 +9,7 @@ import { BreadCrumbItemComponent } from './breadcrumb-item/breadcrumb-item.compo
 import { BreadCrumbComponent } from './breadcrumb.component';
 import { BreadcrumbModule } from './breadcrumb.module';
 @Component({
+  standalone: false,
   template: `<d-breadcrumb #breadcrumb>
       <d-breadcrumb-item #breadcrumbItem>
         <a routerLink="/components/zh-cn/get-start">DevUI</a>
@@ -18,8 +19,7 @@ import { BreadcrumbModule } from './breadcrumb.module';
       </d-breadcrumb-item>
     </d-breadcrumb>
     <d-breadcrumb #breadcrumbWithSource [source]="source"></d-breadcrumb> `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestBreadCrumbComponent {
   @ViewChild('breadcrumb') breadcrumb: BreadCrumbComponent;

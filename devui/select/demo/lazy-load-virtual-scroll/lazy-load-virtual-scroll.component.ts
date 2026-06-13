@@ -2,10 +2,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-lazy-load-virtual-scroll',
-  templateUrl: './lazy-load-virtual-scroll.component.html',
-  styleUrls: ['./lazy-load-virtual-scroll.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './lazy-load-virtual-scroll.component.html',
+  styleUrl: './lazy-load-virtual-scroll.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class LazyLoadVirtualScrollComponent {
   options = [

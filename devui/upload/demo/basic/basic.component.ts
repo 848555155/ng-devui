@@ -7,9 +7,9 @@ import { Observable } from 'rxjs';
 
 @Component({
   selector: 'd-basic',
-  templateUrl: './basic.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './basic.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class BasicComponent implements OnInit {
   @ViewChild('singleUploadDrag', { static: true }) singleUploadDrag: SingleUploadComponent;
@@ -26,7 +26,7 @@ export class BasicComponent implements OnInit {
     multiple: false,
     accept: '.png,.zip',
   };
-  uploadedFiles: Array<Object> = [];
+  uploadedFiles: Array<object> = [];
   uploadOptions: IUploadOptions = {
     uri: '/upload',
     headers: {},

@@ -38,14 +38,13 @@ import apiEn from '../doc/api-en.md?raw';
       }}
     ])
   ],
-  exports: [TooltipDemoComponent],
   declarations: [
     TooltipDemoComponent,
     TooltipDesignComponent,
     BasicComponent,
     DelayComponent
   ],
-
+  exports: [TooltipDemoComponent]
 })
 export class TooltipDemoModule {
 }

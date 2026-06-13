@@ -4,9 +4,9 @@ import { of } from 'rxjs';
 
 @Component({
   selector: 'd-user-search-n-lazyload',
-  templateUrl: './user-search-n-lazyload.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './user-search-n-lazyload.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class UserSearchNLazyLoadComponent {
   @ViewChild('selectComponent', { static: true }) selectComponent: SelectComponent;

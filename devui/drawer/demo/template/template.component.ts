@@ -3,9 +3,9 @@ import { DrawerService, IDrawerOpenResult } from 'ng-devui/drawer';
 
 @Component({
   selector: 'd-template',
-  templateUrl: './template.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './template.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TemplateComponent implements OnInit {
   @ViewChild('drawerContent', { static: true }) drawerContent: TemplateRef<any>;

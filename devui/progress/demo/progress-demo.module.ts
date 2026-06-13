@@ -43,7 +43,7 @@ import apiEn from '../doc/api-en.md?raw';
       },
     ]),
   ],
-  exports: [ProgressDemoComponent],
   declarations: [ProgressDemoComponent, ProgressDesignComponent, BasicComponent, CircleComponent, MultipleComponent],
+  exports: [ProgressDemoComponent]
 })
 export class ProgressDemoModule {}

@@ -41,7 +41,7 @@ import apiEn from '../doc/api-en.md?raw';
       },
     ]),
   ],
-  exports: [TagsDemoComponent],
   declarations: [TagsDemoComponent, TagsDesignComponent, BasicComponent, CustomComponent, HideComponent],
+  exports: [TagsDemoComponent]
 })
 export class TagsDemoModule {}

@@ -2,10 +2,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-basic',
-  templateUrl: './basic.component.html',
-  styleUrls: ['./basic.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './basic.component.html',
+  styleUrl: './basic.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class BasicComponent {
   list1 = [{ name: 'Visual Studio Code' }, { name: 'WebStorm' }, { name: 'Sublime' }, { name: 'Atom (disable dragging)', disabled: true }];

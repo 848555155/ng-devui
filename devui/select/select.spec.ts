@@ -8,6 +8,7 @@ import { animationFrameScheduler, of } from 'rxjs';
 import { CheckBoxComponent } from './../checkbox/checkbox.component';
 import { SelectComponent } from './select.component';
 @Component({
+  standalone: false,
   template: `
     <div
       [ngClass]="{
@@ -39,8 +40,7 @@ import { SelectComponent } from './select.component';
       <ng-template #noDataTemplate>没有自定义数据</ng-template>
     </div>
   `,
-  styles: [
-    `
+  styles: `
       .absolute-top,
       .absolute-bottom {
         position: fixed;
@@ -54,13 +54,11 @@ import { SelectComponent } from './select.component';
         left: 0;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestSelectComponent {
   option;
-  options: Array<Object | string> = ['选项1', '选项2', '选项3'];
+  options: Array<object | string> = ['选项1', '选项2', '选项3'];
   objectOptions = [
     { id: 1, title: '选项1', immutable: true },
     { id: 2, title: '选项2' },
@@ -90,6 +88,7 @@ class TestSelectComponent {
   };
 }
 @Component({
+  standalone: false,
   template: `
     <d-select
       [options]="options"
@@ -99,12 +98,11 @@ class TestSelectComponent {
       [width]="width"
     ></d-select>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestSelectAppendToBodyComponent {
   option;
-  options: Array<Object | string> = ['选项1', '选项2', '选项3'];
+  options: Array<object | string> = ['选项1', '选项2', '选项3'];
   objectOptions = [
     { id: 1, title: '选项1', immutable: true },
     { id: 2, title: '选项2' },
@@ -122,6 +120,7 @@ class TestSelectAppendToBodyComponent {
   width = undefined;
 }
 @Component({
+  standalone: false,
   template: `
     <d-select
       [options]="options"
@@ -132,8 +131,7 @@ class TestSelectAppendToBodyComponent {
     >
     </d-select>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestSelectLazyLoadVirtualScrollComponent {
   @ViewChild(SelectComponent) selectComponent: SelectComponent;
@@ -167,6 +165,7 @@ class TestSelectLazyLoadVirtualScrollComponent {
 }
 
 @Component({
+  standalone: false,
   template: `
     <d-select [options]="options" [(ngModel)]="option" [virtualScroll]="virtualScroll" [templateItemSize]="templateItemSize">
       <ng-template let-option="option"
@@ -174,35 +173,33 @@ class TestSelectLazyLoadVirtualScrollComponent {
       >
     </d-select>
   `,
-  styles: [
-    `
+  styles: `
       .my-option {
         height: 30px; /* 上下各有padding 8px */
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestSelectVirtualScrollItemSizeComponent extends TestSelectLazyLoadVirtualScrollComponent {}
 
 @Component({
+  standalone: false,
   template: `
     @if (init) {
     <d-select [options]="options" [(ngModel)]="option" [autoFocus]="autoFocus" [toggleOnFocus]="toggleOnFocus"></d-select>
     }
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestSelecAutoFocusNToggleOnFocusComponent {
   init = false;
   option;
-  options: Array<Object | string> = ['选项1', '选项2', '选项3'];
+  options: Array<object | string> = ['选项1', '选项2', '选项3'];
   autoFocus: boolean;
   toggleOnFocus: boolean;
 }
 @Component({
+  standalone: false,
   template: `
     <d-select
       [options]="options"
@@ -226,8 +223,7 @@ class TestSelecAutoFocusNToggleOnFocusComponent {
       </div>
     </ng-template>
   `,
-  styles: [
-    `
+  styles: `
       .custom-wrapper {
         padding: 5px;
       }
@@ -254,13 +250,11 @@ class TestSelecAutoFocusNToggleOnFocusComponent {
         background: #7693f5;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestSelectCustomAreaComponent {
   option;
-  options: Array<Object | string> = ['选项1', '选项2', '选项3'];
+  options: Array<object | string> = ['选项1', '选项2', '选项3'];
   recently = ['选项1'];
   customViewDirection: 'right' | 'left' | 'bottom';
   getIndex(option: string) {
@@ -268,6 +262,7 @@ class TestSelectCustomAreaComponent {
   }
 }
 @Component({
+  standalone: false,
   template: `
     <d-select
       [options]="options"
@@ -328,12 +323,11 @@ class TestSelectCustomAreaComponent {
       } }
     </ng-template>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestSelectTemplateComponent {
   option;
-  options: Array<Object | string> = ['选项1', '选项2', '选项3'];
+  options: Array<object | string> = ['选项1', '选项2', '选项3'];
   multiple: boolean;
   inputItemTemplateEnable: boolean;
   templateMode: 'result' | 'list' | 'both';

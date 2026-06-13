@@ -2,9 +2,9 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-hide',
-  templateUrl: './hide.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './hide.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class HideComponent implements OnInit {
   tagList3: any = [

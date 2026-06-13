@@ -4,9 +4,9 @@ import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'd-design-color-demo',
-  templateUrl: './design-color-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './design-color-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DesignColorDemoComponent implements OnInit, OnDestroy {
   navItems = [];

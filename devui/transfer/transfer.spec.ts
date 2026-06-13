@@ -9,6 +9,7 @@ import { TransferModule } from './transfer.module';
 
 @Component({
   selector: 'd-transfer-demo-base',
+  standalone: false,
   template: `
     <section>
       <div style="width:700px; ">
@@ -29,8 +30,7 @@ import { TransferModule } from './transfer.module';
       </div>
     </section>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TransferDemoBaseComponent {
   disabled = false;

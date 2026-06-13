@@ -55,7 +55,7 @@ import apiEn from '../doc/api-en.md?raw';
       },
     ]),
   ],
-  exports: [InputGroupDemoComponent],
   declarations: [InputGroupDemoComponent, InputGroupDesignComponent, BasicComponent, EmbedComponent, ResponsiveComponent],
+  exports: [InputGroupDemoComponent]
 })
 export class InputGroupDemoModule {}

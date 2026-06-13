@@ -47,10 +47,10 @@ import modelValueTs2 from './model-value/map-to.pipe.ts.txt?raw';
 
 @Component({
   selector: 'd-select-demo',
-  templateUrl: './select-demo.component.html',
-  styleUrls: ['./select-demo.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './select-demo.component.html',
+  styleUrl: './select-demo.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class SelectDemoComponent implements OnInit, OnDestroy {
   SelectBasicComponent: Array<DevuiSourceData> = [

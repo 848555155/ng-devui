@@ -10,9 +10,9 @@ import {SliderComponent} from './slider.component';
     FormsModule,
     PopoverModule
   ],
-  exports: [SliderComponent],
   declarations: [SliderComponent],
   providers: [],
+  exports: [SliderComponent]
 })
 
 export class SliderModule {

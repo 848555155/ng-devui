@@ -13,12 +13,12 @@ import { TimeAxisItemComponent } from './time-axis-item/time-axis-item.component
 import { TimeAxisMode } from './time-axis.type';
 @Component({
   selector: 'd-time-axis',
-  templateUrl: './time-axis.component.html',
-  styleUrls: [`./time-axis.component.scss`],
-  exportAs: 'time-axis',
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './time-axis.component.html',
+  styleUrl: `./time-axis.component.scss`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  exportAs: 'time-axis',
+  preserveWhitespaces: false
 })
 export class TimeAxisComponent implements AfterContentInit, AfterViewInit {
   @ContentChildren(TimeAxisItemComponent) listOfItems!: QueryList<TimeAxisItemComponent>;

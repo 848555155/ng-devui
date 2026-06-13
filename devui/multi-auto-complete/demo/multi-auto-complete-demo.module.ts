@@ -47,7 +47,6 @@ import apiEn from '../doc/api-en.md?raw';
       },
     ]),
   ],
-  exports: [MultiAutoCompleteDemoComponent],
   declarations: [
     MultiAutoCompleteDemoComponent,
     MultiAutoCompleteDesignComponent,
@@ -56,6 +55,6 @@ import apiEn from '../doc/api-en.md?raw';
     MultiAutoCompleteDemoDisabledComponent,
   ],
   providers: [],
-
+  exports: [MultiAutoCompleteDemoComponent]
 })
 export class MultiAutoCompleteDemoModule {}

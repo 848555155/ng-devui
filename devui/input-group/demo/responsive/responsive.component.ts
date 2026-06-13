@@ -4,10 +4,10 @@ import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'd-input-group-responsive',
-  templateUrl: './responsive.component.html',
-  styleUrls: ['./responsive.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './responsive.component.html',
+  styleUrl: './responsive.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ResponsiveComponent implements OnInit {
   width = '100%';

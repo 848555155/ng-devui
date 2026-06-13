@@ -34,7 +34,7 @@ export function easeInOutCubic(t: number, b: number, c: number, d: number): numb
   if (tt < 1) {
     return ((cc / 2) * tt * tt * tt + b);
   } else {
-    // eslint-disable-next-line no-return-assign
+
     return ((cc / 2) * ((tt -= 2) * tt * tt + 2) + b);
   }
 }

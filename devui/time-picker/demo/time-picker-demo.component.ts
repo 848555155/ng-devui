@@ -13,9 +13,9 @@ import customTs from './custom/custom.component.ts.txt?raw';
 import customScss from './custom/custom.component.scss?raw';
 
 @Component({
-  templateUrl: './time-picker-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './time-picker-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TimePickerDemoComponent implements OnInit, OnDestroy {
   TimePickerDemoBasicComponent: DevuiSourceData[] = [

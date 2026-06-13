@@ -3,10 +3,10 @@ import { RangeDatepickerProComponent } from 'ng-devui/datepicker-pro';
 
 @Component({
   selector: 'd-range-template-picker',
-  templateUrl: './range-template.component.html',
-  styleUrls: ['./range-template.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './range-template.component.html',
+  styleUrl: './range-template.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class RangeTemplatePickerComponent {
   @ViewChild(RangeDatepickerProComponent) rangePicker: RangeDatepickerProComponent;

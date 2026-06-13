@@ -5,7 +5,7 @@ import { PanelModule } from 'ng-devui/panel';
   selector: 'd-basic',
   imports: [PanelModule],
   templateUrl: './basic.component.html',
-  styleUrls: ['./basic.component.scss'],
+  styleUrl: './basic.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BasicComponent {

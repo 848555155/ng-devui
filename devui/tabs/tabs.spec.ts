@@ -6,6 +6,7 @@ import { DomHelper } from '../utils/testing/dom-helper';
 import { TabsComponent } from './tabs.component';
 import { TabsModule } from './tabs.module';
 @Component({
+  standalone: false,
   template: `<d-tabs
     #tabs
     [type]="'tabs'"
@@ -28,8 +29,7 @@ import { TabsModule } from './tabs.module';
       <p>这是Tab4的内容</p>
     </d-tab>
   </d-tabs>`,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestTabsComponent {
   @ViewChild('tabs') tabs: TabsComponent;
@@ -57,6 +57,7 @@ class TestTabsComponent {
 }
 
 @Component({
+  standalone: false,
   template: `<d-tabs #pills [(activeTab)]="tabActiveId" [type]="type">
     @for (item of tabItems; track item) {
     <d-tab [id]="item.id">
@@ -67,8 +68,7 @@ class TestTabsComponent {
     </d-tab>
     }
   </d-tabs>`,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestTabsTypeComponent {
   @ViewChild('pills') pills: TabsComponent;

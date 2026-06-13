@@ -4,10 +4,10 @@ import { padStart } from 'lodash-es';
 
 @Component({
   selector: 'd-demo-datepicker-pro-tab-type',
-  templateUrl: './datepicker-pro-tab-type.component.html',
-  styleUrls: ['./datepicker-pro-tab-type.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './datepicker-pro-tab-type.component.html',
+  styleUrl: './datepicker-pro-tab-type.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DatepickerProTabTypeComponent implements OnInit {
   @ViewChild('calendar') calendarCmp: DatepickerProCalendarComponent;
@@ -112,7 +112,7 @@ export class DatepickerProTabTypeComponent implements OnInit {
   }
 
   getTimeStr(date: Date) {
-    /* eslint-disable-next-line  max-len*/
+
     return `${date.toLocaleDateString()} ${padStart(String(date.getHours()), 2, '0')}:${padStart(
       String(date.getMinutes()),
       2,

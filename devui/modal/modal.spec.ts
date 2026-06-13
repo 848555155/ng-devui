@@ -14,14 +14,14 @@ import { ModalService } from './modal.service';
 import { IDialogOptions, IModalOptions } from './modal.types';
 
 @Component({
+  standalone: false,
   template: `
     <d-button (btnClick)="openDialog()">click me!</d-button>
     <ng-template #testContentTemplate>
       <div class="iAmTemplate">I am Template</div>
     </ng-template>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestDialogComponent {
   @ViewChild('testContentTemplate') testContentTemplate: TemplateRef<any>;
@@ -324,12 +324,12 @@ describe('dialog', () => {
 });
 
 @Component({
+  standalone: false,
   template: `
     <h3 (click)="close($event)" class="closeModal">Modal Component</h3>
     <div (click)="btnClick($event)" class="btnModal">iAmBtn</div>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class OpenModalComponent {
   constructor() {}
@@ -348,9 +348,9 @@ class OpenModalComponent {
 }
 
 @Component({
-  template: ` <d-button (btnClick)="openModal()">click me!</d-button> `,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  template: ` <d-button (btnClick)="openModal()">click me!</d-button> `,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestModalComponent {
   results: any;

@@ -5,13 +5,11 @@ import { AlertCarouselItemComponent, AlertComponent } from 'ng-devui/alert';
   selector: 'd-alert-carousel',
   imports: [AlertComponent, AlertCarouselItemComponent],
   templateUrl: './carousel.component.html',
-  styles: [
-    `
+  styles: `
       .not-show {
         cursor: pointer;
       }
     `,
-  ],
 })
 export class CarouselComponent {
   data = [

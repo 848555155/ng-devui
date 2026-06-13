@@ -66,9 +66,9 @@ import mockDataTs from './mock-data.ts.txt?raw';
 
 @Component({
   selector: 'd-datatable-demo',
-  templateUrl: './data-table-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './data-table-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DataTableDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

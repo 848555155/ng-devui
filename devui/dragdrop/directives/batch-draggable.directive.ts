@@ -5,8 +5,8 @@ export type BatchDragStyle = 'badge' | 'stack' | string;
 
 @Directive({
   selector: '[dDraggable][batchDrag]',
-  exportAs: 'dBatchDraggable',
-  standalone: false
+  standalone: false,
+  exportAs: 'dBatchDraggable'
 })
 export class BatchDraggableDirective implements OnInit, OnChanges, OnDestroy, AfterViewInit {
   @Input() batchDragGroup = 'default';

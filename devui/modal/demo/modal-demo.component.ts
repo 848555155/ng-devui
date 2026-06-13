@@ -45,10 +45,10 @@ import modalTestComponentTs from './modal-test.component.ts.txt?raw';
 
 @Component({
   selector: 'd-modal-demo',
-  templateUrl: './modal-demo.component.html',
-  styles: [':host ::ng-deep d-button:not(first-child) { margin-left: 8px }'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './modal-demo.component.html',
+  styles: ':host ::ng-deep d-button:not(first-child) { margin-left: 8px }',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ModalDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

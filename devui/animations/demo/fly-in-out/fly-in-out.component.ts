@@ -7,10 +7,10 @@ import { ButtonModule } from 'ng-devui/button';
   selector: 'd-fly-in-out',
   imports: [SkeletonComponent, ButtonModule],
   templateUrl: './fly-in-out.component.html',
-  styleUrls: ['./fly-in-out.component.scss'],
-  animations: [flyInOut],
+  styleUrl: './fly-in-out.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [flyInOut]
 })
 export class FlyInOutComponent {
-  open = signal(false);
+  readonly open = signal(false);
 }

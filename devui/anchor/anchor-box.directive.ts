@@ -17,12 +17,12 @@ export class AnchorBoxDirective implements IAnchorBox, OnDestroy {
   anchorMap: { [anchor: string]: AnchorDirective };
   _anchorList: QueryList<AnchorDirective>;
   sub: Subscription;
-  view = input<{
+  readonly view = input<{
     top?: number;
     bottom?: number;
   }>();
-  defaultAnchor = input<string>();
-  scrollTarget = input<HTMLElement>();
+  readonly defaultAnchor = input<string>();
+  readonly scrollTarget = input<HTMLElement>();
   private anchorService = inject(AnchorService);
 
   @ContentChildren(AnchorDirective, { descendants: true })

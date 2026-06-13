@@ -6,7 +6,7 @@ import { ToggleComponent } from './toggle.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, SafePipeModule],
-  exports: [ToggleComponent],
   declarations: [ToggleComponent],
+  exports: [ToggleComponent]
 })
 export class ToggleModule {}

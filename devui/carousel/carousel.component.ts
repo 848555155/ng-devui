@@ -25,45 +25,45 @@ export type DotTrigger = 'click' | 'hover';
 export type DotPosition = 'bottom' | 'top';
 @Component({
   selector: 'd-carousel',
-  exportAs: 'dCarousel',
   templateUrl: './carousel.component.html',
-  styleUrls: ['./carousel.component.scss'],
+  styleUrl: './carousel.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
+  exportAs: 'dCarousel',
+  preserveWhitespaces: false
 })
 export class CarouselComponent {
   // 切换箭头的显示方式
-  arrowTrigger = input<ArrowTrigger>('hover');
+  readonly arrowTrigger = input<ArrowTrigger>('hover');
   // 是否自动播放
-  autoplay = input(false, { transform: booleanAttribute });
+  readonly autoplay = input(false, { transform: booleanAttribute });
   // 默认自动播放间隔时间
-  autoplaySpeed = input(3000, { transform: numberAttribute });
+  readonly autoplaySpeed = input(3000, { transform: numberAttribute });
   // 卡片切换动画速度，单位ms
-  transitionSpeed = input(500, { transform: numberAttribute });
+  readonly transitionSpeed = input(500, { transform: numberAttribute });
   // 卡片高度
-  height = input('100%');
+  readonly height = input('100%');
   // 是否显示面板指示器
-  showDots = input(true, { transform: booleanAttribute });
+  readonly showDots = input(true, { transform: booleanAttribute });
   // 面板指示器位置
-  dotPosition = input<DotPosition>('bottom');
+  readonly dotPosition = input<DotPosition>('bottom');
   // 指示器触发滚动方式
-  dotTrigger = input<DotTrigger>('click');
+  readonly dotTrigger = input<DotTrigger>('click');
   // 当前激活面板索引，默认从0开始
-  activeIndexInput = input(0, { alias: 'activeIndex' });
-  activeIndex = linkedSignal(this.activeIndexInput);
+  readonly activeIndexInput = input(0, { alias: 'activeIndex' });
+  readonly activeIndex = linkedSignal(this.activeIndexInput);
   // 卡片切换时，返回当前卡片索引，索引从0开始
   activeIndexChange = output<number>();
   // @ContentChildren(CarouselItemComponent) items: QueryList<CarouselItemComponent>;
-  items = contentChildren(CarouselItemComponent);
+  readonly items = contentChildren(CarouselItemComponent);
 
-  isMouseEnter = signal(false);
-  showArrow = computed(() => this.arrowTrigger() === 'always' || (this.arrowTrigger() === 'hover' && this.isMouseEnter()));
+  readonly isMouseEnter = signal(false);
+  readonly showArrow = computed(() => this.arrowTrigger() === 'always' || (this.arrowTrigger() === 'hover' && this.isMouseEnter()));
   // 卡片容器
-  itemContainer = viewChild.required<ElementRef<HTMLDivElement>>('itemContainer');
+  readonly itemContainer = viewChild.required<ElementRef<HTMLDivElement>>('itemContainer');
   // 卡片数量
-  itemCount = computed(() => this.items().length);
-  leftSize = signal(this.activeIndex());
-  hasTransition = signal(false);
+  readonly itemCount = computed(() => this.items().length);
+  readonly leftSize = signal(this.activeIndex());
+  readonly hasTransition = signal(false);
 
   // 自动调度id
   private el = inject(ElementRef);

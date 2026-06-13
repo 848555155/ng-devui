@@ -6,13 +6,13 @@ import { ButtonModule } from '../button';
 import { TooltipModule } from './tooltip.module';
 
 @Component({
+  standalone: false,
   template: `
     <d-button dTooltip [content]="direction" [position]="direction">
       {{ direction }}
     </d-button>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestTooltipBasicComponent {
   direction = 'left';

@@ -7,13 +7,13 @@ import { TwoDatePickerComponent } from './two-datepicker.component';
 
 @Directive({
   selector: '[dTwoDatePickerEnd]',
-  exportAs: 'twoDatePickerEnd',
+  standalone: false,
   providers: [{
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => TwoDatePickerEndDirective),
     multi: true
   }],
-  standalone: false
+  exportAs: 'twoDatePickerEnd'
 })
 export class TwoDatePickerEndDirective implements OnInit, OnDestroy, ControlValueAccessor {
 

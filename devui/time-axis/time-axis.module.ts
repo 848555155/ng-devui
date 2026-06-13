@@ -11,14 +11,14 @@ import { TimeAxisComponent } from './time-axis.component';
     FormsModule,
     SafePipeModule
   ],
-  exports: [
-    TimeAxisComponent,
-    TimeAxisItemComponent
-  ],
   declarations: [
     TimeAxisComponent,
     TimeAxisItemComponent
   ],
-  providers: []
+  providers: [],
+  exports: [
+    TimeAxisComponent,
+    TimeAxisItemComponent
+  ]
 })
 export class TimeAxisModule {}

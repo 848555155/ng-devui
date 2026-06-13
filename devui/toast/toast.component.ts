@@ -26,11 +26,11 @@ export interface Message {
 
 @Component({
   selector: 'd-toast',
-  templateUrl: './toast.component.html',
-  styleUrls: ['./toast.component.scss'],
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './toast.component.html',
+  styleUrl: './toast.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  preserveWhitespaces: false
 })
 export class ToastComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('container', { static: true }) containerViewChild: ElementRef;
@@ -108,12 +108,12 @@ export class ToastComponent implements OnInit, AfterViewInit, OnDestroy {
 
   severityDelay(item: Message) {
     switch (item.severity) {
-      case 'warn':
-      case 'error':
-        return 10000;
-      default:
-        // common | success | info | default
-        return 5000;
+    case 'warn':
+    case 'error':
+      return 10000;
+    default:
+      // common | success | info | default
+      return 5000;
     }
   }
 

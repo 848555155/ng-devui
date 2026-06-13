@@ -425,6 +425,7 @@ class TestFunctions {
 }
 
 @Component({
+  standalone: false,
   template: `
     <div class="place-holder" (click)="twoDatePicker.toggle()" [style.height]="placeHolderHeight ? '900px' : '0'">this is place holder</div>
     <div
@@ -482,8 +483,7 @@ class TestFunctions {
       </div>
     </div>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestTwoDatePickerComponent {
   rangeStart = null;
@@ -506,6 +506,7 @@ class TestTwoDatePickerComponent {
 }
 
 @Component({
+  standalone: false,
   template: `
     <div class="two-date-wrapper" dTwoDatePicker #twoDatePicker="twoDatePicker" (selectedRangeChange)="getValue('range', $event)">
       <div
@@ -530,8 +531,7 @@ class TestTwoDatePickerComponent {
       </div>
     </div>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestTwoDatePickerDivComponent {
   rangeStart = null;

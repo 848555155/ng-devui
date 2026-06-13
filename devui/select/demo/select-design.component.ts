@@ -5,9 +5,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-select-design',
-  templateUrl: './select-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './select-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class SelectDesignComponent implements OnInit {
   designObj;

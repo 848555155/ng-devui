@@ -12,19 +12,6 @@ import { DFormControlRuleDirective, DFormGroupRuleDirective } from './validator-
 
 @NgModule({
   imports: [CommonModule, ReactiveFormsModule, FormsModule, PopoverModule],
-  exports: [
-    FormItemComponent,
-    FormLabelComponent,
-    FormControlComponent,
-    FormOperationComponent,
-    FormDirective,
-    DFormGroupRuleDirective,
-    DFormControlRuleDirective,
-    DFormSubmitDirective,
-    DFormResetDirective,
-    DValidateSyncDirective,
-    ActiveFormControlDirective
-  ],
   declarations: [
     FormItemComponent,
     FormLabelComponent,
@@ -39,6 +26,19 @@ import { DFormControlRuleDirective, DFormGroupRuleDirective } from './validator-
     ActiveFormControlDirective
   ],
   providers: [],
+  exports: [
+    FormItemComponent,
+    FormLabelComponent,
+    FormControlComponent,
+    FormOperationComponent,
+    FormDirective,
+    DFormGroupRuleDirective,
+    DFormControlRuleDirective,
+    DFormSubmitDirective,
+    DFormResetDirective,
+    DValidateSyncDirective,
+    ActiveFormControlDirective
+  ]
 })
 export class FormModule {
 }

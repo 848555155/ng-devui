@@ -33,8 +33,8 @@ import { getCaretCoordinates } from './utils';
 
 @Directive({
   selector: '[dMention]',
-  exportAs: 'dMention',
-  standalone: false
+  standalone: false,
+  exportAs: 'dMention'
 })
 export class MentionDirective implements OnInit, OnChanges, AfterViewInit, OnDestroy {
   @Input() mentionNotFoundContent = 'No suggestion matched';

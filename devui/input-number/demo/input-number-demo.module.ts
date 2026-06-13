@@ -46,7 +46,6 @@ import apiEn from '../doc/api-en.md?raw';
       },
     ]),
   ],
-  exports: [InputNumberDemoComponent],
   declarations: [
     InputNumberDemoComponent,
     InputNumberDesignComponent,
@@ -57,5 +56,6 @@ import apiEn from '../doc/api-en.md?raw';
     InputNumberRegComponent,
     DecimalLimitComponent,
   ],
+  exports: [InputNumberDemoComponent]
 })
 export class InputNumberDemoModule {}

@@ -9,6 +9,7 @@ import { RadioComponent } from './radio.component';
 import { RadioModule } from './radio.module';
 
 @Component({
+  standalone: false,
   template: `
     <d-radio-group
       [name]="'season'"
@@ -21,8 +22,7 @@ import { RadioModule } from './radio.module';
     >
     </d-radio-group>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestRadioGroupComponent {
   values = ['Spring', 'Summer', 'Autumn', 'Winter'];
@@ -36,6 +36,7 @@ class TestRadioGroupComponent {
 }
 
 @Component({
+  standalone: false,
   template: `
     <d-radio-group [direction]="'row'" [(ngModel)]="choose2" (change)="mockChange($event)">
       @for (value of values2; track value) {
@@ -43,8 +44,7 @@ class TestRadioGroupComponent {
       }
     </d-radio-group>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestRadioItemGroupComponent {
   values2 = ['Item1', 'Item2', 'Item3'];

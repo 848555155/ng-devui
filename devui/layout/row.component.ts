@@ -14,21 +14,19 @@ import { DResponseParameter } from './layout.types';
 
 @Component({
   selector: 'd-row',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   template: `
     <ng-content></ng-content>
   `,
-  styles: [
-    `
+  styles: `
       d-row.d-row {
         margin: 0;
         padding: 0;
       }
-    `
-  ],
+    `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  preserveWhitespaces: false,
-  standalone: false
+  preserveWhitespaces: false
 })
 export class DRowComponent implements OnInit, OnChanges {
   @HostBinding('class.dl-row') dlRow = true;

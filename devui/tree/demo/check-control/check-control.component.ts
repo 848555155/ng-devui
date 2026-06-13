@@ -106,9 +106,9 @@ export const source = [
 
 @Component({
   selector: 'd-check-control',
-  templateUrl: './check-control.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './check-control.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class CheckControlComponent {
   data1 = [...source];

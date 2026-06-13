@@ -58,9 +58,9 @@ const MENUS: MenuItemType[] = [
 
 @Component({
   selector: 'd-basic',
+  standalone: false,
   templateUrl: './basic.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BasicComponent {
   menus = MENUS;

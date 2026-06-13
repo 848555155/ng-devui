@@ -48,7 +48,6 @@ import apiEn from '../doc/api-en.md?raw';
       },
     ]),
   ],
-  exports: [],
   declarations: [
     TagsInputDemoComponent,
     TagsInputDesignComponent,
@@ -57,5 +56,6 @@ import apiEn from '../doc/api-en.md?raw';
     TagsInputDemoAsyncComponent,
     TagsInputDemoVirtualScrollComponent,
   ],
+  exports: []
 })
 export class TagsInputDemoModule {}

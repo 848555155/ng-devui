@@ -69,7 +69,7 @@ export class TreeNode implements ITreeNodeData {
 export class TreeFactory {
   nodes: Dictionary<TreeNode>;
   private idx: number;
-  private _checked = new Set<Object>();
+  private _checked = new Set<object>();
   private _treeRoot: TreeNode[] = [];
   searchItem: string;
   flattenNodes = new BehaviorSubject<TreeNode[]>([]);
@@ -312,7 +312,7 @@ export class TreeFactory {
     id: number | string,
     checked: boolean,
     checkableRelation: 'upward' | 'downward' | 'both' | 'none' = 'both'
-  ): Array<Object> {
+  ): Array<object> {
     if (!this.nodes[id]) {
       return;
     }

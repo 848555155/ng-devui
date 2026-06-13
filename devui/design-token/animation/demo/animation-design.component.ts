@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-animation-design',
-  templateUrl: './animation-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './animation-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class AnimationDesignComponent implements OnInit {
   imgSrc;

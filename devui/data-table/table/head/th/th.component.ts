@@ -25,16 +25,16 @@ import { TABLE_TH } from './th.token';
 @Component({
   /* eslint-disable-next-line @angular-eslint/component-selector*/
   selector: '[dHeadCell]',
+  standalone: false,
   templateUrl: './th.component.html',
-  styleUrls: ['./th.component.scss'],
+  styleUrl: './th.component.scss',
   providers: [
     {
       provide: TABLE_TH,
       useExisting: forwardRef(() => TableThComponent),
     },
   ],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TableThComponent implements OnChanges, OnDestroy {
   @HostBinding('class.resizeable') resizeEnabledClass = false;
@@ -67,7 +67,7 @@ export class TableThComponent implements OnChanges, OnDestroy {
 
   @HostBinding('class.can-sort')
   @Input()
-  sortable: boolean;
+    sortable: boolean;
   @Input() sortDirection: SortDirection;
   @Input() showSortIcon = true;
   @Output() sortDirectionChange = new EventEmitter<SortDirection>();
@@ -98,10 +98,10 @@ export class TableThComponent implements OnChanges, OnDestroy {
   @Input() fixedRight: string;
   @HostBinding('class.devui-last-sticky-left-cell')
   @Input()
-  isLastFixedLeft: boolean;
+    isLastFixedLeft: boolean;
   @HostBinding('class.devui-first-sticky-right-cell')
   @Input()
-  isFirstFixedRight: boolean;
+    isFirstFixedRight: boolean;
 
   resizeBarRefElement: HTMLElement;
   element: HTMLElement;

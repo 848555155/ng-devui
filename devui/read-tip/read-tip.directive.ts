@@ -20,8 +20,8 @@ import { ReadTipOptions, ReadTipRule } from './read-tip.types';
 
 @Directive({
   selector: '[dReadTip]',
-  exportAs: 'dReadTip',
-  standalone: false
+  standalone: false,
+  exportAs: 'dReadTip'
 })
 export class ReadTipDirective implements OnInit, OnDestroy {
   readTipComponentRef: ComponentRef<ReadTipComponent>;

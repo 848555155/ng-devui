@@ -6,10 +6,10 @@ import { demoData } from '../demo-data';
 
 @Component({
   selector: 'd-extend',
-  templateUrl: './extend.component.html',
-  styleUrls: ['./extend.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './extend.component.html',
+  styleUrl: './extend.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ExtendComponent implements AfterViewInit {
   @ViewChild('extendTemplate') extendTemplate: TemplateRef<any>;

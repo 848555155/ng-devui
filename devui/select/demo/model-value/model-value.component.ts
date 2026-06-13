@@ -3,9 +3,9 @@ import { MapToPipe } from './map-to.pipe';
 
 @Component({
   selector: 'd-model-value',
-  templateUrl: './model-value.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './model-value.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ModelValueComponent {
   options = [

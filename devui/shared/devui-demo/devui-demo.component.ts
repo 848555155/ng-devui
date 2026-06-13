@@ -12,10 +12,10 @@ import { AnchorModule } from 'ng-devui/anchor';
 @Component({
   selector: 'd-demo',
   imports: [CommonModule, FormsModule, TranslatePipe, AnchorModule, DevUICodeboxModule, DDemoNavModule],
-  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './devui-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DevuiDemoComponent {
-  demos = toSignal(inject(ActivatedRoute).data.pipe(map((data) => data.demos as DevuiDemosData)));
-  categoryName = toSignal(inject(ActivatedRoute).data.pipe(map((data) => data.categoryName as string)));
+  readonly demos = toSignal(inject(ActivatedRoute).data.pipe(map((data) => data.demos as DevuiDemosData)));
+  readonly categoryName = toSignal(inject(ActivatedRoute).data.pipe(map((data) => data.categoryName as string)));
 }

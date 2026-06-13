@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-demo-time-axis-direction',
-  templateUrl: './time-axis-direction.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './time-axis-direction.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TimeAxisDirectionComponent {
   dataHorizontal = {

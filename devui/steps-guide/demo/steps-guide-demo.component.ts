@@ -11,9 +11,9 @@ import customTs from './custom/custom.component.ts.txt?raw';
 import fakeDataTs from './fakeData.ts.txt?raw';
 
 @Component({
-  templateUrl: './steps-guide-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './steps-guide-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class StepsGuideDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

@@ -18,9 +18,9 @@ import { FormDirective } from './form.directive';
 
 @Component({
   selector: 'd-form-operation',
+  standalone: false,
   template: '<ng-content></ng-content>',
-  styles: [
-    `
+  styles: `
       .devui-form-horizontal :host.devui-form-operation {
         display: block;
         margin-left: 96px;
@@ -33,10 +33,8 @@ import { FormDirective } from './form.directive';
         padding: 8px 0;
       }
     `,
-  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
-  standalone: false
+  preserveWhitespaces: false
 })
 export class FormOperationComponent implements OnInit {
   constructor(elementRef: ElementRef, renderer: Renderer2) {

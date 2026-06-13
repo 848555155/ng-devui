@@ -43,7 +43,6 @@ import apiEn from '../doc/api-en.md?raw';
       }}
     ])
   ],
-  exports: [DImagePreviewDemoComponent],
   declarations: [
     DImagePreviewDemoComponent,
     ImagePreviewDesignComponent,
@@ -51,6 +50,6 @@ import apiEn from '../doc/api-en.md?raw';
     CustomOpenComponent,
     ZIndexComponent
   ],
-
+  exports: [DImagePreviewDemoComponent]
 })
 export class ImagePreviewDemoModule { }

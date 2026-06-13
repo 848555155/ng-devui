@@ -6,10 +6,10 @@ import { TooltipDirective, TooltipModule } from 'ng-devui/tooltip';
   selector: 'd-back-top-customize',
   imports: [BackTopComponent, TooltipModule],
   templateUrl: './customize.component.html',
-  styleUrls: ['./customize.component.scss'],
+  styleUrl: './customize.component.scss',
 })
 export class CustomizeComponent {
-  tooltipItem = viewChild(TooltipDirective);
+  readonly tooltipItem = viewChild(TooltipDirective);
   content = 'Back to the top';
 
   toggleTooltip(toggle: boolean) {

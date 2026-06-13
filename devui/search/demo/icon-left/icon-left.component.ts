@@ -2,9 +2,9 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-icon-left',
-  templateUrl: './icon-left.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './icon-left.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class IconLeftComponent implements OnInit {
   constructor() {}

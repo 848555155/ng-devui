@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-multi-auto-complete-default',
-  templateUrl: './multi-auto-complete-demo-default.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './multi-auto-complete-demo-default.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class MultiAutoCompleteDemoDefaultComponent {
   multiItems: string[] = ['C#', 'C', 'C++', 'CPython', 'Java'];

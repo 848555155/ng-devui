@@ -3,10 +3,10 @@ import { ProgressComponent } from 'ng-devui/progress';
 
 @Component({
   selector: 'd-multiple',
-  templateUrl: './multiple.component.html',
-  styleUrls: ['./multiple.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './multiple.component.html',
+  styleUrl: './multiple.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class MultipleComponent implements AfterViewInit {
   @ViewChild('multilineBar') barInstance: ProgressComponent;

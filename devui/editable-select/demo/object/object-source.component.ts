@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-object-source',
-  templateUrl: './object-source.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './object-source.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ObjectSourceComponent {
   lang = {

@@ -2,9 +2,9 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-tags-input-virtual-scroll',
-  templateUrl: './virtual-scroll.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './virtual-scroll.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TagsInputDemoVirtualScrollComponent implements OnInit {
   tagList = <any>[{ id: 0, name: 'virtual-scroll-item0' }];

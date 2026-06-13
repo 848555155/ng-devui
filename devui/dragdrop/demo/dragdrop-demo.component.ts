@@ -32,9 +32,9 @@ import crossDimensionScss from './cross-dimension/cross-dimension.component.scss
 
 @Component({
   selector: 'd-demo-dragdrop',
-  templateUrl: './dragdrop-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './dragdrop-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DragDropDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

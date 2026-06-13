@@ -58,9 +58,9 @@ const MENUS: MenuItemType[] = [
 
 @Component({
   selector: 'd-custom-node',
+  standalone: false,
   templateUrl: './custom-node.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CustomNodeComponent {
   menus = MENUS;

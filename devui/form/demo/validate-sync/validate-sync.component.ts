@@ -5,13 +5,13 @@ import { delay, map } from 'rxjs/operators';
 
 @Component({
   selector: 'd-form-demo-validate-sync',
-  templateUrl: './validate-sync.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './validate-sync.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ValidateSyncComponent {
   layoutDirection: FormLayout = FormLayout.Vertical;
-  msgs: Array<Object> = [];
+  msgs: Array<object> = [];
 
   existUsernames = ['123', '123456', 'DevUI'];
 

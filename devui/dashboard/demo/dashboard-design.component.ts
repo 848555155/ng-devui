@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-dashboard-design',
-  templateUrl: './dashboard-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './dashboard-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DashboardDesignComponent implements OnInit {
   imgSrc;

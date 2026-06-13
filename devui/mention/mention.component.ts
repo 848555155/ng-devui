@@ -4,10 +4,10 @@ import { MentionPositionType } from './mention.types';
 
 @Component({
   selector: 'd-mention',
-  templateUrl: './mention.component.html',
-  styleUrls: ['./mention.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './mention.component.html',
+  styleUrl: './mention.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class MentionComponent {
   @ViewChildren('items', { read: ElementRef }) items!: QueryList<ElementRef>;

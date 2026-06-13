@@ -8,6 +8,7 @@ import { DomHelper } from '../utils/testing/dom-helper';
 import { TreeSelectComponent } from './tree-select.component';
 
 @Component({
+  standalone: false,
   template: `
     <d-tree-select
       placeholder="Standard Input"
@@ -19,8 +20,7 @@ import { TreeSelectComponent } from './tree-select.component';
       style="width: 280px"
     ></d-tree-select>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestSingleTreeSelectComponent {
   data1 = [
@@ -125,6 +125,7 @@ class TestSingleTreeSelectComponent {
 }
 
 @Component({
+  standalone: false,
   template: `
     <d-tree-select
       #treeSelect
@@ -141,8 +142,7 @@ class TestSingleTreeSelectComponent {
       style="width: 280px"
     ></d-tree-select>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestMultipleTreeSelectComponent {
   @ViewChild('treeSelect') treeSelect: TreeSelectComponent;

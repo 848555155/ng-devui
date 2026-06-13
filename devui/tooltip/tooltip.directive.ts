@@ -18,8 +18,8 @@ import { PositionType } from './tooltip.types';
 
 @Directive({
   selector: '[dTooltip]',
-  exportAs: 'dTooltip',
-  standalone: false
+  standalone: false,
+  exportAs: 'dTooltip'
 })
 export class TooltipDirective implements OnChanges, AfterViewInit, OnDestroy {
   @Input() content: string;

@@ -4,10 +4,10 @@ import { SourceType, treeDataSource } from '../mock-data';
 
 @Component({
   selector: 'd-tree-data',
-  templateUrl: './tree-data.component.html',
-  styles: ['.demo-margin { margin: 5px 5px 0 0;}'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './tree-data.component.html',
+  styles: '.demo-margin { margin: 5px 5px 0 0;}',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TreeDataComponent implements OnInit {
   iconParentOpen: string;

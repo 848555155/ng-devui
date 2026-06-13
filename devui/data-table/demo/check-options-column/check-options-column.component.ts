@@ -4,18 +4,16 @@ import { originSource, SourceType } from '../mock-data';
 
 @Component({
   selector: 'd-check-options-column',
+  standalone: false,
   templateUrl: './check-options-column.component.html',
-  styles: [
-    `
+  styles: `
       .page-nation {
         position: absolute;
         right: 12px;
         margin-top: 4px;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class CheckOptionsColumnComponent implements OnInit {
   @ViewChild(DataTableComponent, { static: true }) datatable: DataTableComponent;

@@ -9,6 +9,7 @@ import { PanelComponent } from './panel.component';
 import { PanelModule } from './panel.module';
 
 @Component({
+  standalone: false,
   template: `
     <d-panel
       #panel
@@ -23,8 +24,7 @@ import { PanelModule } from './panel.module';
       <d-panel-footer>This is footer</d-panel-footer>
     </d-panel>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestPanelComponent {
   type = 'primary';

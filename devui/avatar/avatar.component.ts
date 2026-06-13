@@ -3,26 +3,26 @@ import { booleanAttribute, Component, computed, input, numberAttribute, signal }
 @Component({
   selector: 'd-avatar',
   templateUrl: './avatar.component.html',
-  styleUrls: ['./avatar.component.scss'],
+  styleUrl: './avatar.component.scss',
   preserveWhitespaces: false,
 })
 export class AvatarComponent {
-  isErrorImg = signal(false);
-  gender = input<'male' | 'female' | string>();
-  width = input(36, { transform: numberAttribute });
-  height = input(36, { transform: numberAttribute });
-  isRound = input(true, { transform: booleanAttribute });
-  imgSrc = input<string>();
-  name = input<string>();
-  customText = input<string>();
+  readonly isErrorImg = signal(false);
+  readonly gender = input<'male' | 'female' | string>();
+  readonly width = input(36, { transform: numberAttribute });
+  readonly height = input(36, { transform: numberAttribute });
+  readonly isRound = input(true, { transform: booleanAttribute });
+  readonly imgSrc = input<string>();
+  readonly name = input<string>();
+  readonly customText = input<string>();
   MINIMUM_FONT_SIZE = 12;
-  userName = computed(() => (this.customText() ? this.customText() : this.name()));
-  fontSize = computed(() => {
+  readonly userName = computed(() => (this.customText() ? this.customText() : this.name()));
+  readonly fontSize = computed(() => {
     const minNum = Math.min(this.width(), this.height());
     const size = minNum / 4 + 3;
     return Math.max(size, this.MINIMUM_FONT_SIZE);
   });
-  nameDisplay = computed(() => {
+  readonly nameDisplay = computed(() => {
     const userName = this.userName();
     const minNum = Math.min(this.width(), this.height());
     if (userName) {
@@ -32,7 +32,7 @@ export class AvatarComponent {
     }
   });
 
-  isNobody = computed(() => {
+  readonly isNobody = computed(() => {
     const userName = this.userName();
     if (userName) {
       return false;
@@ -42,7 +42,7 @@ export class AvatarComponent {
       return true;
     }
   });
-  code = computed(() => {
+  readonly code = computed(() => {
     const gender = this.gender();
     if (gender) {
       if (gender.toLowerCase() === 'male') {

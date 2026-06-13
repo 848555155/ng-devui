@@ -26,6 +26,7 @@ import globalConfigCn from './globalConfig-cn.md?raw';
 import globalConfigEn from './globalConfig-en.md?raw';
 
 @Component({
+  standalone: false,
   template: `
     <div dCodeCopy class="get-start">
       <div class="readme">
@@ -33,16 +34,13 @@ import globalConfigEn from './globalConfig-en.md?raw';
       </div>
     </div>
   `,
-  styles: [
-    `
+  styles: `
       .readme {
         box-sizing: border-box;
         margin-bottom: 40px;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class GlobalConfigComponent implements OnInit, AfterViewInit {
   _readMe: HTMLElement;

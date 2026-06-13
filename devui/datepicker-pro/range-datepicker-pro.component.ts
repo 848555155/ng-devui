@@ -25,8 +25,9 @@ import { DateConfig } from './lib/datepicker-pro.type';
 
 @Component({
   selector: 'd-range-datepicker-pro',
+  standalone: false,
   templateUrl: './range-datepicker-pro.component.html',
-  styleUrls: ['./range-datepicker-pro.component.scss'],
+  styleUrl: './range-datepicker-pro.component.scss',
   providers: [
     DatepickerProService,
     {
@@ -35,9 +36,8 @@ import { DateConfig } from './lib/datepicker-pro.type';
       multi: true,
     },
   ],
-  preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  preserveWhitespaces: false
 })
 export class RangeDatepickerProComponent implements OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
   @Input() mode: 'year' | 'month' | 'date' | 'week' = 'date';

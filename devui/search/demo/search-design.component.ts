@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-search-design',
-  templateUrl: './search-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './search-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class SearchDesignComponent implements OnInit {
   imgSrc;

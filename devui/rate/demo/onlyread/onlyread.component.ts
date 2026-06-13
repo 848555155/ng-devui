@@ -1,9 +1,9 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: 'd-rate-demo-onlyread',
-  templateUrl: './onlyread.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './onlyread.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class RateDemoOnlyReadComponent {
   value = 3.5;

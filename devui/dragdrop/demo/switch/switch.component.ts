@@ -2,10 +2,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-switch',
-  templateUrl: './switch.component.html',
-  styleUrls: ['./switch.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './switch.component.html',
+  styleUrl: './switch.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class SwitchComponent {
   list1 = [];

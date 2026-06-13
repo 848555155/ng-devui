@@ -19,9 +19,9 @@ import customTs from './custom/custom.component.ts.txt?raw';
 
 @Component({
   selector: 'd-demo-radio',
-  templateUrl: './radio-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './radio-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class RadioDemoComponent implements OnInit, OnDestroy {
   navItems = [];

@@ -2,10 +2,10 @@ import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { OperableTreeComponent } from 'ng-devui/tree';
 @Component({
   selector: 'd-search-filter',
-  templateUrl: './search-filter.component.html',
-  styleUrls: ['./search-filter.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './search-filter.component.html',
+  styleUrl: './search-filter.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class SearchFilterComponent {
   @ViewChild('dOperableTreeComponent', { static: true }) dOperableTreeComponent: OperableTreeComponent;

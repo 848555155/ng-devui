@@ -6,9 +6,9 @@ import { StatusComponent } from './status.component';
 import { StatusModule } from './status.module';
 
 @Component({
-  template: ` <d-status [type]="type"></d-status> `,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  template: ` <d-status [type]="type"></d-status> `,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestStatusComponent {
   type = 'success';

@@ -49,7 +49,6 @@ import apiEn from '../doc/api-en.md?raw';
       },
     ]),
   ],
-  exports: [],
   declarations: [
     DrawerDemoComponent,
     DrawerDesignComponent,
@@ -59,5 +58,6 @@ import apiEn from '../doc/api-en.md?raw';
     TemplateComponent,
     ResizeComponent
   ],
+  exports: []
 })
 export class DrawerDemoModule {}

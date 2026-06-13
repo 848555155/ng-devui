@@ -7,10 +7,10 @@ import {
 
 @Component({
   selector: 'd-custom-view-template',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   templateUrl: './custom-view-template.component.html',
-  styleUrls: ['./custom-view-template.component.scss'],
-  standalone: false
+  styleUrl: './custom-view-template.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CustomViewTemplateComponent implements OnInit {
   datePicker1: any;

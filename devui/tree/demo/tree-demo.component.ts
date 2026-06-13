@@ -31,9 +31,9 @@ import virtualScrollCss from './virtual-scroll/virtual-scroll.component.css?raw'
 
 @Component({
   selector: 'd-tree-demo',
-  templateUrl: './tree-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './tree-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TreeDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

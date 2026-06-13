@@ -3,9 +3,9 @@ import { CascaderItem } from 'ng-devui/cascader';
 
 @Component({
   selector: 'd-demo-lazyload-cascader',
-  templateUrl: './lazyload-cascader.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './lazyload-cascader.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class LazyloadCascaderComponent {
   options = [

@@ -5,11 +5,11 @@ import { ModalComponent } from './modal.component';
 import { ModalContentDirective } from './modal.directive';
 @Component({
   selector: 'd-modal-container',
-  templateUrl: './modal-container.component.html',
-  styleUrls: ['./modal-container.component.scss'],
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './modal-container.component.html',
+  styleUrl: './modal-container.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  preserveWhitespaces: false
 })
 export class ModalContainerComponent implements OnInit {
   @Input() maxHeight: string;

@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-layout-basic',
-  templateUrl: './layout-basic.component.html',
-  styleUrls: ['./layout-basic.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './layout-basic.component.html',
+  styleUrl: './layout-basic.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class LayoutBasicComponent {}

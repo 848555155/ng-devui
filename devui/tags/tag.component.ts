@@ -6,12 +6,12 @@ export type ITagSize = 'md' | 'lg';
 
 @Component({
   selector: 'd-tag',
-  templateUrl: './tag.component.html',
-  styleUrls: ['./tag.component.scss'],
-  exportAs: 'Tag',
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './tag.component.html',
+  styleUrl: './tag.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  exportAs: 'Tag',
+  preserveWhitespaces: false
 })
 export class TagComponent implements OnChanges {
   /**

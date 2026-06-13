@@ -18,9 +18,9 @@ import resizeHtml from './resize/resize.component.html?raw';
 import resizeTs from './resize/resize.component.ts.txt?raw';
 @Component({
   selector: 'd-drawer-demo',
-  templateUrl: './drawer-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './drawer-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DrawerDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

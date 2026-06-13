@@ -1,9 +1,9 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: 'd-object-filter',
-  templateUrl: './object-filter.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './object-filter.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ObjectFilterComponent {
   options = [

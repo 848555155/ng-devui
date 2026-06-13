@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-tooltip-design',
-  templateUrl: './tooltip-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './tooltip-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TooltipDesignComponent implements OnInit {
   imgSrc;

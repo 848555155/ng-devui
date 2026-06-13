@@ -2,9 +2,9 @@ import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core
 import { ModalComponent } from 'ng-devui/modal';
 @Component({
   selector: 'd-dialog-content',
-  templateUrl: './dialog-content.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './dialog-content.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DialogContentComponent implements OnInit {
   @Input() data: any;

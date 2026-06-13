@@ -3,10 +3,10 @@ import { DevConfigService, WithConfig } from 'ng-devui/utils';
 
 @Component({
   selector: 'd-toggle-menu-operation',
+  standalone: false,
   templateUrl: './toggle-menu-operation.component.html',
-  styleUrls: [`./toggle-menu-operation.component.scss`],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false
+  styleUrl: `./toggle-menu-operation.component.scss`,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ToggleMenuOperationComponent {
   @Input() controlConfig: {

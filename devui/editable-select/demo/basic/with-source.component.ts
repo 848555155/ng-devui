@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-with-source',
-  templateUrl: './with-source.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './with-source.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class WithSourceComponent {
   associationListLang = 'Python';

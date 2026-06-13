@@ -8,6 +8,7 @@ import { PaginationComponent } from './pagination.component';
 import { PaginationModule } from './pagination.module';
 
 @Component({
+  standalone: false,
   template: ` <d-pagination
     #pagination
     [size]="'sm'"
@@ -20,8 +21,7 @@ import { PaginationModule } from './pagination.module';
     [maxItems]="5"
   >
   </d-pagination>`,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestPaginationComponent {
   @ViewChild('pagination') pagination: PaginationComponent;
@@ -33,6 +33,7 @@ class TestPaginationComponent {
 }
 
 @Component({
+  standalone: false,
   template: ` <d-pagination
     [total]="pager3.total"
     [(pageSize)]="pager3.pageSize"
@@ -43,8 +44,7 @@ class TestPaginationComponent {
     [lite]="true"
   >
   </d-pagination>`,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestLitePaginationComponent {
   @ViewChild('pagination') pagination: PaginationComponent;

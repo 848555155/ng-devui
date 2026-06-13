@@ -10,8 +10,8 @@ import { TreeSelectComponent } from './tree-select.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, CheckBoxModule, LoadingModule, TreeModule, PopperModule, SearchModule],
-  exports: [TreeSelectComponent],
   declarations: [TreeSelectComponent],
   providers: [],
+  exports: [TreeSelectComponent]
 })
 export class TreeSelectModule {}

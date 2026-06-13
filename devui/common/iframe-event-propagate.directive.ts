@@ -4,7 +4,7 @@ import { AfterViewInit, Directive, ElementRef, DOCUMENT, inject, input } from '@
   selector: '[dIframeEventPropagate]',
 })
 export class IframeEventPropagateDirective implements AfterViewInit {
-  event = input('click');
+  readonly event = input('click');
   element = inject(ElementRef<HTMLSelectElement>).nativeElement;
   document = inject(DOCUMENT);
 

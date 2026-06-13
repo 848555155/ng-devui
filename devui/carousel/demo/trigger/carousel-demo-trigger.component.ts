@@ -5,7 +5,7 @@ import { ArrowTrigger, CarouselComponent, CarouselItemComponent, DotTrigger } fr
   selector: 'd-carousel-demo-trigger',
   imports: [CarouselComponent, CarouselItemComponent],
   templateUrl: './carousel-demo-trigger.component.html',
-  styleUrls: ['../demo-common.scss'],
+  styleUrl: '../demo-common.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CarouselDemoTriggerComponent {

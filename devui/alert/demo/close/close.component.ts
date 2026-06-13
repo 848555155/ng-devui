@@ -5,7 +5,7 @@ import { AlertComponent } from 'ng-devui/alert';
   selector: 'd-alert-close',
   imports: [AlertComponent],
   templateUrl: './close.component.html',
-  styleUrls: ['./close.component.css'],
+  styleUrl: './close.component.css',
 })
 export class CloseComponent {
   handleClose($event: AlertComponent) {

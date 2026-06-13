@@ -3,10 +3,10 @@ import { DialogService } from 'ng-devui/modal';
 
 @Component({
   selector: 'd-tips',
-  templateUrl: './tips.component.html',
-  styles: ['.btn-group d-button:not(first-child) { margin-left: 8px }'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './tips.component.html',
+  styles: '.btn-group d-button:not(first-child) { margin-left: 8px }',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TipsComponent {
   config = {

@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-gantt-design',
-  templateUrl: './gantt-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './gantt-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class GanttDesignComponent implements OnInit {
   imgSrc;

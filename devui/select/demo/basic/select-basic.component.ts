@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-select-basic',
-  templateUrl: './select-basic.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './select-basic.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class SelectBasicComponent {
   options = [

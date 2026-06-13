@@ -10,8 +10,7 @@ import { StepsGuideService } from './steps-guide.service';
 @NgModule({
   imports: [CommonModule, IsTemplateModule, SafePipeModule, PositioningModule],
   declarations: [StepsGuideComponent, StepsGuideDirective],
-  exports: [StepsGuideDirective],
-
   providers: [OverlayContainerRef, StepsGuideService],
+  exports: [StepsGuideDirective]
 })
 export class StepsGuideModule {}

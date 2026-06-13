@@ -9,8 +9,8 @@ import { TabsComponent } from './tabs.component';
 
 @NgModule({
   imports: [CommonModule, DropDownModule],
-  exports: [TabsComponent, TabComponent, TabTitleDirective, TabContentDirective],
   declarations: [TabsComponent, TabComponent, TabTitleDirective, TabContentDirective, TabCloseablePipe],
   providers: [],
+  exports: [TabsComponent, TabComponent, TabTitleDirective, TabContentDirective]
 })
 export class TabsModule {}

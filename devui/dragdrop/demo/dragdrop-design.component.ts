@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-dragdrop-design',
-  templateUrl: './dragdrop-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './dragdrop-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DragdropDesignComponent implements OnInit {
   imgSrc;

@@ -15,7 +15,6 @@ import { marked } from 'marked';
 import apiCn from '../doc/api-cn.md?raw';
 import apiEn from '../doc/api-en.md?raw';
 @NgModule({
-  declarations: [DesignShadowDemoComponent, ShadowComponent],
   imports: [
     TranslatePipe,
     CommonModule,
@@ -36,6 +35,7 @@ import apiEn from '../doc/api-en.md?raw';
         'en-us': marked.parse(apiEn)
       }}
     ])
-  ]
+  ],
+  declarations: [DesignShadowDemoComponent, ShadowComponent]
 })
 export class DesignShadowDemoModule { }

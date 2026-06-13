@@ -5,6 +5,6 @@ import { BadgeComponent } from 'ng-devui/badge';
   selector: 'd-custom',
   imports: [BadgeComponent],
   templateUrl: './custom.component.html',
-  styleUrls: ['./custom.component.scss'],
+  styleUrl: './custom.component.scss',
 })
 export class CustomComponent {}

@@ -3,9 +3,9 @@ import { MentionOnSearchTypes } from 'ng-devui/mention/mention.types';
 
 @Component({
   selector: 'd-mention-prefix',
-  templateUrl: './prefix.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './prefix.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class PrefixComponent {
   suggestions = [];

@@ -6,8 +6,8 @@ import { isEqual } from 'lodash-es';
 })
 export class StrTplOutletDirective<T = Record<string, any>> {
   private embeddedViewRef: EmbeddedViewRef<T> | null = null;
-  dStrTplOutlet = input<TemplateRef<T> | string>();
-  dStrTplOutletContext = input<T>();
+  readonly dStrTplOutlet = input<TemplateRef<T> | string>();
+  readonly dStrTplOutletContext = input<T>();
   private viewContainer = inject(ViewContainerRef);
   private templateRef = inject(TemplateRef<T>);
 

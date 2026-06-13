@@ -25,10 +25,10 @@ hljs.registerLanguage('typescript', typescript);
 
 @Component({
   selector: 'd-demo-cell',
-  styleUrls: ['./example-panel.component.scss'],
-  templateUrl: './example-panel.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './example-panel.component.html',
+  styleUrl: './example-panel.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ExamplePanelComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() data: IExampleData;

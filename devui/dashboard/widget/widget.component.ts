@@ -23,12 +23,12 @@ export type DashboardWidget = GridStackWidget & {
 
 @Component({
   selector: 'd-dashboard-widget',
+  standalone: false,
   templateUrl: './widget.component.html',
-  styleUrls: ['./widget.component.scss'],
+  styleUrl: './widget.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   exportAs: 'dDashboardWidget',
-  preserveWhitespaces: false,
-  standalone: false
+  preserveWhitespaces: false
 })
 export class DashboardWidgetComponent implements GridStackNode, OnChanges, AfterViewInit, OnDestroy {
   static autoNumberedId = 0;

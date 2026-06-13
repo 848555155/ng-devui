@@ -3,10 +3,10 @@ import { TreeComponent } from 'ng-devui/tree';
 
 @Component({
   selector: 'd-tree-factory',
-  templateUrl: './tree-factory.component.html',
-  styleUrls: ['./tree-factory.component.css'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './tree-factory.component.html',
+  styleUrl: './tree-factory.component.css',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class OperationForAllNodesComponent implements OnInit {
   @ViewChild('operableTree', { static: true }) operableTree: TreeComponent;

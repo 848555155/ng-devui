@@ -5,10 +5,10 @@ import { mockSteps } from '../mock-steps';
 
 @Component({
   selector: 'd-user-guide-basic',
-  templateUrl: './basic.component.html',
-  styleUrls: ['./basic.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './basic.component.html',
+  styleUrl: './basic.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class BasicComponent implements OnInit {
   @ViewChild('contentTemplate') contentTemplate: TemplateRef<any>;

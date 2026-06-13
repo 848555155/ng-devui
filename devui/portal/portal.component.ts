@@ -15,13 +15,13 @@ import { forEach } from 'lodash-es';
   template: ` <ng-template #templateRef>
     <ng-content></ng-content>
   </ng-template>`,
-  preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false
 })
 export class PortalComponent {
   viewRef: EmbeddedViewRef<any>;
   portalContainer: HTMLElement;
-  templateRef = viewChild.required('templateRef', { read: TemplateRef });
+  readonly templateRef = viewChild.required('templateRef', { read: TemplateRef });
   document = inject(DOCUMENT);
   private appRef: ApplicationRef;
 

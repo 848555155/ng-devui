@@ -3,10 +3,10 @@ import { ModalComponent } from 'ng-devui/modal';
 
 @Component({
   selector: 'd-modal-content',
-  templateUrl: './modal-content.component.html',
-  styleUrls: ['./modal-content.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './modal-content.component.html',
+  styleUrl: './modal-content.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ModalContentComponent implements OnInit {
   @Input() data: any;

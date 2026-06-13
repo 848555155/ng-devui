@@ -42,7 +42,6 @@ import apiEn from '../doc/api-en.md?raw';
       }}
     ])
   ],
-  exports: [CheckBoxDemoComponent],
   declarations: [
     CheckBoxDemoComponent,
     CheckboxDesignComponent,
@@ -51,7 +50,7 @@ import apiEn from '../doc/api-en.md?raw';
     CheckboxConditionChangeComponent,
     CheckboxConditionGroupComponent
   ],
-
+  exports: [CheckBoxDemoComponent]
 })
 export class CheckBoxDemoModule {
 }

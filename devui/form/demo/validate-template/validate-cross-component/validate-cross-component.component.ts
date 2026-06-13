@@ -5,9 +5,9 @@ import { delay, map } from 'rxjs/operators';
 
 @Component({
   selector: 'd-form-demo-template-cross-component',
-  templateUrl: './validate-cross-component.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './validate-cross-component.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class CrossComponentComponent {
   layoutDirection: FormLayout = FormLayout.Vertical;
@@ -37,7 +37,7 @@ export class CrossComponentComponent {
 
   @ViewChild('userForm') userFormDir: DFormGroupRuleDirective;
 
-  msgs: Array<Object> = [];
+  msgs: Array<object> = [];
 
   submitForm() {
     console.log(this.formData);

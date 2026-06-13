@@ -7,11 +7,11 @@ import { CheckBoxComponent } from './checkbox.component';
 import { CheckBoxModule } from './checkbox.module';
 
 @Component({
+  standalone: false,
   template: `
     <d-checkbox-group [(ngModel)]="values" [name]="'City'" [options]="options" [direction]="'row'" [isShowTitle]="true"> </d-checkbox-group>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestCheckBoxGroupComponent {
   options = ['data1', 'data2', 'data3', 'data4', 'data5', 'data6', 'data7'];
@@ -21,6 +21,7 @@ class TestCheckBoxGroupComponent {
 }
 
 @Component({
+  standalone: false,
   template: `
     <d-checkbox-group
       [(ngModel)]="values"
@@ -32,8 +33,7 @@ class TestCheckBoxGroupComponent {
     >
     </d-checkbox-group>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestCheckBoxGroupObjComponent {
   options = [

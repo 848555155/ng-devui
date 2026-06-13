@@ -22,12 +22,12 @@ import { Subscription, fromEvent } from 'rxjs';
 
 @Component({
   selector: 'd-pagination',
-  styleUrls: ['./pagination.component.scss'],
+  standalone: false,
   templateUrl: './pagination.component.html',
-  exportAs: 'pagination',
+  styleUrl: './pagination.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
-  standalone: false
+  exportAs: 'pagination',
+  preserveWhitespaces: false
 })
 export class PaginationComponent implements OnChanges, AfterViewInit, OnDestroy, OnInit {
   static EFFECT_PAGE_RANGE_KEYS = ['total', 'pageSize', 'pageIndex', 'maxItems', 'pageSizeOptions'];

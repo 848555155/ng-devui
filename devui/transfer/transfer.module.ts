@@ -10,8 +10,8 @@ import { TransferComponent } from './transfer.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ScrollingModule, SearchModule, CheckBoxModule, DragDropModule, PopoverModule],
-  exports: [TransferComponent],
   declarations: [TransferComponent],
-  providers: []
+  providers: [],
+  exports: [TransferComponent]
 })
 export class TransferModule { }

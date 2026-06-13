@@ -13,10 +13,10 @@ interface SourceType {
 
 @Component({
   selector: 'd-transfer-demo-custom',
-  templateUrl: './transfer-demo-custom.component.html',
-  styleUrls: ['./transfer-demo-custom.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './transfer-demo-custom.component.html',
+  styleUrl: './transfer-demo-custom.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TransferDemoCustomComponent {
   originSource: Array<SourceType> = [

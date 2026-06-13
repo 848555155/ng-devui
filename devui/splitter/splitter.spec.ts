@@ -6,6 +6,7 @@ import { SplitterComponent } from './splitter.component';
 import { SplitterModule } from './splitter.module';
 import { SplitterService } from './splitter.service';
 @Component({
+  standalone: false,
   template: `
     <section>
       <d-splitter [orientation]="orientation" [splitBarSize]="splitBarSize" style="height: 300px; border: 1px solid #E3E5E9;">
@@ -37,8 +38,7 @@ import { SplitterService } from './splitter.service';
       </d-splitter>
     </section>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestSplitterComponent {
   // splitter input
@@ -57,6 +57,7 @@ class TestSplitterComponent {
 }
 
 @Component({
+  standalone: false,
   template: `
     <section>
       <d-splitter [orientation]="orientation" style="height: 500px; border: 1px solid #E3E5E9;">
@@ -81,8 +82,7 @@ class TestSplitterComponent {
       </d-splitter>
     </section>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestVerticalSplitterComponent {
   // splitter input

@@ -48,7 +48,6 @@ import apiEn from '../doc/api-en.md?raw';
       },
     ]),
   ],
-  exports: [RadioDemoComponent],
   declarations: [
     RadioDemoComponent,
     RadioDesignComponent,
@@ -60,5 +59,6 @@ import apiEn from '../doc/api-en.md?raw';
     VerticalComponent,
     CustomComponent,
   ],
+  exports: [RadioDemoComponent]
 })
 export class RadioDemoModule {}

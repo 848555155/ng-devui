@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-border-radius-design',
-  templateUrl: './border-radius-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './border-radius-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class BorderRadiusDesignComponent implements OnInit {
   imgSrc;

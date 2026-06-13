@@ -3,10 +3,10 @@ import { SplitterOrientation } from 'ng-devui/splitter';
 
 @Component({
   selector: 'd-splitter-demo-basic',
-  templateUrl: './splitter-demo-basic.component.html',
-  styleUrls: ['../splitter-demo.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './splitter-demo-basic.component.html',
+  styleUrl: '../splitter-demo.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class SplitterDemoBasicComponent {
   // splitter input

@@ -1,9 +1,9 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: 'd-size',
-  templateUrl: './size.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './size.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class SizeComponent {
   tabActiveId: string | number = 'tab1';

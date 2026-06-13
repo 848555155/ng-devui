@@ -3,10 +3,10 @@ import { ITreeItem, OperableTreeComponent, TreeNode } from 'ng-devui/tree';
 
 @Component({
   selector: 'd-virtual-scroll',
-  templateUrl: './virtual-scroll.component.html',
-  styleUrls: ['./virtual-scroll.component.css'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './virtual-scroll.component.html',
+  styleUrl: './virtual-scroll.component.css',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class VirtualScrollComponent {
   @ViewChild('operableTree', { static: true }) operableTree: OperableTreeComponent;

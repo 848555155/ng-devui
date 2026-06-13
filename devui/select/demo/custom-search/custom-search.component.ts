@@ -5,9 +5,9 @@ import { of } from 'rxjs';
 
 @Component({
   selector: 'd-custom-search',
-  templateUrl: './custom-search.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './custom-search.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class CustomSearchComponent {
   @ViewChild('networkSearchSelect') selectComponent: SelectComponent;

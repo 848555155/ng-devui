@@ -43,8 +43,7 @@ import apiEn from '../doc/api-en.md?raw';
     ]),
     FormModule,
   ],
-  exports: [TextInputDemoComponent],
   declarations: [TextInputDemoComponent, TextInputDesignComponent, BasicComponent, PasswordVisibleComponent, TextInputSizeComponent],
-
+  exports: [TextInputDemoComponent]
 })
 export class TextInputDemoModule {}

@@ -48,7 +48,6 @@ import apiEn from '../doc/api-en.md?raw';
       },
     ]),
   ],
-  exports: [PopoverDemoComponent],
   declarations: [
     PopoverDemoComponent,
     PopoverDesignComponent,
@@ -59,6 +58,6 @@ import apiEn from '../doc/api-en.md?raw';
     ScrollElementComponent,
     HoverDelayTimeComponent,
   ],
-
+  exports: [PopoverDemoComponent]
 })
 export class PopoverDemoModule {}

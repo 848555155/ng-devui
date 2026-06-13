@@ -7,8 +7,8 @@ import { MultiAutoCompleteComponent } from './multi-auto-complete.component';
 
 @NgModule({
   imports: [CommonModule, AutoCompleteModule, FormsModule, TagsModule],
-  exports: [MultiAutoCompleteComponent],
   declarations: [MultiAutoCompleteComponent],
   providers: [],
+  exports: [MultiAutoCompleteComponent]
 })
 export class MultiAutoCompleteModule {}

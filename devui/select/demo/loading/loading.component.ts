@@ -4,9 +4,9 @@ import { of, timer } from 'rxjs';
 
 @Component({
   selector: 'd-loading',
-  templateUrl: './loading.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './loading.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class LoadingComponent {
   @ViewChild('select', { static: true }) selectComponent: SelectComponent;

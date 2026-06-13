@@ -2,12 +2,12 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-single',
-  templateUrl: './single.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './single.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class SingleComponent {
-  msgs: Array<Object> = [];
+  msgs: Array<object> = [];
 
   showToast() {
     this.msgs = [

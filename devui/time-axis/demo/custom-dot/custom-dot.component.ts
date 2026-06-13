@@ -3,9 +3,9 @@ import { TimeAxisData } from 'ng-devui/time-axis';
 
 @Component({
   selector: 'd-demo-time-axis-custom-dot',
-  templateUrl: './custom-dot.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './custom-dot.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class CustomDotComponent implements OnInit {
   timeAxisHtml: TimeAxisData;

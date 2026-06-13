@@ -5,7 +5,7 @@ import { BackTopComponent } from 'ng-devui/back-top';
   selector: 'd-back-top-basic',
   imports: [BackTopComponent],
   templateUrl: './basic.component.html',
-  styleUrls: ['./basic.component.scss'],
+  styleUrl: './basic.component.scss',
 })
 export class BasicComponent {
   backTop(event: boolean) {

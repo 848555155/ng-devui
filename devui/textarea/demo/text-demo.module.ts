@@ -41,7 +41,6 @@ import apiEn from '../doc/api-en.md?raw';
       }}
     ])
   ],
-  exports: [TextDemoComponent],
   declarations: [
     TextDemoComponent,
     TextDesignComponent,
@@ -49,7 +48,7 @@ import apiEn from '../doc/api-en.md?raw';
     ResizeComponent,
     CountComponent
   ],
-
+  exports: [TextDemoComponent]
 })
 export class TextDemoModule {
 }

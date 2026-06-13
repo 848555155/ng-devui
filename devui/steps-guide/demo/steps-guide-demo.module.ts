@@ -43,7 +43,7 @@ import apiEn from '../doc/api-en.md?raw';
       },
     ]),
   ],
-  exports: [StepsGuideDemoComponent, BasicComponent, CustomComponent, PositionComponent],
   declarations: [StepsGuideDemoComponent, StepsGuideDesignComponent, BasicComponent, CustomComponent, PositionComponent],
+  exports: [StepsGuideDemoComponent, BasicComponent, CustomComponent, PositionComponent]
 })
 export class StepsGuideDemoModule {}

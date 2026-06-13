@@ -11,10 +11,10 @@ import disabledTs from './disabled/multi-auto-complete-demo-disabled.component.t
 
 @Component({
   selector: 'd-multi-auto-complete-demo',
-  templateUrl: './multi-auto-complete-demo.component.html',
-  styleUrls: ['./multi-auto-complete-demo.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './multi-auto-complete-demo.component.html',
+  styleUrl: './multi-auto-complete-demo.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class MultiAutoCompleteDemoComponent implements OnInit, OnDestroy {
   MultiAutoCompleteDemoDefault: Array<DevuiSourceData> = [

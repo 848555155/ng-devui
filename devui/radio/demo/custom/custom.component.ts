@@ -3,9 +3,9 @@ import { UntypedFormControl } from '@angular/forms';
 
 @Component({
   selector: 'd-custom',
-  templateUrl: './custom.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './custom.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class CustomComponent {
   items = ['Item1', 'Item2', 'Item3'];

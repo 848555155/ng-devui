@@ -2,10 +2,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-input-number-placeholder-maxlength',
-  templateUrl: './input-number-placeholder-maxLength.component.html',
-  styleUrls: ['./input-number-placeholder-maxLength.component.css'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './input-number-placeholder-maxLength.component.html',
+  styleUrl: './input-number-placeholder-maxLength.component.css',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class InputNumberPlaceholderAndMaxLengthComponent {
   min = -100;

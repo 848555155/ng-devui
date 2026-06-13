@@ -1,9 +1,9 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: 'd-type',
-  templateUrl: './type.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './type.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TypeComponent {
   value1 = 5;

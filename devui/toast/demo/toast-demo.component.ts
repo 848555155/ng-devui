@@ -19,9 +19,9 @@ import serviceScss from './service/toast-service.component.scss?raw';
 
 @Component({
   selector: 'd-demo-toast',
-  templateUrl: './toast-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './toast-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ToastDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

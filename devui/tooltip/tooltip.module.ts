@@ -12,12 +12,11 @@ import { TooltipDirective } from './tooltip.directive';
     PortalModule,
     PositioningModule
   ],
-  exports: [TooltipComponent, TooltipDirective],
   declarations: [TooltipComponent, TooltipDirective],
   providers: [
     OverlayContainerRef,
   ],
-
+  exports: [TooltipComponent, TooltipDirective]
 })
 export class TooltipModule {
 }

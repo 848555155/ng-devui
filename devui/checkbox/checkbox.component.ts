@@ -17,9 +17,9 @@ import { Observable } from 'rxjs';
 
 @Component({
   selector: 'd-checkbox',
+  standalone: false,
   templateUrl: './checkbox.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['./checkbox.component.scss'],
+  styleUrl: './checkbox.component.scss',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -27,8 +27,8 @@ import { Observable } from 'rxjs';
       multi: true,
     },
   ],
-  preserveWhitespaces: false,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false
 })
 export class CheckBoxComponent implements ControlValueAccessor, AfterViewInit {
   static ID_SEED = 0;

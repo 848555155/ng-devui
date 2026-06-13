@@ -3,9 +3,9 @@ import { DataTableComponent } from 'ng-devui/data-table';
 import { originSource } from './../mock-data';
 @Component({
   selector: 'd-datatable-demo-lazyloaddata',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   templateUrl: './data-table-demo-lazyloaddata.component.html',
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DatatableDemoLazyloadDataComponent implements AfterViewInit {
   @ViewChild('tableInstance') tableInstance: DataTableComponent;

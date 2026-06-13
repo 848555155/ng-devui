@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-demo-time-axis-single',
-  templateUrl: './single.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './single.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TimeAxisSingleComponent {
   dataBottom = {

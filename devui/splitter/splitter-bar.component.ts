@@ -21,11 +21,11 @@ import { SplitterOrientation } from './splitter.types';
 
 @Component({
   selector: 'd-splitter-bar',
+  standalone: false,
   templateUrl: './splitter-bar.component.html',
-  styleUrls: ['./splitter-bar.component.scss'],
+  styleUrl: './splitter-bar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
-  standalone: false
+  preserveWhitespaces: false
 })
 export class SplitterBarComponent implements OnInit, AfterViewInit, OnDestroy {
   // 当前pane索引

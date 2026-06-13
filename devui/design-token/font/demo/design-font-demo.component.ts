@@ -4,9 +4,9 @@ import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'd-design-font-demo',
-  templateUrl: './design-font-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './design-font-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DesignFontDemoComponent implements OnInit, OnDestroy {
   navItems = [];

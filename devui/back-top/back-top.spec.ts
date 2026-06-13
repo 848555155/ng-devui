@@ -4,20 +4,18 @@ import { By } from '@angular/platform-browser';
 import { BackTopModule } from 'ng-devui/back-top';
 import { BackTopComponent } from './back-top.component';
 @Component({
+  standalone: false,
   template: `
     <div class="container"></div>
     <d-back-top #basicBackTop [bottom]="bottom" [right]="right" [visibleHeight]="visibleHeight"></d-back-top>
   `,
-  styles: [
-    `
+  styles: `
       .container {
         height: 1500px;
         width: 300px;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestBackTopComponent {
   @ViewChild('basicBackTop') basicBackTop: BackTopComponent;
@@ -27,6 +25,7 @@ class TestBackTopComponent {
 }
 
 @Component({
+  standalone: false,
   template: `
     <div class="scroll-container">
       <d-back-top #targetBackTop [scrollTarget]="target" [visibleHeight]="visibleHeight"></d-back-top>
@@ -35,8 +34,7 @@ class TestBackTopComponent {
       </div>
     </div>
   `,
-  styles: [
-    `
+  styles: `
       .scroll-container {
         width: 600px;
       }
@@ -49,9 +47,7 @@ class TestBackTopComponent {
         height: 1900px;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestTargetBackTopComponent {
   @ViewChild('targetBackTop') targetBackTop: BackTopComponent;
@@ -60,6 +56,7 @@ class TestTargetBackTopComponent {
 }
 
 @Component({
+  standalone: false,
   template: `
     <d-back-top [customTemplate]="customTemplate">
       <ng-template #customTemplate>
@@ -69,8 +66,7 @@ class TestTargetBackTopComponent {
       </ng-template>
     </d-back-top>
   `,
-  styles: [
-    `
+  styles: `
       .devui-backtop-custom {
         text-align: center;
         border-radius: 50%;
@@ -84,9 +80,7 @@ class TestTargetBackTopComponent {
         line-height: 40px;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestCustomBackTopComponent {}
 

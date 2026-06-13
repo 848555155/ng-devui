@@ -43,9 +43,6 @@ import apiEn from '../doc/api-en.md?raw';
       } }
     ])
   ],
-  exports: [
-    TimePickerDemoComponent
-  ],
   declarations: [
     TimePickerDemoComponent,
     TimePickerDesignComponent,
@@ -54,5 +51,8 @@ import apiEn from '../doc/api-en.md?raw';
     CustomComponent,
   ],
   providers: [],
+  exports: [
+    TimePickerDemoComponent
+  ]
 })
 export class TimePickerDemoModule {}

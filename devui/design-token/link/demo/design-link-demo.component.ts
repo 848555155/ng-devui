@@ -7,9 +7,9 @@ import linkTs from './link/link.component.ts.txt?raw';
 
 @Component({
   selector: 'd-design-link-demo',
-  templateUrl: './design-link-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './design-link-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DesignLinkDemoComponent implements OnInit, OnDestroy {
   LinkSource: Array<DevuiSourceData> = [

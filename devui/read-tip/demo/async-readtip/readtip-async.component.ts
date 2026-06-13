@@ -4,10 +4,10 @@ import { of } from 'rxjs';
 
 @Component({
   selector: 'd-demo-async',
-  templateUrl: './readtip-async.component.html',
-  styleUrls: ['./readtip-async.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './readtip-async.component.html',
+  styleUrl: './readtip-async.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ReadtipAsyncComponent implements OnInit {
   readTipOptions: ReadTipOptions = {

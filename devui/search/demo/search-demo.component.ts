@@ -17,9 +17,9 @@ import noBorderTs from './no-border/search-no-border.component.ts.txt?raw';
 import noBorderScss from './no-border/search-no-border.component.scss?raw';
 @Component({
   selector: 'd-demo-search',
-  templateUrl: './search-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './search-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class SearchDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

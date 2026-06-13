@@ -6,10 +6,10 @@ import {
 
 @Component({
   selector: 'd-range-today',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   templateUrl: './range-today.component.html',
-  styleUrls: ['./range-today.component.scss'],
-  standalone: false
+  styleUrl: './range-today.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RangePickerTodayComponent {
   dateRange = [null, null];

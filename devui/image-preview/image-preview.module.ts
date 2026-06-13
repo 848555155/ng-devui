@@ -10,7 +10,6 @@ import { DImagePreviewComponent } from './image-preview.component';
 import { ImagePreviewDirective } from './image-preview.directive';
 
 @NgModule({
-  declarations: [DImagePreviewComponent, ImagePreviewDirective],
   imports: [
     CommonModule,
     ModalModule,
@@ -19,10 +18,10 @@ import { ImagePreviewDirective } from './image-preview.directive';
     FormsModule,
     InputNumberModule
   ],
+  declarations: [DImagePreviewComponent, ImagePreviewDirective],
   exports: [
     ImagePreviewDirective
-  ],
-
+  ]
 })
 
 export class ImagePreviewModule { }

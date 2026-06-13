@@ -2,10 +2,10 @@ import { Component, ElementRef, Input, OnInit, ChangeDetectionStrategy } from '@
 
 @Component({
   selector: 'd-modal-alert',
-  templateUrl: './modal-alert.component.html',
-  styleUrls: ['./modal-alert.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './modal-alert.component.html',
+  styleUrl: './modal-alert.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ModalAlertComponent implements OnInit {
   constructor(private elr: ElementRef) {}

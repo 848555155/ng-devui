@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-horizontal',
-  templateUrl: './horizontal.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './horizontal.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class HorizontalComponent {
   weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];

@@ -2,10 +2,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-set-mode',
-  templateUrl: './set-mode.component.html',
-  styleUrls: ['./set-mode.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './set-mode.component.html',
+  styleUrl: './set-mode.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class SetModeComponent {
   selectedDate1 = null;

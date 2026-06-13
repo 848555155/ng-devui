@@ -5,6 +5,6 @@ import { ButtonComponent } from 'ng-devui/button';
   selector: 'd-button-combination',
   imports: [ButtonComponent],
   templateUrl: './combination.component.html',
-  styleUrls: ['./combination.component.css'],
+  styleUrl: './combination.component.css',
 })
 export class CombinationComponent {}

@@ -5,9 +5,9 @@ import { ButtonModule } from 'ng-devui/button';
 import { ButtonGroupComponent } from './button-group.component';
 
 @Component({
-  template: ` <d-button-group [size]="size"></d-button-group> `,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  template: ` <d-button-group [size]="size"></d-button-group> `,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestButtonGroupComponent {
   size = 'md';

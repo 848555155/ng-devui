@@ -4,10 +4,10 @@ import { SourceType, treeDataSource } from '../mock-data';
 
 @Component({
   selector: 'd-tree-table-old',
-  templateUrl: './tree-table-old.component.html',
-  styles: ['.demo-margin { margin: 5px 5px 0 0;}'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './tree-table-old.component.html',
+  styles: '.demo-margin { margin: 5px 5px 0 0;}',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TreeTableOldComponent implements OnInit {
   extraOptions: any;

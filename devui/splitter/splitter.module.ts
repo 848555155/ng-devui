@@ -13,18 +13,18 @@ import { SplitterComponent } from './splitter.component';
     FormsModule,
     PopoverModule
   ],
-  exports: [
-    SplitterComponent,
-    SplitterPaneComponent,
-    SplitterBarComponent,
-    ResizeDirective
-  ],
   declarations: [
     SplitterComponent,
     SplitterPaneComponent,
     SplitterBarComponent,
     ResizeDirective
   ],
-  providers: []
+  providers: [],
+  exports: [
+    SplitterComponent,
+    SplitterPaneComponent,
+    SplitterBarComponent,
+    ResizeDirective
+  ]
 })
 export class SplitterModule {}

@@ -5,9 +5,9 @@ import { demoData } from '../demo-data';
 
 @Component({
   selector: 'd-auto-scroll',
+  standalone: false,
   templateUrl: './auto-scroll.component.html',
-  styles: [
-    `
+  styles: `
       section {
         padding-top: 16px;
       }
@@ -16,9 +16,7 @@ import { demoData } from '../demo-data';
         margin-right: 8px;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class AutoScrollComponent {
   category = cloneDeep(demoData.slice(0, -2));

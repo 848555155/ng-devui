@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-tree-select-keys',
-  templateUrl: './tree-select-keys.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './tree-select-keys.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TreeSelectKeysComponent {
   data1 = [

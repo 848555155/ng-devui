@@ -14,13 +14,12 @@ import { TimePickerComponent } from './time-picker.component';
     OverlayModule,
     ButtonModule
   ],
-  exports: [
-    TimePickerComponent
-  ],
   declarations: [
     TimePickerComponent
   ],
   providers: [],
-
+  exports: [
+    TimePickerComponent
+  ]
 })
 export class TimePickerModule {}

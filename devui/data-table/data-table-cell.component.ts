@@ -27,10 +27,10 @@ import { DataTableColumnTmplComponent } from './tmpl/data-table-column-tmpl.comp
 
 @Component({
   selector: 'd-data-table-cell,[dDataTableCell]',
-  templateUrl: './data-table-cell.component.html',
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './data-table-cell.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  preserveWhitespaces: false
 })
 export class DataTableCellComponent implements OnInit, OnChanges, OnDestroy {
   @ViewChild(EditorDirective) editorHost: EditorDirective;
@@ -227,7 +227,7 @@ export class DataTableCellComponent implements OnInit, OnChanges, OnDestroy {
   private unSubscription(sbscription: Subscription) {
     if (sbscription) {
       sbscription.unsubscribe();
-      /* eslint-disable-next-line no-param-reassign */
+
       sbscription = null;
     }
   }
@@ -235,17 +235,17 @@ export class DataTableCellComponent implements OnInit, OnChanges, OnDestroy {
   creatCellEditor() {
     let editorComponent;
     switch (this.column.fieldType) {
-      case 'number':
-        editorComponent = InputNumberComponent;
-        break;
-      case 'select':
-        editorComponent = SelectComponent;
-        break;
-      case 'treeSelect':
-        editorComponent = TreeSelectComponent;
-        break;
-      default:
-        this.templateEditorActive = true;
+    case 'number':
+      editorComponent = InputNumberComponent;
+      break;
+    case 'select':
+      editorComponent = SelectComponent;
+      break;
+    case 'treeSelect':
+      editorComponent = TreeSelectComponent;
+      break;
+    default:
+      this.templateEditorActive = true;
     }
 
     if (editorComponent) {

@@ -3,10 +3,10 @@ import { ToggleMenuListItem } from './toggle-menu.type';
 
 @Component({
   selector: 'd-toggle-menu-label',
-  templateUrl: './toggle-menu-label.component.html',
-  styleUrls: [`./toggle-menu-label.component.scss`],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './toggle-menu-label.component.html',
+  styleUrl: `./toggle-menu-label.component.scss`,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ToggleMenuLabelComponent {
   @Input() mode: 'normal' | 'scroll-y' | 'multiple-line' | string;

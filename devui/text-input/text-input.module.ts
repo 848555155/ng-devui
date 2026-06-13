@@ -6,8 +6,8 @@ import { TextDirective } from './text-input.directive';
   imports: [
     CommonModule,
   ],
-  exports: [TextDirective],
   declarations: [TextDirective],
+  exports: [TextDirective]
 })
 export class TextInputModule {
 }

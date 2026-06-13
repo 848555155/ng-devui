@@ -12,10 +12,10 @@ import { suggestScopeList } from './scope-list';
 
 @Component({
   selector: 'd-components-overview',
-  templateUrl: './overview.component.html',
-  styleUrls: ['./overview.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './overview.component.html',
+  styleUrl: './overview.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ComponentsOverviewComponent implements OnInit, OnDestroy {
   srcPrefix = environment.deployPrefix + 'assets';

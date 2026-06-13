@@ -7,10 +7,10 @@ import { ButtonModule } from 'ng-devui/button';
   selector: 'd-wipe-in-out',
   imports: [SkeletonComponent, ButtonModule],
   templateUrl: './wipe-in-out.component.html',
-  styleUrls: ['./wipe-in-out.component.scss'],
-  animations: [wipeInOutAnimation],
+  styleUrl: './wipe-in-out.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [wipeInOutAnimation]
 })
 export class WipeInOutComponent {
-  open = signal(false);
+  readonly open = signal(false);
 }

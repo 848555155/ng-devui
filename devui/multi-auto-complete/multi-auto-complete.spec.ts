@@ -9,6 +9,7 @@ import { MultiAutoCompleteComponent } from './multi-auto-complete.component';
 import { MultiAutoCompleteModule } from './multi-auto-complete.module';
 
 @Component({
+  standalone: false,
   template: `
     <d-multi-auto-complete
       #multiAutoComplete
@@ -19,8 +20,7 @@ import { MultiAutoCompleteModule } from './multi-auto-complete.module';
       name="multiple-auto"
     ></d-multi-auto-complete>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestMultiAutoCompleteComponent {
   @ViewChild('multiAutoComplete') multiAutoComplete: MultiAutoCompleteComponent;

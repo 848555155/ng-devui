@@ -16,10 +16,10 @@ import { DEFAULT_AXIS_CONFIGS, DEFAULT_QUADRANT_CONFIGS, LABEL_SIZE } from './qu
 
 @Component({
   selector: 'd-quadrant-diagram',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   templateUrl: './quadrant-diagram.component.html',
-  styleUrls: ['./quadrant-diagram.component.scss'],
-  standalone: false
+  styleUrl: './quadrant-diagram.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class QuadrantDiagramComponent implements OnInit, OnChanges {
   static ID_SEED = 0;

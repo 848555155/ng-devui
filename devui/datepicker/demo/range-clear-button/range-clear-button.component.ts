@@ -7,10 +7,10 @@ import { SelectDateRangeChangeReason } from 'ng-devui/datepicker';
 
 @Component({
   selector: 'd-range-clear-button',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   templateUrl: 'range-clear-button.component.html',
-  styleUrls: ['./range-clear-button.component.scss'],
-  standalone: false
+  styleUrl: './range-clear-button.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RangeClearButtonComponent {
   dateRange = [null, null];

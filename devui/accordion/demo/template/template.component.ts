@@ -5,7 +5,7 @@ import { AccordionModule } from 'ng-devui/accordion';
   selector: 'd-template',
   imports: [AccordionModule],
   templateUrl: './template.component.html',
-  styleUrls: ['./template.component.scss'],
+  styleUrl: './template.component.scss',
 })
 export class TemplateComponent {
   menu = [

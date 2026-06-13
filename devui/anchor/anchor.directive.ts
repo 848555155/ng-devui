@@ -10,10 +10,10 @@ import { AnchorActiveChangeSource, IAnchorBox } from './anchor.type';
   },
 })
 export class AnchorDirective implements AfterViewInit, OnDestroy {
-  anchor = input<string>(undefined, { alias: 'dAnchor' });
-  anchorActive = input('active');
+  readonly anchor = input<string>(undefined, { alias: 'dAnchor' });
+  readonly anchorActive = input('active');
 
-  isActive = signal(false);
+  readonly isActive = signal(false);
   activeChangeBy: AnchorActiveChangeSource;
   activeChangeSubscription: Subscription;
   activeChangeSubject = new ReplaySubject<boolean>(1);

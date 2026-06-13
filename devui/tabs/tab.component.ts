@@ -4,10 +4,10 @@ import { TabTitleDirective } from './tab-title.directive';
 
 @Component({
   selector: 'd-tab',
-  template: `<ng-template #innerContent><ng-content></ng-content></ng-template>`,
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  template: `<ng-template #innerContent><ng-content></ng-content></ng-template>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  preserveWhitespaces: false
 })
 export class TabComponent {
   /**

@@ -20,10 +20,10 @@ import customAreaScss from './custom-area/custom-area.component.scss?raw';
 
 @Component({
   selector: 'd-editable-select-demo',
-  templateUrl: './editable-select-demo.component.html',
-  styleUrls: ['./editable-select-demo.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './editable-select-demo.component.html',
+  styleUrl: './editable-select-demo.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class EditableSelectDemoComponent implements OnInit, OnDestroy {
   BasicSource: Array<DevuiSourceData> = [

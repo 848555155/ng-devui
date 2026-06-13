@@ -16,12 +16,12 @@ import { PositionType } from './tooltip.types';
 
 @Component({
   selector: 'd-tooltip',
-  templateUrl: './tooltip.component.html',
-  styleUrls: ['./tooltip.component.scss'],
-  animations: [directionFadeInOut],
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './tooltip.component.html',
+  styleUrl: './tooltip.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  animations: [directionFadeInOut],
+  preserveWhitespaces: false
 })
 export class TooltipComponent implements AfterViewInit, OnDestroy {
   @Input() content: string;

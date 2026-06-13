@@ -6,10 +6,10 @@ import { TextInputModule } from 'ng-devui/text-input';
   selector: 'd-fade-in-out',
   imports: [SkeletonComponent, TextInputModule],
   templateUrl: './fade-in-out.component.html',
-  styleUrls: ['./fade-in-out.component.scss'],
-  animations: [fadeInOut],
+  styleUrl: './fade-in-out.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [fadeInOut]
 })
 export class FadeInOutComponent {
-  open = signal(false);
+  readonly open = signal(false);
 }

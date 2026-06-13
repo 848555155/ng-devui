@@ -2,10 +2,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-input-number-reg',
-  templateUrl: './input-number-reg.component.html',
-  styleUrls: ['./input-number-reg.component.css'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './input-number-reg.component.html',
+  styleUrl: './input-number-reg.component.css',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class InputNumberRegComponent {
   reg = /^(-|\+)?\d*$/;

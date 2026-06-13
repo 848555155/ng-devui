@@ -11,9 +11,9 @@ import hideHtml from './hide/hide.component.html?raw';
 import hideTs from './hide/hide.component.ts.txt?raw';
 @Component({
   selector: 'd-demo-tags',
-  templateUrl: './tags-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './tags-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TagsDemoComponent implements OnDestroy, OnInit {
   basicSource: Array<DevuiSourceData> = [

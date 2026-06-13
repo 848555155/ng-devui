@@ -5,10 +5,10 @@ import {
 
 @Component({
   selector: 'd-datepicker-range-restricted-range',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   templateUrl: `./date-range-picker-restricted-range.component.html`,
-  styleUrls: [`./date-range-picker-restricted-range.component.scss`],
-  standalone: false
+  styleUrl: `./date-range-picker-restricted-range.component.scss`,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DateRangePickerRestrictedRangeComponent {
   dateRange1 = [null, null];

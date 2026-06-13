@@ -18,9 +18,9 @@ import { DataTableHeadCellTmplComponent } from './data-table-head-cell-tmpl.comp
 
 @Component({
   selector: 'd-column',
+  standalone: false,
   template: '',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DataTableColumnTmplComponent implements OnChanges, OnDestroy {
   @Input() advancedHeader: Array<{

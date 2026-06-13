@@ -4,10 +4,10 @@ import { SourceType, originSource } from '../mock-data';
 
 @Component({
   selector: 'd-drag-row',
-  templateUrl: './drag-row.component.html',
-  styleUrls: ['./drag-row.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './drag-row.component.html',
+  styleUrl: './drag-row.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DragRowComponent {
   basicDataSource: Array<SourceType> = JSON.parse(JSON.stringify(originSource.slice(0, 6)));

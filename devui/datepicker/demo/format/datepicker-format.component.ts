@@ -2,10 +2,10 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-datepicker-format',
-  templateUrl: './datepicker-format.component.html',
-  styleUrls: [`./datepicker-format.component.scss`],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './datepicker-format.component.html',
+  styleUrl: `./datepicker-format.component.scss`,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DatepickerFormatComponent implements OnInit {
   dateFormatOptions = ['y/MM/dd HH:mm:ss', 'y-MM-dd HH:mm:ss', 'yy.MM.dd HH:mm', 'MM/dd/y HH:mm:ss', 'MM/dd/yy HH:mm'];

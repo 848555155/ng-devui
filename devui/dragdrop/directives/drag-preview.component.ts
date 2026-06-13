@@ -2,10 +2,10 @@ import { ChangeDetectorRef, Component, ElementRef, TemplateRef, ChangeDetectionS
 
 @Component({
   selector: 'd-drag-preview',
-  templateUrl: './drag-preview.component.html',
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './drag-preview.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  preserveWhitespaces: false
 })
 export class DragPreviewComponent {
   element;

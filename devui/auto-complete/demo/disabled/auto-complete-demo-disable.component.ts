@@ -3,9 +3,9 @@ import { of } from 'rxjs';
 
 @Component({
   selector: 'd-auto-complete-demo-disable',
+  standalone: false,
   templateUrl: './auto-complete-demo-disable.component.html',
-  styles: [
-    `
+  styles: `
       .disabled-container {
         white-space: nowrap;
       }
@@ -16,9 +16,7 @@ import { of } from 'rxjs';
         float: left;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class AutoDemoDisableComponent {
   selectItem1: any;

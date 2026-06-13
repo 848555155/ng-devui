@@ -3,10 +3,10 @@ import { DashboardWidget } from 'ng-devui/dashboard';
 
 @Component({
   selector: 'd-basic',
-  templateUrl: './basic.component.html',
-  styleUrls: ['./basic.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './basic.component.html',
+  styleUrl: './basic.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class BasicComponent {
   widgets: Array<DashboardWidget> = [

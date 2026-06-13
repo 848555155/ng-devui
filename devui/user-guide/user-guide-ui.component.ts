@@ -7,10 +7,10 @@ import { IUserGuideExtraConfig } from './user-guide.types';
 
 @Component({
   selector: 'd-user-guide-ui',
-  templateUrl: './user-guide-ui.component.html',
-  styleUrls: ['./user-guide-ui.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './user-guide-ui.component.html',
+  styleUrl: './user-guide-ui.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class UserGuideUIComponent implements OnInit, OnDestroy {
   i18nCommonText: I18nInterface['userGuide'];

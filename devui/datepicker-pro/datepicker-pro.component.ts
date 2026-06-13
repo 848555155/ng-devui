@@ -24,8 +24,9 @@ import { DateConfig } from './lib/datepicker-pro.type';
 
 @Component({
   selector: 'd-datepicker-pro',
+  standalone: false,
   templateUrl: './datepicker-pro.component.html',
-  styleUrls: ['./datepicker-pro.component.scss'],
+  styleUrl: './datepicker-pro.component.scss',
   providers: [
     DatepickerProService,
     {
@@ -34,9 +35,8 @@ import { DateConfig } from './lib/datepicker-pro.type';
       multi: true,
     },
   ],
-  preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  preserveWhitespaces: false
 })
 export class DatepickerProComponent implements OnInit, AfterViewInit, OnDestroy, ControlValueAccessor {
   @Input() mode: 'year' | 'month' | 'date' = 'date';

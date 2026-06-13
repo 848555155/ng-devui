@@ -19,11 +19,11 @@ import { StepsGuideService } from './steps-guide.service';
 import { ExtraConfig } from './steps-guide.types';
 
 @Component({
-  templateUrl: './steps-guide.component.html',
-  styleUrls: ['./steps-guide.component.scss'],
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './steps-guide.component.html',
+  styleUrl: './steps-guide.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  preserveWhitespaces: false
 })
 export class StepsGuideComponent implements OnInit, AfterViewInit, OnDestroy {
   @HostBinding('class')
@@ -110,33 +110,33 @@ export class StepsGuideComponent implements OnInit, AfterViewInit, OnDestroy {
     let top = rect.top;
 
     switch (rect.placementPrimary) {
-      case 'top':
-        left = targetRect.left + this.triggerElement.clientWidth / 2 - this.elm.nativeElement.clientWidth / 2;
-        top = top + this.triggerElement.clientHeight / 2 - this.DOT_HORIZONTAL_MARGIN;
-        break;
-      case 'bottom':
-        left = targetRect.left + this.triggerElement.clientWidth / 2 - this.elm.nativeElement.clientWidth / 2;
-        top = top + this.DOT_HORIZONTAL_MARGIN / 2;
-        break;
-      case 'left':
-        left = left + this.triggerElement.clientWidth / 2 - this.DOT_HORIZONTAL_MARGIN;
-        top = top + this.triggerElement.clientHeight / 2 - this.DOT_VERTICAL_MARGIN;
-        break;
-      case 'right':
-        left = left - this.triggerElement.clientWidth / 2 + this.DOT_HORIZONTAL_MARGIN;
-        top = top + this.triggerElement.clientHeight / 2 - this.DOT_VERTICAL_MARGIN;
-        break;
-      default:
+    case 'top':
+      left = targetRect.left + this.triggerElement.clientWidth / 2 - this.elm.nativeElement.clientWidth / 2;
+      top = top + this.triggerElement.clientHeight / 2 - this.DOT_HORIZONTAL_MARGIN;
+      break;
+    case 'bottom':
+      left = targetRect.left + this.triggerElement.clientWidth / 2 - this.elm.nativeElement.clientWidth / 2;
+      top = top + this.DOT_HORIZONTAL_MARGIN / 2;
+      break;
+    case 'left':
+      left = left + this.triggerElement.clientWidth / 2 - this.DOT_HORIZONTAL_MARGIN;
+      top = top + this.triggerElement.clientHeight / 2 - this.DOT_VERTICAL_MARGIN;
+      break;
+    case 'right':
+      left = left - this.triggerElement.clientWidth / 2 + this.DOT_HORIZONTAL_MARGIN;
+      top = top + this.triggerElement.clientHeight / 2 - this.DOT_VERTICAL_MARGIN;
+      break;
+    default:
     }
 
     switch (rect.placementSecondary) {
-      case 'left':
-        left = targetRect.left;
-        break;
-      case 'right':
-        left = targetRect.left - this.elm.nativeElement.clientWidth + this.triggerElement.clientWidth;
-        break;
-      default:
+    case 'left':
+      left = targetRect.left;
+      break;
+    case 'right':
+      left = targetRect.left - this.elm.nativeElement.clientWidth + this.triggerElement.clientWidth;
+      break;
+    default:
     }
 
     this.renderer.setStyle(this.elm.nativeElement, 'left', `${left}px`);

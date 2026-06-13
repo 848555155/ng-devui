@@ -10,9 +10,9 @@ import countHtml from './count/count.component.html?raw';
 import countTs from './count/count.component.ts.txt?raw';
 
 @Component({
-  templateUrl: './text-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './text-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TextDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

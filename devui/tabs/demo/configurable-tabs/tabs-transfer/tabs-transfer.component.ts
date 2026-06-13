@@ -10,9 +10,9 @@ export interface TabsDataFormat {
   checked?: boolean;
 }
 @Component({
-  templateUrl: './tabs-transfer.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './tabs-transfer.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TabsTransferComponent implements OnInit {
   @Input() data: any;

@@ -21,12 +21,6 @@ import apiCn from '../doc/api-cn.md?raw';
 import apiEn from '../doc/api-en.md?raw';
 
 @NgModule({
-  declarations: [
-    DashboardDemoComponent,
-    BasicComponent,
-    MoreConfigComponent,
-  ],
-  exports: [DashboardDemoComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -55,6 +49,12 @@ import apiEn from '../doc/api-en.md?raw';
         'en-us': marked.parse(apiEn)
       }}
     ])
-  ]
+  ],
+  declarations: [
+    DashboardDemoComponent,
+    BasicComponent,
+    MoreConfigComponent,
+  ],
+  exports: [DashboardDemoComponent]
 })
 export class DashboardDemoModule { }

@@ -4,10 +4,10 @@ import { originSource, SourceType } from '../mock-data';
 
 @Component({
   selector: 'd-mutil-styles',
-  templateUrl: './mutil-styles.component.html',
-  styleUrls: ['./mutil-styles.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './mutil-styles.component.html',
+  styleUrl: './mutil-styles.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class MutilStylesComponent implements OnInit {
   headerBk = false;

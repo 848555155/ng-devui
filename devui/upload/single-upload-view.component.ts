@@ -6,16 +6,16 @@ import { UploadedFilesComponent } from './uploaded-files.component';
 
 @Component({
   selector: 'd-single-upload-view',
-  exportAs: 'dSingleUploadView',
-  templateUrl: './single-upload-view.component.html',
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './single-upload-view.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  exportAs: 'dSingleUploadView',
+  preserveWhitespaces: false
 })
 export class SingleUploadViewComponent extends UploadComponent {
   @Input() uploadOptions: IUploadOptions;
   @Input() preloadFilesRef: TemplateRef<any>;
-  @Input() uploadedFiles: Array<Object> = [];
+  @Input() uploadedFiles: Array<object> = [];
   @Input() uploadedFilesRef: TemplateRef<any>;
   @Input() filePath: string;
   @Input() dynamicUploadOptionsFn: (files, uploadOptions, chunkedFileIndex?) => IUploadOptions;

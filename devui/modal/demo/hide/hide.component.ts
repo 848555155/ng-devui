@@ -4,9 +4,9 @@ import { ModalFormComponent } from './modal-form.component';
 
 @Component({
   selector: 'd-hide',
-  templateUrl: './hide.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './hide.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class HideComponent {
   constructor(private dialogService: DialogService) {}

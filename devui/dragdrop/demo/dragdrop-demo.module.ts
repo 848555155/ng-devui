@@ -49,7 +49,6 @@ import apiEn from '../doc/api-en.md?raw';
       }}
     ])
   ],
-  exports: [DragDropDemoComponent],
   declarations: [
     DragDropDemoComponent,
     DragdropDesignComponent,
@@ -63,7 +62,7 @@ import apiEn from '../doc/api-en.md?raw';
     DropScrollComponent,
     CrossDimensionComponent
   ],
-
+  exports: [DragDropDemoComponent]
 })
 export class DragDropDemoModule {
 }

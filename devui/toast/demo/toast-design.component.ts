@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-toast-design',
-  templateUrl: './toast-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './toast-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ToastDesignComponent implements OnInit {
   imgSrc;

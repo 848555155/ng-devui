@@ -28,8 +28,9 @@ const DEBOUNCE_TIME = 200;
 
 @Component({
   selector: 'd-cascader',
+  standalone: false,
   templateUrl: './cascader.component.html',
-  styleUrls: ['./cascader.component.scss'],
+  styleUrl: './cascader.component.scss',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -38,9 +39,8 @@ const DEBOUNCE_TIME = 200;
     },
     CascaderService,
   ],
-  preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  preserveWhitespaces: false
 })
 export class CascaderComponent implements OnInit, OnDestroy, OnChanges, ControlValueAccessor {
   @ViewChild('mainDropdown') mainDropdown: DropDownDirective;

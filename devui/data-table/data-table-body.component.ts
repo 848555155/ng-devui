@@ -5,11 +5,11 @@ import { DataTableColumnTmplComponent } from './tmpl/data-table-column-tmpl.comp
 
 @Component({
   selector: 'd-data-table-body, [dDataTableBody]',
-  templateUrl: './data-table-body.component.html',
-  styleUrls: ['./data-table-body.component.scss'],
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './data-table-body.component.html',
+  styleUrl: './data-table-body.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  preserveWhitespaces: false
 })
 export class DataTableBodyComponent implements OnChanges {
   @Input() checkable: boolean;

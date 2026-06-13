@@ -1,10 +1,10 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: 'd-demo-condition-change',
-  templateUrl: './condition-change.component.html',
-  styleUrls: ['./condition-change.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './condition-change.component.html',
+  styleUrl: './condition-change.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class CheckboxConditionChangeComponent {
   public checked = false;

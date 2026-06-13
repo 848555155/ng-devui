@@ -6,14 +6,14 @@ import { IconComponent } from './icon.component';
 import { IconModule } from './icon.module';
 
 @Component({
+  imports: [IconModule],
   template: ` <d-icon-group>
       <d-icon [icon]="icon" [operable]="operable" [disabled]="disabled" [rotate]="rotate" [color]="color"></d-icon>
     </d-icon-group>
     <ng-template #iconTemplate>
       <svg></svg>
     </ng-template>`,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  imports: [IconModule],
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestIconComponent {
   icon: string | TemplateRef<any> = '';

@@ -2,16 +2,14 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-mention-toggle',
+  standalone: false,
   templateUrl: './toggle.component.html',
-  styles: [
-    `
+  styles: `
       d-button {
         margin-right: 8px;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ToggleComponent {
   content = `before separator @C++ after separator`;

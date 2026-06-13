@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-link-design',
-  templateUrl: './link-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './link-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class LinkDesignComponent implements OnInit {
   imgSrc;

@@ -18,12 +18,12 @@ import { ModalContainerDirective } from './modal.directive';
 
 @Component({
   selector: 'd-modal',
-  templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.scss'],
-  animations: [backdropFadeInOut, wipeInOutAnimation],
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './modal.component.html',
+  styleUrl: './modal.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  animations: [backdropFadeInOut, wipeInOutAnimation],
+  preserveWhitespaces: false
 })
 export class ModalComponent implements OnInit, OnDestroy {
   @Input() id: string;
@@ -199,16 +199,16 @@ export class ModalComponent implements OnInit, OnDestroy {
   resolveTransformTranslate() {
     let autoOffsetYByPlacement;
     switch (this.placement) {
-      case 'top':
-        autoOffsetYByPlacement = '40px';
-        break;
-      case 'bottom':
-        autoOffsetYByPlacement = '-40px';
-        break;
-      case 'center':
-      default:
-        autoOffsetYByPlacement = 0;
-        break;
+    case 'top':
+      autoOffsetYByPlacement = '40px';
+      break;
+    case 'bottom':
+      autoOffsetYByPlacement = '-40px';
+      break;
+    case 'center':
+    default:
+      autoOffsetYByPlacement = 0;
+      break;
     }
     if (this.placement !== 'unset') {
       const offsetX = this.offsetX ? this.offsetX : '0';

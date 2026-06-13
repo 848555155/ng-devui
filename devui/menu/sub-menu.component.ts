@@ -25,11 +25,11 @@ import { SubMenuService } from './submenu.service';
 
 @Component({
   selector: 'd-sub-menu, [dSubMenu]',
+  standalone: false,
   templateUrl: './sub-menu.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [collapseMotion, scaleInOut],
   providers: [SubMenuService],
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [collapseMotion, scaleInOut]
 })
 export class SubMenuComponent implements OnInit, AfterContentInit {
   @ContentChildren(MenuItemDirective) menuItemDirectives: QueryList<MenuItemDirective>;

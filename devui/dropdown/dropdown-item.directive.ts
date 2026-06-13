@@ -2,8 +2,8 @@ import { Directive, ElementRef, HostBinding, Input, OnChanges, Renderer2, Simple
 
 @Directive({
   selector: '[dDropDownMenuItem]',
-  exportAs: 'd-dropdown-menu-item',
-  standalone: false
+  standalone: false,
+  exportAs: 'd-dropdown-menu-item'
 })
 export class DropDownMenuItemDirective implements OnChanges {
   @Input() disabled = false;

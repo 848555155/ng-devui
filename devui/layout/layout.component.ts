@@ -3,11 +3,11 @@ import { AsideComponent } from './elements/aside.component';
 
 @Component({
   selector: 'd-layout',
-  template: '<ng-content></ng-content>',
-  styleUrls: ['./layout.component.scss'],
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  template: '<ng-content></ng-content>',
+  styleUrl: './layout.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  preserveWhitespaces: false
 })
 export class LayoutComponent {
   @ContentChildren(AsideComponent) listOfSideBarComponent: QueryList<AsideComponent>;

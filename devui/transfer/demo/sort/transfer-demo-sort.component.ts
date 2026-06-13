@@ -3,9 +3,9 @@ import { TransferDataFormat } from 'ng-devui/transfer';
 
 @Component({
   selector: 'd-transfer-demo-sort',
-  templateUrl: './transfer-demo-sort.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './transfer-demo-sort.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TransferDemoSortComponent {
   disabled = false;

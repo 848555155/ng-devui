@@ -47,7 +47,6 @@ import apiEn from '../doc/api-en.md?raw';
       }
     ])
   ],
-  exports: [SplitterDemoComponent],
   declarations: [
     SplitterDemoComponent,
     SplitterDesignComponent,
@@ -57,6 +56,7 @@ import apiEn from '../doc/api-en.md?raw';
     SplitterDemoDirectionComponent,
     SplitterDemoMenuFoldComponent
   ],
+  exports: [SplitterDemoComponent]
 })
 export class SplitterDemoModule {
 }

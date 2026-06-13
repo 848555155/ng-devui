@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-dropdown-design',
-  templateUrl: './dropdown-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './dropdown-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DropdownDesignComponent implements OnInit {
   imgSrc;

@@ -12,17 +12,17 @@ import { NgTemplateOutlet } from '@angular/common';
   selector: 'd-panel',
   imports: [NgTemplateOutlet],
   templateUrl: './panel.component.html',
-  styleUrls: ['./panel.component.scss'],
-  animations: [trigger('noAnimation', [transition(':enter', [])]), expandCollapseForDomDestroy],
+  styleUrl: './panel.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [trigger('noAnimation', [transition(':enter', [])]), expandCollapseForDomDestroy]
 })
 export class PanelComponent {
-  type = input<PanelType>('default');
-  cssClass = input<string>();
-  isCollapsed = model<boolean>();
-  hasLeftPadding = input(true, { transform: booleanAttribute });
+  readonly type = input<PanelType>('default');
+  readonly cssClass = input<string>();
+  readonly isCollapsed = model<boolean>();
+  readonly hasLeftPadding = input(true, { transform: booleanAttribute });
   @Input() @WithConfig() showAnimation = true;
-  beforeToggle = input(() => Promise.resolve(true), {
+  readonly beforeToggle = input(() => Promise.resolve(true), {
     transform: (fuc: (collapse: boolean) => boolean | Promise<boolean> | Observable<boolean>) => {
       if (!fuc){
         return () => Promise.resolve(true);
@@ -40,9 +40,9 @@ export class PanelComponent {
     },
   });
   toggle = output<boolean>();
-  panelHeader = contentChild(PanelHeaderComponent);
-  panelFooter = contentChild(PanelFooterComponent);
-  panelBody = contentChild(PanelBodyComponent);
+  readonly panelHeader = contentChild(PanelHeaderComponent);
+  readonly panelFooter = contentChild(PanelFooterComponent);
+  readonly panelBody = contentChild(PanelBodyComponent);
   private devConfigService = inject(DevConfigService);
   toggleBody() {
     this.canToggle().then((val) => {

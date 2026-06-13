@@ -4,9 +4,9 @@ import { originSource, SourceType } from '../mock-data';
 
 @Component({
   selector: 'd-fix-header-virtual-scroll',
+  standalone: false,
   templateUrl: './fix-height-virtual-scroll.component.html',
-  styles: [
-    `
+  styles: `
       .splitter-wrapper {
         height: 600px;
         padding: 10px;
@@ -15,9 +15,7 @@ import { originSource, SourceType } from '../mock-data';
         padding: 5px 0;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class FixHeightVirtualScrollComponent implements OnInit {
   @ViewChild('dataTable') dataTable: DataTableComponent;

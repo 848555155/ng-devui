@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-auto-complete-demo-basic',
-  templateUrl: './auto-complete-demo-basic.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './auto-complete-demo-basic.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class AutoDemoBasicComponent {
   selectItem0: any;

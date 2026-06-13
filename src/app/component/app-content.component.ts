@@ -9,10 +9,10 @@ import { resolveRoutesConfig } from './resolve-routes-config.service';
 import { newScopeList, sunsetScopeList } from './scope-list';
 @Component({
   selector: 'd-app-content',
-  templateUrl: './app-content.component.html',
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './app-content.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  encapsulation: ViewEncapsulation.None
 })
 export class AppContentComponent implements OnDestroy, OnInit {
   routes: Routes = [];

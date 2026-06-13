@@ -6,15 +6,15 @@ import { Subscription, debounceTime, distinctUntilChanged, fromEvent } from 'rxj
 })
 export class LazyLoadDirective implements OnDestroy {
   // 启用懒加载，默认不启用
-  enableLazyLoad = input(false, { transform: booleanAttribute });
+  readonly enableLazyLoad = input(false, { transform: booleanAttribute });
   // 懒加载模式，默认列表模式
-  contentMode = input<'img' | 'list'>('list');
+  readonly contentMode = input<'img' | 'list'>('list');
   // 滚动监听的目标，默认是宿主，
-  target = input<HTMLElement | Window>();
+  readonly target = input<HTMLElement | Window>();
   // 图片懒加载模式的图片地址
-  imgLoadSrc = input<string>();
+  readonly imgLoadSrc = input<string>();
   // 懒加载滚动方向
-  direction = input<'vertical' | 'horizontal'>('vertical');
+  readonly direction = input<'vertical' | 'horizontal'>('vertical');
   // 加载更多
   loadMore = output<any>();
 

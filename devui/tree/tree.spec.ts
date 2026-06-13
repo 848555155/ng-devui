@@ -8,6 +8,7 @@ import { TreeComponent } from './tree.component';
 import { TreeModule } from './tree.module';
 
 @Component({
+  standalone: false,
   template: `
     <d-tree
       #basicTree
@@ -20,8 +21,7 @@ import { TreeModule } from './tree.module';
     >
     </d-tree>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestTreeComponent {
   @ViewChild('basicTree') basicTree: TreeComponent;

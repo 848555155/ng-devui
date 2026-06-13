@@ -23,11 +23,11 @@ import { fromEvent, Subject, Subscription, takeUntil } from 'rxjs';
   selector: '[dClipboard]',
 })
 export class ClipboardDirective implements OnDestroy {
-  devuiTargetElm = input.required<HTMLInputElement | HTMLTextAreaElement | undefined | ''>({ alias: 'dClipboard' });
-  content = input<string>();
-  position = input<PositionType>('top');
-  sticky = input(false, { transform: booleanAttribute });
-  tipContent = model<string | HTMLElement | TemplateRef<any>>();
+  readonly devuiTargetElm = input.required<HTMLInputElement | HTMLTextAreaElement | undefined | ''>({ alias: 'dClipboard' });
+  readonly content = input<string>();
+  readonly position = input<PositionType>('top');
+  readonly sticky = input(false, { transform: booleanAttribute });
+  readonly tipContent = model<string | HTMLElement | TemplateRef<any>>();
   copyResultEvent = output<any>();
   popoverComponentRef: ComponentRef<PopoverComponent>;
 

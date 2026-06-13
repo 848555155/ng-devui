@@ -6,7 +6,7 @@ import { LoadingBackdropComponent, LoadingComponent, LoadingModule, LoadingServi
   selector: 'd-full-screen',
   imports: [ButtonModule, LoadingModule],
   templateUrl: './full-screen.component.html',
-  styleUrls: ['./full-screen.component.scss'],
+  styleUrl: './full-screen.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FullScreenComponent {
@@ -14,9 +14,9 @@ export class FullScreenComponent {
     loadingInstance: LoadingComponent;
     backdropInstance: LoadingBackdropComponent;
   };
-  isShow = signal(false);
+  readonly isShow = signal(false);
   private loadingService = inject(LoadingService);
-  dm = viewChild<ElementRef<HTMLDivElement>>('me');
+  readonly dm = viewChild<ElementRef<HTMLDivElement>>('me');
 
   openFullScreen() {
     /*

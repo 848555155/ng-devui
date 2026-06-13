@@ -5,7 +5,7 @@ import { CarouselComponent, CarouselItemComponent } from 'ng-devui/carousel';
   selector: 'd-carousel-demo-basic',
   imports: [CarouselComponent, CarouselItemComponent],
   templateUrl: './carousel-demo-basic.component.html',
-  styleUrls: ['../demo-common.scss'],
+  styleUrl: '../demo-common.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CarouselDemoBasicComponent {

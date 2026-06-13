@@ -45,6 +45,7 @@ class TestFunctions {
 }
 
 @Component({
+  standalone: false,
   template: `
     <div class="place-holder" #placeHolder><div class="place-holder-sub"></div></div>
     <div class="devui-guide" dStepsGuide [pageName]="'basic'" [steps]="steps" [stepIndex]="0" (operateChange)="operateChange($event)"></div>
@@ -116,8 +117,7 @@ class TestFunctions {
       (operateChange)="operateChange($event)"
     ></div>
   `,
-  styles: [
-    `
+  styles: `
       .devui-guide {
         width: 40px;
         height: 20px;
@@ -133,9 +133,7 @@ class TestFunctions {
         border: 1px solid #000;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestStepsGuideComponent implements OnInit {
   steps = [

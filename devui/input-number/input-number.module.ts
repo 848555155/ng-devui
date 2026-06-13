@@ -8,9 +8,9 @@ import { InputNumberComponent } from './input-number.component';
     CommonModule,
     FormsModule
   ],
-  exports: [InputNumberComponent],
   declarations: [InputNumberComponent],
   providers: [],
+  exports: [InputNumberComponent]
 })
 
 export class InputNumberModule { }

@@ -4,7 +4,7 @@ import { AvatarComponent } from 'ng-devui/avatar';
 @Component({
   selector: 'd-basic',
   imports: [AvatarComponent],
-  styleUrls: ['./basic.component.css'],
   templateUrl: './basic.component.html',
+  styleUrl: './basic.component.css'
 })
 export class BasicComponent {}

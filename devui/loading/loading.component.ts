@@ -84,21 +84,21 @@ import { NgTemplateOutlet } from '@angular/common';
       </div>
     </ng-template>
   </div>`,
-  styleUrls: ['./loading.component.scss'],
-  preserveWhitespaces: false,
+  styleUrl: './loading.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false
 })
 export class LoadingComponent {
-  loadingTemplateRef = input<TemplateRef<any>>();
-  message = input<string>();
-  top = input<string>();
-  left = input<string>();
-  customPosition = input(false, { transform: booleanAttribute });
-  target = input<Element>();
-  zIndex = input(undefined, { transform: numberAttribute });
-  loadingStyle = input<LoadingStyle>('default');
+  readonly loadingTemplateRef = input<TemplateRef<any>>();
+  readonly message = input<string>();
+  readonly top = input<string>();
+  readonly left = input<string>();
+  readonly customPosition = input(false, { transform: booleanAttribute });
+  readonly target = input<Element>();
+  readonly zIndex = input(undefined, { transform: numberAttribute });
+  readonly loadingStyle = input<LoadingStyle>('default');
   spinners = new Array(12);
-  targetName = computed(() => this.target()?.nodeName);
+  readonly targetName = computed(() => this.target()?.nodeName);
   // Will overwrite this method in modal service
   close() {}
 }

@@ -4,9 +4,9 @@ import { originSource, SourceType } from '../mock-data';
 
 @Component({
   selector: 'd-expand-row',
+  standalone: false,
   templateUrl: './expand-row.component.html',
-  styles: [
-    `
+  styles: `
       .input-block {
         width: 200px;
         display: inline-block;
@@ -24,9 +24,7 @@ import { originSource, SourceType } from '../mock-data';
         margin-right: 5px;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ExpandRowComponent implements OnInit, AfterContentInit {
   @ViewChild('quickAddRowTip') quickAddRowTip: ElementRef;

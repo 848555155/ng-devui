@@ -41,7 +41,7 @@ export type autoCompleteSceneType = '' | 'select' | 'select-extend' | 'suggest';
 
 @Directive({
   selector: '[dAutoComplete]',
-  exportAs: 'autoComplete',
+  standalone: false,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -49,7 +49,7 @@ export type autoCompleteSceneType = '' | 'select' | 'select-extend' | 'suggest';
       multi: true,
     },
   ],
-  standalone: false
+  exportAs: 'autoComplete'
 })
 export class AutoCompleteDirective implements OnInit, OnDestroy, OnChanges, ControlValueAccessor {
   @HostBinding('attr.autocomplete') autocomplete = 'off';

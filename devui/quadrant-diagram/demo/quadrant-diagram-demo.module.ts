@@ -41,14 +41,14 @@ import apiEn from '../doc/api-en.md?raw';
       }
     ])
   ],
-  exports: [
-    QuadrantDiagramDemoComponent
-  ],
   declarations: [
     BasicComponent,
     QuadrantDiagramDemoComponent,
     QuadrantDiagramDesignComponent,
     ConfigComponent
+  ],
+  exports: [
+    QuadrantDiagramDemoComponent
   ]
 })
 export class QuadrantDiagramDemoModule { }

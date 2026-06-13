@@ -2,10 +2,10 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-demo-transfer-virtual-scroll',
-  templateUrl: './transfer-virtual-scroll.component.html',
-  styleUrls: ['./transfer-virtual-scroll.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './transfer-virtual-scroll.component.html',
+  styleUrl: './transfer-virtual-scroll.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TransferVirtualScrollComponent implements OnInit {
   disabled = false;

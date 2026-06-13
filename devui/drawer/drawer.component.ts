@@ -33,12 +33,12 @@ export class DrawerContentDirective {
 
 @Component({
   selector: 'd-drawer',
-  templateUrl: './drawer.component.html',
-  styleUrls: ['./drawer.component.scss'],
-  animations: [backdropFadeInOut, flyInOut],
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './drawer.component.html',
+  styleUrl: './drawer.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  animations: [backdropFadeInOut, flyInOut],
+  preserveWhitespaces: false
 })
 export class DrawerComponent implements OnInit, OnDestroy {
   animateState = 'void';

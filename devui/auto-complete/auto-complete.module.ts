@@ -11,9 +11,8 @@ import { AutoCompleteDirective } from './auto-complete.directive';
 
 @NgModule({
   imports: [CommonModule, FormsModule, OverlayModule, LazyLoadModule, LoadingModule, PositioningModule, HighlightModule],
-  exports: [AutoCompleteDirective, AutoCompletePopupComponent],
   declarations: [AutoCompleteDirective, AutoCompletePopupComponent],
   providers: [AutoCompleteConfig],
-
+  exports: [AutoCompleteDirective, AutoCompletePopupComponent]
 })
 export class AutoCompleteModule { }

@@ -1,9 +1,9 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 @Component({
-  templateUrl: './modal-form.component.html',
-  styleUrls: ['./modal-form.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './modal-form.component.html',
+  styleUrl: './modal-form.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ModalFormComponent {
   constructor() {}

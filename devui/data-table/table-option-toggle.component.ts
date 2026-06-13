@@ -22,10 +22,10 @@ export interface TableStyleData {
 
 @Component({
   selector: 'd-table-option-toggle',
+  standalone: false,
   templateUrl: './table-option-toggle.component.html',
-  styleUrls: ['./table-option-toggle.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false
+  styleUrl: './table-option-toggle.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TableOptionToggleComponent implements OnInit, OnDestroy {
   @Input() set columnsData(value: Array<ColData>) {

@@ -3,10 +3,10 @@ import { TimeAxisData } from 'ng-devui/time-axis';
 
 @Component({
   selector: 'd-demo-time-axis-all-states',
-  templateUrl: './time-axis-all-states.component.html',
-  styleUrls: ['./time-axis-all-states.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './time-axis-all-states.component.html',
+  styleUrl: './time-axis-all-states.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TimeAxisAllStatesComponent implements OnInit {
   timeAxisDataLeft: TimeAxisData;

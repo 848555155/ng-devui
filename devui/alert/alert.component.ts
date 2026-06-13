@@ -23,29 +23,29 @@ import { AlertType } from './alert.types';
   selector: 'd-alert',
   imports: [NgTemplateOutlet],
   templateUrl: './alert.component.html',
-  styleUrls: ['./alert.component.scss'],
+  styleUrl: './alert.component.scss',
   preserveWhitespaces: false,
 })
 export class AlertComponent {
-  type = input<AlertType>('info');
-  cssClass = input<string>();
-  closeable = input(true, { transform: booleanAttribute });
-  showIcon = input(true, { transform: booleanAttribute });
-  autoplay = input(false, { transform: booleanAttribute });
-  autoplaySpeed = input(3000, { transform: numberAttribute });
-  transitionSpeed = input(500, { transform: numberAttribute });
-  operationTemplate = input<TemplateRef<{ close: () => void }>>();
-  dismissTime = input<number>();
+  readonly type = input<AlertType>('info');
+  readonly cssClass = input<string>();
+  readonly closeable = input(true, { transform: booleanAttribute });
+  readonly showIcon = input(true, { transform: booleanAttribute });
+  readonly autoplay = input(false, { transform: booleanAttribute });
+  readonly autoplaySpeed = input(3000, { transform: numberAttribute });
+  readonly transitionSpeed = input(500, { transform: numberAttribute });
+  readonly operationTemplate = input<TemplateRef<{ close: () => void }>>();
+  readonly dismissTime = input<number>();
   closeEvent = output<AlertComponent>();
-  box = viewChild<ElementRef>('carouselContainer');
-  carouselItems = contentChildren(AlertCarouselItemComponent);
-  hide = signal(false);
-  autoplayHeight = signal('');
-  currentIndex = signal(1);
+  readonly box = viewChild<ElementRef>('carouselContainer');
+  readonly carouselItems = contentChildren(AlertCarouselItemComponent);
+  readonly hide = signal(false);
+  readonly autoplayHeight = signal('');
+  readonly currentIndex = signal(1);
   readonly SINGLE_LINE_HEIGHT = '24px';
 
-  carouselNum = computed(() => this.carouselItems().length);
-  carouselTop = computed(() => `${-(this.currentIndex() - 1) * 100}%`);
+  readonly carouselNum = computed(() => this.carouselItems().length);
+  readonly carouselTop = computed(() => `${-(this.currentIndex() - 1) * 100}%`);
 
   private el = inject(ElementRef);
   stopTransition$ = new BehaviorSubject(false);

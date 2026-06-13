@@ -68,7 +68,7 @@ export class DragDropService {
   }
   newSubscription() {
     this.subscription.unsubscribe();
-    // eslint-disable-next-line no-return-assign
+
     return (this.subscription = new Subscription());
   }
 

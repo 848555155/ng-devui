@@ -2,11 +2,11 @@ import { Component, HostListener, Input, TemplateRef, ChangeDetectionStrategy } 
 
 @Component({
   selector: 'd-datepicker-panel',
-  templateUrl: './datepicker-panel.component.html',
-  styleUrls: ['./datepicker-panel.component.scss'],
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './datepicker-panel.component.html',
+  styleUrl: './datepicker-panel.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  preserveWhitespaces: false
 })
 export class DatepickerPanelComponent {
   @Input() isRangeType: boolean;

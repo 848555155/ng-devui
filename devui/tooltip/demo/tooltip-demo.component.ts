@@ -10,9 +10,9 @@ import delayTs from './delay/delay.component.ts.txt?raw';
 import delayCss from './delay/delay.component.css?raw';
 
 @Component({
-  templateUrl: './tooltip-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './tooltip-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TooltipDemoComponent implements OnInit, OnDestroy {
   message = 'I have animation!';

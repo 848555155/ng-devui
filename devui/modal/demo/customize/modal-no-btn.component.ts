@@ -2,10 +2,10 @@ import { Component, ElementRef, Input, OnInit, ChangeDetectionStrategy } from '@
 
 @Component({
   selector: 'd-modal-no-btn',
-  templateUrl: './modal-no-btn.component.html',
-  styleUrls: ['./modal-no-btn.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './modal-no-btn.component.html',
+  styleUrl: './modal-no-btn.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ModalNoBtnComponent implements OnInit {
   constructor(private elr: ElementRef) {}

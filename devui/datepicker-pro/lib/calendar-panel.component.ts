@@ -15,11 +15,11 @@ const HOUR_DURATION = 60 * 60 * 1000;
 
 @Component({
   selector: 'd-calendar-panel',
+  standalone: false,
   templateUrl: './calendar-panel.component.html',
-  styleUrls: ['./calendar-panel.component.scss'],
-  preserveWhitespaces: false,
+  styleUrl: './calendar-panel.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false
+  preserveWhitespaces: false
 })
 export class CalendarPanelComponent implements OnInit, OnDestroy {
   @ViewChild('scrollBody') scrollBodyCmp: CdkVirtualScrollViewport;

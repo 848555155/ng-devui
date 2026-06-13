@@ -5,13 +5,11 @@ import { CarouselComponent, CarouselItemComponent } from 'ng-devui/carousel';
   selector: 'd-carousel-demo-autoplay',
   imports: [CarouselComponent, CarouselItemComponent],
   templateUrl: './carousel-demo-autoplay.component.html',
-  styles: [
-    `
+  styles: `
       d-carousel-item {
         text-align: center;
       }
     `,
-  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CarouselDemoAutoPlayComponent {

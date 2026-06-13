@@ -26,7 +26,7 @@ interface ExtraSetConfig {
 @Component({
   selector: 'd-popper-component',
   templateUrl: './popper.component.html',
-  styleUrls: [`./popper.component.scss`],
+  styleUrl: `./popper.component.scss`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PopperComponent implements AfterViewInit, OnDestroy {
@@ -51,11 +51,11 @@ export class PopperComponent implements AfterViewInit, OnDestroy {
       this.setBlurListener();
     });
   }
-  fluidPopper = input(true, { transform: booleanAttribute });
-  poppoverAppendDirection = input('bottom');
-  appendTo = input('body');
-  extraConfig = input<ExtraSetConfig>();
-  showAnimation = input(true, { transform: booleanAttribute });
+  readonly fluidPopper = input(true, { transform: booleanAttribute });
+  readonly poppoverAppendDirection = input('bottom');
+  readonly appendTo = input('body');
+  readonly extraConfig = input<ExtraSetConfig>();
+  readonly showAnimation = input(true, { transform: booleanAttribute });
   protected popper = null;
   protected _isOpen: any = false;
   protected animate: boolean;
@@ -71,8 +71,8 @@ export class PopperComponent implements AfterViewInit, OnDestroy {
   private ngZone = inject(NgZone);
   document = inject(DOCUMENT);
   @Output() openChange = new EventEmitter<any>();
-  popperActivator = viewChild.required<ElementRef<HTMLDivElement>>('popperActivator');
-  popperContainer = viewChild.required<ElementRef<HTMLDivElement>>('popperContainer');
+  readonly popperActivator = viewChild.required<ElementRef<HTMLDivElement>>('popperActivator');
+  readonly popperContainer = viewChild.required<ElementRef<HTMLDivElement>>('popperContainer');
 
   static nextTick(fn) {
     // Force to run fn after current data changed.

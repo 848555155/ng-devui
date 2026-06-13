@@ -7,11 +7,11 @@ import { ToggleModule } from 'ng-devui/toggle';
   selector: 'd-basic',
   imports: [AccordionModule, ToggleModule, FormsModule],
   templateUrl: './basic.component.html',
-  styleUrls: ['./basic.component.css'],
+  styleUrl: './basic.component.css',
 })
 export class BasicComponent {
-  restrictOneOpen = signal(false);
-  accordionTypeEmbed = signal(false);
+  readonly restrictOneOpen = signal(false);
+  readonly accordionTypeEmbed = signal(false);
   menu = [
     {
       title: 'Content 1',

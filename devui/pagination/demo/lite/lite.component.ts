@@ -2,10 +2,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-lite',
-  templateUrl: './lite.component.html',
-  styleUrls: ['./lite.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './lite.component.html',
+  styleUrl: './lite.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class LiteComponent {
   pager1 = {

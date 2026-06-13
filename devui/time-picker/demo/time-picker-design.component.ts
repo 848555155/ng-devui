@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-time-picker-design',
-  templateUrl: './time-picker-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './time-picker-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TimePickerDesignComponent implements OnInit {
   imgSrc;

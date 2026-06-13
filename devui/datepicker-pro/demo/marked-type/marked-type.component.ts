@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-marked-type-demo',
-  templateUrl: './marked-type.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './marked-type.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class MarkedTypeDemoComponent {
   value = new Date('2021/11/01');

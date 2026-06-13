@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-datepicker-pro-design',
-  templateUrl: './datepicker-pro-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './datepicker-pro-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DatepickerProDesignComponent implements OnInit {
   imgSrc;

@@ -2,10 +2,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-slider-disabled',
-  templateUrl: './slider-disabled.component.html',
-  styleUrls: ['./slider-disabled.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './slider-disabled.component.html',
+  styleUrl: './slider-disabled.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class SliderDisabledComponent {
   inputValue = 2;

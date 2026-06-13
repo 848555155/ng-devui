@@ -5,8 +5,9 @@ import { TextareaDirective } from './textarea.directive';
 
 @Component({
   selector: 'd-textarea-max-length',
+  standalone: false,
   templateUrl: './textarea-max-length.component.html',
-  styleUrls: ['./textarea-max-length.component.scss'],
+  styleUrl: './textarea-max-length.component.scss',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -14,9 +15,8 @@ import { TextareaDirective } from './textarea.directive';
       multi: true,
     },
   ],
-  preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  preserveWhitespaces: false
 })
 export class TextareaMaxLengthComponent implements ControlValueAccessor, AfterViewInit {
   @ViewChild(TextareaDirective) textareaInstance: TextareaDirective;

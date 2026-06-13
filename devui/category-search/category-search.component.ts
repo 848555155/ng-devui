@@ -46,10 +46,10 @@ import { DefaultTemplateDirective } from './default-template.directive';
 
 @Component({
   selector: 'd-category-search',
-  templateUrl: './category-search.component.html',
-  styleUrls: ['./category-search.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './category-search.component.html',
+  styleUrl: './category-search.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class CategorySearchComponent implements OnChanges, OnDestroy, AfterViewInit, AfterContentInit {
   static ID_SEED = 0;
@@ -101,7 +101,7 @@ export class CategorySearchComponent implements OnChanges, OnDestroy, AfterViewI
   @Output() selectedTagsChange = new EventEmitter<SelectedTagsEvent>();
   @Output() createFilterEvent = new EventEmitter<CreateFilterEvent>();
   @Output() clearAllEvent = new EventEmitter<MouseEvent>();
-  @Output() searchKeyChange = new EventEmitter<String>();
+  @Output() searchKeyChange = new EventEmitter<string>();
   @ViewChild('InputEle', { static: true }) inputEle: ElementRef;
   @ViewChild('ScrollBarContainer', { static: true }) scrollBarContainer: ElementRef;
   @ViewChild('PrimeContainer', { static: true }) primeContainer: ElementRef;
@@ -311,11 +311,11 @@ export class CategorySearchComponent implements OnChanges, OnDestroy, AfterViewI
     const customConfig =
       typeof this.showSearchCategory === 'boolean'
         ? {
-            keyword: this.showSearchCategory,
-            field: this.showSearchCategory,
-            category: this.showSearchCategory,
-            noCategoriesAvailableTip: this.showSearchCategory,
-          }
+          keyword: this.showSearchCategory,
+          field: this.showSearchCategory,
+          category: this.showSearchCategory,
+          noCategoriesAvailableTip: this.showSearchCategory,
+        }
         : this.showSearchCategory;
     this.showSearchConfig = { ...this.showSearchConfig, ...customConfig };
   }
@@ -994,43 +994,43 @@ export class CategorySearchComponent implements OnChanges, OnDestroy, AfterViewI
 
   handleAccordingType(tag: ICategorySearchTagItem, dropdown: DropDownDirective, isCurrentSelectTag: boolean) {
     switch (tag.type) {
-      case 'keyword':
-        this.searchKey = this.searchKeyCache;
-        this.searchKeyChangeEvent(this.searchKey);
-        this.inputEle.nativeElement.focus();
-        dropdown.isOpen = false;
-        break;
-      case 'treeSelect':
-        // 新选分类时使用原始tree数据，已选分类时使用空数据，待渲染后用存储数据覆盖
-        if (!isCurrentSelectTag) {
-          setTimeout(() => {
-            // 下拉展开将存储的数据合并覆盖当前树实例，刷新当前树显示。
-            merge(this.treeInstance.treeFactory, this.treeFactories[tag.field]);
-            this.treeSearch('');
-          });
-        }
+    case 'keyword':
+      this.searchKey = this.searchKeyCache;
+      this.searchKeyChangeEvent(this.searchKey);
+      this.inputEle.nativeElement.focus();
+      dropdown.isOpen = false;
+      break;
+    case 'treeSelect':
+      // 新选分类时使用原始tree数据，已选分类时使用空数据，待渲染后用存储数据覆盖
+      if (!isCurrentSelectTag) {
         setTimeout(() => {
-          const dom = tag.searchable && dropdown.menuEl.nativeElement.querySelector('.devui-search-container .devui-search>input');
-          if (dom) {
-            dom.focus();
-          }
-        }, this.DROPDOWN_ANIMATION_TIMEOUT);
-        break;
-      case 'textInput':
-        setTimeout(() => {
-          const inputDom: HTMLElement = this.document.querySelector('.devui-category-search-type-text-input');
-          if (inputDom) {
-            inputDom.focus();
-          }
-        }, this.DROPDOWN_ANIMATION_TIMEOUT);
-        break;
-      case 'checkbox':
-      case 'label':
-        if (tag.showSelectAll) {
-          this.isSelectAll(tag, false);
+          // 下拉展开将存储的数据合并覆盖当前树实例，刷新当前树显示。
+          merge(this.treeInstance.treeFactory, this.treeFactories[tag.field]);
+          this.treeSearch('');
+        });
+      }
+      setTimeout(() => {
+        const dom = tag.searchable && dropdown.menuEl.nativeElement.querySelector('.devui-search-container .devui-search>input');
+        if (dom) {
+          dom.focus();
         }
-        break;
-      default:
+      }, this.DROPDOWN_ANIMATION_TIMEOUT);
+      break;
+    case 'textInput':
+      setTimeout(() => {
+        const inputDom: HTMLElement = this.document.querySelector('.devui-category-search-type-text-input');
+        if (inputDom) {
+          inputDom.focus();
+        }
+      }, this.DROPDOWN_ANIMATION_TIMEOUT);
+      break;
+    case 'checkbox':
+    case 'label':
+      if (tag.showSelectAll) {
+        this.isSelectAll(tag, false);
+      }
+      break;
+    default:
     }
   }
 

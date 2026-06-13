@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-progress-design',
-  templateUrl: './progress-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './progress-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ProgressDesignComponent implements OnInit {
   imgSrc;

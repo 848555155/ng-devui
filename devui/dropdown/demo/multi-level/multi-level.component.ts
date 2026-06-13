@@ -3,10 +3,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-dropdown-demo-multi-level',
-  templateUrl: './multi-level.component.html',
-  styleUrls: ['./multi-level.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './multi-level.component.html',
+  styleUrl: './multi-level.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DropDownDemoMultiLevelComponent {
   subMenuDirections: ConnectedPosition[] = [

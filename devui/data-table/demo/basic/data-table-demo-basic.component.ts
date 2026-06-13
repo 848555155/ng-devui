@@ -4,9 +4,9 @@ import { originSource, SourceType } from '../mock-data';
 
 @Component({
   selector: 'd-basic',
-  templateUrl: './data-table-demo-basic.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './data-table-demo-basic.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DatatableDemoBasicComponent implements OnInit {
   basicDataSource: Array<SourceType> = JSON.parse(JSON.stringify(originSource.slice(0, 6)));

@@ -6,9 +6,9 @@ import { IconModule } from 'ng-devui/icon';
   selector: 'd-icon-group-demo',
   imports: [IconModule, DropDownModule],
   templateUrl: './icon-group.component.html',
-  styleUrls: ['./icon-group.component.scss'],
+  styleUrl: './icon-group.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IconGroupDemoComponent {
-  watched = signal(true);
+  readonly watched = signal(true);
 }

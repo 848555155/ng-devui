@@ -4,10 +4,10 @@ import { SourceType, originSource } from '../mock-data';
 
 @Component({
   selector: 'd-interaction',
-  templateUrl: './interaction.component.html',
-  styleUrls: ['./interaction.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './interaction.component.html',
+  styleUrl: './interaction.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class InteractionComponent implements OnInit {
   @ViewChild(DataTableComponent, { static: true }) datatable: DataTableComponent;

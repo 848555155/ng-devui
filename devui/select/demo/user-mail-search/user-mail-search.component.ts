@@ -3,9 +3,9 @@ import { of } from 'rxjs';
 
 @Component({
   selector: 'd-user-mail-search',
-  templateUrl: './user-mail-search.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './user-mail-search.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class UserMailSearchComponent {
   currentOption: any;

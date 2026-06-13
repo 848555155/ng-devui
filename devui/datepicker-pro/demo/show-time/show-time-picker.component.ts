@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-show-time-datepicker-pro',
-  templateUrl: './show-time-picker.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './show-time-picker.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ShowTimeDatepickerProComponent {
   value = new Date();

@@ -4,9 +4,9 @@ import { originSource, SourceType } from '../mock-data';
 
 @Component({
   selector: 'd-header-grouping',
-  templateUrl: './header-grouping.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './header-grouping.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class HeaderGroupingComponent implements OnInit {
   basicDataSource: Array<SourceType> = JSON.parse(JSON.stringify(originSource.slice(0, 6)));

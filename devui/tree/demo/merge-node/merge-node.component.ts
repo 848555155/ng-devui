@@ -3,9 +3,9 @@ import { TreeComponent } from 'ng-devui/tree';
 
 @Component({
   selector: 'd-merge-node',
-  templateUrl: './merge-node.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './merge-node.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class MergeNodeComponent implements AfterViewInit {
   @ViewChild('basicTree') basicTree: TreeComponent;

@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { DomHelper } from '../utils/testing/dom-helper';
 
 @Component({
+  standalone: false,
   template: `
     <div #ganttContainer class="gantt-container">
       <div class="header" [style.width]="ganttScaleWidth">
@@ -44,8 +45,7 @@ import { DomHelper } from '../utils/testing/dom-helper';
       </div>
     </ng-template>
   `,
-  styles: [
-    `
+  styles: `
       .gantt-container {
         padding: 0 30px 0 30px;
         overflow: scroll;
@@ -75,9 +75,7 @@ import { DomHelper } from '../utils/testing/dom-helper';
         line-height: 24px;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestGanttComponent implements OnInit, OnDestroy {
   @ViewChild('ganttContainer') ganttContainer: ElementRef;

@@ -3,9 +3,9 @@ import { TagsInputComponent } from 'ng-devui/tags-input';
 
 @Component({
   selector: 'd-tags-input-customize',
-  templateUrl: './customize.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './customize.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TagsInputDemoCustomizeComponent implements OnInit {
   @ViewChild(TagsInputComponent) tagInputItem: TagsInputComponent;

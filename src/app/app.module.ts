@@ -14,8 +14,6 @@ import { DevuiCommonsModule } from '../../devui-commons/src/public-api';
 import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [AppComponent],
-  bootstrap: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -41,6 +39,7 @@ import { AppComponent } from './app.component';
       {}
     )
   ],
+  declarations: [AppComponent],
   providers: [
     provideHttpClient(withXhr(), withInterceptorsFromDi()),
     provideTranslateService({
@@ -55,5 +54,6 @@ import { AppComponent } from './app.component';
     },
     I18nService,
   ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

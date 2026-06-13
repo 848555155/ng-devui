@@ -6,9 +6,9 @@ import { images } from '../image-mock';
 
 @Component({
   selector: 'd-image-preview-custom-open',
-  templateUrl: './custom-open.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './custom-open.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class CustomOpenComponent {
   customSub = new Subject<HTMLElement>();

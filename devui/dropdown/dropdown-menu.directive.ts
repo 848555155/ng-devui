@@ -9,8 +9,8 @@ import { DropDownDirective } from './dropdown.directive';
 
 @Directive({
   selector: '[dDropDownMenu]',
-  exportAs: 'd-dropdown-menu',
-  standalone: false
+  standalone: false,
+  exportAs: 'd-dropdown-menu'
 })
 export class DropDownMenuDirective implements OnInit, OnDestroy {
   player: AnimationPlayer;

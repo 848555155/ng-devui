@@ -5,13 +5,13 @@ import { delay, map } from 'rxjs/operators';
 
 @Component({
   selector: 'd-form-demo-user-register',
-  templateUrl: './user-register.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './user-register.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class UserRegisterComponent {
   layoutDirection: FormLayout = FormLayout.Vertical;
-  msgs: Array<Object> = [];
+  msgs: Array<object> = [];
 
   existUsernames = ['123', '123456', 'DevUI'];
 

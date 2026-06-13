@@ -7,19 +7,17 @@ import { DrawerModule, DrawerService, IDrawerOpenResult, IDrawerOptions } from '
 import { DrawerContentComponent } from './demo/drawerContent/drawer-content.component';
 @Component({
   selector: 'd-basic',
+  standalone: false,
   template: `
     <div class="placeHolder"></div>
     <d-button>close</d-button>
   `,
-  styles: [
-    `
+  styles: `
       .placeHolder {
         height: 2000px;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestDrawerComponent {
   onClose = jasmine.createSpy('onClose');

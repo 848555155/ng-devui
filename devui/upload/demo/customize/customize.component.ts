@@ -3,10 +3,10 @@ import { IFileOptions, IUploadOptions } from 'ng-devui/upload';
 
 @Component({
   selector: 'd-customize',
-  templateUrl: './customize.component.html',
-  styleUrls: ['./customize.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './customize.component.html',
+  styleUrl: './customize.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class CustomizeComponent {
   additionalParameter2 = {
@@ -23,7 +23,7 @@ export class CustomizeComponent {
     multiple: true,
     accept: '.xls,.xlsx,.pages,.mp3,.png',
   };
-  uploadedFiles2: Array<Object> = [];
+  uploadedFiles2: Array<object> = [];
   UPLOADED: string;
   FAILED: string;
   DELETE: string;

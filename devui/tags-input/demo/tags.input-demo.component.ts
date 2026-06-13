@@ -12,17 +12,15 @@ import virtualScrollHtml from './virtual-scroll/virtual-scroll.component.html?ra
 import virtualScrollTs from './virtual-scroll/virtual-scroll.component.ts.txt?raw';
 @Component({
   selector: 'd-demo-basic',
+  standalone: false,
   templateUrl: './tags.input-demo.component.html',
-  styles: [
-    `
+  styles: `
       :host ::ng-deep pre {
         margin: 8px 0;
         border: none;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TagsInputDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

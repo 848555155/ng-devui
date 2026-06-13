@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-time-axis-design',
-  templateUrl: './time-axis-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './time-axis-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TimeAxisDesignComponent implements OnInit {
   imgSrc;

@@ -20,23 +20,23 @@ import { debounceTime, fromEvent, switchMap } from 'rxjs';
   selector: 'd-back-top',
   imports: [NgTemplateOutlet, DragDropModule],
   templateUrl: './back-top.component.html',
-  styleUrls: ['./back-top.component.scss'],
+  styleUrl: './back-top.component.scss',
   preserveWhitespaces: false,
 })
 export class BackTopComponent {
-  customTemplate = input<TemplateRef<any>>();
-  visibleHeight = input(300, { transform: numberAttribute });
-  bottom = input('50px');
-  right = input('30px');
-  scrollTarget = input<HTMLElement>();
-  draggable = input(false, { transform: booleanAttribute });
+  readonly customTemplate = input<TemplateRef<any>>();
+  readonly visibleHeight = input(300, { transform: numberAttribute });
+  readonly bottom = input('50px');
+  readonly right = input('30px');
+  readonly scrollTarget = input<HTMLElement>();
+  readonly draggable = input(false, { transform: booleanAttribute });
   backTopEvent = output<boolean>();
   dragEvent = output<boolean>();
 
-  currScrollTop = signal(0);
+  readonly currScrollTop = signal(0);
   duration = 0;
-  moveCursor = signal(false);
-  isVisible = signal(false);
+  readonly moveCursor = signal(false);
+  readonly isVisible = signal(false);
 
   SCROLL_REFRESH_INTERVAL = 100;
   MOUSEDOWN_DELAY = 180;
@@ -44,7 +44,7 @@ export class BackTopComponent {
 
   public document = inject(DOCUMENT);
 
-  backTopRef = viewChild(CdkDrag);
+  readonly backTopRef = viewChild(CdkDrag);
 
   constrainPosition: DragConstrainPosition = (
     userPointerPosition: Point,
@@ -69,7 +69,7 @@ export class BackTopComponent {
     return { x: elementLeft, y: elementTop };
   };
 
-  computedScrollTarget = computed(() => {
+  readonly computedScrollTarget = computed(() => {
     if (this.scrollTarget()) {
       this.backTopRef().element.nativeElement.style.position = 'absolute';
       this.scrollTarget().parentElement.style.position = 'relative';

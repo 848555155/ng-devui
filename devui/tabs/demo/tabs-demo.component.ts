@@ -32,9 +32,9 @@ import tabsTransferHtml from './configurable-tabs/tabs-transfer/tabs-transfer.co
 import tabsTransferTs from './configurable-tabs/tabs-transfer/tabs-transfer.component.ts.txt?raw';
 @Component({
   selector: 'd-demo-tabs',
-  templateUrl: './tabs-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './tabs-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TabsDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

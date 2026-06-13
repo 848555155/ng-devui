@@ -3,10 +3,10 @@ import { ToggleMenuListItem } from './toggle-menu.type';
 
 @Component({
   selector: 'd-toggle-menu-list-item',
+  standalone: false,
   templateUrl: './toggle-menu-list-item.component.html',
-  styleUrls: ['./toggle-menu-list-item.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false
+  styleUrl: './toggle-menu-list-item.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ToggleMenuListItemComponent {
   @Input() item: ToggleMenuListItem;

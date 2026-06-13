@@ -1,9 +1,9 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: 'd-checkbox-condition-group',
-  templateUrl: './condition-group.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './condition-group.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class CheckboxConditionGroupComponent {
   optionsForbidden = ['data1', 'data2', 'intercept', 'intercept2', 'data5', 'data6', 'data7'];

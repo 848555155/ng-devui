@@ -40,14 +40,7 @@ import { DatePickerConfigService as DatePickerConfig } from './date-picker.confi
 @Component({
   /* eslint-disable-next-line @angular-eslint/component-selector*/
   selector: '[dDatepicker][appendToBody]',
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => DatePickerAppendToBodyComponent),
-      multi: true,
-    },
-  ],
-  exportAs: 'datepicker',
+  standalone: false,
   template: `
     <ng-template
       cdk-connected-overlay
@@ -75,11 +68,18 @@ import { DatePickerConfigService as DatePickerConfig } from './date-picker.confi
       ></d-datepicker>
     </ng-template>
   `,
-  animations: [fadeInOut],
-  styleUrls: ['./datepicker-cdk-overlay.component.scss'],
-  preserveWhitespaces: false,
+  styleUrl: './datepicker-cdk-overlay.component.scss',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => DatePickerAppendToBodyComponent),
+      multi: true,
+    },
+  ],
   changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  animations: [fadeInOut],
+  exportAs: 'datepicker',
+  preserveWhitespaces: false
 })
 export class DatePickerAppendToBodyComponent implements OnInit, OnChanges, OnDestroy, ControlValueAccessor {
   @Input() appendToBodyDirections: Array<AppendToBodyDirection | ConnectedPosition> = ['rightDown', 'leftDown', 'rightUp', 'leftUp'];
@@ -337,14 +337,14 @@ export class DatePickerAppendToBodyComponent implements OnInit, OnChanges, OnDes
 
   onPositionChange(position: ConnectedOverlayPositionChange) {
     switch (position.connectionPair.overlayY) {
-      case 'top':
-      case 'center':
-        this.datepickerPosition = 'bottom';
-        break;
-      case 'bottom':
-        this.datepickerPosition = 'top';
-        break;
-      default:
+    case 'top':
+    case 'center':
+      this.datepickerPosition = 'bottom';
+      break;
+    case 'bottom':
+      this.datepickerPosition = 'top';
+      break;
+    default:
     }
   }
 

@@ -5,6 +5,6 @@ import { BadgeComponent } from 'ng-devui/badge';
   selector: 'd-badge-dot',
   imports: [BadgeComponent],
   templateUrl: './dot.component.html',
-  styleUrls: ['./dot.component.scss'],
+  styleUrl: './dot.component.scss',
 })
 export class DotComponent {}

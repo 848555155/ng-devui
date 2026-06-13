@@ -43,7 +43,6 @@ import apiEn from '../doc/api-en.md?raw';
       }}
     ])
   ],
-  exports: [SearchDemoComponent],
   declarations: [
     SearchDemoComponent,
     SearchDesignComponent,
@@ -53,7 +52,7 @@ import apiEn from '../doc/api-en.md?raw';
     AutoFocusComponent,
     SearchNoBorderComponent
   ],
-
+  exports: [SearchDemoComponent]
 })
 export class SearchDemoModule {
 }

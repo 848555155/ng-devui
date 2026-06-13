@@ -4,10 +4,10 @@ import { customData, positionData } from '../fakeData';
 
 @Component({
   selector: 'd-position',
-  templateUrl: './position.component.html',
-  styleUrls: ['./position.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './position.component.html',
+  styleUrl: './position.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class PositionComponent {
   currentStep: any;

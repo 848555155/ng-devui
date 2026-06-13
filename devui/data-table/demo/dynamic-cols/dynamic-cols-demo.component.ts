@@ -4,9 +4,9 @@ import { originSource, SourceType } from '../mock-data';
 
 @Component({
   selector: 'd-dynamic-cols-demo',
-  templateUrl: './dynamic-cols-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './dynamic-cols-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DynamicColsDemoComponent implements OnInit {
   basicDataSource: Array<SourceType> = JSON.parse(JSON.stringify(originSource.slice(0, 6)));

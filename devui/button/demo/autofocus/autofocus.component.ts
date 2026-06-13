@@ -3,7 +3,7 @@ import { ButtonComponent } from 'ng-devui/button';
 
 @Component({
   selector: 'd-button-autofocus',
-    imports: [ButtonComponent],
+  imports: [ButtonComponent],
   templateUrl: './autofocus.component.html',
 })
 export class AutofocusComponent {}

@@ -2,9 +2,9 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-disabled',
-  templateUrl: './disabled.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './disabled.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DisabledComponent implements OnInit {
   options = [

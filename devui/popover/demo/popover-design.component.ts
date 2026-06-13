@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-popover-design',
-  templateUrl: './popover-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './popover-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class PopoverDesignComponent implements OnInit {
   imgSrc;

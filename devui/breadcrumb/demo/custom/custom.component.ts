@@ -6,7 +6,7 @@ import { DropDownModule } from 'ng-devui/dropdown';
   selector: 'd-custom',
   imports: [BreadcrumbModule, DropDownModule],
   templateUrl: './custom.component.html',
-  styleUrls: ['./custom.component.scss'],
+  styleUrl: './custom.component.scss',
 })
 export class CustomComponent {
   breadData = [

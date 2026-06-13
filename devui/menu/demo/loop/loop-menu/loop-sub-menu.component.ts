@@ -3,6 +3,7 @@ import { MenuItemType } from 'ng-devui/menu';
 
 @Component({
   selector: 'd-loop-sub-menu',
+  standalone: false,
   template: `
     <div
       dSubMenu
@@ -21,8 +22,7 @@ import { MenuItemType } from 'ng-devui/menu';
         }
       }
     </div>`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoopSubMenuComponent {
   @Input() activeKey = '';

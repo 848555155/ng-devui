@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-text-design',
-  templateUrl: './text-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './text-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TextDesignComponent implements OnInit {
   imgSrc;

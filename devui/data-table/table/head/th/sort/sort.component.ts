@@ -3,16 +3,16 @@ import { SortDirection, SortEventArg } from '../../../../data-table.model';
 
 @Component({
   selector: 'd-table-sort',
-  templateUrl: './sort.component.html',
-  styleUrls: ['./sort.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './sort.component.html',
+  styleUrl: './sort.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class SortComponent implements OnInit {
   @Input() sortDirection: SortDirection;
   @HostBinding('class.devui-icon-show')
   @Input()
-  showSortIcon = false;
+    showSortIcon = false;
   @Output() sortEvent = new EventEmitter<SortEventArg>();
 
   @HostBinding('class.devui-icon-show')
@@ -26,15 +26,15 @@ export class SortComponent implements OnInit {
 
   sort() {
     switch (this.sortDirection) {
-      case SortDirection.ASC:
-        this.sortDirection = SortDirection.DESC;
-        break;
-      case 'DESC':
-        this.sortDirection = SortDirection.default;
-        break;
-      case SortDirection.default:
-      default:
-        this.sortDirection = SortDirection.ASC;
+    case SortDirection.ASC:
+      this.sortDirection = SortDirection.DESC;
+      break;
+    case 'DESC':
+      this.sortDirection = SortDirection.default;
+      break;
+    case SortDirection.default:
+    default:
+      this.sortDirection = SortDirection.ASC;
     }
     this.sortEvent.emit({ direction: this.sortDirection });
   }

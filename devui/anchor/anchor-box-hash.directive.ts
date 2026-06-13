@@ -10,8 +10,8 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   selector: '[dAnchorBox][dAnchorHashSupport]',
 })
 export class AnchorBoxHashSupportDirective implements AfterViewInit {
-  updateUrlWhenAnchorActive = input(true, { transform: booleanAttribute });
-  scrollToAnchorByHashOnlyInit = input(false, { transform: booleanAttribute });
+  readonly updateUrlWhenAnchorActive = input(true, { transform: booleanAttribute });
+  readonly scrollToAnchorByHashOnlyInit = input(false, { transform: booleanAttribute });
   manual = false;
 
   private box = inject(AnchorBoxDirective);

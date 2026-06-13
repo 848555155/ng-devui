@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-rate-design',
-  templateUrl: './rate-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './rate-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class RateDesignComponent implements OnInit {
   imgSrc;

@@ -5,10 +5,10 @@ import { TableTrComponent } from '../row/tr.component';
 @Component({
   /* eslint-disable-next-line @angular-eslint/component-selector*/
   selector: '[dTableBody]',
-  templateUrl: './tbody.component.html',
-  styleUrls: ['./tbody.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './tbody.component.html',
+  styleUrl: './tbody.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TableTbodyComponent implements OnInit {
   @Input() dataSource: any[] = [];

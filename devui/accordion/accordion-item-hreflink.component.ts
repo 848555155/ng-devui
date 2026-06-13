@@ -5,12 +5,12 @@ import { AccordionBaseLinkComponent } from './accordion-base-link-component.clas
 @Component({
   selector: 'd-accordion-item-hreflink',
   imports: [NgTemplateOutlet],
+  templateUrl: './accordion-item-hreflink.component.html',
+  encapsulation: ViewEncapsulation.None,
   host: {
     '(click)': 'onClick($event)',
   },
-  templateUrl: './accordion-item-hreflink.component.html',
-  encapsulation: ViewEncapsulation.None,
-  preserveWhitespaces: false,
+  preserveWhitespaces: false
 })
 export class AccordionItemHreflinkComponent extends AccordionBaseLinkComponent {
   onClick(event: MouseEvent) {

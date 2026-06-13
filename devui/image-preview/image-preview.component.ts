@@ -20,11 +20,11 @@ export interface IImagePreviewToolbar {
 
 @Component({
   selector: 'd-image-preview',
+  standalone: false,
   templateUrl: './image-preview.component.html',
-  styleUrls: ['./image-preview.component.scss'],
+  styleUrl: './image-preview.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
-  standalone: false
+  preserveWhitespaces: false
 })
 export class DImagePreviewComponent implements OnInit, OnDestroy {
   @Input() set data(data) {

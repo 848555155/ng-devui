@@ -7,7 +7,7 @@ import { CardModule } from 'ng-devui/card';
   selector: 'd-with-media',
   imports: [AvatarComponent, CardModule],
   templateUrl: './with-media.component.html',
-  styleUrls: ['./with-media.component.scss'],
+  styleUrl: './with-media.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WithMediaComponent {

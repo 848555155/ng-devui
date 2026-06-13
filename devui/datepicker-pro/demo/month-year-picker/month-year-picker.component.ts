@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-month-year-datepicker-pro',
-  templateUrl: './month-year-picker.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './month-year-picker.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class MonthYearDatepickerProComponent {
   value1 = new Date();

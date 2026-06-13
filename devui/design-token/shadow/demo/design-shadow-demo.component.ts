@@ -4,9 +4,9 @@ import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'd-design-shadow-demo',
-  templateUrl: './design-shadow-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './design-shadow-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DesignShadowDemoComponent implements OnInit, OnDestroy {
   navItems = [];

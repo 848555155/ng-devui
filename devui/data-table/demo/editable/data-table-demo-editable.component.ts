@@ -5,9 +5,9 @@ import { editableOriginSource, genderSource } from '../mock-data';
 
 @Component({
   selector: 'd-editable',
-  templateUrl: './data-table-demo-editable.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './data-table-demo-editable.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DatatableDemoEditableComponent implements OnInit {
   genderSource = genderSource;

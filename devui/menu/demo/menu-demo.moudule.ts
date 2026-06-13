@@ -49,7 +49,6 @@ import apiEn from '../doc/api-en.md?raw';
       },
     ]),
   ],
-  exports: [],
   declarations: [
     MenuDemoComponent,
     BasicComponent,
@@ -60,6 +59,7 @@ import apiEn from '../doc/api-en.md?raw';
     LoopComponent,
     LoopMenuComponent,
     LoopSubMenuComponent,
-  ]
+  ],
+  exports: []
 })
 export class MenuDemoModule { }

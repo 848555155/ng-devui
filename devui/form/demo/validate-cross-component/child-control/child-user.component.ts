@@ -3,9 +3,9 @@ import { DValidateRules } from 'ng-devui/form';
 
 @Component({
   selector: 'd-child-user',
-  templateUrl: './child-user.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './child-user.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ChildUserComponent {
   @Input() control;

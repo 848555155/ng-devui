@@ -51,7 +51,6 @@ import apiEn from '../doc/api-en.md?raw';
       },
     ]),
   ],
-  exports: [],
   declarations: [
     BasicComponent,
     CascaderDemoComponent,
@@ -63,5 +62,6 @@ import apiEn from '../doc/api-en.md?raw';
     ParentSelectCascaderComponent,
     CascaderHeaderTemplateComponent,
   ],
+  exports: []
 })
 export class CascaderDemoModule {}

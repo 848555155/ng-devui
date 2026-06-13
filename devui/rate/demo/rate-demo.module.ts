@@ -47,7 +47,6 @@ import apiEn from '../doc/api-en.md?raw';
       },
     ]),
   ],
-  exports: [RateDemoComponent],
   declarations: [
     RateDemoComponent,
     RateDesignComponent,
@@ -59,6 +58,6 @@ import apiEn from '../doc/api-en.md?raw';
     RateHalfComponent,
     RateClearComponent
   ],
-
+  exports: [RateDemoComponent]
 })
 export class RateDemoModule {}

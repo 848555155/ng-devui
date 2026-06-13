@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-tree-select-leaf-only',
-  templateUrl: './tree-select-leaf-only.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './tree-select-leaf-only.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TreeSelectLeafOnlyComponent {
   data1 = [

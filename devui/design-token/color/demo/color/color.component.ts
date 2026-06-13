@@ -13,10 +13,10 @@ export interface colorItemConfig {
 
 @Component({
   selector: 'd-color',
-  templateUrl: './color.component.html',
-  styleUrls: ['./color.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './color.component.html',
+  styleUrl: './color.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ColorComponent implements OnInit, OnDestroy {
   themeService: ThemeService;

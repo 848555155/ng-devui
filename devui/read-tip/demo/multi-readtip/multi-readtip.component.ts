@@ -3,10 +3,10 @@ import { ReadTipOptions } from 'ng-devui/read-tip';
 
 @Component({
   selector: 'd-demo-multi',
-  templateUrl: './multi-readtip.component.html',
-  styleUrls: ['./multi-readtip.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './multi-readtip.component.html',
+  styleUrl: './multi-readtip.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class MultiReadtipComponent implements OnInit {
   multiReadTip: ReadTipOptions = {

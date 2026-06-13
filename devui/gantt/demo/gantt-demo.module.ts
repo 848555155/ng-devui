@@ -20,7 +20,6 @@ import { marked } from 'marked';
 import apiCn from '../doc/api-cn.md?raw';
 import apiEn from '../doc/api-en.md?raw';
 @NgModule({
-  declarations: [GanttDemoComponent, BasicComponent, ResetPositionComponent, TableComponent],
   imports: [
     CommonModule,
     DevUIApiModule,
@@ -44,6 +43,7 @@ import apiEn from '../doc/api-en.md?raw';
         'en-us': marked.parse(apiEn)
       }}
     ])
-  ]
+  ],
+  declarations: [GanttDemoComponent, BasicComponent, ResetPositionComponent, TableComponent]
 })
 export class GanttDemoModule { }

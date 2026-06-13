@@ -6,8 +6,8 @@ import { ToastComponent } from './toast.component';
 import { ToastService } from './toast.service';
 @NgModule({
   imports: [CommonModule, IsTemplateModule, SafePipeModule, OverlayContainerModule],
-  exports: [ToastComponent],
   declarations: [ToastComponent],
   providers: [ToastService],
+  exports: [ToastComponent]
 })
 export class ToastModule {}

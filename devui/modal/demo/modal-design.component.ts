@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-modal-design',
-  templateUrl: './modal-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './modal-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ModalDesignComponent implements OnInit {
   imgSrc;

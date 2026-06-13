@@ -2,10 +2,10 @@ import { ChangeDetectorRef, Component, ChangeDetectionStrategy } from '@angular/
 
 @Component({
   selector: 'd-draggable',
-  templateUrl: './draggable.component.html',
-  styleUrls: ['./draggable.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './draggable.component.html',
+  styleUrl: './draggable.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DraggableComponent {
   transferData: string;

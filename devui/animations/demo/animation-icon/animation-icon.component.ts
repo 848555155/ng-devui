@@ -5,12 +5,12 @@ import { ButtonModule } from 'ng-devui/button';
   selector: 'd-animation-icon',
   imports: [ButtonModule],
   templateUrl: './animation-icon.component.html',
-  styleUrls: ['./animation-icon.component.scss'],
+  styleUrl: './animation-icon.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AnimationIconComponent {
-  angle = signal(0);
-  startDiffusion = signal(false);
+  readonly angle = signal(0);
+  readonly startDiffusion = signal(false);
 
   rotate() {
     this.angle.update((angle) => angle + 90);

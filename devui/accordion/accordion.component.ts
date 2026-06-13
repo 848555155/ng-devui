@@ -21,48 +21,48 @@ import { AccordionListComponent } from './accordion-list.component';
   selector: 'd-accordion',
   imports: [AccordionListComponent],
   templateUrl: './accordion.component.html',
-  styleUrls: ['./accordion.component.scss'],
-  preserveWhitespaces: false,
+  styleUrl: './accordion.component.scss',
   providers: [
     {
       provide: ACCORDION,
       useExisting: forwardRef(() => AccordionComponent),
     },
   ],
+  preserveWhitespaces: false
 })
 export class AccordionComponent implements AccordionOptions {
-  data = model<Array<any> | AccordionMenuType>();
-  titleKey = input('title');
-  loadingKey = input('loading');
-  childrenKey = input('children');
-  disabledKey = input('disabled');
-  activeKey = input('active');
-  openKey = input('open');
+  readonly data = model<Array<any> | AccordionMenuType>();
+  readonly titleKey = input('title');
+  readonly loadingKey = input('loading');
+  readonly childrenKey = input('children');
+  readonly disabledKey = input('disabled');
+  readonly activeKey = input('active');
+  readonly openKey = input('open');
 
-  menuItemTemplate = input<TemplateRef<any>>();
-  itemTemplate = input<TemplateRef<any>>();
+  readonly menuItemTemplate = input<TemplateRef<any>>();
+  readonly itemTemplate = input<TemplateRef<any>>();
 
   menuToggle = output<AccordionMenuToggleEvent>();
   itemClick = output<AccordionItemClickEvent>();
   activeItemChange = output<any>();
 
-  restrictOneOpen = input(false);
-  autoOpenActiveMenu = input(false);
-  showNoContent = input(true);
-  noContentTemplate = input<TemplateRef<any>>();
-  loadingTemplate = input<TemplateRef<any>>();
-  innerListTemplate = input<TemplateRef<any>>();
+  readonly restrictOneOpen = input(false);
+  readonly autoOpenActiveMenu = input(false);
+  readonly showNoContent = input(true);
+  readonly noContentTemplate = input<TemplateRef<any>>();
+  readonly loadingTemplate = input<TemplateRef<any>>();
+  readonly innerListTemplate = input<TemplateRef<any>>();
 
-  linkType = input<'routerLink' | 'hrefLink' | 'dependOnLinkTypeKey' | '' | string>('');
-  linkTypeKey = input('linkType');
-  linkKey = input('link');
-  linkTargetKey = input('target');
-  linkDefaultTarget = input('_self');
+  readonly linkType = input<'routerLink' | 'hrefLink' | 'dependOnLinkTypeKey' | '' | string>('');
+  readonly linkTypeKey = input('linkType');
+  readonly linkKey = input('link');
+  readonly linkTargetKey = input('target');
+  readonly linkDefaultTarget = input('_self');
 
-  accordionType = input<'normal' | 'embed'>('normal');
-  showAnimation = input(true);
+  readonly accordionType = input<'normal' | 'embed'>('normal');
+  readonly showAnimation = input(true);
 
-  stateVersion = signal(0);
+  readonly stateVersion = signal(0);
 
   activeItem: any;
   i18nCommonText: any;

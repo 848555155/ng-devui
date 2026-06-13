@@ -6,6 +6,6 @@ import { StickyModule } from 'ng-devui/sticky';
   selector: 'd-anchor-scroll-target',
   imports: [AnchorModule, StickyModule],
   templateUrl: './scroll-target.component.html',
-  styleUrls: ['./scroll-target.component.scss'],
+  styleUrl: './scroll-target.component.scss',
 })
 export class ScrollTargetComponent {}

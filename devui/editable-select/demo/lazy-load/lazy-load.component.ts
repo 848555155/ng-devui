@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-lazy-load',
-  templateUrl: './lazy-load.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './lazy-load.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class LazyLoadComponent {
   selectItem;

@@ -64,7 +64,6 @@ import apiEn from '../doc/api-en.md?raw';
       },
     ]),
   ],
-  exports: [SelectDemoComponent],
   declarations: [
     SelectDemoComponent,
     SelectDesignComponent,
@@ -89,7 +88,7 @@ import apiEn from '../doc/api-en.md?raw';
     MapToPipe,
     ParseFromPipe,
   ],
-
   providers: [],
+  exports: [SelectDemoComponent]
 })
 export class SelectDemoModule {}

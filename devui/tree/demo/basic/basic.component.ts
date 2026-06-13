@@ -3,9 +3,9 @@ import { TreeComponent, TreeNode } from 'ng-devui/tree';
 
 @Component({
   selector: 'd-basic',
-  templateUrl: './basic.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './basic.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class BasicComponent {
   @ViewChild('basicTree', { static: true }) basicTree: TreeComponent;

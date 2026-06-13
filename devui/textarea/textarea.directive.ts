@@ -5,8 +5,8 @@ import { DevConfigService, WithConfig } from 'ng-devui/utils';
 
 @Directive({
   selector: '[dTextarea]',
-  exportAs: 'dTextarea',
-  standalone: false
+  standalone: false,
+  exportAs: 'dTextarea'
 })
 export class TextareaDirective implements AfterViewInit, OnDestroy {
   @Input() maxLengthBlocker = false;

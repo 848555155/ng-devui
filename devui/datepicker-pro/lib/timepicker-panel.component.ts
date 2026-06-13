@@ -13,11 +13,11 @@ interface TimeObj {
 
 @Component({
   selector: 'd-timepicker-panel',
+  standalone: false,
   templateUrl: './timepicker-panel.component.html',
-  styleUrls: ['./timepicker-panel.component.scss'],
-  preserveWhitespaces: false,
+  styleUrl: './timepicker-panel.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false
+  preserveWhitespaces: false
 })
 export class TimepickerPanelComponent implements OnInit, OnDestroy {
   firstList: Array<TimeObj> = [];

@@ -10,6 +10,7 @@ import { SliderComponent } from './slider.component';
 import { SliderModule } from './slider.module';
 
 @Component({
+  standalone: false,
   template: `
     <d-slider
       #sliderCmp
@@ -24,23 +25,20 @@ import { SliderModule } from './slider.module';
     >
     </d-slider>
   `,
-  styles: [
-    `
+  styles: `
       .slider {
         width: 300px;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestSliderBasicComponent {
   @ViewChild('sliderCmp') sliderCmp: SliderComponent;
-  value: Number;
-  max: Number = 100;
-  min: Number = 0;
-  step: Number = 1;
-  disabled: Boolean;
+  value: number;
+  max: number = 100;
+  min: number = 0;
+  step: number = 1;
+  disabled: boolean;
   valueChange = jasmine.createSpy('valueChange');
   tipsRenderer: (value: number) => string = (value) => `${value}`;
 }

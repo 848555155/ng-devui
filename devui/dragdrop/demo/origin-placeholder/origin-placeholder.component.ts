@@ -2,10 +2,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-origin-placeholder',
-  templateUrl: './origin-placeholder.component.html',
-  styleUrls: ['./origin-placeholder.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './origin-placeholder.component.html',
+  styleUrl: './origin-placeholder.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class OriginPlaceholderComponent {
   list1 = [{ name: 'Visual Studio Code' }, { name: 'WebStorm' }, { name: 'Sublime Text' }, { name: 'Atom' }, { name: 'Notepad++' }];

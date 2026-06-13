@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-steps-guide-design',
-  templateUrl: './steps-guide-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './steps-guide-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class StepsGuideDesignComponent implements OnInit {
   imgSrc;

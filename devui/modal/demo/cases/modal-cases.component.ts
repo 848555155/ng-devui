@@ -2,10 +2,10 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { FormLayout } from 'ng-devui/form';
 @Component({
   selector: 'd-modal-cases',
-  templateUrl: './modal-cases.component.html',
-  styles: ['textarea { height: 100px; resize: none }'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './modal-cases.component.html',
+  styles: 'textarea { height: 100px; resize: none }',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ModalCasesComponent {
   @Input() data: any;

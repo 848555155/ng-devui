@@ -16,9 +16,9 @@ import splitterDemoScss from './splitter-demo.component.scss?raw';
 
 @Component({
   selector: 'd-demo-splitter',
-  templateUrl: './splitter-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './splitter-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class SplitterDemoComponent implements OnInit, OnDestroy {
   SplitterBasicComponent = [

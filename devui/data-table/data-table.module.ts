@@ -65,27 +65,6 @@ import { DataTableHeadCellTmplComponent } from './tmpl/data-table-head-cell-tmpl
     SearchModule,
     BadgeModule
   ],
-  exports: [
-    DataTableComponent,
-    DataTableColumnTmplComponent,
-    DataTableCellViewTmplComponent,
-    DataTableCellEditTmplComponent,
-    DataTableBodyComponent,
-    DataTableHeadComponent,
-    DataTableCellComponent,
-    DataTableRowComponent,
-    DataTableCellTmplComponent,
-    DataTableHeadCellTmplComponent,
-    TableThComponent,
-    FilterComponent,
-    SortComponent,
-    TableTheadComponent,
-    TableTrComponent,
-    TableTbodyComponent,
-    TableTdComponent,
-    TableOptionToggleComponent,
-    TableOptionModalComponent
-  ],
   declarations: [
     DataTableComponent,
     DataTableColumnTmplComponent,
@@ -109,8 +88,28 @@ import { DataTableHeadCellTmplComponent } from './tmpl/data-table-head-cell-tmpl
     TableOptionToggleComponent,
     TableOptionModalComponent
   ],
-
   providers: [ TableTdService ],
+  exports: [
+    DataTableComponent,
+    DataTableColumnTmplComponent,
+    DataTableCellViewTmplComponent,
+    DataTableCellEditTmplComponent,
+    DataTableBodyComponent,
+    DataTableHeadComponent,
+    DataTableCellComponent,
+    DataTableRowComponent,
+    DataTableCellTmplComponent,
+    DataTableHeadCellTmplComponent,
+    TableThComponent,
+    FilterComponent,
+    SortComponent,
+    TableTheadComponent,
+    TableTrComponent,
+    TableTbodyComponent,
+    TableTdComponent,
+    TableOptionToggleComponent,
+    TableOptionModalComponent
+  ]
 })
 export class DataTableModule {
 }

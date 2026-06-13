@@ -1,9 +1,9 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: 'd-select-template',
-  templateUrl: './select-template.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './select-template.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class SelectTemplateComponent {
   singleOptions = [

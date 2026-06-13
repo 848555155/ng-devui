@@ -2,16 +2,14 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-callback',
+  standalone: false,
   templateUrl: './callback.component.html',
-  styles: [
-    `
+  styles: `
       d-toggle {
         margin-bottom: 8px;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class CallbackComponent {
   count = 0;

@@ -18,9 +18,9 @@ import autoExpandHtml from './auto-expand/auto-expand.component.html?raw';
 import autoExpandTs from './auto-expand/auto-expand.component.ts.txt?raw';
 @Component({
   selector: 'd-menu-demo',
-  templateUrl: './menu-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './menu-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class MenuDemoComponent implements OnInit {
   DemoBasic: Array<DevuiSourceData> = [

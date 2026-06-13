@@ -13,9 +13,9 @@ import customFormatterScss from './custom-formatter/slider-custom-formatter.comp
 
 @Component({
   selector: 'd-slider-demo',
-  templateUrl: './slider-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './slider-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class SliderDemoComponent implements OnInit, OnDestroy {
   SliderBasicComponent = [

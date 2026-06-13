@@ -15,8 +15,8 @@ export class AnchorLinkDirective implements OnInit, OnDestroy {
     return this.anchorBlock && this.anchorBlock.isActive() ? this.anchorActive() || '' : '';
   }
 
-  anchorName = input<string>('', { alias: 'dAnchorLink' });
-  anchorActive = input<string>('');
+  readonly anchorName = input<string>('', { alias: 'dAnchorLink' });
+  readonly anchorActive = input<string>('');
 
   boxElement: AnchorBoxDirective | undefined;
   anchorBlock: AnchorDirective | undefined;

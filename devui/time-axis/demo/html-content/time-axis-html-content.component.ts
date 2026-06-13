@@ -3,10 +3,10 @@ import { TimeAxisData } from 'ng-devui/time-axis';
 
 @Component({
   selector: 'd-demo-time-axis-html-content',
-  templateUrl: './time-axis-html-content.component.html',
-  styleUrls: ['./time-axis-html-content.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './time-axis-html-content.component.html',
+  styleUrl: './time-axis-html-content.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TimeAxisHtmlContentComponent implements OnInit {
   timeAxisHtml: TimeAxisData;

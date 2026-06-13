@@ -6,10 +6,10 @@ import { CascaderItem } from './cascader.type';
 
 @Component({
   selector: 'd-cascader-li',
-  templateUrl: './cascader-li.component.html',
-  styleUrls: ['./cascader-li.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './cascader-li.component.html',
+  styleUrl: './cascader-li.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class CascaderLiComponent implements OnInit, OnDestroy {
   @Input() width = 200;

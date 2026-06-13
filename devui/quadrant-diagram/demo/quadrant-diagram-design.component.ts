@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-quadrant-diagram-design',
-  templateUrl: './quadrant-diagram-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './quadrant-diagram-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class QuadrantDiagramDesignComponent implements OnInit {
   imgSrc;

@@ -3,9 +3,9 @@ import { DrawerService, IDrawerOpenResult } from 'ng-devui/drawer';
 
 @Component({
   selector: 'd-can-resize',
-  templateUrl: './resize.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './resize.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ResizeComponent implements OnInit {
   @ViewChild('drawerContent', { static: true }) drawerContent: TemplateRef<any>;

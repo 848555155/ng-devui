@@ -5,8 +5,9 @@ import { Observable } from 'rxjs';
 
 @Component({
   selector: 'd-radio',
+  standalone: false,
   templateUrl: './radio.component.html',
-  styleUrls: ['./radio.component.scss'],
+  styleUrl: './radio.component.scss',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -14,9 +15,8 @@ import { Observable } from 'rxjs';
       multi: true,
     },
   ],
-  preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  preserveWhitespaces: false
 })
 export class RadioComponent implements ControlValueAccessor {
   private _name: string;

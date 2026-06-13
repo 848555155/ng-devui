@@ -18,9 +18,9 @@ import virtualScrollScss from './virtual-scroll/transfer-virtual-scroll.componen
 
 @Component({
   selector: 'd-transfer-demo',
-  templateUrl: './transfer-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './transfer-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TransferDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

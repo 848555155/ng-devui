@@ -8,6 +8,7 @@ import { DropDownToggleDirective } from './dropdown-toggle.directive';
 import { DropDownDirective } from './dropdown.directive';
 import { DropDownModule } from './dropdown.module';
 @Component({
+  standalone: false,
   template: `
     @if (expand) {
     <div class="height-expand"></div>
@@ -55,15 +56,12 @@ import { DropDownModule } from './dropdown.module';
     </div>
     <div class="toggle" (click)="dropdown.toggle()">打开/关闭</div>
   `,
-  styles: [
-    `
+  styles: `
       .height-expand {
         height: calc(100vh - 100px);
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestDropdownComponent {
   trigger: 'hover' | 'click' | 'manually' = 'click';
@@ -81,6 +79,7 @@ class TestDropdownComponent {
 }
 
 @Component({
+  standalone: false,
   template: `
     <div class="area" #areaItem [ngClass]="{ 'devui-dropdown-origin': alignOriginFlag }">
       <div
@@ -112,16 +111,13 @@ class TestDropdownComponent {
       </div>
     </div>
   `,
-  styles: [
-    `
+  styles: `
       .area {
         width: 500px;
         height: 600px;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestDropdownAppendToBodyComponent {
   @ViewChild('areaItem', { static: true }) area: ElementRef;
@@ -132,6 +128,7 @@ class TestDropdownAppendToBodyComponent {
 }
 
 @Component({
+  standalone: false,
   template: `
     @if (init) {
     <div class="area">
@@ -158,8 +155,7 @@ class TestDropdownAppendToBodyComponent {
     </div>
     }
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestDropdownToggleComponent {
   autoFocus = false;
@@ -168,6 +164,7 @@ class TestDropdownToggleComponent {
 }
 
 @Component({
+  standalone: false,
   template: `<section>
     <div class="btn-group g-dropdown" dDropDown appendToBody [trigger]="trigger1" [closeOnMouseLeaveMenu]="closeOnMouseLeaveMenu">
       <a id="item-0" dDropDownToggle class="devui-dropdown-default devui-dropdown-origin">
@@ -220,8 +217,7 @@ class TestDropdownToggleComponent {
       </ul>
     </div>
   </section> `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestMultiLevelComponent {
   trigger1 = 'click';

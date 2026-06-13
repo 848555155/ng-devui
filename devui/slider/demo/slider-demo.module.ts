@@ -41,7 +41,6 @@ import apiEn from '../doc/api-en.md?raw';
       }
     ])
   ],
-  exports: [SliderDemoComponent],
   declarations: [
     SliderDemoComponent,
     SliderDesignComponent,
@@ -49,6 +48,7 @@ import apiEn from '../doc/api-en.md?raw';
     SliderDisabledComponent,
     SliderCustomFormatterComponent
   ],
+  exports: [SliderDemoComponent]
 })
 export class SliderDemoModule {
 }

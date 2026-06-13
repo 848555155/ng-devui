@@ -61,7 +61,6 @@ import apiEn from '../doc/api-en.md?raw';
       },
     ]),
   ],
-  exports: [TabsDemoComponent],
   declarations: [
     AddDeleteComponent,
     BasicComponent,
@@ -79,5 +78,6 @@ import apiEn from '../doc/api-en.md?raw';
     WithoutContentComponent,
     TabsDesignComponent,
   ],
+  exports: [TabsDemoComponent]
 })
 export class TabsDemoModule {}

@@ -20,15 +20,6 @@ import { UploadedFilesComponent } from './uploaded-files.component';
     ToastModule,
     ProgressModule
   ],
-  exports: [
-    MultipleUploadViewComponent,
-    SingleUploadViewComponent,
-    SingleUploadComponent,
-    MultipleUploadComponent,
-    UploadedFilesComponent,
-    FileDropDirective,
-    UploadDirective,
-  ],
   declarations: [
     MultipleUploadViewComponent,
     SingleUploadViewComponent,
@@ -38,7 +29,15 @@ import { UploadedFilesComponent } from './uploaded-files.component';
     FileDropDirective,
     UploadDirective,
   ],
-
   providers: [SelectFiles, SliceUploadService],
+  exports: [
+    MultipleUploadViewComponent,
+    SingleUploadViewComponent,
+    SingleUploadComponent,
+    MultipleUploadComponent,
+    UploadedFilesComponent,
+    FileDropDirective,
+    UploadDirective,
+  ]
 })
 export class UploadModule {}

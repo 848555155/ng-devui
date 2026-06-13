@@ -10,7 +10,7 @@ import { LoadingModule, LoadingType } from 'ng-devui/loading';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SubscriptionComponent {
-  loading = signal<LoadingType>(undefined);
+  readonly loading = signal<LoadingType>(undefined);
   source = of(1, 2, 3, 4, 5);
 
   startLoading() {

@@ -14,9 +14,9 @@ import conditionGroupHtml from './condition-group/condition-group.component.html
 import conditionGroupTs from './condition-group/condition-group.component.ts.txt?raw';
 
 @Component({
-  templateUrl: './checkbox-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './checkbox-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class CheckBoxDemoComponent implements OnInit, OnDestroy {
   checkboxDemoBasic: Array<DevuiSourceData> = [

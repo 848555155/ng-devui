@@ -2,9 +2,9 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-tags-input-async',
-  templateUrl: './async.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './async.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TagsInputDemoAsyncComponent implements OnInit {
   tagList: any = [];

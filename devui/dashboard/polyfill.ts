@@ -1,4 +1,4 @@
-/* eslint-disable */
+
 // Source: https://github.com/jserz/js_piece/blob/master/DOM/ParentNode/append()/append().md
 export default ((...rest) => {
   const arr = rest[0];

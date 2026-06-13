@@ -4,9 +4,9 @@ import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
 @Component({
   selector: 'd-text-input-design',
-  templateUrl: './text-input-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './text-input-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TextInputDesignComponent implements OnInit {
   designObj;

@@ -10,6 +10,7 @@ import { MentionDirective } from './mention.directive';
 import { MentionModule } from './mention.module';
 
 @Component({
+  standalone: false,
   template: `
     <textarea
       dTextarea
@@ -21,8 +22,7 @@ import { MentionModule } from './mention.module';
       [mentionPosition]="mentionPosition"
     ></textarea>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestMentionComponent {
   @ViewChild(MentionDirective, { static: false }) trigger!: MentionDirective;

@@ -7,7 +7,7 @@ import { ReadTipDirective } from './read-tip.directive';
 
 @NgModule({
   imports: [CommonModule, PositioningModule, OverlayContainerModule],
-  exports: [ReadTipComponent, ReadTipDirective],
   declarations: [ReadTipComponent, ReadTipDirective],
+  exports: [ReadTipComponent, ReadTipDirective]
 })
 export class ReadTipModule {}

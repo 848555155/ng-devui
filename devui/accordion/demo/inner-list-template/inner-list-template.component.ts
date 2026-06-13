@@ -5,7 +5,7 @@ import { AccordionModule } from 'ng-devui/accordion';
   selector: 'd-inner-list-template',
   imports: [AccordionModule],
   templateUrl: './inner-list-template.component.html',
-  styleUrls: ['./inner-list-template.component.css'],
+  styleUrl: './inner-list-template.component.css',
 })
 export class InnerListTemplateComponent {
   menu = [

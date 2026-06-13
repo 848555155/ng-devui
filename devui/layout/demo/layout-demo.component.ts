@@ -34,10 +34,10 @@ import topAsideTs from './top-aside/top-aside.component.ts.txt?raw';
 import topAsideScss from './top-aside/top-aside.component.scss?raw';
 @Component({
   selector: 'd-demo-input-number',
-  templateUrl: './layout-demo.component.html',
-  styleUrls: ['./layout-demo.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './layout-demo.component.html',
+  styleUrl: './layout-demo.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class LayoutDemoComponent implements OnInit, OnDestroy {
   GridBasic: Array<DevuiSourceData> = [

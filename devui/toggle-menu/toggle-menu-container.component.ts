@@ -43,12 +43,12 @@ import { ToggleMenuListComponent } from './toggle-menu-list.component';
 
 @Component({
   selector: 'd-toggle-menu-container',
+  standalone: false,
   templateUrl: './toggle-menu-container.component.html',
-  styleUrls: [`./toggle-menu-container.component.scss`],
-  animations: [fadeInOut],
+  styleUrl: `./toggle-menu-container.component.scss`,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
-  standalone: false
+  animations: [fadeInOut],
+  preserveWhitespaces: false
 })
 export class ToggleMenuContainerComponent implements OnInit, OnChanges {
   @Input() set isOpen(value) {

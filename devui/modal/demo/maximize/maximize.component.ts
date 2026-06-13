@@ -4,9 +4,9 @@ import { ModalTestComponent } from '../modal-test.component';
 
 @Component({
   selector: 'd-maximize',
-  templateUrl: './maximize.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './maximize.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class MaximizeComponent {
   config = {

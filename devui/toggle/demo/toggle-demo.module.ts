@@ -46,7 +46,6 @@ import apiEn from '../doc/api-en.md?raw';
       },
     ]),
   ],
-  exports: [ToggleDemoComponent],
   declarations: [
     ToggleDemoComponent,
     ToggleDesignComponent,
@@ -55,7 +54,7 @@ import apiEn from '../doc/api-en.md?raw';
     CallbackComponent,
     CustomComponent
   ],
-
   providers: [],
+  exports: [ToggleDemoComponent]
 })
 export class ToggleDemoModule {}

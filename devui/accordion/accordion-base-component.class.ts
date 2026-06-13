@@ -10,12 +10,12 @@ import { ACCORDION } from './accordion-token';
   },
 })
 export abstract class AccordionBaseComponent<T extends AccordionBase> {
-  item = input<any | T>();
-  deepth = input(0, { transform: numberAttribute });
-  parent = input<any | T>();
+  readonly item = input<any | T>();
+  readonly deepth = input(0, { transform: numberAttribute });
+  readonly parent = input<any | T>();
 
-  disabled = computed(() => this.item() && this.item()[this.accordion.disabledKey()]);
-  title = computed(() => this.item() && this.item()[this.accordion.titleKey()]);
+  readonly disabled = computed(() => this.item() && this.item()[this.accordion.disabledKey()]);
+  readonly title = computed(() => this.item() && this.item()[this.accordion.titleKey()]);
 
   protected accordion = inject(ACCORDION);
 }

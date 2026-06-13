@@ -10,7 +10,7 @@ import { firstValueFrom, timer } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PromiseComponent {
-  loading3 = signal<LoadingType>(undefined);
+  readonly loading3 = signal<LoadingType>(undefined);
   showLoading = false;
   tableNames: string[][] = [[]];
   fetchMultiplePromise() {

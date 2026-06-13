@@ -26,12 +26,12 @@ const SLIDER_CONTROL_VALUE_ACCESSOR: any = {
 
 @Component({
   selector: 'd-slider',
+  standalone: false,
   templateUrl: './slider.component.html',
-  styleUrls: ['./slider.component.scss'],
+  styleUrl: './slider.component.scss',
   providers: [SLIDER_CONTROL_VALUE_ACCESSOR],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
-  standalone: false
+  preserveWhitespaces: false
 })
 
 export class SliderComponent implements OnInit, OnChanges, ControlValueAccessor, OnDestroy, AfterViewInit {

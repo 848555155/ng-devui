@@ -21,10 +21,10 @@ import { GanttService } from '../gantt.service';
 
 @Component({
   selector: 'd-gantt-bar',
-  templateUrl: './gantt-bar.component.html',
-  styleUrls: ['./gantt-bar.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './gantt-bar.component.html',
+  styleUrl: './gantt-bar.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class GanttBarComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
   private moveBarStartListener: Observable<number>;

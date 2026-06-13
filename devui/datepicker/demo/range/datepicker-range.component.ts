@@ -7,10 +7,10 @@ import {
 
 @Component({
   selector: 'd-datepicker-range',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   templateUrl: './datepicker-range.component.html',
-  styleUrls: ['./datepicker-range.component.scss'],
-  standalone: false
+  styleUrl: './datepicker-range.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DatepickerRangeComponent implements OnInit {
   datePicker1: any;

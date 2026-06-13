@@ -4,9 +4,9 @@ import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
 @Component({
   selector: 'd-auto-complete-design',
-  templateUrl: './auto-complete-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './auto-complete-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class AutoCompleteDesignComponent implements OnInit {
   designObj;

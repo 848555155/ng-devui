@@ -26,9 +26,9 @@ import { SliceUploadService } from './slice-upload.service';
 
 @Component({
   selector: 'd-single-upload',
+  standalone: false,
   templateUrl: './single-upload.component.html',
-  exportAs: 'dSingleUpload',
-  styleUrls: ['./upload-view.component.scss'],
+  styleUrl: './upload-view.component.scss',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -36,9 +36,9 @@ import { SliceUploadService } from './slice-upload.service';
       multi: true,
     },
   ],
-  preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  exportAs: 'dSingleUpload',
+  preserveWhitespaces: false
 })
 export class SingleUploadComponent implements OnDestroy, OnInit, ControlValueAccessor {
   dSingleUploadView;
@@ -47,7 +47,7 @@ export class SingleUploadComponent implements OnDestroy, OnInit, ControlValueAcc
   @Input() autoUpload = false;
   @Input() withoutBtn = false;
   @Input() showTip = false;
-  @Input() uploadedFiles: Array<Object> = [];
+  @Input() uploadedFiles: Array<object> = [];
   @Input() uploadedFilesRef: TemplateRef<any>;
   @Input() preloadFilesRef?: TemplateRef<any>;
   @Input() filePath: string;

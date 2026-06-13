@@ -23,8 +23,9 @@ import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'd-multi-auto-complete',
+  standalone: false,
   templateUrl: './multi-auto-complete.component.html',
-  styleUrls: ['multi-auto-complete.component.scss'],
+  styleUrl: 'multi-auto-complete.component.scss',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -32,9 +33,8 @@ import { Observable, of } from 'rxjs';
       multi: true,
     },
   ],
-  preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  preserveWhitespaces: false
 })
 export class MultiAutoCompleteComponent implements OnInit, OnChanges, ControlValueAccessor {
   static ID_SEED = 0;

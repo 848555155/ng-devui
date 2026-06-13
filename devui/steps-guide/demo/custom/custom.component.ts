@@ -4,16 +4,14 @@ import { customData } from '../fakeData';
 
 @Component({
   selector: 'd-custom',
+  standalone: false,
   templateUrl: './custom.component.html',
-  styles: [
-    `
+  styles: `
       d-button {
         margin-right: 4px;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class CustomComponent implements OnInit {
   observerDom: any;

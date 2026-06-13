@@ -5,8 +5,8 @@ import { ProgressComponent } from './progress.component';
 
 @NgModule({
   imports: [CommonModule],
-  exports: [ProgressComponent, ProgressTemplateDirective],
   declarations: [ProgressComponent, ProgressTemplateDirective],
   providers: [],
+  exports: [ProgressComponent, ProgressTemplateDirective]
 })
 export class ProgressModule {}

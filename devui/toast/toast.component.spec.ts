@@ -5,11 +5,11 @@ import { ToastComponent } from './toast.component';
 import { ToastModule } from './toast.module';
 
 @Component({
+  standalone: false,
   template: `
     <d-toast [sticky]="sticky" [life]="life" [value]="msgs" [style]="style" [styleClass]="styleClass" [lifeMode]="mode"></d-toast>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestToastComponent {
   msgs = [];

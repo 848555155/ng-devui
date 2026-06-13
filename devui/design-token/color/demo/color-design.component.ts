@@ -3,9 +3,9 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-color-design',
-  templateUrl: './color-design.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './color-design.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ColorDesignComponent implements OnInit {
   imgSrc;

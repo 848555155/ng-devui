@@ -104,7 +104,6 @@ import apiEn from '../doc/api-en.md?raw';
       },
     ]),
   ],
-  exports: [FormDemoComponent, ChildUserComponent, ChildFormComponent],
   declarations: [
     FormDemoComponent,
     FormDesignComponent,
@@ -130,6 +129,6 @@ import apiEn from '../doc/api-en.md?raw';
     DebounceTimeComponent,
     ValidateUpdateComponent,
   ],
-
+  exports: [FormDemoComponent, ChildUserComponent, ChildFormComponent]
 })
 export class FormDemoModule {}

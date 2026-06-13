@@ -5,9 +5,9 @@ import { ModalNoBtnComponent } from './modal-no-btn.component';
 
 @Component({
   selector: 'd-customize',
-  templateUrl: './customize.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './customize.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class CustomizeComponent {
   constructor(private modalService: ModalService) {}

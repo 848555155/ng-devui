@@ -5,10 +5,10 @@ import { Observable } from 'rxjs';
 
 @Component({
   selector: 'd-demo-upload-slice',
-  templateUrl: './upload-slice.component.html',
-  styleUrls: ['./upload-slice.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './upload-slice.component.html',
+  styleUrl: './upload-slice.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class UploadSliceComponent implements OnInit {
   @ViewChild('singleuploadDrag', { static: true }) singleuploadDrag: SingleUploadComponent;
@@ -21,7 +21,7 @@ export class UploadSliceComponent implements OnInit {
   fileOptions: IFileOptions = {
     multiple: false,
   };
-  uploadedFiles: Array<Object> = [];
+  uploadedFiles: Array<object> = [];
   uploadOptions: IUploadOptions = {
     uri: 'http://localhost:8080/upload',
     // chunkSize:1024*500,

@@ -4,9 +4,9 @@ import { SourceType, originSource } from '../mock-data';
 
 @Component({
   selector: 'd-datatable-demo-async',
-  templateUrl: './data-table-demo-async.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './data-table-demo-async.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DatatableDemoAsyncComponent implements OnInit {
   /* get Async DataSource*/

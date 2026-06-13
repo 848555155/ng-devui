@@ -5,10 +5,10 @@ import { SourceType, originSource } from '../mock-data';
 
 @Component({
   selector: 'd-interaction-column',
-  templateUrl: './interaction-column.component.html',
-  styleUrls: ['./interaction-column.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './interaction-column.component.html',
+  styleUrl: './interaction-column.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class InteractionColumnComponent implements OnInit {
   @ViewChild(DataTableComponent, { static: true }) datatable: DataTableComponent;

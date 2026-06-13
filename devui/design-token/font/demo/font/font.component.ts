@@ -10,10 +10,10 @@ export interface fontItemConfig {
 }
 @Component({
   selector: 'd-font',
-  templateUrl: './font.component.html',
-  styleUrls: ['./font.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './font.component.html',
+  styleUrl: './font.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class FontComponent implements OnInit, OnDestroy {
   themeService: ThemeService;

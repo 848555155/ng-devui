@@ -46,7 +46,6 @@ import apiEn from '../doc/api-en.md?raw';
       },
     ]),
   ],
-  exports: [ReadTipDemoComponent],
   declarations: [
     ReadTipDemoComponent,
     ReadTipDesignComponent,
@@ -55,5 +54,6 @@ import apiEn from '../doc/api-en.md?raw';
     ReadtipTemplateComponent,
     ReadtipAsyncComponent,
   ],
+  exports: [ReadTipDemoComponent]
 })
 export class ReadTipDemoModule {}

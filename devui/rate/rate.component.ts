@@ -3,8 +3,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'd-rate',
+  standalone: false,
   templateUrl: './rate.component.html',
-  styleUrls: ['./rate.component.scss'],
+  styleUrl: './rate.component.scss',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -12,9 +13,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
       multi: true,
     },
   ],
-  preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  preserveWhitespaces: false
 })
 export class RateComponent implements OnInit, ControlValueAccessor {
   /**

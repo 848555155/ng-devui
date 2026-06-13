@@ -2,10 +2,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-slider-custom',
-  templateUrl: './slider-custom-formatter.component.html',
-  styleUrls: ['./slider-custom-formatter.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './slider-custom-formatter.component.html',
+  styleUrl: './slider-custom-formatter.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class SliderCustomFormatterComponent {
   inputValue = 8;

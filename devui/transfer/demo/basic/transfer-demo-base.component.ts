@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-transfer-demo-base',
-  templateUrl: './transfer-demo-base.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './transfer-demo-base.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TransferDemoBaseComponent {
   disabled = false;

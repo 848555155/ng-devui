@@ -80,7 +80,6 @@ import apiEn from '../doc/api-en.md?raw';
       }}
     ])
   ],
-  exports: [DataTableDemoComponent],
   declarations: [
     DataTableDemoComponent,
     DataTableDesignComponent,
@@ -115,5 +114,6 @@ import apiEn from '../doc/api-en.md?raw';
     MemoryTableWidthDirective
   ],
   providers: [],
+  exports: [DataTableDemoComponent]
 })
 export class DataTableDemoModule {}

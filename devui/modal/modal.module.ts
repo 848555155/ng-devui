@@ -25,7 +25,7 @@ import { MovableDirective } from './movable.directive';
     ModalFooterComponent,
     MovableDirective,
   ],
-  exports: [ModalComponent, ModalContainerComponent, ModalHeaderComponent, ModalFooterComponent, MovableDirective],
   providers: [ModalService, DialogService, DocumentRef],
+  exports: [ModalComponent, ModalContainerComponent, ModalHeaderComponent, ModalFooterComponent, MovableDirective]
 })
 export class ModalModule {}

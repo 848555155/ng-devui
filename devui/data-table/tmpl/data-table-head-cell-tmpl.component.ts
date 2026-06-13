@@ -2,9 +2,9 @@ import { ChangeDetectionStrategy, Component, ContentChild, TemplateRef } from '@
 
 @Component({
   selector: 'd-head-cell',
+  standalone: false,
   template: '',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DataTableHeadCellTmplComponent {
 

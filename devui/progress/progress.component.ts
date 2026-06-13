@@ -15,11 +15,11 @@ import { IGradientColor, IProgressItem, ShowContentConfig } from './progress.typ
 
 @Component({
   selector: 'd-progress',
-  templateUrl: './progress.component.html',
-  styleUrls: ['./progress.component.scss'],
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './progress.component.html',
+  styleUrl: './progress.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  preserveWhitespaces: false
 })
 export class ProgressComponent implements OnChanges, AfterViewInit {
   static ID_SEED = 0;
@@ -85,10 +85,10 @@ export class ProgressComponent implements OnChanges, AfterViewInit {
       this.showContentConfig =
         typeof this.showContent === 'boolean'
           ? {
-              showInnerContent: this.showContent,
-              showOuterContent: this.showContent,
-              showCenterContent: false,
-            }
+            showInnerContent: this.showContent,
+            showOuterContent: this.showContent,
+            showCenterContent: false,
+          }
           : { ...this.showContentConfig, ...this.showContent };
     }
   }
@@ -117,13 +117,13 @@ export class ProgressComponent implements OnChanges, AfterViewInit {
     const data = this.multiProgressConfig?.length
       ? [...this.multiProgressConfig]
       : [
-          {
-            color: (this.checkStrokeColor() || this.barbgcolor) ?? '',
-            percentage: this.percentage ?? 0,
-            percentageText: this.percentageText ?? '',
-            content: this.content ?? '',
-          },
-        ];
+        {
+          color: (this.checkStrokeColor() || this.barbgcolor) ?? '',
+          percentage: this.percentage ?? 0,
+          percentageText: this.percentageText ?? '',
+          content: this.content ?? '',
+        },
+      ];
 
     if (this.type === 'line') {
       this.checkSumOfPercentages(data, (sum: number, item: IProgressItem) => {

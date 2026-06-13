@@ -16,8 +16,9 @@ import { Observable } from 'rxjs';
 
 @Component({
   selector: 'd-checkbox-group',
+  standalone: false,
   templateUrl: './checkbox-group.component.html',
-  styleUrls: ['./checkbox-group.component.scss'],
+  styleUrl: './checkbox-group.component.scss',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -25,9 +26,8 @@ import { Observable } from 'rxjs';
       multi: true,
     },
   ],
-  preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  preserveWhitespaces: false
 })
 export class CheckBoxGroupComponent implements OnChanges, ControlValueAccessor {
   static ID_SEED = 0;

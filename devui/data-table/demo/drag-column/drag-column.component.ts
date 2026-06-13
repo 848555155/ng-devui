@@ -3,9 +3,9 @@ import { originSource, SourceType } from '../mock-data';
 
 @Component({
   selector: 'd-drag-column',
-  templateUrl: 'drag-column.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: 'drag-column.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DragColumnComponent {
   basicDataSource: Array<SourceType> = JSON.parse(JSON.stringify(originSource.slice(0, 6)));

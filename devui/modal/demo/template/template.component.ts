@@ -3,9 +3,9 @@ import { DialogService, ModalService } from 'ng-devui/modal';
 
 @Component({
   selector: 'd-template',
-  templateUrl: './template.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './template.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TemplateComponent {
   @ViewChild('dialogContent', { static: true }) dialogContent: TemplateRef<any>;

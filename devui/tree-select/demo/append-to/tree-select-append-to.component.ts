@@ -3,6 +3,7 @@ import { ModalService } from 'ng-devui/modal';
 
 @Component({
   selector: 'd-tree-select-modal',
+  standalone: false,
   template: `
     <div style="padding: 10px;">
       <d-tree-select
@@ -18,8 +19,7 @@ import { ModalService } from 'ng-devui/modal';
       </div>
     </div>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TreeSelectModalComponent {
   @Input() data: any;
@@ -131,10 +131,10 @@ export class TreeSelectModalComponent {
 
 @Component({
   selector: 'd-tree-select-append-to',
+  standalone: false,
   templateUrl: './tree-select-append-to.component.html',
   providers: [ModalService],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class TreeSelectAppendToComponent {
   data1 = [

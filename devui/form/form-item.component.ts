@@ -15,11 +15,11 @@ import { DFormControlStatus } from './validator-directive/validate.type';
 
 @Component({
   selector: 'd-form-item',
-  template: ` <ng-content></ng-content> `,
-  styleUrls: ['./form-item.component.scss'],
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  template: ` <ng-content></ng-content> `,
+  styleUrl: './form-item.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  preserveWhitespaces: false
 })
 export class FormItemComponent implements OnInit {
   @HostBinding('class.devui-form-has-error-msg') _hasErrorMsg = false;

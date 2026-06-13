@@ -19,11 +19,11 @@ import { TransferDataFormat, TransferDirection } from './transfer.types';
 
 @Component({
   selector: 'd-transfer',
-  templateUrl: './transfer.component.html',
-  styleUrls: ['./transfer.component.scss'],
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './transfer.component.html',
+  styleUrl: './transfer.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  preserveWhitespaces: false
 })
 export class TransferComponent implements OnInit, OnChanges, OnDestroy {
   static ID_SEED = 0;

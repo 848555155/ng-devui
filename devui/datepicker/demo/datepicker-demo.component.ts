@@ -59,9 +59,9 @@ import twoDatepickerFormatScss from './two-datepicker-format/two-datepicker-form
 
 @Component({
   selector: 'd-datepicker-demo',
-  templateUrl: './datepicker-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './datepicker-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DatepickerDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

@@ -21,10 +21,10 @@ import templateTs from './template/template.component.ts.txt?raw';
 
 @Component({
   selector: 'd-demo-rate',
-  templateUrl: './rate-demo.component.html',
-  styleUrls: ['./rate-demo.component.css'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './rate-demo.component.html',
+  styleUrl: './rate-demo.component.css',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class RateDemoComponent implements OnInit, OnDestroy {
   basicSource: Array<DevuiSourceData> = [

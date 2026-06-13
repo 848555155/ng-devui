@@ -26,40 +26,40 @@ import { AccordionItemComponent } from './accordion-item.component';
     AccordionItemComponent,
     NgTemplateOutlet,
   ],
+  templateUrl: './accordion-list.component.html',
+  encapsulation: ViewEncapsulation.None,
   host: {
     '[class.devui-accordion-show-animate]': 'animateState()',
   },
-  templateUrl: './accordion-list.component.html',
-  encapsulation: ViewEncapsulation.None,
   animations: [expandCollapse, expandCollapseForDomDestroy],
-  preserveWhitespaces: false,
+  preserveWhitespaces: false
 })
 export class AccordionListComponent {
-  data = input<Array<AccordionMenuItem>>();
-  deepth = input(0, { transform: numberAttribute });
-  parent = input<AccordionMenuItem>();
-  accordionMenuQueryList = viewChildren(AccordionMenuComponent);
-  accordionItemRouterlinkQueryList = viewChildren(AccordionItemRouterlinkComponent);
+  readonly data = input<Array<AccordionMenuItem>>();
+  readonly deepth = input(0, { transform: numberAttribute });
+  readonly parent = input<AccordionMenuItem>();
+  readonly accordionMenuQueryList = viewChildren(AccordionMenuComponent);
+  readonly accordionItemRouterlinkQueryList = viewChildren(AccordionItemRouterlinkComponent);
 
-  animateState = computed(() => this.accordion.showAnimation());
-  loading = computed(() => this.parent() && this.parent()[this.accordion.loadingKey()]);
-  noContent = computed(() => this.data() === undefined || this.data() === null || this.data().length === 0);
-  linkTypeKey = computed(() => this.accordion.linkTypeKey());
-  childrenKey = computed(() => this.accordion.childrenKey());
-  activeKey = computed(() => this.accordion.activeKey());
-  innerListTemplate = computed(() => this.accordion.innerListTemplate());
-  loadingTemplate = computed(() => this.accordion.loadingTemplate());
-  noContentTemplate = computed(() => this.accordion.noContentTemplate());
-  linkType = computed(() => this.accordion.linkType());
-  i18nCommonText = computed(() => this.accordion.i18nCommonText);
-  showNoContent = computed(() => this.accordion.showNoContent());
+  readonly animateState = computed(() => this.accordion.showAnimation());
+  readonly loading = computed(() => this.parent() && this.parent()[this.accordion.loadingKey()]);
+  readonly noContent = computed(() => this.data() === undefined || this.data() === null || this.data().length === 0);
+  readonly linkTypeKey = computed(() => this.accordion.linkTypeKey());
+  readonly childrenKey = computed(() => this.accordion.childrenKey());
+  readonly activeKey = computed(() => this.accordion.activeKey());
+  readonly innerListTemplate = computed(() => this.accordion.innerListTemplate());
+  readonly loadingTemplate = computed(() => this.accordion.loadingTemplate());
+  readonly noContentTemplate = computed(() => this.accordion.noContentTemplate());
+  readonly linkType = computed(() => this.accordion.linkType());
+  readonly i18nCommonText = computed(() => this.accordion.i18nCommonText);
+  readonly showNoContent = computed(() => this.accordion.showNoContent());
 
-  routerLinkActivated = computed(() =>
+  readonly routerLinkActivated = computed(() =>
     this.accordionItemRouterlinkQueryList().some((airlc) => this.isLinkRouterActive(airlc)) ||
     this.accordionMenuQueryList().some((amc) => this.isMenuRouterActive(amc))
   );
 
-  hasActiveChildren = computed(() =>
+  readonly hasActiveChildren = computed(() =>
     this.accordionMenuQueryList().some((amc) => this.isMenuDataActive(amc)) ||
     (!!this.data().length && this.data().some((item) => this.isItemData(item) && this.isItemDataActive(item)))
   );

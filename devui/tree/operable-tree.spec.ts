@@ -12,6 +12,7 @@ import { ITreeItem, TreeNode } from './tree-factory.class';
 import { TreeModule } from './tree.module';
 
 @Component({
+  standalone: false,
   template: `
     <d-operable-tree
       #operableTree
@@ -36,8 +37,7 @@ import { TreeModule } from './tree.module';
     >
     </d-operable-tree>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestOperableTreeComponent {
   @ViewChild('operableTree') operableTree: OperableTreeComponent;
@@ -93,12 +93,12 @@ class TestOperableTreeComponent {
 }
 
 @Component({
+  standalone: false,
   template: `
     <d-operable-tree #operableTree [tree]="treeItems" [treeNodeIdKey]="'id'" [treeNodeChildrenKey]="'children'" [virtualScroll]="true">
     </d-operable-tree>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestVirtualScrollTreeComponent {
   @ViewChild('operableTree') operableTree: OperableTreeComponent;
@@ -132,6 +132,7 @@ class TestVirtualScrollTreeComponent {
 }
 
 @Component({
+  standalone: false,
   template: `
     <d-operable-tree
       #comp
@@ -147,8 +148,7 @@ class TestVirtualScrollTreeComponent {
     </d-operable-tree>
     <pre>transferData:{{ transferData }}</pre>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 class TestDragDropTreeComponent {
   @ViewChild('comp') comp: OperableTreeComponent;

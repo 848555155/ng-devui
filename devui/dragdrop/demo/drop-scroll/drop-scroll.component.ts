@@ -2,10 +2,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'd-drop-scroll',
-  templateUrl: './drop-scroll.component.html',
-  styleUrls: ['./drop-scroll.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './drop-scroll.component.html',
+  styleUrl: './drop-scroll.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DropScrollComponent {
   lists = [

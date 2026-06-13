@@ -4,9 +4,9 @@ import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'd-design-border-radius-demo',
-  templateUrl: './design-border-radius-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './design-border-radius-demo.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class DesignBorderRadiusDemoComponent implements OnInit, OnDestroy {
   navItems = [];

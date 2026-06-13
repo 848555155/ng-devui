@@ -3,10 +3,10 @@ import { IAxisConfigs, IQuadrantConfigs, IViewConfigs } from '../quadrant-diagra
 
 @Component({
   selector: 'd-quadrant-region',
-  templateUrl: './quadrant-region.component.html',
-  styleUrls: ['./quadrant-region.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
+  templateUrl: './quadrant-region.component.html',
+  styleUrl: './quadrant-region.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class QuadrantRegionComponent implements OnInit, OnChanges {
   @Input() quadrantConfigs: Array<IQuadrantConfigs>;
