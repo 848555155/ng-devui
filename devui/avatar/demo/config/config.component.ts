@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { AvatarComponent } from 'ng-devui/avatar';
 import { environment } from 'src/environments/environment';
 
@@ -7,7 +7,6 @@ import { environment } from 'src/environments/environment';
   imports: [AvatarComponent],
   styleUrls: ['./config.component.css'],
   templateUrl: './config.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConfigComponent {
   imgSrc = environment.deployPrefix + 'assets/logo.svg';

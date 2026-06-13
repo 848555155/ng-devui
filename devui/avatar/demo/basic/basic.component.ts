@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { AvatarComponent } from 'ng-devui/avatar';
 
 @Component({
@@ -6,6 +6,5 @@ import { AvatarComponent } from 'ng-devui/avatar';
   imports: [AvatarComponent],
   styleUrls: ['./basic.component.css'],
   templateUrl: './basic.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BasicComponent {}
