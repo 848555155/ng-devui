@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { BreadcrumbModule } from 'ng-devui/breadcrumb';
 import { DropDownModule } from 'ng-devui/dropdown';
 
@@ -7,7 +7,6 @@ import { DropDownModule } from 'ng-devui/dropdown';
   imports: [BreadcrumbModule, DropDownModule],
   templateUrl: './custom.component.html',
   styleUrls: ['./custom.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomComponent {
   breadData = [

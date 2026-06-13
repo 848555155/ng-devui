@@ -1,16 +1,13 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
+import { ButtonComponent } from 'ng-devui/button';
 
 @Component({
   selector: 'd-button-loading',
+  imports: [ButtonComponent],
   templateUrl: './loading.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
 })
-export class LoadingComponent implements OnInit {
+export class LoadingComponent {
   showLoading = false;
-  constructor() {}
-
-  ngOnInit() {}
 
   toggleLoading() {
     this.showLoading = true;

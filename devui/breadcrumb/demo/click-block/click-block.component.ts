@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { BreadcrumbModule, BreadCrumbService, MenuConfig } from 'ng-devui/breadcrumb';
 import { HelperUtils } from 'ng-devui/common';
 import { DialogService } from 'ng-devui/modal';
@@ -7,25 +7,12 @@ import { DialogService } from 'ng-devui/modal';
   selector: 'd-click-block',
   imports: [BreadcrumbModule],
   templateUrl: './click-block.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ClickBlockComponent {
   breadItem: Array<MenuConfig> = [
-    {
-      linkType: 'hrefLink',
-      link: '//angular.cn/',
-      name: 'Home',
-    },
-    {
-      linkType: 'routerLink',
-      link: './home',
-      name: 'DevUI',
-    },
-    {
-      linkType: 'routerLink',
-      link: '/components/zh-cn/button/demo#button-common',
-      name: 'Profile',
-    },
+    { linkType: 'hrefLink', link: '//angular.cn/', name: 'Home' },
+    { linkType: 'routerLink', link: './home', name: 'DevUI' },
+    { linkType: 'routerLink', link: '/components/zh-cn/button/demo#button-common', name: 'Profile' },
   ];
 
   private breadCrumbService = inject(BreadCrumbService);
@@ -33,9 +20,7 @@ export class ClickBlockComponent {
 
   navigate($event, item) {
     this.canNavigate(item).then((can) => {
-      if (!can) {
-        return;
-      }
+      if (!can) { return; }
       if (item.linkType === 'routerLink') {
         this.breadCrumbService.navigateTo($event, item);
       } else {
@@ -56,23 +41,8 @@ export class ClickBlockComponent {
         backdropCloseable: false,
         dialogtype: 'standard',
         buttons: [
-          {
-            cssClass: 'stress',
-            text: 'Ok',
-            handler: ($event: Event) => {
-              results.modalInstance.hide();
-              resolve(true);
-            },
-          },
-          {
-            id: 'btn-cancel',
-            cssClass: 'common',
-            text: 'Cancel',
-            handler: ($event: Event) => {
-              results.modalInstance.hide();
-              resolve(false);
-            },
-          },
+          { cssClass: 'stress', text: 'Ok', handler: () => { results.modalInstance.hide(); resolve(true); } },
+          { id: 'btn-cancel', cssClass: 'common', text: 'Cancel', handler: () => { results.modalInstance.hide(); resolve(false); } },
         ],
       });
     });

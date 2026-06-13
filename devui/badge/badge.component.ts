@@ -1,20 +1,10 @@
-import {
-  booleanAttribute,
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  ElementRef,
-  input,
-  numberAttribute,
-  viewChild,
-} from '@angular/core';
+import { booleanAttribute, Component, computed, ElementRef, input, numberAttribute, viewChild } from '@angular/core';
 import { BadgePositionType, BadgeStatusType } from './badge.types';
 
 @Component({
   selector: 'd-badge',
   templateUrl: './badge.component.html',
   styleUrls: ['./badge.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BadgeComponent {
   contentProjection = viewChild<ElementRef<HTMLSpanElement>>('contentProjection');

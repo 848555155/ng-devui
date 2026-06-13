@@ -1,42 +1,40 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
-import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
-import { Subscription } from 'rxjs';
+import { Component, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { TranslateModule, TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
+import { merge } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'd-button-design',
+  imports: [TranslateModule],
   templateUrl: './button-design.component.html',
   styleUrls: ['./button-design.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
 })
-export class ButtonDesignComponent implements OnInit, OnDestroy {
-  structureImgSrc;
-  useImgSrc;
-  sizeList = [];
-  buttonList = [];
-  layoutList = [];
-  primaryLeft = [];
-  primaryRight = [];
-  structureList = [];
-  subs: Subscription = new Subscription();
-  constructor(private translate: TranslateService) {}
+export class ButtonDesignComponent {
+  private translate = inject(TranslateService);
 
-  ngOnInit(): void {
+  structureImgSrc = '';
+  useImgSrc = '';
+  sizeList: any[] = [];
+  buttonList: any[] = [];
+  layoutList: any[] = [];
+  primaryLeft: any[] = [];
+  primaryRight: any[] = [];
+  structureList: any[] = [];
+
+  constructor() {
     this.structureImgSrc = environment.deployPrefix + 'assets/design/button/structure.png';
     this.useImgSrc = environment.deployPrefix + 'assets/design/button/use.png';
-    this.subs.add(
-      this.translate.get('components.button.design').subscribe((res) => {
-        this.setNavValues(res);
-      })
-    );
 
-    this.subs.add(
-      this.translate.onLangChange.subscribe((event: TranslationChangeEvent) => {
+    merge(
+      this.translate.get('components.button.design'),
+      this.translate.onLangChange
+    )
+      .pipe(takeUntilDestroyed())
+      .subscribe(() => {
         const values = this.translate.instant('components.button.design');
         this.setNavValues(values);
-      })
-    );
+      });
   }
 
   setNavValues(values) {
@@ -50,11 +48,5 @@ export class ButtonDesignComponent implements OnInit, OnDestroy {
 
   getImgSrc(src) {
     return environment.deployPrefix + src;
-  }
-
-  ngOnDestroy() {
-    if (this.subs) {
-      this.subs.unsubscribe();
-    }
   }
 }

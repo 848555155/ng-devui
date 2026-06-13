@@ -1,13 +1,10 @@
 import {
   booleanAttribute,
-  ChangeDetectionStrategy,
   Component,
-  EventEmitter,
   inject,
   input,
   linkedSignal,
   output,
-  Output,
   TemplateRef,
 } from '@angular/core';
 import { BreadCrumbService } from '../breadcrumb.service';
@@ -23,7 +20,6 @@ import { SearchModule } from 'ng-devui/search';
   imports: [DropDownModule, SearchModule, NgTemplateOutlet],
   templateUrl: './breadcrumb-item.component.html',
   styleUrls: ['./breadcrumb-item.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
 })
 export class BreadCrumbItemComponent {

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, viewChild } from '@angular/core';
+import { Component, viewChild } from '@angular/core';
 import { BackTopComponent } from 'ng-devui/back-top';
 import { TooltipDirective, TooltipModule } from 'ng-devui/tooltip';
 
@@ -7,7 +7,6 @@ import { TooltipDirective, TooltipModule } from 'ng-devui/tooltip';
   imports: [BackTopComponent, TooltipModule],
   templateUrl: './customize.component.html',
   styleUrls: ['./customize.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CustomizeComponent {
   tooltipItem = viewChild(TooltipDirective);

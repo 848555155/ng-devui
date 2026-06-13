@@ -1,7 +1,20 @@
-import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { DevuiSourceData } from 'ng-devui/shared/devui-codebox';
-import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
-import { Subscription } from 'rxjs';
+import { Component, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { AnchorModule } from 'ng-devui/anchor';
+import { DevUICodeboxModule, DevuiSourceData } from 'ng-devui/shared/devui-codebox';
+import { DDemoNavModule } from 'devui-commons/src/demo-nav/d-demo-nav.module';
+import { merge } from 'rxjs';
+import { AutofocusComponent } from './autofocus/autofocus.component';
+import { CombinationComponent } from './combination/combination.component';
+import { CommonComponent } from './common/common.component';
+import { DangerComponent } from './danger/danger.component';
+import { GroupsComponent } from './groups/groups.component';
+import { IconComponent } from './icon/icon.component';
+import { LoadingComponent } from './loading/loading.component';
+import { PrimaryComponent } from './primary/primary.component';
+import { SizeComponent } from './size/size.component';
+import { TextComponent } from './text/text.component';
 import commonHtml from './common/common.component.html?raw';
 import commonTs from './common/common.component.ts.txt?raw';
 import iconHtml from './icon/icon.component.html?raw';
@@ -24,82 +37,85 @@ import sizeTs from './size/size.component.ts.txt?raw';
 import groupsHtml from './groups/groups.component.html?raw';
 import groupsTs from './groups/groups.component.ts.txt?raw';
 import groupsScss from './groups/groups.component.scss?raw';
+
 @Component({
   selector: 'd-demo-button',
+  imports: [
+    TranslateModule,
+    AnchorModule,
+    DevUICodeboxModule,
+    DDemoNavModule,
+    CommonComponent,
+    DangerComponent,
+    IconComponent,
+    LoadingComponent,
+    PrimaryComponent,
+    SizeComponent,
+    TextComponent,
+    CombinationComponent,
+    AutofocusComponent,
+    GroupsComponent,
+  ],
   templateUrl: './button-demo.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
 })
-export class ButtonDemoComponent implements OnInit, OnDestroy {
+export class ButtonDemoComponent {
+  private translate = inject(TranslateService);
+
   commonSource: Array<DevuiSourceData> = [
     { title: 'HTML', language: 'xml', code: commonHtml },
     { title: 'TS', language: 'typescript', code: commonTs },
   ];
-
   iconSource: Array<DevuiSourceData> = [
     { title: 'HTML', language: 'xml', code: iconHtml },
     { title: 'TS', language: 'typescript', code: iconTs },
     { title: 'SCSS', language: 'css', code: iconScss },
   ];
-
   loadingSource: Array<DevuiSourceData> = [
     { title: 'HTML', language: 'xml', code: loadingHtml },
     { title: 'TS', language: 'typescript', code: loadingTs },
   ];
-
   primarySource: Array<DevuiSourceData> = [
     { title: 'HTML', language: 'xml', code: primaryHtml },
     { title: 'TS', language: 'typescript', code: primaryTs },
   ];
-
   textSource: Array<DevuiSourceData> = [
     { title: 'HTML', language: 'xml', code: textHtml },
     { title: 'TS', language: 'typescript', code: textTs },
   ];
-
   dangerSource: Array<DevuiSourceData> = [
     { title: 'HTML', language: 'xml', code: dangerHtml },
     { title: 'TS', language: 'typescript', code: dangerTs },
   ];
-
   combinationSource: Array<DevuiSourceData> = [
     { title: 'HTML', language: 'xml', code: combinationHtml },
     { title: 'TS', language: 'typescript', code: combinationTs },
   ];
-
   autofocusSource: Array<DevuiSourceData> = [
     { title: 'HTML', language: 'xml', code: autofocusHtml },
     { title: 'TS', language: 'typescript', code: autofocusTs },
   ];
-
   sizeSource: Array<DevuiSourceData> = [
     { title: 'HTML', language: 'xml', code: sizeHtml },
     { title: 'TS', language: 'typescript', code: sizeTs },
   ];
-
   groupsSource: Array<DevuiSourceData> = [
     { title: 'HTML', language: 'xml', code: groupsHtml },
     { title: 'TS', language: 'typescript', code: groupsTs },
     { title: 'SCSS', language: 'css', code: groupsScss },
   ];
 
-  navItems = [];
-  subs: Subscription = new Subscription();
-  constructor(private translate: TranslateService) {}
+  navItems: Array<{ dAnchorLink: string; value: string }> = [];
 
-  ngOnInit() {
-    this.subs.add(
-      this.translate.get('components.button.anchorLinkValues').subscribe((res) => {
-        this.setNavValues(res);
-      })
-    );
-
-    this.subs.add(
-      this.translate.onLangChange.subscribe((event: TranslationChangeEvent) => {
+  constructor() {
+    merge(
+      this.translate.get('components.button.anchorLinkValues'),
+      this.translate.onLangChange
+    )
+      .pipe(takeUntilDestroyed())
+      .subscribe(() => {
         const values = this.translate.instant('components.button.anchorLinkValues');
         this.setNavValues(values);
-      })
-    );
+      });
   }
 
   setNavValues(values) {
@@ -115,11 +131,5 @@ export class ButtonDemoComponent implements OnInit, OnDestroy {
       { dAnchorLink: 'button-size', value: values['button-size'] },
       { dAnchorLink: 'button-groups', value: values['button-groups'] },
     ];
-  }
-
-  ngOnDestroy() {
-    if (this.subs) {
-      this.subs.unsubscribe();
-    }
   }
 }

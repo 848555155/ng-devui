@@ -1,13 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
+import { ButtonComponent } from 'ng-devui/button';
 
 @Component({
   selector: 'd-button-text',
+  imports: [ButtonComponent],
   templateUrl: './text.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
 })
-export class TextComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
-}
+export class TextComponent {}

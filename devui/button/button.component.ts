@@ -1,57 +1,49 @@
 import {
-  AfterContentChecked,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
-  ElementRef,
-  EventEmitter,
-  HostListener,
-  Input,
-  Output,
+  input,
+  output,
+  signal,
   TemplateRef,
-  ViewChild
+  viewChild,
+  ElementRef,
 } from '@angular/core';
+import { DCommonModule } from 'ng-devui/common';
+import { LoadingModule } from 'ng-devui/loading';
 import { AnimationNumberDuration } from 'ng-devui/utils';
 export type IButtonType = 'button' | 'submit' | 'reset';
-/**
- * 类型中text-dark参数废弃
- */
 export type IButtonStyle = 'common' | 'primary' | 'text' | 'text-dark' | 'danger' | 'success' | 'warning';
 export type IButtonPosition = 'left' | 'right' | 'default';
 export type IButtonSize = 'lg' | 'md' | 'sm' | 'xs';
 
 @Component({
   selector: 'd-button',
+  imports: [LoadingModule, DCommonModule],
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '(click)': 'handleDisabled($event)',
+  },
   preserveWhitespaces: false,
-  standalone: false
 })
-export class ButtonComponent implements AfterContentChecked {
-  @Input() id: string;
-  @Input() type: IButtonType = 'button';
-  @Input() bsStyle: IButtonStyle = 'primary';
-  @Input() shape: 'circle';
-  @Input() bsSize: IButtonSize = 'md';
-  /**
-   * @deprecated
-   * 原左右按钮用按钮组实现
-   */
-  @Input() bsPosition: IButtonPosition = 'default';
-  @Input() bordered: boolean;
-  @Input() icon: string;
-  @Input() disabled = false;
-  @Input() showLoading = false;
-  @Input() width?: string;
-  @Input() autofocus = false;
-  @Input() loadingTemplateRef: TemplateRef<any>;
-  @Output() btnClick = new EventEmitter<MouseEvent>();
-  @ViewChild('buttonContent', { static: true }) buttonContent: ElementRef;
+export class ButtonComponent {
+  id = input<string>();
+  type = input<IButtonType>('button');
+  bsStyle = input<IButtonStyle>('primary');
+  shape = input<'circle'>();
+  bsSize = input<IButtonSize>('md');
+  bsPosition = input<IButtonPosition>('default');
+  bordered = input<boolean>();
+  icon = input<string>();
+  disabled = input(false);
+  showLoading = input(false);
+  width = input<string>();
+  autofocus = input(false);
+  loadingTemplateRef = input<TemplateRef<any>>();
+  btnClick = output<MouseEvent>();
+  buttonContent = viewChild.required<ElementRef>('buttonContent');
 
-  @HostListener('click', ['$event'])
   handleDisabled($event: Event) {
-    if (this.disabled) {
+    if (this.disabled()) {
       $event.preventDefault();
       $event.stopImmediatePropagation();
     }
@@ -59,15 +51,11 @@ export class ButtonComponent implements AfterContentChecked {
 
   waveLeft = 0;
   waveTop = 0;
-  showWave = false;
-  isMouseDown = false;
+  showWave = signal(false);
+  isMouseDown = signal(false);
 
-  constructor(private cd: ChangeDetectorRef) {
-  }
-
-  // 新增click事件，解决直接在host上使用click，在disabled状态下还能触发事件
   onClick(event) {
-    if (!this.showLoading) {
+    if (!this.showLoading()) {
       this.btnClick.emit(event);
     }
     this.showClickWave(event);
@@ -76,19 +64,14 @@ export class ButtonComponent implements AfterContentChecked {
   showClickWave(event) {
     this.waveLeft = event.offsetX;
     this.waveTop = event.offsetY;
-    this.showWave = true;
-
+    this.showWave.set(true);
     setTimeout(() => {
-      this.showWave = false;
-      this.cd.detectChanges();
+      this.showWave.set(false);
     }, AnimationNumberDuration.SLOW);
   }
 
-  ngAfterContentChecked(): void {
-    this.cd.detectChanges();
-  }
-
   hasContent() {
-    return !!this.buttonContent && this.buttonContent.nativeElement && this.buttonContent.nativeElement.innerHTML.trim();
+    const content = this.buttonContent();
+    return !!content && content.nativeElement && content.nativeElement.innerHTML.trim();
   }
 }

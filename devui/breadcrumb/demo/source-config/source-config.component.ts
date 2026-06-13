@@ -1,10 +1,9 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { BreadcrumbModule, SourceConfig } from 'ng-devui/breadcrumb';
 @Component({
   selector: 'd-source-config',
   imports: [BreadcrumbModule],
   templateUrl: './source-config.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SourceConfigComponent {
   source: SourceConfig[] = [

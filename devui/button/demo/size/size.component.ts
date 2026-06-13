@@ -1,13 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
+import { ButtonComponent } from 'ng-devui/button';
 
 @Component({
   selector: 'd-button-size',
+  imports: [ButtonComponent],
   templateUrl: './size.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
 })
-export class SizeComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
-}
+export class SizeComponent {}

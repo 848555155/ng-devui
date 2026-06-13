@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, viewChild, ElementRef } from '@angular/core';
+import { Component, viewChild, ElementRef } from '@angular/core';
 import { BackTopComponent } from 'ng-devui/back-top';
 
 @Component({
@@ -6,7 +6,6 @@ import { BackTopComponent } from 'ng-devui/back-top';
   imports: [BackTopComponent],
   templateUrl: './scroll-container.component.html',
   styleUrls: ['./scroll-container.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScrollContainerComponent {
   scrollElement = viewChild<ElementRef<HTMLUListElement>>('scrollContent');

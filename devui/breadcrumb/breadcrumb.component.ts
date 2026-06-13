@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, forwardRef, inject, input, Input, TemplateRef } from '@angular/core';
+import { Component, forwardRef, inject, input, TemplateRef } from '@angular/core';
 import { BreadCrumbService } from './breadcrumb.service';
 import { BREADCRUMB } from './breadcrumb.token';
 import { SourceConfig } from './breadcrumb.type';
@@ -15,7 +15,6 @@ import { BreadCrumbItemComponent } from './breadcrumb-item/breadcrumb-item.compo
     provide: BREADCRUMB,
     useExisting: forwardRef(() => BreadCrumbComponent)
   }],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BreadCrumbComponent {
   separatorIcon = input<TemplateRef<any>>();

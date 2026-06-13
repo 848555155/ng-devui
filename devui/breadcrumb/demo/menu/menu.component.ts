@@ -1,10 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { BreadcrumbModule } from 'ng-devui/breadcrumb';
 @Component({
   selector: 'd-menu',
   imports: [BreadcrumbModule],
   templateUrl: './menu.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MenuComponent {
   breadData = [

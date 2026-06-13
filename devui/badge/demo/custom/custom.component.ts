@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { BadgeComponent } from 'ng-devui/badge';
 
 @Component({
@@ -6,6 +6,5 @@ import { BadgeComponent } from 'ng-devui/badge';
   imports: [BadgeComponent],
   templateUrl: './custom.component.html',
   styleUrls: ['./custom.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomComponent {}

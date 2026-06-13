@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import { Component, input } from '@angular/core';
 
 export type IButtonGroupSize = 'lg' | 'md' | 'sm' | 'xs';
 
@@ -6,13 +6,8 @@ export type IButtonGroupSize = 'lg' | 'md' | 'sm' | 'xs';
   selector: 'd-button-group',
   templateUrl: './button-group.component.html',
   styleUrls: ['./button-group.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
-  standalone: false
 })
 export class ButtonGroupComponent {
-  @Input() size: IButtonGroupSize = 'md';
-  constructor() {
-  }
-
+  size = input<IButtonGroupSize>('md');
 }

@@ -1,7 +1,6 @@
 import { CdkDrag, DragConstrainPosition, DragDropModule, DragRef, Point } from '@angular/cdk/drag-drop';
 import { NgTemplateOutlet } from '@angular/common';
 import {
-  ChangeDetectionStrategy,
   Component,
   TemplateRef,
   DOCUMENT,
@@ -23,7 +22,6 @@ import { debounceTime, fromEvent, switchMap } from 'rxjs';
   templateUrl: './back-top.component.html',
   styleUrls: ['./back-top.component.scss'],
   preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BackTopComponent {
   customTemplate = input<TemplateRef<any>>();
@@ -56,28 +54,19 @@ export class BackTopComponent {
   ) => {
     let elementLeft = userPointerPosition.x - pickupPositionInElement.x;
     let elementTop = userPointerPosition.y - pickupPositionInElement.y;
-
     const elementRight = elementLeft + dimensions.width;
     const elementBottom = elementTop + dimensions.height;
-
     const windowWidth = window.innerWidth;
     const windowHeight = window.innerHeight;
-
     elementLeft = Math.max(elementLeft, 0);
     elementTop = Math.max(elementTop, 0);
-
     if (elementRight > windowWidth) {
       elementLeft = windowWidth - dimensions.width;
     }
-
     if (elementBottom > windowHeight) {
       elementTop = windowHeight - dimensions.height;
     }
-
-    return {
-      x: elementLeft,
-      y: elementTop,
-    };
+    return { x: elementLeft, y: elementTop };
   };
 
   computedScrollTarget = computed(() => {
