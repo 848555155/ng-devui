@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { DropDownModule } from 'ng-devui/dropdown';
 import { IconModule } from 'ng-devui/icon';
 
@@ -7,7 +7,6 @@ import { IconModule } from 'ng-devui/icon';
   imports: [IconModule, DropDownModule],
   templateUrl: './icon-group.component.html',
   styleUrl: './icon-group.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IconGroupDemoComponent {
   readonly watched = signal(true);

@@ -27,7 +27,6 @@ import { Observable } from 'rxjs';
       multi: true,
     },
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false
 })
 export class CheckBoxComponent implements ControlValueAccessor, AfterViewInit {

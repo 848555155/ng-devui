@@ -1,6 +1,5 @@
 import {
   booleanAttribute,
-  ChangeDetectionStrategy,
   Component,
   computed,
   input,
@@ -13,7 +12,6 @@ import {
     <div class="devui-loading-backdrop" [style.z-index]="zIndex()" [class.devui-loading-full]="targetName() === 'BODY'"></div>
     }`,
   styleUrl: './loading-backdrop.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false
 })
 export class LoadingBackdropComponent {

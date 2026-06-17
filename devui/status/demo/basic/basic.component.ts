@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { StatusComponent } from 'ng-devui/status';
 
 @Component({
@@ -6,6 +6,5 @@ import { StatusComponent } from 'ng-devui/status';
   imports: [StatusComponent],
   templateUrl: './basic.component.html',
   styleUrl: './basic.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicComponent {}

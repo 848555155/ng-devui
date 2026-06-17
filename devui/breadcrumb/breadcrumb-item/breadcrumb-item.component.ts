@@ -27,7 +27,7 @@ export class BreadCrumbItemComponent {
   readonly customMenuTemplate = input<TemplateRef<any>>();
   readonly menuList = input<Array<MenuConfig>>();
   readonly isSearch = input(false, { transform: booleanAttribute });
-  toggleEvent = output<boolean>();
+  readonly toggleEvent = output<boolean>();
 
   readonly menuListDisplay = linkedSignal(() => this.menuList());
   isOpen: boolean;

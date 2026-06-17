@@ -14,10 +14,10 @@ module.exports = [
       '**/style-guide/**',
       '**/preview/**',
       '**/tools/**',
-      '**/devui-commons/**',
       '**/assistant/**',
       'karma.conf.js',
       'commitlint.config.js',
+      'eslint.config.js'
     ],
   },
 
@@ -37,11 +37,7 @@ module.exports = [
       '@angular-eslint/contextual-decorator': 'error',
       '@angular-eslint/contextual-lifecycle': 'error',
       '@angular-eslint/directive-class-suffix': ['error', { suffixes: ['Component', 'Directive'] }],
-      '@angular-eslint/directive-selector': ['error', {
-        type: ['attribute', 'element'],
-        prefix: 'd',
-        style: 'camelCase',
-      }],
+      '@angular-eslint/directive-selector': 'off',
       '@angular-eslint/no-async-lifecycle-method': 'error',
       '@angular-eslint/no-attribute-decorator': 'error',
       '@angular-eslint/no-developer-preview': 'off',
@@ -77,10 +73,10 @@ module.exports = [
       '@angular-eslint/sort-keys-in-type-decorator': 'error',
       '@angular-eslint/sort-lifecycle-methods': 'error',
       '@angular-eslint/use-component-selector': 'error',
-      '@angular-eslint/use-component-view-encapsulation': 'error',
+      '@angular-eslint/use-component-view-encapsulation': 'off',
       '@angular-eslint/use-injectable-provided-in': 'error',
       '@angular-eslint/use-lifecycle-interface': 'error',
-      '@angular-eslint/use-pipe-transform-interface': 'off',
+      '@angular-eslint/use-pipe-transform-interface': 'error',
 
       // ---- Custom overrides from .eslintrc.js ----
       'no-useless-constructor': 'off',

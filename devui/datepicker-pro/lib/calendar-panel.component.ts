@@ -1,6 +1,5 @@
 import { CdkScrollable, CdkVirtualScrollViewport, ScrollDispatcher } from '@angular/cdk/scrolling';
 import {
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component, Input, OnDestroy, OnInit, ViewChild
 } from '@angular/core';
@@ -18,7 +17,6 @@ const HOUR_DURATION = 60 * 60 * 1000;
   standalone: false,
   templateUrl: './calendar-panel.component.html',
   styleUrl: './calendar-panel.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false
 })
 export class CalendarPanelComponent implements OnInit, OnDestroy {

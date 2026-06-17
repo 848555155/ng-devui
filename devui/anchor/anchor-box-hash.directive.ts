@@ -2,9 +2,10 @@ import { AfterViewInit, booleanAttribute, Directive, inject, input } from '@angu
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { debounceTime, filter } from 'rxjs/operators';
 import { AnchorBoxDirective } from './anchor-box.directive';
-import { AnchorLinkDirective } from './anchor-link.directive';
 import { AnchorDirective } from './anchor.directive';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { AnchorActiveChangeSource } from './anchor.type';
+import { scrollAnimate } from 'ng-devui/utils';
 
 @Directive({
   selector: '[dAnchorBox][dAnchorHashSupport]',
@@ -23,7 +24,7 @@ export class AnchorBoxHashSupportDirective implements AfterViewInit {
       .pipe(
         takeUntilDestroyed(),
         debounceTime(300),
-        filter((anchor) => this.updateUrlWhenAnchorActive())
+        filter(() => this.updateUrlWhenAnchorActive())
       )
       .subscribe(this.navigateToHash);
 
@@ -67,8 +68,49 @@ export class AnchorBoxHashSupportDirective implements AfterViewInit {
       return;
     }
     if (this.box.anchorMap[frag]) {
-      const tempAnchor = new AnchorLinkDirective(this.box);
-      tempAnchor.scrollToAnchorByName(frag, 'fragment');
+      this.scrollToAnchorByName(frag, 'fragment');
     }
   };
+
+  anchorBlock: AnchorDirective | undefined;
+
+  scrollToAnchorByName(name: string, activeChangeBy?: AnchorActiveChangeSource) {
+    if (typeof document === 'undefined') {
+      return;
+    }
+    if (!this.box) {
+      return;
+    }
+    this.anchorBlock = this.box.anchorMap?.[name];
+    if (!this.anchorBlock) {
+      return;
+    }
+    const box = this.box;
+    const callback = () => {
+      setTimeout(() => {
+        box.forceActiveAnchor(name, activeChangeBy || 'anchor-link');
+        box.isScrollingToTarget = false;
+      }, 120);
+    };
+    const container2 = box.scrollTarget() || document.documentElement;
+    const anchorEl = this.anchorBlock.element;
+    ((container: Element, anchor: Element) => {
+      let containerScrollTop = container.scrollTop;
+      let containerOffsetTop = container.getBoundingClientRect().top;
+      if (container === document.documentElement) {
+        containerScrollTop += document.body.scrollTop;
+        containerOffsetTop = 0;
+      }
+      scrollAnimate(
+        container,
+        containerScrollTop,
+        containerScrollTop + anchor.getBoundingClientRect().top - containerOffsetTop - (box.view()?.top || 0),
+        undefined,
+        undefined,
+        callback
+      );
+    })(container2, anchorEl);
+    box.isScrollingToTarget = true;
+  }
+
 }

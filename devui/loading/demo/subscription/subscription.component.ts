@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { delay, of } from 'rxjs';
 import { ButtonModule } from 'ng-devui/button';
 import { LoadingModule, LoadingType } from 'ng-devui/loading';
@@ -7,7 +7,6 @@ import { LoadingModule, LoadingType } from 'ng-devui/loading';
   selector: 'd-subscription',
   imports: [ButtonModule, LoadingModule],
   templateUrl: './subscription.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SubscriptionComponent {
   readonly loading = signal<LoadingType>(undefined);

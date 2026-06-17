@@ -1,14 +1,12 @@
 import {
   afterRenderEffect,
   booleanAttribute,
-  ChangeDetectionStrategy,
   Component,
   computed,
   contentChildren,
   ElementRef,
   inject,
   input,
-  model,
   numberAttribute,
   output,
   Renderer2,
@@ -27,7 +25,6 @@ export type DotPosition = 'bottom' | 'top';
   selector: 'd-carousel',
   templateUrl: './carousel.component.html',
   styleUrl: './carousel.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   exportAs: 'dCarousel',
   preserveWhitespaces: false
 })
@@ -52,7 +49,7 @@ export class CarouselComponent {
   readonly activeIndexInput = input(0, { alias: 'activeIndex' });
   readonly activeIndex = linkedSignal(this.activeIndexInput);
   // 卡片切换时，返回当前卡片索引，索引从0开始
-  activeIndexChange = output<number>();
+  readonly activeIndexChange = output<number>();
   // @ContentChildren(CarouselItemComponent) items: QueryList<CarouselItemComponent>;
   readonly items = contentChildren(CarouselItemComponent);
 

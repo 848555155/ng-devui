@@ -11,20 +11,19 @@ import {
   contentChild,
   effect,
   Directive,
-  ChangeDetectionStrategy,
 } from '@angular/core';
 import { firstValueFrom, isObservable, Observable } from 'rxjs';
 import { DEFAULT_MODE, DEFAULT_ZINDEX } from './fullscreen.config';
 import { FullscreenMode } from './fullscreen.type';
 @Directive({
-  // eslint-disable-next-line @angular-eslint/directive-selector
+
   selector: '[fullscreen-target]',
 })
 export class FullscreenTargetDirective {
   el = inject(ElementRef<HTMLElement>);
 }
 @Directive({
-  // eslint-disable-next-line @angular-eslint/directive-selector
+
   selector: '[fullscreen-launch]',
 })
 export class FullscreenLaunchDirective {
@@ -40,7 +39,6 @@ export class FullscreenLaunchDirective {
   selector: 'd-fullscreen',
   templateUrl: './fullscreen.component.html',
   styleUrl: './fullscreen.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false
 })
 export class FullscreenComponent {

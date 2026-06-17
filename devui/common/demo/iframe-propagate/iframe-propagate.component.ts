@@ -1,11 +1,10 @@
-import { AfterViewInit, Component, ElementRef, Inject, DOCUMENT, ChangeDetectionStrategy, inject } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, DOCUMENT, inject } from '@angular/core';
 import { IframeEventPropagateDirective } from 'ng-devui/common';
 
 @Component({
   selector: 'd-common-iframe-propagate',
   imports: [IframeEventPropagateDirective],
   templateUrl: './iframe-propagate.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IframPropagateDemoComponent implements AfterViewInit {
   private el = inject(ElementRef);

@@ -1,5 +1,4 @@
 import {
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   EventEmitter,
@@ -28,7 +27,6 @@ import { SubMenuService } from './submenu.service';
   standalone: false,
   templateUrl: './sub-menu.component.html',
   providers: [SubMenuService],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [collapseMotion, scaleInOut]
 })
 export class SubMenuComponent implements OnInit, AfterContentInit {

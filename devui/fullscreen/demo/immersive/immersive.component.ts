@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { ButtonModule } from 'ng-devui/button';
 import { FullscreenModule } from 'ng-devui/fullscreen';
 
@@ -6,7 +6,6 @@ import { FullscreenModule } from 'ng-devui/fullscreen';
   selector: 'd-fullscreen-demo-immersive',
   imports: [FullscreenModule, ButtonModule],
   templateUrl: './immersive.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FullscreenDemoImmersiveComponent {
   btnContent = 'FullScreen';

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { ButtonModule } from 'ng-devui/button';
 import { ArrowTrigger, CarouselComponent, CarouselItemComponent } from 'ng-devui/carousel';
 
@@ -7,7 +7,6 @@ import { ArrowTrigger, CarouselComponent, CarouselItemComponent } from 'ng-devui
   imports: [ButtonModule, CarouselComponent, CarouselItemComponent],
   templateUrl: './carousel-demo-custom.component.html',
   styleUrl: '../demo-common.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CarouselDemoCustomComponent {
   array = [1, 2, 3, 4];

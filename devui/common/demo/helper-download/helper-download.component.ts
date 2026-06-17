@@ -1,5 +1,5 @@
 import { HttpClient, HttpProgressEvent } from '@angular/common/http';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { HelperUtils } from 'ng-devui/common';
 import { ButtonModule } from 'ng-devui/button';
 import { Subscription } from 'rxjs';
@@ -8,7 +8,6 @@ import { Subscription } from 'rxjs';
   selector: 'd-common-helper-download',
   imports: [ButtonModule],
   templateUrl: './helper-download.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HelperDownloadDemoComponent {
   downError: string;

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ButtonModule } from 'ng-devui/button';
 import { LoadingModule, LoadingType } from 'ng-devui/loading';
 import { firstValueFrom, timer } from 'rxjs';
@@ -7,7 +7,6 @@ import { firstValueFrom, timer } from 'rxjs';
   selector: 'd-promise',
   imports: [ButtonModule, LoadingModule],
   templateUrl: './promise.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PromiseComponent {
   readonly loading3 = signal<LoadingType>(undefined);

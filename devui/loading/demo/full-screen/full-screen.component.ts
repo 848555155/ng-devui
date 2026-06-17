@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, inject, viewChild, ElementRef, signal } from '@angular/core';
+import { Component, inject, viewChild, ElementRef, signal } from '@angular/core';
 import { ButtonModule } from 'ng-devui/button';
 import { LoadingBackdropComponent, LoadingComponent, LoadingModule, LoadingService } from 'ng-devui/loading';
 
@@ -7,7 +7,6 @@ import { LoadingBackdropComponent, LoadingComponent, LoadingModule, LoadingServi
   imports: [ButtonModule, LoadingModule],
   templateUrl: './full-screen.component.html',
   styleUrl: './full-screen.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FullScreenComponent {
   resultTarget: {

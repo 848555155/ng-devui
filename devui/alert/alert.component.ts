@@ -36,7 +36,7 @@ export class AlertComponent {
   readonly transitionSpeed = input(500, { transform: numberAttribute });
   readonly operationTemplate = input<TemplateRef<{ close: () => void }>>();
   readonly dismissTime = input<number>();
-  closeEvent = output<AlertComponent>();
+  readonly closeEvent = output<AlertComponent>();
   readonly box = viewChild<ElementRef>('carouselContainer');
   readonly carouselItems = contentChildren(AlertCarouselItemComponent);
   readonly hide = signal(false);

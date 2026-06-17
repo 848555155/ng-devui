@@ -1,5 +1,3 @@
-import { ClipboardModule } from '@angular/cdk/clipboard';
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { AutoFocusDirective } from './auto-focus.directive';
 import { ClipboardDirective } from './clipboard.directive';

@@ -1,15 +1,11 @@
 import {
-  ChangeDetectionStrategy,
-  Component,
-  HostBinding
-} from '@angular/core';
+  Component} from '@angular/core';
 
 @Component({
   selector: 'd-range-today',
   standalone: false,
   templateUrl: './range-today.component.html',
   styleUrl: './range-today.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RangePickerTodayComponent {
   dateRange = [null, null];

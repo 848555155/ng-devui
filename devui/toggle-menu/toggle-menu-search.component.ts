@@ -1,6 +1,5 @@
 import {
   AfterViewInit,
-  ChangeDetectionStrategy,
   Component,
   ElementRef,
   EventEmitter,
@@ -18,7 +17,6 @@ import { debounceTime, filter, map } from 'rxjs/operators';
   standalone: false,
   templateUrl: './toggle-menu-search.component.html',
   styleUrl: `./toggle-menu-search.component.scss`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false
 })
 export class ToggleMenuSearchComponent implements OnInit, AfterViewInit, OnDestroy {

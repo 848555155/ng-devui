@@ -1,5 +1,4 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   OnInit
 } from '@angular/core';
@@ -9,7 +8,6 @@ import { originSource, SourceType } from '../mock-data';
   selector: 'd-fix-column-old',
   standalone: false,
   templateUrl: './fix-column-old.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FixColumnOldComponent implements OnInit {
   basicDataSource: Array<SourceType> = JSON.parse(JSON.stringify(originSource.slice(0, 6)));

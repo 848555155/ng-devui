@@ -1,7 +1,7 @@
-import { ElementRef, inject, Injectable } from '@angular/core';
+import { ElementRef, inject, Service } from '@angular/core';
 import { DocumentRef } from './document-ref.service';
 
-@Injectable({ providedIn: 'root' })
+@Service()
 export class WindowRef {
   private documentRef = inject(DocumentRef);
 

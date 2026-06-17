@@ -1,5 +1,4 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   ContentChild,
   EventEmitter,
@@ -20,7 +19,6 @@ import { DataTableHeadCellTmplComponent } from './data-table-head-cell-tmpl.comp
   selector: 'd-column',
   standalone: false,
   template: '',
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DataTableColumnTmplComponent implements OnChanges, OnDestroy {
   @Input() advancedHeader: Array<{

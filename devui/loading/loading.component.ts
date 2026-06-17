@@ -1,4 +1,4 @@
-import { booleanAttribute, ChangeDetectionStrategy, Component, computed, input, numberAttribute, TemplateRef } from '@angular/core';
+import { booleanAttribute, Component, computed, input, numberAttribute, TemplateRef } from '@angular/core';
 import { LoadingStyle } from './loading.types';
 import { NgTemplateOutlet } from '@angular/common';
 @Component({
@@ -85,7 +85,6 @@ import { NgTemplateOutlet } from '@angular/common';
     </ng-template>
   </div>`,
   styleUrl: './loading.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false
 })
 export class LoadingComponent {

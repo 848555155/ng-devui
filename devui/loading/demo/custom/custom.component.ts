@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ButtonModule } from 'ng-devui/button';
 import { LoadingModule, LoadingType } from 'ng-devui/loading';
 import { firstValueFrom, timer } from 'rxjs';
@@ -8,7 +8,6 @@ import { firstValueFrom, timer } from 'rxjs';
   imports: [ButtonModule, LoadingModule],
   templateUrl: './custom.component.html',
   styleUrl: './custom.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomComponent {
   readonly loading1 = signal<LoadingType>(undefined);

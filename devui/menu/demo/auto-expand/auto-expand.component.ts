@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MenuItemType } from 'ng-devui/menu';
 
 const MENUS: MenuItemType[] = [
@@ -80,7 +80,6 @@ function findAllParent(source: MenuItemType[], key: string) {
   selector: 'd-auto-expand',
   standalone: false,
   templateUrl: './auto-expand.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AutoExpandComponent implements OnInit {
   menus = MENUS;

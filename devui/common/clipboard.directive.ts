@@ -3,7 +3,6 @@ import {
   ComponentRef,
   Directive,
   ElementRef,
-  HostListener,
   OnDestroy,
   TemplateRef,
   DOCUMENT,
@@ -17,10 +16,13 @@ import { I18nInterface, I18nService } from 'ng-devui/i18n';
 import { OverlayContainerRef } from 'ng-devui/overlay-container';
 import { PopoverComponent } from 'ng-devui/popover';
 import { PositionType } from 'ng-devui/tooltip';
-import { fromEvent, Subject, Subscription, takeUntil } from 'rxjs';
+import { fromEvent, Subject, takeUntil } from 'rxjs';
 
 @Directive({
   selector: '[dClipboard]',
+  host: {
+    '(click)': 'onClickEvent()'
+  }
 })
 export class ClipboardDirective implements OnDestroy {
   readonly devuiTargetElm = input.required<HTMLInputElement | HTMLTextAreaElement | undefined | ''>({ alias: 'dClipboard' });
@@ -28,7 +30,7 @@ export class ClipboardDirective implements OnDestroy {
   readonly position = input<PositionType>('top');
   readonly sticky = input(false, { transform: booleanAttribute });
   readonly tipContent = model<string | HTMLElement | TemplateRef<any>>();
-  copyResultEvent = output<any>();
+  readonly copyResultEvent = output<any>();
   popoverComponentRef: ComponentRef<PopoverComponent>;
 
   private elm = inject(ElementRef);
@@ -42,7 +44,6 @@ export class ClipboardDirective implements OnDestroy {
   });
   destoryPopver = new Subject<void>();
 
-  @HostListener('click')
   onClickEvent() {
     let isSucceeded = false;
     const content = this.content();

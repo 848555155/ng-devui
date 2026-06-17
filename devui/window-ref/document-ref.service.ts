@@ -1,6 +1,6 @@
-import { Injectable, DOCUMENT, inject } from '@angular/core';
+import { DOCUMENT, inject, Service } from '@angular/core';
 
-@Injectable({ providedIn: 'root' })
+@Service()
 export class DocumentRef {
   private doc = inject(DOCUMENT);
 

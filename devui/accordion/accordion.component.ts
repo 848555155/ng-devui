@@ -1,7 +1,6 @@
 import {
   Component,
   effect,
-  forwardRef,
   inject,
   input,
   model,
@@ -25,7 +24,7 @@ import { AccordionListComponent } from './accordion-list.component';
   providers: [
     {
       provide: ACCORDION,
-      useExisting: forwardRef(() => AccordionComponent),
+      useExisting: AccordionComponent,
     },
   ],
   preserveWhitespaces: false
@@ -42,9 +41,9 @@ export class AccordionComponent implements AccordionOptions {
   readonly menuItemTemplate = input<TemplateRef<any>>();
   readonly itemTemplate = input<TemplateRef<any>>();
 
-  menuToggle = output<AccordionMenuToggleEvent>();
-  itemClick = output<AccordionItemClickEvent>();
-  activeItemChange = output<any>();
+  readonly menuToggle = output<AccordionMenuToggleEvent>();
+  readonly itemClick = output<AccordionItemClickEvent>();
+  readonly activeItemChange = output<any>();
 
   readonly restrictOneOpen = input(false);
   readonly autoOpenActiveMenu = input(false);

@@ -9,7 +9,6 @@ import {
 } from '@angular/cdk/overlay';
 
 import {
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ContentChild,
@@ -46,7 +45,6 @@ import { ToggleMenuListComponent } from './toggle-menu-list.component';
   standalone: false,
   templateUrl: './toggle-menu-container.component.html',
   styleUrl: `./toggle-menu-container.component.scss`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [fadeInOut],
   preserveWhitespaces: false
 })

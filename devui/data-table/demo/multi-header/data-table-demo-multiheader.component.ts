@@ -1,5 +1,4 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   OnInit
 } from '@angular/core';
@@ -9,7 +8,6 @@ import { originSource, SourceType } from '../mock-data';
   selector: 'd-datatable-demo-multiheader',
   standalone: false,
   templateUrl: './data-table-demo-multiheader.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DatatableDemoMultiHeaderComponent implements OnInit {
   basicDataSource: Array<SourceType> = JSON.parse(JSON.stringify(originSource.slice(0, 6)));

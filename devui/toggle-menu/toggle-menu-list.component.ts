@@ -1,6 +1,5 @@
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import {
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ElementRef,
@@ -24,7 +23,6 @@ import { ToggleMenuListItem } from './toggle-menu.type';
   standalone: false,
   templateUrl: './toggle-menu-list.component.html',
   styleUrl: `./toggle-menu-list.component.scss`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [fadeInOut],
   preserveWhitespaces: false
 })

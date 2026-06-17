@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
 import { I18nInterface, I18nService } from 'ng-devui/i18n';
 import { Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -16,7 +16,6 @@ interface TimeObj {
   standalone: false,
   templateUrl: './timepicker-panel.component.html',
   styleUrl: './timepicker-panel.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false
 })
 export class TimepickerPanelComponent implements OnInit, OnDestroy {

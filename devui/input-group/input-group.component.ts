@@ -1,6 +1,5 @@
 import {
   AfterViewInit,
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ElementRef,
@@ -19,7 +18,6 @@ export type ISpliceType = 'standalone' | 'left' | 'right' | 'both';
   standalone: false,
   templateUrl: './input-group.component.html',
   styleUrl: './input-group.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false
 })
 export class InputGroupComponent implements AfterViewInit, OnDestroy {

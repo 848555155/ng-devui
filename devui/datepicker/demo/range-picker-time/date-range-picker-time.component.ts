@@ -1,5 +1,4 @@
 import {
-  ChangeDetectionStrategy,
   Component,
 } from '@angular/core';
 
@@ -8,7 +7,6 @@ import {
   standalone: false,
   templateUrl: `./date-range-picker-time.component.html`,
   styleUrl: `./date-range-picker-time.component.scss`,
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DateRangePickerTimeComponent {
   dateRange = [null, null];

@@ -1,5 +1,4 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   OnInit
 } from '@angular/core';
@@ -9,7 +8,6 @@ import { originSource, SourceType } from '../mock-data';
   selector: 'd-datatable-demo-maxheight',
   standalone: false,
   templateUrl: './data-table-demo-maxheight.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DatatableDemoMaxheightComponent implements OnInit {
 

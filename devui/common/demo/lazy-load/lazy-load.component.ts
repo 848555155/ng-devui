@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
 import { LoadingModule } from 'ng-devui/loading';
 import { LazyLoadDirective } from 'ng-devui/utils';
@@ -8,7 +8,6 @@ import { LazyLoadDirective } from 'ng-devui/utils';
   imports: [LazyLoadDirective, TranslatePipe, LoadingModule],
   templateUrl: './lazy-load.component.html',
   styleUrl: './lazy-load.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LazyLoadComponent {
   sentence = 'all work and no play make jack a dull boy';

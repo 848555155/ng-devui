@@ -3,9 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   Directive,
-  HostBinding,
   input,
-  Input,
   ViewEncapsulation,
 } from '@angular/core';
 
@@ -67,7 +65,6 @@ export class CardAvatarDirective {}
   selector: 'd-card',
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   host: {
     class: 'devui-card',
@@ -82,7 +79,6 @@ export class CardComponent {
 @Component({
   selector: 'd-card-header',
   templateUrl: './card-header.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   host: {
     class: 'devui-card-header',
@@ -94,7 +90,6 @@ export class CardHeaderComponent {}
 @Component({
   selector: 'd-card-extend',
   templateUrl: './card-extend.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   host: {
     class: 'devui-card-extend',

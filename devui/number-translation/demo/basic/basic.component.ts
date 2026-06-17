@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { DataTableModule } from 'ng-devui/data-table';
 import { NumberTransPipe } from 'ng-devui/number-translation';
 
@@ -6,7 +6,6 @@ import { NumberTransPipe } from 'ng-devui/number-translation';
   selector: 'd-basic',
   imports: [NumberTransPipe, DataTableModule],
   templateUrl: './basic.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicComponent {
   data = [

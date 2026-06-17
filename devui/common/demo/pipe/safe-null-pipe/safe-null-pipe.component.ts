@@ -1,11 +1,10 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { SafeNullPipe } from 'ng-devui/common';
 
 @Component({
   selector: 'd-safe-null-pipe',
   imports: [SafeNullPipe],
   templateUrl: './safe-null-pipe.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SafeNullPipeComponent {
   name = '';

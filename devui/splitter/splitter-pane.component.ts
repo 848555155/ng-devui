@@ -1,5 +1,5 @@
 import {
-  AfterViewChecked, ChangeDetectionStrategy, Component, ElementRef, EventEmitter,
+  AfterViewChecked, Component, ElementRef, EventEmitter,
   HostBinding, Input, OnChanges, Output, Renderer2, SimpleChanges
 } from '@angular/core';
 import { SplitterService } from './splitter.service';
@@ -9,7 +9,6 @@ import { CollapseDirection, SplitterOrientation } from './splitter.types';
   standalone: false,
   templateUrl: './splitter-pane.component.html',
   styleUrl: './splitter-pane.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false
 })
 

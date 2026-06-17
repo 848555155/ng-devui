@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { MenuItemClickType, MenuItemType } from 'ng-devui/menu';
 
 const MENUS: MenuItemType[] = [
@@ -60,7 +60,6 @@ const MENUS: MenuItemType[] = [
   selector: 'd-basic',
   standalone: false,
   templateUrl: './basic.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BasicComponent {
   menus = MENUS;

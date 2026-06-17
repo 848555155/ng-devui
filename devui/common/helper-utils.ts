@@ -1,5 +1,5 @@
 import { HttpClient, HttpErrorResponse, HttpEvent, HttpEventType, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
-import { Directive, HostListener, input } from '@angular/core';
+import { Directive, input } from '@angular/core';
 
 const enum Browser {
   IE = 'IE',
@@ -18,12 +18,16 @@ export class HelperUtils {
   private static _browserVersion = null;
 
   static getBrowserName() {
-    !this._browserName && this.getBrowserInfo();
+    if (!this._browserName) {
+      this.getBrowserInfo();
+    }
     return this._browserName;
   }
 
   static getBrowserVersion() {
-    !this._browserVersion && this.getBrowserInfo();
+    if (!this._browserName) {
+      this.getBrowserInfo();
+    }
     return this._browserVersion;
   }
 
@@ -107,14 +111,14 @@ export class HelperUtils {
     document.body.appendChild(tempiframe);
 
     // 下载错误处理。下载成功并不会响应，因为响应头中带有Content-Disposition（下载头）的url，无法监听iframe的load事件，load事件不会触发
-    tempiframe.addEventListener('load', (event) => {
+    tempiframe.addEventListener('load', () => {
       try {
         const iframeDoc = tempiframe.contentDocument;
         if (onError !== undefined) {
           let response;
           try {
             response = JSON.parse(iframeDoc.body && iframeDoc.body.textContent);
-          } catch (e) {
+          } catch {
             response = iframeDoc.body && iframeDoc.body.textContent;
           }
           if (!response) {
@@ -122,7 +126,7 @@ export class HelperUtils {
           }
           onError(response);
         }
-      } catch (e) {
+      } catch {
         onError('Error');
       }
       document.body.removeChild(tempiframe);
@@ -203,7 +207,7 @@ export class HelperUtils {
             const body = HelperUtils.utf8ArrayToStr(arrayBuffer);
             try {
               response = JSON.parse(body);
-            } catch (e) {
+            } catch {
               const parser = new DOMParser();
               const html = parser.parseFromString(body, 'text/html');
               response = html.body.textContent;
@@ -285,7 +289,7 @@ export class HelperUtils {
               let response;
               try {
                 response = handleResponse(httpResponse);
-              } catch (e) {
+              } catch {
                 response = httpResponse;
               }
               onError(response);
@@ -298,7 +302,7 @@ export class HelperUtils {
           let response;
           try {
             response = handleResponse(err);
-          } catch (e) {
+          } catch {
             response = err;
           }
           onError(response);
@@ -330,11 +334,14 @@ export class HelperUtils {
 
 @Directive({
   selector: '[dSimulateATag]',
+  host: {
+    '(click)': 'onClick'
+  }
 })
 export class SimulateATagDirective {
   readonly href = input<string>();
   readonly target = input<'_blank' | '_self' | '_parent' | '_top' | string>('_blank');
-  @HostListener('click') onClick() {
+  onClick() {
     HelperUtils.jumpOuterUrl(this.href(), this.target());
   }
 }

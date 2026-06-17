@@ -30,8 +30,8 @@ export class BackTopComponent {
   readonly right = input('30px');
   readonly scrollTarget = input<HTMLElement>();
   readonly draggable = input(false, { transform: booleanAttribute });
-  backTopEvent = output<boolean>();
-  dragEvent = output<boolean>();
+  readonly backTopEvent = output<boolean>();
+  readonly dragEvent = output<boolean>();
 
   readonly currScrollTop = signal(0);
   duration = 0;

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ThemeService } from 'ng-devui/theme';
 import { IAxisConfigs, IViewConfigs } from '../quadrant-diagram.type';
 import { AXIS_TITLE_SPACE } from '../quadrant.config';
@@ -8,7 +8,6 @@ import { AXIS_TITLE_SPACE } from '../quadrant.config';
   standalone: false,
   templateUrl: './quadrant-axis.component.html',
   styleUrl: './quadrant-axis.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class QuadrantDiagramAxisComponent implements OnInit, OnChanges {
   @Input() axisConfigs: IAxisConfigs;

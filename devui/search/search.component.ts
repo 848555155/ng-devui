@@ -1,6 +1,5 @@
 import {
   AfterViewInit,
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ElementRef,
@@ -32,7 +31,6 @@ import { debounceTime, filter, map, takeUntil } from 'rxjs/operators';
       multi: true,
     },
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   exportAs: 'search',
   preserveWhitespaces: false
 })

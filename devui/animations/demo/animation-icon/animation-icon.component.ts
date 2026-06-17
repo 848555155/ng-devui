@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Renderer2, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ButtonModule } from 'ng-devui/button';
 
 @Component({
@@ -6,7 +6,6 @@ import { ButtonModule } from 'ng-devui/button';
   imports: [ButtonModule],
   templateUrl: './animation-icon.component.html',
   styleUrl: './animation-icon.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AnimationIconComponent {
   readonly angle = signal(0);

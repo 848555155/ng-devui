@@ -1,4 +1,4 @@
-import { ContentChildren, Directive, effect, inject, input, OnDestroy, QueryList } from '@angular/core';
+import { contentChildren, Directive, effect, inject, input, OnDestroy } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { AnchorDirective } from './anchor.directive';
@@ -15,7 +15,7 @@ export class AnchorBoxDirective implements IAnchorBox, OnDestroy {
   isInit = true;
   refreshAnchorMap: Subject<void> = new Subject<void>();
   anchorMap: { [anchor: string]: AnchorDirective };
-  _anchorList: QueryList<AnchorDirective>;
+  _anchorList: readonly AnchorDirective[];
   sub: Subscription;
   readonly view = input<{
     top?: number;
@@ -24,9 +24,8 @@ export class AnchorBoxDirective implements IAnchorBox, OnDestroy {
   readonly defaultAnchor = input<string>();
   readonly scrollTarget = input<HTMLElement>();
   private anchorService = inject(AnchorService);
-
-  @ContentChildren(AnchorDirective, { descendants: true })
-  set anchorList(list: QueryList<AnchorDirective>) {
+  private readonly list = contentChildren(AnchorDirective, { descendants: true });
+  set anchorList(list: readonly AnchorDirective[]) {
     if (this.sub) {
       this.sub.unsubscribe();
     }
@@ -34,7 +33,7 @@ export class AnchorBoxDirective implements IAnchorBox, OnDestroy {
     this.anchorMap = {};
     this._anchorList = list;
     this.anchorService.anchorList = this._anchorList.map((item) => item.anchor());
-    this._anchorList.toArray().forEach((targetAnchor) => {
+    this._anchorList.forEach((targetAnchor) => {
       this.anchorMap[targetAnchor.anchor()] = targetAnchor;
       targetAnchor.setBoxElement(this);
       this.sub.add(
@@ -56,6 +55,10 @@ export class AnchorBoxDirective implements IAnchorBox, OnDestroy {
       if (anchor) {
         this.forceActiveAnchor(anchor, 'initial');
       }
+    });
+    effect(() => {
+      const list = this.list();
+      this.anchorList = list;
     });
   }
 

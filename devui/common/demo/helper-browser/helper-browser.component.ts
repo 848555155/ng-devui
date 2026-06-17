@@ -1,10 +1,9 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { HelperUtils } from 'ng-devui';
 
 @Component({
   selector: 'd-common-helper-browser',
   templateUrl: './helper-browser.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HelperBrowserComponent {
   browserName = HelperUtils.getBrowserName();

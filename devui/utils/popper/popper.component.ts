@@ -9,7 +9,6 @@ import {
   Output,
   Renderer2,
   DOCUMENT,
-  ChangeDetectionStrategy,
   inject,
   input,
   booleanAttribute,
@@ -27,7 +26,6 @@ interface ExtraSetConfig {
   selector: 'd-popper-component',
   templateUrl: './popper.component.html',
   styleUrl: `./popper.component.scss`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PopperComponent implements AfterViewInit, OnDestroy {
   get open() {

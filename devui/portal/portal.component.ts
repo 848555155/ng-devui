@@ -4,7 +4,6 @@ import {
   EmbeddedViewRef,
   TemplateRef,
   DOCUMENT,
-  ChangeDetectionStrategy,
   viewChild,
   inject,
 } from '@angular/core';
@@ -15,7 +14,6 @@ import { forEach } from 'lodash-es';
   template: ` <ng-template #templateRef>
     <ng-content></ng-content>
   </ng-template>`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false
 })
 export class PortalComponent {

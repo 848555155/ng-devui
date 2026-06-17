@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
+import { Component, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
 import { ToggleMenuListItem } from './toggle-menu.type';
 
 @Component({
@@ -6,7 +6,6 @@ import { ToggleMenuListItem } from './toggle-menu.type';
   standalone: false,
   templateUrl: './toggle-menu-list-item.component.html',
   styleUrl: './toggle-menu-list-item.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ToggleMenuListItemComponent {
   @Input() item: ToggleMenuListItem;

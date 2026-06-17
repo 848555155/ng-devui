@@ -11,7 +11,6 @@ import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 import {
   AfterViewInit,
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ContentChild,
@@ -63,7 +62,6 @@ import { debounceTime, filter, map, switchMap } from 'rxjs/operators';
       multi: true,
     },
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [fadeInOut],
   exportAs: 'select',
   preserveWhitespaces: false

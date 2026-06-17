@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, OnInit, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { LoadingModule, LoadingType } from 'ng-devui/loading';
 import { pullAt, random } from 'lodash-es';
 import { from, tap } from 'rxjs';
@@ -49,7 +49,6 @@ const mockFetchNames = (url: string) =>
   imports: [ButtonModule, LoadingModule],
   templateUrl: './basic.component.html',
   styleUrl: './basic.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicComponent {
   readonly loading = signal<LoadingType>(undefined);

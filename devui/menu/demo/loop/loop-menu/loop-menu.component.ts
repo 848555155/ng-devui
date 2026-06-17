@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MenuItemClickType, MenuItemType } from 'ng-devui/menu';
 
 @Component({
@@ -28,7 +28,6 @@ import { MenuItemClickType, MenuItemType } from 'ng-devui/menu';
       }
     </div>
     `,
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoopMenuComponent {
   @Input() collapsed = false;

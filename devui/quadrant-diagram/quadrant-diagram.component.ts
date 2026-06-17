@@ -1,5 +1,4 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   EventEmitter,
   HostBinding,
@@ -19,7 +18,6 @@ import { DEFAULT_AXIS_CONFIGS, DEFAULT_QUADRANT_CONFIGS, LABEL_SIZE } from './qu
   standalone: false,
   templateUrl: './quadrant-diagram.component.html',
   styleUrl: './quadrant-diagram.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class QuadrantDiagramComponent implements OnInit, OnChanges {
   static ID_SEED = 0;

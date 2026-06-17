@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { PanelModule } from 'ng-devui/panel';
 
 @Component({
@@ -6,7 +6,6 @@ import { PanelModule } from 'ng-devui/panel';
   imports: [PanelModule],
   templateUrl: './type.component.html',
   styleUrl: './type.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TypeComponent {
   isCollapsed = true;

@@ -2,7 +2,6 @@ import {
   Component,
   ElementRef,
   Input,
-  ChangeDetectionStrategy,
   HostBinding,
   EventEmitter,
   Output,
@@ -26,7 +25,6 @@ export type DashboardWidget = GridStackWidget & {
   standalone: false,
   templateUrl: './widget.component.html',
   styleUrl: './widget.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   exportAs: 'dDashboardWidget',
   preserveWhitespaces: false
 })

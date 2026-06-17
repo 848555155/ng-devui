@@ -1,6 +1,5 @@
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import {
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   Input,
@@ -18,7 +17,6 @@ import { DatepickerProService } from './../datepicker-pro.service';
   standalone: false,
   templateUrl: './month-panel.component.html',
   styleUrl: './month-panel.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false
 })
 export class MonthPanelComponent implements OnInit, OnDestroy {

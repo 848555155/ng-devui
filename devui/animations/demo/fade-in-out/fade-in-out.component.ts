@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { fadeInOut } from 'ng-devui/utils';
 import { SkeletonComponent } from '../skeleton/skeleton.component';
 import { TextInputModule } from 'ng-devui/text-input';
@@ -7,7 +7,6 @@ import { TextInputModule } from 'ng-devui/text-input';
   imports: [SkeletonComponent, TextInputModule],
   templateUrl: './fade-in-out.component.html',
   styleUrl: './fade-in-out.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [fadeInOut]
 })
 export class FadeInOutComponent {

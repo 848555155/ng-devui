@@ -1,6 +1,5 @@
 import {
   AfterViewInit,
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ElementRef,
@@ -30,7 +29,6 @@ const SLIDER_CONTROL_VALUE_ACCESSOR: any = {
   templateUrl: './slider.component.html',
   styleUrl: './slider.component.scss',
   providers: [SLIDER_CONTROL_VALUE_ACCESSOR],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false
 })
 

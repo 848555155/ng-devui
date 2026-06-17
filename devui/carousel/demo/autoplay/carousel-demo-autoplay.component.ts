@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { imageArray } from './image-mock';
 import { CarouselComponent, CarouselItemComponent } from 'ng-devui/carousel';
 @Component({
@@ -10,7 +10,6 @@ import { CarouselComponent, CarouselItemComponent } from 'ng-devui/carousel';
         text-align: center;
       }
     `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CarouselDemoAutoPlayComponent {
   // imageUrl 数组

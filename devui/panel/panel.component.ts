@@ -1,5 +1,5 @@
 import { transition, trigger } from '@angular/animations';
-import { booleanAttribute, ChangeDetectionStrategy, Component, contentChild, inject, input, Input, model, output } from '@angular/core';
+import { booleanAttribute, Component, contentChild, inject, input, Input, model, output } from '@angular/core';
 import { DevConfigService, expandCollapseForDomDestroy, WithConfig } from 'ng-devui/utils';
 import { firstValueFrom, isObservable, Observable } from 'rxjs';
 import { PanelBodyComponent } from './panel-body.component';
@@ -13,7 +13,6 @@ import { NgTemplateOutlet } from '@angular/common';
   imports: [NgTemplateOutlet],
   templateUrl: './panel.component.html',
   styleUrl: './panel.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [trigger('noAnimation', [transition(':enter', [])]), expandCollapseForDomDestroy]
 })
 export class PanelComponent {

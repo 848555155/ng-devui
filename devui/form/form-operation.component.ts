@@ -1,6 +1,5 @@
 import {
   AfterViewInit,
-  ChangeDetectionStrategy,
   Component,
   Directive,
   ElementRef,
@@ -33,7 +32,6 @@ import { FormDirective } from './form.directive';
         padding: 8px 0;
       }
     `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false
 })
 export class FormOperationComponent implements OnInit {

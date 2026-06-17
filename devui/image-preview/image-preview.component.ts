@@ -1,5 +1,5 @@
 
-import { ChangeDetectionStrategy, Component, ElementRef, HostListener, Inject, Input, OnDestroy, OnInit, DOCUMENT } from '@angular/core';
+import { Component, ElementRef, HostListener, Inject, Input, OnDestroy, OnInit, DOCUMENT } from '@angular/core';
 import { I18nInterface, I18nService } from 'ng-devui/i18n';
 import { merge } from 'lodash-es';
 import { Subscription } from 'rxjs';
@@ -23,7 +23,6 @@ export interface IImagePreviewToolbar {
   standalone: false,
   templateUrl: './image-preview.component.html',
   styleUrl: './image-preview.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false
 })
 export class DImagePreviewComponent implements OnInit, OnDestroy {

@@ -2,15 +2,12 @@ import {
   AfterViewInit,
   Directive,
   ElementRef,
-  EventEmitter,
   inject,
   input,
-  Input,
   numberAttribute,
   OnDestroy,
   OnInit,
   output,
-  Output,
 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { delay, filter } from 'rxjs/operators';
@@ -23,8 +20,8 @@ export class ObserveVisibilityDirective implements OnDestroy, OnInit, AfterViewI
   readonly threshold = input(1, { transform: numberAttribute });
   readonly root = input<HTMLElement>();
   readonly rootMargin = input('0px');
-  show = output<HTMLElement>();
-  hide = output<HTMLElement>();
+  readonly show = output<HTMLElement>();
+  readonly hide = output<HTMLElement>();
 
   private observer: IntersectionObserver | undefined;
   private subject$ = new Subject<{
@@ -86,7 +83,7 @@ export class ObserveVisibilityDirective implements OnDestroy, OnInit, AfterViewI
 
     this.observer.observe(this.element.nativeElement);
 
-    this.subject$.pipe(delay(this.debounceTime()), filter(Boolean)).subscribe(async ({ entry, observer }) => {
+    this.subject$.pipe(delay(this.debounceTime()), filter(Boolean)).subscribe(async ({ entry }) => {
       const target = entry.target as HTMLElement;
       const isStillVisible = await this.isVisible(target);
 

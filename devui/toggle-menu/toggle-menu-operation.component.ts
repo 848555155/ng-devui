@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DevConfigService, WithConfig } from 'ng-devui/utils';
 
 @Component({
@@ -6,7 +6,6 @@ import { DevConfigService, WithConfig } from 'ng-devui/utils';
   standalone: false,
   templateUrl: './toggle-menu-operation.component.html',
   styleUrl: `./toggle-menu-operation.component.scss`,
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ToggleMenuOperationComponent {
   @Input() controlConfig: {

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { I18nInterface, I18nService } from 'ng-devui/i18n';
 import { ModalService } from 'ng-devui/modal';
 import { cloneDeep } from 'lodash-es';
@@ -25,7 +25,6 @@ export interface TableStyleData {
   standalone: false,
   templateUrl: './table-option-toggle.component.html',
   styleUrl: './table-option-toggle.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TableOptionToggleComponent implements OnInit, OnDestroy {
   @Input() set columnsData(value: Array<ColData>) {

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { AppendToBodyDirection } from 'ng-devui/utils';
 
 @Component({
@@ -6,7 +6,6 @@ import { AppendToBodyDirection } from 'ng-devui/utils';
   standalone: false,
   templateUrl: './append-to-body.component.html',
   styleUrl: `./append-to-body.component.scss`,
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DatepickerDemoAppendToBodyComponent {
   selectedDate1 = null;

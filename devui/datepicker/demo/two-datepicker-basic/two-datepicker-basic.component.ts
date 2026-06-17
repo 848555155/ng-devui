@@ -1,7 +1,5 @@
 import {
-  ChangeDetectionStrategy,
   Component,
-  HostBinding,
   OnInit
 } from '@angular/core';
 
@@ -10,7 +8,6 @@ import {
   standalone: false,
   templateUrl: `./two-datepicker-basic.component.html`,
   styleUrl: `./two-datepicker-basic.component.scss`,
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TwoDatepickerBasicComponent implements OnInit {
   rangeStart;

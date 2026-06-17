@@ -1,7 +1,5 @@
 import {
-  ChangeDetectionStrategy,
   Component,
-  HostBinding,
   OnInit
 } from '@angular/core';
 
@@ -10,7 +8,6 @@ import {
   standalone: false,
   templateUrl: './datepicker-range.component.html',
   styleUrl: './datepicker-range.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DatepickerRangeComponent implements OnInit {
   datePicker1: any;

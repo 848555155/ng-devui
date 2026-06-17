@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, Input, OnChanges, OnInit, Renderer2 } from '@angular/core';
+import { Component, ElementRef, HostBinding, Input, OnChanges, OnInit, Renderer2 } from '@angular/core';
 import { updateClassList } from './layout-utils';
 import { DResponseParameter } from './layout.types';
 
@@ -13,7 +13,6 @@ import { DResponseParameter } from './layout.types';
       padding: 0;
     }
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DColComponent implements OnInit, OnChanges {
 

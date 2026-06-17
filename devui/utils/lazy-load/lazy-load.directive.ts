@@ -16,7 +16,7 @@ export class LazyLoadDirective implements OnDestroy {
   // 懒加载滚动方向
   readonly direction = input<'vertical' | 'horizontal'>('vertical');
   // 加载更多
-  loadMore = output<any>();
+  readonly loadMore = output<any>();
 
   scrollSubscription: Subscription;
 

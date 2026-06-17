@@ -1,7 +1,5 @@
 import {
-  ChangeDetectionStrategy,
   Component,
-  HostBinding,
   OnInit
 } from '@angular/core';
 
@@ -10,7 +8,6 @@ import {
   standalone: false,
   templateUrl: './custom-view-template.component.html',
   styleUrl: './custom-view-template.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CustomViewTemplateComponent implements OnInit {
   datePicker1: any;

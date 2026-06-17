@@ -1,4 +1,4 @@
-import { Directive, forwardRef, HostBinding, Inject, input, OnDestroy, OnInit } from '@angular/core';
+import { Directive, inject, input, OnDestroy, OnInit } from '@angular/core';
 import { scrollAnimate } from 'ng-devui/utils';
 import { AnchorBoxDirective } from './anchor-box.directive';
 import { AnchorDirective } from './anchor.directive';
@@ -7,25 +7,22 @@ import { AnchorActiveChangeSource } from './anchor.type';
 @Directive({
   selector: '[dAnchorLink]',
   host: {
+    '[class]': 'anchorActiveClass',
     '(click)': 'scrollToAnchor()',
   },
 })
 export class AnchorLinkDirective implements OnInit, OnDestroy {
-  @HostBinding('class') get anchorActiveClass() {
+  get anchorActiveClass() {
     return this.anchorBlock && this.anchorBlock.isActive() ? this.anchorActive() || '' : '';
   }
 
   readonly anchorName = input<string>('', { alias: 'dAnchorLink' });
   readonly anchorActive = input<string>('');
 
-  boxElement: AnchorBoxDirective | undefined;
+  boxElement = inject(AnchorBoxDirective);
   anchorBlock: AnchorDirective | undefined;
   bindingAnchorTimer: any;
   subscription: any;
-
-  constructor(@Inject(forwardRef(() => AnchorBoxDirective)) box: AnchorBoxDirective) {
-    this.boxElement = box;
-  }
 
   ngOnInit() {
     this.subscribeAnchorMapChange();
@@ -78,7 +75,7 @@ export class AnchorLinkDirective implements OnInit, OnDestroy {
         box.isScrollingToTarget = false;
       }, 120);
     };
-    const container = box.scrollTarget() || document.documentElement;
+    const container2 = box.scrollTarget() || document.documentElement;
     const anchorEl = this.anchorBlock.element;
     ((container: Element, anchor: Element) => {
       let containerScrollTop = container.scrollTop;
@@ -95,7 +92,7 @@ export class AnchorLinkDirective implements OnInit, OnDestroy {
         undefined,
         callback
       );
-    })(container, anchorEl);
+    })(container2, anchorEl);
     box.isScrollingToTarget = true;
   }
 

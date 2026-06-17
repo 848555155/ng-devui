@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ButtonModule } from 'ng-devui/button';
 import { PanelModule } from 'ng-devui/panel';
 
@@ -7,7 +7,6 @@ import { PanelModule } from 'ng-devui/panel';
   imports: [PanelModule, ButtonModule],
   templateUrl: './condition-change.component.html',
   styleUrl: './condition-change.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConditionChangeComponent {
   isCollapsed = true;

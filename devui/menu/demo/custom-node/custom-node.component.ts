@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { MenuItemType } from 'ng-devui/menu';
 
 const MENUS: MenuItemType[] = [
@@ -60,7 +60,6 @@ const MENUS: MenuItemType[] = [
   selector: 'd-custom-node',
   standalone: false,
   templateUrl: './custom-node.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CustomNodeComponent {
   menus = MENUS;

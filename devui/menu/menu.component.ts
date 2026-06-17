@@ -1,5 +1,4 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   EventEmitter,
   HostBinding,
@@ -19,7 +18,6 @@ import { MenuItemClickType } from './type';
   standalone: false,
   template: '<ng-content />',
   styleUrl: './menu.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None
 })
 export class MenuComponent implements OnInit, OnChanges, OnDestroy {

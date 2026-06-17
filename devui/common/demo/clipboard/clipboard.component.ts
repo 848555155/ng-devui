@@ -1,5 +1,5 @@
 import { JsonPipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ClipboardDirective } from 'ng-devui/common';
 import { TextInputModule } from 'ng-devui/text-input';
@@ -9,7 +9,6 @@ import { TextInputModule } from 'ng-devui/text-input';
   imports: [TextInputModule, ClipboardDirective, JsonPipe, FormsModule],
   templateUrl: './clipboard.component.html',
   styleUrl: './clipboard.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ClipboardDemoComponent {
   value = 'Copied Content';

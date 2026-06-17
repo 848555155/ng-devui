@@ -1,6 +1,5 @@
 import {
   AfterContentInit,
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ContentChildren,
@@ -24,7 +23,6 @@ import { SplitterOrientation } from './splitter.types';
   templateUrl: './splitter.component.html',
   styleUrl: './splitter.component.scss',
   providers: [SplitterService],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   exportAs: 'dSplitter',
   preserveWhitespaces: false
 })

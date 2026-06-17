@@ -1,10 +1,9 @@
-import { ChangeDetectionStrategy, Component, ContentChild, TemplateRef } from '@angular/core';
+import { Component, ContentChild, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'd-head-cell',
   standalone: false,
   template: '',
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DataTableHeadCellTmplComponent {
 

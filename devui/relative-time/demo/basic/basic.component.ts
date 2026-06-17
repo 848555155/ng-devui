@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { DataTableModule } from 'ng-devui/data-table';
 import { I18nFormat } from 'ng-devui/i18n';
 import { RelativeTimePipe } from 'ng-devui/relative-time';
@@ -8,7 +8,6 @@ import { RelativeTimePipe } from 'ng-devui/relative-time';
   selector: 'd-basic',
   imports: [DataTableModule, RelativeTimePipe, AsyncPipe],
   templateUrl: './basic.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicComponent {
   limit = 3 * 12 * 30 * 24 * 60 * 60; // tree years

@@ -1,5 +1,4 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   HostBinding,
   OnInit
@@ -10,7 +9,6 @@ import {
   standalone: false,
   templateUrl: `./two-datepicker-format.component.html`,
   styleUrl: `./two-datepicker-format.component.scss`,
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TwoDatepickerFormatComponent implements OnInit {
   dateFormatOptions = ['y-MM-dd HH:mm:ss', 'yy.MM.dd HH:mm', 'MM/dd/y HH:mm:ss', 'MM/dd/yy HH:mm'];

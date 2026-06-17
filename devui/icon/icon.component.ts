@@ -1,8 +1,6 @@
 import { NgTemplateOutlet } from '@angular/common';
 import {
-  afterNextRender,
   booleanAttribute,
-  ChangeDetectionStrategy,
   Component,
   computed,
   Directive,
@@ -19,7 +17,6 @@ import { fromEvent } from 'rxjs';
   imports: [NgTemplateOutlet],
   templateUrl: './icon.component.html',
   styleUrl: './icon.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IconComponent {
   readonly icon = input<string | TemplateRef<any>>();

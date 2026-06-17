@@ -1,4 +1,4 @@
-import { Component, forwardRef, inject, input, TemplateRef } from '@angular/core';
+import { Component, inject, input, TemplateRef } from '@angular/core';
 import { BreadCrumbService } from './breadcrumb.service';
 import { BREADCRUMB } from './breadcrumb.token';
 import { SourceConfig } from './breadcrumb.type';
@@ -11,7 +11,7 @@ import { BreadCrumbItemComponent } from './breadcrumb-item/breadcrumb-item.compo
   styleUrl: './breadcrumb.component.scss',
   providers: [{
     provide: BREADCRUMB,
-    useExisting: forwardRef(() => BreadCrumbComponent)
+    useExisting: BreadCrumbComponent
   }],
   exportAs: 'dBreadcrumb',
   preserveWhitespaces: false

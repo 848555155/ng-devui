@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { ButtonModule } from 'ng-devui/button';
 import { FullscreenModule } from 'ng-devui/fullscreen';
 import { TooltipModule } from 'ng-devui/tooltip';
@@ -7,7 +7,6 @@ import { TooltipModule } from 'ng-devui/tooltip';
   selector: 'd-fullscreen-demo-normal',
   imports: [FullscreenModule, ButtonModule, TooltipModule],
   templateUrl: './normal.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FullscreenDemoNormalComponent {
   btnIcon = 'icon-frame-expand';

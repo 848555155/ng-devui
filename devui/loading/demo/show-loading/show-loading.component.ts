@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ButtonModule } from 'ng-devui/button';
 import { LoadingModule } from 'ng-devui/loading';
 
@@ -7,7 +7,6 @@ import { LoadingModule } from 'ng-devui/loading';
   imports: [ButtonModule, LoadingModule],
   templateUrl: './show-loading.component.html',
   styleUrl: './show-loading.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ShowLoadingComponent {
   readonly showLoading = signal(false);

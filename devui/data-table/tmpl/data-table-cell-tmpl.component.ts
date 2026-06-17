@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ContentChild, Input } from '@angular/core';
+import { Component, ContentChild, Input } from '@angular/core';
 import { DataTableCellEditTmplComponent } from './data-table-cell-edit-tmpl.component';
 import { DataTableCellViewTmplComponent } from './data-table-cell-view-tmpl.component';
 
@@ -6,7 +6,6 @@ import { DataTableCellViewTmplComponent } from './data-table-cell-view-tmpl.comp
   selector: 'd-cell-template',
   standalone: false,
   template: '',
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DataTableCellTmplComponent {
   @Input() type: string;

@@ -1,11 +1,10 @@
-import { ChangeDetectionStrategy, Component, HostBinding, Input, TemplateRef } from '@angular/core';
+import { Component, HostBinding, Input, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'd-toggle-menu-input',
   standalone: false,
   templateUrl: './toggle-menu-input.component.html',
   styleUrl: `./toggle-menu-input.component.scss`,
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ToggleMenuInputComponent {
   @Input() value: any;

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { CarouselComponent, CarouselItemComponent } from 'ng-devui/carousel';
 
 @Component({
@@ -6,7 +6,6 @@ import { CarouselComponent, CarouselItemComponent } from 'ng-devui/carousel';
   imports: [CarouselComponent, CarouselItemComponent],
   templateUrl: './carousel-demo-basic.component.html',
   styleUrl: '../demo-common.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CarouselDemoBasicComponent {
   array = [1, 2, 3, 4];

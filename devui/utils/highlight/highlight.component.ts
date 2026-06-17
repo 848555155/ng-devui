@@ -1,5 +1,4 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   ElementRef,
   DOCUMENT,
@@ -12,7 +11,6 @@ import {
   selector: 'd-highlight',
   template: ``,
   styleUrl: './highlight.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     'style.display': 'inline',
   }
@@ -32,7 +30,7 @@ export class HighlightComponent {
     });
   }
 
-  addDom(value: string, term: string): any {
+  addDom(value: string, term: string) {
     if (value && term) {
       this.highlight(value, term);
     } else {

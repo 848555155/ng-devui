@@ -1,11 +1,10 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'd-min-max',
   standalone: false,
   templateUrl: './min-max.component.html',
   styleUrl: `./min-max.component.scss`,
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DatepickerDemoMinMaxComponent {
   selectedDate1 = null;

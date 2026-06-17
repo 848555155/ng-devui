@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MenuItemType } from 'ng-devui/menu';
 
 @Component({
@@ -22,7 +22,6 @@ import { MenuItemType } from 'ng-devui/menu';
         }
       }
     </div>`,
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoopSubMenuComponent {
   @Input() activeKey = '';

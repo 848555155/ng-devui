@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { ColData } from './table-option-toggle.component';
 
 @Component({
@@ -6,7 +6,6 @@ import { ColData } from './table-option-toggle.component';
   standalone: false,
   templateUrl: './table-option-modal.component.html',
   styleUrls: ['./table-option-modal.component.scss', './table-option-toggle.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TableOptionModalComponent implements OnInit {
   @Input() data: any;

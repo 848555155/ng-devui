@@ -39,7 +39,7 @@ export class ButtonComponent {
   readonly width = input<string>();
   readonly autofocus = input(false);
   readonly loadingTemplateRef = input<TemplateRef<any>>();
-  btnClick = output<MouseEvent>();
+  readonly btnClick = output<MouseEvent>();
   readonly buttonContent = viewChild.required<ElementRef>('buttonContent');
 
   handleDisabled($event: Event) {

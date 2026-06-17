@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { MenuItemClickType, MenuItemType } from 'ng-devui/menu';
+import { Component } from '@angular/core';
+import { MenuItemType } from 'ng-devui/menu';
 
 const MENUS: MenuItemType[] = [
   {
@@ -94,7 +94,6 @@ const MENUS: MenuItemType[] = [
   selector: 'd-loop',
   standalone: false,
   templateUrl: './loop.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoopComponent {
   menus = MENUS;

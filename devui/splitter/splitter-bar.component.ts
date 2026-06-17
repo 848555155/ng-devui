@@ -1,6 +1,5 @@
 import {
   AfterViewInit,
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ElementRef,
@@ -24,7 +23,6 @@ import { SplitterOrientation } from './splitter.types';
   standalone: false,
   templateUrl: './splitter-bar.component.html',
   styleUrl: './splitter-bar.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false
 })
 export class SplitterBarComponent implements OnInit, AfterViewInit, OnDestroy {

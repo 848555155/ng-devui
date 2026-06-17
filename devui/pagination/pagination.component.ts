@@ -2,7 +2,6 @@ import { ConnectedPosition } from '@angular/cdk/overlay';
 import {
   AfterViewInit,
   ApplicationRef,
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ElementRef,
@@ -25,7 +24,6 @@ import { Subscription, fromEvent } from 'rxjs';
   standalone: false,
   templateUrl: './pagination.component.html',
   styleUrl: './pagination.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   exportAs: 'pagination',
   preserveWhitespaces: false
 })
